@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Options :: Auto Tab Discarder</title>
+  </head>
+  <style type="text/css">
+    body {
+      font-family: "Helvetica Neue",Helvetica,sans-serif;
+      font-size: 13px;
+    }
+    input[type=number] {
+      width: 60px;
+    }
+    td:nth-child(3) {
+      text-align: right;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+
+  <body>
+    <table width=100%>
+      <colgroup>
+        <col width="24">
+        <col>
+        <col width="80">
+      </colgroup>
+      <thead>
+        <tr>
+          <th colspan="3">Discarding options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>Automatically discard an inactive tabs after (in seconds)</td>
+          <td><input type="number" id="period" min="0"></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="log"></td>
+          <td colspan="2"><label for="log">Display logs (for debugging purpose only)</label></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th colspan="3">Discarding conditions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" id="audio"></td>
+          <td colspan="2"><label for="audio">Do not discard a tab when media is playing</label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="pinned"></td>
+          <td colspan="2"><label for="pinned">Do not discard a tab when it is pinned</label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="form"></td>
+          <td colspan="2"><label for="form">Do not discard a tab when form changes are not yet submitted</label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="battery"></td>
+          <td colspan="2"><label for="battery">Do not discard tabs when computer is connected to a power source</label></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th colspan="3">Exceptions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td colspan="2">
+            <span style="display: block; padding-bottom: 10px;">Tabs with the following hostnames are not being discarded (comma separated list of hostnames):</span>
+            <textarea rows="3" id="whitelist"></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <input type="button" id="save" value="Save">
+      <span id="info"></span>
+    </p>
+    <script src="index.js"></script>
+  </body>
+</html>

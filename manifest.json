@@ -1,0 +1,59 @@
+{
+  "manifest_version": 2,
+  "version": "0.1.1",
+  "name": "Auto Tab Discard",
+  "description": "Use native tab discard method to automatically reduce memory usage of inactive tabs",
+
+  "icons": {
+    "16": "data/icons/16.png",
+    "32": "data/icons/32.png",
+    "48": "data/icons/48.png",
+    "64": "data/icons/64.png",
+    "128": "data/icons/128.png",
+    "256": "data/icons/256.png"
+  },
+  "permissions": [
+    "idle",
+    "storage",
+    "tabs",
+    "*://*/*",
+    "contextMenus",
+    "notifications"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "data/icons/16.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png",
+      "64": "data/icons/64.png"
+    },
+    "default_title": "Left-click to open options. Right-click to discard"
+  },
+  "content_scripts":[
+    {
+      "matches": ["*://*/*"],
+      "js": ["data/inject/top.js"]
+    },
+    {
+      "matches": ["*://*/*"],
+      "all_frames": true,
+      "js": ["data/inject/all.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "data/options/index.html",
+    "chrome_style": true
+  },
+  "applications": {
+    "gecko": {
+      "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
+      "strict_min_version": "58.0"
+    }
+  }
+}
