@@ -45,4 +45,8 @@ document.getElementById('save').addEventListener('click', () => {
   });
 });
 
+document.getElementById('support').addEventListener('click', () => chrome.tabs.create({
+  url: 'https://www.paypal.me/addondonation/10usd'
+}));
+
 document.addEventListener('DOMContentLoaded', restore);

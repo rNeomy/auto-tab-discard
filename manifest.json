@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "name": "Auto Tab Discard",
   "description": "Use native tab discard method to automatically reduce memory usage of inactive tabs",
 
@@ -50,6 +50,7 @@
     "page": "data/options/index.html",
     "chrome_style": true
   },
+  "homepage_url": "http://add0n.com/tab-discard.html",
   "applications": {
     "gecko": {
       "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",

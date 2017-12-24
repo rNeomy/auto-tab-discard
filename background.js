@@ -36,6 +36,12 @@ chrome.idle.onStateChanged.addListener(state => {
     const contexts = ['browser_action'];
     if (chrome.contextMenus.ContextType.TAB) {
       contexts.push('tab');
+      chrome.contextMenus.create({
+        id: 'discard-tab',
+        title: 'Discard this tab',
+        contexts: ['tab'],
+        documentUrlPatterns: ['*://*/*']
+      });
     }
     chrome.contextMenus.create({
       id: 'discard-tabs',
@@ -53,9 +59,16 @@ chrome.idle.onStateChanged.addListener(state => {
       contexts
     });
     chrome.contextMenus.create({
+      id: 'separator',
+      type: 'separator',
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    });
+    chrome.contextMenus.create({
       id: 'whitelist-domain',
       title: 'Do not discard this domain',
-      contexts
+      contexts,
+      documentUrlPatterns: ['*://*/*']
     });
   };
   chrome.runtime.onInstalled.addListener(callback);
@@ -66,16 +79,24 @@ chrome.contextMenus.onClicked.addListener(({menuItemId}, tab) => {
     return chrome.storage.local.get({
       whitelist: []
     }, prefs => {
-      const {hostname, protocol} = new URL(tab.url);
+      const {hostname, protocol = ''} = new URL(tab.url);
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
         prefs.whitelist.push(hostname);
         prefs.whitelist = prefs.whitelist.filter((h, i, l) => l.indexOf(h) === i);
         chrome.storage.local.set(prefs);
-        notify(hostname + ' is added to the whitelist');
+        notify(`"${hostname}" is added to the whitelist`);
       }
       else {
-        notify(protocol + ' protocol is not supported');
+        notify(`"${protocol}" protocol is not supported`);
       }
+    });
+  }
+  else if (menuItemId === 'discard-tab') {
+    if (tab.active) {
+      return notify('Cannot discard a tab when it is active');
+    }
+    return chrome.tabs.sendMessage(tab.id, {
+      method: 'can-discard'
     });
   }
   const info = {
@@ -88,7 +109,6 @@ chrome.contextMenus.onClicked.addListener(({menuItemId}, tab) => {
   else if (menuItemId === 'discard-other-windows') {
     info.currentWindow = false;
   }
-  console.log(menuItemId);
   chrome.tabs.query(info, tabs => tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {
     method: 'can-discard'
   })));
@@ -115,3 +135,38 @@ chrome.contextMenus.onClicked.addListener(({menuItemId}, tab) => {
 }
 // browser action
 chrome.browserAction.onClicked.addListener(() => chrome.runtime.openOptionsPage());
+
+// FAQs & Feedback
+chrome.storage.local.get({
+  'version': null,
+  'faqs': navigator.userAgent.indexOf('Firefox') === -1,
+  'last-update': 0,
+}, prefs => {
+  const version = chrome.runtime.getManifest().version;
+
+  if (prefs.version ? (prefs.faqs && prefs.version !== version) : true) {
+    const now = Date.now();
+    const doUpdate = (now - prefs['last-update']) / 1000 / 60 / 60 / 24 > 30;
+    chrome.storage.local.set({
+      version,
+      'last-update': doUpdate ? Date.now() : prefs['last-update']
+    }, () => {
+      // do not display the FAQs page if last-update occurred less than 30 days ago.
+      if (doUpdate) {
+        const p = Boolean(prefs.version);
+        chrome.tabs.create({
+          url: chrome.runtime.getManifest().homepage_url + '?version=' + version +
+            '&type=' + (p ? ('upgrade&p=' + prefs.version) : 'install'),
+          active: p === false
+        });
+      }
+    });
+  }
+});
+
+{
+  const {name, version} = chrome.runtime.getManifest();
+  chrome.runtime.setUninstallURL(
+    chrome.runtime.getManifest().homepage_url + '?rd=feedback&name=' + name + '&version=' + version
+  );
+}
