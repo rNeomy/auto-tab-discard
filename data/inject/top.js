@@ -74,6 +74,7 @@ tools.whitelist = () => {
 
 var check = period => {
   if (document.hidden && prefs.period) {
+    console.log('d');
     Promise.all([
       tools.audio(),
       tools.pinned(),
@@ -105,6 +106,8 @@ var check = period => {
 };
 
 document.addEventListener('visibilitychange', () => check());
+// https://github.com/rNeomy/auto-tab-discard/issues/1
+document.addEventListener('DOMContentLoaded', () => check());
 
 chrome.runtime.onMessage.addListener(({method}) => {
   if (method === 'idle') {

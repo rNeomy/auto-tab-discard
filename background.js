@@ -139,7 +139,7 @@ chrome.browserAction.onClicked.addListener(() => chrome.runtime.openOptionsPage(
 // FAQs & Feedback
 chrome.storage.local.get({
   'version': null,
-  'faqs': navigator.userAgent.indexOf('Firefox') === -1,
+  'faqs': false,
   'last-update': 0,
 }, prefs => {
   const version = chrome.runtime.getManifest().version;
