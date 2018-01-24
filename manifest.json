@@ -27,13 +27,25 @@
     ]
   },
   "browser_action": {
-    "default_icon": {
-      "16": "data/icons/16.png",
-      "32": "data/icons/32.png",
-      "48": "data/icons/48.png",
-      "64": "data/icons/64.png"
-    },
-    "default_title": "Left-click to open options. Right-click to discard"
+    "default_title": "Left-click to open options. Right-click to discard",
+    "browser_style": true,
+    "theme_icons": [{
+      "light": "data/icons/light/16.png",
+      "dark": "data/icons/dark/16.png",
+      "size": 16
+    }, {
+      "light": "data/icons/light/32.png",
+      "dark": "data/icons/dark/32.png",
+      "size": 32
+    }, {
+      "light": "data/icons/light/48.png",
+      "dark": "data/icons/dark/48.png",
+      "size": 48
+    }, {
+      "light": "data/icons/light/64.png",
+      "dark": "data/icons/dark/64.png",
+      "size": 64
+    }]
   },
   "content_scripts":[
     {
