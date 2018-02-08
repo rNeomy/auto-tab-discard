@@ -99,7 +99,7 @@ chrome.contextMenus.onClicked.addListener(({menuItemId}, tab) => {
       return notify('Cannot discard a tab when it is active');
     }
     return chrome.tabs.sendMessage(tab.id, {
-      method: 'can-discard'
+      method: 'bypass-discard'
     });
   }
   const info = {

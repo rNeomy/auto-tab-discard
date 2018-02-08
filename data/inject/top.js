@@ -10,6 +10,7 @@ var prefs = {
   whitelist: []
 };
 
+var log = (...args) => prefs.log && console.log(...args);
 var form = false;
 
 var tools = {};
@@ -57,20 +58,20 @@ tools.all = () => Promise.all([
   tools.form(),
   tools.whitelist()
 ]).then(([audio, pinned, battery, form, whitelist]) => {
-  if (audio && prefs.log) {
-    console.log('Tab discard is skipped', 'Audio is playing');
+  if (audio) {
+    log('Tab discard is skipped', 'Audio is playing');
   }
-  if (pinned && prefs.log) {
-    console.log('Tab discard is skipped', 'Tab is pinned');
+  if (pinned) {
+    log('Tab discard is skipped', 'Tab is pinned');
   }
-  if (battery && prefs.log) {
-    console.log('Tab discard is skipped', 'Power is plugged-in');
+  if (battery) {
+    log('Tab discard is skipped', 'Power is plugged-in');
   }
-  if (form && prefs.log) {
-    console.log('Tab discard is skipped', 'Unsaved form is detected');
+  if (form) {
+    log('Tab discard is skipped', 'Unsaved form is detected');
   }
-  if (whitelist && prefs.log) {
-    console.log('Tab discard is skipped', 'Hostname is in the list');
+  if (whitelist) {
+    log('Tab discard is skipped', 'Hostname is in the list');
   }
   if (audio || pinned || battery || form || whitelist) {
     return true;
@@ -80,34 +81,28 @@ tools.all = () => Promise.all([
 var timer = {
   id: null,
   time: Infinity,
-  set: period => {
+  set: (period, bypass = false) => {
     window.clearTimeout(timer.id);
     timer.time = Date.now() + (period || prefs.period * 1000);
-    timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000);
+    timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000, bypass);
   },
   clear: () => {
     window.clearTimeout(timer.id);
     timer.time = Infinity;
   },
   check: () => {
-    if (prefs.log) {
-      console.log('check timeouts', Date.now() > timer.time);
-    }
+    log('check timeouts', Date.now() > timer.time);
     if (Date.now() > timer.time) {
       timer.discard();
     }
   }
 };
 
-timer.discard = () => tools.all().then(r => {
-  if (r) {
-    if (prefs.log) {
-      console.log('skipped', 2);
-    }
+timer.discard = (bypass = false) => tools.all().then(r => {
+  if (r && bypass === false) {
+    log('skipped', 'double check before discarding');
   }
-  if (prefs.log) {
-    console.log('discarding');
-  }
+  log('discarding');
   chrome.runtime.sendMessage({
     method: 'discard'
   });
@@ -121,7 +116,7 @@ var check = (period, manual = false, bypass = false) => {
           return timer.clear();
         }
       }
-      timer.set(period);
+      timer.set(period, bypass);
     });
   }
 };
