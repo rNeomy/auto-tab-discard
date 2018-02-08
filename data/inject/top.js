@@ -72,9 +72,9 @@ tools.whitelist = () => {
   return Promise.resolve(prefs.whitelist.indexOf(hostname) !== -1);
 };
 
-var check = period => {
-  if (document.hidden && prefs.period) {
-    console.log('d');
+var check = (period, manual = false) => {
+  console.log(period, manual);
+  if (document.hidden && (prefs.period || manual)) {
     Promise.all([
       tools.audio(),
       tools.pinned(),
@@ -82,6 +82,7 @@ var check = period => {
       tools.form(),
       tools.whitelist()
     ]).then(([audio, pinned, battery, form, whitelist]) => {
+      console.log(audio, pinned, battery, form, whitelist);
       if (audio && prefs.log) {
         console.log('Tab discard is skipped', 'Audio is playing');
       }
@@ -114,7 +115,7 @@ chrome.runtime.onMessage.addListener(({method}) => {
     timer.check();
   }
   else if (method === 'can-discard') {
-    check(1);
+    check(1, true);
   }
 });
 
