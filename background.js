@@ -41,7 +41,7 @@ chrome.idle.onStateChanged.addListener(state => {
       contexts.push('tab');
       chrome.contextMenus.create({
         id: 'discard-tab',
-        title: 'Discard this tab',
+        title: 'Discard this tab (forced)',
         contexts: ['tab'],
         documentUrlPatterns: ['*://*/*']
       });

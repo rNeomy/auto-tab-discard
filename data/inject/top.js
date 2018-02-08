@@ -141,7 +141,6 @@ chrome.runtime.onMessage.addListener(({method}) => {
 var aID;
 window.addEventListener('message', e => {
   if (e.data && e.data.cmd === 'ntd-command') {
-    console.log(e.data);
     e.preventDefault();
     if (e.data.form) {
       form = e.data.form;
