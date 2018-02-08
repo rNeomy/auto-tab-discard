@@ -11,6 +11,9 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   if (method === 'is-pinned') {
     resposne(tab.pinned);
   }
+  else if (method === 'is-playing') {
+    resposne(tab.audible);
+  }
   else if (method === 'discard') {
     if (tab.active) {
       return;

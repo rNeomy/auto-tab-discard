@@ -10,42 +10,20 @@ var prefs = {
   whitelist: []
 };
 
-var audio = false;
 var form = false;
-
-var timer = {
-  id: null,
-  time: Infinity,
-  set: period => {
-    window.clearTimeout(timer.id);
-    timer.time = Date.now() + (period || prefs.period * 1000);
-    timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000);
-  },
-  clear: () => {
-    window.clearTimeout(timer.id);
-    timer.time = Infinity;
-  },
-  check: () => {
-    if (prefs.log) {
-      console.log('check timeouts', Date.now() > timer.time);
-    }
-    if (Date.now() > timer.time) {
-      timer.discard();
-    }
-  }
-};
-timer.discard = () => {
-  if (prefs.log) {
-    console.log('discard now');
-  }
-  chrome.runtime.sendMessage({
-    method: 'discard'
-  });
-};
 
 var tools = {};
 // return true if tab is not supposed to be suspended
-tools.audio = () => Promise.resolve(prefs.audio === true ? audio : false);
+tools.audio = () => {
+  if (prefs.audio) {
+    return new Promise(resolve => chrome.runtime.sendMessage({
+      method: 'is-playing'
+    }, resolve));
+  }
+  else {
+    Promise.resolve(false);
+  }
+};
 tools.pinned = () => {
   if (prefs.pinned === false) {
     return Promise.resolve(false);
@@ -72,34 +50,76 @@ tools.whitelist = () => {
   return Promise.resolve(prefs.whitelist.indexOf(hostname) !== -1);
 };
 
-var check = (period, manual = false) => {
-  console.log(period, manual);
+tools.all = () => Promise.all([
+  tools.audio(),
+  tools.pinned(),
+  tools.battery(),
+  tools.form(),
+  tools.whitelist()
+]).then(([audio, pinned, battery, form, whitelist]) => {
+  if (audio && prefs.log) {
+    console.log('Tab discard is skipped', 'Audio is playing');
+  }
+  if (pinned && prefs.log) {
+    console.log('Tab discard is skipped', 'Tab is pinned');
+  }
+  if (battery && prefs.log) {
+    console.log('Tab discard is skipped', 'Power is plugged-in');
+  }
+  if (form && prefs.log) {
+    console.log('Tab discard is skipped', 'Unsaved form is detected');
+  }
+  if (whitelist && prefs.log) {
+    console.log('Tab discard is skipped', 'Hostname is in the list');
+  }
+  if (audio || pinned || battery || form || whitelist) {
+    return true;
+  }
+});
+
+var timer = {
+  id: null,
+  time: Infinity,
+  set: period => {
+    window.clearTimeout(timer.id);
+    timer.time = Date.now() + (period || prefs.period * 1000);
+    timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000);
+  },
+  clear: () => {
+    window.clearTimeout(timer.id);
+    timer.time = Infinity;
+  },
+  check: () => {
+    if (prefs.log) {
+      console.log('check timeouts', Date.now() > timer.time);
+    }
+    if (Date.now() > timer.time) {
+      timer.discard();
+    }
+  }
+};
+
+timer.discard = () => tools.all().then(r => {
+  if (r) {
+    if (prefs.log) {
+      console.log('skipped', 2);
+    }
+  }
+  if (prefs.log) {
+    console.log('discarding');
+  }
+  chrome.runtime.sendMessage({
+    method: 'discard'
+  });
+});
+
+var check = (period, manual = false, bypass = false) => {
   if (document.hidden && (prefs.period || manual)) {
-    Promise.all([
-      tools.audio(),
-      tools.pinned(),
-      tools.battery(),
-      tools.form(),
-      tools.whitelist()
-    ]).then(([audio, pinned, battery, form, whitelist]) => {
-      console.log(audio, pinned, battery, form, whitelist);
-      if (audio && prefs.log) {
-        console.log('Tab discard is skipped', 'Audio is playing');
-      }
-      if (pinned && prefs.log) {
-        console.log('Tab discard is skipped', 'Tab is pinned');
-      }
-      if (battery && prefs.log) {
-        console.log('Tab discard is skipped', 'Power is plugged-in');
-      }
-      if (form && prefs.log) {
-        console.log('Tab discard is skipped', 'Unsaved form is detected');
-      }
-      if (whitelist && prefs.log) {
-        console.log('Tab discard is skipped', 'Hostname is in the list');
-      }
-      if (audio || pinned || battery || form || whitelist) {
-        return timer.clear();
+    tools.all().then(r => {
+      if (r) {
+        if (bypass === false) {
+          return timer.clear();
+        }
       }
       timer.set(period);
     });
@@ -117,17 +137,23 @@ chrome.runtime.onMessage.addListener(({method}) => {
   else if (method === 'can-discard') {
     check(1, true);
   }
+  else if (method === 'bypass-discard') {
+    check(1, true, true);
+  }
 });
 
 // messages
+var aID;
 window.addEventListener('message', e => {
   if (e.data && e.data.cmd === 'ntd-command') {
+    console.log(e.data);
     e.preventDefault();
-    if (e.data.audio) {
-      audio = e.data.audio;
-    }
     if (e.data.form) {
       form = e.data.form;
+    }
+    if ('audio' in e.data) { // check when media status is changed
+      window.clearTimeout(aID);
+      aID = window.setTimeout(() => check(), e.data.audio ? 0 : 5000);
     }
   }
 });
