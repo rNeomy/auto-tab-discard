@@ -23,7 +23,8 @@
   "background": {
     "persistent": false,
     "scripts": [
-      "background.js"
+      "background.js",
+      "menu.js"
     ]
   },
   "browser_action": {
