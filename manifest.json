@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "name": "Auto Tab Discard",
   "description": "Use native tab discard method to automatically reduce memory usage of inactive tabs",
 
@@ -27,7 +27,6 @@
     ]
   },
   "browser_action": {
-    "default_title": "Left-click to open options. Right-click to discard",
     "browser_style": true,
     "theme_icons": [{
       "light": "data/icons/light/16.png",
