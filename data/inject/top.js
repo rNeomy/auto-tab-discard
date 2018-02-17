@@ -1,5 +1,7 @@
 'use strict';
 
+var now = Date.now();
+
 var prefs = {
   period: 10 * 60, // in seconds
   audio: true, // audio = true => do not suspend if audio is playing
@@ -7,6 +9,7 @@ var prefs = {
   form: true, // form = true => do not suspend if form data is changed
   battery: false, // battery = true => only suspend if power is disconnected,
   log: false,
+  mode: 'time-based',
   whitelist: []
 };
 
@@ -109,6 +112,9 @@ timer.discard = (bypass = false) => tools.all().then(r => {
 });
 
 var check = (period, manual = false, bypass = false) => {
+  if (prefs.mode === 'number-based' && bypass === false) {
+    return log('skipped', 'number-based discarding');
+  }
   if (document.hidden && (prefs.period || manual)) {
     tools.all().then(r => {
       if (r) {
@@ -125,7 +131,7 @@ document.addEventListener('visibilitychange', () => check());
 // https://github.com/rNeomy/auto-tab-discard/issues/1
 document.addEventListener('DOMContentLoaded', () => check());
 
-chrome.runtime.onMessage.addListener(({method}) => {
+chrome.runtime.onMessage.addListener(({method}, sender, response) => {
   if (method === 'idle') {
     timer.check();
   }
@@ -134,6 +140,13 @@ chrome.runtime.onMessage.addListener(({method}) => {
   }
   else if (method === 'bypass-discard') {
     check(1, true, true);
+  }
+  else if (method === 'introduce') {
+    tools.all().then(exception => response({
+      exception,
+      now
+    }));
+    return true;
   }
 });
 
@@ -156,7 +169,7 @@ window.addEventListener('message', e => {
 chrome.storage.local.get(prefs, ps => Object.assign(prefs, ps));
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => prefs[k] = ps[k].newValue);
-  if (ps.period) {
+  if (ps.period || ps.mode) {
     check();
   }
 });

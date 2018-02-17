@@ -33,6 +33,76 @@ chrome.idle.onStateChanged.addListener(state => {
   }
 });
 
+// number-based discarding
+{
+  const tabs = {};
+  tabs.check = () => {
+    const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
+      method: 'introduce'
+    }, resolve));
+    chrome.tabs.query({
+      url: '*://*/*'
+    }, tbs => {
+      if (tbs.length > 3) {
+        Promise.all(tbs.map(echo)).then(arr => {
+          console.log(arr);
+          arr = arr.filter((a, i) => {
+            if (a) {
+              arr[i].tabId = tbs[i].id;
+              arr[i].title = tbs[i].title;
+            }
+            return a && a.exception !== true;
+          });
+          if (arr.length > 3) {
+            chrome.storage.local.get({
+              number: 6
+            }, prefs => {
+              if (arr.length > prefs.number) {
+                const toBeDiscarded = arr.sort((a, b) => b.now - a.now).slice(prefs.number);
+                toBeDiscarded.forEach(({tabId}) => {
+                  chrome.tabs.sendMessage(tabId, {
+                    method: 'bypass-discard'
+                  });
+                });
+                console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.title));
+              }
+              else {
+                console.log('skipped/3');
+              }
+            });
+          }
+          else {
+            console.log('skipped/2');
+          }
+        });
+      }
+      else {
+        console.log('skipped/1');
+      }
+    });
+  };
+  tabs.install = () => chrome.tabs.onCreated.addListener(tabs.check);
+  tabs.uninstall = () => chrome.tabs.onCreated.removeListener(tabs.check);
+
+  chrome.storage.local.get({
+    mode: 'timer-based'
+  }, prefs => {
+    if (prefs.mode === 'number-based') {
+      tabs.install();
+    }
+  });
+  chrome.storage.onChanged.addListener(prefs => {
+    if (prefs.mode) {
+      if (prefs.mode.newValue === 'number-based') {
+        tabs.install();
+      }
+      else {
+        tabs.uninstall();
+      }
+    }
+  });
+}
+
 // initial inject
 {
   const callback = () => chrome.app && chrome.tabs.query({

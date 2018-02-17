@@ -16,6 +16,7 @@
         type: 'register-self',
         name: chrome.runtime.getManifest().name
       }, r => {
+        // console.log('TST test', r);
         if (r === true) {
           arr.forEach(params => chrome.runtime.sendMessage('treestyletab@piro.sakura.ne.jp', {
             type: 'fake-contextMenu-create',
@@ -70,8 +71,14 @@
         documentUrlPatterns: ['*://*/*']
     }].filter(o => o));
   };
-  chrome.runtime.onInstalled.addListener(onStartup);
-  chrome.runtime.onStartup.addListener(onStartup);
+  // Firefox does not call "onStartup" after enabling the extension
+  if (/Firefox/.test(navigator.userAgent)) {
+    onStartup();
+  }
+  else {
+    chrome.runtime.onInstalled.addListener(onStartup);
+    chrome.runtime.onStartup.addListener(onStartup);
+  }
 
   const onClicked = ({menuItemId}, tab) => {
     if (menuItemId === 'whitelist-domain') {
