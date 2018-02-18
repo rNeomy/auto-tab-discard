@@ -45,7 +45,6 @@ chrome.idle.onStateChanged.addListener(state => {
     }, tbs => {
       if (tbs.length > 3) {
         Promise.all(tbs.map(echo)).then(arr => {
-          console.log(arr);
           arr = arr.filter((a, i) => {
             if (a) {
               arr[i].tabId = tbs[i].id;
@@ -64,20 +63,11 @@ chrome.idle.onStateChanged.addListener(state => {
                     method: 'bypass-discard'
                   });
                 });
-                console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.title));
-              }
-              else {
-                console.log('skipped/3');
+                //console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.title));
               }
             });
           }
-          else {
-            console.log('skipped/2');
-          }
         });
-      }
-      else {
-        console.log('skipped/1');
       }
     });
   };
