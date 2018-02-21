@@ -37,10 +37,10 @@
     };
 
     create([
-      contexts.indexOf('tab') === -1 ? '' : {
+      {
         id: 'discard-tab',
         title: 'Discard this tab (forced)',
-        contexts: ['tab'],
+        contexts,
         documentUrlPatterns: ['*://*/*']
       },
       {
@@ -99,11 +99,31 @@
     }
     else if (menuItemId === 'discard-tab') {
       if (tab.active) {
-        return notify('Cannot discard a tab when it is active');
+        chrome.tabs.query({
+          windowId: tab.windowId
+        }, tabs => {
+          const otab = tabs.filter(t => t.discarded === false && t.index !== tab.index).sort((a, b) => {
+            const lb = Math.abs(b.index - tab.index);
+            const la = Math.abs(a.index - tab.index);
+            return la - lb;
+          }).shift();
+          if (otab) {
+            chrome.tabs.update(otab.id, {
+              active: true
+            }, () => window.setTimeout(() => chrome.tabs.sendMessage(tab.id, {
+              method: 'bypass-discard'
+            }), 0));
+          }
+          else {
+            notify('Cannot discard a tab when it is active');
+          }
+        });
       }
-      chrome.tabs.sendMessage(tab.id, {
-        method: 'bypass-discard'
-      });
+      else {
+        chrome.tabs.sendMessage(tab.id, {
+          method: 'bypass-discard'
+        });
+      }
     }
     else {
       const info = {

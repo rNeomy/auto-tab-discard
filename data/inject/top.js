@@ -22,7 +22,7 @@ tools.audio = () => {
   if (prefs.audio) {
     return new Promise(resolve => chrome.runtime.sendMessage({
       method: 'is-playing'
-    }, resolve));
+    }, r => resolve(r)));
   }
   else {
     Promise.resolve(false);
@@ -62,7 +62,7 @@ tools.whitelist = () => {
       return (new RegExp(s)).test(href);
     }
     catch (e) {
-      console.log('regex error', e);
+      log('regex error', e);
     }
   }));
 };
@@ -116,12 +116,12 @@ var timer = {
 
 timer.discard = (bypass = false) => tools.all().then(r => {
   if (r && bypass === false) {
-    log('skipped', 'double check before discarding');
+    log('skipped', 'double-check before discarding');
   }
   log('discarding');
-/*  chrome.runtime.sendMessage({
+  chrome.runtime.sendMessage({
     method: 'discard'
-  });*/
+  });
 });
 
 var check = (period, manual = false, bypass = false) => {
