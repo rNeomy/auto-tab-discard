@@ -50,8 +50,21 @@ tools.form = () => {
   return Promise.resolve(form);
 };
 tools.whitelist = () => {
-  const {hostname} = document.location;
-  return Promise.resolve(prefs.whitelist.indexOf(hostname) !== -1);
+  const {hostname, href} = document.location;
+  const hl = prefs.whitelist.filter(s => s.startsWith('re:') === false);
+  const rl = prefs.whitelist.filter(s => s.startsWith('re:') === true).map(s => s.substr(3));
+
+  if (hl.indexOf(hostname) !== -1) {
+    return Promise.resolve(true);
+  }
+  return Promise.resolve(rl.some(s => {
+    try {
+      return (new RegExp(s)).test(href);
+    }
+    catch (e) {
+      console.log('regex error', e);
+    }
+  }));
 };
 
 tools.all = () => Promise.all([
@@ -106,9 +119,9 @@ timer.discard = (bypass = false) => tools.all().then(r => {
     log('skipped', 'double check before discarding');
   }
   log('discarding');
-  chrome.runtime.sendMessage({
+/*  chrome.runtime.sendMessage({
     method: 'discard'
-  });
+  });*/
 });
 
 var check = (period, manual = false, bypass = false) => {

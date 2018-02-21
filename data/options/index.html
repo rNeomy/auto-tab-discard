@@ -6,8 +6,9 @@
   </head>
   <style type="text/css">
     body {
-      font-family: "Helvetica Neue",Helvetica,sans-serif;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
       font-size: 13px;
+      width: 500px;
     }
     input[type=number] {
       width: 60px;
@@ -89,7 +90,7 @@
         <tr>
           <td></td>
           <td colspan="2">
-            <span style="display: block; padding-bottom: 10px;">Tabs with the following hostnames are not being discarded (comma separated list of hostnames):</span>
+            <span style="display: block; padding-bottom: 10px;">Tabs with the following hostnames are not being discarded (comma separated list of hostnames)<sup>1</sup>:</span>
             <textarea rows="3" id="whitelist"></textarea>
           </td>
         </tr>
@@ -100,6 +101,7 @@
       <input type="button" id="save" value="Save">
       <span id="info"></span>
     </p>
+    1: It is possible to use regular expression matching with "re:" keyword. For instance to whitelist all URLs with "google" keyword in them use "re:google".
     <script src="index.js"></script>
   </body>
 </html>
