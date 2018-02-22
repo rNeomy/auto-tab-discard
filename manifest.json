@@ -50,10 +50,12 @@
   "content_scripts":[
     {
       "matches": ["*://*/*"],
+      "run_at": "document_start",
       "js": ["data/inject/top.js"]
     },
     {
       "matches": ["*://*/*"],
+      "run_at": "document_start",
       "all_frames": true,
       "js": ["data/inject/all.js"]
     }

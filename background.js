@@ -35,8 +35,21 @@ chrome.idle.onStateChanged.addListener(state => {
 
 // number-based discarding
 {
-  const tabs = {};
+  const tabs = {
+    id: null
+  };
   tabs.check = () => {
+    window.clearTimeout(tabs.id);
+    tabs.id = window.setTimeout(tabs._check, 500);
+  };
+  // https://github.com/rNeomy/auto-tab-discard/issues/21
+  tabs.update = (id, info) => {
+    if (info.status === 'complete') {
+      tabs.check();
+    }
+  };
+
+  tabs._check = () => {
     const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
       method: 'introduce'
     }, resolve));
@@ -50,14 +63,16 @@ chrome.idle.onStateChanged.addListener(state => {
               arr[i].tabId = tbs[i].id;
               arr[i].title = tbs[i].title;
             }
-            return a && a.exception !== true;
+            return a && a.exception !== true && a.ready === true && tbs[i].active === false;
           });
+          //console.log('number of active tabs', arr.length);
           if (arr.length > 3) {
             chrome.storage.local.get({
               number: 6
             }, prefs => {
               if (arr.length > prefs.number) {
                 const toBeDiscarded = arr.sort((a, b) => b.now - a.now).slice(prefs.number);
+                //console.log(toBeDiscarded);
                 toBeDiscarded.forEach(({tabId}) => {
                   chrome.tabs.sendMessage(tabId, {
                     method: 'bypass-discard'
@@ -71,8 +86,14 @@ chrome.idle.onStateChanged.addListener(state => {
       }
     });
   };
-  tabs.install = () => chrome.tabs.onCreated.addListener(tabs.check);
-  tabs.uninstall = () => chrome.tabs.onCreated.removeListener(tabs.check);
+  tabs.install = () => {
+    chrome.tabs.onCreated.addListener(tabs.check);
+    chrome.tabs.onUpdated.addListener(tabs.update);
+  };
+  tabs.uninstall = () => {
+    chrome.tabs.onCreated.removeListener(tabs.check);
+    chrome.tabs.onUpdated.removeListener(tabs.update);
+  };
 
   chrome.storage.local.get({
     mode: 'timer-based'

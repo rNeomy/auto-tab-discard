@@ -157,6 +157,7 @@ chrome.runtime.onMessage.addListener(({method}, sender, response) => {
   else if (method === 'introduce') {
     tools.all().then(exception => response({
       exception,
+      ready: document.readyState === 'complete' || document.readyState === 'loaded',
       now
     }));
     return true;
@@ -179,7 +180,10 @@ window.addEventListener('message', e => {
 });
 
 // prefs
-chrome.storage.local.get(prefs, ps => Object.assign(prefs, ps));
+chrome.storage.local.get(prefs, ps => {
+  Object.assign(prefs, ps);
+});
+
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => prefs[k] = ps[k].newValue);
   if (ps.period || ps.mode) {
