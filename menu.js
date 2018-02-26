@@ -23,14 +23,10 @@
             params
           }));
         }
-        else {
-          const reg = (request, sender) => {
-            if (sender.id === TST && request.type === 'ready') {
-              add();
-              chrome.runtime.onMessageExternal.removeListener(reg);
-            }
-          };
-          chrome.runtime.onMessageExternal.addListener(reg);
+      });
+      chrome.runtime.onMessageExternal.addListener((request, sender) => {
+        if (sender.id === TST && request.type === 'ready') {
+          add();
         }
       });
       add();
