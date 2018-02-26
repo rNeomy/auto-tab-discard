@@ -11,29 +11,39 @@
     }
     const create = arr => {
       arr.forEach(o => chrome.contextMenus.create(o));
+      arr.splice(1, 0, {
+        id: 'discard-tree',
+        title: 'Discard this tab tree (forced)',
+        contexts,
+        documentUrlPatterns: ['*://*/*']
+      });
       // treestyletab support
       const add = () => chrome.runtime.sendMessage(TST, {
         type: 'register-self',
         name: chrome.runtime.getManifest().name
       }, r => {
-        // console.log('TST test', r);
         if (r === true) {
-          arr.forEach(params => chrome.runtime.sendMessage('treestyletab@piro.sakura.ne.jp', {
-            type: 'fake-contextMenu-create',
+          arr.forEach(params => chrome.runtime.sendMessage(TST, {
+            type: 'fake-contextMenu-remove',
             params
           }));
-        }
-        else {
-          const reg = (request, sender) => {
-            if (sender.id === TST && request.type === 'ready') {
-              add();
-              chrome.runtime.onMessageExternal.removeListener(reg);
-            }
-          };
-          chrome.runtime.onMessageExternal.addListener(reg);
+          chrome.runtime.sendMessage(TST, {
+            type: 'fake-contextMenu-remove-all'
+          }, () => {
+            arr.forEach(params => chrome.runtime.sendMessage(TST, {
+              type: 'fake-contextMenu-create',
+              params
+            }));
+          });
         }
       });
       add();
+
+      chrome.runtime.onMessageExternal.addListener((request, sender) => {
+        if (sender.id === TST && request.type === 'ready') {
+          add();
+        }
+      });
     };
 
     create([
@@ -97,12 +107,12 @@
         }
       });
     }
-    else if (menuItemId === 'discard-tab') {
+    else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
       if (tab.active) {
         chrome.tabs.query({
           windowId: tab.windowId
         }, tabs => {
-          const otab = tabs.filter(t => t.discarded === false && t.index !== tab.index).sort((a, b) => {
+          const otab = tabs.filter(t => t.discarded === false && t.id !== tab.id).sort((a, b) => {
             const lb = Math.abs(b.index - tab.index);
             const la = Math.abs(a.index - tab.index);
             return la - lb;
@@ -112,7 +122,7 @@
               active: true
             }, () => window.setTimeout(() => chrome.tabs.sendMessage(tab.id, {
               method: 'bypass-discard'
-            }), 0));
+            }), 500)); // in Firefox it takes sometime for document.hidden becomes true!
           }
           else {
             notify('Cannot discard a tab when it is active');
@@ -143,8 +153,26 @@
   };
   chrome.contextMenus.onClicked.addListener(onClicked);
   chrome.runtime.onMessageExternal.addListener((request, sender) => {
-    if (sender.id === TST && request.type === 'fake-contextMenu-click') {
+    if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tab') {
       onClicked(request.info, request.tab);
+    }
+    else if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tree') {
+      // apply on all tabs in the tree
+      chrome.runtime.sendMessage(TST, {
+        type: 'get-tree',
+        tabs: [request.tab.id]
+      }, tbs => {
+        const tabs = [];
+        const list = tab => {
+          tabs.push(tab);
+          tab.children.forEach(list);
+        };
+        tbs.forEach(list);
+        tabs.filter(t => t.active === false).forEach(tab => onClicked(request.info, tab));
+        window.setTimeout(() => {
+          tabs.filter(t => t.active).forEach(tab => onClicked(request.info, tab));
+        }, 1000);
+      });
     }
   });
 }
