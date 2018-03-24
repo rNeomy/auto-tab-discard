@@ -7,6 +7,32 @@ const notify = e => chrome.notifications.create({
   message: e.message || e
 });
 
+// https://github.com/rNeomy/auto-tab-discard/issues/24
+const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
+
+var restore = {
+  cache: {}
+};
+if (isFirefox) {
+  chrome.tabs.onActivated.addListener(({tabId}) => {
+    const tab = restore.cache[tabId];
+    if (tab) {
+      chrome.tabs.executeScript(tabId, {
+        code: ''
+      }, () => {
+        const lastError = chrome.runtime.lastError;
+        if (lastError && lastError.message === 'No matching message handler') {
+          chrome.tabs.update(tabId, {
+            url: tab.url
+          });
+          console.log('reloading');
+        }
+      });
+    }
+  });
+  chrome.tabs.onRemoved.addListener(tabId => delete restore.cache[tabId]);
+}
+
 chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   if (method === 'is-pinned') {
     resposne(tab.pinned);
@@ -19,6 +45,9 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
       return;
     }
     chrome.tabs.discard(tab.id);
+    if (isFirefox) {
+      restore.cache[tab.id] = tab;
+    }
   }
 });
 
