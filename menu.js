@@ -95,6 +95,7 @@
       chrome.storage.local.get({
         whitelist: []
       }, prefs => {
+        console.log(tab.url);
         const {hostname, protocol = ''} = new URL(tab.url);
         if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
           prefs.whitelist.push(hostname);
@@ -165,10 +166,7 @@
   }));
 
   chrome.runtime.onMessageExternal.addListener((request, sender) => {
-    if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tab') {
-      onClicked(request.info, request.tab);
-    }
-    else if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tree') {
+    if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tree') {
       // apply on all tabs in the tree
       chrome.runtime.sendMessage(TST, {
         type: 'get-tree',
@@ -185,6 +183,9 @@
           tabs.filter(t => t.active).forEach(tab => onClicked(request.info, tab));
         }, 1000);
       });
+    }
+    else if (sender.id === TST && request.type === 'fake-contextMenu-click') {
+      onClicked(request.info, request.tab);
     }
   });
 }
