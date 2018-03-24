@@ -152,6 +152,18 @@
     }
   };
   chrome.contextMenus.onClicked.addListener(onClicked);
+  // commands
+  chrome.commands.onCommand.addListener(command => chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, tabs => {
+    if (tabs.length) {
+      onClicked({
+        menuItemId: command
+      }, tabs[0]);
+    }
+  }));
+
   chrome.runtime.onMessageExternal.addListener((request, sender) => {
     if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tab') {
       onClicked(request.info, request.tab);

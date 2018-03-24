@@ -65,6 +65,20 @@
     "chrome_style": true
   },
   "homepage_url": "http://add0n.com/tab-discard.html",
+  "commands": {
+    "discard-tab": {
+      "description": "Discard this tab (forced)"
+    },
+    "discard-tabs": {
+      "description": "Discard all inactive tabs"
+    },
+    "discard-window": {
+      "description": "Discard inactive tabs in current window"
+    },
+    "discard-other-windows": {
+      "description": "Discard inactive tabs in other windows"
+    }
+  },
   "applications": {
     "gecko": {
       "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
