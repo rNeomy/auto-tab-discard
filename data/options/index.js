@@ -7,6 +7,7 @@ const restore = () => chrome.storage.local.get({
   pinned: false, // pinned = true => do not suspend if tab is pinned
   form: true, // form = true => do not suspend if form data is changed
   battery: false, // battery = true => only suspend if power is disconnected,
+  'notification.permission': true, // true => do not discard
   log: false,
   whitelist: [],
   mode: 'time-based'
@@ -17,6 +18,7 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('pinned').checked = prefs.pinned;
   document.getElementById('form').checked = prefs.form;
   document.getElementById('battery').checked = prefs.battery;
+  document.getElementById('notification.permission').checked = prefs['notification.permission'];
   document.getElementById('log').checked = prefs.log;
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById(prefs.mode).checked = true;
@@ -41,6 +43,7 @@ document.getElementById('save').addEventListener('click', () => {
     pinned: document.getElementById('pinned').checked,
     form: document.getElementById('form').checked,
     battery: document.getElementById('battery').checked,
+    'notification.permission': document.getElementById('notification.permission').checked,
     log: document.getElementById('log').checked,
     whitelist: document.getElementById('whitelist').value
       .split(',')

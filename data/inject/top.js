@@ -8,6 +8,7 @@ var prefs = {
   pinned: false, // pinned = true => do not suspend if tab is pinned
   form: true, // form = true => do not suspend if form data is changed
   battery: false, // battery = true => only suspend if power is disconnected,
+  'notification.permission': true,
   log: false,
   mode: 'time-based',
   whitelist: []
@@ -66,14 +67,21 @@ tools.whitelist = () => {
     }
   }));
 };
+tools.permission = () => {
+  if (prefs['notification.permission'] === false) {
+    return Promise.resolve(false);
+  }
+  return new Promise(resolve => resolve(Notification.permission === 'granted'));
+}
 
 tools.all = () => Promise.all([
   tools.audio(),
   tools.pinned(),
   tools.battery(),
   tools.form(),
-  tools.whitelist()
-]).then(([audio, pinned, battery, form, whitelist]) => {
+  tools.whitelist(),
+  tools.permission()
+]).then(([audio, pinned, battery, form, whitelist, permission]) => {
   if (audio) {
     log('Tab discard is skipped', 'Audio is playing');
   }
@@ -89,7 +97,10 @@ tools.all = () => Promise.all([
   if (whitelist) {
     log('Tab discard is skipped', 'Hostname is in the list');
   }
-  if (audio || pinned || battery || form || whitelist) {
+  if (permission) {
+    log('Tab discard is skipped', 'Tab has granted notification.permission');
+  }
+  if (audio || pinned || battery || form || whitelist || permission) {
     return true;
   }
 });
