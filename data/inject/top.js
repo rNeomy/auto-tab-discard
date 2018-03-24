@@ -11,7 +11,8 @@ var prefs = {
   'notification.permission': true,
   log: false,
   mode: 'time-based',
-  whitelist: []
+  whitelist: [],
+  'whitelist-url': []
 };
 
 var log = (...args) => prefs.log && console.log(...args);
@@ -50,10 +51,10 @@ tools.form = () => {
   }
   return Promise.resolve(form);
 };
-tools.whitelist = () => {
+tools.whitelist = (list = prefs.whitelist) => {
   const {hostname, href} = document.location;
-  const hl = prefs.whitelist.filter(s => s.startsWith('re:') === false);
-  const rl = prefs.whitelist.filter(s => s.startsWith('re:') === true).map(s => s.substr(3));
+  const hl = list.filter(s => s.startsWith('re:') === false);
+  const rl = list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3));
 
   if (hl.indexOf(hostname) !== -1) {
     return Promise.resolve(true);
@@ -135,9 +136,15 @@ timer.discard = (bypass = false) => tools.all().then(r => {
   });
 });
 
-var check = (period, manual = false, bypass = false) => {
+var check = async(period, manual = false, bypass = false) => {
   if (prefs.mode === 'number-based' && bypass === false) {
     return log('skipped', 'number-based discarding');
+  }
+  if (prefs.mode === 'url-based' && bypass === false) {
+    const bol = await tools.whitelist(prefs['whitelist-url']);
+    if (bol === false) {
+      return log('skipped', 'url is not in the list');
+    }
   }
   if (document.hidden && (prefs.period || manual)) {
     tools.all().then(r => {

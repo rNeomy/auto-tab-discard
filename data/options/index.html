@@ -46,6 +46,14 @@
           <td><label for="number-based">Discard an inactive tab when number of tabs exceeds</label></td>
           <td><input type="number" id="number" min="0"></td>
         </tr>
+        <tr>
+          <td><input type="radio" name="mode" id="url-based"></td>
+          <td><label for="url-based">Only discard the following inactive hostnames<sup>1</sup> after (in seconds)</label></td>
+          <td><input type="number" id="period-url" min="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><textarea rows="3" id="whitelist-url" placeholder="comma separated list of hostnames"></textarea></td>
+        </tr>
       </tbody>
       <thead>
         <tr>
@@ -82,7 +90,7 @@
         </tr>
         <tr>
           <td><input type="checkbox" id="notification.permission"></td>
-          <td colspan="2"><label for="form">Do not discard a tab if it can display desktop notifications</label></td>
+          <td colspan="2"><label for="notification.permission">Do not discard a tab if it can display desktop notifications</label></td>
         </tr>
       </tbody>
       <thead>
@@ -94,8 +102,8 @@
         <tr>
           <td></td>
           <td colspan="2">
-            <span style="display: block; padding-bottom: 10px;">Tabs with the following hostnames are not being discarded (comma separated list of hostnames)<sup>1</sup>:</span>
-            <textarea rows="3" id="whitelist"></textarea>
+            <span style="display: block; padding-bottom: 10px;">Tabs with the following hostnames<sup>1</sup> are not being discarded:</span>
+            <textarea rows="3" id="whitelist" placeholder="comma separated list of hostnames"></textarea>
           </td>
         </tr>
       </tbody>
