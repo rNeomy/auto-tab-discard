@@ -9,6 +9,8 @@ const restore = () => chrome.storage.local.get({
   form: true, // form = true => do not suspend if form data is changed
   battery: false, // battery = true => only suspend if power is disconnected,
   'notification.permission': true, // true => do not discard
+  'page.context': false,
+  'tab.context': true,
   log: false,
   whitelist: [],
   'whitelist-url': [],
@@ -22,6 +24,8 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('form').checked = prefs.form;
   document.getElementById('battery').checked = prefs.battery;
   document.getElementById('notification.permission').checked = prefs['notification.permission'];
+  document.getElementById('page.context').checked = prefs['page.context'];
+  document.getElementById('tab.context').checked = prefs['tab.context'];
   document.getElementById('log').checked = prefs.log;
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
@@ -49,6 +53,8 @@ document.getElementById('save').addEventListener('click', () => {
     form: document.getElementById('form').checked,
     battery: document.getElementById('battery').checked,
     'notification.permission': document.getElementById('notification.permission').checked,
+    'page.context': document.getElementById('page.context').checked,
+    'tab.context': document.getElementById('tab.context').checked,
     log: document.getElementById('log').checked,
     whitelist: document.getElementById('whitelist').value
       .split(',')
@@ -73,3 +79,11 @@ document.getElementById('support').addEventListener('click', () => chrome.tabs.c
 }));
 
 document.addEventListener('DOMContentLoaded', restore);
+
+// restart if needed
+chrome.storage.onChanged.addListener(prefs => {
+  if (prefs['page.context'] || prefs['tab.context']) {
+    chrome.runtime.reload();
+    window.close();
+  }
+});

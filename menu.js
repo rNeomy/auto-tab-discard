@@ -4,10 +4,20 @@
 // Context Menu
 {
   const TST = 'treestyletab@piro.sakura.ne.jp';
-  const onStartup = () => {
+
+  const storage = prefs => new Promise(resolve => chrome.storage.local.get(prefs, resolve));
+
+  const onStartup = async() => {
     const contexts = ['browser_action'];
-    if (chrome.contextMenus.ContextType.TAB) {
+    const prefs = await storage({
+      'page.context': false,
+      'tab.context': true
+    });
+    if (chrome.contextMenus.ContextType.TAB && prefs['tab.context']) {
       contexts.push('tab');
+    }
+    if (prefs['page.context']) {
+      contexts.push('page');
     }
     const create = arr => {
       arr.forEach(o => chrome.contextMenus.create(o));
@@ -90,23 +100,22 @@
     chrome.runtime.onStartup.addListener(onStartup);
   }
 
-  const onClicked = ({menuItemId}, tab) => {
+  const onClicked = async({menuItemId}, tab) => {
     if (menuItemId === 'whitelist-domain') {
-      chrome.storage.local.get({
-        whitelist: []
-      }, prefs => {
-        console.log(tab.url);
-        const {hostname, protocol = ''} = new URL(tab.url);
-        if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-          prefs.whitelist.push(hostname);
-          prefs.whitelist = prefs.whitelist.filter((h, i, l) => l.indexOf(h) === i);
-          chrome.storage.local.set(prefs);
-          notify(`"${hostname}" is added to the whitelist`);
-        }
-        else {
-          notify(`"${protocol}" protocol is not supported`);
-        }
-      });
+      const {hostname, protocol = ''} = new URL(tab.url);
+      if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
+        let {whitelist} = await storage({
+          whitelist: []
+        });
+
+        whitelist.push(hostname);
+        whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
+        chrome.storage.local.set(prefs);
+        notify(`"${hostname}" is added to the whitelist`);
+      }
+      else {
+        notify(`"${protocol}" protocol is not supported`);
+      }
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
       if (tab.active) {
