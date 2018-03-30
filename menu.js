@@ -110,7 +110,9 @@
 
         whitelist.push(hostname);
         whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
-        chrome.storage.local.set(prefs);
+        chrome.storage.local.set({
+          whitelist
+        });
         notify(`"${hostname}" is added to the whitelist`);
       }
       else {
@@ -173,6 +175,20 @@
       }, tabs[0]);
     }
   }));
+  chrome.runtime.onMessage.addListener(request => {
+    if (request.method === 'popup') {
+      chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      }, tabs => {
+        if (tabs.length) {
+          onClicked({
+            menuItemId: request.cmd
+          }, tabs[0]);
+        }
+      });
+    }
+  });
 
   chrome.runtime.onMessageExternal.addListener((request, sender) => {
     if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tree') {

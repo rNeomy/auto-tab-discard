@@ -29,6 +29,7 @@
   },
   "browser_action": {
     "browser_style": true,
+    "default_popup": "data/popup/index.html",
     "theme_icons": [{
       "light": "data/icons/light/16.png",
       "dark": "data/icons/dark/16.png",

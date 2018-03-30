@@ -163,8 +163,6 @@ chrome.idle.onStateChanged.addListener(state => {
   chrome.runtime.onInstalled.addListener(callback);
   chrome.runtime.onStartup.addListener(callback);
 }
-// browser action
-chrome.browserAction.onClicked.addListener(() => chrome.runtime.openOptionsPage());
 
 // FAQs & Feedback
 chrome.storage.local.get({
