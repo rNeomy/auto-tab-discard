@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.1.9",
+  "version": "0.2.0",
   "name": "Auto Tab Discard",
   "description": "Use native tab discard method to automatically reduce memory usage of inactive tabs",
 
@@ -78,12 +78,6 @@
     },
     "discard-other-windows": {
       "description": "Discard inactive tabs in other windows"
-    }
-  },
-  "applications": {
-    "gecko": {
-      "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
-      "strict_min_version": "59.0"
     }
   }
 }

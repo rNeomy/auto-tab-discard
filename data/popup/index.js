@@ -37,7 +37,6 @@ chrome.tabs.query({
 });
 
 chrome.runtime.onMessage.addListener(request => {
-  console.log(request);
   if (request.method === 'disable-whitelist-domain') {
     const e = document.querySelector('[data-cmd="whitelist-domain"]');
     e.dataset.disabled = true;

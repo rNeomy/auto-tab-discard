@@ -83,7 +83,9 @@ document.addEventListener('DOMContentLoaded', restore);
 // restart if needed
 chrome.storage.onChanged.addListener(prefs => {
   if (prefs['page.context'] || prefs['tab.context']) {
-    chrome.runtime.reload();
-    window.close();
+    window.setTimeout(() => {
+      chrome.runtime.reload();
+      window.close();
+    }, 5000);
   }
 });
