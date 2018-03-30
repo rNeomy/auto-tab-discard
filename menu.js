@@ -164,6 +164,9 @@
     }
   };
   chrome.contextMenus.onClicked.addListener(onClicked);
+  chrome.browserAction.onClicked.addListener(tab => onClicked({
+    menuItemId: localStorage.getItem('click')
+  }, tab));
   // commands
   chrome.commands.onCommand.addListener(command => chrome.tabs.query({
     active: true,

@@ -114,8 +114,36 @@
           </td>
         </tr>
       </tbody>
+      <thead>
+        <tr>
+          <th colspan="3">Left-click action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="radio" name="left-click" id="click.popup"></td>
+          <td colspan="2"><label for="click.popup">Open popup</label></td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="left-click" id="click.discard-tab"></td>
+          <td colspan="2"><label for="click.discard-tab">Discard this tab (forced)</label></td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="left-click" id="click.discard-tabs"></td>
+          <td colspan="2"><label for="click.discard-tabs">Discard all inactive tabs</label></td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="left-click" id="click.discard-window"></td>
+          <td colspan="2"><label for="click.discard-window">Discard inactive tabs in current window</label></td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="left-click" id="click.discard-other-windows"></td>
+          <td colspan="2"><label for="click.discard-other-windows">Discard inactive tabs in other windows</label></td>
+        </tr>
+      </tbody>
     </table>
     <p>
+      <input type="button" id="reset" value="Factory Reset">
       <input type="button" id="support" value="Support Development">
       <input type="button" id="save" value="Save">
       <span id="info"></span>

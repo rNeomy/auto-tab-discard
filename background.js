@@ -160,6 +160,60 @@ chrome.idle.onStateChanged.addListener(state => {
       }
     }
   });
+  // Firefox does not call "onStartup" after enabling the extension
+  if (/Firefox/.test(navigator.userAgent)) {
+    callback();
+  }
+  else {
+    chrome.runtime.onInstalled.addListener(callback);
+    chrome.runtime.onStartup.addListener(callback);
+  }
+}
+
+// left-click action
+{
+  const callback = () => chrome.storage.local.get({
+    click: 'click.popup'
+  }, ({click}) => {
+    if (click === 'click.popup') {
+      chrome.browserAction.setPopup({
+        popup: 'data/popup/index.html'
+      });
+    }
+    else {
+      chrome.browserAction.setPopup({
+        popup: ''
+      });
+    }
+  });
+  // Firefox does not call "onStartup" after enabling the extension
+  if (/Firefox/.test(navigator.userAgent)) {
+    callback();
+  }
+  else {
+    chrome.runtime.onInstalled.addListener(callback);
+    chrome.runtime.onStartup.addListener(callback);
+  }
+  chrome.storage.onChanged.addListener(prefs => prefs.click && callback());
+}
+
+// initial inject
+{
+  const callback = () => chrome.app && chrome.tabs.query({
+    url: '*://*/*',
+    discarded: false
+  }, tabs => {
+    const contentScripts = chrome.app.getDetails().content_scripts;
+    for (const tab of tabs) {
+      for (const cs of contentScripts) {
+        chrome.tabs.executeScript(tab.id, {
+          file: cs.js[0],
+          runAt: cs.run_at,
+          allFrames: cs.all_frames,
+        });
+      }
+    }
+  });
   chrome.runtime.onInstalled.addListener(callback);
   chrome.runtime.onStartup.addListener(callback);
 }

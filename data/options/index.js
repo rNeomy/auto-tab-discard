@@ -1,5 +1,7 @@
 'use strict';
 
+const info = document.getElementById('info');
+
 const restore = () => chrome.storage.local.get({
   period: 10 * 60, // in seconds
   'period-url': 10 * 60, // in seconds
@@ -14,7 +16,8 @@ const restore = () => chrome.storage.local.get({
   log: false,
   whitelist: [],
   'whitelist-url': [],
-  mode: 'time-based'
+  mode: 'time-based',
+  click: 'click.popup'
 }, prefs => {
   document.getElementById('period').value = prefs.period;
   document.getElementById('period-url').value = prefs['period-url'];
@@ -30,6 +33,7 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
   document.getElementById(prefs.mode).checked = true;
+  document.getElementById(prefs.click).checked = true;
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -43,11 +47,14 @@ document.getElementById('save').addEventListener('click', () => {
   if (period !== 0) {
     period = Math.max(period, 10);
   }
+  const click = document.querySelector('[name=left-click]:checked').id;
+  localStorage.setItem('click', click.replace('click.', ''));
   chrome.storage.local.set({
     period,
     'period-url': Math.max(10, Number(document.getElementById('period-url').value)),
     number,
     mode: document.querySelector('[name=mode]:checked').id,
+    click,
     audio: document.getElementById('audio').checked,
     pinned: document.getElementById('pinned').checked,
     form: document.getElementById('form').checked,
@@ -67,7 +74,6 @@ document.getElementById('save').addEventListener('click', () => {
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
       .filter((h, i, l) => h && l.indexOf(h) === i)
   }, () => {
-    const info = document.getElementById('info');
     info.textContent = 'Options saved';
     restore();
     window.setTimeout(() => info.textContent = '', 750);
@@ -86,6 +92,20 @@ chrome.storage.onChanged.addListener(prefs => {
     window.setTimeout(() => {
       chrome.runtime.reload();
       window.close();
-    }, 5000);
+    }, 2000);
+  }
+});
+// reset
+document.getElementById('reset').addEventListener('click', e => {
+  if (e.detail === 1) {
+    info.textContent = 'Double-click to reset!';
+    window.setTimeout(() => info.textContent = '', 750);
+  }
+  else {
+    localStorage.clear();
+    chrome.storage.local.clear(() => {
+      chrome.runtime.reload();
+      window.close();
+    });
   }
 });
