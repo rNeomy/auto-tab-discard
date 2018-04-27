@@ -44,10 +44,45 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
     if (tab.active) {
       return;
     }
-    chrome.tabs.discard(tab.id);
-    if (isFirefox) {
-      restore.cache[tab.id] = tab;
-    }
+    const next = () => {
+      chrome.tabs.discard(tab.id);
+      if (isFirefox) {
+        restore.cache[tab.id] = tab;
+      }
+    };
+    // favicon
+    Object.assign(new Image(), {
+      crossOrigin: 'anonymous',
+      src: tab.favIconUrl,
+      onerror: next,
+      onload: function() {
+        const img = this;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        ctx.globalAlpha = 0.4;
+        ctx.drawImage(img, 0, 0);
+
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.fillStyle = '#a1a0a1';
+        ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
+        ctx.fill();
+        const src = canvas.toDataURL('image/ico');
+        chrome.tabs.executeScript(tab.id, {
+          runAt: 'document_start',
+          code: `
+            window.stop();
+            [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => {
+              link.dataset.href = link.href;
+              link.href = '${src}';
+            });
+          `,
+        }, () => window.setTimeout(next, 500));
+      }
+    });
   }
 });
 

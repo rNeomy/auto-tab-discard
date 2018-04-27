@@ -10,7 +10,7 @@ const restore = () => chrome.storage.local.get({
   pinned: false, // pinned = true => do not suspend if tab is pinned
   form: true, // form = true => do not suspend if form data is changed
   battery: false, // battery = true => only suspend if power is disconnected,
-  'notification.permission': true, // true => do not discard
+  'notification.permission': false, // true => do not discard
   'page.context': false,
   'tab.context': true,
   log: false,
