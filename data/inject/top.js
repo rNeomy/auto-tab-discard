@@ -15,6 +15,8 @@ var prefs = {
   'whitelist-url': []
 };
 
+var allowed = true; // if false, do not discard
+
 var log = (...args) => prefs.log && console.log(...args);
 var form = false;
 
@@ -129,6 +131,11 @@ var timer = {
 timer.discard = (bypass = false) => tools.all().then(r => {
   if (r && bypass === false) {
     log('skipped', 'double-check before discarding');
+    return;
+  }
+  if (allowed === false) {
+    log('skipped', 'not allowed in this session');
+    return;
   }
   log('discarding');
   chrome.runtime.sendMessage({

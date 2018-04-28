@@ -14,32 +14,43 @@ document.addEventListener('click', ({target}) => {
   }
 });
 
+var allowed = document.getElementById('allowed');
+allowed.addEventListener('change', () =>       chrome.tabs.executeScript({
+  code: `allowed = ${allowed.checked === false}`
+}))
+
+var whitelist = document.querySelector('[data-cmd=whitelist-domain]');
+
 chrome.tabs.query({
   active: true,
   currentWindow: true
 }, tabs => {
   if (tabs.length) {
     const {protocol = ''} = new URL(tabs[0].url);
-    const e = document.querySelector('[data-cmd="whitelist-domain"]');
-    if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-      e.dataset.disabled = false;
 
+    if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
+      whitelist.dataset.disabled = false;
       chrome.tabs.executeScript({
         code: `tools.whitelist().then(bol => bol && chrome.runtime.sendMessage({
           method: 'disable-whitelist-domain'
         }));`
-      }, arr => console.log(arr));
-    }
-    else {
-      e.textContent += ' (not supported)';
+      });
+
+      chrome.tabs.executeScript({
+        code: 'allowed'
+      }, ([a]) => {
+        if (a === false || a === true) {
+          allowed.parentNode.dataset.disabled = false;
+        }
+        allowed.checked = !a
+      });
     }
   }
 });
 
 chrome.runtime.onMessage.addListener(request => {
   if (request.method === 'disable-whitelist-domain') {
-    const e = document.querySelector('[data-cmd="whitelist-domain"]');
-    e.dataset.disabled = true;
-    e.textContent += ' (already listed)';
+    whitelist.dataset.disabled = true;
+    whitelist.textContent += ' (already listed)';
   }
 });

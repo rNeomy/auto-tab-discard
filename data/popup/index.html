@@ -38,7 +38,7 @@
     [data-cmd] {
       cursor: pointer;
     }
-    li:hover {
+    [data-cmd]:hover {
       background-color: #f0f0f0;
     }
     .separator {
@@ -52,13 +52,20 @@
       line-height: 42px;
       text-align: center;
     }
-    li:active,
+    [data-cmd]:active,
     .button:active {
       opacity: 0.5;
     }
     [data-disabled=true] {
       opacity: 0.3;
       pointer-events: none;
+    }
+    .hbox {
+      display: flex;
+      align-items: center;
+    }
+    .flex {
+      flex: 1;
     }
   </style>
   <body>
@@ -69,7 +76,11 @@
       <li data-cmd="discard-window">Discard inactive tabs in current window</li>
       <li data-cmd="discard-other-windows">Discard inactive tabs in other windows</li>
       <li class="separator"></li>
-      <li data-cmd="whitelist-domain" data-disabled=true>Do not discard this domain</li>
+      <li data-disabled=true class=hbox data-cmd="whitelist-domain">Do not discard this domain</li>
+      <li data-disabled=true class="hbox">
+        <label for="allowed" class="flex">Do not discard for now (session only)</label>
+        <input type="checkbox" id="allowed">
+      </li>
     </ul>
     <div class="button" data-cmd="open-options">Options</div>
 
