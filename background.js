@@ -25,7 +25,7 @@ if (isFirefox) {
           chrome.tabs.update(tabId, {
             url: tab.url
           });
-          console.log('reloading');
+          // console.log('reloading');
         }
       });
     }
@@ -71,12 +71,13 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
         ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
         ctx.fill();
         const src = canvas.toDataURL('image/ico');
+
         chrome.tabs.executeScript(tab.id, {
           runAt: 'document_start',
           code: `
             window.stop();
             [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => {
-              link.dataset.href = link.href;
+              link.rel = 'icon';
               link.href = '${src}';
             });
           `,

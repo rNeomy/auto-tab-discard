@@ -64,12 +64,12 @@ document.getElementById('save').addEventListener('click', () => {
     'tab.context': document.getElementById('tab.context').checked,
     log: document.getElementById('log').checked,
     whitelist: document.getElementById('whitelist').value
-      .split(',')
+      .split(/[,\n]/)
       .map(s => s.trim())
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
       .filter((h, i, l) => h && l.indexOf(h) === i),
     'whitelist-url': document.getElementById('whitelist-url').value
-      .split(',')
+      .split(/[,\n]/)
       .map(s => s.trim())
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
       .filter((h, i, l) => h && l.indexOf(h) === i)
