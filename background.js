@@ -10,6 +10,8 @@ const notify = e => chrome.notifications.create({
 // https://github.com/rNeomy/auto-tab-discard/issues/24
 const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
+const DELAY = isFirefox ? 500 : 0;
+
 var restore = {
   cache: {}
 };
@@ -53,7 +55,7 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
     // favicon
     Object.assign(new Image(), {
       crossOrigin: 'anonymous',
-      src: tab.favIconUrl,
+      src: tab.favIconUrl || '/data/page.png',
       onerror: next,
       onload: function() {
         const img = this;
@@ -70,18 +72,23 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
         ctx.fillStyle = '#a1a0a1';
         ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
         ctx.fill();
-        const src = canvas.toDataURL('image/ico');
+        const href = canvas.toDataURL('image/png');
 
         chrome.tabs.executeScript(tab.id, {
           runAt: 'document_start',
           code: `
             window.stop();
-            [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => {
-              link.rel = 'icon';
-              link.href = '${src}';
-            });
+            [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+
+            document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+              rel: 'icon',
+              type: 'image/png',
+              href: '${href}'
+            }));
           `,
-        }, () => window.setTimeout(next, 500));
+        }, () => {
+          window.setTimeout(next, DELAY);
+        });
       }
     });
   }
@@ -105,7 +112,7 @@ chrome.idle.onStateChanged.addListener(state => {
   };
   tabs.check = () => {
     window.clearTimeout(tabs.id);
-    tabs.id = window.setTimeout(tabs._check, 500);
+    tabs.id = window.setTimeout(tabs._check, DELAY);
   };
   // https://github.com/rNeomy/auto-tab-discard/issues/21
   tabs.update = (id, info) => {
