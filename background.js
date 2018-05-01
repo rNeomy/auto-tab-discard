@@ -76,15 +76,20 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
 
         chrome.tabs.executeScript(tab.id, {
           runAt: 'document_start',
+          allFrames: true,
+          matchAboutBlank: true,
           code: `
-            window.stop();
-            [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
 
-            document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-              rel: 'icon',
-              type: 'image/png',
-              href: '${href}'
-            }));
+            if (window === window.top) {
+              [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+
+              document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                rel: 'icon',
+                type: 'image/png',
+                href: '${href}'
+              }));
+            }
+            window.stop();
           `,
         }, () => {
           window.setTimeout(next, DELAY);
