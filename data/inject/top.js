@@ -75,7 +75,7 @@ tools.permission = () => {
     return Promise.resolve(false);
   }
   return new Promise(resolve => resolve(Notification.permission === 'granted'));
-}
+};
 
 tools.all = () => Promise.all([
   tools.audio(),
@@ -111,10 +111,11 @@ tools.all = () => Promise.all([
 var timer = {
   id: null,
   time: Infinity,
-  set: (period, bypass = false) => {
+  set: period => {
+    log('set a new timer');
     window.clearTimeout(timer.id);
     timer.time = Date.now() + (period || prefs.period * 1000);
-    timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000, bypass);
+    timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000);
   },
   clear: () => {
     window.clearTimeout(timer.id);
@@ -128,62 +129,48 @@ var timer = {
   }
 };
 
-timer.discard = (bypass = false) => tools.all().then(r => {
-  if (r && bypass === false) {
-    log('skipped', 'double-check before discarding');
-    return;
-  }
+timer.discard = async() => {
   if (allowed === false) {
-    log('skipped', 'not allowed in this session');
-    return;
+    return log('skipped', 'not allowed in this session');
   }
-  log('discarding');
+  const r = await tools.all();
+  if (r) {
+    return log('skipped', 'double-check before discarding');
+  }
+  log('request tabs.check');
+  console.log(new Error().stack);
   chrome.runtime.sendMessage({
-    method: 'discard'
+    method: 'tabs.check'
   });
-});
+};
 
-var check = async(period, manual = false, bypass = false) => {
-  if (prefs.mode === 'number-based' && bypass === false) {
-    return log('skipped', 'number-based discarding');
-  }
-  if (prefs.mode === 'url-based' && bypass === false) {
+var check = async(period) => {
+  if (prefs.mode === 'url-based') {
     const bol = await tools.whitelist(prefs['whitelist-url']);
     if (bol === false) {
       return log('skipped', 'url is not in the list');
     }
   }
-  if (document.hidden && (prefs.period || manual)) {
-    tools.all().then(r => {
-      if (r) {
-        if (bypass === false) {
-          return timer.clear();
-        }
-      }
-      timer.set(period, bypass);
-    });
+  if (document.hidden && prefs.period) {
+    const r = await tools.all();
+    if (r) {
+      log('skipped', 'condition match');
+      return timer.clear();
+    }
+    timer.set(period);
   }
 };
-
 document.addEventListener('visibilitychange', () => setTimeout(check, 0));
 // https://github.com/rNeomy/auto-tab-discard/issues/1
 document.addEventListener('DOMContentLoaded', () => check());
 
 chrome.runtime.onMessage.addListener(({method}, sender, response) => {
-  if (method === 'idle') {
-    timer.check();
-  }
-  else if (method === 'can-discard') {
-    check(1, true);
-  }
-  else if (method === 'bypass-discard') {
-    check(1, true, true);
-  }
-  else if (method === 'introduce') {
+  if (method === 'introduce') {
     tools.all().then(exception => response({
       exception,
       ready: document.readyState === 'complete' || document.readyState === 'loaded',
-      now
+      now,
+      allowed
     }));
     return true;
   }
@@ -207,6 +194,12 @@ window.addEventListener('message', e => {
 // prefs
 chrome.storage.local.get(prefs, ps => {
   Object.assign(prefs, ps);
+  // for already loaded tabs
+  if (document.readyState === 'complete' || document.readyState === 'loaded') {
+    if (document.hidden) {
+      check();
+    }
+  }
 });
 
 chrome.storage.onChanged.addListener(ps => {

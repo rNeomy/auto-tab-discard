@@ -4,7 +4,6 @@ const info = document.getElementById('info');
 
 const restore = () => chrome.storage.local.get({
   period: 10 * 60, // in seconds
-  'period-url': 10 * 60, // in seconds
   number: 6, // number of tabs before triggering discard
   audio: true, // audio = true => do not suspend if audio is playing
   pinned: false, // pinned = true => do not suspend if tab is pinned
@@ -20,7 +19,6 @@ const restore = () => chrome.storage.local.get({
   click: 'click.popup'
 }, prefs => {
   document.getElementById('period').value = prefs.period;
-  document.getElementById('period-url').value = prefs['period-url'];
   document.getElementById('number').value = prefs.number;
   document.getElementById('audio').checked = prefs.audio;
   document.getElementById('pinned').checked = prefs.pinned;
@@ -32,7 +30,9 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('log').checked = prefs.log;
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
-  document.getElementById(prefs.mode).checked = true;
+  if (prefs.mode === 'url-based') {
+    document.getElementById('url-based').checked = true;
+  }
   document.getElementById(prefs.click).checked = true;
 });
 
@@ -51,9 +51,8 @@ document.getElementById('save').addEventListener('click', () => {
   localStorage.setItem('click', click.replace('click.', ''));
   chrome.storage.local.set({
     period,
-    'period-url': Math.max(10, Number(document.getElementById('period-url').value)),
     number,
-    mode: document.querySelector('[name=mode]:checked').id,
+    mode: document.getElementById('url-based').checked ? 'url-based' : 'time-based',
     click,
     audio: document.getElementById('audio').checked,
     pinned: document.getElementById('pinned').checked,

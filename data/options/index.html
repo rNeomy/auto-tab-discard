@@ -12,6 +12,13 @@
     }
     input[type=number] {
       width: 60px;
+      height: 22px;
+      box-sizing: border-box;
+    }
+    th {
+      height: 32px;
+      background-color: rgba(0, 0, 0, 0.05);
+      text-indent: 10px;
     }
     td:nth-child(3) {
       text-align: right;
@@ -36,30 +43,22 @@
       </thead>
       <tbody>
         <tr>
-          <td><input type="radio" name="mode" id="time-based"></td>
-          <td><label for="time-based">Discard an inactive tabs after (in seconds)</label></td>
-          <td><input type="number" id="period" min="0"></td>
+          <td colspan="3">Discard inactive tabs after <input type="number" id="period" min="0"> seconds when the number of inactive tabs exceeds <input type="number" id="number" min="3"></td>
         </tr>
         <tr>
-          <td><input type="radio" name="mode" id="number-based"></td>
-          <td><label for="number-based">Discard an inactive tab when number of tabs exceeds</label></td>
-          <td><input type="number" id="number" min="0"></td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="mode" id="url-based"></td>
-          <td><label for="url-based">Only discard the following inactive hostnames<sup>1</sup> after (in seconds)</label></td>
-          <td><input type="number" id="period-url" min="0"></td>
+          <td><input type="checkbox" id="url-based"></td>
+          <td colspan="2"><label for="url-based">Only discard the following inactive hostnames<sup>1</sup></label></td>
         </tr>
         <tr>
           <td colspan="3"><textarea rows="3" id="whitelist-url" placeholder="comma separated list of hostnames"></textarea></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="tab.context"></td>
-          <td colspan="2"><label for="tab.context">Display discarding options in the "tab" context menu (if supported)</label></td>
+          <td colspan="2"><label for="tab.context">Display discarding items in the "tab" context menu (if supported)</label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="page.context"></td>
-          <td colspan="2"><label for="page.context">Display discarding options in the "page" context menu</label></td>
+          <td colspan="2"><label for="page.context">Display discarding items in the "page" context menu</label></td>
         </tr>
       </tbody>
       <thead>
@@ -144,8 +143,7 @@
     </table>
     <p>
       <input type="button" id="reset" value="Factory Reset">
-      <input type="button" id="support" value="Support Development">
-      <input type="button" id="save" value="Save">
+      <input type="button" id="support" value="Support Development"> - <input type="button" id="save" value="Save">
       <span id="info"></span>
     </p>
     1: It is possible to use regular expression matching with "re:" keyword. For instance to whitelist all URLs with "google" keyword in them use "re:google".

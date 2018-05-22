@@ -1,5 +1,12 @@
-/* globals notify */
+/* globals discard, query, isFirefox */
 'use strict';
+
+const notify = e => chrome.notifications.create({
+  title: chrome.runtime.getManifest().name,
+  type: 'basic',
+  iconUrl: 'data/icons/128.png',
+  message: e.message || e
+});
 
 // Context Menu
 {
@@ -93,7 +100,7 @@
     }].filter(o => o));
   };
   // Firefox does not call "onStartup" after enabling the extension
-  if (/Firefox/.test(navigator.userAgent)) {
+  if (isFirefox) {
     onStartup();
   }
   else {
@@ -122,33 +129,31 @@
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
       if (tab.active) {
-        chrome.tabs.query({
+        const tabs = await query({
           windowId: tab.windowId
-        }, tabs => {
-          const otab = tabs.filter(t => t.discarded === false && t.id !== tab.id).sort((a, b) => {
-            const lb = Math.abs(b.index - tab.index);
-            const la = Math.abs(a.index - tab.index);
-            return la - lb;
-          }).shift();
-          if (otab) {
-            chrome.tabs.update(otab.id, {
-              active: true
-            }, () => window.setTimeout(() => chrome.tabs.sendMessage(tab.id, {
-              method: 'bypass-discard'
-            }), 500)); // in Firefox it takes sometime for document.hidden becomes true!
-          }
-          else {
-            notify('Cannot discard a tab when it is active');
-          }
         });
+        const otab = tabs.filter(t => t.discarded === false && t.id !== tab.id).sort((a, b) => {
+          const lb = Math.abs(b.index - tab.index);
+          const la = Math.abs(a.index - tab.index);
+          return la - lb;
+        }).shift();
+        if (otab) {
+          chrome.tabs.update(otab.id, {
+            active: true
+          }, () => {
+            tab.active = false;
+            discard(tab);
+          });
+        }
+        else {
+          notify('Cannot discard a tab when it is active');
+        }
       }
       else {
-        chrome.tabs.sendMessage(tab.id, {
-          method: 'bypass-discard'
-        });
+        discard(tab);
       }
     }
-    else {
+    else { // discard-tabs, discard-window, discard-other-windows
       const info = {
         url: '*://*/*',
         discarded: false
@@ -159,9 +164,14 @@
       else if (menuItemId === 'discard-other-windows') {
         info.currentWindow = false;
       }
-      chrome.tabs.query(info, tabs => tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {
-        method: 'can-discard'
-      })));
+      const tabs = await query(info);
+      tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {
+        method: 'introduce'
+      }, a => {
+        if (a && a.exception !== true && a.allowed && a.ready === true && tab.active === false) {
+          discard(tab);
+        }
+      }));
     }
   };
   chrome.contextMenus.onClicked.addListener(onClicked);
@@ -169,28 +179,28 @@
     menuItemId: localStorage.getItem('click')
   }, tab));
   // commands
-  chrome.commands.onCommand.addListener(command => chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, tabs => {
+  chrome.commands.onCommand.addListener(async(command) => {
+    const tabs = await query({
+      active: true,
+      currentWindow: true
+    });
     if (tabs.length) {
       onClicked({
         menuItemId: command
       }, tabs[0]);
     }
-  }));
-  chrome.runtime.onMessage.addListener(request => {
+  });
+  chrome.runtime.onMessage.addListener(async(request) => {
     if (request.method === 'popup') {
-      chrome.tabs.query({
+      const tabs = await query({
         active: true,
         currentWindow: true
-      }, tabs => {
-        if (tabs.length) {
-          onClicked({
-            menuItemId: request.cmd
-          }, tabs[0]);
-        }
       });
+      if (tabs.length) {
+        onClicked({
+          menuItemId: request.cmd
+        }, tabs[0]);
+      }
     }
   });
 
