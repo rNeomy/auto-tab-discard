@@ -165,7 +165,7 @@ var check = async(period, manual = false, bypass = false) => {
   }
 };
 
-document.addEventListener('visibilitychange', () => check());
+document.addEventListener('visibilitychange', () => setTimeout(check, 0));
 // https://github.com/rNeomy/auto-tab-discard/issues/1
 document.addEventListener('DOMContentLoaded', () => check());
 
