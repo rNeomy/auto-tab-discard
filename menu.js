@@ -49,9 +49,10 @@
       });
       add();
 
-      chrome.runtime.onMessageExternal.addListener((request, sender) => {
+      chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
         if (sender.id === TST && request.type === 'ready') {
           add();
+          sendResponse(true);
         }
       });
     };
