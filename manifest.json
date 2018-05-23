@@ -78,6 +78,15 @@
     },
     "discard-other-windows": {
       "description": "Discard inactive tabs in other windows"
+    },
+    "move-next": {
+      "description": "Move to the next active tab"
+    },
+    "move-previous": {
+      "description": "Move to the previous active tab"
+    },
+    "close": {
+      "description": "Close this tab and move to the previous active tab"
     }
   },
   "applications": {

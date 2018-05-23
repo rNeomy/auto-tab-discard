@@ -10,6 +10,34 @@ const notify = e => chrome.notifications.create({
 var prefs = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
 var query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
+var navigate = method => chrome.tabs.query({
+  currentWindow: true,
+  discarded: false
+}, tbs => {
+  const active = tbs.filter(tbs => tbs.active).shift();
+  const next = tbs.filter(t => t.index > active.index);
+  const previous = tbs.filter(t => t.index < active.index);
+  let ntab;
+  if (method === 'move-next') {
+    ntab = next.length ? next.shift() : previous.shift();
+  }
+  else {
+    ntab = previous.length ? previous.pop() : next.pop();
+  }
+  if (ntab) {
+    chrome.tabs.update(ntab.id, {
+      active: true
+    }, () => {
+      if (method === 'close') {
+        chrome.tabs.remove(active.id);
+      }
+    });
+  }
+  else {
+    notify('No active tab is present');
+  }
+});
+
 // https://github.com/rNeomy/auto-tab-discard/issues/24
 const isFirefox = /Firefox/.test(navigator.userAgent);
 
@@ -107,13 +135,13 @@ const tabs = {
   id: null
 };
 tabs.check = (msg) => {
-  console.log(msg);
+  // console.log(msg);
   window.clearTimeout(tabs.id);
   tabs.id = window.setTimeout(tabs._check, DELAY);
 };
 
 tabs._check = async() => {
-  console.log('tabs._check');
+  // console.log('tabs._check');
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
   }, resolve));
@@ -140,16 +168,16 @@ tabs._check = async() => {
         .sort((a, b) => b.now - a.now).slice(number);
       //console.log(toBeDiscarded);
       toBeDiscarded.map(a => a.tab).forEach(discard);
-      console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
+      // console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
     }
     else {
-      console.log(arr);
-      console.log('skipped', `less than ${number} tabs/2`);
+      // console.log(arr);
+      // console.log('skipped', `less than ${number} tabs/2`);
     }
   }
-  else {
+/*  else {
     console.log('skipped', 'less than 3 tabs/1');
-  }
+  }*/
 };
 // top.js does not being called
 chrome.tabs.onCreated.addListener(() => tabs.check('chrome.tabs.onCreated'));
@@ -184,6 +212,10 @@ chrome.runtime.onMessage.addListener(({method, message}, {tab}, resposne) => {
   }
   else if (method === 'notify') {
     notify(message);
+  }
+  // navigation
+  else if (method.startsWith('move-') || method === 'close') {
+    navigate(method);
   }
 });
 // initial inject

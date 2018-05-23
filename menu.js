@@ -1,4 +1,4 @@
-/* globals discard, query, isFirefox, notify */
+/* globals discard, query, isFirefox, notify, navigate */
 'use strict';
 
 // Context Menu
@@ -173,14 +173,19 @@
   }, tab));
   // commands
   chrome.commands.onCommand.addListener(async(command) => {
-    const tabs = await query({
-      active: true,
-      currentWindow: true
-    });
-    if (tabs.length) {
-      onClicked({
-        menuItemId: command
-      }, tabs[0]);
+    if (command.startsWith('move-') || command === 'close') {
+      navigate(command);
+    }
+    else {
+      const tabs = await query({
+        active: true,
+        currentWindow: true
+      });
+      if (tabs.length) {
+        onClicked({
+          menuItemId: command
+        }, tabs[0]);
+      }
     }
   });
   chrome.runtime.onMessage.addListener(async(request) => {
