@@ -1,7 +1,6 @@
 'use strict';
 
 var tab;
-const isFirefox = /Firefox/.test(navigator.userAgent);
 
 document.addEventListener('click', ({target}) => {
   const cmd = target.dataset.cmd;
@@ -19,17 +18,16 @@ document.addEventListener('click', ({target}) => {
 
 var allowed = document.getElementById('allowed');
 allowed.addEventListener('change', () => {
-  if (isFirefox) { // Firefox does not support autoDiscardable for tab.update yet
-    chrome.tabs.executeScript(tab.id, {
-      code: `allowed = ${allowed.checked === false};`
-    });
-  }
-  else {
+  try {
     chrome.tabs.update(tab.id, {
       autoDiscardable: allowed.checked === false
     });
   }
-
+  catch (e) { // Firefox
+    chrome.tabs.executeScript(tab.id, {
+      code: `allowed = ${allowed.checked === false};`
+    });
+  }
 });
 
 var whitelist = document.querySelector('[data-cmd=whitelist-domain]');
@@ -53,10 +51,7 @@ chrome.tabs.query({
       chrome.tabs.executeScript(tab.id, {
         code: 'allowed'
       }, ([a]) => {
-        console.log(a);
-        if (a === false || a === true) {
-          allowed.parentNode.dataset.disabled = false;
-        }
+        allowed.parentNode.dataset.disabled = typeof a !== 'boolean';
         allowed.checked = !a;
       });
     }
