@@ -269,7 +269,7 @@ chrome.runtime.onMessage.addListener(({method, message}, {tab}, resposne) => {
 // FAQs & Feedback
 chrome.storage.local.get({
   'version': null,
-  'faqs': false,
+  'faqs': true,
   'last-update': 0,
 }, prefs => {
   const version = chrome.runtime.getManifest().version;

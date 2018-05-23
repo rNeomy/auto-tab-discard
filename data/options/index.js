@@ -16,8 +16,10 @@ const restore = () => chrome.storage.local.get({
   whitelist: [],
   'whitelist-url': [],
   mode: 'time-based',
-  click: 'click.popup'
+  click: 'click.popup',
+  faqs: true
 }, prefs => {
+  document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('period').value = prefs.period;
   document.getElementById('number').value = prefs.number;
   document.getElementById('audio').checked = prefs.audio;
@@ -62,6 +64,7 @@ document.getElementById('save').addEventListener('click', () => {
     'page.context': document.getElementById('page.context').checked,
     'tab.context': document.getElementById('tab.context').checked,
     log: document.getElementById('log').checked,
+    faqs: document.getElementById('faqs').checked,
     whitelist: document.getElementById('whitelist').value
       .split(/[,\n]/)
       .map(s => s.trim())
@@ -108,3 +111,7 @@ document.getElementById('reset').addEventListener('click', e => {
     });
   }
 });
+// rate
+if (/Firefox/.test(navigator.userAgent)) {
+  document.getElementById('rate').href = 'https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/reviews/';
+}
