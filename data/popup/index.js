@@ -1,5 +1,8 @@
 'use strict';
 
+var tab;
+const isFirefox = /Firefox/.test(navigator.userAgent);
+
 document.addEventListener('click', ({target}) => {
   const cmd = target.dataset.cmd;
 
@@ -15,9 +18,19 @@ document.addEventListener('click', ({target}) => {
 });
 
 var allowed = document.getElementById('allowed');
-allowed.addEventListener('change', () =>       chrome.tabs.executeScript({
-  code: `allowed = ${allowed.checked === false}`
-}))
+allowed.addEventListener('change', () => {
+  if (isFirefox) { // Firefox does not support autoDiscardable for tab.update yet
+    chrome.tabs.executeScript(tab.id, {
+      code: `allowed = ${allowed.checked === false};`
+    });
+  }
+  else {
+    chrome.tabs.update(tab.id, {
+      autoDiscardable: allowed.checked === false
+    });
+  }
+
+});
 
 var whitelist = document.querySelector('[data-cmd=whitelist-domain]');
 
@@ -26,23 +39,25 @@ chrome.tabs.query({
   currentWindow: true
 }, tabs => {
   if (tabs.length) {
-    const {protocol = ''} = new URL(tabs[0].url);
+    tab = tabs[0];
+    const {protocol = ''} = new URL(tab.url);
 
     if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
       whitelist.dataset.disabled = false;
-      chrome.tabs.executeScript({
+      chrome.tabs.executeScript(tab.id, {
         code: `tools.whitelist().then(bol => bol && chrome.runtime.sendMessage({
           method: 'disable-whitelist-domain'
         }));`
       });
 
-      chrome.tabs.executeScript({
+      chrome.tabs.executeScript(tab.id, {
         code: 'allowed'
       }, ([a]) => {
+        console.log(a);
         if (a === false || a === true) {
           allowed.parentNode.dataset.disabled = false;
         }
-        allowed.checked = !a
+        allowed.checked = !a;
       });
     }
   }

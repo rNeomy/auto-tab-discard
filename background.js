@@ -114,10 +114,12 @@ tabs._check = async() => {
         a.tabId = tbs[i].id;
         a.tab = tbs[i];
       }
-      return a && a.exception !== true && a.allowed && a.ready === true && a.tab.active === false && (now - a.now > period * 1000);
+      return a;
     });
     if (arr.length > number) {
-      const toBeDiscarded = arr.sort((a, b) => b.now - a.now).slice(number);
+      const toBeDiscarded = arr
+        .filter(a => a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000))
+        .sort((a, b) => b.now - a.now).slice(number);
       //console.log(toBeDiscarded);
       toBeDiscarded.map(a => a.tab).forEach(discard);
       console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
@@ -137,6 +139,12 @@ chrome.tabs.onUpdated.addListener((id, info, tab) => {
   if (info.status === 'complete' && tab.active === false) {
     tabs.check('chrome.tabs.onUpdated');
   }
+  // update autoDiscardable set by this extension or other extensions
+  if ('autoDiscardable' in info) {
+    chrome.tabs.executeScript(tab.id, {
+      code: `allowed = ${info.autoDiscardable}`
+    });
+  }
 });
 chrome.idle.onStateChanged.addListener(async(state) => {
   if (state === 'active') {
@@ -149,6 +157,9 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   }
   else if (method === 'is-playing') {
     resposne(tab.audible);
+  }
+  else if (method === 'is-autoDiscardable') {
+    resposne(tab.autoDiscardable);
   }
   else if (method === 'tabs.check') {
     tabs.check('tab.timeout');

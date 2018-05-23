@@ -1,6 +1,7 @@
 'use strict';
 
 var now = Date.now();
+const isFirefox = /Firefox/.test(navigator.userAgent);
 
 var prefs = {
   period: 10 * 60, // in seconds
@@ -16,6 +17,11 @@ var prefs = {
 };
 
 var allowed = true; // if false, do not discard
+if (isFirefox === false) {
+  chrome.runtime.sendMessage({
+    method: 'is-autoDiscardable'
+  }, b => allowed = b);
+}
 
 var log = (...args) => prefs.log && console.log(...args);
 var form = false;
