@@ -63,6 +63,10 @@ if (isFirefox) {
       });
     }
   });
+  // https://github.com/rNeomy/auto-tab-discard/issues/24#issuecomment-391316498
+  query({
+    discarded: true
+  }).then((tbs = []) => tbs.forEach(t => restore.cache[t.id] = t));
   chrome.tabs.onRemoved.addListener(tabId => delete restore.cache[tabId]);
 }
 
@@ -103,6 +107,7 @@ var discard = tab => {
         allFrames: true,
         matchAboutBlank: true,
         code: `
+          window.stop();
           if (window === window.top) {
             [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
 
@@ -111,8 +116,8 @@ var discard = tab => {
               type: 'image/png',
               href: '${href}'
             }));
+            console.log(document.readyState);
           }
-          window.stop();
         `,
       }, () => window.setTimeout(next, DELAY));
     }

@@ -24,7 +24,6 @@ var init = () => chrome.tabs.query({
 }, tabs => {
   if (tabs.length) {
     tab = tabs[0];
-    console.log(tab);
     const {protocol = ''} = new URL(tab.url);
 
     if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
