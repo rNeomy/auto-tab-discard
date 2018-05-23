@@ -154,35 +154,26 @@ tabs._check = async() => {
   const tbs = await query({
     url: '*://*/*'
   });
-  if (tbs.length > 3) { // only trigger when there are more than 3 inactive tabs
-    const {number, period} = await prefs({
-      number: 6,
-      period: 10 * 60, // in seconds
-    });
-    const now = Date.now();
-    const arr = (await Promise.all(tbs.map(echo))).filter((a, i) => {
-      if (a) {
-        a.tabId = tbs[i].id;
-        a.tab = tbs[i];
-      }
-      return a;
-    });
-    if (arr.length > number) {
-      const toBeDiscarded = arr
-        .filter(a => a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000))
-        .sort((a, b) => b.now - a.now).slice(number);
-      //console.log(toBeDiscarded);
-      toBeDiscarded.map(a => a.tab).forEach(discard);
-      // console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
+  const {number, period} = await prefs({
+    number: 6,
+    period: 10 * 60, // in seconds
+  });
+  const now = Date.now();
+  const arr = (await Promise.all(tbs.map(echo))).filter((a, i) => {
+    if (a) {
+      a.tabId = tbs[i].id;
+      a.tab = tbs[i];
     }
-    else {
-      // console.log(arr);
-      // console.log('skipped', `less than ${number} tabs/2`);
-    }
+    return a;
+  });
+  if (arr.length > number) {
+    const toBeDiscarded = arr
+      .filter(a => a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000))
+      .sort((a, b) => b.now - a.now).slice(number);
+    //console.log(toBeDiscarded);
+    toBeDiscarded.map(a => a.tab).forEach(discard);
+    // console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
   }
-/*  else {
-    console.log('skipped', 'less than 3 tabs/1');
-  }*/
 };
 // top.js does not being called
 chrome.tabs.onCreated.addListener(() => tabs.check('chrome.tabs.onCreated'));

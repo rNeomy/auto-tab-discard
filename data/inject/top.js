@@ -84,6 +84,14 @@ tools.permission = () => {
   }
   return new Promise(resolve => resolve(Notification.permission === 'granted'));
 };
+tools.urlBased = () => {
+  if (prefs.mode === 'url-based') {
+    return tools.whitelist(prefs['whitelist-url']).then(a => !a);
+  }
+  else {
+    return Promise.resolve(false);
+  }
+};
 
 tools.all = () => Promise.all([
   tools.audio(),
@@ -91,8 +99,9 @@ tools.all = () => Promise.all([
   tools.battery(),
   tools.form(),
   tools.whitelist(),
-  tools.permission()
-]).then(([audio, pinned, battery, form, whitelist, permission]) => {
+  tools.permission(),
+  tools.urlBased()
+]).then(([audio, pinned, battery, form, whitelist, permission, urlBased]) => {
   if (audio) {
     log('Tab discard is skipped', 'Audio is playing');
   }
@@ -111,7 +120,10 @@ tools.all = () => Promise.all([
   if (permission) {
     log('Tab discard is skipped', 'Tab has granted notification.permission');
   }
-  if (audio || pinned || battery || form || whitelist || permission) {
+  if (urlBased) {
+    log('Tab discard is skipped', 'URL does not match with the list');
+  }
+  if (audio || pinned || battery || form || whitelist || permission || urlBased) {
     return true;
   }
 });
@@ -152,12 +164,6 @@ timer.discard = async() => {
 };
 
 var check = async(period) => {
-  if (prefs.mode === 'url-based') {
-    const bol = await tools.whitelist(prefs['whitelist-url']);
-    if (bol === false) {
-      return log('skipped', 'url is not in the list');
-    }
-  }
   if (document.hidden && prefs.period) {
     const r = await tools.all();
     if (r) {
@@ -167,7 +173,10 @@ var check = async(period) => {
     timer.set(period);
   }
 };
-document.addEventListener('visibilitychange', () => setTimeout(check, 0));
+document.addEventListener('visibilitychange', () => {
+  now = Date.now();
+  setTimeout(check, 0);
+});
 // https://github.com/rNeomy/auto-tab-discard/issues/1
 document.addEventListener('DOMContentLoaded', () => check());
 
