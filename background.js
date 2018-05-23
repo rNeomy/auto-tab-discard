@@ -83,6 +83,17 @@ var discard = tab => {
     }
   });
 };
+chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
+  if (request.method === 'discard') {
+    query(request.query).then((tbs = []) => {
+      tbs = tbs.filter(({url, discarded, active}) => (url.startsWith('http') || url.startsWith('ftp')) && !discarded && !active);
+      tbs.forEach(discard);
+      resposne(tbs.map(t => t.id));
+    });
+
+    return true;
+  }
+});
 
 // number-based discarding
 const tabs = {
