@@ -116,6 +116,7 @@ var discard = tab => {
               type: 'image/png',
               href: '${href}'
             }));
+            console.log(document.readyState);
           }
         `,
       }, () => window.setTimeout(next, DELAY));
