@@ -1,5 +1,12 @@
 'use strict';
 
+const notify = e => chrome.notifications.create({
+  title: chrome.runtime.getManifest().name,
+  type: 'basic',
+  iconUrl: 'data/icons/128.png',
+  message: e.message || e
+});
+
 var prefs = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
 var query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
@@ -162,7 +169,7 @@ chrome.idle.onStateChanged.addListener(async(state) => {
     tabs.check('chrome.idle.onStateChanged');
   }
 });
-chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
+chrome.runtime.onMessage.addListener(({method, message}, {tab}, resposne) => {
   if (method === 'is-pinned') {
     resposne(tab.pinned);
   }
@@ -174,6 +181,9 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   }
   else if (method === 'tabs.check') {
     tabs.check('tab.timeout');
+  }
+  else if (method === 'notify') {
+    notify(message);
   }
 });
 // initial inject

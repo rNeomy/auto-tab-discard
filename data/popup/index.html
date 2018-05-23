@@ -12,7 +12,7 @@
       user-select: none;
       width: 350px;
       overflow: hidden;
-      background-color: #FFF;
+      background-color: #fff;
     }
     header {
       height: 67px;
@@ -41,6 +41,21 @@
     }
     [data-cmd]:hover {
       background-color: #f0f0f0;
+    }
+    [data-cmd=close] {
+      background: url(close.svg) left 10px center no-repeat;
+    }
+    [data-cmd=move-next] {
+      background: url(move-next.svg) left 10px center no-repeat;
+    }
+    [data-cmd=move-previous] {
+      background: url(move-previous.svg) left 10px center no-repeat;
+    }
+    [data-cmd=move-next],
+    [data-cmd=move-previous],
+    [data-cmd=close] {
+      text-indent: 32px;
+      background-size: 16px 16px;
     }
     .separator {
       pointer-events: none;
@@ -76,6 +91,10 @@
       <li data-cmd="discard-tabs">Discard all inactive tabs</li>
       <li data-cmd="discard-window">Discard inactive tabs in current window</li>
       <li data-cmd="discard-other-windows">Discard inactive tabs in other windows</li>
+      <li class="separator"></li>
+      <li data-cmd="move-previous">Move to previous active tab</li>
+      <li data-cmd="move-next">Move to next active tab</li>
+      <li data-cmd="close">Close this tab</li>
       <li class="separator"></li>
       <li data-disabled=true class=hbox data-cmd="whitelist-domain">Do not discard this domain</li>
       <li data-disabled=true class="hbox">

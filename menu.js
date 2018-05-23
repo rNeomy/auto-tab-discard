@@ -1,12 +1,5 @@
-/* globals discard, query, isFirefox */
+/* globals discard, query, isFirefox, notify */
 'use strict';
-
-const notify = e => chrome.notifications.create({
-  title: chrome.runtime.getManifest().name,
-  type: 'basic',
-  iconUrl: 'data/icons/128.png',
-  message: e.message || e
-});
 
 // Context Menu
 {

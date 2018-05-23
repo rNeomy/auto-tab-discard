@@ -8,6 +8,32 @@ document.addEventListener('click', ({target}) => {
   if (cmd === 'open-options') {
     chrome.runtime.openOptionsPage();
   }
+  else if (cmd.startsWith('move-') || cmd === 'close') {
+    chrome.tabs.query({
+      currentWindow: true,
+      discarded: false
+    }, tbs => {
+      const active = tbs.filter(tbs => tbs.active).shift();
+      const next = tbs.filter(t => t.index > active.index).shift();
+      const previous = tbs.filter(t => t.index < active.index).pop();
+      const ntab = (cmd === 'move-next' ? next : previous) || previous || next;
+      if (ntab) {
+        chrome.tabs.update(ntab.id, {
+          active: true
+        }, () => {
+          if (cmd === 'close') {
+            chrome.tabs.remove(tab.id);
+          }
+        });
+      }
+      else {
+        chrome.runtime.sendMessage({
+          method: 'notify',
+          message: 'No active tab present'
+        });
+      }
+    });
+  }
   else if (cmd) {
     chrome.runtime.sendMessage({
       method: 'popup',
