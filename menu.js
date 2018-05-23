@@ -149,7 +149,8 @@
     else { // discard-tabs, discard-window, discard-other-windows
       const info = {
         url: '*://*/*',
-        discarded: false
+        discarded: false,
+        active: false
       };
       if (menuItemId === 'discard-window') {
         info.currentWindow = true;
@@ -161,7 +162,7 @@
       tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {
         method: 'introduce'
       }, a => {
-        if (a && a.exception !== true && a.allowed && a.ready === true && tab.active === false) {
+        if (a && a.exception !== true && a.allowed) {
           discard(tab);
         }
       }));

@@ -146,7 +146,6 @@ timer.discard = async() => {
     return log('skipped', 'double-check before discarding');
   }
   log('request tabs.check');
-  console.log(new Error().stack);
   chrome.runtime.sendMessage({
     method: 'tabs.check'
   });
