@@ -4,86 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Untitled Document</title>
   </head>
-  <style type="text/css">
-    body {
-      font-family: "Helvetica Neue",Helvetica,sans-serif;
-      font-size: 13px;
-      margin: 0;
-      user-select: none;
-      width: 350px;
-      overflow: hidden;
-      background-color: #fff;
-    }
-    header {
-      height: 67px;
-      line-height: 67px;
-      text-indent: 67px;
-      background: url('../icons/48.png') center left 10px no-repeat;
-      border-bottom: solid 1px #ccc;
-      font-size: 140%;
-    }
-    ul {
-      padding: 0;
-    }
-    li {
-      list-style: none;
-      margin: 0;
-      height: 24px;
-      line-height: 24px;
-      text-indent: 10px;
-    }
-    input[type=checkbox] {
-      margin-right: 10px;
-      outline: none;
-    }
-    [data-cmd] {
-      cursor: pointer;
-    }
-    [data-cmd]:hover {
-      background-color: #f0f0f0;
-    }
-    [data-cmd=close] {
-      background: url(close.svg) left 10px center no-repeat;
-    }
-    [data-cmd=move-next] {
-      background: url(move-next.svg) left 10px center no-repeat;
-    }
-    [data-cmd=move-previous] {
-      background: url(move-previous.svg) left 10px center no-repeat;
-    }
-    [data-cmd=move-next],
-    [data-cmd=move-previous],
-    [data-cmd=close] {
-      text-indent: 32px;
-      background-size: 16px 16px;
-    }
-    .separator {
-      pointer-events: none;
-      height: 12px;
-    }
-    .button {
-      background-color: #f0f0f0;
-      border-top: solid 1px #d9d9d9;
-      height: 42px;
-      line-height: 42px;
-      text-align: center;
-    }
-    [data-cmd]:active,
-    .button:active {
-      opacity: 0.5;
-    }
-    [data-disabled=true] {
-      opacity: 0.3;
-      pointer-events: none;
-    }
-    .hbox {
-      display: flex;
-      align-items: center;
-    }
-    .flex {
-      flex: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
   <body>
     <header>Auto Tab Discard</header>
     <ul>
@@ -92,9 +13,11 @@
       <li data-cmd="discard-window">Discard inactive tabs in current window</li>
       <li data-cmd="discard-other-windows">Discard inactive tabs in other windows</li>
       <li class="separator"></li>
-      <li data-cmd="move-previous">Move to previous active tab</li>
-      <li data-cmd="move-next">Move to next active tab</li>
-      <li data-cmd="close">Close this tab</li>
+      <div class=hbox>
+        <li class="flex" data-cmd="move-previous" title="move to the previous active tab">Previous tab</li>
+        <li data-cmd="close" title="Close the current tab and switch to the previous active tab">Close tab</li>
+        <li class="flex" data-cmd="move-next" title="Move to the next active tab">Next tab</li>
+      </div>
       <li class="separator"></li>
       <li data-disabled=true class=hbox data-cmd="whitelist-domain">Do not discard this domain</li>
       <li data-disabled=true class="hbox">

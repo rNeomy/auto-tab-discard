@@ -1,0 +1,80 @@
+body {
+  font-family: "Helvetica Neue",Helvetica,sans-serif;
+  font-size: 13px;
+  margin: 0;
+  user-select: none;
+  width: 350px;
+  overflow: hidden;
+  background-color: #fff;
+}
+header {
+  height: 67px;
+  line-height: 67px;
+  text-indent: 67px;
+  background: url('../icons/48.png') center left 10px no-repeat;
+  border-bottom: solid 1px #ccc;
+  font-size: 140%;
+}
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  height: 24px;
+  line-height: 24px;
+  text-indent: 10px;
+}
+input[type=checkbox] {
+  margin-right: 10px;
+  outline: none;
+}
+
+.separator {
+  pointer-events: none;
+  height: 12px;
+}
+.button {
+  background-color: #f0f0f0;
+  border-top: solid 1px #d9d9d9;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+}
+[data-cmd]:active,
+.button:active {
+  opacity: 0.5;
+}
+[data-disabled=true] {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.hbox {
+  display: flex;
+  align-items: center;
+}
+.flex {
+  flex: 1;
+}
+
+[data-cmd] {
+  cursor: pointer;
+}
+[data-cmd]:hover {
+  background-color: #f0f0f0;
+}
+[data-cmd=close] {
+  padding: 0 10px;
+  text-indent: 0;
+}
+[data-cmd=move-next] {
+  background: url(move-next.svg) right 10px center no-repeat;
+}
+[data-cmd=move-previous] {
+  background: url(move-previous.svg) left 10px center no-repeat;
+}
+[data-cmd=move-next],
+[data-cmd=move-previous] {
+  text-indent: 32px;
+  background-size: 16px 16px;
+}

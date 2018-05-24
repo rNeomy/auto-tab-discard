@@ -1,11 +1,9 @@
-/* globals discard, query, isFirefox, notify, navigate */
+/* globals discard, query, notify, navigate, starters, storage */
 'use strict';
 
 // Context Menu
 {
   const TST = 'treestyletab@piro.sakura.ne.jp';
-
-  const storage = prefs => new Promise(resolve => chrome.storage.local.get(prefs, resolve));
 
   const onStartup = async() => {
     const contexts = ['browser_action'];
@@ -57,49 +55,41 @@
       });
     };
 
-    create([
-      {
-        id: 'discard-tab',
-        title: 'Discard this tab (forced)',
-        contexts,
-        documentUrlPatterns: ['*://*/*']
-      },
-      {
-        id: 'discard-tabs',
-        title: 'Discard all inactive tabs',
-        contexts
-      },
-      {
-        id: 'discard-window',
-        title: 'Discard inactive tabs in current window',
-        contexts
-      },
-      {
-        id: 'discard-other-windows',
-        title: 'Discard inactive tabs in other windows',
-        contexts
-      },
-      {
-        id: 'separator',
-        type: 'separator',
-        contexts,
-        documentUrlPatterns: ['*://*/*']
-      },
-      {
-        id: 'whitelist-domain',
-        title: 'Do not discard this domain',
-        contexts,
-        documentUrlPatterns: ['*://*/*']
+    create([{
+      id: 'discard-tab',
+      title: 'Discard this tab (forced)',
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
+      id: 'discard-tabs',
+      title: 'Discard all inactive tabs',
+      contexts
+    },
+    {
+      id: 'discard-window',
+      title: 'Discard inactive tabs in current window',
+      contexts
+    },
+    {
+      id: 'discard-other-windows',
+      title: 'Discard inactive tabs in other windows',
+      contexts
+    },
+    {
+      id: 'separator',
+      type: 'separator',
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
+      id: 'whitelist-domain',
+      title: 'Do not discard this domain',
+      contexts,
+      documentUrlPatterns: ['*://*/*']
     }].filter(o => o));
   };
-  // Firefox does not call "onStartup" after enabling the extension
-  if (isFirefox) {
-    onStartup();
-  }
-  else {
-    chrome.runtime.onInstalled.addListener(onStartup);
-    chrome.runtime.onStartup.addListener(onStartup);
-  }
+  starters.push(onStartup);
 
   const onClicked = async({menuItemId}, tab) => {
     if (menuItemId === 'whitelist-domain') {

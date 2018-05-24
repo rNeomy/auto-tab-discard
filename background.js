@@ -1,6 +1,8 @@
 'use strict';
 
-var log = (...args) => true && console.log(...args);
+var log = (...args) => false && console.log(...args);
+
+var starters = []; // startup scripts
 
 var notify = e => chrome.notifications.create({
   title: chrome.runtime.getManifest().name,
@@ -9,13 +11,13 @@ var notify = e => chrome.notifications.create({
   message: e.message || e
 });
 
-var prefs = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
+var storage = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
 var query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
-var navigate = method => chrome.tabs.query({
+var navigate = method => query({
   currentWindow: true,
   discarded: false
-}, tbs => {
+}).then(tbs => {
   const active = tbs.filter(tbs => tbs.active).shift();
   const next = tbs.filter(t => t.index > active.index);
   const previous = tbs.filter(t => t.index < active.index);
@@ -40,12 +42,11 @@ var navigate = method => chrome.tabs.query({
   }
 });
 
-// https://github.com/rNeomy/auto-tab-discard/issues/24
 const isFirefox = /Firefox/.test(navigator.userAgent);
 
 const DELAY = isFirefox ? 500 : 100;
 
-var restore = {
+var restore = { // Firefox only
   cache: {}
 };
 if (isFirefox) {
@@ -77,9 +78,12 @@ var discard = tab => {
     return;
   }
   const next = () => {
-    chrome.tabs.discard(tab.id);
     if (isFirefox) {
+      chrome.tabs.discard(tab.id);
       restore.cache[tab.id] = tab;
+    }
+    else {
+      chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
     }
   };
   // favicon
@@ -120,7 +124,7 @@ var discard = tab => {
             }));
           }
         `,
-      }, () => window.setTimeout(next, DELAY));
+      }, () => window.setTimeout(next, DELAY) && chrome.runtime.lastError);
     }
   });
 };
@@ -137,8 +141,8 @@ chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
 });
 
 // number-based discarding
-const tabs = {
-  id: null
+var tabs = {
+  id: null // timer id
 };
 tabs.check = msg => {
   log(msg);
@@ -153,9 +157,10 @@ tabs._check = async() => {
   }, resolve));
 
   const tbs = await query({
-    url: '*://*/*'
+    url: '*://*/*',
+    discarded: false
   });
-  const {number, period} = await prefs({
+  const {number, period} = await storage({
     number: 6,
     period: 10 * 60, // in seconds
   });
@@ -175,25 +180,54 @@ tabs._check = async() => {
     log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
   }
 };
-// top.js does not being called
-chrome.tabs.onCreated.addListener(() => tabs.check('chrome.tabs.onCreated'));
-chrome.tabs.onUpdated.addListener((id, info, tab) => {
-  if (info.status === 'complete' && tab.active === false) {
-    tabs.check('chrome.tabs.onUpdated');
+
+tabs.callbacks = {
+  onCreated: () => tabs.check('chrome.tabs.onCreated'),
+  onUpdated: (id, info, tab) => {
+    if (info.status === 'complete' && tab.active === false) {
+      tabs.check('chrome.tabs.onUpdated');
+    }
+    // update autoDiscardable set by this extension or other extensions
+    if ('autoDiscardable' in info) {
+      chrome.tabs.executeScript(tab.id, {
+        code: `allowed = ${info.autoDiscardable}`
+      });
+    }
+  },
+  onStateChanged: async(state) => {
+    if (state === 'active') {
+      tabs.check('chrome.idle.onStateChanged');
+    }
   }
-  // update autoDiscardable set by this extension or other extensions
-  if ('autoDiscardable' in info) {
-    chrome.tabs.executeScript(tab.id, {
-      code: `allowed = ${info.autoDiscardable}`
-    });
+};
+
+tabs.install = () => {
+  log('installing auto discarding listeners');
+  // top.js does not being called
+  chrome.tabs.onCreated.addListener(tabs.callbacks.onCreated);
+  chrome.tabs.onUpdated.addListener(tabs.callbacks.onUpdated);
+  chrome.idle.onStateChanged.addListener(tabs.callbacks.onStateChanged);
+};
+
+tabs.uninstall = () => {
+  log('removing auto discarding listeners');
+
+  chrome.tabs.onCreated.removeListener(tabs.callbacks.onCreated);
+  chrome.tabs.onUpdated.removeListener(tabs.callbacks.onUpdated);
+  chrome.idle.onStateChanged.removeListener(tabs.callbacks.onStateChanged);
+};
+
+starters.push(() => storage({
+  period: 10 * 60, // in seconds
+}).then(({period}) => period && tabs.install()));
+
+chrome.storage.onChanged.addListener(prefs => {
+  if (prefs.period) {
+    tabs[prefs.period.newValue ? 'install' : 'uninstall']();
   }
 });
-chrome.idle.onStateChanged.addListener(async(state) => {
-  if (state === 'active') {
-    tabs.check('chrome.idle.onStateChanged');
-  }
-});
-chrome.runtime.onMessage.addListener(({method, message}, {tab}, resposne) => {
+
+chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   if (method === 'is-pinned') {
     resposne(tab.pinned);
   }
@@ -206,68 +240,59 @@ chrome.runtime.onMessage.addListener(({method, message}, {tab}, resposne) => {
   else if (method === 'tabs.check') {
     tabs.check('tab.timeout');
   }
-  else if (method === 'notify') {
-    notify(message);
-  }
   // navigation
   else if (method.startsWith('move-') || method === 'close') {
     navigate(method);
   }
 });
 // initial inject
-{
-  const callback = () => chrome.app && chrome.tabs.query({
-    url: '*://*/*',
-    discarded: false
-  }, tbs => {
-    const contentScripts = chrome.app.getDetails().content_scripts;
-    for (const tab of tbs) {
-      for (const cs of contentScripts) {
-        chrome.tabs.executeScript(tab.id, {
-          file: cs.js[0],
-          runAt: cs.run_at,
-          allFrames: cs.all_frames,
-        });
-      }
+starters.push(() => chrome.app && query({
+  url: '*://*/*',
+  discarded: false
+}).then(tbs => {
+  const contentScripts = chrome.app.getDetails().content_scripts;
+  for (const tab of tbs) {
+    for (const cs of contentScripts) {
+      chrome.tabs.executeScript(tab.id, {
+        file: cs.js[0],
+        runAt: cs.run_at,
+        allFrames: cs.all_frames,
+      });
     }
-  });
-  // Firefox does not call "onStartup" after enabling the extension
-  if (isFirefox) {
-    callback();
   }
-  else {
-    chrome.runtime.onInstalled.addListener(callback);
-    chrome.runtime.onStartup.addListener(callback);
-  }
-}
-
+}));
 // left-click action
 {
   const callback = async() => {
-    const {click} = await prefs({
+    const {click} = await storage({
       click: 'click.popup'
     });
     chrome.browserAction.setPopup({
       popup: click === 'click.popup' ? 'data/popup/index.html' : ''
     });
   };
-  // Firefox does not call "onStartup" after enabling the extension
-  if (isFirefox) {
-    callback();
-  }
-  else {
-    chrome.runtime.onInstalled.addListener(callback);
-    chrome.runtime.onStartup.addListener(callback);
-  }
+  starters.push(callback);
   chrome.storage.onChanged.addListener(prefs => prefs.click && callback());
 }
+// start-up
+document.addEventListener('DOMContentLoaded', () => {
+  const onStartup = () => starters.forEach(c => c());
+  // Firefox does not call "onStartup" after enabling the extension
+  if (isFirefox) {
+    onStartup();
+  }
+  else {
+    chrome.runtime.onInstalled.addListener(onStartup);
+    chrome.runtime.onStartup.addListener(onStartup);
+  }
+});
 
 // FAQs & Feedback
-chrome.storage.local.get({
+starters.push(() => storage({
   'version': null,
   'faqs': true,
   'last-update': 0,
-}, prefs => {
+}).then(prefs => {
   const version = chrome.runtime.getManifest().version;
 
   if (prefs.version ? (prefs.faqs && prefs.version !== version) : true) {
@@ -288,7 +313,7 @@ chrome.storage.local.get({
       }
     });
   }
-});
+}));
 
 {
   const {name, version} = chrome.runtime.getManifest();

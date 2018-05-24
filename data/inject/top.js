@@ -164,13 +164,18 @@ timer.discard = async() => {
 };
 
 var check = async(period) => {
-  if (document.hidden && prefs.period) {
-    const r = await tools.all();
-    if (r) {
-      log('skipped', 'condition match');
-      return timer.clear();
+  if (document.hidden) {
+    if (prefs.period) {
+      const r = await tools.all();
+      if (r) {
+        log('skipped', 'condition match');
+        return timer.clear();
+      }
+      timer.set(period);
     }
-    timer.set(period);
+    else {
+      log('manual mode');
+    }
   }
 };
 document.addEventListener('visibilitychange', () => {

@@ -44,7 +44,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan="3">Discard inactive tabs after <input type="number" id="period" min="0"> seconds when the number of inactive tabs exceeds <input type="number" id="number" min="0"></td>
+          <td colspan="3">Discard inactive tabs after <input type="number" id="period" min="0"> seconds when the number of inactive tabs exceeds <input type="number" id="number" min="0"> (use zero second to disable auto tab discarding)</td>
         </tr>
         <tr>
           <td><input type="checkbox" id="url-based"></td>
@@ -60,17 +60,6 @@
         <tr>
           <td><input type="checkbox" id="page.context"></td>
           <td colspan="2"><label for="page.context">Display discarding items in the "page" context menu</label></td>
-        </tr>
-      </tbody>
-      <thead>
-        <tr>
-          <th colspan="3">Debugging</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input type="checkbox" id="log"></td>
-          <td colspan="2"><label for="log">Display logs (for debugging purpose only)</label></td>
         </tr>
       </tbody>
       <thead>
@@ -147,6 +136,10 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td><input type="checkbox" id="log"></td>
+          <td colspan="2"><label for="log">Display logs (for debugging purpose only)</label></td>
+        </tr>
         <tr>
           <td><input type="checkbox" id="faqs"></td>
           <td colspan="2"><label for="faqs">Open FAQs page on updates</label></td>

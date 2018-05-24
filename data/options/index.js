@@ -90,11 +90,15 @@ document.addEventListener('DOMContentLoaded', restore);
 
 // restart if needed
 chrome.storage.onChanged.addListener(prefs => {
-  if (prefs['page.context'] || prefs['tab.context']) {
-    window.setTimeout(() => {
-      chrome.runtime.reload();
-      window.close();
-    }, 2000);
+  const tab = prefs['tab.context'];
+  const page = prefs['page.context'];
+  if (tab || page) { // Firefox
+    if ((tab.newValue !== tab.oldValue) || (page.newValue !== page.oldValue)) {
+      window.setTimeout(() => {
+        chrome.runtime.reload();
+        window.close();
+      }, 2000);
+    }
   }
 });
 // reset
