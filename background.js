@@ -1,6 +1,8 @@
 'use strict';
 
-const notify = e => chrome.notifications.create({
+var log = (...args) => true && console.log(...args);
+
+var notify = e => chrome.notifications.create({
   title: chrome.runtime.getManifest().name,
   type: 'basic',
   iconUrl: 'data/icons/128.png',
@@ -58,7 +60,7 @@ if (isFirefox) {
           chrome.tabs.update(tabId, {
             url: tab.url
           });
-          // console.log('reloading');
+          log('reloading');
         }
       });
     }
@@ -116,7 +118,6 @@ var discard = tab => {
               type: 'image/png',
               href: '${href}'
             }));
-            console.log(document.readyState);
           }
         `,
       }, () => window.setTimeout(next, DELAY));
@@ -139,14 +140,14 @@ chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
 const tabs = {
   id: null
 };
-tabs.check = (msg) => {
-  // console.log(msg);
+tabs.check = msg => {
+  log(msg);
   window.clearTimeout(tabs.id);
   tabs.id = window.setTimeout(tabs._check, DELAY);
 };
 
 tabs._check = async() => {
-  // console.log('tabs._check');
+  log('tabs._check');
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
   }, resolve));
@@ -170,9 +171,8 @@ tabs._check = async() => {
     const toBeDiscarded = arr
       .filter(a => a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000))
       .sort((a, b) => b.now - a.now).slice(number);
-    //console.log(toBeDiscarded);
     toBeDiscarded.map(a => a.tab).forEach(discard);
-    // console.log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
+    log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
   }
 };
 // top.js does not being called
