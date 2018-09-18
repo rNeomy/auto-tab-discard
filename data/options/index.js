@@ -18,9 +18,11 @@ const restore = () => chrome.storage.local.get({
   'mode': 'time-based',
   'click': 'click.popup',
   'faqs': true,
+  'favicon': true,
   'go-hidden': false
 }, prefs => {
   document.getElementById('faqs').checked = prefs.faqs;
+  document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
   document.getElementById('period').value = prefs.period;
   document.getElementById('number').value = prefs.number;
@@ -67,6 +69,7 @@ document.getElementById('save').addEventListener('click', () => {
     'tab.context': document.getElementById('tab.context').checked,
     'log': document.getElementById('log').checked,
     'faqs': document.getElementById('faqs').checked,
+    'favicon': document.getElementById('favicon').checked,
     'go-hidden': document.getElementById('go-hidden').checked,
     'whitelist': document.getElementById('whitelist').value
       .split(/[,\n]/)
