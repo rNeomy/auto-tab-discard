@@ -2,30 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Untitled Document</title>
   </head>
   <link rel="stylesheet" href="index.css">
   <body>
     <header>Auto Tab Discard</header>
     <ul>
-      <li data-cmd="discard-tab">Discard this tab (forced)</li>
-      <li data-cmd="discard-tabs">Discard all inactive tabs</li>
-      <li data-cmd="discard-window">Discard inactive tabs in current window</li>
-      <li data-cmd="discard-other-windows">Discard inactive tabs in other windows</li>
+      <li data-cmd="discard-tab" data-i18n="popup_discard_tab"></li>
+      <li data-cmd="discard-tabs" data-i18n="popup_discard_tabs"></li>
+      <li data-cmd="discard-window" data-i18n="popup_discard_window"></li>
+      <li data-cmd="discard-other-windows" data-i18n="popup_discard_other_windows"></li>
       <li class="separator"></li>
       <div class=hbox>
-        <li class="flex" data-cmd="move-previous" title="move to the previous active tab">Previous tab</li>
-        <li data-cmd="close" title="Close the current tab and switch to the previous active tab">Close tab</li>
-        <li class="flex" data-cmd="move-next" title="Move to the next active tab">Next tab</li>
+        <li class="flex" data-cmd="move-previous" title="move to the previous active tab" data-i18n="popup_move_previous"></li>
+        <li data-cmd="close" title="Close the current tab and switch to the previous active tab" data-i18n="popup_close"></li>
+        <li class="flex" data-cmd="move-next" title="Move to the next active tab" data-i18n="popup_move_next"></li>
       </div>
       <li class="separator"></li>
-      <li data-disabled=true class=hbox data-cmd="whitelist-domain">Do not discard this domain</li>
+      <li data-disabled=true class=hbox data-cmd="whitelist-domain" data-i18n="popup_whitelist_domain"></li>
       <li data-disabled=true class="hbox">
-        <label for="allowed" class="flex">Do not discard for now (session only)</label>
+        <label for="allowed" class="flex" data-i18n="popup_allowed"></label>
         <input type="checkbox" id="allowed">
       </li>
     </ul>
-    <div class="button" data-cmd="open-options">Options</div>
+    <div class="button" data-cmd="open-options" data-i18n="popup_open_options"></div>
 
     <script src="index.js"></script>
   </body>

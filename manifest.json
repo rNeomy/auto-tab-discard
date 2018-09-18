@@ -1,8 +1,9 @@
 {
   "manifest_version": 2,
   "version": "0.2.8",
+  "default_locale": "en",
   "name": "Auto Tab Discard",
-  "description": "Use native tab discard method to automatically reduce memory usage of inactive tabs",
+  "description": "__MSG_app_description__",
 
   "icons": {
     "16": "data/icons/16.png",

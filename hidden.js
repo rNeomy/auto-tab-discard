@@ -4,7 +4,7 @@
 {
   const hidden = {};
 
-  hidden.install = chrome.storage.local.get({
+  hidden.install = () => chrome.storage.local.get({
     'go-hidden': false
   }, prefs => {
     chrome.tabs.onUpdated.removeListener(hidden.observe);

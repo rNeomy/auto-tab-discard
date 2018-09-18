@@ -1,0 +1,149 @@
+{
+  "app_description": {
+    "message": "Use native tab discard method to automatically reduce memory usage of inactive tabs"
+  },
+  "options_discarding_options": {
+    "message": "Discarding options"
+  },
+  "options_period01": {
+    "message": "Discard inactive tabs after (in seconds)"
+  },
+  "options_period02": {
+    "message": "when the number of inactive tabs exceeds  (use zero second to disable auto tab discarding)"
+  },
+  "options_url_based": {
+    "message": "Only discard the following inactive hostnames"
+  },
+  "options_tab_context": {
+    "message": "Display discarding items in the \"tab\" context menu (if supported)"
+  },
+  "options_page_context": {
+    "message": "Display discarding items in the \"page\" context menu"
+  },
+  "options_favicon": {
+    "message": "Change favicon of discarded tabs"
+  },
+  "options_discarding_conditions": {
+    "message": "Discarding conditions"
+  },
+  "options_audio": {
+    "message": "Do not discard a tab when media is playing"
+  },
+  "options_pinned": {
+    "message": "Do not discard a tab when it is pinned"
+  },
+  "options_form": {
+    "message": "Do not discard a tab when form changes are not yet submitted"
+  },
+  "options_battery": {
+    "message": "Do not discard tabs when computer is connected to a power source"
+  },
+  "options_notification_permission": {
+    "message": "Do not discard a tab if it can display desktop notifications"
+  },
+  "options_exceptions": {
+    "message": "Exceptions"
+  },
+  "options_whitelist": {
+    "message": "Tabs with the following hostnames are not being discarded:"
+  },
+  "options_left_click": {
+    "message": "Toolbar left_click action"
+  },
+  "options_click_popup": {
+    "message": "Open popup"
+  },
+  "options_click_discard_tab": {
+    "message": "Discard this tab (forced)"
+  },
+  "options_click_discard_tabs": {
+    "message": "Discard all inactive tabs"
+  },
+  "options_click_discard_window": {
+    "message": "Discard inactive tabs in current window"
+  },
+  "options_click_discard_other_windows": {
+    "message": "Discard inactive tabs in other windows"
+  },
+  "options_misc": {
+    "message": "Misc"
+  },
+  "options_log": {
+    "message": "Display logs (for debugging purpose only)"
+  },
+  "options_go_hidden": {
+    "message": "Discard a tab if it is hidden"
+  },
+  "options_faqs": {
+    "message": "Open FAQs page on updates"
+  },
+  "options_footnote_1": {
+    "message": "It is possible to use regular expression matching with \"re:\" keyword. For instance to whitelist all URLs with \"google\" keyword in them use \"re:google\"."
+  },
+  "options_reset": {
+    "message": "Factory Reset"
+  },
+  "options_save": {
+    "message": "Save"
+  },
+  "options_support": {
+    "message": "Support Development"
+  },
+  "popup_discard_tab": {
+    "message": "Discard this tab (forced)"
+  },
+  "popup_discard_tabs": {
+    "message": "Discard all inactive tabs"
+  },
+  "popup_discard_window": {
+    "message": "Discard inactive tabs in current window"
+  },
+  "popup_discard_other_windows": {
+    "message": "Discard inactive tabs in other windows"
+  },
+  "popup_move_previous": {
+    "message": "Previous tab"
+  },
+  "popup_close": {
+    "message": "Close tab"
+  },
+  "popup_move_next": {
+    "message": "Next tab"
+  },
+  "popup_whitelist_domain": {
+    "message": "Do not discard this domain"
+  },
+  "popup_allowed": {
+    "message": "Do not discard for now (session only)"
+  },
+  "popup_open_options": {
+    "message": "Options"
+  },
+  "bg_no_active_tab": {
+    "message": "No active tab is present"
+  },
+  "menu_discard_tab": {
+    "message": "Discard this tab (forced)"
+  },
+  "menu_discard_tabs": {
+    "message": "Discard all inactive tabs"
+  },
+  "menu_discard_window": {
+    "message": "Discard inactive tabs in current window"
+  },
+  "menu_discard_other_windows": {
+    "message": "Discard inactive tabs in other windows"
+  },
+  "menu_whitelist_domain": {
+    "message": "Do not discard this domain"
+  },
+  "menu_msg1": {
+    "message": "is added to the whitelist"
+  },
+  "menu_msg2": {
+    "message": "protocol is not supported"
+  },
+  "menu_msg3": {
+    "message": "'Cannot discard a tab when it is active'"
+  }
+}

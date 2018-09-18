@@ -38,7 +38,7 @@ var navigate = method => query({
     });
   }
   else {
-    notify('No active tab is present');
+    notify(chrome.i18n.getMessage('bg_no_active_tab'));
   }
 });
 

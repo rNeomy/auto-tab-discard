@@ -1,5 +1,10 @@
 'use strict';
 
+// localization
+[...document.querySelectorAll('[data-i18n]')].forEach(e => {
+  e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
+});
+
 var tab;
 
 var allowed = document.getElementById('allowed');

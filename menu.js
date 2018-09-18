@@ -58,23 +58,23 @@
 
     create([{
       id: 'discard-tab',
-      title: 'Discard this tab(s) (forced)',
+      title: chrome.i18n.getMessage('menu_discard_tab'),
       contexts,
       documentUrlPatterns: ['*://*/*']
     },
     {
       id: 'discard-tabs',
-      title: 'Discard all inactive tabs',
+      title: chrome.i18n.getMessage('menu_discard_tabs'),
       contexts
     },
     {
       id: 'discard-window',
-      title: 'Discard inactive tabs in current window',
+      title: chrome.i18n.getMessage('menu_discard_window'),
       contexts
     },
     {
       id: 'discard-other-windows',
-      title: 'Discard inactive tabs in other windows',
+      title: chrome.i18n.getMessage('menu_discard_other_windows'),
       contexts
     },
     {
@@ -85,7 +85,7 @@
     },
     {
       id: 'whitelist-domain',
-      title: 'Do not discard this domain',
+      title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
       documentUrlPatterns: ['*://*/*']
     }].filter(o => o));
@@ -106,10 +106,10 @@
         chrome.storage.local.set({
           whitelist
         });
-        notify(`"${hostname}" is added to the whitelist`);
+        notify(`"${hostname}" ${chrome.i18n.getMessage('menu_msg1')}`);
       }
       else {
-        notify(`"${protocol}" protocol is not supported`);
+        notify(`"${protocol}" ${chrome.i18n.getMessage('menu_msg2')}`);
       }
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
@@ -131,7 +131,7 @@
           });
         }
         else {
-          notify('Cannot discard a tab when it is active');
+          notify(chrome.i18n.getMessage('menu_msg3'));
         }
       }
       else {

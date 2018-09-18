@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Options :: Auto Tab Discarder</title>
+    <title>Options :: Auto Tab Discard</title>
   </head>
   <style type="text/css">
     body {
@@ -39,128 +39,128 @@
       </colgroup>
       <thead>
         <tr>
-          <th colspan="3">Discarding options</th>
+          <th colspan="3" data-i18n="options_discarding_options"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td colspan="3">Discard inactive tabs after <input type="number" id="period" min="0"> seconds when the number of inactive tabs exceeds <input type="number" id="number" min="0"> (use zero second to disable auto tab discarding)</td>
+          <td colspan="3"><span data-i18n="options_period01"></span> <input type="number" id="period" min="0"> <span data-i18n="options_period02"></span> <input type="number" id="number" min="0"></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="url-based"></td>
-          <td colspan="2"><label for="url-based">Only discard the following inactive hostnames<sup>1</sup></label></td>
+          <td colspan="2"><label for="url-based"><span data-i18n="options_url_based"></span><sup>1</sup></label></td>
         </tr>
         <tr>
           <td colspan="3"><textarea rows="3" id="whitelist-url" placeholder="comma separated list of hostnames"></textarea></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="tab.context"></td>
-          <td colspan="2"><label for="tab.context">Display discarding items in the "tab" context menu (if supported)</label></td>
+          <td colspan="2"><label for="tab.context" data-i18n="options_tab_context"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="page.context"></td>
-          <td colspan="2"><label for="page.context">Display discarding items in the "page" context menu</label></td>
+          <td colspan="2"><label for="page.context" data-i18n="options_page_context"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="favicon"></td>
-          <td colspan="2"><label for="favicon">Change favicon of discarded tabs</label></td>
+          <td colspan="2"><label for="favicon" data-i18n="options_favicon"></label></td>
         </tr>
       </tbody>
       <thead>
         <tr>
-          <th colspan="3">Discarding conditions</th>
+          <th colspan="3" data-i18n="options_discarding_conditions"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><input type="checkbox" id="audio"></td>
-          <td colspan="2"><label for="audio">Do not discard a tab when media is playing</label></td>
+          <td colspan="2"><label for="audio" data-i18n="options_audio"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="pinned"></td>
-          <td colspan="2"><label for="pinned">Do not discard a tab when it is pinned</label></td>
+          <td colspan="2"><label for="pinned" data-i18n="options_pinned"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="form"></td>
-          <td colspan="2"><label for="form">Do not discard a tab when form changes are not yet submitted</label></td>
+          <td colspan="2"><label for="form" data-i18n="options_form"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="battery"></td>
-          <td colspan="2"><label for="battery">Do not discard tabs when computer is connected to a power source</label></td>
+          <td colspan="2"><label for="battery" data-i18n="options_battery"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="notification.permission"></td>
-          <td colspan="2"><label for="notification.permission">Do not discard a tab if it can display desktop notifications</label></td>
+          <td colspan="2"><label for="notification.permission" data-i18n="options_notification_permission"></label></td>
         </tr>
       </tbody>
       <thead>
         <tr>
-          <th colspan="3">Exceptions</th>
+          <th colspan="3" data-i18n="options_exceptions"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td></td>
           <td colspan="2">
-            <span style="display: block; padding-bottom: 10px;">Tabs with the following hostnames<sup>1</sup> are not being discarded:</span>
+            <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_whitelist"></span><sup>1</sup></span>
             <textarea rows="3" id="whitelist" placeholder="comma separated list of hostnames"></textarea>
           </td>
         </tr>
       </tbody>
       <thead>
         <tr>
-          <th colspan="3">Toolbar left-click action</th>
+          <th colspan="3" data-i18n="options_left_click"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><input type="radio" name="left-click" id="click.popup"></td>
-          <td colspan="2"><label for="click.popup">Open popup</label></td>
+          <td colspan="2"><label for="click.popup" data-i18n="options_click_popup"></label></td>
         </tr>
         <tr>
           <td><input type="radio" name="left-click" id="click.discard-tab"></td>
-          <td colspan="2"><label for="click.discard-tab">Discard this tab (forced)</label></td>
+          <td colspan="2"><label for="click.discard-tab" data-i18n="options_click_discard_tab"></label></td>
         </tr>
         <tr>
           <td><input type="radio" name="left-click" id="click.discard-tabs"></td>
-          <td colspan="2"><label for="click.discard-tabs">Discard all inactive tabs</label></td>
+          <td colspan="2"><label for="click.discard-tabs" data-i18n="options_click_discard_tabs"></label></td>
         </tr>
         <tr>
           <td><input type="radio" name="left-click" id="click.discard-window"></td>
-          <td colspan="2"><label for="click.discard-window">Discard inactive tabs in current window</label></td>
+          <td colspan="2"><label for="click.discard-window" data-i18n="options_click_discard_window"></label></td>
         </tr>
         <tr>
           <td><input type="radio" name="left-click" id="click.discard-other-windows"></td>
-          <td colspan="2"><label for="click.discard-other-windows">Discard inactive tabs in other windows</label></td>
+          <td colspan="2"><label for="click.discard-other-windows" data-i18n="options_click_discard_other_windows"></label></td>
         </tr>
       </tbody>
       <thead>
         <tr>
-          <th colspan="3">Misc</th>
+          <th colspan="3" data-i18n="options_misc"></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><input type="checkbox" id="log"></td>
-          <td colspan="2"><label for="log">Display logs (for debugging purpose only)</label></td>
+          <td colspan="2"><label for="log" data-i18n="options_log"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="go-hidden"></td>
-          <td colspan="2"><label for="go-hidden">Discard a tab if it is hidden</label></td>
+          <td colspan="2"><label for="go-hidden" data-i18n="options_go_hidden"></label></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="faqs"></td>
-          <td colspan="2"><label for="faqs">Open FAQs page on updates</label></td>
+          <td colspan="2"><label for="faqs" data-i18n="options_faqs"></label></td>
         </tr>
       </tbody>
     </table>
     <p>Rate "<a id="rate" target="_blank" href="https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews">Auto Tab Discard</a>" extension</p>
     <p>
-      <input type="button" id="reset" value="Factory Reset">
-      <input type="button" id="support" value="Support Development"> - <input type="button" id="save" value="Save">
+      <input type="button" id="reset" data-i18n="options_reset" data-i18n-value="value">
+      <input type="button" id="support"  data-i18n="options_support" data-i18n-value="value"> - <input type="button" id="save" data-i18n="options_save" data-i18n-value="value">
       <span id="info"></span>
     </p>
-    1: It is possible to use regular expression matching with "re:" keyword. For instance to whitelist all URLs with "google" keyword in them use "re:google".
+    1: <span data-i18n="options_footnote_1"></span>
     <script src="index.js"></script>
   </body>
 </html>
