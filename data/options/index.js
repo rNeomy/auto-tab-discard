@@ -3,23 +3,25 @@
 const info = document.getElementById('info');
 
 const restore = () => chrome.storage.local.get({
-  period: 10 * 60, // in seconds
-  number: 6, // number of tabs before triggering discard
-  audio: true, // audio = true => do not suspend if audio is playing
-  pinned: false, // pinned = true => do not suspend if tab is pinned
-  form: true, // form = true => do not suspend if form data is changed
-  battery: false, // battery = true => only suspend if power is disconnected,
+  'period': 10 * 60, // in seconds
+  'number': 6, // number of tabs before triggering discard
+  'audio': true, // audio = true => do not suspend if audio is playing
+  'pinned': false, // pinned = true => do not suspend if tab is pinned
+  'form': true, // form = true => do not suspend if form data is changed
+  'battery': false, // battery = true => only suspend if power is disconnected,
   'notification.permission': false, // true => do not discard
   'page.context': false,
   'tab.context': true,
-  log: false,
-  whitelist: [],
+  'log': false,
+  'whitelist': [],
   'whitelist-url': [],
-  mode: 'time-based',
-  click: 'click.popup',
-  faqs: true
+  'mode': 'time-based',
+  'click': 'click.popup',
+  'faqs': true,
+  'go-hidden': false
 }, prefs => {
   document.getElementById('faqs').checked = prefs.faqs;
+  document.getElementById('go-hidden').checked = prefs['go-hidden'];
   document.getElementById('period').value = prefs.period;
   document.getElementById('number').value = prefs.number;
   document.getElementById('audio').checked = prefs.audio;
@@ -54,18 +56,19 @@ document.getElementById('save').addEventListener('click', () => {
   chrome.storage.local.set({
     period,
     number,
-    mode: document.getElementById('url-based').checked ? 'url-based' : 'time-based',
+    'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',
     click,
-    audio: document.getElementById('audio').checked,
-    pinned: document.getElementById('pinned').checked,
-    form: document.getElementById('form').checked,
-    battery: document.getElementById('battery').checked,
+    'audio': document.getElementById('audio').checked,
+    'pinned': document.getElementById('pinned').checked,
+    'form': document.getElementById('form').checked,
+    'battery': document.getElementById('battery').checked,
     'notification.permission': document.getElementById('notification.permission').checked,
     'page.context': document.getElementById('page.context').checked,
     'tab.context': document.getElementById('tab.context').checked,
-    log: document.getElementById('log').checked,
-    faqs: document.getElementById('faqs').checked,
-    whitelist: document.getElementById('whitelist').value
+    'log': document.getElementById('log').checked,
+    'faqs': document.getElementById('faqs').checked,
+    'go-hidden': document.getElementById('go-hidden').checked,
+    'whitelist': document.getElementById('whitelist').value
       .split(/[,\n]/)
       .map(s => s.trim())
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)

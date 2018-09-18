@@ -28,6 +28,7 @@
     "persistent": false,
     "scripts": [
       "background.js",
+      "hidden.js",
       "menu.js"
     ]
   },

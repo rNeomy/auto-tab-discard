@@ -58,7 +58,7 @@
 
     create([{
       id: 'discard-tab',
-      title: 'Discard this tab (forced)',
+      title: 'Discard this tab(s) (forced)',
       contexts,
       documentUrlPatterns: ['*://*/*']
     },
@@ -92,7 +92,8 @@
   };
   starters.push(onStartup);
 
-  const onClicked = async({menuItemId}, tab) => {
+  const onClicked = async(info, tab) => {
+    const {menuItemId} = info;
     if (menuItemId === 'whitelist-domain') {
       const {hostname, protocol = ''} = new URL(tab.url);
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
