@@ -3,15 +3,15 @@
 var now = Date.now();
 
 var prefs = {
-  period: 10 * 60, // in seconds
-  audio: true, // audio = true => do not suspend if audio is playing
-  pinned: false, // pinned = true => do not suspend if tab is pinned
-  form: true, // form = true => do not suspend if form data is changed
-  battery: false, // battery = true => only suspend if power is disconnected,
+  'period': 10 * 60, // in seconds
+  'audio': true, // audio = true => do not suspend if audio is playing
+  'pinned': false, // pinned = true => do not suspend if tab is pinned
+  'form': true, // form = true => do not suspend if form data is changed
+  'battery': false, // battery = true => only suspend if power is disconnected,
   'notification.permission': false,
-  log: false,
-  mode: 'time-based',
-  whitelist: [],
+  'log': false,
+  'mode': 'time-based',
+  'whitelist': [],
   'whitelist-url': []
 };
 
@@ -20,6 +20,7 @@ var allowed = true; // if false, do not discard
 chrome.runtime.sendMessage({
   method: 'is-autoDiscardable'
 }, b => {
+  chrome.runtime.lastError;
   if (typeof b === 'boolean') {
     allowed = b;
   }
@@ -34,7 +35,10 @@ tools.audio = () => {
   if (prefs.audio) {
     return new Promise(resolve => chrome.runtime.sendMessage({
       method: 'is-playing'
-    }, r => resolve(r)));
+    }, r => {
+      chrome.runtime.lastError;
+      resolve(r);
+    }));
   }
   else {
     Promise.resolve(false);
@@ -46,7 +50,10 @@ tools.pinned = () => {
   }
   return new Promise(resolve => chrome.runtime.sendMessage({
     method: 'is-pinned'
-  }, resolve));
+  }, b => {
+    chrome.runtime.lastError;
+    resolve(b);
+  }));
 };
 tools.battery = () => {
   if (prefs.battery === false) {
@@ -160,10 +167,10 @@ timer.discard = async() => {
   log('request tabs.check');
   chrome.runtime.sendMessage({
     method: 'tabs.check'
-  });
+  }, () => chrome.runtime.lastError);
 };
 
-var check = async(period) => {
+var check = async period => {
   if (document.hidden) {
     if (prefs.period) {
       const r = await tools.all();

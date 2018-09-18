@@ -154,7 +154,10 @@ tabs._check = async() => {
   log('tabs._check');
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
-  }, resolve));
+  }, a => {
+    chrome.runtime.lastError;
+    resolve(a);
+  }));
 
   const tbs = await query({
     url: '*://*/*',

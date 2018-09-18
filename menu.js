@@ -30,6 +30,7 @@
         type: 'register-self',
         name: chrome.runtime.getManifest().name
       }, r => {
+        chrome.runtime.lastError;
         if (r === true) {
           arr.forEach(params => chrome.runtime.sendMessage(TST, {
             type: 'fake-contextMenu-remove',
@@ -152,6 +153,7 @@
       tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {
         method: 'introduce'
       }, a => {
+        chrome.runtime.lastError;
         if (a && a.exception !== true && a.allowed) {
           discard(tab);
         }
@@ -163,7 +165,7 @@
     menuItemId: localStorage.getItem('click')
   }, tab));
   // commands
-  chrome.commands.onCommand.addListener(async(command) => {
+  chrome.commands.onCommand.addListener(async command => {
     if (command.startsWith('move-') || command === 'close') {
       navigate(command);
     }
@@ -179,7 +181,7 @@
       }
     }
   });
-  chrome.runtime.onMessage.addListener(async(request) => {
+  chrome.runtime.onMessage.addListener(async request => {
     if (request.method === 'popup') {
       const tabs = await query({
         active: true,
