@@ -88,6 +88,11 @@
       title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
       documentUrlPatterns: ['*://*/*']
+    }, {
+      id: 'open-tab-then-discard',
+      title: chrome.i18n.getMessage('menu_open_tab_then_discard'),
+      contexts: ['link'],
+      documentUrlPatterns: ['*://*/*']
     }].filter(o => o));
   };
   starters.push(onStartup);
@@ -137,6 +142,18 @@
       else {
         discard(tab);
       }
+    }
+    else if (menuItemId === 'open-tab-then-discard') {
+      chrome.tabs.create({
+        active: false,
+        url: info.linkUrl
+      }, tab => chrome.tabs.executeScript(tab.id, {
+        runAt: 'document_start',
+        code: 'window.stop()'
+      }, () => chrome.tabs.executeScript(tab.id, {
+        runAt: 'document_start',
+        file: 'data/lazy.js'
+      })));
     }
     else { // discard-tabs, discard-window, discard-other-windows
       const info = {

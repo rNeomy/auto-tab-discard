@@ -257,6 +257,9 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   else if (method === 'tabs.check') {
     tabs.check('tab.timeout');
   }
+  else if (method === 'discard.on.load') { // for links after initial load
+    discard(tab);
+  }
   // navigation
   else if (method.startsWith('move-') || method === 'close') {
     navigate(method);

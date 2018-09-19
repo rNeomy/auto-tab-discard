@@ -137,6 +137,9 @@
   "menu_whitelist_domain": {
     "message": "Do not discard this domain"
   },
+  "menu_open_tab_then_discard": {
+    "message": "Open Discarded Link in New Tab"
+  },
   "menu_msg1": {
     "message": "is added to the whitelist"
   },
