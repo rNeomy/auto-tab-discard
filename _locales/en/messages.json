@@ -6,10 +6,10 @@
     "message": "Discarding options"
   },
   "options_period01": {
-    "message": "Discard inactive tabs after (in seconds)"
+    "message": "Discard inactive tabs after (in seconds) (use zero second to disable auto tab discarding) "
   },
   "options_period02": {
-    "message": "when the number of inactive tabs exceeds  (use zero second to disable auto tab discarding)"
+    "message": "when the number of inactive tabs exceeds "
   },
   "options_url_based": {
     "message": "Only discard the following inactive hostnames"

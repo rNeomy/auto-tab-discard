@@ -53,7 +53,7 @@ document.getElementById('save').addEventListener('click', () => {
   period = Math.max(period, 0);
   let number = document.getElementById('number').value;
   number = Number(number);
-  number = Math.max(number, 0);
+  number = Math.max(number, 1);
 
   if (period !== 0) {
     period = Math.max(period, 10);
