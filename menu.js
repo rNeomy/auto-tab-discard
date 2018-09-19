@@ -88,7 +88,14 @@
       title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
       documentUrlPatterns: ['*://*/*']
-    }, {
+    },
+    {
+      id: 'auto-discardable',
+      title: chrome.i18n.getMessage('popup_allowed'),
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
       id: 'open-tab-then-discard',
       title: chrome.i18n.getMessage('menu_open_tab_then_discard'),
       contexts: ['link'],
@@ -155,6 +162,19 @@
         file: 'data/lazy.js'
       })));
     }
+    else if (menuItemId === 'auto-discardable') {
+      const autoDiscardable = info.value || false; // when called from page context menu, there is no value
+      try {
+        chrome.tabs.update(tab.id, {
+          autoDiscardable
+        });
+      }
+      catch (e) { // Firefox
+        chrome.tabs.executeScript(tab.id, {
+          code: `allowed = ${autoDiscardable};`
+        });
+      }
+    }
     else { // discard-tabs, discard-window, discard-other-windows
       const info = {
         url: '*://*/*',
@@ -207,7 +227,8 @@
       });
       if (tabs.length) {
         onClicked({
-          menuItemId: request.cmd
+          menuItemId: request.cmd,
+          value: request.value
         }, tabs[0]);
       }
     }

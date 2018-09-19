@@ -8,18 +8,11 @@
 var tab;
 
 var allowed = document.getElementById('allowed');
-allowed.addEventListener('change', () => {
-  try {
-    chrome.tabs.update(tab.id, {
-      autoDiscardable: allowed.checked === false
-    });
-  }
-  catch (e) { // Firefox
-    chrome.tabs.executeScript(tab.id, {
-      code: `allowed = ${allowed.checked === false};`
-    });
-  }
-});
+allowed.addEventListener('change', () => chrome.runtime.sendMessage({
+  method: 'popup',
+  cmd: 'auto-discardable',
+  value: allowed.checked === false
+}));
 
 var whitelist = document.querySelector('[data-cmd=whitelist-domain]');
 
@@ -67,7 +60,7 @@ document.addEventListener('click', ({target}) => {
   if (cmd === 'open-options') {
     chrome.runtime.openOptionsPage();
   }
-  else if (cmd.startsWith('move-') || cmd === 'close') {
+  else if (cmd && (cmd.startsWith('move-') || cmd === 'close')) {
     chrome.runtime.sendMessage({
       method: cmd,
       cmd
