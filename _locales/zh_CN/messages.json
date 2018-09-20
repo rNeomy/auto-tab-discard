@@ -1,0 +1,152 @@
+{
+  "app_description": {
+    "message": "使用原生的标签页丢弃（Tab Discard）方法，自动减少非活跃标签页的内存使用量"
+  },
+  "options_discarding_options": {
+    "message": "丢弃选项"
+  },
+  "options_period01": {
+    "message": "丢弃非活跃标签页（几秒之后）（设为 0 秒即为禁用标签页自动丢弃）"
+  },
+  "options_period02": {
+    "message": "当非活跃标签页的数量超过 "
+  },
+  "options_url_based": {
+    "message": "只丢弃以下不活跃主机名的标签页"
+  },
+  "options_tab_context": {
+    "message": "在标签页右键菜单中显示丢弃选项（如果支持）"
+  },
+  "options_page_context": {
+    "message": "在页面中显示丢弃选项"
+  },
+  "options_favicon": {
+    "message": "更改被丢弃标签页的图标"
+  },
+  "options_discarding_conditions": {
+    "message": "丢弃条件"
+  },
+  "options_audio": {
+    "message": "当标签页播放媒体时，不要丢弃"
+  },
+  "options_pinned": {
+    "message": "当标签页固定时，不要丢弃"
+  },
+  "options_form": {
+    "message": "当标签页中表单更改尚未提交时，不要丢弃"
+  },
+  "options_battery": {
+    "message": "当计算机连接到电源时，不要丢弃标签页"
+  },
+  "options_notification_permission": {
+    "message": "若标签页可以显示桌面通知时，不要丢弃"
+  },
+  "options_exceptions": {
+    "message": "例外"
+  },
+  "options_whitelist": {
+    "message": "以下主机名的标签页不会被丢弃："
+  },
+  "options_left_click": {
+    "message": "工具栏单击左键操作"
+  },
+  "options_click_popup": {
+    "message": "打开弹出页"
+  },
+  "options_click_discard_tab": {
+    "message": "丢弃此标签页（强制）"
+  },
+  "options_click_discard_tabs": {
+    "message": "丢弃所有非活跃标签页"
+  },
+  "options_click_discard_window": {
+    "message": "丢弃当前窗口的所有非活跃标签页"
+  },
+  "options_click_discard_other_windows": {
+    "message": "丢弃其它窗口的所有非活跃标签页"
+  },
+  "options_misc": {
+    "message": "杂项"
+  },
+  "options_log": {
+    "message": "显示日志 (仅作调试目的)"
+  },
+  "options_go_hidden": {
+    "message": "若标签页被隐藏，则进行丢弃"
+  },
+  "options_faqs": {
+    "message": "更新后打开“常见问题”页面"
+  },
+  "options_footnote_1": {
+    "message": "可以使用正则表达式“re:”关键字进行匹配. 例如，在白名单中，“re:google”将生效于所有带有“google”关键字的网址。"
+  },
+  "options_reset": {
+    "message": "恢复出厂"
+  },
+  "options_save": {
+    "message": "保存"
+  },
+  "options_support": {
+    "message": "支持开发"
+  },
+  "popup_discard_tab": {
+    "message": "丢弃此标签页（强制）"
+  },
+  "popup_discard_tabs": {
+    "message": "丢弃所有非活跃标签页"
+  },
+  "popup_discard_window": {
+    "message": "丢弃当前窗口的所有非活跃标签页"
+  },
+  "popup_discard_other_windows": {
+    "message": "丢弃其它窗口的所有非活跃标签页"
+  },
+  "popup_move_previous": {
+    "message": "上一个标签页"
+  },
+  "popup_close": {
+    "message": "关闭标签页"
+  },
+  "popup_move_next": {
+    "message": "下一个标签页"
+  },
+  "popup_whitelist_domain": {
+    "message": "不要丢弃此域名的标签页"
+  },
+  "popup_allowed": {
+    "message": "暂时不要丢弃 (仅此次会话)"
+  },
+  "popup_open_options": {
+    "message": "选项"
+  },
+  "bg_no_active_tab": {
+    "message": "现在没有活跃的标签页"
+  },
+  "menu_discard_tab": {
+    "message": "丢弃此标签页（强制）"
+  },
+  "menu_discard_tabs": {
+    "message": "丢弃所有非活跃标签页"
+  },
+  "menu_discard_window": {
+    "message": "丢弃当前窗口的所有非活跃标签页"
+  },
+  "menu_discard_other_windows": {
+    "message": "丢弃其它窗口的所有非活跃标签页"
+  },
+  "menu_whitelist_domain": {
+    "message": "不要丢弃此域名的标签页"
+  },
+  "menu_open_tab_then_discard": {
+    "message": "在新标签页打开“丢弃链接”"
+  },
+  "menu_msg1": {
+    "message": "已加入白名单"
+  },
+  "menu_msg2": {
+    "message": "不支持的协议"
+  },
+  "menu_msg3": {
+    "message": "无法丢弃一个活跃的标签页"
+  }
+}
