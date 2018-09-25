@@ -125,21 +125,25 @@
       }
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
-      if (tab.active) {
-        const tabs = await query({
-          windowId: tab.windowId
-        });
-        const otab = tabs.filter(t => t.discarded === false && t.id !== tab.id).sort((a, b) => {
-          const lb = Math.abs(b.index - tab.index);
-          const la = Math.abs(a.index - tab.index);
-          return la - lb;
-        }).shift();
+      // it is possible to have multiple highlighted tabs. Let's discard all of them
+      const tabs = await query({
+        windowId: tab.windowId
+      });
+      const htabs = tabs.filter(t => t.highlighted);
+      if (htabs.filter(t => t.active).length) {
+        // ids to be discarded
+        const ids = htabs.map(t => t.id);
+        const otab = tabs
+          .filter(t => t.discarded === false && t.highlighted === false && ids.indexOf(t.id) === -1)
+          .sort((a, b) => Math.abs(a.index - tab.index) - Math.abs(b.index - tab.index))
+          .shift();
         if (otab) {
           chrome.tabs.update(otab.id, {
             active: true
           }, () => {
-            tab.active = false;
-            discard(tab);
+            // at the time we record htabs, one tab was active. Let's mark it as inactive
+            htabs.forEach(t => t.active = false);
+            htabs.forEach(discard);
           });
         }
         else {
@@ -147,7 +151,7 @@
         }
       }
       else {
-        discard(tab);
+        htabs.forEach(discard);
       }
     }
     else if (menuItemId === 'open-tab-then-discard') {
