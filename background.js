@@ -14,13 +14,12 @@ var notify = e => chrome.notifications.create({
 var storage = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
 var query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
-var navigate = method => query({
-  currentWindow: true,
-  discarded: false
+var navigate = (method, discarded = false) => query({
+  currentWindow: true
 }).then(tbs => {
   const active = tbs.filter(tbs => tbs.active).shift();
-  const next = tbs.filter(t => t.index > active.index);
-  const previous = tbs.filter(t => t.index < active.index);
+  const next = tbs.filter(t => t.discarded === discarded && t.index > active.index);
+  const previous = tbs.filter(t => t.discarded === discarded && t.index < active.index);
   let ntab;
   if (method === 'move-next') {
     ntab = next.length ? next.shift() : previous.shift();
@@ -38,7 +37,8 @@ var navigate = method => query({
     });
   }
   else {
-    notify(chrome.i18n.getMessage('bg_no_active_tab'));
+    // https://github.com/rNeomy/auto-tab-discard/issues/41#issuecomment-422923307
+    return navigate(method, true);
   }
 });
 

@@ -39,7 +39,7 @@
     "message": "Do not discard tabs when computer is connected to a power source"
   },
   "options_online": {
-    "message": "Do not discard tabs when there is no internet connection"
+    "message": "Do not discard tabs when there is no internet connection and tab is not cached"
   },
   "options_notification_permission": {
     "message": "Do not discard a tab if it can display desktop notifications"
