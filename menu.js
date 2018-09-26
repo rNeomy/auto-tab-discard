@@ -129,7 +129,8 @@
       const tabs = await query({
         windowId: tab.windowId
       });
-      const htabs = tabs.filter(t => t.highlighted);
+      // if a single not-highlighted tab is called
+      const htabs = tab.highlighted ? tabs.filter(t => t.highlighted) : [tab];
       if (htabs.filter(t => t.active).length) {
         // ids to be discarded
         const ids = htabs.map(t => t.id);
