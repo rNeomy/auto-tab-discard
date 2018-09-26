@@ -277,7 +277,7 @@ starters.push(() => chrome.app && query({
         file: cs.js[0],
         runAt: cs.run_at,
         allFrames: cs.all_frames
-      });
+      }, () => chrome.runtime.lastError);
     }
   }
 }));

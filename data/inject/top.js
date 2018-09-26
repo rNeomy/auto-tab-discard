@@ -6,6 +6,7 @@ var prefs = {
   'period': 10 * 60, // in seconds
   'audio': true, // audio = true => do not suspend if audio is playing
   'pinned': false, // pinned = true => do not suspend if tab is pinned
+  'online': false, // online = true => do not suspend if there is no INTERNET connection
   'form': true, // form = true => do not suspend if form data is changed
   'battery': false, // battery = true => only suspend if power is disconnected,
   'notification.permission': false,
@@ -62,6 +63,12 @@ tools.battery = () => {
   return new Promise(resolve => navigator.getBattery()
     .then(b => resolve(b.dischargingTime === Infinity)));
 };
+tools.online = () => {
+  if (prefs.online === false) {
+    return Promise.resolve(false);
+  }
+  return Promise.resolve(!navigator.onLine);
+};
 tools.form = () => {
   if (prefs.form === false) {
     return Promise.resolve(false);
@@ -104,11 +111,12 @@ tools.all = () => Promise.all([
   tools.audio(),
   tools.pinned(),
   tools.battery(),
+  tools.online(),
   tools.form(),
   tools.whitelist(),
   tools.permission(),
   tools.urlBased()
-]).then(([audio, pinned, battery, form, whitelist, permission, urlBased]) => {
+]).then(([audio, pinned, battery, online, form, whitelist, permission, urlBased]) => {
   if (audio) {
     log('Tab discard is skipped', 'Audio is playing');
   }
@@ -117,6 +125,9 @@ tools.all = () => Promise.all([
   }
   if (battery) {
     log('Tab discard is skipped', 'Power is plugged-in');
+  }
+  if (online) {
+    log('Tab discard is skipped', 'No INTERNET connection detected');
   }
   if (form) {
     log('Tab discard is skipped', 'Unsaved form is detected');
@@ -130,7 +141,7 @@ tools.all = () => Promise.all([
   if (urlBased) {
     log('Tab discard is skipped', 'URL does not match with the list');
   }
-  if (audio || pinned || battery || form || whitelist || permission || urlBased) {
+  if (audio || pinned || battery || online || form || whitelist || permission || urlBased) {
     return true;
   }
 });

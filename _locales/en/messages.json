@@ -38,6 +38,9 @@
   "options_battery": {
     "message": "Do not discard tabs when computer is connected to a power source"
   },
+  "options_online": {
+    "message": "Do not discard tabs when there is no internet connection"
+  },
   "options_notification_permission": {
     "message": "Do not discard a tab if it can display desktop notifications"
   },

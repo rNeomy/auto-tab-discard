@@ -13,7 +13,8 @@ const restore = () => chrome.storage.local.get({
   'audio': true, // audio = true => do not suspend if audio is playing
   'pinned': false, // pinned = true => do not suspend if tab is pinned
   'form': true, // form = true => do not suspend if form data is changed
-  'battery': false, // battery = true => only suspend if power is disconnected,
+  'battery': false, // battery = true => only suspend if power is disconnected
+  'online': false, // online = true => do not suspend if there is no INTERNET connection
   'notification.permission': false, // true => do not discard
   'page.context': false,
   'tab.context': true,
@@ -35,6 +36,7 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('pinned').checked = prefs.pinned;
   document.getElementById('form').checked = prefs.form;
   document.getElementById('battery').checked = prefs.battery;
+  document.getElementById('online').checked = prefs.online;
   document.getElementById('notification.permission').checked = prefs['notification.permission'];
   document.getElementById('page.context').checked = prefs['page.context'];
   document.getElementById('tab.context').checked = prefs['tab.context'];
@@ -69,6 +71,7 @@ document.getElementById('save').addEventListener('click', () => {
     'pinned': document.getElementById('pinned').checked,
     'form': document.getElementById('form').checked,
     'battery': document.getElementById('battery').checked,
+    'online': document.getElementById('online').checked,
     'notification.permission': document.getElementById('notification.permission').checked,
     'page.context': document.getElementById('page.context').checked,
     'tab.context': document.getElementById('tab.context').checked,
