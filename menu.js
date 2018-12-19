@@ -5,11 +5,12 @@
 {
   const TST = 'treestyletab@piro.sakura.ne.jp';
 
-  const onStartup = async() => {
+  const onStartup = async () => {
     const contexts = ['browser_action'];
     const prefs = await storage({
       'page.context': false,
-      'tab.context': true
+      'tab.context': true,
+      'link.context': true
     });
     if (chrome.contextMenus.ContextType.TAB && prefs['tab.context']) {
       contexts.push('tab');
@@ -78,12 +79,6 @@
       contexts
     },
     {
-      id: 'separator',
-      type: 'separator',
-      contexts,
-      documentUrlPatterns: ['*://*/*']
-    },
-    {
       id: 'whitelist-domain',
       title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
@@ -95,16 +90,16 @@
       contexts,
       documentUrlPatterns: ['*://*/*']
     },
-    {
+    prefs['link.context'] ? {
       id: 'open-tab-then-discard',
       title: chrome.i18n.getMessage('menu_open_tab_then_discard'),
       contexts: ['link'],
       documentUrlPatterns: ['*://*/*']
-    }].filter(o => o));
+    } : null].filter(o => o));
   };
   starters.push(onStartup);
 
-  const onClicked = async(info, tab) => {
+  const onClicked = async (info, tab) => {
     const {menuItemId} = info;
     if (menuItemId === 'whitelist-domain') {
       const {hostname, protocol = ''} = new URL(tab.url);

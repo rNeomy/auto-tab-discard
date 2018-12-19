@@ -20,6 +20,9 @@
   "options_page_context": {
     "message": "Display discarding items in the \"page\" context menu"
   },
+  "options_link_context": {
+    "message": "Display \"Open Link in New Discarded Tab\" item in the \"link\" context menu"
+  },
   "options_favicon": {
     "message": "Change favicon of discarded tabs"
   },
@@ -141,7 +144,7 @@
     "message": "Do not discard this domain"
   },
   "menu_open_tab_then_discard": {
-    "message": "Open Discarded Link in New Tab"
+    "message": "Open Link in New Discarded Tab"
   },
   "menu_msg1": {
     "message": "is added to the whitelist"

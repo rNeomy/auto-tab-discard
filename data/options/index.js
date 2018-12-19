@@ -18,6 +18,7 @@ const restore = () => chrome.storage.local.get({
   'notification.permission': false, // true => do not discard
   'page.context': false,
   'tab.context': true,
+  'link.context': true,
   'log': false,
   'whitelist': [],
   'whitelist-url': [],
@@ -40,6 +41,7 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('notification.permission').checked = prefs['notification.permission'];
   document.getElementById('page.context').checked = prefs['page.context'];
   document.getElementById('tab.context').checked = prefs['tab.context'];
+  document.getElementById('link.context').checked = prefs['link.context'];
   document.getElementById('log').checked = prefs.log;
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
@@ -75,6 +77,7 @@ document.getElementById('save').addEventListener('click', () => {
     'notification.permission': document.getElementById('notification.permission').checked,
     'page.context': document.getElementById('page.context').checked,
     'tab.context': document.getElementById('tab.context').checked,
+    'link.context': document.getElementById('link.context').checked,
     'log': document.getElementById('log').checked,
     'faqs': document.getElementById('faqs').checked,
     'favicon': document.getElementById('favicon').checked,
@@ -97,7 +100,7 @@ document.getElementById('save').addEventListener('click', () => {
 });
 
 document.getElementById('support').addEventListener('click', () => chrome.tabs.create({
-  url: 'https://www.paypal.me/addondonation/10usd'
+  url: chrome.runtime.getManifest().homepage_url + '?rd=donate'
 }));
 
 document.addEventListener('DOMContentLoaded', restore);
@@ -106,8 +109,11 @@ document.addEventListener('DOMContentLoaded', restore);
 chrome.storage.onChanged.addListener(prefs => {
   const tab = prefs['tab.context'];
   const page = prefs['page.context'];
-  if (tab || page) { // Firefox
-    if ((tab.newValue !== tab.oldValue) || (page.newValue !== page.oldValue)) {
+  const link = prefs['link.context'];
+  if (tab || page || link) { // Firefox
+    if ((tab && (tab.newValue !== tab.oldValue)) ||
+      (page && (page.newValue !== page.oldValue)) ||
+      (link && (link.newValue !== link.oldValue))) {
       window.setTimeout(() => {
         chrome.runtime.reload();
         window.close();
@@ -131,5 +137,5 @@ document.getElementById('reset').addEventListener('click', e => {
 });
 // rate
 if (/Firefox/.test(navigator.userAgent)) {
-  document.getElementById('rate').href = 'https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/reviews/';
+  document.getElementById('rate').href = 'https://addons.mozilla.org/firefox/addon/auto-tab-discard/reviews/';
 }
