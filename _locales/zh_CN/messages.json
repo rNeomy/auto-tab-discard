@@ -20,6 +20,9 @@
   "options_page_context": {
     "message": "在页面中显示丢弃选项"
   },
+  "options_link_context": {
+    "message": "在“链接”的右键菜单中显示“在‘新丢弃标签页’中打开链接”选项"
+  },
   "options_favicon": {
     "message": "更改被丢弃标签页的图标"
   },
@@ -37,6 +40,9 @@
   },
   "options_battery": {
     "message": "当计算机连接到电源时，不要丢弃标签页"
+  },
+  "options_online": {
+    "message": "当没有互联网连接且标签页未缓存时，不要丢弃标签页"
   },
   "options_notification_permission": {
     "message": "若标签页可以显示桌面通知时，不要丢弃"
@@ -63,7 +69,7 @@
     "message": "丢弃当前窗口的所有非活跃标签页"
   },
   "options_click_discard_other_windows": {
-    "message": "丢弃其它窗口的所有非活跃标签页"
+    "message": "丢弃其他窗口的所有非活跃标签页"
   },
   "options_misc": {
     "message": "杂项"
@@ -99,7 +105,7 @@
     "message": "丢弃当前窗口的所有非活跃标签页"
   },
   "popup_discard_other_windows": {
-    "message": "丢弃其它窗口的所有非活跃标签页"
+    "message": "丢弃其他窗口的所有非活跃标签页"
   },
   "popup_move_previous": {
     "message": "上一个标签页"
@@ -132,13 +138,13 @@
     "message": "丢弃当前窗口的所有非活跃标签页"
   },
   "menu_discard_other_windows": {
-    "message": "丢弃其它窗口的所有非活跃标签页"
+    "message": "丢弃其他窗口的所有非活跃标签页"
   },
   "menu_whitelist_domain": {
     "message": "不要丢弃此域名的标签页"
   },
   "menu_open_tab_then_discard": {
-    "message": "在新标签页打开“丢弃链接”"
+    "message": "在“新丢弃标签页”中打开链接"
   },
   "menu_msg1": {
     "message": "已加入白名单"
