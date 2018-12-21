@@ -9,7 +9,7 @@
   }, prefs => {
     chrome.tabs.onUpdated.removeListener(hidden.observe);
     if (prefs['go-hidden']) {
-      chrome.tabs.onUpdated.addListener(hidden.observe);
+      chrome.tabs.onUpdated.addListener(hidden.observe, { properties: ["hidden"] });
     }
   });
 
