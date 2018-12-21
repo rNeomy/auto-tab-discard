@@ -16,9 +16,7 @@
   hidden.observe = (id, info, tab) => {
     if ('hidden' in info && tab.url.startsWith('http')) {
       if (tab.hidden && tab.discarded === false) {
-        chrome.storage.local.get({
-          'go-hidden': false
-        }, prefs => prefs['go-hidden'] && discard(tab));
+        discard(tab);
       }
     }
   };
