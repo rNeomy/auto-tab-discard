@@ -10,11 +10,11 @@ const info = document.getElementById('info');
 const restore = () => chrome.storage.local.get({
   'period': 10 * 60, // in seconds
   'number': 6, // number of tabs before triggering discard
-  'audio': true, // audio = true => do not suspend if audio is playing
-  'pinned': false, // pinned = true => do not suspend if tab is pinned
-  'form': true, // form = true => do not suspend if form data is changed
-  'battery': false, // battery = true => only suspend if power is disconnected
-  'online': false, // online = true => do not suspend if there is no INTERNET connection
+  'audio': true, // audio = true => do not discard if audio is playing
+  'pinned': false, // pinned = true => do not discard if tab is pinned
+  'form': true, // form = true => do not discard if form data is changed
+  'battery': false, // battery = true => only discard if power is disconnected
+  'online': false, // online = true => do not discard if there is no INTERNET connection
   'notification.permission': false, // true => do not discard
   'page.context': false,
   'tab.context': true,

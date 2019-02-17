@@ -4,11 +4,11 @@ var now = Date.now();
 
 var prefs = {
   'period': 10 * 60, // in seconds
-  'audio': true, // audio = true => do not suspend if audio is playing
-  'pinned': false, // pinned = true => do not suspend if tab is pinned
-  'online': false, // online = true => do not suspend if there is no INTERNET connection
-  'form': true, // form = true => do not suspend if form data is changed
-  'battery': false, // battery = true => only suspend if power is disconnected,
+  'audio': true, // audio = true => do not discard if audio is playing
+  'pinned': false, // pinned = true => do not discard if tab is pinned
+  'online': false, // online = true => do not discard if there is no INTERNET connection
+  'form': true, // form = true => do not discard if form data is changed
+  'battery': false, // battery = true => only discard if power is disconnected,
   'notification.permission': false,
   'log': false,
   'mode': 'time-based',
@@ -31,7 +31,7 @@ var log = (...args) => prefs.log && console.log(...args);
 var form = false;
 
 var tools = {};
-// return true if tab is not supposed to be suspended
+// return true if tab is not supposed to be discarded
 tools.audio = () => {
   if (prefs.audio) {
     return new Promise(resolve => chrome.runtime.sendMessage({

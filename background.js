@@ -164,7 +164,7 @@ tabs.check = msg => {
   tabs.id = window.setTimeout(tabs._check, DELAY);
 };
 
-tabs._check = async() => {
+tabs._check = async () => {
   log('tabs._check');
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
@@ -283,7 +283,7 @@ starters.push(() => chrome.app && query({
 }));
 // left-click action
 {
-  const callback = async() => {
+  const callback = async () => {
     const {click} = await storage({
       click: 'click.popup'
     });

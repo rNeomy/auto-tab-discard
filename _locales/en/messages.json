@@ -60,16 +60,16 @@
     "message": "Open popup"
   },
   "options_click_discard_tab": {
-    "message": "Discard this tab (forced)"
+    "message": "Discard Tab"
   },
   "options_click_discard_tabs": {
-    "message": "Discard all inactive tabs"
+    "message": "Discard All Other Tabs"
   },
   "options_click_discard_window": {
-    "message": "Discard inactive tabs in current window"
+    "message": "Discard Other Tabs in This Window"
   },
   "options_click_discard_other_windows": {
-    "message": "Discard inactive tabs in other windows"
+    "message": "Discard Tabs in Other Windows"
   },
   "options_misc": {
     "message": "Misc"
@@ -96,31 +96,31 @@
     "message": "Support Development"
   },
   "popup_discard_tab": {
-    "message": "Discard this tab (forced)"
+    "message": "Discard Tab"
   },
   "popup_discard_tabs": {
-    "message": "Discard all inactive tabs"
+    "message": "Discard All Other Tabs"
   },
   "popup_discard_window": {
-    "message": "Discard inactive tabs in current window"
+    "message": "Discard Other Tabs in This Window"
   },
   "popup_discard_other_windows": {
-    "message": "Discard inactive tabs in other windows"
+    "message": "Discard Tabs in Other Windows"
   },
   "popup_move_previous": {
-    "message": "Previous tab"
+    "message": "Previous Tab"
   },
   "popup_close": {
-    "message": "Close tab"
+    "message": "Close Tab"
   },
   "popup_move_next": {
-    "message": "Next tab"
+    "message": "Next Tab"
   },
   "popup_whitelist_domain": {
-    "message": "Do not discard this domain"
+    "message": "Always Keep Tabs for This Site"
   },
   "popup_allowed": {
-    "message": "Do not discard for now (session only)"
+    "message": "Keep Tabs for This Site for This Session"
   },
   "popup_open_options": {
     "message": "Options"
@@ -129,22 +129,31 @@
     "message": "No active tab is present"
   },
   "menu_discard_tab": {
-    "message": "Discard this tab (forced)"
+    "message": "Discard Tab"
   },
   "menu_discard_tabs": {
-    "message": "Discard all inactive tabs"
+    "message": "Discard All Other Tabs"
   },
   "menu_discard_window": {
-    "message": "Discard inactive tabs in current window"
+    "message": "Discard Other Tabs in This Window"
   },
   "menu_discard_other_windows": {
-    "message": "Discard inactive tabs in other windows"
+    "message": "Discard Tabs in Other Windows"
   },
   "menu_whitelist_domain": {
-    "message": "Do not discard this domain"
+    "message": "Always Keep Tabs for This Site"
   },
   "menu_open_tab_then_discard": {
     "message": "Open Link in New Discarded Tab"
+  },
+  "menu_move_previous": {
+    "message": "Move to the Previous Tab"
+  },
+  "menu_move_next": {
+    "message": "Move to the Next Tab"
+  },
+  "menu_close": {
+    "message": "Close Tab"
   },
   "menu_msg1": {
     "message": "is added to the whitelist"
@@ -153,6 +162,30 @@
     "message": "protocol is not supported"
   },
   "menu_msg3": {
-    "message": "'Cannot discard a tab when it is active'"
+    "message": "Cannot discard a tab when it is active"
+  },
+  "cmd_discard_tab": {
+    "message": "Discard Tab"
+  },
+  "cmd_discard_tabs": {
+    "message": "Discard All Other Tabs"
+  },
+  "cmd_discard_window": {
+    "message": "Discard Other Tabs in This Window"
+  },
+  "cmd_discard_other_windows": {
+    "message": "Discard Tabs in Other Windows"
+  },
+  "cmd_whitelist_domain": {
+    "message": "Always Keep Tabs for This Site"
+  },
+  "cmd_move_previous": {
+    "message": "Move to the Previous Tab"
+  },
+  "cmd_move_next": {
+    "message": "Move to the Next Tab"
+  },
+  "cmd_close": {
+    "message": "Close Tab"
   }
 }

@@ -64,11 +64,6 @@
       documentUrlPatterns: ['*://*/*']
     },
     {
-      id: 'discard-tabs',
-      title: chrome.i18n.getMessage('menu_discard_tabs'),
-      contexts
-    },
-    {
       id: 'discard-window',
       title: chrome.i18n.getMessage('menu_discard_window'),
       contexts
@@ -79,14 +74,19 @@
       contexts
     },
     {
-      id: 'whitelist-domain',
-      title: chrome.i18n.getMessage('menu_whitelist_domain'),
-      contexts,
-      documentUrlPatterns: ['*://*/*']
+      id: 'discard-tabs',
+      title: chrome.i18n.getMessage('menu_discard_tabs'),
+      contexts
     },
     {
       id: 'auto-discardable',
       title: chrome.i18n.getMessage('popup_allowed'),
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
+      id: 'whitelist-domain',
+      title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
       documentUrlPatterns: ['*://*/*']
     },
