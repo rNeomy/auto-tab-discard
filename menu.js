@@ -110,7 +110,7 @@
 
         whitelist.push(hostname);
         whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
-        chrome.storage.local.set({
+        storage.set({
           whitelist
         });
         notify(`"${hostname}" ${chrome.i18n.getMessage('menu_msg1')}`);

@@ -89,8 +89,14 @@
   "options_reset": {
     "message": "Factory Reset"
   },
+  "options_import": {
+    "message": "Import Settings"
+  },
+  "options_export": {
+    "message": "Export Settings"
+  },
   "options_save": {
-    "message": "Save"
+    "message": "Save Options"
   },
   "options_support": {
     "message": "Support Development"

@@ -167,7 +167,7 @@ var timer = {
   }
 };
 
-timer.discard = async() => {
+timer.discard = async () => {
   if (allowed === false) {
     return log('skipped', 'not allowed in this session');
   }
