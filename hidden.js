@@ -9,7 +9,7 @@
   }).then(prefs => {
     chrome.tabs.onUpdated.removeListener(hidden.observe);
     if (prefs['go-hidden']) {
-      chrome.tabs.onUpdated.addListener(hidden.observe);
+      chrome.tabs.onUpdated.addListener(hidden.observe, { properties: ["hidden"] });
     }
   });
 
@@ -23,12 +23,8 @@
     }
   };
 
-  chrome.storage.onChanged.addListener(prefs => prefs['go-hidden'] && hidden.install());
   if (isFirefox) {
+    chrome.storage.onChanged.addListener(prefs => prefs['go-hidden'] && hidden.install());
     hidden.install();
-  }
-  else {
-    chrome.runtime.onInstalled.addListener(hidden.install);
-    chrome.runtime.onStartup.addListener(hidden.install);
   }
 }
