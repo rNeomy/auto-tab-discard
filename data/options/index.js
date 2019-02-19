@@ -10,11 +10,11 @@ const info = document.getElementById('info');
 const restore = () => chrome.storage.local.get({
   'period': 10 * 60, // in seconds
   'number': 6, // number of tabs before triggering discard
-  'audio': true, // audio = true => do not suspend if audio is playing
-  'pinned': false, // pinned = true => do not suspend if tab is pinned
-  'form': true, // form = true => do not suspend if form data is changed
-  'battery': false, // battery = true => only suspend if power is disconnected
-  'online': false, // online = true => do not suspend if there is no INTERNET connection
+  'audio': true, // audio = true => do not discard if audio is playing
+  'pinned': false, // pinned = true => do not discard if tab is pinned
+  'form': true, // form = true => do not discard if form data is changed
+  'battery': false, // battery = true => only discard if power is disconnected
+  'online': false, // online = true => do not discard if there is no INTERNET connection
   'notification.permission': false, // true => do not discard
   'page.context': false,
   'tab.context': true,
@@ -106,7 +106,7 @@ document.getElementById('support').addEventListener('click', () => chrome.tabs.c
 document.addEventListener('DOMContentLoaded', restore);
 
 // restart if needed
-chrome.storage.onChanged.addListener(prefs => {
+const onChanged = prefs => {
   const tab = prefs['tab.context'];
   const page = prefs['page.context'];
   const link = prefs['link.context'];
@@ -120,7 +120,8 @@ chrome.storage.onChanged.addListener(prefs => {
       }, 2000);
     }
   }
-});
+};
+chrome.storage.onChanged.addListener(onChanged);
 // reset
 document.getElementById('reset').addEventListener('click', e => {
   if (e.detail === 1) {
@@ -139,3 +140,64 @@ document.getElementById('reset').addEventListener('click', e => {
 if (/Firefox/.test(navigator.userAgent)) {
   document.getElementById('rate').href = 'https://addons.mozilla.org/firefox/addon/auto-tab-discard/reviews/';
 }
+// export
+document.getElementById('export').addEventListener('click', () => {
+  chrome.storage.local.get(null, prefs => {
+    const obj = Object.keys(localStorage).reduce((p, c) => {
+      p[c] = localStorage.getItem(c);
+      return p;
+    }, {});
+
+    const text = JSON.stringify({
+      'chrome.storage.local': prefs,
+      'localStorage': obj
+    }, null, '  ');
+    const blob = new Blob([text], {type: 'application/json'});
+    const objectURL = URL.createObjectURL(blob);
+    Object.assign(document.createElement('a'), {
+      href: objectURL,
+      type: 'application/json',
+      download: 'auto-tab-discard-preferences.json'
+    }).dispatchEvent(new MouseEvent('click'));
+    setTimeout(() => URL.revokeObjectURL(objectURL));
+  });
+});
+// import
+document.getElementById('import').addEventListener('click', () => {
+  const fileInput = document.createElement('input');
+  fileInput.style.display = 'none';
+  fileInput.type = 'file';
+  fileInput.accept = '.json';
+  fileInput.acceptCharset = 'utf-8';
+
+  document.body.appendChild(fileInput);
+  fileInput.initialValue = fileInput.value;
+  fileInput.onchange = () => {
+    if (fileInput.value !== fileInput.initialValue) {
+      const file = fileInput.files[0];
+      if (file.size > 100e6) {
+        console.warn('100MB backup? I don\'t believe you.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = event => {
+        fileInput.remove();
+        const json = JSON.parse(event.target.result);
+        for (const key in json.localStorage) {
+          if (json.localStorage.hasOwnProperty(key)) {
+            localStorage.setItem(key, json.localStorage[key]);
+          }
+        }
+        chrome.storage.onChanged.removeListener(onChanged);
+        chrome.storage.local.clear(() => {
+          chrome.storage.local.set(json['chrome.storage.local'], () => {
+            chrome.runtime.reload();
+            window.close();
+          });
+        });
+      };
+      reader.readAsText(file, 'utf-8');
+    }
+  };
+  fileInput.click();
+});

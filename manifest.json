@@ -74,25 +74,25 @@
   "homepage_url": "http://add0n.com/tab-discard.html",
   "commands": {
     "discard-tab": {
-      "description": "Discard this tab (forced)"
-    },
-    "discard-tabs": {
-      "description": "Discard all inactive tabs"
+      "description": "__MSG_cmd_discard_tab__"
     },
     "discard-window": {
-      "description": "Discard inactive tabs in current window"
+      "description": "__MSG_cmd_discard_window__"
     },
     "discard-other-windows": {
-      "description": "Discard inactive tabs in other windows"
+      "description": "__MSG_cmd_discard_other_windows__"
     },
-    "move-next": {
-      "description": "Move to the next active tab"
+    "discard-tabs": {
+      "description": "__MSG_cmd_discard_tabs__"
     },
     "move-previous": {
-      "description": "Move to the previous active tab"
+      "description": "__MSG_cmd_move_previous__"
+    },
+    "move-next": {
+      "description": "__MSG_cmd_move_next__"
     },
     "close": {
-      "description": "Close this tab and move to the previous active tab"
+      "description": "__MSG_cmd_close__"
     }
   }
 }
