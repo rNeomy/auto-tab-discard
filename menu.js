@@ -103,6 +103,9 @@
   starters.push(onStartup);
 
   const onClicked = async (info, tab) => {
+    if (tab && !tab.url) { // Tree Style Tab 3.0.12 and later don't deliver a real tab.
+      tab = await browser.tabs.get(tab.id);
+    }
     const {menuItemId} = info;
     if (menuItemId === 'whitelist-domain') {
       const {hostname, protocol = ''} = new URL(tab.url);
