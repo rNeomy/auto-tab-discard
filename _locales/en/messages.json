@@ -132,7 +132,7 @@
     "message": "Always Keep Tabs for This Site"
   },
   "popup_allowed": {
-    "message": "Keep Tabs for This Site for This Session"
+    "message": "Keep This Tab for This Session"
   },
   "popup_open_options": {
     "message": "Options"
