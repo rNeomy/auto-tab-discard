@@ -191,11 +191,21 @@ tabs._check = async () => {
     return a;
   });
   if (arr.length > number) {
-    const toBeDiscarded = arr
-      .filter(a => a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000))
-      .sort((a, b) => b.now - a.now).slice(number);
-    toBeDiscarded.map(a => a.tab).forEach(discard);
-    log('number of tabs being discarded', toBeDiscarded.length, toBeDiscarded.map(t => t.tab.title));
+    const possibleDiscardables = arr
+      .sort((a, b) => a.now - b.now)
+      .filter(a => {
+        log('discardable', a, a.exception !== true, a.allowed, a.ready, !a.tab.active, (now - a.now > period * 1000));
+        return a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000);
+      });
+    let total = arr.length;
+    for (const o of possibleDiscardables) {
+      discard(o.tab);
+      total -= 1;
+      if (total <= number) {
+        break;
+      }
+    }
+    log('number of tabs being discarded', arr.length - total);
   }
 };
 
@@ -245,7 +255,8 @@ chrome.storage.onChanged.addListener(prefs => {
   }
 });
 
-chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
+chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
+  const {method} = request;
   if (method === 'is-pinned') {
     resposne(tab.pinned);
   }
@@ -264,6 +275,12 @@ chrome.runtime.onMessage.addListener(({method}, {tab}, resposne) => {
   // navigation
   else if (method.startsWith('move-') || method === 'close') {
     navigate(method);
+  }
+  else if (method === 'report') {
+    chrome.browserAction.setTitle({
+      tabId: tab.id,
+      title: request.message
+    });
   }
 });
 // initial inject

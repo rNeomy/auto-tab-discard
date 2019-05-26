@@ -30,6 +30,10 @@ chrome.runtime.sendMessage({
 });
 
 var log = (...args) => prefs.log && console.log(...args);
+var report = message => chrome.runtime.sendMessage({
+  method: 'report',
+  message
+}, () => log(message));
 var form = false;
 
 var tools = {};
@@ -131,28 +135,28 @@ tools.all = () => Promise.all([
   tools.memory()
 ]).then(([audio, pinned, battery, online, form, whitelist, permission, urlBased]) => {
   if (audio) {
-    log('Tab discard is skipped', 'Audio is playing');
+    report('Tab discard is skipped: Audio is playing');
   }
   if (pinned) {
-    log('Tab discard is skipped', 'Tab is pinned');
+    report('Tab discard is skipped: Tab is pinned');
   }
   if (battery) {
-    log('Tab discard is skipped', 'Power is plugged-in');
+    report('Tab discard is skipped: Power is plugged-in');
   }
   if (online) {
-    log('Tab discard is skipped', 'No INTERNET connection detected');
+    report('Tab discard is skipped: No INTERNET connection detected');
   }
   if (form) {
-    log('Tab discard is skipped', 'Unsaved form is detected');
+    report('Tab discard is skipped: Unsaved form is detected');
   }
   if (whitelist) {
-    log('Tab discard is skipped', 'Hostname is in the list');
+    report('Tab discard is skipped: Hostname is in the list');
   }
   if (permission) {
-    log('Tab discard is skipped', 'Tab has granted notification.permission');
+    report('Tab discard is skipped: Tab has granted notification.permission');
   }
   if (urlBased) {
-    log('Tab discard is skipped', 'URL does not match with the list');
+    report('Tab discard is skipped: URL does not match with the list');
   }
   if (audio || pinned || battery || online || form || whitelist || permission || urlBased) {
     return true;
@@ -182,11 +186,11 @@ var timer = {
 
 timer.discard = async () => {
   if (allowed === false) {
-    return log('skipped', 'not allowed in this session');
+    return report('Tab discard is skipped: not allowed in this session');
   }
   const r = await tools.all();
   if (r) {
-    return log('skipped', 'one rule matched during double-check before discarding');
+    return log('Tab discard is skipped: one rule matched during double-check before discarding');
   }
   const memory = await tools.memory();
   if (memory) {
