@@ -71,7 +71,7 @@
     "page": "data/options/index.html",
     "chrome_style": true
   },
-  "homepage_url": "http://add0n.com/tab-discard.html",
+  "homepage_url": "https://add0n.com/tab-discard.html",
   "commands": {
     "discard-tab": {
       "description": "__MSG_cmd_discard_tab__"

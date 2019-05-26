@@ -5,6 +5,14 @@
   e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
 });
 
+// memory
+if (!window.performance || !window.performance.memory) {
+  document.getElementById('memory').style = `
+    pointer-events: none;
+    opacity: 0.4;
+  `;
+}
+
 const info = document.getElementById('info');
 
 const restore = () => chrome.storage.local.get({
@@ -26,7 +34,9 @@ const restore = () => chrome.storage.local.get({
   'click': 'click.popup',
   'faqs': true,
   'favicon': true,
-  'go-hidden': false
+  'go-hidden': false,
+  'memory-enabled': false,
+  'memory-value': 60
 }, prefs => {
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('favicon').checked = prefs.favicon;
@@ -45,6 +55,8 @@ const restore = () => chrome.storage.local.get({
   document.getElementById('log').checked = prefs.log;
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
+  document.getElementById('memory-enabled').checked = prefs['memory-enabled'];
+  document.getElementById('memory-value').value = prefs['memory-value'];
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
@@ -91,7 +103,9 @@ document.getElementById('save').addEventListener('click', () => {
       .split(/[,\n]/)
       .map(s => s.trim())
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
-      .filter((h, i, l) => h && l.indexOf(h) === i)
+      .filter((h, i, l) => h && l.indexOf(h) === i),
+    'memory-enabled': document.getElementById('memory-enabled').checked,
+    'memory-value': Math.max(15, Number(document.getElementById('memory-value').value))
   }, () => {
     info.textContent = 'Options saved';
     restore();

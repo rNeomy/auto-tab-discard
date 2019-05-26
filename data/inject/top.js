@@ -13,7 +13,9 @@ var prefs = {
   'log': false,
   'mode': 'time-based',
   'whitelist': [],
-  'whitelist-url': []
+  'whitelist-url': [],
+  'memory-enabled': false,
+  'memory-value': 60
 };
 
 var allowed = true; // if false, do not discard
@@ -106,6 +108,16 @@ tools.urlBased = () => {
     return Promise.resolve(false);
   }
 };
+tools.memory = () => {
+  if (prefs['memory-enabled'] && window.performance && window.performance.memory) {
+    const {totalJSHeapSize} = window.performance.memory;
+    return Promise.resolve(totalJSHeapSize > prefs['memory-value'] * 1024 * 1024);
+  }
+  else {
+    return Promise.resolve(false);
+  }
+};
+
 
 tools.all = () => Promise.all([
   tools.audio(),
@@ -115,7 +127,8 @@ tools.all = () => Promise.all([
   tools.form(),
   tools.whitelist(),
   tools.permission(),
-  tools.urlBased()
+  tools.urlBased(),
+  tools.memory()
 ]).then(([audio, pinned, battery, online, form, whitelist, permission, urlBased]) => {
   if (audio) {
     log('Tab discard is skipped', 'Audio is playing');
@@ -150,7 +163,7 @@ var timer = {
   id: null,
   time: Infinity,
   set: period => {
-    log('set a new timer');
+    log('set a new timer', prefs.period);
     window.clearTimeout(timer.id);
     timer.time = Date.now() + (period || prefs.period * 1000);
     timer.id = window.setTimeout(timer.discard, period || prefs.period * 1000);
@@ -173,12 +186,22 @@ timer.discard = async () => {
   }
   const r = await tools.all();
   if (r) {
-    return log('skipped', 'double-check before discarding');
+    return log('skipped', 'one rule matched during double-check before discarding');
   }
-  log('request tabs.check');
-  chrome.runtime.sendMessage({
-    method: 'tabs.check'
-  }, () => chrome.runtime.lastError);
+  const memory = await tools.memory();
+  if (memory) {
+    log('force tab discard due to the high memory usage');
+    chrome.runtime.sendMessage({
+      method: 'simulate',
+      cmd: 'discard-tab'
+    }, () => chrome.runtime.lastError);
+  }
+  else {
+    log('request tabs.check');
+    chrome.runtime.sendMessage({
+      method: 'tabs.check'
+    }, () => chrome.runtime.lastError);
+  }
 };
 
 var check = async period => {

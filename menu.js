@@ -225,7 +225,7 @@
       }
     }
   });
-  chrome.runtime.onMessage.addListener(async request => {
+  chrome.runtime.onMessage.addListener(async (request, sender) => {
     if (request.method === 'popup') {
       const tabs = await query({
         active: true,
@@ -237,6 +237,11 @@
           value: request.value
         }, tabs[0]);
       }
+    }
+    else if (request.method === 'simulate') {
+      onClicked({
+        menuItemId: request.cmd
+      }, sender.tab);
     }
   });
 
