@@ -7,7 +7,7 @@ var starters = []; // startup scripts
 var notify = e => chrome.notifications.create({
   title: chrome.runtime.getManifest().name,
   type: 'basic',
-  iconUrl: 'data/icons/128.png',
+  iconUrl: 'data/icons/48.png',
   message: e.message || e
 });
 
