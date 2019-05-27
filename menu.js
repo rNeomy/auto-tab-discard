@@ -19,10 +19,12 @@
       contexts.push('page');
     }
     const create = arr => {
-      arr.forEach(o => chrome.contextMenus.create(o));
+      chrome.contextMenus.removeAll(() => {
+        arr.forEach(o => chrome.contextMenus.create(o));
+      });
       arr.splice(1, 0, {
         id: 'discard-tree',
-        title: 'Discard this tab tree (forced)',
+        title: chrome.i18n.getMessage('menu_discard_tree'),
         contexts,
         documentUrlPatterns: ['*://*/*']
       });
@@ -104,7 +106,7 @@
 
   const onClicked = async (info, tab) => {
     if (tab && !tab.url) { // Tree Style Tab 3.0.12 and later don't deliver a real tab.
-      tab = await browser.tabs.get(tab.id);
+      tab = await new Promise(resolve => chrome.tabs.get(tab.id, resolve));
     }
     const {menuItemId} = info;
     if (menuItemId === 'whitelist-domain') {
@@ -130,8 +132,30 @@
       const tabs = await query({
         windowId: tab.windowId
       });
-      // if a single not-highlighted tab is called
-      const htabs = tab.highlighted ? tabs.filter(t => t.highlighted) : [tab];
+      const htabs = []; // these are tabs that will be discarded
+      // discard-tree for Tree Style Tab
+      if (menuItemId === 'discard-tree' && info.viewType === 'sidebar') {
+        htabs.push(tab);
+        await new Promise(resolve => chrome.runtime.sendMessage(TST, {
+          type: 'get-tree',
+          tab: tab.id
+        }, tab => {
+          const add = tab => {
+            htabs.push(...tab.children);
+            tab.children.filter(t => t.children).forEach(add);
+          };
+          add(tab);
+          resolve();
+        }));
+      }
+      // discard-tree for native
+      else if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called
+        htabs.push(...tabs.filter(t => t.highlighted));
+      }
+      else {
+        htabs.push(tab);
+      }
+
       if (htabs.filter(t => t.active).length) {
         // ids to be discarded
         const ids = htabs.map(t => t.id);
@@ -243,28 +267,13 @@
         menuItemId: request.cmd
       }, sender.tab);
     }
+    else if (request.method === 'build-context') {
+      onStartup();
+    }
   });
 
   chrome.runtime.onMessageExternal.addListener((request, sender) => {
-    if (sender.id === TST && request.type === 'fake-contextMenu-click' && request.info.menuItemId === 'discard-tree') {
-      // apply on all tabs in the tree
-      chrome.runtime.sendMessage(TST, {
-        type: 'get-tree',
-        tabs: [request.tab.id]
-      }, tbs => {
-        const tabs = [];
-        const list = tab => {
-          tabs.push(tab);
-          tab.children.forEach(list);
-        };
-        tbs.forEach(list);
-        tabs.filter(t => t.active === false).forEach(tab => onClicked(request.info, tab));
-        window.setTimeout(() => {
-          tabs.filter(t => t.active).forEach(tab => onClicked(request.info, tab));
-        }, 1000);
-      });
-    }
-    else if (sender.id === TST && request.type === 'fake-contextMenu-click') {
+    if (sender.id === TST && request.type === 'fake-contextMenu-click') {
       onClicked(request.info, request.tab);
     }
   });

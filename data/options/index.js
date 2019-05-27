@@ -105,7 +105,7 @@ document.getElementById('save').addEventListener('click', () => {
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
       .filter((h, i, l) => h && l.indexOf(h) === i),
     'memory-enabled': document.getElementById('memory-enabled').checked,
-    'memory-value': Math.max(15, Number(document.getElementById('memory-value').value))
+    'memory-value': Math.max(10, Number(document.getElementById('memory-value').value))
   }, () => {
     info.textContent = 'Options saved';
     restore();
@@ -128,10 +128,9 @@ const onChanged = prefs => {
     if ((tab && (tab.newValue !== tab.oldValue)) ||
       (page && (page.newValue !== page.oldValue)) ||
       (link && (link.newValue !== link.oldValue))) {
-      window.setTimeout(() => {
-        chrome.runtime.reload();
-        window.close();
-      }, 2000);
+      chrome.runtime.sendMessage({
+        method: 'build-context'
+      });
     }
   }
 };

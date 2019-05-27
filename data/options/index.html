@@ -70,8 +70,9 @@
           <td colspan="2"><label for="favicon" data-i18n="options_favicon"></label></td>
         </tr>
         <tr id="memory">
-          <td><input type="checkbox" id="memory-enabled"></td>
-          <td colspan="2"><label for="memory-enabled" data-i18n="options_memory"></label><sup>2</sup> <input type="number" id="memory-value" min="15"></td>
+          <td style="vertical-align: top"><input type="checkbox" id="memory-enabled"></td>
+          <td><label for="memory-enabled" data-i18n="options_memory"></label><sup>2</sup></td>
+          <td><input type="number" id="memory-value" min="10"></td>
         </tr>
       </tbody>
       <thead>
@@ -166,6 +167,7 @@
         </tr>
       </tbody>
     </table>
+    <div id="explore"></div>
     <p>Rate "<a id="rate" target="_blank" href="https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews">Auto Tab Discard</a>" extension</p>
     <p>
       <table width=100%>
@@ -189,5 +191,6 @@
     <br>
     2: <span data-i18n="options_footnote_2"></span>
     <script src="index.js"></script>
+    <script async src="matched.js"></script>
   </body>
 </html>
