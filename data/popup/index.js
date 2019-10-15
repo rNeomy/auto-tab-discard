@@ -5,18 +5,18 @@
   e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
 });
 
-var tab;
+let tab;
 
-var allowed = document.getElementById('allowed');
+const allowed = document.getElementById('allowed');
 allowed.addEventListener('change', () => chrome.runtime.sendMessage({
   method: 'popup',
   cmd: 'auto-discardable',
   value: allowed.checked === false
 }));
 
-var whitelist = document.querySelector('[data-cmd=whitelist-domain]');
+const whitelist = document.querySelector('[data-cmd=whitelist-domain]');
 
-var init = () => chrome.tabs.query({
+const init = () => chrome.tabs.query({
   active: true,
   currentWindow: true
 }, tabs => {

@@ -106,6 +106,7 @@
 
   const onClicked = async (info, tab) => {
     if (tab && !tab.url) { // Tree Style Tab 3.0.12 and later don't deliver a real tab.
+      // eslint-disable-next-line require-atomic-updates
       tab = await new Promise(resolve => chrome.tabs.get(tab.id, resolve));
     }
     const {menuItemId} = info;

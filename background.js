@@ -1,21 +1,21 @@
 'use strict';
 
-var log = (...args) => false && console.log(...args);
+const log = (...args) => false && console.log(...args);
 
-var starters = []; // startup scripts
+const starters = []; // startup scripts
 
-var notify = e => chrome.notifications.create({
+const notify = e => chrome.notifications.create({
   title: chrome.runtime.getManifest().name,
   type: 'basic',
   iconUrl: 'data/icons/48.png',
   message: e.message || e
 });
 
-var storage = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
+const storage = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
 storage.set = prefs => chrome.storage.local.set(prefs);
-var query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
+const query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
-var navigate = (method, discarded = false) => query({
+const navigate = (method, discarded = false) => query({
   currentWindow: true
 }).then(tbs => {
   const active = tbs.filter(tbs => tbs.active).shift();
@@ -47,7 +47,8 @@ const isFirefox = /Firefox/.test(navigator.userAgent);
 
 const DELAY = isFirefox ? 500 : 100;
 
-var restore = { // Firefox only
+// Firefox only
+const restore = {
   cache: {}
 };
 if (isFirefox) {
@@ -74,7 +75,7 @@ if (isFirefox) {
   chrome.tabs.onRemoved.addListener(tabId => delete restore.cache[tabId]);
 }
 
-var discard = tab => {
+const discard = tab => {
   if (tab.active) {
     return;
   }
@@ -156,7 +157,7 @@ chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
 });
 
 // number-based discarding
-var tabs = {
+const tabs = {
   id: null // timer id
 };
 tabs.check = msg => {
