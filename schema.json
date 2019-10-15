@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "properties": {
+    "period": {
+      "title": "discarding time in seconds",
+      "type": "number"
+    },
+    "number": {
+      "title": "number of tabs before triggering discard",
+      "type": "number"
+    },
+    "audio": {
+      "title": "audio = true => do not discard if audio is playing",
+      "type": "boolean"
+    },
+    "pinned": {
+      "title": "pinned = true => do not discard if tab is pinned",
+      "type": "boolean"
+    },
+    "form": {
+      "title": "form = true => do not discard if form data is changed",
+      "type": "boolean"
+    },
+    "battery": {
+      "title": "battery = true => only discard if power is disconnected",
+      "type": "boolean"
+    },
+    "online": {
+      "title": "online = true => do not discard if there is no INTERNET connection",
+      "type": "boolean"
+    },
+    "notification.permission": {
+      "title": "true => do not discard",
+      "type": "boolean"
+    },
+    "page.context": {
+      "title": "Display discarding items in the \"page\" context menu",
+      "type": "boolean"
+    },
+    "tab.context": {
+      "title": "Display discarding items in the \"tab\" context menu (if supported)",
+      "type": "boolean"
+    },
+    "link.context": {
+      "title": "Display \"Open Link in New Discarded Tab\" item in the \"link\" context menu",
+      "type": "boolean"
+    },
+    "log": {
+      "title": "Display logs (for debugging purpose only)",
+      "type": "boolean"
+    },
+    "mode": {
+      "title": "Discarding mode (time-based, url-based)",
+      "type": "string"
+    },
+    "click": {
+      "title": "Use \"click.popup\" to show browser action's popup menu",
+      "type": "boolean"
+    },
+    "faqs": {
+      "title": "Open FAQs page on updates",
+      "type": "boolean"
+    },
+    "favicon": {
+      "title": "Change favicon of discarded tabs (if possible)",
+      "type": "boolean"
+    },
+    "go-hidden": {
+      "title": "Discard a tab if it is hidden",
+      "type": "boolean"
+    },
+    "memory-enabled": {
+      "title": "Discard a background tab based on its memory usage (totalJSHeapSize)",
+      "type": "boolean"
+    },
+    "memory-value": {
+      "title": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)",
+      "type": "number"
+    },
+    "whitelist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "whitelist-url": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

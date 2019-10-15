@@ -15,7 +15,12 @@ if (!window.performance || !window.performance.memory) {
 
 const info = document.getElementById('info');
 
-const restore = () => chrome.storage.local.get({
+const storage = prefs => new Promise(resolve => {
+  chrome.storage.managed.get(prefs, ps => {
+    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
+  });
+});
+const restore = () => storage({
   'period': 10 * 60, // in seconds
   'number': 6, // number of tabs before triggering discard
   'audio': true, // audio = true => do not discard if audio is playing
@@ -37,7 +42,7 @@ const restore = () => chrome.storage.local.get({
   'go-hidden': false,
   'memory-enabled': false,
   'memory-value': 60
-}, prefs => {
+}).then(prefs => {
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];

@@ -10,8 +10,12 @@ const notify = e => chrome.notifications.create({
   iconUrl: 'data/icons/48.png',
   message: e.message || e
 });
+const storage = prefs => new Promise(resolve => {
+  chrome.storage.managed.get(prefs, ps => {
+    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
+  });
+});
 
-const storage = obj => new Promise(resolve => chrome.storage.local.get(obj, resolve));
 storage.set = prefs => chrome.storage.local.set(prefs);
 const query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
@@ -331,10 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const {name, version} = getManifest();
   const page = getManifest().homepage_url;
   onInstalled.addListener(({reason, previousVersion}) => {
-    chrome.storage.local.get({
+    storage({
       'faqs': true,
       'last-update': 0
-    }, prefs => {
+    }).then(prefs => {
       if (reason === 'install' || (prefs.faqs && reason === 'update')) {
         const doUpdate = (Date.now() - prefs['last-update']) / 1000 / 60 / 60 / 24 > 45;
         if (doUpdate && previousVersion !== version) {

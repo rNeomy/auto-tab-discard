@@ -1,8 +1,8 @@
 'use strict';
 
-var now = Date.now();
+let now = Date.now();
 
-var prefs = {
+const prefs = {
   'period': 10 * 60, // in seconds
   'audio': true, // audio = true => do not discard if audio is playing
   'pinned': false, // pinned = true => do not discard if tab is pinned
@@ -18,7 +18,7 @@ var prefs = {
   'memory-value': 60
 };
 
-var allowed = true; // if false, do not discard
+let allowed = true; // if false, do not discard
 
 chrome.runtime.sendMessage({
   method: 'is-autoDiscardable'
@@ -29,14 +29,14 @@ chrome.runtime.sendMessage({
   }
 });
 
-var log = (...args) => prefs.log && console.log(...args);
-var report = message => chrome.runtime.sendMessage({
+const log = (...args) => prefs.log && console.log(...args);
+const report = message => chrome.runtime.sendMessage({
   method: 'report',
   message
 }, () => log(message));
-var form = false;
+let form = false;
 
-var tools = {};
+const tools = {};
 // return true if tab is not supposed to be discarded
 tools.audio = () => {
   if (prefs.audio) {
@@ -163,7 +163,7 @@ tools.all = () => Promise.all([
   }
 });
 
-var timer = {
+const timer = {
   id: null,
   time: Infinity,
   set: period => {
@@ -208,7 +208,7 @@ timer.discard = async () => {
   }
 };
 
-var check = async period => {
+const check = async period => {
   if (document.hidden) {
     if (prefs.period) {
       const r = await tools.all();
@@ -243,7 +243,7 @@ chrome.runtime.onMessage.addListener(({method}, sender, response) => {
 });
 
 // messages
-var aID;
+let aID;
 window.addEventListener('message', e => {
   if (e.data && e.data.cmd === 'ntd-command') {
     e.preventDefault();
@@ -258,7 +258,12 @@ window.addEventListener('message', e => {
 });
 
 // prefs
-chrome.storage.local.get(prefs, ps => {
+const storage = prefs => new Promise(resolve => {
+  chrome.storage.managed.get(prefs, ps => {
+    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
+  });
+});
+storage(prefs).then(ps => {
   Object.assign(prefs, ps);
   // for already loaded tabs
   if (document.readyState === 'complete' || document.readyState === 'loaded') {
