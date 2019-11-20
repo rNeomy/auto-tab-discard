@@ -83,6 +83,9 @@
   "options_go_hidden": {
     "message": "Discard a tab if it is hidden"
   },
+  "options_use_cache": {
+    "message": "Use Cache: If enabled, the extension only checks once whether a tab is pinned or the browser is connected to a battery source"
+  },
   "options_faqs": {
     "message": "Open FAQs page on updates"
   },
@@ -91,6 +94,9 @@
   },
   "options_footnote_2": {
     "message": "Check the totalJSHeapSize value of top document. If this memory exceeds the user-defined value (minimum acceptable value is 10MB), the tab will be discarded. Note that this option is only available if your browser supports 'window.performance.memory'"
+  },
+  "options_footnote_3": {
+    "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 second. The recommended value is 30 seconds."
   },
   "options_reset": {
     "message": "Factory Reset"
@@ -106,6 +112,12 @@
   },
   "options_support": {
     "message": "Support Development"
+  },
+  "options_check_delay": {
+    "message": "Minimum delay between sequential discarding checks (in seconds)"
+  },
+  "options_favicon_delay": {
+    "message": "Delay for painting the discarded favicon (in milliseconds)"
   },
   "popup_discard_tab": {
     "message": "Discard Tab"

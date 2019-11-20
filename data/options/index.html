@@ -28,6 +28,12 @@
       width: 100%;
       box-sizing: border-box;
     }
+    .admin {
+      background-color: #ffffed;
+      border: solid 1px #e8ec3a;
+      padding: 10px;
+      margin: 15px 0;
+    }
   </style>
 
   <body>
@@ -73,6 +79,16 @@
           <td style="vertical-align: top"><input type="checkbox" id="memory-enabled"></td>
           <td><label for="memory-enabled" data-i18n="options_memory"></label><sup>2</sup></td>
           <td><input type="number" id="memory-value" min="10"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><label for="check-delay" data-i18n="options_check_delay"></label><sup>3</sup></td>
+          <td><input type="number" id="check-delay" min="1"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><label for="favicon-delay" data-i18n="options_favicon_delay"></label></td>
+          <td><input type="number" id="favicon-delay" min="100"></td>
         </tr>
       </tbody>
       <thead>
@@ -162,6 +178,10 @@
           <td colspan="2"><label for="go-hidden" data-i18n="options_go_hidden"></label></td>
         </tr>
         <tr>
+          <td><input type="checkbox" id="use-cache"></td>
+          <td colspan="2"><label for="use-cache" data-i18n="options_use_cache"></label></td>
+        </tr>
+        <tr>
           <td><input type="checkbox" id="faqs"></td>
           <td colspan="2"><label for="faqs" data-i18n="options_faqs"></label></td>
         </tr>
@@ -170,6 +190,7 @@
     <div id="explore"></div>
     <p>Rate "<a id="rate" target="_blank" href="https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews">Auto Tab Discard</a>" extension</p>
     <p>
+      <div class="admin">This extension supports managed storage. All the preferences can be pre-configured by <a href="https://add0n.com/tab-discard.html#faq10">the domain administrator</a></div>
       <table width=100%>
         <colgroup>
           <col width="1"/>
@@ -190,6 +211,8 @@
     1: <span data-i18n="options_footnote_1"></span>
     <br>
     2: <span data-i18n="options_footnote_2"></span>
+    <br>
+    3: <span data-i18n="options_footnote_3"></span>
     <script src="index.js"></script>
     <script async src="matched.js"></script>
   </body>

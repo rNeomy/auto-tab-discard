@@ -61,6 +61,10 @@
       "title": "Open FAQs page on updates",
       "type": "boolean"
     },
+    "use-cache": {
+      "title": "If enabled, the extension only checks once whether a tab is pinned or the browser is connected to a battery source",
+      "type": "boolean"
+    },
     "favicon": {
       "title": "Change favicon of discarded tabs (if possible)",
       "type": "boolean"
@@ -88,6 +92,14 @@
       "items": {
         "type": "string"
       }
+    },
+    "favicon-delay": {
+      "title": "Delay for painting the discarded favicon (in milliseconds)",
+      "type": "number"
+    },
+    "check-delay": {
+      "title": "Minimum delay between sequential discarding checks (in seconds)",
+      "type": "number"
     }
   }
 }

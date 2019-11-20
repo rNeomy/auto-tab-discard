@@ -1,5 +1,7 @@
 'use strict';
 
+const isFirefox = /Firefox/.test(navigator.userAgent);
+
 // localization
 [...document.querySelectorAll('[data-i18n]')].forEach(e => {
   e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
@@ -38,16 +40,22 @@ const restore = () => storage({
   'mode': 'time-based',
   'click': 'click.popup',
   'faqs': true,
+  'use-cache': true,
   'favicon': true,
   'go-hidden': false,
   'memory-enabled': false,
-  'memory-value': 60
+  'memory-value': 60,
+  'favicon-delay': isFirefox ? 500 : 100,
+  'check-delay': 30 * 1000
 }).then(prefs => {
   document.getElementById('faqs').checked = prefs.faqs;
+  document.getElementById('use-cache').checked = prefs['use-cache'];
   document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
   document.getElementById('period').value = prefs.period;
   document.getElementById('number').value = prefs.number;
+  document.getElementById('favicon-delay').value = prefs['favicon-delay'];
+  document.getElementById('check-delay').value = parseInt(prefs['check-delay'] / 1000);
   document.getElementById('audio').checked = prefs.audio;
   document.getElementById('pinned').checked = prefs.pinned;
   document.getElementById('form').checked = prefs.form;
@@ -97,8 +105,11 @@ document.getElementById('save').addEventListener('click', () => {
     'link.context': document.getElementById('link.context').checked,
     'log': document.getElementById('log').checked,
     'faqs': document.getElementById('faqs').checked,
+    'use-cache': document.getElementById('use-cache').checked,
     'favicon': document.getElementById('favicon').checked,
     'go-hidden': document.getElementById('go-hidden').checked,
+    'favicon-delay': Math.max(100, Number(document.getElementById('favicon-delay').value)),
+    'check-delay': Math.max(1, Number(document.getElementById('check-delay').value)) * 1000,
     'whitelist': document.getElementById('whitelist').value
       .split(/[,\n]/)
       .map(s => s.trim())

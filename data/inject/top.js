@@ -15,7 +15,8 @@ const prefs = {
   'whitelist': [],
   'whitelist-url': [],
   'memory-enabled': false,
-  'memory-value': 60
+  'memory-value': 60,
+  'use-cache': true
 };
 
 let allowed = true; // if false, do not discard
@@ -55,10 +56,14 @@ tools.pinned = () => {
   if (prefs.pinned === false) {
     return Promise.resolve(false);
   }
+  if (prefs['use-cache'] && 'cached' in tools.pinned) {
+    return Promise.resolve(tools.pinned.cached);
+  }
   return new Promise(resolve => chrome.runtime.sendMessage({
     method: 'is-pinned'
   }, b => {
     chrome.runtime.lastError;
+    tools.pinned.cached = b;
     resolve(b);
   }));
 };
@@ -66,8 +71,14 @@ tools.battery = () => {
   if (prefs.battery === false) {
     return Promise.resolve(false);
   }
+  if (prefs['use-cache'] && 'cached' in tools.battery) {
+    return Promise.resolve(tools.battery.cached);
+  }
   return new Promise(resolve => navigator.getBattery()
-    .then(b => resolve(b.dischargingTime === Infinity)));
+    .then(b => {
+      tools.battery.cache = b.dischargingTime === Infinity;
+      resolve(tools.battery.cache);
+    }));
 };
 tools.online = () => {
   if (prefs.online === false) {
@@ -89,14 +100,15 @@ tools.whitelist = (list = prefs.whitelist) => {
   if (hl.indexOf(hostname) !== -1) {
     return Promise.resolve(true);
   }
-  return Promise.resolve(rl.some(s => {
+  const b = rl.some(s => {
     try {
       return (new RegExp(s)).test(href);
     }
     catch (e) {
       log('regex error', e);
     }
-  }));
+  });
+  return Promise.resolve(b);
 };
 tools.permission = () => {
   if (prefs['notification.permission'] === false) {
@@ -121,7 +133,6 @@ tools.memory = () => {
     return Promise.resolve(false);
   }
 };
-
 
 tools.all = () => Promise.all([
   tools.audio(),

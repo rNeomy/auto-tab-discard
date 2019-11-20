@@ -97,11 +97,5 @@
     "close": {
       "description": "__MSG_cmd_close__"
     }
-  },
-  "applications": {
-    "gecko": {
-      "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
-      "strict_min_version": "59.0"
-    }
   }
 }

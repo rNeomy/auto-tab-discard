@@ -1,6 +1,48 @@
+/* globals hidden */
 'use strict';
 
-const log = (...args) => false && console.log(...args);
+const isFirefox = /Firefox/.test(navigator.userAgent);
+
+// Firefox only
+const restore = {
+  cache: {}
+};
+
+const storage = prefs => new Promise(resolve => {
+  chrome.storage.managed.get(prefs, ps => {
+    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
+  });
+});
+
+const prefs = {
+  'favicon': true,
+  'number': 6,
+  'period': 10 * 60, // in seconds
+  'click': 'click.popup',
+  'go-hidden': false,
+  'page.context': false,
+  'tab.context': true,
+  'link.context': true,
+  'whitelist': [],
+  'favicon-delay': isFirefox ? 500 : 100,
+  'check-delay': 30 * 1000
+};
+chrome.storage.onChanged.addListener(ps => {
+  Object.keys(ps).forEach(k => {
+    prefs[k] = ps[k].newValue;
+  });
+  if (ps.period) {
+    tabs[prefs.period ? 'install' : 'uninstall']();
+  }
+  if (isFirefox && ps['go-hidden']) {
+    hidden.install();
+  }
+  if (ps.click) {
+    popup();
+  }
+});
+
+const log = (...args) => true && console.log(...args);
 
 const starters = []; // startup scripts
 
@@ -10,13 +52,7 @@ const notify = e => chrome.notifications.create({
   iconUrl: 'data/icons/48.png',
   message: e.message || e
 });
-const storage = prefs => new Promise(resolve => {
-  chrome.storage.managed.get(prefs, ps => {
-    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
-  });
-});
 
-storage.set = prefs => chrome.storage.local.set(prefs);
 const query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
 const navigate = (method, discarded = false) => query({
@@ -46,38 +82,6 @@ const navigate = (method, discarded = false) => query({
     return navigate(method, true);
   }
 });
-
-const isFirefox = /Firefox/.test(navigator.userAgent);
-
-const DELAY = isFirefox ? 500 : 100;
-
-// Firefox only
-const restore = {
-  cache: {}
-};
-if (isFirefox) {
-  chrome.tabs.onActivated.addListener(({tabId}) => {
-    const tab = restore.cache[tabId];
-    if (tab) {
-      chrome.tabs.executeScript(tabId, {
-        code: ''
-      }, () => {
-        const lastError = chrome.runtime.lastError;
-        if (lastError && lastError.message === 'No matching message handler') {
-          chrome.tabs.update(tabId, {
-            url: tab.url
-          });
-          log('reloading');
-        }
-      });
-    }
-  });
-  // https://github.com/rNeomy/auto-tab-discard/issues/24#issuecomment-391316498
-  query({
-    discarded: true
-  }).then((tbs = []) => tbs.forEach(t => restore.cache[t.id] = t));
-  chrome.tabs.onRemoved.addListener(tabId => delete restore.cache[tabId]);
-}
 
 const discard = tab => {
   if (tab.active) {
@@ -135,7 +139,7 @@ const discard = tab => {
                   }));
                 }
               `
-            }, () => window.setTimeout(next, DELAY) && chrome.runtime.lastError);
+            }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
           }
           else {
             next();
@@ -167,11 +171,11 @@ const tabs = {
 tabs.check = msg => {
   log(msg);
   window.clearTimeout(tabs.id);
-  tabs.id = window.setTimeout(tabs._check, DELAY);
+  tabs.id = window.setTimeout(tabs._check, prefs['check-delay']);
 };
 
 tabs._check = async () => {
-  log('tabs._check');
+  log('tabs._check is called');
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
   }, a => {
@@ -183,19 +187,19 @@ tabs._check = async () => {
     url: '*://*/*',
     discarded: false
   });
-  const {number, period} = await storage({
-    number: 6,
-    period: 10 * 60 // in seconds
-  });
+  const {number, period} = prefs;
   const now = Date.now();
-  const arr = (await Promise.all(tbs.map(echo))).filter((a, i) => {
+  const arr = [];
+  for (const tab of tbs) {
+    const a = await echo(tab);
     if (a) {
-      a.tabId = tbs[i].id;
-      a.tab = tbs[i];
+      a.tabId = tab.id;
+      a.tab = tab;
     }
-    return a;
-  });
+    arr.push(a);
+  }
   if (arr.length > number) {
+    log('arr', arr);
     const possibleDiscardables = arr
       .sort((a, b) => a.now - b.now)
       .filter(a => {
@@ -250,15 +254,7 @@ tabs.uninstall = () => {
   chrome.idle.onStateChanged.removeListener(tabs.callbacks.onStateChanged);
 };
 
-starters.push(() => storage({
-  period: 10 * 60 // in seconds
-}).then(({period}) => period && tabs.install()));
-
-chrome.storage.onChanged.addListener(prefs => {
-  if (prefs.period) {
-    tabs[prefs.period.newValue ? 'install' : 'uninstall']();
-  }
-});
+starters.push(() => prefs.period && tabs.install());
 
 chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
   const {method} = request;
@@ -305,23 +301,45 @@ starters.push(() => chrome.app && query({
   }
 }));
 // left-click action
-{
-  const callback = async () => {
-    const {click} = await storage({
-      click: 'click.popup'
-    });
-    chrome.browserAction.setPopup({
-      popup: click === 'click.popup' ? 'data/popup/index.html' : ''
-    });
-  };
-  starters.push(callback);
-  chrome.storage.onChanged.addListener(prefs => prefs.click && callback());
-}
+const popup = async () => {
+  chrome.browserAction.setPopup({
+    popup: prefs.click === 'click.popup' ? 'data/popup/index.html' : ''
+  });
+};
+starters.push(popup);
 // start-up
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // sync storage
+  storage(prefs).then(ps => Object.assign(prefs, ps));
+  // run startup
   const onStartup = () => starters.forEach(c => c());
   // Firefox does not call "onStartup" after enabling the extension
   if (isFirefox) {
+    // restore crashed tabs
+    chrome.tabs.onActivated.addListener(({tabId}) => {
+      const tab = restore.cache[tabId];
+      if (tab) {
+        chrome.tabs.executeScript(tabId, {
+          code: ''
+        }, () => {
+          const lastError = chrome.runtime.lastError;
+          if (lastError && lastError.message === 'No matching message handler') {
+            chrome.tabs.update(tabId, {
+              url: tab.url
+            });
+            log('reloading');
+          }
+        });
+      }
+    });
+    // https://github.com/rNeomy/auto-tab-discard/issues/24#issuecomment-391316498
+    query({
+      discarded: true
+    }).then((tbs = []) => tbs.forEach(t => restore.cache[t.id] = t));
+    chrome.tabs.onRemoved.addListener(tabId => delete restore.cache[tabId]);
+    // deal with hidden tabs
+    hidden.install();
+    // start-up
     onStartup();
   }
   else {
@@ -329,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.runtime.onStartup.addListener(onStartup);
   }
 });
-
+// FAQs and Feedback
 {
   const {onInstalled, setUninstallURL, getManifest} = chrome.runtime;
   const {name, version} = getManifest();

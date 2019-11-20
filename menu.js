@@ -1,4 +1,4 @@
-/* globals discard, query, notify, navigate, starters, storage */
+/* globals discard, query, notify, navigate, starters, prefs */
 'use strict';
 
 // Context Menu
@@ -7,11 +7,6 @@
 
   const onStartup = async () => {
     const contexts = ['browser_action'];
-    const prefs = await storage({
-      'page.context': false,
-      'tab.context': true,
-      'link.context': true
-    });
     if (chrome.contextMenus.ContextType.TAB && prefs['tab.context']) {
       contexts.push('tab');
     }
@@ -113,13 +108,11 @@
     if (menuItemId === 'whitelist-domain') {
       const {hostname, protocol = ''} = new URL(tab.url);
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        let {whitelist} = await storage({
-          whitelist: []
-        });
+        let {whitelist} = prefs;
 
         whitelist.push(hostname);
         whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
-        storage.set({
+        chrome.storage.local.set({
           whitelist
         });
         notify(`"${hostname}" ${chrome.i18n.getMessage('menu_msg1')}`);
