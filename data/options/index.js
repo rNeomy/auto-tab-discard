@@ -40,7 +40,7 @@ const restore = () => storage({
   'mode': 'time-based',
   'click': 'click.popup',
   'faqs': true,
-  'use-cache': true,
+  'use-cache': false,
   'favicon': true,
   'go-hidden': false,
   'memory-enabled': false,

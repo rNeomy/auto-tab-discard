@@ -16,7 +16,7 @@ const prefs = {
   'whitelist-url': [],
   'memory-enabled': false,
   'memory-value': 60,
-  'use-cache': true
+  'use-cache': false
 };
 
 let allowed = true; // if false, do not discard
@@ -68,7 +68,7 @@ tools.pinned = () => {
   }));
 };
 tools.battery = () => {
-  if (prefs.battery === false) {
+  if (prefs.battery === false || navigator.getBattery === undefined) {
     return Promise.resolve(false);
   }
   if (prefs['use-cache'] && 'cached' in tools.battery) {
@@ -76,7 +76,7 @@ tools.battery = () => {
   }
   return new Promise(resolve => navigator.getBattery()
     .then(b => {
-      tools.battery.cache = b.dischargingTime === Infinity;
+      tools.battery.cache = b.charging === true;
       resolve(tools.battery.cache);
     }));
 };
