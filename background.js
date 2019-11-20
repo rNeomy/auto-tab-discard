@@ -26,7 +26,8 @@ const prefs = {
   'whitelist': [],
   'favicon-delay': isFirefox ? 500 : 100,
   'check-delay': 30 * 1000,
-  'log': false
+  'log': false,
+  'simultaneous-jobs': 10
 };
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => {
@@ -88,6 +89,12 @@ const discard = tab => {
   if (tab.active) {
     return;
   }
+  if (discard.count > prefs['simultaneous-jobs']) {
+    log('discarding queue for', tab);
+    return discard.tabs.push(tab);
+  }
+
+  discard.count += 1;
   const next = () => {
     if (isFirefox) {
       chrome.tabs.discard(tab.id);
@@ -96,14 +103,21 @@ const discard = tab => {
     else {
       chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
     }
+    discard.count -= 1;
+    if (discard.tabs.length) {
+      const tab = discard.tabs.shift();
+      discard(tab);
+    }
   };
   // favicon
   if (prefs.favicon) {
+    const src = tab.favIconUrl || '/data/page.png';
+
     Object.assign(new Image(), {
       crossOrigin: 'anonymous',
-      src: tab.favIconUrl || '/data/page.png',
+      src,
       onerror: next,
-      onload: function() {
+      onload() {
         const img = this;
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
@@ -119,8 +133,6 @@ const discard = tab => {
           ctx.fillStyle = '#a1a0a1';
           ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
           ctx.fill();
-          const href = canvas.toDataURL('image/png');
-
           chrome.tabs.executeScript(tab.id, {
             runAt: 'document_start',
             allFrames: true,
@@ -133,7 +145,7 @@ const discard = tab => {
                 document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
                   rel: 'icon',
                   type: 'image/png',
-                  href: '${href}'
+                  href: '${canvas.toDataURL('image/png')}'
                 }));
               }
             `
@@ -149,6 +161,9 @@ const discard = tab => {
     next();
   }
 };
+discard.tabs = [];
+discard.count = 0;
+
 chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
   if (request.method === 'discard') {
     query(request.query).then((tbs = []) => {
@@ -307,11 +322,11 @@ const popup = async () => {
 };
 starters.push(popup);
 // start-up
-document.addEventListener('DOMContentLoaded', async () => {
-  // sync storage
-  storage(prefs).then(ps => Object.assign(prefs, ps));
-  // run startup
-  const onStartup = () => starters.forEach(c => c());
+(() => {
+  const onStartup = async () => {
+    await storage(prefs).then(ps => Object.assign(prefs, ps));
+    starters.forEach(c => c());
+  };
   // Firefox does not call "onStartup" after enabling the extension
   if (isFirefox) {
     // restore crashed tabs
@@ -345,7 +360,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     chrome.runtime.onInstalled.addListener(onStartup);
     chrome.runtime.onStartup.addListener(onStartup);
   }
-});
+})();
 // FAQs and Feedback
 {
   const {onInstalled, setUninstallURL, getManifest} = chrome.runtime;

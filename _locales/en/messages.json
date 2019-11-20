@@ -86,6 +86,9 @@
   "options_use_cache": {
     "message": "Use Cache: If enabled, the extension only checks once whether a tab is pinned or the browser is connected to a battery source"
   },
+  "options_simultaneous_jobs": {
+    "message": "Number of allowed simultaneous discarding jobs"
+  },
   "options_faqs": {
     "message": "Open FAQs page on updates"
   },

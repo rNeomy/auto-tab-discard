@@ -212,14 +212,19 @@
         info.currentWindow = false;
       }
       const tabs = await query(info);
-      tabs.forEach(tab => chrome.tabs.sendMessage(tab.id, {
+      const post = tab => new Promise(resolve => chrome.tabs.sendMessage(tab.id, {
         method: 'introduce'
       }, a => {
         chrome.runtime.lastError;
+        resolve(a);
+      }));
+
+      for (const tab of tabs) {
+        const a = await post(tab);
         if (a && a.exception !== true && a.allowed) {
           discard(tab);
         }
-      }));
+      }
     }
   };
   chrome.contextMenus.onClicked.addListener(onClicked);

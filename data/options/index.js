@@ -46,7 +46,8 @@ const restore = () => storage({
   'memory-enabled': false,
   'memory-value': 60,
   'favicon-delay': isFirefox ? 500 : 100,
-  'check-delay': 30 * 1000
+  'check-delay': 30 * 1000,
+  'simultaneous-jobs': 10
 }).then(prefs => {
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('use-cache').checked = prefs['use-cache'];
@@ -54,6 +55,7 @@ const restore = () => storage({
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
   document.getElementById('period').value = prefs.period;
   document.getElementById('number').value = prefs.number;
+  document.getElementById('simultaneous-jobs').value = prefs['simultaneous-jobs'];
   document.getElementById('favicon-delay').value = prefs['favicon-delay'];
   document.getElementById('check-delay').value = parseInt(prefs['check-delay'] / 1000);
   document.getElementById('audio').checked = prefs.audio;
@@ -108,6 +110,7 @@ document.getElementById('save').addEventListener('click', () => {
     'use-cache': document.getElementById('use-cache').checked,
     'favicon': document.getElementById('favicon').checked,
     'go-hidden': document.getElementById('go-hidden').checked,
+    'simultaneous-jobs': Math.max(1, Number(document.getElementById('simultaneous-jobs').value)),
     'favicon-delay': Math.max(100, Number(document.getElementById('favicon-delay').value)),
     'check-delay': Math.max(1, Number(document.getElementById('check-delay').value)) * 1000,
     'whitelist': document.getElementById('whitelist').value

@@ -85,6 +85,10 @@
       "title": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)",
       "type": "number"
     },
+    "simultaneous-jobs": {
+      "title": "Number of allowed simultaneous discarding jobs",
+      "type": "number"
+    },
     "whitelist": {
       "type": "array",
       "items": {
