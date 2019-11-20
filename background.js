@@ -25,7 +25,8 @@ const prefs = {
   'link.context': true,
   'whitelist': [],
   'favicon-delay': isFirefox ? 500 : 100,
-  'check-delay': 30 * 1000
+  'check-delay': 30 * 1000,
+  'log': false
 };
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => {
@@ -42,7 +43,7 @@ chrome.storage.onChanged.addListener(ps => {
   }
 });
 
-const log = (...args) => true && console.log(...args);
+const log = (...args) => prefs.log && console.log(...args);
 
 const starters = []; // startup scripts
 
@@ -97,60 +98,56 @@ const discard = tab => {
     }
   };
   // favicon
-  storage({
-    'favicon': true
-  }).then(prefs => {
-    if (prefs.favicon) {
-      Object.assign(new Image(), {
-        crossOrigin: 'anonymous',
-        src: tab.favIconUrl || '/data/page.png',
-        onerror: next,
-        onload: function() {
-          const img = this;
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          if (ctx) {
-            canvas.width = img.width;
-            canvas.height = img.height;
+  if (prefs.favicon) {
+    Object.assign(new Image(), {
+      crossOrigin: 'anonymous',
+      src: tab.favIconUrl || '/data/page.png',
+      onerror: next,
+      onload: function() {
+        const img = this;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          canvas.width = img.width;
+          canvas.height = img.height;
 
-            ctx.globalAlpha = 0.4;
-            ctx.drawImage(img, 0, 0);
+          ctx.globalAlpha = 0.4;
+          ctx.drawImage(img, 0, 0);
 
-            ctx.globalAlpha = 1;
-            ctx.beginPath();
-            ctx.fillStyle = '#a1a0a1';
-            ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-            ctx.fill();
-            const href = canvas.toDataURL('image/png');
+          ctx.globalAlpha = 1;
+          ctx.beginPath();
+          ctx.fillStyle = '#a1a0a1';
+          ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
+          ctx.fill();
+          const href = canvas.toDataURL('image/png');
 
-            chrome.tabs.executeScript(tab.id, {
-              runAt: 'document_start',
-              allFrames: true,
-              matchAboutBlank: true,
-              code: `
-                window.stop();
-                if (window === window.top) {
-                  [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+          chrome.tabs.executeScript(tab.id, {
+            runAt: 'document_start',
+            allFrames: true,
+            matchAboutBlank: true,
+            code: `
+              window.stop();
+              if (window === window.top) {
+                [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
 
-                  document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                    rel: 'icon',
-                    type: 'image/png',
-                    href: '${href}'
-                  }));
-                }
-              `
-            }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
-          }
-          else {
-            next();
-          }
+                document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                  rel: 'icon',
+                  type: 'image/png',
+                  href: '${href}'
+                }));
+              }
+            `
+          }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
         }
-      });
-    }
-    else {
-      next();
-    }
-  });
+        else {
+          next();
+        }
+      }
+    });
+  }
+  else {
+    next();
+  }
 };
 chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
   if (request.method === 'discard') {
@@ -171,7 +168,9 @@ const tabs = {
 tabs.check = msg => {
   log(msg);
   window.clearTimeout(tabs.id);
-  tabs.id = window.setTimeout(tabs._check, prefs['check-delay']);
+  if (prefs.period) {
+    tabs.id = window.setTimeout(tabs._check, prefs['check-delay']);
+  }
 };
 
 tabs._check = async () => {

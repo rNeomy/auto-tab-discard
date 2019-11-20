@@ -65,6 +65,10 @@
       "title": "If enabled, the extension only checks once whether a tab is pinned or the browser is connected to a battery source",
       "type": "boolean"
     },
+    "badge": {
+      "title": "",
+      "type": "boolean"
+    },
     "favicon": {
       "title": "Change favicon of discarded tabs (if possible)",
       "type": "boolean"
