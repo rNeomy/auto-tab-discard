@@ -48,7 +48,7 @@ const log = (...args) => prefs.log && console.log(...args);
 
 const starters = []; // startup scripts
 
-const notify = e => chrome.notifications.create({
+const notify = e => chrome.notifications.create({// eslint-disable-line no-unused-vars
   title: chrome.runtime.getManifest().name,
   type: 'basic',
   iconUrl: 'data/icons/48.png',
@@ -85,13 +85,14 @@ const navigate = (method, discarded = false) => query({
   }
 });
 
-const discard = tab => {
+const discard = tab => new Promise(resolve => {
   if (tab.active) {
-    return;
+    return resolve();
   }
   if (discard.count > prefs['simultaneous-jobs']) {
     log('discarding queue for', tab);
-    return discard.tabs.push(tab);
+    discard.tabs.push(tab);
+    return resolve();
   }
 
   discard.count += 1;
@@ -108,6 +109,7 @@ const discard = tab => {
       const tab = discard.tabs.shift();
       discard(tab);
     }
+    resolve();
   };
   // favicon
   if (prefs.favicon) {
@@ -160,7 +162,7 @@ const discard = tab => {
   else {
     next();
   }
-};
+});
 discard.tabs = [];
 discard.count = 0;
 
