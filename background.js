@@ -184,9 +184,15 @@ const tabs = {
 };
 tabs.check = msg => {
   log(msg);
-  window.clearTimeout(tabs.id);
+  if (tabs.check.busy) {
+    return log('tabs.check is ignored');
+  }
   if (prefs.period) {
-    tabs.id = window.setTimeout(tabs._check, prefs['check-delay']);
+    tabs.check.busy = true;
+    window.setTimeout(() => {
+      tabs._check();
+      tabs.check.busy = false;
+    }, prefs['check-delay']);
   }
 };
 
@@ -372,6 +378,7 @@ starters.push(popup);
     chrome.runtime.onStartup.addListener(onStartup);
   }
 })();
+
 // FAQs and Feedback
 {
   const {onInstalled, setUninstallURL, getManifest} = chrome.runtime;
