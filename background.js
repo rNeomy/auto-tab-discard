@@ -205,7 +205,6 @@ tabs._check = async () => {
   log('tabs._check is called');
   if (prefs.idle) {
     const state = await new Promise(resolve => chrome.idle.queryState(prefs['idle-timeout'], resolve));
-    console.log(state);
     if (state !== chrome.idle.IdleState.IDLE) {
       return log('tabs._check is skipped', 'idle state is active');
     }
