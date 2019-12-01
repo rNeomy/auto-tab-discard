@@ -143,8 +143,7 @@ tools.all = () => Promise.all([
   tools.form(),
   tools.whitelist(),
   tools.permission(),
-  tools.urlBased(),
-  tools.memory()
+  tools.urlBased()
 ]).then(([audio, pinned, battery, online, form, whitelist, permission, urlBased]) => {
   if (audio) {
     report('Tab discard is skipped: Audio is playing');

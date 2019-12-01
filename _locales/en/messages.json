@@ -50,6 +50,12 @@
   "options_notification_permission": {
     "message": "Do not discard a tab if it can display desktop notifications"
   },
+  "options_idle": {
+    "message": "Do not discard tabs if computer is not in the 'idle' state"
+  },
+  "options_idle_timeout": {
+    "message": "Inactivity interval to determine if the computer is in idle state or not (in minutes)"
+  },
   "options_exceptions": {
     "message": "Exceptions"
   },

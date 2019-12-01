@@ -54,11 +54,15 @@ const restore = () => storage({
   'memory-value': 60,
   'favicon-delay': isFirefox ? 500 : 100,
   'check-delay': 30 * 1000,
-  'simultaneous-jobs': 10
+  'simultaneous-jobs': 10,
+  'idle': false,
+  'idle-timeout': 5 * 60
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
   }
+  document.getElementById('idle').checked = prefs.idle;
+  document.getElementById('idle-timeout').value = parseInt(prefs['idle-timeout'] / 60);
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('use-cache').checked = prefs['use-cache'];
   document.getElementById('favicon').checked = prefs.favicon;
@@ -102,6 +106,8 @@ document.getElementById('save').addEventListener('click', () => {
   const click = document.querySelector('[name=left-click]:checked').id;
   localStorage.setItem('click', click.replace('click.', ''));
   chrome.storage.local.set({
+    'idle': document.getElementById('idle').checked,
+    'idle-timeout': Math.max(1, Number(document.getElementById('idle-timeout').value)) * 60,
     period,
     number,
     'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',

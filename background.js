@@ -15,6 +15,7 @@ const storage = prefs => new Promise(resolve => {
 });
 
 const prefs = {
+  'idle': false,
   'favicon': true,
   'number': 6,
   'period': 10 * 60, // in seconds
@@ -27,7 +28,8 @@ const prefs = {
   'favicon-delay': isFirefox ? 500 : 100,
   'check-delay': 30 * 1000,
   'log': false,
-  'simultaneous-jobs': 10
+  'simultaneous-jobs': 10,
+  'idle-timeout': 5 * 60 // in seconds
 };
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => {
@@ -41,6 +43,9 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if (ps.click) {
     popup();
+  }
+  if (ps['idle-timeout']) {
+    chrome.idle.setDetectionInterval(prefs['idle-timeout']);
   }
 });
 
@@ -198,6 +203,14 @@ tabs.check = msg => {
 
 tabs._check = async () => {
   log('tabs._check is called');
+  if (prefs.idle) {
+    const state = await new Promise(resolve => chrome.idle.queryState(prefs['idle-timeout'], resolve));
+    console.log(state);
+    if (state !== chrome.idle.IdleState.IDLE) {
+      return log('tabs._check is skipped', 'idle state is active');
+    }
+  }
+
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
   }, a => {
@@ -251,7 +264,7 @@ tabs._check = async () => {
 
 tabs.callbacks = {
   onCreated: () => tabs.check('chrome.tabs.onCreated'),
-  onUpdated: (id, info, tab) => {
+  onUpdated(id, info, tab) {
     if (info.status === 'complete' && tab.active === false) {
       tabs.check('chrome.tabs.onUpdated');
     }
@@ -262,10 +275,8 @@ tabs.callbacks = {
       });
     }
   },
-  onStateChanged: async state => {
-    if (state === 'active') {
-      tabs.check('chrome.idle.onStateChanged');
-    }
+  onStateChanged() {
+    tabs.check('chrome.idle.onStateChanged');
   }
 };
 
@@ -315,6 +326,9 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     });
   }
 });
+// idle timeout
+starters.push(() => chrome.idle.setDetectionInterval(prefs['idle-timeout']));
+
 // initial inject
 starters.push(() => chrome.app && query({
   url: '*://*/*',
