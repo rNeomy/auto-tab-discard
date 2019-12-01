@@ -219,8 +219,14 @@ tabs._check = async () => {
     const possibleDiscardables = arr
       .sort((a, b) => a.now - b.now)
       .filter(a => {
-        log('discardable', a, a.exception !== true, a.allowed, a.ready, !a.tab.active, (now - a.now > period * 1000));
-        return a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000);
+        // https://github.com/rNeomy/auto-tab-discard/issues/84#issuecomment-559011394
+        if (a) {
+          log('discardable', a, a.exception !== true, a.allowed, a.ready, !a.tab.active, (now - a.now > period * 1000));
+          return a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000);
+        }
+        else {
+          return false;
+        }
       });
     let total = arr.length;
     for (const o of possibleDiscardables) {
@@ -231,6 +237,9 @@ tabs._check = async () => {
       }
     }
     log('number of tabs being discarded', arr.length - total);
+  }
+  else {
+    log('tabs._check', 'number of active tabs', arr.length, 'is smaller than', number);
   }
 };
 
