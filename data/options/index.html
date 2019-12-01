@@ -28,6 +28,10 @@
       width: 100%;
       box-sizing: border-box;
     }
+    ol {
+      padding: 0 0 0 20px;
+      font-size: 12px;
+    }
     .admin {
       background-color: #ffffed;
       border: solid 1px #e8ec3a;
@@ -114,8 +118,8 @@
           <td><input type="checkbox" id="form"></td>
           <td colspan="2"><label for="form" data-i18n="options_form"></label></td>
         </tr>
-        <tr>
-          <td><input type="checkbox" id="battery"></td>
+        <tr id="battery">
+          <td><input type="checkbox" id="battery_enabled"></td>
           <td colspan="2"><label for="battery" data-i18n="options_battery"></label></td>
         </tr>
         <tr>
@@ -213,11 +217,12 @@
         </tr>
       </table>
     </p>
-    1: <span data-i18n="options_footnote_1"></span>
-    <br>
-    2: <span data-i18n="options_footnote_2"></span>
-    <br>
-    3: <span data-i18n="options_footnote_3"></span>
+    <ol>
+      <li><span data-i18n="options_footnote_1"></span></li>
+      <li><span data-i18n="options_footnote_2"></span></li>
+      <li><span data-i18n="options_footnote_3"></span></li>
+    </ol>
+
     <script src="index.js"></script>
     <script async src="matched.js"></script>
   </body>

@@ -14,6 +14,13 @@ if (!window.performance || !window.performance.memory) {
     opacity: 0.4;
   `;
 }
+// battery
+if (!navigator.getBattery) {
+  document.getElementById('battery').style = `
+    pointer-events: none;
+    opacity: 0.4;
+  `;
+}
 
 const info = document.getElementById('info');
 
@@ -49,6 +56,9 @@ const restore = () => storage({
   'check-delay': 30 * 1000,
   'simultaneous-jobs': 10
 }).then(prefs => {
+  if (navigator.getBattery === undefined) {
+    document.getElementById('battery_enabled').closest('tr').disabled = true;
+  }
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('use-cache').checked = prefs['use-cache'];
   document.getElementById('favicon').checked = prefs.favicon;
@@ -61,7 +71,7 @@ const restore = () => storage({
   document.getElementById('audio').checked = prefs.audio;
   document.getElementById('pinned').checked = prefs.pinned;
   document.getElementById('form').checked = prefs.form;
-  document.getElementById('battery').checked = prefs.battery;
+  document.getElementById('battery_enabled').checked = prefs.battery;
   document.getElementById('online').checked = prefs.online;
   document.getElementById('notification.permission').checked = prefs['notification.permission'];
   document.getElementById('page.context').checked = prefs['page.context'];
@@ -99,7 +109,7 @@ document.getElementById('save').addEventListener('click', () => {
     'audio': document.getElementById('audio').checked,
     'pinned': document.getElementById('pinned').checked,
     'form': document.getElementById('form').checked,
-    'battery': document.getElementById('battery').checked,
+    'battery': document.getElementById('battery_enabled').checked,
     'online': document.getElementById('online').checked,
     'notification.permission': document.getElementById('notification.permission').checked,
     'page.context': document.getElementById('page.context').checked,

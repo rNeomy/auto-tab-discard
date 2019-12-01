@@ -76,7 +76,8 @@ tools.battery = () => {
   }
   return new Promise(resolve => navigator.getBattery()
     .then(b => {
-      tools.battery.cache = b.charging === true;
+      // connected
+      tools.battery.cache = b.charging === true || b.chargingTime !== Infinity;
       resolve(tools.battery.cache);
     }));
 };
