@@ -189,10 +189,10 @@ const tabs = {
 };
 tabs.check = msg => {
   if (tabs.check.busy && (tabs.check.busy + prefs['check-delay'] > Date.now())) {
-    return log('tabs.check is ignored', msg);
+    return log('tabs.check is ignored. Reason:', msg);
   }
   if (prefs.period) {
-    log('set a new check timer', msg);
+    log('set a new check timer. Based on:', msg);
     tabs.check.busy = Date.now();
     window.clearTimeout(tabs.check.id);
     tabs.check.id = window.setTimeout(() => {
@@ -234,7 +234,7 @@ tabs._check = async () => {
     arr.push(a);
   }
   if (arr.length > number) {
-    log('arr', arr);
+    log('tabs', arr);
     const possibleDiscardables = arr
       .sort((a, b) => a.now - b.now)
       .filter(a => {
@@ -372,7 +372,7 @@ starters.push(popup);
             chrome.tabs.update(tabId, {
               url: tab.url
             });
-            log('reloading');
+            log('[Firefox] force reloading due to communication error', lastError);
           }
         });
       }
