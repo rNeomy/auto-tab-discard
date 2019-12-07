@@ -189,12 +189,13 @@ const tabs = {
 };
 tabs.check = msg => {
   log(msg);
-  if (tabs.check.busy) {
+  if (tabs.check.busy && tabs.check.busy < Date.now() + prefs['check-delay']) {
     return log('tabs.check is ignored');
   }
   if (prefs.period) {
-    tabs.check.busy = true;
-    window.setTimeout(() => {
+    tabs.check.busy = Date.now();
+    window.clearTimeout(tabs.check.id);
+    tabs.check.id = window.setTimeout(() => {
       tabs._check();
       tabs.check.busy = false;
     }, prefs['check-delay']);
