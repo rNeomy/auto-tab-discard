@@ -102,13 +102,16 @@ const discard = tab => new Promise(resolve => {
 
   discard.count += 1;
   const next = () => {
-    if (isFirefox) {
-      chrome.tabs.discard(tab.id);
-      restore.cache[tab.id] = tab;
+    try {
+      if (isFirefox) {
+        chrome.tabs.discard(tab.id);
+        restore.cache[tab.id] = tab;
+      }
+      else {
+        chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+      }
     }
-    else {
-      chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
-    }
+    catch (e) {}
     discard.count -= 1;
     if (discard.tabs.length) {
       const tab = discard.tabs.shift();
@@ -123,7 +126,9 @@ const discard = tab => new Promise(resolve => {
     Object.assign(new Image(), {
       crossOrigin: 'anonymous',
       src,
-      onerror: next,
+      onerror() {
+        next();
+      },
       onload() {
         const img = this;
         const canvas = document.createElement('canvas');
@@ -248,6 +253,7 @@ tabs._check = async () => {
         }
       });
     let total = arr.length;
+    log('number of tabs to get discarded', possibleDiscardables.length);
     for (const o of possibleDiscardables) {
       discard(o.tab);
       total -= 1;
