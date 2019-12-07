@@ -188,11 +188,11 @@ const tabs = {
   id: null // timer id
 };
 tabs.check = msg => {
-  log(msg);
-  if (tabs.check.busy && tabs.check.busy < Date.now() + prefs['check-delay']) {
-    return log('tabs.check is ignored');
+  if (tabs.check.busy && (tabs.check.busy + prefs['check-delay'] > Date.now())) {
+    return log('tabs.check is ignored', msg);
   }
   if (prefs.period) {
+    log('set a new check timer', msg);
     tabs.check.busy = Date.now();
     window.clearTimeout(tabs.check.id);
     tabs.check.id = window.setTimeout(() => {
