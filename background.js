@@ -94,6 +94,9 @@ const discard = tab => new Promise(resolve => {
   if (tab.active) {
     return resolve();
   }
+  if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
+    discard.count = 0;
+  }
   if (discard.count > prefs['simultaneous-jobs']) {
     log('discarding queue for', tab);
     discard.tabs.push(tab);
@@ -101,6 +104,7 @@ const discard = tab => new Promise(resolve => {
   }
 
   discard.count += 1;
+  discard.time = Date.now();
   const next = () => {
     try {
       if (isFirefox) {
@@ -111,7 +115,9 @@ const discard = tab => new Promise(resolve => {
         chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
       }
     }
-    catch (e) {}
+    catch (e) {
+      log('discarding failed', e);
+    }
     discard.count -= 1;
     if (discard.tabs.length) {
       const tab = discard.tabs.shift();
@@ -122,7 +128,6 @@ const discard = tab => new Promise(resolve => {
   // favicon
   if (prefs.favicon) {
     const src = tab.favIconUrl || '/data/page.png';
-
     Object.assign(new Image(), {
       crossOrigin: 'anonymous',
       src,
@@ -215,7 +220,9 @@ tabs._check = async () => {
       return log('tabs._check is skipped', 'idle state is active');
     }
   }
-
+  // in case
+  discard.count = 0;
+  //
   const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
     method: 'introduce'
   }, a => {

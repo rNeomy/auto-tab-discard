@@ -67,6 +67,14 @@
         "message": "탭이 데스크톱 알림을 표시할 수 있다면 탭을 정리하지 않음",
         "description": ""
     },
+    "options_idle": {
+        "message": "컴퓨터가 '유휴' 상태가 아니라면 탭을 정리하지 않음",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "컴퓨터가 유휴 상태라고 판단하는데 필요한 컴퓨터 미사용 시간 (분 단위)",
+        "description": ""
+    },
     "options_exceptions": {
         "message": "예외",
         "description": ""
