@@ -148,11 +148,11 @@
           tabs: highlightedTabs.map(tab => tab.id)
         }, rootTabs => {
           for (const tab of rootTabs) {
-          const add = tab => {
-            htabs.push(...tab.children);
-            tab.children.filter(t => t.children).forEach(add);
-          };
-          add(tab);
+            const add = tab => {
+              htabs.push(...tab.children);
+              tab.children.filter(t => t.children).forEach(add);
+            };
+            add(tab);
           }
           resolve();
         }));
