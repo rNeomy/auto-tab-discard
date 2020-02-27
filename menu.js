@@ -99,6 +99,18 @@
   };
   starters.push(onStartup);
 
+  const getHighlightedTabs = async (tab) => {
+    if (tab.highlighted) {
+      return browser.tabs.query({
+        windowId:    tab.windowId,
+        highlighted: true
+      });
+    }
+    else {
+      return [tab];
+    }
+  };
+
   const onClicked = async (info, tab) => {
     if (tab && !tab.url) { // Tree Style Tab 3.0.12 and later don't deliver a real tab.
       // eslint-disable-next-line require-atomic-updates
@@ -126,19 +138,22 @@
       const tabs = await query({
         windowId: tab.windowId
       });
+      const highlightedTabs = await getHighlightedTabs(tab);
       const htabs = []; // these are tabs that will be discarded
       // discard-tree for Tree Style Tab
       if (menuItemId === 'discard-tree' && info.viewType === 'sidebar') {
-        htabs.push(tab);
+        htabs.push(...highlightedTabs);
         await new Promise(resolve => chrome.runtime.sendMessage(TST, {
           type: 'get-tree',
-          tab: tab.id
-        }, tab => {
+          tabs: highlightedTabs.map(tab => tab.id)
+        }, rootTabs => {
+          for (const tab of rootTabs) {
           const add = tab => {
             htabs.push(...tab.children);
             tab.children.filter(t => t.children).forEach(add);
           };
           add(tab);
+          }
           resolve();
         }));
       }
@@ -147,12 +162,13 @@
         htabs.push(...tabs.filter(t => t.highlighted));
       }
       else {
-        htabs.push(tab);
+        htabs.push(...highlightedTabs);
       }
 
-      if (htabs.filter(t => t.active).length) {
+      const cleanHtabs = Array.from(new Set(htabs)); // reject duplicated tabs
+      if (cleanHtabs.filter(t => t.active).length) {
         // ids to be discarded
-        const ids = htabs.map(t => t.id);
+        const ids = cleanHtabs.map(t => t.id);
         const otab = tabs
           .filter(t => t.discarded === false && t.highlighted === false && ids.indexOf(t.id) === -1)
           .sort((a, b) => Math.abs(a.index - tab.index) - Math.abs(b.index - tab.index))
@@ -161,9 +177,9 @@
           chrome.tabs.update(otab.id, {
             active: true
           }, () => {
-            // at the time we record htabs, one tab was active. Let's mark it as inactive
-            htabs.forEach(t => t.active = false);
-            htabs.forEach(discard);
+            // at the time we record cleanHtabs, one tab was active. Let's mark it as inactive
+            cleanHtabs.forEach(t => t.active = false);
+            cleanHtabs.forEach(discard);
           });
         }
         else {
@@ -171,7 +187,7 @@
         }
       }
       else {
-        htabs.forEach(discard);
+        cleanHtabs.forEach(discard);
       }
     }
     else if (menuItemId === 'open-tab-then-discard') {

@@ -97,5 +97,10 @@
     "close": {
       "description": "__MSG_cmd_close__"
     }
+  },
+  "applications": {
+    "gecko": {
+      "strict_min_version": "64.0"
+    }
   }
 }
