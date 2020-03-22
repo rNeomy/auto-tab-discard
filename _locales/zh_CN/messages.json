@@ -1,158 +1,304 @@
 {
-  "app_description": {
-    "message": "使用原生的标签页丢弃（Tab Discard）方法，自动减少非活跃标签页的内存使用量"
-  },
-  "options_discarding_options": {
-    "message": "丢弃选项"
-  },
-  "options_period01": {
-    "message": "丢弃非活跃标签页（几秒之后）（设为 0 秒即为禁用标签页自动丢弃）"
-  },
-  "options_period02": {
-    "message": "当非活跃标签页的数量超过 "
-  },
-  "options_url_based": {
-    "message": "只丢弃以下不活跃主机名的标签页"
-  },
-  "options_tab_context": {
-    "message": "在标签页右键菜单中显示丢弃选项（如果支持）"
-  },
-  "options_page_context": {
-    "message": "在页面中显示丢弃选项"
-  },
-  "options_link_context": {
-    "message": "在“链接”的右键菜单中显示“在‘新丢弃标签页’中打开链接”选项"
-  },
-  "options_favicon": {
-    "message": "更改被丢弃标签页的图标"
-  },
-  "options_discarding_conditions": {
-    "message": "丢弃条件"
-  },
-  "options_audio": {
-    "message": "当标签页播放媒体时，不要丢弃"
-  },
-  "options_pinned": {
-    "message": "当标签页固定时，不要丢弃"
-  },
-  "options_form": {
-    "message": "当标签页中表单更改尚未提交时，不要丢弃"
-  },
-  "options_battery": {
-    "message": "当计算机连接到电源时，不要丢弃标签页"
-  },
-  "options_online": {
-    "message": "当没有互联网连接且标签页未缓存时，不要丢弃标签页"
-  },
-  "options_notification_permission": {
-    "message": "若标签页可以显示桌面通知时，不要丢弃"
-  },
-  "options_exceptions": {
-    "message": "例外"
-  },
-  "options_whitelist": {
-    "message": "以下主机名的标签页不会被丢弃："
-  },
-  "options_left_click": {
-    "message": "工具栏单击左键操作"
-  },
-  "options_click_popup": {
-    "message": "打开弹出页"
-  },
-  "options_click_discard_tab": {
-    "message": "丢弃此标签页（强制）"
-  },
-  "options_click_discard_tabs": {
-    "message": "丢弃所有非活跃标签页"
-  },
-  "options_click_discard_window": {
-    "message": "丢弃当前窗口的所有非活跃标签页"
-  },
-  "options_click_discard_other_windows": {
-    "message": "丢弃其他窗口的所有非活跃标签页"
-  },
-  "options_misc": {
-    "message": "杂项"
-  },
-  "options_log": {
-    "message": "显示日志 (仅作调试目的)"
-  },
-  "options_go_hidden": {
-    "message": "若标签页被隐藏，则进行丢弃"
-  },
-  "options_faqs": {
-    "message": "更新后打开“常见问题”页面"
-  },
-  "options_footnote_1": {
-    "message": "可以使用正则表达式“re:”关键字进行匹配. 例如，在白名单中，“re:google”将生效于所有带有“google”关键字的网址。"
-  },
-  "options_reset": {
-    "message": "恢复出厂"
-  },
-  "options_save": {
-    "message": "保存"
-  },
-  "options_support": {
-    "message": "支持开发"
-  },
-  "popup_discard_tab": {
-    "message": "丢弃此标签页（强制）"
-  },
-  "popup_discard_tabs": {
-    "message": "丢弃所有非活跃标签页"
-  },
-  "popup_discard_window": {
-    "message": "丢弃当前窗口的所有非活跃标签页"
-  },
-  "popup_discard_other_windows": {
-    "message": "丢弃其他窗口的所有非活跃标签页"
-  },
-  "popup_move_previous": {
-    "message": "上一个标签页"
-  },
-  "popup_close": {
-    "message": "关闭标签页"
-  },
-  "popup_move_next": {
-    "message": "下一个标签页"
-  },
-  "popup_whitelist_domain": {
-    "message": "不要丢弃此域名的标签页"
-  },
-  "popup_allowed": {
-    "message": "暂时不要丢弃 (仅此次会话)"
-  },
-  "popup_open_options": {
-    "message": "选项"
-  },
-  "bg_no_active_tab": {
-    "message": "现在没有活跃的标签页"
-  },
-  "menu_discard_tab": {
-    "message": "丢弃此标签页（强制）"
-  },
-  "menu_discard_tabs": {
-    "message": "丢弃所有非活跃标签页"
-  },
-  "menu_discard_window": {
-    "message": "丢弃当前窗口的所有非活跃标签页"
-  },
-  "menu_discard_other_windows": {
-    "message": "丢弃其他窗口的所有非活跃标签页"
-  },
-  "menu_whitelist_domain": {
-    "message": "不要丢弃此域名的标签页"
-  },
-  "menu_open_tab_then_discard": {
-    "message": "在“新丢弃标签页”中打开链接"
-  },
-  "menu_msg1": {
-    "message": "已加入白名单"
-  },
-  "menu_msg2": {
-    "message": "不支持的协议"
-  },
-  "menu_msg3": {
-    "message": "无法丢弃一个活跃的标签页"
-  }
+    "app_description": {
+        "message": "在您有着大量打开的标签页时，加快浏览器的运行速度并降低内存负载。",
+        "hash": "6ee37ae2b1126e61d4a7e2724773c9a5"
+    },
+    "options_discarding_options": {
+        "message": "负载释放选项",
+        "hash": "cfe7b01f5a278fa00a8bffebc74b3ff6"
+    },
+    "options_period01": {
+        "message": "释放非活动状态标签页的负载，当非活动状态超过该时间（单位为秒）时（设为 0 秒将禁用标签页负载自动释放）",
+        "hash": "57908ff7613eec98002dd2c54b92e2e1"
+    },
+    "options_period02": {
+        "message": "或者当非活动状态标签页的数量超过该数值时",
+        "hash": "615fb99ec4dda00163713338b9eb84b4"
+    },
+    "options_url_based": {
+        "message": "只释放含有下列主机名的非活动项的负载",
+        "hash": "cfd82c7d4d7382e4c3f2ac6bd70fea36"
+    },
+    "options_tab_context": {
+        "message": "在 “标签页” 上下文菜单显示负载释放相关条目（如果支持的话）",
+        "hash": "1145b09b4124c55024f5439115351f33"
+    },
+    "options_page_context": {
+        "message": "在 “页面” 上下文菜单显示负载释放相关条目",
+        "hash": "b1da59a72861359f43f7ff5a686178c5"
+    },
+    "options_link_context": {
+        "message": "在 “链接” 上下文菜单显示 “新建空载状态标签页打开链接” 条目",
+        "hash": "4f26c833a521023183f5a6e0e6a5873d"
+    },
+    "options_favicon": {
+        "message": "更改空载标签页的图标（如果可以的话）",
+        "hash": "11d002e257e2c116b398d0cf57394303"
+    },
+    "options_memory": {
+        "message": "如果一个后台标签页的内存占用（totalJSHeapSize）超过了该值（单位为 MB）则释放其负载",
+        "hash": "b0484be1a509aae0e32e58815d4e15e0"
+    },
+    "options_discarding_conditions": {
+        "message": "负载释放条件",
+        "hash": "3e7fe44d5910de4e3ec523ccb5851bcf"
+    },
+    "options_audio": {
+        "message": "当标签页内有媒体文件正在播放时，不要释放其负载",
+        "hash": "753780ad5db52d79a707e72771ff0830"
+    },
+    "options_pinned": {
+        "message": "当标签页被固定时，不要释放其负载",
+        "hash": "c74d7f803614b1b5cb7470dd29f7bb0c"
+    },
+    "options_form": {
+        "message": "当标签页内还有表单更改未被提交时，不要释放其负载",
+        "hash": "15e214c1d84515b3a3c630d02c92500e"
+    },
+    "options_battery": {
+        "message": "当计算机连接到电源时，不要释放标签页负载",
+        "hash": "485118783f0537932de8502eb349dcc8"
+    },
+    "options_online": {
+        "message": "当没有网络连接且标签页未被缓存时，不要释放标签页负载",
+        "hash": "539be553d5f8dbe59d5df9903fbc9ab6"
+    },
+    "options_notification_permission": {
+        "message": "如果一个标签页能够显示桌面通知，则不要释放其负载",
+        "hash": "2c1b1ca48f59bd1d2d693caecac82e90"
+    },
+    "options_idle": {
+        "message": "如果计算机不处于 “空闲” 状态，则不要释放标签页负载",
+        "hash": "981d6ebe8160f023b9ff3164e739c044"
+    },
+    "options_idle_timeout": {
+        "message": "确定计算机是否处于空闲状态的非活动时间间隔（单位为分钟）",
+        "hash": "3cf5e76e77fc964a3f38d820226b23df"
+    },
+    "options_exceptions": {
+        "message": "例外",
+        "hash": "89721fe0acad7ce70bd8ca2eb3ce26b3"
+    },
+    "options_whitelist": {
+        "message": "含有下列主机名的标签页不会被释放负载：",
+        "hash": "7ff35a30886846aab850494f3e82dd81"
+    },
+    "options_left_click": {
+        "message": "工具栏 左键点击 动作",
+        "hash": "44c91034fc1b7721be5a770d22a72828"
+    },
+    "options_click_popup": {
+        "message": "打开弹窗",
+        "hash": "c8fea165ea15f8da8eb906a66c692691"
+    },
+    "options_click_discard_tab": {
+        "message": "释放标签页负载",
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
+    },
+    "options_click_discard_tabs": {
+        "message": "释放所有其它标签页的负载",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
+    },
+    "options_click_discard_window": {
+        "message": "释放位于此窗口中的其它标签页的负载",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
+    },
+    "options_click_discard_other_windows": {
+        "message": "释放位于其它窗口中的标签页的负载",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
+    },
+    "options_misc": {
+        "message": "杂项",
+        "hash": "435ddc17098c33c759178085bf448cf6"
+    },
+    "options_log": {
+        "message": "显示日志（仅用于调试目的）",
+        "hash": "392d279fd6090136895fc792f03349e2"
+    },
+    "options_go_hidden": {
+        "message": "如果一个标签页被隐藏，则释放其负载",
+        "hash": "fe7d3f265cd69cebc14f0fd1b7935a77"
+    },
+    "options_use_cache": {
+        "message": "使用缓存：如果此项被启用，则该扩展将只会进行一次检测来确认一个标签页是否被固定、或者浏览器是否被连接到电源",
+        "hash": "051f040ab386a67669489149c7b77fac"
+    },
+    "options_simultaneous_jobs": {
+        "message": "被允许的可以同时进行的负载释放作业的数量",
+        "hash": "960c9a651dd9ba63109b13235d885097"
+    },
+    "options_faqs": {
+        "message": "在更新时打开 FAQs 页面",
+        "hash": "a5b15486a08d241d229e19428da36004"
+    },
+    "options_footnote_1": {
+        "message": "可以使用带有 “re:” 关键字的正则表达式来进行匹配。举个例子，使用 “re:google” 将会把所有带有 “google” 关键字的网址加入白名单。",
+        "hash": "f4dbf9ca68e2db19a63cb4559dc8b76c"
+    },
+    "options_footnote_2": {
+        "message": "检查顶层文档的 totalJSHeapSize 值。如果此内存超出了用户定义的值（可接受的最小值为 10MB），该标签页的负载将会被释放。请注意，只有当您的浏览器支持 ‘window.performance.memory’ 时此选项才可用",
+        "hash": "676b5c66803f0a668c520046d13f2673"
+    },
+    "options_footnote_3": {
+        "message": "当有标签页的负载释放周期结束，或者有新建标签页被添加时，所有的浏览器标签页都将会被检测，以便评估哪些标签页需要进行负载释放。此选项会强行让该扩展限制这些检测。可接受的最小值为 1 秒。推荐值为 30 秒。",
+        "hash": "25bbbc77db60ea7757044e3e0ea5fbf0"
+    },
+    "options_reset": {
+        "message": "恢复出厂设置",
+        "hash": "d5b6463b0cad328f345d02be1555a5b0"
+    },
+    "options_import": {
+        "message": "导入设置",
+        "hash": "bf42ebb9525b244d3f126f06006ca72a"
+    },
+    "options_export": {
+        "message": "导出设置",
+        "hash": "f3b2dbecd4d63fa3f7b68d467394363e"
+    },
+    "options_save": {
+        "message": "保存选项",
+        "hash": "2ec0eb53c6aabad321dced9ca0824360"
+    },
+    "options_support": {
+        "message": "支持开发",
+        "hash": "5f568167b705b29bf0c26e745ee6dbb5"
+    },
+    "options_check_delay": {
+        "message": "连续两次负载释放检测之间的最小延迟（单位为秒）",
+        "hash": "5ec6fbcfae7799adc4c942868c83f457"
+    },
+    "options_favicon_delay": {
+        "message": "用于绘制空载状态图标的延迟（单位为毫秒）",
+        "hash": "fdb14ef51771a8bbaccd4d0ba4031863"
+    },
+    "popup_discard_tab": {
+        "message": "释放标签页负载",
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
+    },
+    "popup_discard_tabs": {
+        "message": "释放所有其它标签页的负载",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
+    },
+    "popup_discard_window": {
+        "message": "释放位于此窗口中的其它标签页的负载",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
+    },
+    "popup_discard_other_windows": {
+        "message": "释放位于其它窗口中的标签页的负载",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
+    },
+    "popup_move_previous": {
+        "message": "前一个标签页",
+        "hash": "9017743e8953d72979a62c7450ee301b"
+    },
+    "popup_close": {
+        "message": "关闭标签页",
+        "hash": "c30667b4c0fdd7d986e7f2efc81fc4e4"
+    },
+    "popup_move_next": {
+        "message": "后一个标签页",
+        "hash": "6f530efe570d1dc8a810687c536b4f05"
+    },
+    "popup_whitelist_domain": {
+        "message": "永远保留打开此站点的标签页",
+        "hash": "0cb2a1d1e3c84802bf9492e878e658da"
+    },
+    "popup_allowed": {
+        "message": "在此会话中保留该标签页",
+        "hash": "939f21573ccecc29ff2c93033537c93f"
+    },
+    "popup_open_options": {
+        "message": "选项",
+        "hash": "531dad0078a72193602b18495f0ad4e9"
+    },
+    "bg_no_active_tab": {
+        "message": "不存在活动状态的标签页",
+        "hash": "e60ed5df9c898d2317e8858ee66a839d"
+    },
+    "menu_discard_tab": {
+        "message": "释放标签页负载",
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
+    },
+    "menu_discard_tree": {
+        "message": "释放标签组负载",
+        "hash": "5aa7d3f96fc2a5d665092160729accd2"
+    },
+    "menu_discard_tabs": {
+        "message": "释放所有其它标签页的负载",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
+    },
+    "menu_discard_window": {
+        "message": "释放位于此窗口中的其它标签页的负载",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
+    },
+    "menu_discard_other_windows": {
+        "message": "释放位于其它窗口中的标签页的负载",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
+    },
+    "menu_whitelist_domain": {
+        "message": "永远保留打开此站点的标签页",
+        "hash": "0cb2a1d1e3c84802bf9492e878e658da"
+    },
+    "menu_open_tab_then_discard": {
+        "message": "新建空载状态标签页打开链接",
+        "hash": "9d2f366c4551bd7a3a6b76357cee93c9"
+    },
+    "menu_move_previous": {
+        "message": "移动到前一个标签页",
+        "hash": "540407744e5f832ec87dafa16710ca88"
+    },
+    "menu_move_next": {
+        "message": "移动到后一个标签页",
+        "hash": "cbbf057f3d48872d5928af6b1c784689"
+    },
+    "menu_close": {
+        "message": "关闭标签页",
+        "hash": "c30667b4c0fdd7d986e7f2efc81fc4e4"
+    },
+    "menu_msg1": {
+        "message": "被添加到了白名单",
+        "hash": "3434a59b846d9b244f5663913ff73c7f"
+    },
+    "menu_msg2": {
+        "message": "协议不被支持",
+        "hash": "fe5ffc14b641a4d62a1810463a69066f"
+    },
+    "menu_msg3": {
+        "message": "当标签页处于活动状态时，无法释放其负载",
+        "hash": "8792f6eb15159714178485ee839eed42"
+    },
+    "cmd_discard_tab": {
+        "message": "释放标签页负载",
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
+    },
+    "cmd_discard_tabs": {
+        "message": "释放所有其它标签页的负载",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
+    },
+    "cmd_discard_window": {
+        "message": "释放位于此窗口中的其它标签页的负载",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
+    },
+    "cmd_discard_other_windows": {
+        "message": "释放位于其它窗口中的标签页的负载",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
+    },
+    "cmd_whitelist_domain": {
+        "message": "永远保留打开此站点的标签页",
+        "hash": "0cb2a1d1e3c84802bf9492e878e658da"
+    },
+    "cmd_move_previous": {
+        "message": "移动到前一个标签页",
+        "hash": "540407744e5f832ec87dafa16710ca88"
+    },
+    "cmd_move_next": {
+        "message": "移动到后一个标签页",
+        "hash": "cbbf057f3d48872d5928af6b1c784689"
+    },
+    "cmd_close": {
+        "message": "关闭标签页",
+        "hash": "c30667b4c0fdd7d986e7f2efc81fc4e4"
+    },
+
+    "__WET_LOCALE__": { "message": "zh" }
 }
