@@ -406,6 +406,28 @@ starters.push(popup);
   }
 })();
 
+/* discard on startup */
+
+{
+  chrome.runtime.onStartup.addListener(() => chrome.storage.local.get({
+    'startup-unpinned': false,
+    'startup-pinned': false
+  }, prefs => {
+    if (prefs['startup-unpinned']) {
+      chrome.tabs.query({
+        discarded: false,
+        pinned: false
+      }, tabs => tabs.forEach(discard));
+    }
+    if (prefs['startup-pinned']) {
+      chrome.tabs.query({
+        discarded: false,
+        pinned: true
+      }, tabs => tabs.forEach(discard));
+    }
+  }));
+}
+
 /* FAQs & Feedback */
 {
   const {management, runtime: {onInstalled, setUninstallURL, getManifest}, storage, tabs} = chrome;

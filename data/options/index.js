@@ -57,7 +57,9 @@ const restore = () => storage({
   'check-delay': 30 * 1000,
   'simultaneous-jobs': 10,
   'idle': false,
-  'idle-timeout': 5 * 60
+  'idle-timeout': 5 * 60,
+  'startup-unpinned': false,
+  'startup-pinned': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -88,6 +90,8 @@ const restore = () => storage({
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
   document.getElementById('memory-enabled').checked = prefs['memory-enabled'];
   document.getElementById('memory-value').value = prefs['memory-value'];
+  document.getElementById('startup-unpinned').checked = prefs['startup-unpinned'];
+  document.getElementById('startup-pinned').checked = prefs['startup-pinned'];
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
@@ -146,7 +150,9 @@ document.getElementById('save').addEventListener('click', () => {
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
       .filter((h, i, l) => h && l.indexOf(h) === i),
     'memory-enabled': document.getElementById('memory-enabled').checked,
-    'memory-value': Math.max(10, Number(document.getElementById('memory-value').value))
+    'memory-value': Math.max(10, Number(document.getElementById('memory-value').value)),
+    'startup-unpinned': document.getElementById('startup-unpinned').checked,
+    'startup-pinned': document.getElementById('startup-pinned').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

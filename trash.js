@@ -1,5 +1,6 @@
 'use strict';
 
+// trash old discarded tabs
 const trash = {
   observe(tabId, changeInfo) {
     if ('discarded' in changeInfo) {
@@ -22,8 +23,6 @@ const trash = {
     });
   },
   install() {
-    console.log('install');
-    // trash old discarded tabs
     chrome.tabs.onUpdated.addListener(trash.observe);
     chrome.tabs.onRemoved.addListener(trash.observeRemoval);
 
@@ -45,7 +44,6 @@ const trash = {
     }));
   },
   abort() {
-    console.log('abort');
     chrome.tabs.onUpdated.removeListener(trash.observe);
     chrome.tabs.onRemoved.removeListener(trash.observeRemoval);
     chrome.alarms.clear('trash.check');

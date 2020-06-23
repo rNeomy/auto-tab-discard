@@ -195,16 +195,25 @@
       }
     }
     else if (menuItemId === 'open-tab-then-discard') {
-      chrome.tabs.create({
-        active: false,
-        url: info.linkUrl
-      }, tab => chrome.tabs.executeScript(tab.id, {
-        runAt: 'document_start',
-        code: 'window.stop()'
-      }, () => chrome.tabs.executeScript(tab.id, {
-        runAt: 'document_start',
-        file: 'data/lazy.js'
-      })));
+      if (/Firefox/.test(navigator.userAgent)) {
+        chrome.tabs.create({
+          active: false,
+          url: info.linkUrl,
+          discarded: true
+        });
+      }
+      else {
+        chrome.tabs.create({
+          active: false,
+          url: info.linkUrl
+        }, tab => chrome.tabs.executeScript(tab.id, {
+          runAt: 'document_start',
+          code: 'window.stop()'
+        }, () => chrome.tabs.executeScript(tab.id, {
+          runAt: 'document_start',
+          file: 'data/lazy.js'
+        })));
+      }
     }
     else if (menuItemId === 'auto-discardable') {
       const autoDiscardable = info.value || false; // when called from page context menu, there is no value
