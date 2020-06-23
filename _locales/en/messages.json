@@ -11,6 +11,9 @@
   "options_period02": {
     "message": "when the number of inactive tabs exceeds "
   },
+  "options_period03": {
+    "message": "Also trash discarded tabs if they are inactive for about (in hours) (if enabled from popup) "
+  },
   "options_url_based": {
     "message": "Only discard the following inactive hostnames"
   },
@@ -163,6 +166,9 @@
   },
   "popup_open_options": {
     "message": "Options"
+  },
+  "popup_trash": {
+    "message": "Trash old Discarded Tabs"
   },
   "bg_no_active_tab": {
     "message": "No active tab is present"

@@ -26,14 +26,16 @@
     "tabs",
     "*://*/*",
     "contextMenus",
-    "notifications"
+    "notifications",
+    "alarms"
   ],
   "background": {
     "persistent": false,
     "scripts": [
       "hidden.js",
       "background.js",
-      "menu.js"
+      "menu.js",
+      "trash.js"
     ]
   },
   "browser_action": {

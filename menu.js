@@ -14,7 +14,6 @@
       contexts.push('page');
     }
     const create = arr => {
-      console.log(arr);
       chrome.contextMenus.removeAll(() => {
         arr.forEach(o => chrome.contextMenus.create(o));
       });

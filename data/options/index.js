@@ -32,6 +32,7 @@ const storage = prefs => new Promise(resolve => {
 const restore = () => storage({
   'period': 10 * 60, // in seconds
   'number': 6, // number of tabs before triggering discard
+  'trash.period': 24, // in hours
   'audio': true, // audio = true => do not discard if audio is playing
   'pinned': false, // pinned = true => do not discard if tab is pinned
   'form': true, // form = true => do not discard if form data is changed
@@ -68,6 +69,7 @@ const restore = () => storage({
   document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
   document.getElementById('period').value = prefs.period;
+  document.getElementById('trash.period').value = prefs['trash.period'];
   document.getElementById('number').value = prefs.number;
   document.getElementById('simultaneous-jobs').value = prefs['simultaneous-jobs'];
   document.getElementById('favicon-delay').value = prefs['favicon-delay'];
@@ -99,6 +101,9 @@ document.getElementById('save').addEventListener('click', () => {
   let number = document.getElementById('number').value;
   number = Number(number);
   number = Math.max(number, 1);
+  let trash = document.getElementById('trash.period').value;
+  trash = Number(trash);
+  trash = Math.max(trash, 1);
 
   if (period !== 0) {
     period = Math.max(period, 10);
@@ -110,6 +115,7 @@ document.getElementById('save').addEventListener('click', () => {
     'idle-timeout': Math.max(1, Number(document.getElementById('idle-timeout').value)) * 60,
     period,
     number,
+    'trash.period': trash,
     'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',
     click,
     'audio': document.getElementById('audio').checked,

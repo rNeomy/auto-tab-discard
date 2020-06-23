@@ -16,35 +16,40 @@ allowed.addEventListener('change', () => chrome.runtime.sendMessage({
 
 const whitelist = document.querySelector('[data-cmd=whitelist-domain]');
 
-const init = () => chrome.tabs.query({
-  active: true,
-  currentWindow: true
-}, tabs => {
-  if (tabs.length) {
-    tab = tabs[0];
-    const {protocol = ''} = new URL(tab.url);
+const init = () => {
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, tabs => {
+    if (tabs.length) {
+      tab = tabs[0];
+      const {protocol = ''} = new URL(tab.url);
 
-    if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-      whitelist.dataset.disabled = false;
-      chrome.tabs.executeScript(tab.id, {
-        code: `tools.whitelist().then(bol => bol && chrome.runtime.sendMessage({
-          method: 'disable-whitelist-domain'
-        }));`
-      });
+      if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
+        whitelist.dataset.disabled = false;
+        chrome.tabs.executeScript(tab.id, {
+          code: `tools.whitelist().then(bol => bol && chrome.runtime.sendMessage({
+            method: 'disable-whitelist-domain'
+          }));`
+        });
 
-      chrome.tabs.executeScript(tab.id, {
-        code: 'allowed'
-      }, ([a]) => {
-        allowed.parentNode.dataset.disabled = typeof a !== 'boolean';
-        allowed.checked = !a;
-      });
+        chrome.tabs.executeScript(tab.id, {
+          code: 'allowed'
+        }, ([a]) => {
+          allowed.parentNode.dataset.disabled = typeof a !== 'boolean';
+          allowed.checked = !a;
+        });
+      }
+      else { // on navigation
+        whitelist.dataset.disabled = true;
+        allowed.parentNode.dataset.disabled = true;
+      }
     }
-    else { // on navigation
-      whitelist.dataset.disabled = true;
-      allowed.parentNode.dataset.disabled = true;
-    }
-  }
-});
+  });
+  chrome.storage.local.get({
+    'trash.enabled': false
+  }, prefs => document.getElementById('trash').checked = prefs['trash.enabled']);
+};
 init();
 
 chrome.runtime.onMessage.addListener(request => {
@@ -73,3 +78,8 @@ document.addEventListener('click', ({target}) => {
     }, () => window.close());
   }
 });
+
+// toggle trash
+document.getElementById('trash').addEventListener('change', e => chrome.storage.local.set({
+  'trash.enabled': e.target.checked
+}));
