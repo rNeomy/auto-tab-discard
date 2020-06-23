@@ -188,6 +188,9 @@ document.getElementById('reset').addEventListener('click', e => {
 if (/Firefox/.test(navigator.userAgent)) {
   document.getElementById('rate').href = 'https://addons.mozilla.org/firefox/addon/auto-tab-discard/reviews/';
 }
+else if (/Edg\//.test(navigator.userAgent)) {
+  document.getElementById('rate').href = 'https://microsoftedge.microsoft.com/addons/detail/nfkkljlcjnkngcmdpcammanncbhkndfe';
+}
 // export
 document.getElementById('export').addEventListener('click', () => {
   chrome.storage.local.get(null, prefs => {
