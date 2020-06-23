@@ -137,6 +137,12 @@
   "popup_discard_window": {
     "message": "Discard Other Tabs in This Window"
   },
+  "popup_discard_rights": {
+    "message": "Discard Tabs to the Right"
+  },
+  "popup_discard_lefts": {
+    "message": "Discard Tabs to the Left"
+  },
   "popup_discard_other_windows": {
     "message": "Discard Tabs in Other Windows"
   },
@@ -167,11 +173,20 @@
   "menu_discard_tree": {
     "message": "Discard Tab Group"
   },
+  "menu_discard_menu": {
+    "message": "Discard Tabs in This Window"
+  },
   "menu_discard_tabs": {
     "message": "Discard All Other Tabs"
   },
+  "menu_discard_rights": {
+    "message": "Discard Tabs to the Right"
+  },
+  "menu_discard_lefts": {
+    "message": "Discard Tabs to the Left"
+  },
   "menu_discard_window": {
-    "message": "Discard Other Tabs in This Window"
+    "message": "Discard Other Tabs"
   },
   "menu_discard_other_windows": {
     "message": "Discard Tabs in Other Windows"

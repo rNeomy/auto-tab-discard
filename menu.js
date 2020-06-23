@@ -14,15 +14,11 @@
       contexts.push('page');
     }
     const create = arr => {
+      console.log(arr);
       chrome.contextMenus.removeAll(() => {
         arr.forEach(o => chrome.contextMenus.create(o));
       });
-      arr.splice(1, 0, {
-        id: 'discard-tree',
-        title: chrome.i18n.getMessage('menu_discard_tree'),
-        contexts,
-        documentUrlPatterns: ['*://*/*']
-      });
+
       // treestyletab support
       const add = () => chrome.runtime.sendMessage(TST, {
         type: 'register-self',
@@ -30,6 +26,13 @@
       }, r => {
         chrome.runtime.lastError;
         if (r === true) {
+          arr.splice(1, 0, {
+            id: 'discard-tree',
+            title: chrome.i18n.getMessage('menu_discard_tree'),
+            contexts,
+            documentUrlPatterns: ['*://*/*']
+          });
+
           arr.forEach(params => chrome.runtime.sendMessage(TST, {
             type: 'fake-contextMenu-remove',
             params
@@ -64,19 +67,37 @@
       documentUrlPatterns: ['*://*/*']
     },
     {
-      id: 'discard-window',
-      title: chrome.i18n.getMessage('menu_discard_window'),
+      id: 'discard-other-windows',
+      title: chrome.i18n.getMessage('menu_discard_other_windows'),
       contexts
     },
     {
-      id: 'discard-other-windows',
-      title: chrome.i18n.getMessage('menu_discard_other_windows'),
+      id: 'discard-sub-menu',
+      title: chrome.i18n.getMessage('menu_discard_menu'),
       contexts
     },
     {
       id: 'discard-tabs',
       title: chrome.i18n.getMessage('menu_discard_tabs'),
       contexts
+    },
+    {
+      id: 'discard-window',
+      title: chrome.i18n.getMessage('menu_discard_window'),
+      contexts,
+      parentId: 'discard-sub-menu'
+    },
+    {
+      id: 'discard-rights',
+      title: chrome.i18n.getMessage('menu_discard_rights'),
+      contexts,
+      parentId: 'discard-sub-menu'
+    },
+    {
+      id: 'discard-lefts',
+      title: chrome.i18n.getMessage('menu_discard_lefts'),
+      contexts,
+      parentId: 'discard-sub-menu'
     },
     {
       id: 'auto-discardable',
@@ -199,19 +220,28 @@
         });
       }
     }
-    else { // discard-tabs, discard-window, discard-other-windows
+    else { // discard-tabs, discard-window, discard-other-windows, discard-rights, discard-lefts
       const info = {
         url: '*://*/*',
         discarded: false,
         active: false
       };
-      if (menuItemId === 'discard-window') {
+      if (menuItemId === 'discard-window' || menuItemId === 'discard-rights' || menuItemId === 'discard-lefts') {
         info.currentWindow = true;
       }
       else if (menuItemId === 'discard-other-windows') {
         info.currentWindow = false;
       }
-      const tabs = await query(info);
+      let tabs = await query(info);
+      if (menuItemId === 'discard-rights' || menuItemId === 'discard-lefts') {
+        if (menuItemId === 'discard-lefts') {
+          tabs = tabs.filter(t => t.index < tab.index);
+        }
+        else {
+          tabs = tabs.filter(t => t.index > tab.index);
+        }
+      }
+
       const post = tab => new Promise(resolve => chrome.tabs.sendMessage(tab.id, {
         method: 'introduce'
       }, a => {
