@@ -31,6 +31,27 @@ const prefs = {
   'simultaneous-jobs': 10,
   'idle-timeout': 5 * 60 // in seconds
 };
+prefs.ready = false;
+prefs.onReady = {
+  es: [],
+  add(c) {
+    if (prefs.ready) {
+      c();
+    }
+    else {
+      prefs.onReady.es.push(c);
+    }
+  }
+};
+chrome.storage.local.get(prefs, ps => {
+  delete ps.onReady;
+  Object.assign(prefs, ps);
+  prefs.ready = true;
+  for (const c of prefs.onReady.es) {
+    c();
+  }
+});
+
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => {
     prefs[k] = ps[k].newValue;
@@ -367,10 +388,9 @@ const popup = async () => {
 starters.push(popup);
 // start-up
 (() => {
-  const onStartup = async () => {
-    await storage(prefs).then(ps => Object.assign(prefs, ps));
+  const onStartup = () => prefs.onReady.add(() => {
     starters.forEach(c => c());
-  };
+  });
   // Firefox does not call "onStartup" after enabling the extension
   if (isFirefox) {
     // restore crashed tabs

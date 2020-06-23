@@ -113,7 +113,7 @@
     prefs['link.context'] ? {
       id: 'open-tab-then-discard',
       title: chrome.i18n.getMessage('menu_open_tab_then_discard'),
-      contexts: ['link'],
+      contexts: ['link', 'bookmark'].filter(a => chrome.contextMenus.ContextType[a.toUpperCase()]),
       documentUrlPatterns: ['*://*/*']
     } : null].filter(o => o));
   };
