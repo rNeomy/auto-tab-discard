@@ -1,4 +1,4 @@
-/* globals discard, query, notify, navigate, starters, prefs */
+/* globals discard, query, notify, navigate, starters, prefs, isFirefox */
 'use strict';
 
 // Context Menu
@@ -125,17 +125,18 @@
       tab = await new Promise(resolve => chrome.tabs.get(tab.id, resolve));
     }
     const {menuItemId} = info;
-    if (menuItemId === 'whitelist-domain') {
+    if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session') {
+      const d = menuItemId === 'whitelist-domain';
       const {hostname, protocol = ''} = new URL(tab.url);
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        let {whitelist} = prefs;
+        let whitelist = prefs[d ? 'whitelist' : 'whitelist.session'];
 
         whitelist.push(hostname);
         whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
         chrome.storage.local.set({
-          whitelist
+          [d ? 'whitelist' : 'whitelist.session']: whitelist
         });
-        notify(`"${hostname}" ${chrome.i18n.getMessage('menu_msg1')}`);
+        notify(`"${hostname}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
       }
       else {
         notify(`"${protocol}" ${chrome.i18n.getMessage('menu_msg2')}`);
@@ -195,7 +196,7 @@
       }
     }
     else if (menuItemId === 'open-tab-then-discard') {
-      if (/Firefox/.test(navigator.userAgent)) {
+      if (isFirefox) {
         chrome.tabs.create({
           active: false,
           url: info.linkUrl,

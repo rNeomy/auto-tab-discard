@@ -164,8 +164,14 @@
   "popup_move_next": {
     "message": "Next Tab"
   },
-  "popup_whitelist_domain": {
-    "message": "Always Keep Tabs for This Site"
+  "popup_whitelist_desc": {
+    "message": "Keep Tabs for This Site"
+  },
+  "popup_whitelist_always": {
+    "message": "Always"
+  },
+  "popup_whitelist_session": {
+    "message": "Session"
   },
   "popup_allowed": {
     "message": "Keep This Tab for This Session"
@@ -219,7 +225,10 @@
     "message": "Close Tab"
   },
   "menu_msg1": {
-    "message": "is added to the whitelist"
+    "message": "is added to the permanent whitelist"
+  },
+  "menu_msg4": {
+    "message": "is added to the session whitelist"
   },
   "menu_msg2": {
     "message": "protocol is not supported"

@@ -14,13 +14,17 @@
       <li data-cmd="discard-other-windows" data-i18n="popup_discard_other_windows"></li>
       <li data-cmd="discard-tabs" data-i18n="popup_discard_tabs"></li>
       <li class="separator"></li>
-      <div class=hbox>
-        <li class="flex" data-cmd="move-previous" title="move to the previous active tab" data-i18n="popup_move_previous"></li>
-        <li data-cmd="close" title="Close the current tab and switch to the previous active tab" data-i18n="popup_close"></li>
-        <li class="flex" data-cmd="move-next" title="Move to the next active tab" data-i18n="popup_move_next"></li>
+      <div class="nav">
+        <span data-cmd="move-previous" title="move to the previous active tab" data-i18n="popup_move_previous"></span>
+        <span data-cmd="close" title="Close the current tab and switch to the previous active tab" data-i18n="popup_close"></span>
+        <span data-cmd="move-next" title="Move to the next active tab" data-i18n="popup_move_next"></span>
       </div>
       <li class="separator"></li>
-      <li data-disabled=true class=hbox data-cmd="whitelist-domain" data-i18n="popup_whitelist_domain"></li>
+      <li class="mlt">
+        <span data-i18n="popup_whitelist_desc"></span>
+        <span data-cmd="whitelist-session" data-i18n="popup_whitelist_session"></span>
+        <span data-cmd="whitelist-domain" data-i18n="popup_whitelist_always"></span>
+      </li>
       <li data-disabled=true class="hbox">
         <label for="allowed" class="flex" data-i18n="popup_allowed"></label>
         <input type="checkbox" id="allowed">

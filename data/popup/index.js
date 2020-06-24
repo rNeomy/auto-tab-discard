@@ -14,7 +14,10 @@ allowed.addEventListener('change', () => chrome.runtime.sendMessage({
   value: allowed.checked === false
 }));
 
-const whitelist = document.querySelector('[data-cmd=whitelist-domain]');
+const whitelist = {
+  always: document.querySelector('[data-cmd=whitelist-domain]'),
+  session: document.querySelector('[data-cmd=whitelist-session]')
+};
 
 const init = () => {
   chrome.tabs.query({
@@ -26,7 +29,8 @@ const init = () => {
       const {protocol = ''} = new URL(tab.url);
 
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        whitelist.dataset.disabled = false;
+        whitelist.session.dataset.disabled = false;
+        whitelist.always.dataset.disabled = false;
         chrome.tabs.executeScript(tab.id, {
           code: `tools.whitelist().then(bol => bol && chrome.runtime.sendMessage({
             method: 'disable-whitelist-domain'
@@ -41,7 +45,8 @@ const init = () => {
         });
       }
       else { // on navigation
-        whitelist.dataset.disabled = true;
+        whitelist.session.dataset.disabled = true;
+        whitelist.always.dataset.disabled = true;
         allowed.parentNode.dataset.disabled = true;
       }
     }
@@ -53,9 +58,10 @@ const init = () => {
 init();
 
 chrome.runtime.onMessage.addListener(request => {
+  console.log(request);
   if (request.method === 'disable-whitelist-domain') {
-    whitelist.dataset.disabled = true;
-    whitelist.textContent += ' (already listed)';
+    whitelist.session.dataset.disabled = true;
+    whitelist.always.dataset.disabled = true;
   }
 });
 

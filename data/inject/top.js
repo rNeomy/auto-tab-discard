@@ -13,6 +13,7 @@ const prefs = {
   'log': false,
   'mode': 'time-based',
   'whitelist': [],
+  'whitelist.session': [],
   'whitelist-url': [],
   'memory-enabled': false,
   'memory-value': 60,
@@ -93,7 +94,7 @@ tools.form = () => {
   }
   return Promise.resolve(form);
 };
-tools.whitelist = (list = prefs.whitelist) => {
+tools.whitelist = (list = [...prefs['whitelist'], ...prefs['whitelist.session']]) => {
   const {hostname, href} = document.location;
   const hl = list.filter(s => s.startsWith('re:') === false);
   const rl = list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3));

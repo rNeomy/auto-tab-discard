@@ -2,6 +2,7 @@
 'use strict';
 
 const isFirefox = /Firefox/.test(navigator.userAgent);
+const starters = []; // startup scripts
 
 // Firefox only
 const restore = {
@@ -25,12 +26,17 @@ const prefs = {
   'tab.context': true,
   'link.context': true,
   'whitelist': [],
+  'whitelist.session': [], // clear on restart
   'favicon-delay': isFirefox ? 500 : 100,
   'check-delay': 30 * 1000,
   'log': false,
   'simultaneous-jobs': 10,
   'idle-timeout': 5 * 60 // in seconds
 };
+// clear session only hostnames from the exception list; only on the local machine
+starters.push(() => chrome.storage.local.set({
+  'whitelist.session': []
+}));
 prefs.ready = false;
 prefs.onReady = {
   es: [],
@@ -43,7 +49,7 @@ prefs.onReady = {
     }
   }
 };
-chrome.storage.local.get(prefs, ps => {
+storage(prefs).then(ps => {
   delete ps.onReady;
   Object.assign(prefs, ps);
   prefs.ready = true;
@@ -71,8 +77,6 @@ chrome.storage.onChanged.addListener(ps => {
 });
 
 const log = (...args) => prefs.log && console.log(...args);
-
-const starters = []; // startup scripts
 
 const notify = e => chrome.notifications.create({// eslint-disable-line no-unused-vars
   title: chrome.runtime.getManifest().name,
@@ -429,10 +433,10 @@ starters.push(popup);
 /* discard on startup */
 
 {
-  chrome.runtime.onStartup.addListener(() => chrome.storage.local.get({
+  chrome.runtime.onStartup.addListener(() => storage({
     'startup-unpinned': false,
     'startup-pinned': false
-  }, prefs => {
+  }).then(prefs => {
     if (prefs['startup-unpinned']) {
       chrome.tabs.query({
         discarded: false,
