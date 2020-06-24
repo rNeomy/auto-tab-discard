@@ -58,7 +58,6 @@ const init = () => {
 init();
 
 chrome.runtime.onMessage.addListener(request => {
-  console.log(request);
   if (request.method === 'disable-whitelist-domain') {
     whitelist.session.dataset.disabled = true;
     whitelist.always.dataset.disabled = true;

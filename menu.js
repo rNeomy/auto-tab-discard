@@ -273,7 +273,6 @@
       // release
       else {
         for (const tab of tabs) {
-          console.log(shiftKey);
           chrome.tabs.reload(tab.id, {
             bypassCache: shiftKey ? true : false
           });

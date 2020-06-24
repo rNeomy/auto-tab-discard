@@ -108,6 +108,33 @@
     "check-delay": {
       "title": "Minimum delay between sequential discarding checks (in seconds)",
       "type": "number"
+    },
+
+
+
+    "trash.enabled": {
+      "title": "Trash old discarded tabs",
+      "type": "boolean"
+    },
+    "trash.period": {
+      "title": "Trash discarded tabs after about x hours if trash.enabled is true",
+      "type": "number"
+    },
+    "startup-unpinned": {
+      "title": "Discard unpinned tabs on a browser restart",
+      "type": "boolean"
+    },
+    "startup-pinned": {
+      "title": "Discard pinned tabs on a browser restart",
+      "type": "boolean"
+    },
+    "startup-release-pinned": {
+      "title": "Release discarding state of pinned tabs on a browser restart",
+      "type": "boolean"
+    },
+    "release-next-tab": {
+      "title": "Release discarding of the next tab if it is discarded",
+      "type": "boolean"
     }
   }
 }
