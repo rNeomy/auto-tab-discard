@@ -76,7 +76,7 @@ chrome.storage.onChanged.addListener(ps => {
   }
 });
 
-const log = (...args) => prefs.log && console.log(...args);
+const log = (...args) => prefs.log && console.log(new Date(), ...args);
 
 const notify = e => chrome.notifications.create({// eslint-disable-line no-unused-vars
   title: chrome.runtime.getManifest().name,
@@ -337,6 +337,7 @@ tabs.uninstall = () => {
 starters.push(() => prefs.period && tabs.install());
 
 chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
+  log('onMessage request received', request);
   const {method} = request;
   if (method === 'is-pinned') {
     resposne(tab.pinned);

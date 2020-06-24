@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.3.5.3",
+  "version": "0.3.6",
   "default_locale": "en",
   "name": "Auto Tab Discard",
   "description": "__MSG_app_description__",

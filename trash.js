@@ -1,10 +1,11 @@
-/* global storage */
+/* global storage, log */
 'use strict';
 
 // trash old discarded tabs
 const trash = {
   observe(tabId, changeInfo) {
     if ('discarded' in changeInfo) {
+      log('trash.observe is called');
       storage({
         'trash.list': {}
       }).then(prefs => {
@@ -24,6 +25,7 @@ const trash = {
     });
   },
   install() {
+    log('trash.install is called');
     chrome.tabs.onUpdated.addListener(trash.observe);
     chrome.tabs.onRemoved.addListener(trash.observeRemoval);
 
@@ -45,12 +47,14 @@ const trash = {
     }));
   },
   abort() {
+    log('trash.abort is called');
     chrome.tabs.onUpdated.removeListener(trash.observe);
     chrome.tabs.onRemoved.removeListener(trash.observeRemoval);
     chrome.alarms.clear('trash.check');
   }
 };
 chrome.alarms.onAlarm.addListener(alarm => {
+  log('alarm fire', alarm);
   if (alarm.name === 'trash.check') {
     storage({
       'trash.list': {},
