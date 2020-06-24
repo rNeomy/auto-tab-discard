@@ -35,6 +35,9 @@
   "options_startup_pinned": {
     "message": "Discard all pinned tabs on a browser or extension startup"
   },
+  "options_startup_release_pinned": {
+    "message": "Release discarding state of all pinned tabs on a browser or extension startup"
+  },
   "options_memory": {
     "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
   },

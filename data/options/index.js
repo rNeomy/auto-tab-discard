@@ -59,7 +59,8 @@ const restore = () => storage({
   'idle': false,
   'idle-timeout': 5 * 60,
   'startup-unpinned': false,
-  'startup-pinned': false
+  'startup-pinned': false,
+  'startup-release-pinned': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -92,6 +93,7 @@ const restore = () => storage({
   document.getElementById('memory-value').value = prefs['memory-value'];
   document.getElementById('startup-unpinned').checked = prefs['startup-unpinned'];
   document.getElementById('startup-pinned').checked = prefs['startup-pinned'];
+  document.getElementById('startup-release-pinned').checked = prefs['startup-release-pinned'];
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
@@ -152,7 +154,8 @@ document.getElementById('save').addEventListener('click', () => {
     'memory-enabled': document.getElementById('memory-enabled').checked,
     'memory-value': Math.max(10, Number(document.getElementById('memory-value').value)),
     'startup-unpinned': document.getElementById('startup-unpinned').checked,
-    'startup-pinned': document.getElementById('startup-pinned').checked
+    'startup-pinned': document.getElementById('startup-pinned').checked,
+    'startup-release-pinned': document.getElementById('startup-release-pinned').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

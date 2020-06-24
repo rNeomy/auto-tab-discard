@@ -303,7 +303,6 @@
     }
   });
   chrome.runtime.onMessage.addListener(async (request, sender) => {
-    console.log(request);
     if (request.method === 'popup') {
       const tabs = await query({
         active: true,

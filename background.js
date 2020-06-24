@@ -431,11 +431,11 @@ starters.push(popup);
 })();
 
 /* discard on startup */
-
 {
   chrome.runtime.onStartup.addListener(() => storage({
     'startup-unpinned': false,
-    'startup-pinned': false
+    'startup-pinned': false,
+    'startup-release-pinned': false
   }).then(prefs => {
     if (prefs['startup-unpinned']) {
       chrome.tabs.query({
@@ -448,6 +448,12 @@ starters.push(popup);
         discarded: false,
         pinned: true
       }, tabs => tabs.forEach(discard));
+    }
+    else if (prefs['startup-release-pinned']) {
+      chrome.tabs.query({
+        discarded: true,
+        pinned: true
+      }, tabs => tabs.forEach(tab => chrome.tabs.reload(tab.id)));
     }
   }));
 }
