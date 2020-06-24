@@ -183,7 +183,7 @@
     "message": "Trash old Discarded Tabs"
   },
   "popup_release": {
-    "message": "Release"
+    "message": "Remove discarding. To bypass cached content use Shift + Click"
   },
   "bg_no_active_tab": {
     "message": "No active tab is present"

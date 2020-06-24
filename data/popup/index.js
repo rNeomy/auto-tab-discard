@@ -65,7 +65,8 @@ chrome.runtime.onMessage.addListener(request => {
   }
 });
 
-document.addEventListener('click', ({target}) => {
+document.addEventListener('click', e => {
+  const {target} = e;
   const cmd = target.dataset.cmd;
 
   if (cmd === 'open-options') {
@@ -80,7 +81,8 @@ document.addEventListener('click', ({target}) => {
   else if (cmd) {
     chrome.runtime.sendMessage({
       method: 'popup',
-      cmd
+      cmd,
+      shiftKey: e.shiftKey
     }, () => window.close());
   }
 });

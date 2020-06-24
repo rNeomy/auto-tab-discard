@@ -124,7 +124,7 @@
       // eslint-disable-next-line require-atomic-updates
       tab = await new Promise(resolve => chrome.tabs.get(tab.id, resolve));
     }
-    const {menuItemId} = info;
+    const {menuItemId, shiftKey} = info;
     if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session') {
       const d = menuItemId === 'whitelist-domain';
       const {hostname, protocol = ''} = new URL(tab.url);
@@ -273,7 +273,10 @@
       // release
       else {
         for (const tab of tabs) {
-          chrome.tabs.reload(tab.id);
+          console.log(shiftKey);
+          chrome.tabs.reload(tab.id, {
+            bypassCache: shiftKey ? true : false
+          });
         }
       }
     }
@@ -300,6 +303,7 @@
     }
   });
   chrome.runtime.onMessage.addListener(async (request, sender) => {
+    console.log(request);
     if (request.method === 'popup') {
       const tabs = await query({
         active: true,
@@ -308,7 +312,8 @@
       if (tabs.length) {
         onClicked({
           menuItemId: request.cmd,
-          value: request.value
+          value: request.value,
+          shiftKey: request.shiftKey
         }, tabs[0]);
       }
     }

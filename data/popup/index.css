@@ -36,7 +36,9 @@ li.group span {
   padding: 5px 0 5px 10px;
 }
 li span[data-cmd^="release"] {
-  padding-right: 10px;
+  width: 16px;
+  background: url('release.svg') no-repeat center center;
+  background-size: 16px;
 }
 
 .separator {
