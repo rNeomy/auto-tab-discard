@@ -167,7 +167,7 @@ const discard = tab => new Promise(resolve => {
           canvas.width = img.width;
           canvas.height = img.height;
 
-          ctx.globalAlpha = 0.4;
+          ctx.globalAlpha = 0.6;
           ctx.drawImage(img, 0, 0);
 
           ctx.globalAlpha = 1;
@@ -342,7 +342,22 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     resposne(tab.pinned);
   }
   else if (method === 'is-playing') {
-    resposne(tab.audible);
+    if (tab.audible) {
+      resposne(true);
+    }
+    else {
+      chrome.tabs.executeScript(tab.id, {
+        code: 'isPlaying'
+      }, arr => {
+        if (arr) {
+          resposne(arr.some(a => a > 0));
+        }
+        else {
+          resposne(false);
+        }
+      });
+    }
+    return true;
   }
   else if (method === 'is-autoDiscardable') {
     resposne(tab.autoDiscardable);

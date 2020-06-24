@@ -53,6 +53,7 @@ tools.audio = () => {
     Promise.resolve(false);
   }
 };
+
 tools.pinned = () => {
   if (prefs.pinned === false) {
     return Promise.resolve(false);

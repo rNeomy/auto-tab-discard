@@ -6,14 +6,13 @@ body {
   width: 350px;
   overflow: hidden;
   background-color: #fff;
+  color: #4d5156;
 }
 header {
-  height: 67px;
-  line-height: 67px;
-  text-indent: 67px;
-  background: url('../icons/48.png') center left 10px no-repeat;
   border-bottom: solid 1px #d9d9d9;
   font-size: 140%;
+  text-align: center;
+  padding: 15px;
 }
 ul {
   padding: 0;
@@ -41,16 +40,21 @@ li span[data-cmd^="release"] {
   background-size: 16px;
 }
 
-.separator {
-  pointer-events: none;
-  height: 12px;
+[data-cmd] {
+  cursor: pointer;
 }
+[data-cmd]:hover {
+  background-color: #f0f0f0;
+}
+
 .button {
   background-color: #f0f0f0;
-  border-top: solid 1px #d9d9d9;
   height: 42px;
   line-height: 42px;
   text-align: center;
+}
+.button:hover {
+  background-color: #d9d9d9;
 }
 [data-cmd]:active,
 .button:active {
@@ -71,6 +75,7 @@ li span[data-cmd^="release"] {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   white-space: nowrap;
+  padding: 10px 0;
 }
 .nav > span {
   background-color: #f0f0f0;
@@ -113,12 +118,6 @@ li span[data-cmd^="release"] {
   display: none;
 }
 
-[data-cmd] {
-  cursor: pointer;
-}
-[data-cmd]:hover {
-  background-color: #f0f0f0;
-}
 [data-cmd=close] {
   position: relative;
 }

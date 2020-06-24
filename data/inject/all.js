@@ -4,12 +4,19 @@ var post = o => window.top.postMessage(Object.assign(o, {
   cmd: 'ntd-command'
 }), '*');
 
-document.addEventListener('play', () => post({
-  audio: true
-}), true);
-document.addEventListener('pause', () => post({
-  audio: false
-}), true);
+let isPlaying = 0;
+document.addEventListener('play', () => {
+  isPlaying += 1;
+  post({
+    audio: true
+  });
+}, true);
+document.addEventListener('pause', () => {
+  isPlaying -= 1;
+  post({
+    audio: false
+  });
+}, true);
 
 document.addEventListener('change', e => e.target.closest('form') && post({
   form: true
