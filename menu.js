@@ -229,39 +229,51 @@
         });
       }
     }
-    else { // discard-tabs, discard-window, discard-other-windows, discard-rights, discard-lefts
+    // discard-tabs, discard-window, discard-other-windows, discard-rights, discard-lefts
+    // release-tabs, release-window, release-other-windows, release-rights, release-lefts
+    else {
       const info = {
         url: '*://*/*',
-        discarded: false,
+        discarded: menuItemId.startsWith('release'),
         active: false
       };
-      if (menuItemId === 'discard-window' || menuItemId === 'discard-rights' || menuItemId === 'discard-lefts') {
+      if (
+        ['discard-window', 'discard-rights', 'discard-lefts', 'release-window', 'release-rights', 'release-lefts']
+          .some(k => k === menuItemId)
+      ) {
         info.currentWindow = true;
       }
-      else if (menuItemId === 'discard-other-windows') {
+      else if (menuItemId === 'discard-other-windows' || menuItemId === 'release-other-windows') {
         info.currentWindow = false;
       }
       let tabs = await query(info);
-      if (menuItemId === 'discard-rights' || menuItemId === 'discard-lefts') {
-        if (menuItemId === 'discard-lefts') {
+      if (menuItemId.endsWith('rights') || menuItemId.endsWith('lefts')) {
+        if (menuItemId.endsWith('lefts')) {
           tabs = tabs.filter(t => t.index < tab.index);
         }
         else {
           tabs = tabs.filter(t => t.index > tab.index);
         }
       }
+      if (menuItemId.startsWith('discard')) {
+        const post = tab => new Promise(resolve => chrome.tabs.sendMessage(tab.id, {
+          method: 'introduce'
+        }, a => {
+          chrome.runtime.lastError;
+          resolve(a);
+        }));
 
-      const post = tab => new Promise(resolve => chrome.tabs.sendMessage(tab.id, {
-        method: 'introduce'
-      }, a => {
-        chrome.runtime.lastError;
-        resolve(a);
-      }));
-
-      for (const tab of tabs) {
-        const a = await post(tab);
-        if (a && a.exception !== true && a.allowed) {
-          discard(tab);
+        for (const tab of tabs) {
+          const a = await post(tab);
+          if (a && a.exception !== true && a.allowed) {
+            discard(tab);
+          }
+        }
+      }
+      // release
+      else {
+        for (const tab of tabs) {
+          chrome.tabs.reload(tab.id);
         }
       }
     }

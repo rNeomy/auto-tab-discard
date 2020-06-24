@@ -182,6 +182,9 @@
   "popup_trash": {
     "message": "Trash old Discarded Tabs"
   },
+  "popup_release": {
+    "message": "Release"
+  },
   "bg_no_active_tab": {
     "message": "No active tab is present"
   },
