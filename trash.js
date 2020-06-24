@@ -1,12 +1,13 @@
+/* global storage */
 'use strict';
 
 // trash old discarded tabs
 const trash = {
   observe(tabId, changeInfo) {
     if ('discarded' in changeInfo) {
-      chrome.storage.local.get({
+      storage({
         'trash.list': {}
-      }, prefs => {
+      }).then(prefs => {
         if (changeInfo.discarded) {
           prefs['trash.list'][tabId] = Date.now();
         }
@@ -26,9 +27,9 @@ const trash = {
     chrome.tabs.onUpdated.addListener(trash.observe);
     chrome.tabs.onRemoved.addListener(trash.observeRemoval);
 
-    chrome.storage.local.get({
+    storage({
       'trash.interval': 30 // in minutes
-    }, prefs => chrome.alarms.create('trash.check', {
+    }).then(prefs => chrome.alarms.create('trash.check', {
       when: Date.now() + prefs['trash.interval'] * 60 * 1000,
       periodInMinutes: prefs['trash.interval']
     }));
@@ -51,10 +52,10 @@ const trash = {
 };
 chrome.alarms.onAlarm.addListener(alarm => {
   if (alarm.name === 'trash.check') {
-    chrome.storage.local.get({
+    storage({
       'trash.list': {},
       'trash.period': 24 // in hours
-    }, prefs => {
+    }).then(prefs => {
       const now = Date.now();
       Object.entries(prefs['trash.list']).forEach(([key, value]) => {
         if (now - value > prefs['trash.period'] * 60 * 60 * 1000) {
@@ -68,9 +69,9 @@ chrome.alarms.onAlarm.addListener(alarm => {
 });
 
 {
-  const startup = () => chrome.storage.local.get({
+  const startup = () => storage({
     'trash.enabled': false
-  }, prefs => prefs['trash.enabled'] && trash.install());
+  }).then(prefs => prefs['trash.enabled'] && trash.install());
 
   chrome.storage.onChanged.addListener(ps => {
     if (ps['trash.enabled']) {
