@@ -95,6 +95,9 @@
   "options_click_discard_other_windows": {
     "message": "Discard Tabs in Other Windows"
   },
+  "options_click_toggle_allowed": {
+    "message": "Toggle 'Keep This Tab for This Session' option"
+  },
   "options_misc": {
     "message": "Misc"
   },

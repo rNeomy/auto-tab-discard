@@ -229,6 +229,11 @@
         });
       }
     }
+    else if (menuItemId === 'toggle-allowed') {
+      chrome.tabs.update({
+        autoDiscardable: tab.autoDiscardable === false
+      });
+    }
     // discard-tabs, discard-window, discard-other-windows, discard-rights, discard-lefts
     // release-tabs, release-window, release-other-windows, release-rights, release-lefts
     else {

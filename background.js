@@ -344,7 +344,7 @@ tabs.mark = (tabId, autoDiscardable) => {
   });
   chrome.browserAction.setTitle({
     tabId,
-    title: chrome.i18n.getMessage('bg_msg_1')
+    title: autoDiscardable ? '' : chrome.i18n.getMessage('bg_msg_1')
   });
 };
 chrome.browserAction.setBadgeBackgroundColor({
