@@ -194,6 +194,9 @@
   "bg_no_active_tab": {
     "message": "No active tab is present"
   },
+  "bg_msg_1": {
+    "message": "auto-discarding is disabled for this tab"
+  },
   "menu_discard_tab": {
     "message": "Discard Tab"
   },

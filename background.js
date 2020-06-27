@@ -311,6 +311,7 @@ tabs.callbacks = {
       chrome.tabs.executeScript(tab.id, {
         code: `allowed = ${info.autoDiscardable}`
       });
+      tabs.mark(id, info.autoDiscardable);
     }
   },
   onStateChanged() {
@@ -335,6 +336,20 @@ tabs.uninstall = () => {
 };
 
 starters.push(() => prefs.period && tabs.install());
+
+tabs.mark = (tabId, autoDiscardable) => {
+  chrome.browserAction.setBadgeText({
+    tabId,
+    text: autoDiscardable ? '' : 'd'
+  });
+  chrome.browserAction.setTitle({
+    tabId,
+    title: chrome.i18n.getMessage('bg_msg_1')
+  });
+};
+chrome.browserAction.setBadgeBackgroundColor({
+  color: '#666'
+});
 
 chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
   log('onMessage request received', request);
@@ -361,7 +376,11 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     return true;
   }
   else if (method === 'is-autoDiscardable') {
+    console.log(tab);
     resposne(tab.autoDiscardable);
+    if (tab.autoDiscardable === false) {
+      tabs.mark(tab.id, false);
+    }
   }
   else if (method === 'tabs.check') {
     tabs.check('tab.timeout');
