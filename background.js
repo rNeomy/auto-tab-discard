@@ -363,7 +363,9 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     }
     else {
       chrome.tabs.executeScript(tab.id, {
-        code: 'isPlaying'
+        code: 'document.pictureInPictureElement ? 10 : isPlaying',
+        allFrames: true,
+        matchAboutBlank: true
       }, arr => {
         if (arr) {
           resposne(arr.some(a => a > 0));
@@ -376,7 +378,6 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     return true;
   }
   else if (method === 'is-autoDiscardable') {
-    console.log(tab);
     resposne(tab.autoDiscardable);
     if (tab.autoDiscardable === false) {
       tabs.mark(tab.id, false);
