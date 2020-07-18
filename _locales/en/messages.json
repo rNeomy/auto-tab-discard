@@ -6,13 +6,13 @@
     "message": "Discarding options"
   },
   "options_period01": {
-    "message": "Discard inactive tabs after (in seconds) (use zero second to disable auto tab discarding) "
+    "message": "Discard inactive tabs after (in seconds) "
   },
   "options_period02": {
-    "message": "when the number of inactive tabs exceeds "
+    "message": "(use zero second to disable auto tab discarding) when the number of inactive tabs exceeds "
   },
   "options_period03": {
-    "message": "Also trash discarded tabs if they are inactive for about (in hours) (if enabled from popup) "
+    "message": "Trash (permanently delete) discarded tabs if they are inactive for about (in hours) (if enabled from the browser action's popup window) "
   },
   "options_url_based": {
     "message": "Only discard the following inactive hostnames"
@@ -189,7 +189,7 @@
     "message": "Options"
   },
   "popup_trash": {
-    "message": "Trash old Discarded Tabs"
+    "message": "Trash (permanently delete) old Discarded Tabs"
   },
   "popup_release": {
     "message": "Remove discarding. To bypass cached content use Shift + Click"
