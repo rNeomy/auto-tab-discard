@@ -117,7 +117,8 @@ tools.permission = () => {
   if (prefs['notification.permission'] === false) {
     return Promise.resolve(false);
   }
-  return new Promise(resolve => resolve(Notification.permission === 'granted'));
+  return new Promise(resolve => resolve(Notification &&
+                                        Notification.permission === 'granted'));
 };
 tools.urlBased = () => {
   if (prefs.mode === 'url-based') {
