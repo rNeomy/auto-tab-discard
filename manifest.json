@@ -101,5 +101,6 @@
     "close": {
       "description": "__MSG_cmd_close__"
     }
-  }
+  },
+  "web_accessible_resources": [ "dummy.html", "dummy.js"]
 }

@@ -115,10 +115,13 @@ const navigate = (method, discarded = false) => query({
   }
 });
 
+// Discard Tab and replace with Dummy html
+// Favicon handled by dummy.js itself
 const discard = tab => new Promise(resolve => {
-  if (tab.active) {
-    return resolve();
-  }
+  // No need as it will be active with dummy.html
+  // if (tab.active) {
+  //   return resolve();
+  // }
   if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
     discard.count = 0;
   }
@@ -131,6 +134,27 @@ const discard = tab => new Promise(resolve => {
   discard.count += 1;
   discard.time = Date.now();
   const next = () => {
+    // Load the Dummy page instead of directly discarding it.
+    if(tab.url.indexOf(chrome.extension.getURL('dummy.html')) < 0){
+      // log(tab)
+      chrome.tabs.update(tab.id, {
+        url: chrome.extension.getURL('dummy.html')+'#url='+encodeURIComponent(tab.url)+'&title='+tab.title+'&fav='+(tab.favIconUrl||'')
+      })
+    }
+    discard.count -= 1;
+    if (discard.tabs.length) {
+      const tab = discard.tabs.shift();
+      discard(tab);
+    }
+    resolve();
+  };
+  next();
+});
+
+// Discard Self gets called when a page is dummy.html and is active=false
+const discardSelf = tab => new Promise(resolve => {
+  const next = () => {
+    // log(tab)
     try {
       if (isFirefox) {
         chrome.tabs.discard(tab.id);
@@ -143,66 +167,63 @@ const discard = tab => new Promise(resolve => {
     catch (e) {
       log('discarding failed', e);
     }
-    discard.count -= 1;
-    if (discard.tabs.length) {
-      const tab = discard.tabs.shift();
-      discard(tab);
-    }
     resolve();
   };
-  // favicon
-  if (prefs.favicon) {
-    const src = tab.favIconUrl || '/data/page.png';
-    Object.assign(new Image(), {
-      crossOrigin: 'anonymous',
-      src,
-      onerror() {
-        next();
-      },
-      onload() {
-        const img = this;
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          canvas.width = img.width;
-          canvas.height = img.height;
+  next();
+});
 
-          ctx.globalAlpha = 0.6;
-          ctx.drawImage(img, 0, 0);
+// To load dummy page once (on restart/update) to load favicon and title
+let dummyLoadedOnce = false;
+// Used on First Load to load the title and Favicon
+const loadDummy = () => {
+  chrome.tabs.query({}, function(tabs){
+    for (var i = 0; i < tabs.length; i++) {
+      // log(tabs[i])
+      if(
+        tabs[i].url.indexOf(chrome.extension.getURL('dummy.html')) >= 0
+        && tabs[i].discarded
+      ){
+        chrome.tabs.update(tabs[i].id, {
+          url: tabs[i].url
+        }, function(tab){
+          setTimeout(function(){
+            discardSelf(tab)
+          }, 2000) // Bit of delay to let it load its dummy.js
+        })
+      }                 
+    }
+    dummyLoadedOnce = true;
+  });
+}
 
-          ctx.globalAlpha = 1;
-          ctx.beginPath();
-          ctx.fillStyle = '#a1a0a1';
-          ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-          ctx.fill();
-          chrome.tabs.executeScript(tab.id, {
-            runAt: 'document_start',
-            allFrames: true,
-            matchAboutBlank: true,
-            code: `
-              window.stop();
-              if (window === window.top) {
-                [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
-
-                document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                  rel: 'icon',
-                  type: 'image/png',
-                  href: '${canvas.toDataURL('image/png')}'
-                }));
-              }
-            `
-          }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
-        }
-        else {
-          next();
-        }
+// Discard the dummy.html if it is active=false, discarded=false
+// autoDiscardable=true
+const discardDummy = () => {
+  if(!dummyLoadedOnce){
+    setTimeout(function(){
+      loadDummy();
+    }, 2000)
+  }else{
+    chrome.tabs.query({}, function(tabs){
+      for (var i = 0; i < tabs.length; i++) {
+        if(
+          tabs[i].url.indexOf(chrome.extension.getURL('dummy.html')) >= 0
+          && tabs[i].autoDiscardable
+          && !tabs[i].active
+          && !tabs[i].discarded
+        ){
+          discardSelf(tabs[i]); // Discard itself..
+        }                 
       }
     });
   }
-  else {
-    next();
-  }
-});
+}
+
+// Discard tabs with dummy.html internal page, can be discarded by is not
+chrome.tabs.onActivated.addListener((activeInfo) => {
+  discardDummy()
+})
+
 discard.tabs = [];
 discard.count = 0;
 
@@ -325,6 +346,7 @@ tabs.install = () => {
   chrome.tabs.onCreated.addListener(tabs.callbacks.onCreated);
   chrome.tabs.onUpdated.addListener(tabs.callbacks.onUpdated);
   chrome.idle.onStateChanged.addListener(tabs.callbacks.onStateChanged);
+  loadDummy();
 };
 
 tabs.uninstall = () => {
@@ -398,6 +420,8 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
       tabId: tab.id,
       title: request.message
     });
+  }else if (method === 'discard-self') {
+    discardSelf(tab)
   }
 });
 // idle timeout

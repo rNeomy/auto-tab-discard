@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Tab Discard</title>
+    <style>
+      html {
+        background: #323232;
+      }
+      body {
+        background: #323232;
+        color: #ddd;
+        font-size: 1.5em;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+      .flex {
+        flex-flow: column;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      small {
+        font-size: 0.5em;
+      }
+      .no-flow-text {
+        margin: 0 auto;
+        width: 80%;
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-top: 10px;
+      }
+      .flex-row {
+        display: flex;
+        flex-flow: column;
+        margin: 10px 0;
+        width: 100%;
+        min-height: 80px;
+      }
+      .bounce {
+        will-change: transform;
+        animation: bounce 0.3s ease alternate infinite;
+      }
+      @keyframes bounce {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+          filter: none;
+        }
+        100% {
+          transform: scale(1.1);
+          opacity: 0.5;
+          filter: drop-shadow(2px 4px 6px black);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex">
+      <div class="flex-row">
+        <p id="title" class="no-flow-text"></p>
+        <small id="url" class="no-flow-text"></small>
+      </div>
+      <div style="min-height: 65px">
+        <img id="icon" src="/data/icons/light/64.png" />
+      </div>
+      <div class="flex-row">
+        <b style="opacity: 0.5">TAB DISCARDED</b>
+        <small>Click Anywhere to Open</small>
+      </div>
+    </div>
+  </body>
+  <script src="dummy.js"></script>
+</html>
