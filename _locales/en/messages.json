@@ -41,6 +41,9 @@
   "options_release_next_tab": {
     "message": "Release discarding of the next tab (tab to the right of the active tab)"
   },
+  "options_release_on_view": {
+    "message": "Release tab on view (defaults on click or reload)"
+  },
   "options_memory": {
     "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
   },
@@ -125,6 +128,9 @@
   "options_footnote_3": {
     "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 second. The recommended value is 30 seconds."
   },
+  "options_footnote_4": {
+    "message": "A new Backup is automatically taken when a Tab gets discarded."
+  },
   "options_reset": {
     "message": "Factory Reset"
   },
@@ -145,6 +151,9 @@
   },
   "options_favicon_delay": {
     "message": "Delay for painting the discarded favicon (in milliseconds)"
+  },
+  "options_latest_tab_backup": {
+    "message": "Latest Tab Backup"
   },
   "popup_discard_tab": {
     "message": "Discard Tab"

@@ -61,7 +61,9 @@ const restore = () => storage({
   'startup-unpinned': false,
   'startup-pinned': false,
   'startup-release-pinned': false,
-  'release-next-tab': false
+  'release-next-tab': false,
+  'release-on-view': false,
+  'tab-backup': []
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -96,10 +98,31 @@ const restore = () => storage({
   document.getElementById('startup-pinned').checked = prefs['startup-pinned'];
   document.getElementById('startup-release-pinned').checked = prefs['startup-release-pinned'];
   document.getElementById('release-next-tab').checked = prefs['release-next-tab'];
+  document.getElementById('release-on-view').checked = prefs['release-on-view'];
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
   document.getElementById(prefs.click).checked = true;
+  
+  // Showing Latest Backups URL
+  if(prefs['tab-backup'].length > 0){
+    document.getElementById('backups').innerHTML = '';
+    let i = 0;
+    prefs['tab-backup'].reverse().forEach((latest_backup) => {
+      i++;
+      let details = document.createElement('details');
+      let summary = document.createElement('summary');
+      summary.innerHTML = (i === 1 ? 'Latest' : '#'+i);
+      details.appendChild(summary);
+
+      let textarea = document.createElement('textarea');
+      textarea.setAttribute('disabled','disabled');
+      textarea.value = latest_backup.map((d)=>d['url']).join('\n');
+      details.appendChild(textarea)
+
+      document.getElementById('backups').appendChild(details);
+    });
+  }
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -158,7 +181,8 @@ document.getElementById('save').addEventListener('click', () => {
     'startup-unpinned': document.getElementById('startup-unpinned').checked,
     'startup-pinned': document.getElementById('startup-pinned').checked,
     'startup-release-pinned': document.getElementById('startup-release-pinned').checked,
-    'release-next-tab': document.getElementById('release-next-tab').checked
+    'release-next-tab': document.getElementById('release-next-tab').checked,
+    'release-on-view': document.getElementById('release-on-view').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

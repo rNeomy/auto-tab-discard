@@ -83,31 +83,30 @@ window.onload = function () {
     },
   });
 
-  // WHICH APPROACH IS BETTER?
-  // 1) chrome.tabs.onActivated listener in background.js and loop through all dummy.html page
-  // 2) Or as below send message from tab on hidden
-
-  // I vote for 1
-
-  // interval = setInterval(function () {
-  //   if (document.hidden) {
-  //     // Trigger to Discard Self..
-  //     chrome.runtime.sendMessage({
-  //       method: 'discard-self'
-  //     });
-  //     // document.title = new Date();
-  //     clearInterval(interval);
-  //   }
-  // }, 2000); // wait to seconds
-
-  window.onfocus = function () {
-    clearInterval(interval);
-  };
-
   function loadWebpage(){
     document.getElementById('icon').classList.add('bounce')
-    location.replace(url)
+    chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+      chrome.tabs.update(tabs[0].id, {
+        url: url
+      })
+    });
   }
+
+  // Get Storage contents to check if "release-on-view=true"
+  // Alternatively we could use onActivated event from background...
+  // But, getting url and parsing from hash function shall repeat so here is good..
+  var prefs = {
+    'release-on-view': false
+  };
+  chrome.storage.managed.get(prefs, ps => {
+    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, function(store){
+      if(store['release-on-view']){ // If Relase on View Options Chosen
+        window.onfocus = window.onmousemove = () => {
+          loadWebpage()
+        }
+      }
+    });
+  });
 
   // Check if user reloaded the page so open url directly.
   if(performance

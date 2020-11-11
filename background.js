@@ -115,6 +115,34 @@ const navigate = (method, discarded = false) => query({
   }
 });
 
+var isBackingUp = false;
+// Used to backup all 
+const backupTabs = () => {
+  if(isBackingUp){return;}
+
+  isBackingUp = true;
+  chrome.tabs.query({}, function(tabs){
+    var data = tabs.map((t) => {return{'url':t.url, 'title':t.title}})
+    var backups = []
+    chrome.storage.local.get({
+      'tab-backup': []
+    }, prefs => {
+      backups = prefs['tab-backup']
+
+      if(backups.length >= 5){ // Clean Old Backups
+        backups.shift();
+      }
+      backups.push(data);
+    
+      chrome.storage.local.set({
+        ['tab-backup']: backups
+      }, () => {
+        isBackingUp = false;
+      });
+    });
+  });
+}
+
 // Discard Tab and replace with Dummy html
 // Favicon handled by dummy.js itself
 const discard = tab => new Promise(resolve => {
@@ -152,6 +180,7 @@ const discard = tab => new Promise(resolve => {
 });
 
 // Discard Self gets called when a page is dummy.html and is active=false
+// It the discards the dummy itself
 const discardSelf = tab => new Promise(resolve => {
   const next = () => {
     // log(tab)
@@ -172,57 +201,70 @@ const discardSelf = tab => new Promise(resolve => {
   next();
 });
 
-// To load dummy page once (on restart/update) to load favicon and title
-let dummyLoadedOnce = false;
 // Used on First Load to load the title and Favicon
-const loadDummy = () => {
-  chrome.tabs.query({}, function(tabs){
+const loadDummy = (window=false) => {
+  var options = {
+    discarded: true,
+    url: chrome.extension.getURL('dummy.html')
+  }
+  if(window){ // For window specific
+    options.windowId = window.id
+  }
+
+  chrome.tabs.query(options, function(tabs){
     for (var i = 0; i < tabs.length; i++) {
       // log(tabs[i])
-      if(
-        tabs[i].url.indexOf(chrome.extension.getURL('dummy.html')) >= 0
-        && tabs[i].discarded
-      ){
-        chrome.tabs.update(tabs[i].id, {
-          url: tabs[i].url
-        }, function(tab){
-          setTimeout(function(){
-            discardSelf(tab)
-          }, 2000) // Bit of delay to let it load its dummy.js
-        })
-      }                 
+      chrome.tabs.update(tabs[i].id, {
+        url: tabs[i].url
+      }, function(tab){
+        setTimeout(function(){
+          // CODE TO FIX BUG - WHEN discardSelf gets called when tab is active
+          // i.e. When, we visit it while this setTimeout period is running (quick hands)
+          chrome.tabs.get(tab.id, function(timed_out_tab){
+            if(timed_out_tab
+              && !timed_out_tab.active 
+              && !timed_out_tab.highlighted
+              && timed_out_tab.autoDiscardable
+            ){
+              discardSelf(timed_out_tab);
+            }
+          })
+        }, 2000) // Bit of delay to let it load its dummy.js
+      })                
     }
-    dummyLoadedOnce = true;
   });
 }
 
 // Discard the dummy.html if it is active=false, discarded=false
 // autoDiscardable=true
 const discardDummy = () => {
-  if(!dummyLoadedOnce){
-    setTimeout(function(){
-      loadDummy();
-    }, 2000)
-  }else{
-    chrome.tabs.query({}, function(tabs){
-      for (var i = 0; i < tabs.length; i++) {
-        if(
-          tabs[i].url.indexOf(chrome.extension.getURL('dummy.html')) >= 0
-          && tabs[i].autoDiscardable
-          && !tabs[i].active
-          && !tabs[i].discarded
-        ){
-          discardSelf(tabs[i]); // Discard itself..
-        }                 
-      }
-    });
-  }
+  chrome.tabs.query({
+    active: false,
+    discarded: false,
+    status: "complete",
+    url: chrome.extension.getURL('dummy.html')
+  }, function(tabs){
+    // Good Place to Backup tabs occasionally
+    // If some tabs are about to get discarded
+    if(tabs.length > 0){backupTabs();}
+
+    tabs.forEach((tab) => discardSelf(tab))
+  });
 }
 
-// Discard tabs with dummy.html internal page, can be discarded by is not
+// Call to discard any possible dummy.html which is not discarded and is not active
 chrome.tabs.onActivated.addListener((activeInfo) => {
   discardDummy()
 })
+
+chrome.windows.onCreated.addListener((window) => {
+  // Wait few seconds to load tabs and trigger loadDummy on new Window load
+  // loadDummy Gets called from onStartup on first load
+  // But, on windows created event it is called again. (only for this window/cases like open new window with our dummy in it.)
+  setTimeout(function(){
+    loadDummy(window);
+  }, 2000);
+});
 
 discard.tabs = [];
 discard.count = 0;
@@ -324,7 +366,7 @@ tabs._check = async () => {
 tabs.callbacks = {
   onCreated: () => tabs.check('chrome.tabs.onCreated'),
   onUpdated(id, info, tab) {
-    if (info.status === 'complete' && tab.active === false) {
+    if (info.status !== 'unloaded' && tab.active === false) {
       tabs.check('chrome.tabs.onUpdated');
     }
     // update autoDiscardable set by this extension or other extensions
@@ -346,7 +388,6 @@ tabs.install = () => {
   chrome.tabs.onCreated.addListener(tabs.callbacks.onCreated);
   chrome.tabs.onUpdated.addListener(tabs.callbacks.onUpdated);
   chrome.idle.onStateChanged.addListener(tabs.callbacks.onStateChanged);
-  loadDummy();
 };
 
 tabs.uninstall = () => {
@@ -454,6 +495,7 @@ starters.push(popup);
 (() => {
   const onStartup = () => prefs.onReady.add(() => {
     starters.forEach(c => c());
+    loadDummy();
   });
   // Firefox does not call "onStartup" after enabling the extension
   if (isFirefox) {

@@ -38,6 +38,10 @@
       padding: 10px;
       margin: 15px 0;
     }
+    .backups textarea{
+      margin-bottom: 15px;
+      min-height: 100px;
+    }
   </style>
 
   <body>
@@ -97,6 +101,10 @@
         <tr>
           <td><input type="checkbox" id="release-next-tab"></td>
           <td colspan="2"><label for="release-next-tab" data-i18n="options_release_next_tab"></label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="release-on-view"></td>
+          <td colspan="2"><label for="release-on-view" data-i18n="options_release_on_view"></label></td>
         </tr>
         <tr id="memory">
           <td><input type="checkbox" id="memory-enabled"></td>
@@ -253,7 +261,10 @@
       <li><span data-i18n="options_footnote_1"></span></li>
       <li><span data-i18n="options_footnote_2"></span></li>
       <li><span data-i18n="options_footnote_3"></span></li>
+      <li><span data-i18n="options_footnote_4"></span></li>
     </ol>
+    <h1 data-i18n="options_latest_tab_backup"></h1>
+    <div id="backups" class="backups"></div>
 
     <script src="index.js"></script>
     <script async src="matched.js"></script>
