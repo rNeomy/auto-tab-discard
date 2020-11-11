@@ -85,11 +85,18 @@ window.onload = function () {
 
   function loadWebpage(){
     document.getElementById('icon').classList.add('bounce')
-    chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-      chrome.tabs.update(tabs[0].id, {
-        url: url
-      })
-    });
+    // If normal tab, use location replace to remove this dummy from history
+    if (url.indexOf('http') === 0 || url.indexOf('ftp') === 0){
+      location.replace(url);
+    } 
+    // Else use chrome update function
+    else{
+      chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+        chrome.tabs.update(tabs[0].id, {
+          url: url
+        })
+      });
+    }
   }
 
   // Get Storage contents to check if "release-on-view=true"

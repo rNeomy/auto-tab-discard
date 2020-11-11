@@ -164,10 +164,27 @@ const discard = tab => new Promise(resolve => {
   const next = () => {
     // Load the Dummy page instead of directly discarding it.
     if(tab.url.indexOf(chrome.extension.getURL('dummy.html')) < 0){
+      let dummy_url = chrome.extension.getURL('dummy.html')+'#url='+encodeURIComponent(tab.url)+'&title='+tab.title+'&fav='+(tab.favIconUrl||'');
       // log(tab)
-      chrome.tabs.update(tab.id, {
-        url: chrome.extension.getURL('dummy.html')+'#url='+encodeURIComponent(tab.url)+'&title='+tab.title+'&fav='+(tab.favIconUrl||'')
-      })
+      // If normal tab, use location replace to remove this dummy from history
+      if (tab.url.indexOf('http') === 0 || tab.url.indexOf('ftp') === 0){
+        chrome.tabs.executeScript(tab.id, {
+          runAt: 'document_start',
+          matchAboutBlank: true,
+          code: `
+            window.stop();
+            location.replace("${dummy_url}");
+          `
+        }, () => chrome.runtime.lastError);
+      } 
+      // Else use chrome update function
+      else{
+        chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+          chrome.tabs.update(tabs[0].id, {
+            url: dummy_url
+          })
+        });
+      }
     }
     discard.count -= 1;
     if (discard.tabs.length) {
