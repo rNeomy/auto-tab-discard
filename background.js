@@ -360,6 +360,16 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
   if (method === 'is-pinned') {
     resposne(tab.pinned);
   }
+  else if (method === 'is-unload-blocked') {
+    chrome.tabs.executeScript(tab.id, {
+      file: 'data/inject/form.js',
+      allFrames: true,
+      matchAboutBlank: true
+    }, arr => {
+      resposne((arr || []).some(a => a));
+    });
+    return true;
+  }
   else if (method === 'is-playing') {
     if (tab.audible) {
       resposne(true);
