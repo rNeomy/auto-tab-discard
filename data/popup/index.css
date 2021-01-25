@@ -4,7 +4,6 @@ body {
   margin: 0;
   user-select: none;
   width: 350px;
-  overflow: hidden;
   background-color: #fff;
   color: #4d5156;
 }
@@ -35,7 +34,7 @@ li.group span {
   padding: 5px 0 5px 10px;
 }
 li span[data-cmd^="release"] {
-  width: 16px;
+  width: 26px;
   background: url('release.svg') no-repeat center center;
   background-size: 16px;
 }

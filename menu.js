@@ -15,15 +15,6 @@
     }
     const create = arr => {
       chrome.contextMenus.removeAll(() => {
-        if (isFirefox) {
-          arr.splice(1, 0, {
-            id: 'discard-tree',
-            title: chrome.i18n.getMessage('menu_discard_tree'),
-            contexts,
-            documentUrlPatterns: ['*://*/*']
-          });
-        }
-
         arr.forEach(o => chrome.contextMenus.create(o));
       });
     };
@@ -31,6 +22,12 @@
     create([{
       id: 'discard-tab',
       title: chrome.i18n.getMessage('menu_discard_tab'),
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
+      id: 'discard-tree',
+      title: chrome.i18n.getMessage('menu_discard_tree'),
       contexts,
       documentUrlPatterns: ['*://*/*']
     },
@@ -134,7 +131,16 @@
       }
       // discard-tree for native
       else if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called
-        htabs.push(...tabs.filter(t => t.highlighted));
+        const tbs = tabs.filter(t => t.highlighted);
+        if (tbs.length > 1) {
+          htabs.push(...tbs);
+        }
+        else if (tab.groupId && tab.groupId > -1) {
+          htabs.push(...tabs.filter(t => t.groupId === tab.groupId));
+        }
+        else {
+          htabs.push(tab);
+        }
       }
       else {
         htabs.push(tab);
