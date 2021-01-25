@@ -119,6 +119,9 @@ const discard = tab => new Promise(resolve => {
   if (tab.active) {
     return resolve();
   }
+  if (tab.discarded) {
+    return resolve();
+  }
   if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
     discard.count = 0;
   }
@@ -436,11 +439,13 @@ starters.push(popup);
     // restore crashed tabs
     chrome.tabs.onActivated.addListener(({tabId}) => {
       const tab = restore.cache[tabId];
+      console.log(tab, 1);
       if (tab) {
         chrome.tabs.executeScript(tabId, {
           code: ''
         }, () => {
           const lastError = chrome.runtime.lastError;
+          console.log(lastError);
           if (lastError && lastError.message === 'No matching message handler') {
             chrome.tabs.update(tabId, {
               url: tab.url
