@@ -15,47 +15,16 @@
     }
     const create = arr => {
       chrome.contextMenus.removeAll(() => {
-        arr.forEach(o => chrome.contextMenus.create(o));
-      });
-
-      // treestyletab support
-      const add = () => chrome.runtime.sendMessage(TST, {
-        type: 'register-self',
-        name: chrome.runtime.getManifest().name
-      }, r => {
-        chrome.runtime.lastError;
-        if (r === true) {
+        if (isFirefox) {
           arr.splice(1, 0, {
             id: 'discard-tree',
             title: chrome.i18n.getMessage('menu_discard_tree'),
             contexts,
             documentUrlPatterns: ['*://*/*']
           });
-
-          arr.forEach(params => chrome.runtime.sendMessage(TST, {
-            type: 'fake-contextMenu-remove',
-            params
-          }));
-          chrome.runtime.sendMessage(TST, {
-            type: 'fake-contextMenu-remove-all'
-          }, () => {
-            arr.forEach(params => chrome.runtime.sendMessage(TST, {
-              type: 'fake-contextMenu-create',
-              params
-            }));
-          });
         }
-      });
-      try {
-        add();
-      }
-      catch (e) {}
 
-      chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
-        if (sender.id === TST && request.type === 'ready') {
-          add();
-          sendResponse(true);
-        }
+        arr.forEach(o => chrome.contextMenus.create(o));
       });
     };
 
@@ -327,12 +296,6 @@
     }
     else if (request.method === 'build-context') {
       onStartup();
-    }
-  });
-
-  chrome.runtime.onMessageExternal.addListener((request, sender) => {
-    if (sender.id === TST && request.type === 'fake-contextMenu-click') {
-      onClicked(request.info, request.tab);
     }
   });
 }
