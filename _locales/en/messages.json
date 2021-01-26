@@ -14,6 +14,9 @@
   "options_period03": {
     "message": "Trash (permanently delete) discarded tabs if they are inactive for about (in hours) (if enabled from the browser action's popup window) "
   },
+  "options_period04": {
+    "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
+  },
   "options_url_based": {
     "message": "Only discard the following inactive hostnames"
   },

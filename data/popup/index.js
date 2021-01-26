@@ -8,10 +8,8 @@
 let tab;
 
 const allowed = document.getElementById('allowed');
-allowed.addEventListener('change', () => chrome.runtime.sendMessage({
-  method: 'popup',
-  cmd: 'auto-discardable',
-  value: allowed.checked === false
+allowed.addEventListener('change', () => chrome.tabs.update(tab.id, {
+  autoDiscardable: allowed.checked === false
 }));
 
 const whitelist = {
@@ -36,12 +34,14 @@ const init = () => {
             method: 'disable-whitelist-domain'
           }));`
         });
-
+        if (tab.autoDiscardable === false) {
+          allowed.checked = true;
+        }
         chrome.tabs.executeScript(tab.id, {
-          code: 'allowed'
-        }, ([a]) => {
-          allowed.parentNode.dataset.disabled = typeof a !== 'boolean';
-          allowed.checked = !a;
+          code: 'document.title'
+        }, () => {
+          const lastError = chrome.runtime.lastError;
+          allowed.parentNode.dataset.disabled = lastError ? true : false;
         });
       }
       else { // on navigation

@@ -34,11 +34,21 @@
     "scripts": [
       "hidden.js",
       "background.js",
+      "modes/number.js",
       "menu.js",
       "trash.js",
       "next.js"
     ]
   },
+  "content_scripts": [{
+    "match_about_blank": true,
+    "matches": ["<all_urls>"],
+    "js": [
+      "data/inject/watch.js"
+    ],
+    "run_at": "document_start",
+    "all_frames": true
+  }],
   "browser_action": {
     "browser_style": true,
     "default_popup": "data/popup/index.html",
@@ -60,19 +70,6 @@
       "size": 64
     }]
   },
-  "content_scripts":[
-    {
-      "matches": ["*://*/*"],
-      "run_at": "document_start",
-      "js": ["data/inject/top.js"]
-    },
-    {
-      "matches": ["*://*/*"],
-      "run_at": "document_start",
-      "all_frames": true,
-      "js": ["data/inject/all.js"]
-    }
-  ],
   "options_ui": {
     "page": "data/options/index.html",
     "chrome_style": true,
