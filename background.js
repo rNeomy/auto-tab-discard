@@ -235,11 +235,11 @@ chrome.browserAction.setBadgeBackgroundColor({
   color: '#666'
 });
 
-chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
+chrome.runtime.onMessage.addListener((request, sender, resposne) => {
   log('onMessage request received', request);
   const {method} = request;
   if (method === 'is-unload-blocked') {
-    chrome.tabs.executeScript(tab.id, {
+    chrome.tabs.executeScript(sender.tab.id, {
       file: 'data/inject/form.js',
       allFrames: true,
       matchAboutBlank: true
@@ -252,7 +252,7 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     tabs.check('tab.timeout');
   }
   else if (method === 'discard.on.load') { // for links after initial load
-    discard(tab);
+    discard(sender.tab);
   }
   // navigation
   else if (method.startsWith('move-') || method === 'close') {
@@ -260,9 +260,15 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
   }
   else if (method === 'report') {
     chrome.browserAction.setTitle({
-      tabId: tab.id,
+      tabId: sender.tab.id,
       title: request.message
     });
+  }
+  else if (method === 'storage') {
+    storage(request.prefs).then(prefs => {
+      resposne(prefs);
+    });
+    return true;
   }
 });
 // idle timeout
@@ -285,13 +291,11 @@ starters.push(popup);
     // restore crashed tabs
     chrome.tabs.onActivated.addListener(({tabId}) => {
       const tab = restore.cache[tabId];
-      console.log(tab, 1);
       if (tab) {
         chrome.tabs.executeScript(tabId, {
           code: ''
         }, () => {
           const lastError = chrome.runtime.lastError;
-          console.log(lastError);
           if (lastError && lastError.message === 'No matching message handler') {
             chrome.tabs.update(tabId, {
               url: tab.url

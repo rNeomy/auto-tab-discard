@@ -1,7 +1,6 @@
 window.isReceivingFormInput = false;
 
 window.addEventListener('keydown', ({keyCode, target}) => {
-  console.log(1);
   if (keyCode >= 48 && keyCode <= 90 && target.tagName) {
     if (
       target.tagName.toUpperCase() === 'INPUT' ||

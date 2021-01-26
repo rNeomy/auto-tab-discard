@@ -1,4 +1,4 @@
-/* globals discard, query, notify, navigate, starters, prefs, isFirefox */
+/* globals discard, query, notify, navigate, starters, prefs, isFirefox, number */
 'use strict';
 
 // Context Menu
@@ -236,19 +236,15 @@
         }
       }
       if (menuItemId.startsWith('discard')) {
-        const post = tab => new Promise(resolve => chrome.tabs.sendMessage(tab.id, {
-          method: 'introduce'
-        }, a => {
-          chrome.runtime.lastError;
-          resolve(a);
-        }));
-
-        for (const tab of tabs) {
-          const a = await post(tab);
-          if (a && a.exception !== true && a.allowed) {
-            discard(tab);
-          }
-        }
+        // make sure to only discard possible tabs not all of them
+        number.check(tabs, {
+          'idle': false,
+          'battery': false,
+          'online': false,
+          'number': 0,
+          'period': 0,
+          'max.single.discard': Infinity
+        });
       }
       // release
       else {
@@ -281,19 +277,20 @@
       }
     }
   });
-  chrome.runtime.onMessage.addListener(async (request, sender) => {
+  chrome.runtime.onMessage.addListener((request, sender) => {
     if (request.method === 'popup') {
-      const tabs = await query({
+      query({
         active: true,
         currentWindow: true
+      }).then(tabs => {
+        if (tabs.length) {
+          onClicked({
+            menuItemId: request.cmd,
+            value: request.value,
+            shiftKey: request.shiftKey
+          }, tabs[0]);
+        }
       });
-      if (tabs.length) {
-        onClicked({
-          menuItemId: request.cmd,
-          value: request.value,
-          shiftKey: request.shiftKey
-        }, tabs[0]);
-      }
     }
     else if (request.method === 'simulate') {
       onClicked({

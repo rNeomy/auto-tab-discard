@@ -11,7 +11,9 @@ number.install = period => {
 number.remove = () => {
   chrome.alarms.clear('number.check');
 };
-number.check = async () => {
+// filterTabsFrom is a list of tab that if provided, discarding only happens on them
+// ops is the preference object overwrite
+number.check = async (filterTabsFrom, ops = {}) => {
   log('number.check is called');
   const prefs = await storage({
     'mode': 'time-based',
@@ -32,6 +34,7 @@ number.check = async () => {
     'idle': false,
     'idle-timeout': 5 * 60 // in seconds
   });
+  Object.assign(prefs, ops);
   // only check if idle
   if (prefs.idle) {
     const state = await new Promise(resolve => chrome.idle.queryState(prefs['idle-timeout'], resolve));
@@ -55,8 +58,8 @@ number.check = async () => {
   const options = {
     url: '*://*/*',
     discarded: false,
-    autoDiscardable: true,
-    active: false
+    active: false,
+    autoDiscardable: true
   };
   if (prefs.pinned) {
     options.pinned = false;
@@ -98,6 +101,10 @@ number.check = async () => {
       return true;
     });
   }
+  if (filterTabsFrom) {
+    tbs = tbs.filter(tb => filterTabsFrom.some(t => t.id === tb.id));
+  }
+
   // do not discard if number of tabs is smaller than required
   if (tbs.length <= prefs.number) {
     return log('number.check', 'number of active tabs', tbs.length, 'is smaller than', prefs.number);
@@ -115,61 +122,70 @@ number.check = async () => {
       chrome.runtime.lastError;
       resolve(r);
     })));
-    console.log('getting meta');
     // remove protected tabs (e.g. addons.mozilla.org)
     if (!ms) {
+      log('discarding aborted', 'meta data fetch error');
       continue;
     }
     const meta = Object.assign({}, ...ms);
+    log('number check', 'got meta data of tab');
     meta.forms = ms.some(o => o.forms);
     meta.audible = ms.some(o => o.audible);
 
     // is the tab using too much memory, discard instantly
     if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
+      log('forced discarding', 'memory usage');
       discard(tb);
       continue;
     }
     // check tab's age
     if (now - meta.time < prefs.period * 1000) {
+      log('discarding aborted', 'tab is not old');
       continue;
     }
     // is this tab loaded
     if (meta.ready !== true) {
+      log('discarding aborted', 'tab is not ready');
       continue;
     }
     // is tab playing audio
     if (prefs.audio && meta.audible) {
+      log('discarding aborted', 'audio is playing');
       continue;
     }
     // is there an unsaved form
     if (prefs.form && meta.forms) {
+      log('discarding aborted', 'active form');
       continue;
     }
     // is notification allowed
     if (prefs['notification.permission'] && meta.permission) {
+      log('discarding aborted', 'tab has notification permission');
       continue;
     // tab can be discarded
     }
     map.set(tb, meta);
     arr.push(tb);
     if (arr.length > prefs['max.single.discard']) {
+      log('breaking', 'max number of tabs reached');
       break;
     }
   }
   // ready to discard
-  log('possible tabs that could get discarded', arr);
+  log('number check', 'possible tabs that could get discarded', arr.length);
   const tbds = arr
     .sort((a, b) => map.get(a).time - map.get(b).time)
-    .slice(0, Math.min(tbs.length - prefs.number, prefs['max.single.discard']));
+    .slice(0, Math.min(arr.length - prefs.number, prefs['max.single.discard']));
 
+  log('number check', 'discarding', tbds.length);
   for (const tb of tbds) {
     discard(tb);
   }
 };
 
 chrome.alarms.onAlarm.addListener(alarm => {
-  log('alarm fire', alarm);
   if (alarm.name === 'number.check') {
+    log('alarm fire', 'number.check', alarm.name);
     number.check();
   }
 });
