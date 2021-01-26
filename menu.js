@@ -17,51 +17,17 @@
       chrome.contextMenus.removeAll(() => {
         arr.forEach(o => chrome.contextMenus.create(o));
       });
-
-      // treestyletab support
-      const add = () => chrome.runtime.sendMessage(TST, {
-        type: 'register-self',
-        name: chrome.runtime.getManifest().name
-      }, r => {
-        chrome.runtime.lastError;
-        if (r === true) {
-          arr.splice(1, 0, {
-            id: 'discard-tree',
-            title: chrome.i18n.getMessage('menu_discard_tree'),
-            contexts,
-            documentUrlPatterns: ['*://*/*']
-          });
-
-          arr.forEach(params => chrome.runtime.sendMessage(TST, {
-            type: 'fake-contextMenu-remove',
-            params
-          }));
-          chrome.runtime.sendMessage(TST, {
-            type: 'fake-contextMenu-remove-all'
-          }, () => {
-            arr.forEach(params => chrome.runtime.sendMessage(TST, {
-              type: 'fake-contextMenu-create',
-              params
-            }));
-          });
-        }
-      });
-      try {
-        add();
-      }
-      catch (e) {}
-
-      chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
-        if (sender.id === TST && request.type === 'ready') {
-          add();
-          sendResponse(true);
-        }
-      });
     };
 
     create([{
       id: 'discard-tab',
       title: chrome.i18n.getMessage('menu_discard_tab'),
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
+      id: 'discard-tree',
+      title: chrome.i18n.getMessage('menu_discard_tree'),
       contexts,
       documentUrlPatterns: ['*://*/*']
     },
@@ -165,7 +131,16 @@
       }
       // discard-tree for native
       else if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called
-        htabs.push(...tabs.filter(t => t.highlighted));
+        const tbs = tabs.filter(t => t.highlighted);
+        if (tbs.length > 1) {
+          htabs.push(...tbs);
+        }
+        else if (tab.groupId && tab.groupId > -1) {
+          htabs.push(...tabs.filter(t => t.groupId === tab.groupId));
+        }
+        else {
+          htabs.push(tab);
+        }
       }
       else {
         htabs.push(tab);
@@ -178,20 +153,26 @@
           .filter(t => t.discarded === false && t.highlighted === false && ids.indexOf(t.id) === -1)
           .sort((a, b) => Math.abs(a.index - tab.index) - Math.abs(b.index - tab.index))
           .shift();
-        // OLD - at the time we record htabs, one tab was active. Let's mark it as inactive
-        // if (otab) {
-        //   chrome.tabs.update(otab.id, {
-        //     active: true
-        //   }, () => {
-        //     htabs.forEach(t => t.active = false);
-        //     htabs.forEach(discard);
-        //   });
-        // }
-        // else {
-        //   notify(chrome.i18n.getMessage('menu_msg3'));
-        // }
-        // NEW - NOW, No need to set this tab as inactive. Will show dummy.html
-        htabs.forEach(discard);
+      
+        chrome.storage.local.get(['release-on-view'], function(opt) {
+          // If release-on-view switch to next tab
+          if(opt && opt['release-on-view']){
+            if (otab) {
+              chrome.tabs.update(otab.id, {
+                active: true
+              }, () => {
+                htabs.forEach(t => t.active = false);
+                htabs.forEach(discard);
+              });
+            }
+            else {
+              notify(chrome.i18n.getMessage('menu_msg3'));
+            }
+          } else{
+            // Else just load and show dummy
+            htabs.forEach(discard);
+          }
+        });
       }
       else {
         htabs.forEach(discard);
@@ -329,12 +310,6 @@
     }
     else if (request.method === 'build-context') {
       onStartup();
-    }
-  });
-
-  chrome.runtime.onMessageExternal.addListener((request, sender) => {
-    if (sender.id === TST && request.type === 'fake-contextMenu-click') {
-      onClicked(request.info, request.tab);
     }
   });
 }

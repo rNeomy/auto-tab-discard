@@ -1,4 +1,4 @@
-/* global storage, log */
+/* global storage, log, starters */
 'use strict';
 
 // trash old discarded tabs
@@ -83,6 +83,5 @@ chrome.alarms.onAlarm.addListener(alarm => {
     }
   });
 
-  chrome.runtime.onStartup.addListener(startup);
-  chrome.runtime.onInstalled.addListener(startup);
+  starters.push(startup);
 }

@@ -150,6 +150,9 @@ const discard = tab => new Promise(resolve => {
   // if (tab.active) {
   //   return resolve();
   // }
+  // if (tab.discarded) {
+  //   return resolve();
+  // }
   if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
     discard.count = 0;
   }
@@ -437,13 +440,23 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
   if (method === 'is-pinned') {
     resposne(tab.pinned);
   }
+  else if (method === 'is-unload-blocked') {
+    chrome.tabs.executeScript(tab.id, {
+      file: 'data/inject/form.js',
+      allFrames: true,
+      matchAboutBlank: true
+    }, arr => {
+      resposne((arr || []).some(a => a));
+    });
+    return true;
+  }
   else if (method === 'is-playing') {
     if (tab.audible) {
       resposne(true);
     }
     else {
       chrome.tabs.executeScript(tab.id, {
-        code: 'document.pictureInPictureElement ? 10 : isPlaying',
+        code: 'document.pictureInPictureElement ? 10 : window.isPlaying',
         allFrames: true,
         matchAboutBlank: true
       }, arr => {
@@ -519,11 +532,13 @@ starters.push(popup);
     // restore crashed tabs
     chrome.tabs.onActivated.addListener(({tabId}) => {
       const tab = restore.cache[tabId];
+      console.log(tab, 1);
       if (tab) {
         chrome.tabs.executeScript(tabId, {
           code: ''
         }, () => {
           const lastError = chrome.runtime.lastError;
+          console.log(lastError);
           if (lastError && lastError.message === 'No matching message handler') {
             chrome.tabs.update(tabId, {
               url: tab.url
@@ -591,10 +606,11 @@ starters.push(popup);
         if (reason === 'install' || (prefs.faqs && reason === 'update')) {
           const doUpdate = (Date.now() - prefs['last-update']) / 1000 / 60 / 60 / 24 > 45;
           if (doUpdate && previousVersion !== version) {
-            tabs.create({
+            tabs.query({active: true, currentWindow: true}, tbs => tabs.create({
               url: page + '?version=' + version + (previousVersion ? '&p=' + previousVersion : '') + '&type=' + reason,
-              active: reason === 'install'
-            });
+              active: reason === 'install',
+              ...(tbs && tbs.length && {index: tbs[0].index + 1})
+            }));
             storage.local.set({'last-update': Date.now()});
           }
         }

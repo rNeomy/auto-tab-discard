@@ -102,5 +102,5 @@
       "description": "__MSG_cmd_close__"
     }
   },
-  "web_accessible_resources": [ "dummy.html", "dummy.js"]
+  "web_accessible_resources": [ "dummy.html", "dummy.js", "utils.js"]
 }

@@ -158,6 +158,9 @@
   "popup_discard_tab": {
     "message": "Discard Tab"
   },
+  "popup_discard_tree": {
+    "message": "Discard Tab Group"
+  },
   "popup_discard_tabs": {
     "message": "Discard All Other Tabs"
   },

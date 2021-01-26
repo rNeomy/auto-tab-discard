@@ -62,7 +62,7 @@ const restore = () => storage({
   'startup-pinned': false,
   'startup-release-pinned': false,
   'release-next-tab': false,
-  'release-on-view': false,
+  'release-on-view': true,
   'tab-backup': []
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
@@ -117,7 +117,16 @@ const restore = () => storage({
 
       let textarea = document.createElement('textarea');
       textarea.setAttribute('disabled','disabled');
-      textarea.value = latest_backup.map((d)=>d['url']).join('\n');
+      textarea.value = latest_backup.map((d)=>{
+        // Is a discarded dummy page get url from hash parameter
+        if(d['url'].indexOf(chrome.runtime.id+'/dummy.html') >= 0){
+          return decodeURIComponent(getHashVariable("url", d['url']) || d['url'])
+        } 
+        // Else show the URL as is.
+        else{
+          return d['url']
+        }
+      }).join('\n');
       details.appendChild(textarea)
 
       document.getElementById('backups').appendChild(details);

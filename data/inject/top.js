@@ -93,7 +93,15 @@ tools.form = () => {
   if (prefs.form === false) {
     return Promise.resolve(false);
   }
-  return Promise.resolve(form);
+  if (form) {
+    return Promise.resolve(form);
+  }
+  return new Promise(resolve => chrome.runtime.sendMessage({
+    method: 'is-unload-blocked'
+  }, b => {
+    chrome.runtime.lastError;
+    resolve(b);
+  }));
 };
 tools.whitelist = (list = [...prefs['whitelist'], ...prefs['whitelist.session']]) => {
   const {hostname, href} = document.location;
