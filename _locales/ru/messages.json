@@ -1,0 +1,378 @@
+{
+    "app_description": {
+        "message": "Увеличьте скорость работы браузера и уменьшите потребление памяти, когда у вас открыто бесчисленное количество вкладок.",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Настройки выгрузки вкладок",
+        "description": ""
+    },
+    "options_period01": {
+        "message": "Выгружать неиспользуемые вкладки после (в секундах)",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "(используйте 0 чтобы отключить автоматическую выгрузку вкладок) когда количество неактивных вкладок достигает",
+        "description": ""
+    },
+    "options_period03": {
+        "message": "Уничтожение (безвозвратное удаление) выгруженных вкладок, если они неактивны в течение определенного количества времени (в часах) (если было активировано во всплывающем оповещении браузера)",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Максимальное количество вкладок, автоматически проверяемых на возможность выгрузки, за один цикл",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Выгружать только неактивные сайты со следующими именами хостов",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Отображать выгружаемые элементы во вкладке контекстного меню (если поддерживается)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Отображать выгружаемые элементы в контекстном меню страницы",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Отображать элемент \"Открыть Ссылку в Новой Выгруженной Вкладке\" в контекстном меню",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Изменить значок выгруженных вкладок (если возможно)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Выгружать все незакрепленные вкладки при запуске браузера или расширения",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Выгружать все закрепленные вкладки при запуске браузера или расширения",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Применить отмену состояния всех закрепленных вкладок при запуске браузера или расширения",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Применить выгрузку следующей вкладки (вкладка справа от активной вкладки)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Выгружать фоновые вкладки, если потребление памяти (totalJSHeapSize) превышает (в МБ)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Отказ от условий",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "Не выгружать вкладку во время воспроизведения медиа-контента",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "Не выгружать вкладку, когда она закреплена",
+        "description": ""
+    },
+    "options_form": {
+        "message": "Не выгружать вкладку, когда на странице присутствуют не подтвержденные данные в формах ввода",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "Не выгружать вкладки, когда компьютер подключен к источнику питания",
+        "description": ""
+    },
+    "options_online": {
+        "message": "Не выгружать вкладки, если они отсутствуют в кэше и отсутствует подключение к интернету",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "Не выгружать вкладку, если она может отображать оповещения",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "Не выгружать вкладки, если компьютер не находится в состоянии бездействия",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Интервал неактивности, чтобы определить, находится ли компьютер в состоянии бездействия или нет (в минутах)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Исключения",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Вкладки со следующими именами хостов не будут выгружены:",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Действие для левого клика в панели инструментов",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Открыть оповещение",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Выгрузить Вкладку",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Выгрузить Все Остальные Вкладки",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Выгрузить Вкладки в Других Окнах",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Переключить настройку \"Сохранять Эту Вкладку на время Текущей Сессии\"",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Разное",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Отображать логи (только для отладки)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Выгружать вкладку, если она скрыта",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "Использовать кэш: если включено, расширение проверяет только один раз, закреплена ли вкладка или браузер подключен к источнику питания.",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Количество разрешенных одновременных заданий выгрузки",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Открыть страницу FAQ при обновлении",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "Можно использовать сопоставление регулярных выражений с ключевым словом\"re:\". Например, чтобы занести в белый список все URL-адреса с ключевым словом \"google\", используйте \"re:google\".",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "Проверять значение totalJSHeapSize на странице. Если потребление памяти превышает установленное пользователем значение (минимально допустимый размер составляет 10 МБ), вкладка будет выгружена. Данная опция доступна, только если ваш браузер поддерживает настройку \"window.performance.memory\"",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "Когда превышен период ожидания на выгрузку для вкладки или открыта новая вкладка, все вкладки будут проверены на необходимость выгрузки из памяти. Данная настройка принудительно выставляет временные пределы проверки для расширения. Минимально допустимое значение составляет 1 секунду. Рекомендуемое значение 30 секунд.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Сброс Настроек",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Импорт Настроек",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Экспорт Настроек",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Сохранить Настройки",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Поддержать Разработчика",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "Минимальная задержка между проверкой на выгрузку (в секундах)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Задержка отображения значка выгрузки (в миллисекундах)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Выгрузить Вкладку",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Выгрузить Группу Вкладок",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Выгрузить Все Остальные Вкладки",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Выгрузить Все Вкладки Справа",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Выгрузить Все Вкладки Слева",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Выгрузить Вкладки в Других Окнах",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Предыдущая Вкладка",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "Закрыть Вкладку",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Следующая Вкладка",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Хранить Вкладки для Этого Сайта",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Всегда",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Сессия",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Хранить Эту Вкладку на время Текущей Сессии",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Настройки",
+        "description": ""
+    },
+    "popup_trash": {
+        "message": "Корзина (окончательное удаление) старых Выгруженных Вкладок",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Удаление выгруженного. Для доступа к содержимому в кэше используйте Shift + Click",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "Отсутствуют активные вкладки",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "автоматическая выгрузка отключена для этой вкладки",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Выгрузить Вкладку",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Выгрузить Группу Вкладок",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Выгрузить Вкладки в Этом Окне",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Выгрузить Все Остальные Вкладки",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Выгрузить Все Вкладки Справа",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Выгрузить Все Вкладки Слева",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Выгрузить Остальные Вкладки",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Выгрузить Вкладки в Других Окнах",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Всегда Хранить Вкладки для Этого Сайта",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Открыть Ссылку в Новой Выгруженой Вкладке",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Перейти на Предыдущую Вкладку",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Перейти на Следующую Вкладку",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Закрыть Вкладку",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "навсегда добавлено в белый список",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "добавлено в белый список на время текущей сессии",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "протокол не поддерживается",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "Невозможно выгрузить вкладку, пока она активна",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Выгрузить Вкладку",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Выгрузить Все Остальные Вкладки",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Выгрузить Вкладки в Других Окнах",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Всегда Хранить Вкладки для Данного Сайта",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Перейти на Предыдущую Вкладку",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Перейти на Следующую Вкладку",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Закрыть Вкладку",
+        "description": ""
+    }
+}

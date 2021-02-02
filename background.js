@@ -270,6 +270,15 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
     });
     return true;
   }
+  /* TO-DO: remove the following methods when autoDiscardable is supported in FF */
+  else if (method === 'tabs.update') {
+    chrome.tabs.update(request.tabId, request.updateProperties, resposne);
+    return true;
+  }
+  else if (method === 'tabs.query') {
+    chrome.tabs.query(request.queryInfo, resposne);
+    return true;
+  }
 });
 // idle timeout
 starters.push(() => chrome.idle.setDetectionInterval(prefs['idle-timeout']));

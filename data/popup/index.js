@@ -8,8 +8,12 @@
 let tab;
 
 const allowed = document.getElementById('allowed');
-allowed.addEventListener('change', () => chrome.tabs.update(tab.id, {
-  autoDiscardable: allowed.checked === false
+allowed.addEventListener('change', () => chrome.runtime.sendMessage({
+  method: 'tabs.update',
+  tabId: tab.id,
+  updateProperties: {
+    autoDiscardable: allowed.checked === false
+  }
 }));
 
 const whitelist = {
@@ -18,9 +22,12 @@ const whitelist = {
 };
 
 const init = () => {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
+  chrome.runtime.sendMessage({
+    method: 'tabs.query',
+    queryInfo: {
+      active: true,
+      currentWindow: true
+    }
   }, tabs => {
     if (tabs.length) {
       tab = tabs[0];

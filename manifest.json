@@ -32,6 +32,7 @@
   "background": {
     "persistent": false,
     "scripts": [
+      "firefox.js",
       "hidden.js",
       "background.js",
       "modes/number.js",
