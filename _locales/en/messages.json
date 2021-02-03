@@ -171,13 +171,13 @@
     "message": "Discard Tabs in Other Windows"
   },
   "popup_move_previous": {
-    "message": "Previous Tab"
+    "message": "Left Tab"
   },
   "popup_close": {
     "message": "Close Tab"
   },
   "popup_move_next": {
-    "message": "Next Tab"
+    "message": "Right Tab"
   },
   "popup_whitelist_desc": {
     "message": "Keep Tabs for This Site"
@@ -237,10 +237,10 @@
     "message": "Open Link in New Discarded Tab"
   },
   "menu_move_previous": {
-    "message": "Move to the Previous Tab"
+    "message": "Move to the Left Tab"
   },
   "menu_move_next": {
-    "message": "Move to the Next Tab"
+    "message": "Move to the Right Tab"
   },
   "menu_close": {
     "message": "Close Tab"
@@ -273,10 +273,10 @@
     "message": "Always Keep Tabs for This Site"
   },
   "cmd_move_previous": {
-    "message": "Move to the Previous Tab"
+    "message": "Move to the Left Tab"
   },
   "cmd_move_next": {
-    "message": "Move to the Next Tab"
+    "message": "Move to the Right Tab"
   },
   "cmd_close": {
     "message": "Close Tab"

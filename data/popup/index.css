@@ -4,6 +4,7 @@ body {
   margin: 0;
   user-select: none;
   width: 100%;
+  min-width: 350px;
   background-color: #fff;
   color: #4d5156;
 }
