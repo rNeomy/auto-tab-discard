@@ -54,8 +54,8 @@ const trash = {
   }
 };
 chrome.alarms.onAlarm.addListener(alarm => {
-  log('alarm fire', alarm);
   if (alarm.name === 'trash.check') {
+    log('alarm fire', 'trash.check', alarm.name);
     storage({
       'trash.list': {},
       'trash.period': 24 // in hours

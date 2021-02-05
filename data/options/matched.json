@@ -5,23 +5,14 @@
   "work-offline": {
     "name": "Work Offline"
   },
-  "local-cdn": {
-    "name": "Local CDN"
-  },
   "media-converter": {
     "name": "Media Converter and Muxer"
   },
   "save-images": {
     "name": "Download All Images"
   },
-  "privacy-settings": {
-    "name": "Privacy Settings"
-  },
   "media-player": {
     "name": "YouTube Media Player"
-  },
-  "tab-discard": {
-    "name": "Auto Tab Discard"
   },
   "send-to": {
     "name": "Send to VLC"
@@ -53,17 +44,11 @@
   "font-finder": {
     "name": "Font Finder"
   },
-  "gmail-notifier": {
-    "name": "Gmail Notifier"
-  },
   "popup-blocker": {
     "name": "Popup Blocker"
   },
   "audio-equalizer": {
     "name": "Audio Equalizer"
-  },
-  "clipboard-manager": {
-    "name": "Clipboard Manager"
   },
   "ecleaner": {
     "name": "Forget Button"
@@ -76,9 +61,6 @@
   },
   "audio-joiner": {
     "name": "Audio Joiner"
-  },
-  "send-links": {
-    "name": "Send Links"
   },
   "search-all-tabs": {
     "name": "Search all Tabs"

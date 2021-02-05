@@ -70,7 +70,8 @@ window.onload = function () {
   // Alternatively we could use onActivated event from background...
   // But, getting url and parsing from hash function shall repeat so here is good..
   var prefs = {
-    'release-on-view': true
+    'release-on-view': true,
+    'release-on-reload': true,
   };
   chrome.storage.managed.get(prefs, ps => {
     chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, function(store){
@@ -79,16 +80,17 @@ window.onload = function () {
           loadWebpage()
         }
       }
+
+      // Check if user reloaded the page so open url directly.
+      if(performance
+        && performance.getEntriesByType("navigation").length > 0
+        && performance.getEntriesByType("navigation")[0].type == 'reload'
+        && store['release-on-reload']
+      ){
+        loadWebpage()
+      }
     });
   });
-
-  // Check if user reloaded the page so open url directly.
-  if(performance
-    && performance.getEntriesByType("navigation").length > 0
-    && performance.getEntriesByType("navigation")[0].type == 'reload'
-  ){
-    loadWebpage()
-  }
 
   document.addEventListener('click', loadWebpage);
 };

@@ -1,0 +1,378 @@
+{
+    "app_description": {
+        "message": "Améliorer la vitesse du navigateur et libérer de la mémoire quand vous avez de nombreux onglets ouverts.",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Options de désactivation",
+        "description": ""
+    },
+    "options_period01": {
+        "message": "Désactiver les onglets inactifs après (en secondes)",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "(utilisez zéro seconde pour désactiver la suspension automatique des onglets) lorsque le nombre d'onglets inactifs dépasse ",
+        "description": ""
+    },
+    "options_period03": {
+        "message": "Jeter (supprimer définitivement) les onglets désactivés s'il sont inactifs depuis (en heures) (si activé depuis la fenêtre pop-up d'action du navigateur)",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Maximum number of tabs to check for discarding per single automatic discarding request ",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Désactiver uniquement les noms d'hôtes inactifs suivants",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Afficher les éléments de désactivation dans le menu contextuel de l'onglet (si pris en charge)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Afficher les éléments de désactivation dans le menu contextuel de la page",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Afficher l'élément « Ouvrir le lien dans un nouvel onglet désactivé » du menu contextuel d'un lien",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Changer le favicon des onglets suspendus (si possible)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Désactiver tous les onglets non-épinglés au démarrage du navigateur ou de l'extension",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Désactiver tous les onglets épinglés au démarrage du navigateur ou de l'extension",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Activer tous les onglets épinglés au démarrage du navigateur ou de l'extension",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Activer l'onglet suivant (onglet à droite de l'onglet actif)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Désactiver un onglet en arrière-plan si son usage de la mémoire (totalJSHeapSize) excède (en Mo)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Conditions de désactivation",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "Ne pas désactiver un onglet quand un média est joué",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "Ne pas désactiver un onglet quand il est épinglé",
+        "description": ""
+    },
+    "options_form": {
+        "message": "Ne pas désactiver un onglet quand un formulaire rempli n'a pas encore été envoyé",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "Ne pas désactiver les onglets quand l'ordinateur est branché sur secteur",
+        "description": ""
+    },
+    "options_online": {
+        "message": "Ne pas désactiver les onglets quand il n'y a pas de connexion Internet et que l'onglet n'est pas en cache",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "Ne pas désactiver un onglet s'il peut afficher des notifications de bureau",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "Ne pas désactiver un onglet quand il n'est pas en état de \"veille\"",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Temps d'inactivité pour déterminer si l'ordinateur est dans un état de veille ou non (en minutes)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Exceptions",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Les onglets avec les domaines suivants ne seront pas désactivés :",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Barre d'outils action click_gauche",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Ouvrir une pop-up",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Désactiver l'onglet",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Désactiver tous les autres onglets",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Désactiver les autres onglets dans cette fenêtre",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Désactiver les onglets dans les autres fenêtres",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Alterner l'option « Conserver cet onglet pour cette session »",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Autres",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Afficher les logs (uniquement pour le débogage)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Suspendre un onglet s'il est caché",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "Utiliser le cache : Si activé, l'extension ne vérifie qu'une seule fois si un onglet est épinglé ou si le navigateur est branché sur secteur",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Nombre de suspensions simultanés autorisés",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Ouvrir la page FAQ lors des mises à jour",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "It is possible to use regular expression matching with \"re:\" keyword. For instance to whitelist all URLs with \"google\" keyword in them use \"re:google\".",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "Check the totalJSHeapSize value of top document. If this memory exceeds the user-defined value (minimum acceptable value is 10MB), the tab will be discarded. Note that this option is only available if your browser supports 'window.performance.memory'",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 second. The recommended value is 30 seconds.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Remise à zéro des données",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Importer les paramètres",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Exporter les paramètres",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Sauvegarder les options",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Soutenir le développement",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "Minimum delay between sequential discarding checks (in seconds)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Délai d'apparition du favicon de désactivation (en millisecondes)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Désactiver l'onglet",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Suspendre le groupe d'onglets",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Désactiver tous les autres onglets",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Désactiver les autres onglets dans cette fenêtre",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Désactiver les onglets à droite",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Désactiver les onglets à gauche",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Désactiver les onglets dans les autres fenêtres",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Onglet Précédant",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "Fermer l'onglet",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Onglet Suivant",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Conserver les onglets pour ce site",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Toujours",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Session",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Conserver l'onglet pour cette session",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Options",
+        "description": ""
+    },
+    "popup_trash": {
+        "message": "Jeter (supprime définitivement) les anciens onglets désactivés",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Remove discarding. To bypass cached content use Shift + Click",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "Aucun onglet actif n'est présent",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "la désactivation automatique est désactivée pour cet onglet",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Désactiver l'onglet",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Suspendre le groupe d'onglets",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Désactiver les onglets dans cette fenêtre",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Désactiver tous les autres onglets",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Désactiver les onglets à droite",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Désactiver les onglets à gauche",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Désactiver les autres onglets",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Désactiver les onglets dans les autres fenêtres",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Toujours conserver les onglets pour ce site",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Ouvrir le lien dans un nouvel onglet désactivé",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Passer à l'onglet précédent",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Passer à l'onglet suivant",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Fermer l'onglet",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "est ajouté à la liste blanche permanente",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "est ajouté à la liste blanche de la session",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "le protocole n'est pas pris en charge",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "Ne peu pas suspendre un onglet lorsqu'il est actif",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Désactiver l'onglet",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Désactiver tous les autres onglets",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Désactiver les autres onglets dans cette fenêtre",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Désactiver les onglets dans les autres fenêtres",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Toujours conserver les onglets pour ce site",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Passer à l'onglet précédent",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Passer à l'onglet suivant",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Fermer l'onglet",
+        "description": ""
+    }
+}

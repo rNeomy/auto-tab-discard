@@ -32,6 +32,7 @@ const storage = prefs => new Promise(resolve => {
 const restore = () => storage({
   'period': 10 * 60, // in seconds
   'number': 6, // number of tabs before triggering discard
+  'max.single.discard': 50, // max number of tabs to discard
   'trash.period': 24, // in hours
   'audio': true, // audio = true => do not discard if audio is playing
   'pinned': false, // pinned = true => do not discard if tab is pinned
@@ -63,6 +64,7 @@ const restore = () => storage({
   'startup-release-pinned': false,
   'release-next-tab': false,
   'release-on-view': true,
+  'release-on-reload': true,
   'tab-backup': []
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
@@ -77,6 +79,7 @@ const restore = () => storage({
   document.getElementById('period').value = prefs.period;
   document.getElementById('trash.period').value = prefs['trash.period'];
   document.getElementById('number').value = prefs.number;
+  document.getElementById('max.single.discard').value = prefs['max.single.discard'];
   document.getElementById('simultaneous-jobs').value = prefs['simultaneous-jobs'];
   document.getElementById('favicon-delay').value = prefs['favicon-delay'];
   document.getElementById('check-delay').value = parseInt(prefs['check-delay'] / 1000);
@@ -99,6 +102,7 @@ const restore = () => storage({
   document.getElementById('startup-release-pinned').checked = prefs['startup-release-pinned'];
   document.getElementById('release-next-tab').checked = prefs['release-next-tab'];
   document.getElementById('release-on-view').checked = prefs['release-on-view'];
+  document.getElementById('release-on-reload').checked = prefs['release-on-reload'];
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
@@ -117,6 +121,7 @@ const restore = () => storage({
 
       let textarea = document.createElement('textarea');
       textarea.setAttribute('disabled','disabled');
+      textarea.style.height = "110px";
       textarea.value = latest_backup.map((d)=>{
         // Is a discarded dummy page get url from hash parameter
         if(d['url'].indexOf(chrome.runtime.id+'/dummy.html') >= 0){
@@ -141,6 +146,10 @@ document.getElementById('save').addEventListener('click', () => {
   let number = document.getElementById('number').value;
   number = Number(number);
   number = Math.max(number, 1);
+  let mx = document.getElementById('max.single.discard').value;
+  mx = Number(mx);
+  mx = Math.max(mx, 1);
+
   let trash = document.getElementById('trash.period').value;
   trash = Number(trash);
   trash = Math.max(trash, 1);
@@ -155,6 +164,7 @@ document.getElementById('save').addEventListener('click', () => {
     'idle-timeout': Math.max(1, Number(document.getElementById('idle-timeout').value)) * 60,
     period,
     number,
+    'max.single.discard': mx,
     'trash.period': trash,
     'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',
     click,
@@ -191,7 +201,8 @@ document.getElementById('save').addEventListener('click', () => {
     'startup-pinned': document.getElementById('startup-pinned').checked,
     'startup-release-pinned': document.getElementById('startup-release-pinned').checked,
     'release-next-tab': document.getElementById('release-next-tab').checked,
-    'release-on-view': document.getElementById('release-on-view').checked
+    'release-on-view': document.getElementById('release-on-view').checked,
+    'release-on-reload': document.getElementById('release-on-reload').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

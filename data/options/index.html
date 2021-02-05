@@ -1,48 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Options :: Auto Tab Discard</title>
+    <title>Options Page :: Auto Tab Discard</title>
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <style type="text/css">
-    body {
-      background-color: #fff;
-      font-family: "Helvetica Neue", Helvetica, sans-serif;
-      font-size: 13px;
-      min-width: 500px;
-    }
-    input[type=number] {
-      width: 60px;
-      height: 22px;
-      box-sizing: border-box;
-    }
-    th {
-      height: 32px;
-      background-color: rgba(0, 0, 0, 0.05);
-      text-indent: 10px;
-    }
-    td:nth-child(3) {
-      text-align: right;
-    }
-    textarea {
-      width: 100%;
-      box-sizing: border-box;
-    }
-    ol {
-      padding: 0 0 0 20px;
-      font-size: 12px;
-    }
-    .admin {
-      background-color: #ffffed;
-      border: solid 1px #e8ec3a;
-      padding: 10px;
-      margin: 15px 0;
-    }
-    .backups textarea{
-      margin-bottom: 15px;
-      min-height: 100px;
-    }
-  </style>
 
   <body>
     <table width=100%>
@@ -62,6 +25,9 @@
         </tr>
         <tr>
           <td colspan="3"><span data-i18n="options_period03"></span> <input type="number" id="trash.period" min="0"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><span data-i18n="options_period04"></span> <input type="number" id="max.single.discard" min="0"></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="url-based"></td>
@@ -105,6 +71,10 @@
         <tr>
           <td><input type="checkbox" id="release-on-view"></td>
           <td colspan="2"><label for="release-on-view" data-i18n="options_release_on_view"></label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="release-on-reload"></td>
+          <td colspan="2"><label for="release-on-reload" data-i18n="options_release_on_reload"></label></td>
         </tr>
         <tr id="memory">
           <td><input type="checkbox" id="memory-enabled"></td>
@@ -236,7 +206,7 @@
         </tr>
       </tbody>
     </table>
-    <div id="explore"></div>
+    <div id="explore" data-cols="5"></div>
     <p>Rate "<a id="rate" target="_blank" href="https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews">Auto Tab Discard</a>" extension</p>
     <p>
       <div class="admin">This extension supports managed storage. All the preferences can be pre-configured by <a href="https://add0n.com/tab-discard.html#faq10">the domain administrator</a></div>

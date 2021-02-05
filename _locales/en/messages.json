@@ -14,6 +14,9 @@
   "options_period03": {
     "message": "Trash (permanently delete) discarded tabs if they are inactive for about (in hours) (if enabled from the browser action's popup window) "
   },
+  "options_period04": {
+    "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
+  },
   "options_url_based": {
     "message": "Only discard the following inactive hostnames"
   },
@@ -43,6 +46,9 @@
   },
   "options_release_on_view": {
     "message": "Release tab on view (defaults on click or reload)"
+  },
+  "options_release_on_reload": {
+    "message": "Release tab on page reload (Uncheck to fix auto release issue on Vivaldi Browser)"
   },
   "options_memory": {
     "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
@@ -177,13 +183,13 @@
     "message": "Discard Tabs in Other Windows"
   },
   "popup_move_previous": {
-    "message": "Previous Tab"
+    "message": "Left Tab"
   },
   "popup_close": {
     "message": "Close Tab"
   },
   "popup_move_next": {
-    "message": "Next Tab"
+    "message": "Right Tab"
   },
   "popup_whitelist_desc": {
     "message": "Keep Tabs for This Site"
@@ -243,10 +249,10 @@
     "message": "Open Link in New Discarded Tab"
   },
   "menu_move_previous": {
-    "message": "Move to the Previous Tab"
+    "message": "Move to the Left Tab"
   },
   "menu_move_next": {
-    "message": "Move to the Next Tab"
+    "message": "Move to the Right Tab"
   },
   "menu_close": {
     "message": "Close Tab"
@@ -279,10 +285,10 @@
     "message": "Always Keep Tabs for This Site"
   },
   "cmd_move_previous": {
-    "message": "Move to the Previous Tab"
+    "message": "Move to the Left Tab"
   },
   "cmd_move_next": {
-    "message": "Move to the Next Tab"
+    "message": "Move to the Right Tab"
   },
   "cmd_close": {
     "message": "Close Tab"

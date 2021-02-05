@@ -3,7 +3,8 @@ body {
   font-size: 13px;
   margin: 0;
   user-select: none;
-  width: 350px;
+  width: 100%;
+  min-width: 350px;
   background-color: #fff;
   color: #4d5156;
 }

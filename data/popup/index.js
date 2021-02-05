@@ -9,9 +9,11 @@ let tab;
 
 const allowed = document.getElementById('allowed');
 allowed.addEventListener('change', () => chrome.runtime.sendMessage({
-  method: 'popup',
-  cmd: 'auto-discardable',
-  value: allowed.checked === false
+  method: 'tabs.update',
+  tabId: tab.id,
+  updateProperties: {
+    autoDiscardable: allowed.checked === false
+  }
 }));
 
 const whitelist = {
@@ -20,28 +22,49 @@ const whitelist = {
 };
 
 const init = () => {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
+  chrome.runtime.sendMessage({
+    method: 'tabs.query',
+    queryInfo: {
+      active: true,
+      currentWindow: true
+    }
   }, tabs => {
     if (tabs.length) {
       tab = tabs[0];
-      const {protocol = ''} = new URL(tab.url);
+      const {protocol = '', hostname} = new URL(tab.url);
 
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        whitelist.session.dataset.disabled = false;
-        whitelist.always.dataset.disabled = false;
-        chrome.tabs.executeScript(tab.id, {
-          code: `tools.whitelist().then(bol => bol && chrome.runtime.sendMessage({
-            method: 'disable-whitelist-domain'
-          }));`
+        const match = list => {
+          if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
+            return true;
+          }
+          if (list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3)).some(s => {
+            try {
+              return (new RegExp(s)).test(tab.url);
+            }
+            catch (e) {}
+          })) {
+            return true;
+          }
+        };
+        chrome.runtime.sendMessage({
+          method: 'storage',
+          prefs: {
+            'whitelist': [],
+            'whitelist.session': []
+          }
+        }, prefs => {
+          whitelist.session.dataset.disabled = match(prefs['whitelist.session']) ? true : false;
+          whitelist.always.dataset.disabled = match(prefs['whitelist']) ? true : false;
         });
-
+        if (tab.autoDiscardable === false) {
+          allowed.checked = true;
+        }
         chrome.tabs.executeScript(tab.id, {
-          code: 'allowed'
-        }, ([a]) => {
-          allowed.parentNode.dataset.disabled = typeof a !== 'boolean';
-          allowed.checked = !a;
+          code: 'document.title'
+        }, () => {
+          const lastError = chrome.runtime.lastError;
+          allowed.parentNode.dataset.disabled = lastError ? true : false;
         });
       }
       else { // on navigation
@@ -56,13 +79,6 @@ const init = () => {
   }, prefs => document.getElementById('trash').checked = prefs['trash.enabled']);
 };
 init();
-
-chrome.runtime.onMessage.addListener(request => {
-  if (request.method === 'disable-whitelist-domain') {
-    whitelist.session.dataset.disabled = true;
-    whitelist.always.dataset.disabled = true;
-  }
-});
 
 document.addEventListener('click', e => {
   const {target} = e;

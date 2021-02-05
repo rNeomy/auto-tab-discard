@@ -16,7 +16,6 @@ const storage = prefs => new Promise(resolve => {
 });
 
 const prefs = {
-  'idle': false,
   'favicon': true,
   'number': 6,
   'period': 10 * 60, // in seconds
@@ -31,7 +30,8 @@ const prefs = {
   'check-delay': 30 * 1000,
   'log': false,
   'simultaneous-jobs': 10,
-  'idle-timeout': 5 * 60 // in seconds
+  'idle-timeout': 5 * 60, // in seconds
+  'pinned': false // pinned = true => do not discard if tab is pinned
 };
 // clear session only hostnames from the exception list; only on the local machine
 starters.push(() => chrome.storage.local.set({
@@ -62,9 +62,6 @@ chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => {
     prefs[k] = ps[k].newValue;
   });
-  if (ps.period) {
-    tabs[prefs.period ? 'install' : 'uninstall']();
-  }
   if (isFirefox && ps['go-hidden']) {
     hidden.install();
   }
@@ -170,7 +167,7 @@ const discard = tab => new Promise(resolve => {
       let dummy_url = chrome.extension.getURL('dummy.html')+'#url='+encodeURIComponent(tab.url)+'&title='+tab.title+'&fav='+(tab.favIconUrl||'');
       // log(tab)
       // If normal tab, use location replace to remove this dummy from history
-      if (tab.url.indexOf('http') === 0 || tab.url.indexOf('ftp') === 0){
+      if ((tab.url.indexOf('http') === 0 || tab.url.indexOf('ftp') === 0) && !tab.discarded){
         chrome.tabs.executeScript(tab.id, {
           runAt: 'document_start',
           matchAboutBlank: true,
@@ -182,11 +179,9 @@ const discard = tab => new Promise(resolve => {
       } 
       // Else use chrome update function
       else{
-        chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-          chrome.tabs.update(tabs[0].id, {
-            url: dummy_url
-          })
-        });
+        chrome.tabs.update(tab.id, {
+          url: dummy_url
+        })
       }
     }
     discard.count -= 1;
@@ -272,9 +267,33 @@ const discardDummy = () => {
   });
 }
 
+// FIRST: Handle tabs that got discarded automatically (e.g. by browser itself) using this extension (by loading dummy)
+// THEN: discard dummy.html pages that are not yet discarded
+const checkForLeftOverDiscardedTabs = () => {
+  chrome.tabs.query({
+    active: false,
+    discarded: true,
+    url: "*://*/*"
+  }, function(tabs){
+    let i = 0;
+    if(tabs.length > 0) {
+      tabs.forEach((tab) => {
+        discard(tab).then(() => {
+          i = i++;
+          if(i >= tabs.length) {
+            discardDummy()
+          }
+        })      
+      })
+    } else {
+      discardDummy()
+    }
+  });
+}
+
 // Call to discard any possible dummy.html which is not discarded and is not active
 chrome.tabs.onActivated.addListener((activeInfo) => {
-  discardDummy()
+  checkForLeftOverDiscardedTabs()
 })
 
 chrome.windows.onCreated.addListener((window) => {
@@ -301,124 +320,8 @@ chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
   }
 });
 
+const tabs = {};
 // number-based discarding
-const tabs = {
-  id: null // timer id
-};
-tabs.check = msg => {
-  if (tabs.check.busy && (tabs.check.busy + prefs['check-delay'] > Date.now())) {
-    return log('tabs.check is ignored. Reason:', msg);
-  }
-  if (prefs.period) {
-    log('set a new check timer. Based on:', msg);
-    tabs.check.busy = Date.now();
-    window.clearTimeout(tabs.check.id);
-    tabs.check.id = window.setTimeout(() => {
-      tabs._check();
-      tabs.check.busy = false;
-    }, prefs['check-delay']);
-  }
-};
-
-tabs._check = async () => {
-  log('tabs._check is called');
-  if (prefs.idle) {
-    const state = await new Promise(resolve => chrome.idle.queryState(prefs['idle-timeout'], resolve));
-    if (state !== chrome.idle.IdleState.IDLE) {
-      return log('tabs._check is skipped', 'idle state is active');
-    }
-  }
-  // in case
-  discard.count = 0;
-  //
-  const echo = ({id}) => new Promise(resolve => chrome.tabs.sendMessage(id, {
-    method: 'introduce'
-  }, a => {
-    chrome.runtime.lastError;
-    resolve(a);
-  }));
-
-  const tbs = await query({
-    url: '*://*/*',
-    discarded: false
-  });
-  const {number, period} = prefs;
-  const now = Date.now();
-  const arr = [];
-  for (const tab of tbs) {
-    const a = await echo(tab);
-    if (a) {
-      a.tabId = tab.id;
-      a.tab = tab;
-    }
-    arr.push(a);
-  }
-  if (arr.length > number) {
-    log('tabs', arr);
-    const possibleDiscardables = arr
-      .sort((a, b) => a.now - b.now)
-      .filter(a => {
-        // https://github.com/rNeomy/auto-tab-discard/issues/84#issuecomment-559011394
-        if (a) {
-          log('discardable', a, a.exception !== true, a.allowed, a.ready, !a.tab.active, (now - a.now > period * 1000));
-          return a.exception !== true && a.allowed && a.ready && !a.tab.active && (now - a.now > period * 1000);
-        }
-        else {
-          return false;
-        }
-      });
-    let total = arr.length;
-    log('number of tabs to get discarded', possibleDiscardables.length);
-    for (const o of possibleDiscardables) {
-      discard(o.tab);
-      total -= 1;
-      if (total <= number) {
-        break;
-      }
-    }
-    log('number of tabs being discarded', arr.length - total);
-  }
-  else {
-    log('tabs._check', 'number of active tabs', arr.length, 'is smaller than', number);
-  }
-};
-
-tabs.callbacks = {
-  onCreated: () => tabs.check('chrome.tabs.onCreated'),
-  onUpdated(id, info, tab) {
-    if (info.status !== 'unloaded' && tab.active === false) {
-      tabs.check('chrome.tabs.onUpdated');
-    }
-    // update autoDiscardable set by this extension or other extensions
-    if ('autoDiscardable' in info) {
-      chrome.tabs.executeScript(tab.id, {
-        code: `allowed = ${info.autoDiscardable}`
-      });
-      tabs.mark(id, info.autoDiscardable);
-    }
-  },
-  onStateChanged() {
-    tabs.check('chrome.idle.onStateChanged');
-  }
-};
-
-tabs.install = () => {
-  log('installing auto discarding listeners');
-  // top.js does not being called
-  chrome.tabs.onCreated.addListener(tabs.callbacks.onCreated);
-  chrome.tabs.onUpdated.addListener(tabs.callbacks.onUpdated);
-  chrome.idle.onStateChanged.addListener(tabs.callbacks.onStateChanged);
-};
-
-tabs.uninstall = () => {
-  log('removing auto discarding listeners');
-
-  chrome.tabs.onCreated.removeListener(tabs.callbacks.onCreated);
-  chrome.tabs.onUpdated.removeListener(tabs.callbacks.onUpdated);
-  chrome.idle.onStateChanged.removeListener(tabs.callbacks.onStateChanged);
-};
-
-starters.push(() => prefs.period && tabs.install());
 
 tabs.mark = (tabId, autoDiscardable) => {
   chrome.browserAction.setBadgeText({
@@ -434,14 +337,11 @@ chrome.browserAction.setBadgeBackgroundColor({
   color: '#666'
 });
 
-chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
+chrome.runtime.onMessage.addListener((request, sender, resposne) => {
   log('onMessage request received', request);
   const {method} = request;
-  if (method === 'is-pinned') {
-    resposne(tab.pinned);
-  }
-  else if (method === 'is-unload-blocked') {
-    chrome.tabs.executeScript(tab.id, {
+  if (method === 'is-unload-blocked') {
+    chrome.tabs.executeScript(sender.tab.id, {
       file: 'data/inject/form.js',
       allFrames: true,
       matchAboutBlank: true
@@ -450,37 +350,11 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
     });
     return true;
   }
-  else if (method === 'is-playing') {
-    if (tab.audible) {
-      resposne(true);
-    }
-    else {
-      chrome.tabs.executeScript(tab.id, {
-        code: 'document.pictureInPictureElement ? 10 : window.isPlaying',
-        allFrames: true,
-        matchAboutBlank: true
-      }, arr => {
-        if (arr) {
-          resposne(arr.some(a => a > 0));
-        }
-        else {
-          resposne(false);
-        }
-      });
-    }
-    return true;
-  }
-  else if (method === 'is-autoDiscardable') {
-    resposne(tab.autoDiscardable);
-    if (tab.autoDiscardable === false) {
-      tabs.mark(tab.id, false);
-    }
-  }
   else if (method === 'tabs.check') {
     tabs.check('tab.timeout');
   }
   else if (method === 'discard.on.load') { // for links after initial load
-    discard(tab);
+    discard(sender.tab);
   }
   // navigation
   else if (method.startsWith('move-') || method === 'close') {
@@ -488,32 +362,31 @@ chrome.runtime.onMessage.addListener((request, {tab}, resposne) => {
   }
   else if (method === 'report') {
     chrome.browserAction.setTitle({
-      tabId: tab.id,
+      tabId: sender.tab.id,
       title: request.message
     });
   }else if (method === 'discard-self') {
     discardSelf(tab)
   }
+  else if (method === 'storage') {
+    storage(request.prefs).then(prefs => {
+      resposne(prefs);
+    });
+    return true;
+  }
+  /* TO-DO: remove the following methods when autoDiscardable is supported in FF */
+  else if (method === 'tabs.update') {
+    chrome.tabs.update(request.tabId, request.updateProperties, resposne);
+    return true;
+  }
+  else if (method === 'tabs.query') {
+    chrome.tabs.query(request.queryInfo, resposne);
+    return true;
+  }
 });
 // idle timeout
 starters.push(() => chrome.idle.setDetectionInterval(prefs['idle-timeout']));
 
-// initial inject
-starters.push(() => chrome.app && query({
-  url: '*://*/*',
-  discarded: false
-}).then(tbs => {
-  const contentScripts = chrome.app.getDetails().content_scripts;
-  for (const tab of tbs) {
-    for (const cs of contentScripts) {
-      chrome.tabs.executeScript(tab.id, {
-        file: cs.js[0],
-        runAt: cs.run_at,
-        allFrames: cs.all_frames
-      }, () => chrome.runtime.lastError);
-    }
-  }
-}));
 // left-click action
 const popup = async () => {
   chrome.browserAction.setPopup({
@@ -532,13 +405,11 @@ starters.push(popup);
     // restore crashed tabs
     chrome.tabs.onActivated.addListener(({tabId}) => {
       const tab = restore.cache[tabId];
-      console.log(tab, 1);
       if (tab) {
         chrome.tabs.executeScript(tabId, {
           code: ''
         }, () => {
           const lastError = chrome.runtime.lastError;
-          console.log(lastError);
           if (lastError && lastError.message === 'No matching message handler') {
             chrome.tabs.update(tabId, {
               url: tab.url
@@ -566,7 +437,7 @@ starters.push(popup);
 
 /* discard on startup */
 {
-  chrome.runtime.onStartup.addListener(() => storage({
+  starters.push(() => storage({
     'startup-unpinned': false,
     'startup-pinned': false,
     'startup-release-pinned': false
