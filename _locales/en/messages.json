@@ -104,6 +104,12 @@
   "options_misc": {
     "message": "Misc"
   },
+  "options_plugins": {
+    "message": "Plug-ins"
+  },
+  "options_plugin_dummy": {
+    "message": "When discarding, replace the page with a local dummy alternative (beta)"
+  },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
   },

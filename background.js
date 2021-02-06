@@ -358,6 +358,26 @@ starters.push(popup);
   }));
 }
 
+/* plug-in system */
+starters.push(() => storage({
+  './plugins/dummy/core.js': false
+}).then(prefs => {
+  for (const [path, value] of Object.entries(prefs)) {
+    if (value) {
+      import(path).then(o => o.enable());
+    }
+  }
+}));
+chrome.storage.onChanged.addListener(ps => {
+  for (const key of Object.keys(ps)) {
+    if (key.startsWith('./plugins/')) {
+      import(key).then(o => {
+        o[ps[key].newValue ? 'enable' : 'disable']();
+      });
+    }
+  }
+});
+
 /* FAQs & Feedback */
 {
   const {management, runtime: {onInstalled, setUninstallURL, getManifest}, storage, tabs} = chrome;
