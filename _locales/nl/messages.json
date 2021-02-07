@@ -1,0 +1,284 @@
+{
+  "app_description": {
+    "message": "Verhoog de browsersnelheid en verlaag het geheugengebruik bij meerdere openstaande tabbladen."
+  },
+  "options_discarding_options": {
+    "message": "Slaapstandopties"
+  },
+  "options_period01": {
+    "message": "Inactieve tabbladen in slaapstand zetten na (in seconden) "
+  },
+  "options_period02": {
+    "message": "(vul \'0'\ in om automatische slaapstand uit te schakelen) als het aantal tabbladen het volgende aantal overschrijdt "
+  },
+  "options_period03": {
+    "message": "Inactieve tabbladen sluiten als ze inactief zijn gedurende (in uren) (indien ingeschakeld via het pop-upvenster) "
+  },
+  "options_period04": {
+    "message": "Maximumaantal te controleren tabbladen per automatisch verzoek "
+  },
+  "options_url_based": {
+    "message": "Alleen tabbladen met de volgende inactieve hostnamen in slaapstand zetten"
+  },
+  "options_tab_context": {
+    "message": "Slaapstanditems tonen in het tabbladmenu (indien ondersteund)"
+  },
+  "options_page_context": {
+    "message": "Slaapstanditems tonen in het paginamenu (indien ondersteund)"
+  },
+  "options_link_context": {
+    "message": "'Link openen op nieuw tabblad in slaapstand' tonen in het linkmenu"
+  },
+  "options_favicon": {
+    "message": "Favicon van tabbladen in slaapstand aanpassen (indien mogelijk)"
+  },
+  "options_startup_unpinned": {
+    "message": "Alle niet-vastgemaakte tabbladen in slaapstand zetten na openen van browser of inschakelen van extensie (add-on)"
+  },
+  "options_startup_pinned": {
+    "message": "Alle vastgemaakte tabbladen in slaapstand zetten na openen van browser of inschakelen van extensie (add-on)"
+  },
+  "options_startup_release_pinned": {
+    "message": "Slaapstandstatus van alle vastgemaakte tabbladen opheffen na openen van browser of inschakelen van extensie (add-on)"
+  },
+  "options_release_next_tab": {
+    "message": "Slaapstandstatus van volgend tabblad opheffen (het tabblad rechts van het actieve)"
+  },
+  "options_memory": {
+    "message": "Achtergrondtabbladen in slaapstand zetten als (totalJSHeapSize) het volgende getal overschrijdt (in MB)"
+  },
+  "options_discarding_conditions": {
+    "message": "Slaapstandvoorwaarden"
+  },
+  "options_audio": {
+    "message": "Slaapstand onderdrukken bij afspelen van media"
+  },
+  "options_pinned": {
+    "message": "Slaapstand van vastgemaakte tabbladen onderdrukken"
+  },
+  "options_form": {
+    "message": "Slaapstand onderdrukken van tabbladen met niet-ingediende formulierinvoeren"
+  },
+  "options_battery": {
+    "message": "Slaapstand onderdrukken als computer verbonden is met netstroom"
+  },
+  "options_online": {
+    "message": "Slaapstand onderdrukken bij wegvallen van internetverbinding en niet-gecachete tabbladen"
+  },
+  "options_notification_permission": {
+    "message": "Slaapstand onderdrukken van tabbladen die meldingen tonen"
+  },
+  "options_idle": {
+    "message": "Slaapstand onderdrukken als computer niet inactief is"
+  },
+  "options_idle_timeout": {
+    "message": "Tijd dat computer inactief moet zijn alvorens tabbladen in slaapstand te zetten (in minuten)"
+  },
+  "options_exceptions": {
+    "message": "Uitzonderingen"
+  },
+  "options_whitelist": {
+    "message": "Tabbladen met de volgende hostnamen worden nooit in de slaapstand gezet:"
+  },
+  "options_left_click": {
+    "message": "Actie na linksklikken op werkbalkpictogram"
+  },
+  "options_click_popup": {
+    "message": "Pop-up tonen"
+  },
+  "options_click_discard_tab": {
+    "message": "Tabblad in slaapstand zetten"
+  },
+  "options_click_discard_tabs": {
+    "message": "Alle andere tabbladen in slaapstand zetten"
+  },
+  "options_click_discard_window": {
+    "message": "Alle andere tabbladen in dit venster in slaapstand zetten"
+  },
+  "options_click_discard_other_windows": {
+    "message": "Tabbladen in andere vensters in slaapstand zetten"
+  },
+  "options_click_toggle_allowed": {
+    "message": "'Tabblad in deze sessie behouden' in-/uitschakelen"
+  },
+  "options_misc": {
+    "message": "Overig"
+  },
+  "options_log": {
+    "message": "Logboek tonen (alleen voor foutopsporingsdoeleinden)"
+  },
+  "options_go_hidden": {
+    "message": "Tabblad in slaapstand zetten als tabblad verborgen is"
+  },
+  "options_use_cache": {
+    "message": "Cache gebruiken: schakel in om de extensie alleen te laten controleren of een tabblad is vastgemaakt of of de computer verbonden is met de netstroom"
+  },
+  "options_simultaneous_jobs": {
+    "message": "Aantal toegestane gelijktijdige slaapstandacties"
+  },
+  "options_faqs": {
+    "message": "Veelgestelde vragen openen na updates"
+  },
+  "options_footnote_1": {
+    "message": "Het is mogelijk reguliere uitdrukkingen te gebruiken middels het trefwoord \'re:\'. Om bijvoorbeeld alle url\'s met \'google\' op de witte lijst te zetten, gebruik je \'re:google\'."
+  },
+  "options_footnote_2": {
+    "message": "Controleer de totalJSHeapSize-waarde aan de bovenkant van het document. Als dit geheugen de eigen opgegeven waarde overschrijdt (minimaal 10MB), dan wordt het tabblad in de slaapstand gezet. Let op: deze optie is alleen beschikbaar als je browser 'window.performance.memory' ondersteunt."
+  },
+  "options_footnote_3": {
+    "message": "Als de slaapstandperiode van een tabblad voorbij is of als er een nieuw tabblad wordt geopend, dan worden alle tabbladen gecontroleerd om te bepalen welke tabbladen in de slaapstand moeten worden gezet. Met dze optie dwing je de extensie om de controles te beperken. De minimale waarde is 1 seconde; de aanbevolen waarde 30 seconden."
+  },
+  "options_reset": {
+    "message": "Standaardwaarden"
+  },
+  "options_import": {
+    "message": "Instellingen importeren"
+  },
+  "options_export": {
+    "message": "Instellingen exporteren"
+  },
+  "options_save": {
+    "message": "Opties opslaan"
+  },
+  "options_support": {
+    "message": "Ondersteun de ontwikkeling"
+  },
+  "options_check_delay": {
+    "message": "Minimumvertraging tussen opeenvolgende slaapstandcontroles (in seconden)"
+  },
+  "options_favicon_delay": {
+    "message": "Vertraging alvorens de favicon de slaapstandstatus te geven (in milliseconden)"
+  },
+  "popup_discard_tab": {
+    "message": "Tabblad in slaapstand zetten"
+  },
+  "popup_discard_tree": {
+    "message": "Tabgroep in slaapstand zetten"
+  },
+  "popup_discard_tabs": {
+    "message": "Alle andere tabbladen in slaapstand zetten"
+  },
+  "popup_discard_window": {
+    "message": "Alle andere tabbladen in dit venster in slaapstand zetten"
+  },
+  "popup_discard_rights": {
+    "message": "Tabbladen rechts hiervan in slaapstand zetten"
+  },
+  "popup_discard_lefts": {
+    "message": "Tabbladen links hiervan in slaapstand zetten"
+  },
+  "popup_discard_other_windows": {
+    "message": "Tabbladen in andere vensters in slaapstand zetten"
+  },
+  "popup_move_previous": {
+    "message": "Linkertabblad"
+  },
+  "popup_close": {
+    "message": "Tabblad sluiten"
+  },
+  "popup_move_next": {
+    "message": "Rechtertabblad"
+  },
+  "popup_whitelist_desc": {
+    "message": "Tabbladen van deze site niet in slaapstand zetten"
+  },
+  "popup_whitelist_always": {
+    "message": "Altijd"
+  },
+  "popup_whitelist_session": {
+    "message": "Sessie"
+  },
+  "popup_allowed": {
+    "message": "Tabblad deze sessie niet in slaapstand zetten"
+  },
+  "popup_open_options": {
+    "message": "Opties"
+  },
+  "popup_trash": {
+    "message": "Oude tabbladen in slaapstand sluiten"
+  },
+  "popup_release": {
+    "message": "Slaapstand onderdrukken. Omzeil dit met Shift + klik."
+  },
+  "bg_no_active_tab": {
+    "message": "Er is geen actief tabblad"
+  },
+  "bg_msg_1": {
+    "message": "De slaapstand is onderdrukt op dit tabblad"
+  },
+  "menu_discard_tab": {
+    "message": "Tabblad in slaapstand zetten"
+  },
+  "menu_discard_tree": {
+    "message": "Tabgroep in slaapstand zetten"
+  },
+  "menu_discard_menu": {
+    "message": "Tabbladen in dit venster in slaapstand zetten"
+  },
+  "menu_discard_tabs": {
+    "message": "Alle andere tabbladen in slaapstand zetten"
+  },
+  "menu_discard_rights": {
+    "message": "Tabbladen rechts hiervan in slaapstand zetten"
+  },
+  "menu_discard_lefts": {
+    "message": "Tabbladen links hiervan in slaapstand zetten"
+  },
+  "menu_discard_window": {
+    "message": "Andere tabbladen in slaapstand zetten"
+  },
+  "menu_discard_other_windows": {
+    "message": "Tabbladen in andere vensters in slaapstand zetten"
+  },
+  "menu_whitelist_domain": {
+    "message": "Tabbladen van deze site niet in slaapstand zetten"
+  },
+  "menu_open_tab_then_discard": {
+    "message": "Link openen op nieuw tabblad in slaapstand"
+  },
+  "menu_move_previous": {
+    "message": "Verplaatsen naar linkertabblad"
+  },
+  "menu_move_next": {
+    "message": "Verplaatsen naar rechtertabblad"
+  },
+  "menu_close": {
+    "message": "Tabblad sluiten"
+  },
+  "menu_msg1": {
+    "message": "is toegevoegd aan de witte lijst"
+  },
+  "menu_msg4": {
+    "message": "is toegevoegd aan de zwarte lijst"
+  },
+  "menu_msg2": {
+    "message": "dit protocol wordt niet ondersteund"
+  },
+  "menu_msg3": {
+    "message": "Actieve tabbladen kunnen niet in de slaapstand worden gezet"
+  },
+  "cmd_discard_tab": {
+    "message": "Tabblad in slaapstand zetten"
+  },
+  "cmd_discard_tabs": {
+    "message": "Alle andere tabbladen in slaapstand zetten"
+  },
+  "cmd_discard_window": {
+    "message": "Alle andere tabblad in dit venster in slaapstand zetten"
+  },
+  "cmd_discard_other_windows": {
+    "message": "Tabbladen in andere vensters in slaapstand zetten"
+  },
+  "cmd_whitelist_domain": {
+    "message": "Tabbladen van deze site niet in slaapstand zetten"
+  },
+  "cmd_move_previous": {
+    "message": "Verplaatsen naar linkertabblad"
+  },
+  "cmd_move_next": {
+    "message": "Verplaatsen naar rechtertabblad"
+  },
+  "cmd_close": {
+    "message": "Tabblad sluiten"
+  }
+}
