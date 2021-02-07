@@ -112,13 +112,44 @@ const navigate = (method, discarded = false) => query({
   }
 });
 
+var isBackingUp = false;
+// Used to backup all 
+const backupTabs = () => {
+  if(isBackingUp){return;}
+
+  isBackingUp = true;
+  chrome.tabs.query({}, function(tabs){
+    var data = tabs.map((t) => {return{'url':t.url, 'title':t.title}})
+    var backups = []
+    chrome.storage.local.get({
+      'tab-backup': []
+    }, prefs => {
+      backups = prefs['tab-backup']
+
+      if(backups.length >= 5){ // Clean Old Backups
+        backups.shift();
+      }
+      backups.push(data);
+    
+      chrome.storage.local.set({
+        ['tab-backup']: backups
+      }, () => {
+        isBackingUp = false;
+      });
+    });
+  });
+}
+
+// Discard Tab and replace with Dummy html
+// Favicon handled by dummy.js itself
 const discard = tab => new Promise(resolve => {
-  if (tab.active) {
-    return resolve();
-  }
-  if (tab.discarded) {
-    return resolve();
-  }
+  // No need as it will be active with dummy.html
+  // if (tab.active) {
+  //   return resolve();
+  // }
+  // if (tab.discarded) {
+  //   return resolve();
+  // }
   if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
     discard.count = 0;
   }
@@ -131,6 +162,43 @@ const discard = tab => new Promise(resolve => {
   discard.count += 1;
   discard.time = Date.now();
   const next = () => {
+    // Load the Dummy page instead of directly discarding it.
+    if(tab.url.indexOf(chrome.extension.getURL('dummy.html')) < 0){
+      let dummy_url = chrome.extension.getURL('dummy.html')+'#url='+encodeURIComponent(tab.url)+'&title='+tab.title+'&fav='+(tab.favIconUrl||'');
+      // log(tab)
+      // If normal tab, use location replace to remove this dummy from history
+      if ((tab.url.indexOf('http') === 0 || tab.url.indexOf('ftp') === 0) && !tab.discarded){
+        chrome.tabs.executeScript(tab.id, {
+          runAt: 'document_start',
+          matchAboutBlank: true,
+          code: `
+            window.stop();
+            location.replace("${dummy_url}");
+          `
+        }, () => chrome.runtime.lastError);
+      } 
+      // Else use chrome update function
+      else{
+        chrome.tabs.update(tab.id, {
+          url: dummy_url
+        })
+      }
+    }
+    discard.count -= 1;
+    if (discard.tabs.length) {
+      const tab = discard.tabs.shift();
+      discard(tab);
+    }
+    resolve();
+  };
+  next();
+});
+
+// Discard Self gets called when a page is dummy.html and is active=false
+// It the discards the dummy itself
+const discardSelf = tab => new Promise(resolve => {
+  const next = () => {
+    // log(tab)
     try {
       if (isFirefox) {
         chrome.tabs.discard(tab.id);
@@ -143,66 +211,100 @@ const discard = tab => new Promise(resolve => {
     catch (e) {
       log('discarding failed', e);
     }
-    discard.count -= 1;
-    if (discard.tabs.length) {
-      const tab = discard.tabs.shift();
-      discard(tab);
-    }
     resolve();
   };
-  // favicon
-  if (prefs.favicon) {
-    const src = tab.favIconUrl || '/data/page.png';
-    Object.assign(new Image(), {
-      crossOrigin: 'anonymous',
-      src,
-      onerror() {
-        next();
-      },
-      onload() {
-        const img = this;
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          canvas.width = img.width;
-          canvas.height = img.height;
-
-          ctx.globalAlpha = 0.6;
-          ctx.drawImage(img, 0, 0);
-
-          ctx.globalAlpha = 1;
-          ctx.beginPath();
-          ctx.fillStyle = '#a1a0a1';
-          ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-          ctx.fill();
-          chrome.tabs.executeScript(tab.id, {
-            runAt: 'document_start',
-            allFrames: true,
-            matchAboutBlank: true,
-            code: `
-              window.stop();
-              if (window === window.top) {
-                [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
-
-                document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                  rel: 'icon',
-                  type: 'image/png',
-                  href: '${canvas.toDataURL('image/png')}'
-                }));
-              }
-            `
-          }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
-        }
-        else {
-          next();
-        }
-      }
-    });
-  }
-  else {
-    next();
-  }
+  next();
 });
+
+// Used on First Load to load the title and Favicon
+const loadDummy = (window=false) => {
+  var options = {
+    discarded: true,
+    url: chrome.extension.getURL('dummy.html')
+  }
+  if(window){ // For window specific
+    options.windowId = window.id
+  }
+
+  chrome.tabs.query(options, function(tabs){
+    for (var i = 0; i < tabs.length; i++) {
+      // log(tabs[i])
+      chrome.tabs.update(tabs[i].id, {
+        url: tabs[i].url
+      }, function(tab){
+        setTimeout(function(){
+          // CODE TO FIX BUG - WHEN discardSelf gets called when tab is active
+          // i.e. When, we visit it while this setTimeout period is running (quick hands)
+          chrome.tabs.get(tab.id, function(timed_out_tab){
+            if(timed_out_tab
+              && !timed_out_tab.active 
+              && !timed_out_tab.highlighted
+              && timed_out_tab.autoDiscardable
+            ){
+              discardSelf(timed_out_tab);
+            }
+          })
+        }, 2000) // Bit of delay to let it load its dummy.js
+      })                
+    }
+  });
+}
+
+// Discard the dummy.html if it is active=false, discarded=false
+// autoDiscardable=true
+const discardDummy = () => {
+  chrome.tabs.query({
+    active: false,
+    discarded: false,
+    status: "complete",
+    url: chrome.extension.getURL('dummy.html')
+  }, function(tabs){
+    // Good Place to Backup tabs occasionally
+    // If some tabs are about to get discarded
+    if(tabs.length > 0){backupTabs();}
+
+    tabs.forEach((tab) => discardSelf(tab))
+  });
+}
+
+// FIRST: Handle tabs that got discarded automatically (e.g. by browser itself) using this extension (by loading dummy)
+// THEN: discard dummy.html pages that are not yet discarded
+const checkForLeftOverDiscardedTabs = () => {
+  chrome.tabs.query({
+    active: false,
+    discarded: true,
+    url: "*://*/*"
+  }, function(tabs){
+    let i = 0;
+    if(tabs.length > 0) {
+      tabs.forEach((tab) => {
+        discard(tab).then(() => {
+          i = i++;
+          if(i >= tabs.length) {
+            discardDummy()
+          }
+        })      
+      })
+    } else {
+      discardDummy()
+    }
+  });
+}
+
+// Call to discard any possible dummy.html which is not discarded and is not active
+chrome.tabs.onActivated.addListener((activeInfo) => {
+  checkForLeftOverDiscardedTabs()
+})
+
+chrome.windows.onCreated.addListener((window) => {
+  // Wait few seconds to load tabs and trigger loadDummy on new Window load
+  // loadDummy Gets called from onStartup on first load
+  // But, on windows created event it is called again. (only for this window/cases like open new window with our dummy in it.)
+  setTimeout(function(){
+    loadDummy(window);
+  }, 2000);
+});
+
 discard.tabs = [];
 discard.count = 0;
 
@@ -263,6 +365,8 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
       tabId: sender.tab.id,
       title: request.message
     });
+  }else if (method === 'discard-self') {
+    discardSelf(tab)
   }
   else if (method === 'storage') {
     storage(request.prefs).then(prefs => {
@@ -294,6 +398,7 @@ starters.push(popup);
 (() => {
   const onStartup = () => prefs.onReady.add(() => {
     starters.forEach(c => c());
+    loadDummy();
   });
   // Firefox does not call "onStartup" after enabling the extension
   if (isFirefox) {

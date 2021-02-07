@@ -153,18 +153,26 @@
           .filter(t => t.discarded === false && t.highlighted === false && ids.indexOf(t.id) === -1)
           .sort((a, b) => Math.abs(a.index - tab.index) - Math.abs(b.index - tab.index))
           .shift();
-        if (otab) {
-          chrome.tabs.update(otab.id, {
-            active: true
-          }, () => {
-            // at the time we record htabs, one tab was active. Let's mark it as inactive
-            htabs.forEach(t => t.active = false);
+      
+        chrome.storage.local.get(['release-on-view'], function(opt) {
+          // If release-on-view switch to next tab
+          if(opt && opt['release-on-view']){
+            if (otab) {
+              chrome.tabs.update(otab.id, {
+                active: true
+              }, () => {
+                htabs.forEach(t => t.active = false);
+                htabs.forEach(discard);
+              });
+            }
+            else {
+              notify(chrome.i18n.getMessage('menu_msg3'));
+            }
+          } else{
+            // Else just load and show dummy
             htabs.forEach(discard);
-          });
-        }
-        else {
-          notify(chrome.i18n.getMessage('menu_msg3'));
-        }
+          }
+        });
       }
       else {
         htabs.forEach(discard);
