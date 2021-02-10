@@ -9,7 +9,7 @@
     "message": "Inactieve tabbladen in slaapstand zetten na (in seconden) "
   },
   "options_period02": {
-    "message": "(vul \'0'\ in om automatische slaapstand uit te schakelen) als het aantal tabbladen het volgende aantal overschrijdt "
+    "message": "(vul '0' in om automatische slaapstand uit te schakelen) als het aantal tabbladen het volgende aantal overschrijdt "
   },
   "options_period03": {
     "message": "Inactieve tabbladen sluiten als ze inactief zijn gedurende (in uren) (indien ingeschakeld via het pop-upvenster) "
@@ -120,7 +120,7 @@
     "message": "Veelgestelde vragen openen na updates"
   },
   "options_footnote_1": {
-    "message": "Het is mogelijk reguliere uitdrukkingen te gebruiken middels het trefwoord \'re:\'. Om bijvoorbeeld alle url\'s met \'google\' op de witte lijst te zetten, gebruik je \'re:google\'."
+    "message": "Het is mogelijk reguliere uitdrukkingen te gebruiken middels het trefwoord 're:'. Om bijvoorbeeld alle url's met 'google' op de witte lijst te zetten, gebruik je 're:google'."
   },
   "options_footnote_2": {
     "message": "Controleer de totalJSHeapSize-waarde aan de bovenkant van het document. Als dit geheugen de eigen opgegeven waarde overschrijdt (minimaal 10MB), dan wordt het tabblad in de slaapstand gezet. Let op: deze optie is alleen beschikbaar als je browser 'window.performance.memory' ondersteunt."
