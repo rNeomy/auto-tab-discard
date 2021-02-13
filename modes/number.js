@@ -2,6 +2,8 @@
 'use strict';
 
 const number = {};
+const pluginFilters = {}; // this object adds custom filters to the number-based discarding
+
 number.install = period => {
   chrome.alarms.create('number.check', {
     when: Date.now() + 5000,
@@ -68,6 +70,11 @@ number.check = async (filterTabsFrom, ops = {}) => {
     options.audible = false;
   }
   let tbs = await query(options);
+  // remove tabs based on custom filters
+  for (const {prepare, check} of Object.values(pluginFilters)) {
+    await prepare();
+    tbs = tbs.filter(check);
+  }
   // remove tabs that match one of the matching lists
   if (
     prefs['whitelist'].length ||

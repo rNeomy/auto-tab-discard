@@ -65,6 +65,7 @@ const restore = () => storage({
   'release-next-tab': false,
   /* plugins */
   './plugins/dummy/core.js': false,
+  './plugins/focus/core.js': false,
   './plugins/trash/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
@@ -106,6 +107,7 @@ const restore = () => storage({
   }
   document.getElementById(prefs.click).checked = true;
   document.getElementById('./plugins/dummy/core.js').checked = prefs['./plugins/dummy/core.js'];
+  document.getElementById('./plugins/focus/core.js').checked = prefs['./plugins/focus/core.js'];
   document.getElementById('./plugins/trash/core.js').checked = prefs['./plugins/trash/core.js'];
 });
 
@@ -173,6 +175,7 @@ document.getElementById('save').addEventListener('click', () => {
     'release-next-tab': document.getElementById('release-next-tab').checked,
     /* plugins*/
     './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked,
+    './plugins/focus/core.js': document.getElementById('./plugins/focus/core.js').checked,
     './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked
   }, () => {
     info.textContent = 'Options saved';

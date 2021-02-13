@@ -346,16 +346,16 @@ starters.push(popup);
       }, tabs => tabs.forEach(discard));
     }
     if (prefs['startup-pinned']) {
-      chrome.tabs.query({
+      query({
         discarded: false,
         pinned: true
-      }, tabs => tabs.forEach(discard));
+      }).then(tabs => tabs.forEach(discard));
     }
     else if (prefs['startup-release-pinned']) {
-      chrome.tabs.query({
+      query({
         discarded: true,
         pinned: true
-      }, tabs => tabs.forEach(tab => chrome.tabs.reload(tab.id)));
+      }).then(tabs => tabs.forEach(tab => chrome.tabs.reload(tab.id)));
     }
   }));
 }
@@ -363,6 +363,7 @@ starters.push(popup);
 /* plug-in system */
 starters.push(() => storage({
   './plugins/dummy/core.js': false,
+  './plugins/focus/core.js': false,
   './plugins/trash/core.js': false
 }).then(prefs => {
   for (const [path, value] of Object.entries(prefs)) {

@@ -107,6 +107,9 @@
   "options_plugin_dummy": {
     "message": "When discarding, replace the page with a local dummy alternative (beta)"
   },
+  "options_plugin_focus": {
+    "message": "Remove discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded"
+  },
   "options_plugin_trash": {
     "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)"
   },
