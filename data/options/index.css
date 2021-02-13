@@ -59,3 +59,8 @@ ol {
   padding: 10px;
   margin: 15px 0;
 }
+
+.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
