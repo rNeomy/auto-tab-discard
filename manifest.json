@@ -37,7 +37,6 @@
       "background.js",
       "modes/number.js",
       "menu.js",
-      "trash.js",
       "next.js"
     ]
   },

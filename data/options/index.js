@@ -64,7 +64,8 @@ const restore = () => storage({
   'startup-release-pinned': false,
   'release-next-tab': false,
   /* plugins */
-  './plugins/dummy/core.js': false
+  './plugins/dummy/core.js': false,
+  './plugins/trash/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -105,6 +106,7 @@ const restore = () => storage({
   }
   document.getElementById(prefs.click).checked = true;
   document.getElementById('./plugins/dummy/core.js').checked = prefs['./plugins/dummy/core.js'];
+  document.getElementById('./plugins/trash/core.js').checked = prefs['./plugins/trash/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -170,7 +172,8 @@ document.getElementById('save').addEventListener('click', () => {
     'startup-release-pinned': document.getElementById('startup-release-pinned').checked,
     'release-next-tab': document.getElementById('release-next-tab').checked,
     /* plugins*/
-    './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked
+    './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked,
+    './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

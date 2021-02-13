@@ -175,6 +175,8 @@ const discard = tab => new Promise(resolve => {
           ctx.fillStyle = '#a1a0a1';
           ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
           ctx.fill();
+          const href = canvas.toDataURL('image/png');
+
           chrome.tabs.executeScript(tab.id, {
             runAt: 'document_start',
             allFrames: true,
@@ -187,7 +189,7 @@ const discard = tab => new Promise(resolve => {
                 document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
                   rel: 'icon',
                   type: 'image/png',
-                  href: '${canvas.toDataURL('image/png')}'
+                  href: '${href}'
                 }));
               }
             `
@@ -360,7 +362,8 @@ starters.push(popup);
 
 /* plug-in system */
 starters.push(() => storage({
-  './plugins/dummy/core.js': false
+  './plugins/dummy/core.js': false,
+  './plugins/trash/core.js': false
 }).then(prefs => {
   for (const [path, value] of Object.entries(prefs)) {
     if (value) {

@@ -74,9 +74,6 @@ const init = () => {
       }
     }
   });
-  chrome.storage.local.get({
-    'trash.enabled': false
-  }, prefs => document.getElementById('trash').checked = prefs['trash.enabled']);
 };
 init();
 
@@ -101,8 +98,3 @@ document.addEventListener('click', e => {
     }, () => window.close());
   }
 });
-
-// toggle trash
-document.getElementById('trash').addEventListener('change', e => chrome.storage.local.set({
-  'trash.enabled': e.target.checked
-}));
