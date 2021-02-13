@@ -3,6 +3,9 @@
 // localization
 [...document.querySelectorAll('[data-i18n]')].forEach(e => {
   e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
+  if (e.dataset.i18nTitle) {
+    e.title = chrome.i18n.getMessage(e.dataset.i18nTitle);
+  }
 });
 
 let tab;
@@ -74,9 +77,6 @@ const init = () => {
       }
     }
   });
-  chrome.storage.local.get({
-    'trash.enabled': false
-  }, prefs => document.getElementById('trash').checked = prefs['trash.enabled']);
 };
 init();
 
@@ -101,8 +101,3 @@ document.addEventListener('click', e => {
     }, () => window.close());
   }
 });
-
-// toggle trash
-document.getElementById('trash').addEventListener('change', e => chrome.storage.local.set({
-  'trash.enabled': e.target.checked
-}));

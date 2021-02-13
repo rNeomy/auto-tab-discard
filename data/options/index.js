@@ -62,7 +62,11 @@ const restore = () => storage({
   'startup-unpinned': false,
   'startup-pinned': false,
   'startup-release-pinned': false,
-  'release-next-tab': false
+  'release-next-tab': false,
+  /* plugins */
+  './plugins/dummy/core.js': false,
+  './plugins/focus/core.js': false,
+  './plugins/trash/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -102,6 +106,9 @@ const restore = () => storage({
     document.getElementById('url-based').checked = true;
   }
   document.getElementById(prefs.click).checked = true;
+  document.getElementById('./plugins/dummy/core.js').checked = prefs['./plugins/dummy/core.js'];
+  document.getElementById('./plugins/focus/core.js').checked = prefs['./plugins/focus/core.js'];
+  document.getElementById('./plugins/trash/core.js').checked = prefs['./plugins/trash/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -110,7 +117,7 @@ document.getElementById('save').addEventListener('click', () => {
   period = Math.max(period, 0);
   let number = document.getElementById('number').value;
   number = Number(number);
-  number = Math.max(number, 1);
+  number = Math.max(number, 0);
   let mx = document.getElementById('max.single.discard').value;
   mx = Number(mx);
   mx = Math.max(mx, 1);
@@ -165,7 +172,11 @@ document.getElementById('save').addEventListener('click', () => {
     'startup-unpinned': document.getElementById('startup-unpinned').checked,
     'startup-pinned': document.getElementById('startup-pinned').checked,
     'startup-release-pinned': document.getElementById('startup-release-pinned').checked,
-    'release-next-tab': document.getElementById('release-next-tab').checked
+    'release-next-tab': document.getElementById('release-next-tab').checked,
+    /* plugins*/
+    './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked,
+    './plugins/focus/core.js': document.getElementById('./plugins/focus/core.js').checked,
+    './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

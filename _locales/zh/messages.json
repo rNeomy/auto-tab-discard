@@ -228,7 +228,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "左侧标签页",
+        "message": "Left Tab",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +236,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "右侧标签页",
+        "message": "右边的标签页",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -316,11 +316,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "移动到左侧标签页",
+        "message": "移动到左边",
         "description": ""
     },
     "menu_move_next": {
-        "message": "移动到右侧标签页",
+        "message": "移动到右边",
         "description": ""
     },
     "menu_close": {
@@ -364,11 +364,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "移动到左侧标签页",
+        "message": "移动到左边",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "移动到右侧标签页",
+        "message": "移动到右边",
         "description": ""
     },
     "cmd_close": {

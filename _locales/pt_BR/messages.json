@@ -1,0 +1,378 @@
+{
+    "app_description": {
+        "message": "Aumente a velocidade do navegador e reduza a carga de memória quando você tiver várias abas abertas.",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Opções de descarte",
+        "description": ""
+    },
+    "options_period01": {
+        "message": "Descartar abas inativas após (em segundos) ",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "(use zero segundo para desativar o descarte automático de abas) quando exceder o número de abas inativas",
+        "description": ""
+    },
+    "options_period03": {
+        "message": "Remover (excluir permanentemente) as abas descartadas se ficarem inativas durante (em horas) (se ativado na janela popup de ação do navegador)",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Número máximo de abas para conferir para descartar em uma única solicitação automática de descarte",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Descartar apenas os seguintes nomes de host inativos",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Exibir opções para descartar no menu de contexto da aba (se suportado)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Exibir opções para descartar no menu de contexto da página (se suportado)",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Exibir o item \"Abrir link em uma nova aba descartada\" no menu de contexto dos links",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Alterar o favicon de abas descartadas (se possível)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Descartar todas as abas não fixadas na inicialização do navegador ou da extensão",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Descartar todas as abas fixadas na inicialização do navegador ou da extensão",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Liberar o estado de descarte de todas as guias fixadas na inicialização do navegador ou da extensão",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Liberar o descarte da próxima aba (a direita da aba ativa)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Descartar uma aba em segundo plano se seu uso de memória (totalJSHeapSize) exceder (em MB)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Condições de descarte",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "Não descartar uma aba enquanto houver reprodução de mídia",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "Não descartar uma aba quando ela estiver fixada",
+        "description": ""
+    },
+    "options_form": {
+        "message": "Não descartar uma aba quando mudanças num formulário ainda não foram enviadas",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "Não descartar abas quando o computador estiver conectado a uma fonte de energia",
+        "description": ""
+    },
+    "options_online": {
+        "message": "Não descartar abas quando não houver conexão com a internet e a aba não estiver armazenada em cache",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "Não descartar uma aba se ela puder exibir notificações na área de trabalho",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "Não descartar abas se o computador não estiver no estado 'ocioso'",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Intervalo de inatividade para determinar se o computador está em estado ocioso ou não (em minutos)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Exceções",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Abas com os seguintes nomes de host não serão descartadas:",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Ação ao clicar com o botão esquerdo na barra de ferramentas",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Abrir popup",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Descartar aba",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Descartar todas as outras abas",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Descartar outras abas nesta janela",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Descartar abas em outras janelas",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Alternar a opção 'Manter esta aba para esta sessão'",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Diversos",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Exibir registros (apenas para fins de depuração)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Descartar aba se ela estiver oculta",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "Usar cache: se ativado, a extensão verifica apenas uma vez se uma aba está fixada ou se o navegador está conectado a uma fonte de bateria",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Número de trabalhos simultâneos de descarte permitidos",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Abrir a página de perguntas frequentes ao atualizar",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "É possível usar a correspondência de expressão regular com a palavra-chave \"re:\". Por exemplo, para colocar na lista de permissões todos os URLs com a palavra-chave \"google\", use \"re: google\".",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "Verifique o valor totalJSHeapSize do documento principal. Se a memória exceder o valor definido pelo usuário (o valor mínimo aceitável são 10 MB), a aba será descartada. Observe que esta opção só está disponível se o seu navegador suportar 'window.performance.memory'",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "Quando o período de descarte de uma aba termina ou uma nova aba é adicionada, todas as abas do navegador são verificadas para avaliar quais precisam ser descartadas. Esta opção força a extensão a limitar essas verificações. O valor mínimo aceitável é 1 segundo. O valor recomendado são 30 segundos.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Restauração de fábrica",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Importar configurações",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Exportar configurações",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Salvar opções",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Apoiar o desenvolvimento",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "Atraso mínimo entre as verificações de descarte sequenciais (em segundos)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Atraso para pintar o favicon descartado (em milissegundos)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Descartar aba",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Descartar grupo de abas",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Descartar todas as outras abas",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Descartar outras abas nesta janela",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Descartar abas à direita",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Descartar abas à esquerda",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Descartar abas em outras janelas",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Left Tab",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "Fechar aba",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Right Tab",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Manter abas para este site",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Sempre",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Sessão",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Manter esta aba para esta sessão",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Opções",
+        "description": ""
+    },
+    "popup_trash": {
+        "message": "Remover (excluir permanentemente) antigas abas descartadas",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Remover o descarte. Para ignorar o conteúdo em cache, use Shift + Clique",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "Nenhuma aba ativa está presente",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "o descarte automático está desabilitado para esta aba",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Descartar aba",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Descartar grupo de abas",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Descartar abas nesta janela",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Descartar todas as outras abas",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Descartar abas à direita",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Descartar abas à esquerda",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Descartar outras abas",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Descartar abas em outras janelas",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Sempre manter abas para este site",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Abrir link em uma nova aba descartada",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Move to the Left Tab",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Move to the Right Tab",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Fechar aba",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "é adicionado à lista de permissões permanente",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "é adicionado à lista de permissões da sessão",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "o protocolo não é suportado",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "Não é possível descartar uma aba quando ela está ativa",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Descartar aba",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Descartar todas as outras abas",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Descartar outras abas nesta janela",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Descartar abas em outras janelas",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Sempre manter abas para este site",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Move to the Left Tab",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Move to the Right Tab",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Fechar aba",
+        "description": ""
+    }
+}

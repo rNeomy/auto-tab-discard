@@ -2,6 +2,8 @@
 'use strict';
 
 const number = {};
+const pluginFilters = {}; // this object adds custom filters to the number-based discarding
+
 number.install = period => {
   chrome.alarms.create('number.check', {
     when: Date.now() + 5000,
@@ -68,6 +70,24 @@ number.check = async (filterTabsFrom, ops = {}) => {
     options.audible = false;
   }
   let tbs = await query(options);
+  const icon = (tb, title) => {
+    chrome.browserAction.setTitle({
+      tabId: tb.id,
+      title
+    }, () => chrome.runtime.lastError);
+    chrome.browserAction.setIcon({
+      tabId: tb.id,
+      path: {
+        '16': 'data/icons/disabled/16.png',
+        '32': 'data/icons/disabled/32.png'
+      }
+    });
+  };
+  // remove tabs based on custom filters
+  for (const {prepare, check} of Object.values(pluginFilters)) {
+    await prepare();
+    tbs = tbs.filter(check);
+  }
   // remove tabs that match one of the matching lists
   if (
     prefs['whitelist'].length ||
@@ -92,10 +112,12 @@ number.check = async (filterTabsFrom, ops = {}) => {
       const m = list => match(tb.url, hostname, list);
       // if we are on url-based mode, remove tabs that are not on the list (before fetching meta)
       if (prefs.mode === 'url-based' && m(prefs['whitelist-url']) !== true) {
+        icon(tb, 'tab is in the whitelist');
         return false;
       }
       // is the tab in whitelist, remove it (before fetching meta)
       if (m(prefs['whitelist']) || m(prefs['whitelist.session'])) {
+        icon(tb, 'tab is in the session whitelist');
         return false;
       }
       return true;
@@ -124,7 +146,8 @@ number.check = async (filterTabsFrom, ops = {}) => {
     })));
     // remove protected tabs (e.g. addons.mozilla.org)
     if (!ms) {
-      log('discarding aborted', 'meta data fetch error');
+      log('discarding aborted', 'metadata fetch error');
+      icon(tb, 'metadata fetch error');
       continue;
     }
     const meta = Object.assign({}, ...ms);
@@ -151,16 +174,19 @@ number.check = async (filterTabsFrom, ops = {}) => {
     // is tab playing audio
     if (prefs.audio && meta.audible) {
       log('discarding aborted', 'audio is playing');
+      icon(tb, 'tab plays an audio');
       continue;
     }
     // is there an unsaved form
     if (prefs.form && meta.forms) {
       log('discarding aborted', 'active form');
+      icon(tb, 'there is an active form on this tab');
       continue;
     }
     // is notification allowed
     if (prefs['notification.permission'] && meta.permission) {
       log('discarding aborted', 'tab has notification permission');
+      icon(tb, 'tab has notification permission');
       continue;
     // tab can be discarded
     }

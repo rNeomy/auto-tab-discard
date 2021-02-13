@@ -1,284 +1,378 @@
 {
-  "app_description": {
-    "message": "Verhoog de browsersnelheid en verlaag het geheugengebruik bij meerdere openstaande tabbladen."
-  },
-  "options_discarding_options": {
-    "message": "Slaapstandopties"
-  },
-  "options_period01": {
-    "message": "Inactieve tabbladen in slaapstand zetten na (in seconden) "
-  },
-  "options_period02": {
-    "message": "(vul '0' in om automatische slaapstand uit te schakelen) als het aantal tabbladen het volgende aantal overschrijdt "
-  },
-  "options_period03": {
-    "message": "Inactieve tabbladen sluiten als ze inactief zijn gedurende (in uren) (indien ingeschakeld via het pop-upvenster) "
-  },
-  "options_period04": {
-    "message": "Maximumaantal te controleren tabbladen per automatisch verzoek "
-  },
-  "options_url_based": {
-    "message": "Alleen tabbladen met de volgende inactieve hostnamen in slaapstand zetten"
-  },
-  "options_tab_context": {
-    "message": "Slaapstanditems tonen in het tabbladmenu (indien ondersteund)"
-  },
-  "options_page_context": {
-    "message": "Slaapstanditems tonen in het paginamenu (indien ondersteund)"
-  },
-  "options_link_context": {
-    "message": "'Link openen op nieuw tabblad in slaapstand' tonen in het linkmenu"
-  },
-  "options_favicon": {
-    "message": "Favicon van tabbladen in slaapstand aanpassen (indien mogelijk)"
-  },
-  "options_startup_unpinned": {
-    "message": "Alle niet-vastgemaakte tabbladen in slaapstand zetten na openen van browser of inschakelen van extensie (add-on)"
-  },
-  "options_startup_pinned": {
-    "message": "Alle vastgemaakte tabbladen in slaapstand zetten na openen van browser of inschakelen van extensie (add-on)"
-  },
-  "options_startup_release_pinned": {
-    "message": "Slaapstandstatus van alle vastgemaakte tabbladen opheffen na openen van browser of inschakelen van extensie (add-on)"
-  },
-  "options_release_next_tab": {
-    "message": "Slaapstandstatus van volgend tabblad opheffen (het tabblad rechts van het actieve)"
-  },
-  "options_memory": {
-    "message": "Achtergrondtabbladen in slaapstand zetten als (totalJSHeapSize) het volgende getal overschrijdt (in MB)"
-  },
-  "options_discarding_conditions": {
-    "message": "Slaapstandvoorwaarden"
-  },
-  "options_audio": {
-    "message": "Slaapstand onderdrukken bij afspelen van media"
-  },
-  "options_pinned": {
-    "message": "Slaapstand van vastgemaakte tabbladen onderdrukken"
-  },
-  "options_form": {
-    "message": "Slaapstand onderdrukken van tabbladen met niet-ingediende formulierinvoeren"
-  },
-  "options_battery": {
-    "message": "Slaapstand onderdrukken als computer verbonden is met netstroom"
-  },
-  "options_online": {
-    "message": "Slaapstand onderdrukken bij wegvallen van internetverbinding en niet-gecachete tabbladen"
-  },
-  "options_notification_permission": {
-    "message": "Slaapstand onderdrukken van tabbladen die meldingen tonen"
-  },
-  "options_idle": {
-    "message": "Slaapstand onderdrukken als computer niet inactief is"
-  },
-  "options_idle_timeout": {
-    "message": "Tijd dat computer inactief moet zijn alvorens tabbladen in slaapstand te zetten (in minuten)"
-  },
-  "options_exceptions": {
-    "message": "Uitzonderingen"
-  },
-  "options_whitelist": {
-    "message": "Tabbladen met de volgende hostnamen worden nooit in de slaapstand gezet:"
-  },
-  "options_left_click": {
-    "message": "Actie na linksklikken op werkbalkpictogram"
-  },
-  "options_click_popup": {
-    "message": "Pop-up tonen"
-  },
-  "options_click_discard_tab": {
-    "message": "Tabblad in slaapstand zetten"
-  },
-  "options_click_discard_tabs": {
-    "message": "Alle andere tabbladen in slaapstand zetten"
-  },
-  "options_click_discard_window": {
-    "message": "Alle andere tabbladen in dit venster in slaapstand zetten"
-  },
-  "options_click_discard_other_windows": {
-    "message": "Tabbladen in andere vensters in slaapstand zetten"
-  },
-  "options_click_toggle_allowed": {
-    "message": "'Tabblad in deze sessie behouden' in-/uitschakelen"
-  },
-  "options_misc": {
-    "message": "Overig"
-  },
-  "options_log": {
-    "message": "Logboek tonen (alleen voor foutopsporingsdoeleinden)"
-  },
-  "options_go_hidden": {
-    "message": "Tabblad in slaapstand zetten als tabblad verborgen is"
-  },
-  "options_use_cache": {
-    "message": "Cache gebruiken: schakel in om de extensie alleen te laten controleren of een tabblad is vastgemaakt of of de computer verbonden is met de netstroom"
-  },
-  "options_simultaneous_jobs": {
-    "message": "Aantal toegestane gelijktijdige slaapstandacties"
-  },
-  "options_faqs": {
-    "message": "Veelgestelde vragen openen na updates"
-  },
-  "options_footnote_1": {
-    "message": "Het is mogelijk reguliere uitdrukkingen te gebruiken middels het trefwoord 're:'. Om bijvoorbeeld alle url's met 'google' op de witte lijst te zetten, gebruik je 're:google'."
-  },
-  "options_footnote_2": {
-    "message": "Controleer de totalJSHeapSize-waarde aan de bovenkant van het document. Als dit geheugen de eigen opgegeven waarde overschrijdt (minimaal 10MB), dan wordt het tabblad in de slaapstand gezet. Let op: deze optie is alleen beschikbaar als je browser 'window.performance.memory' ondersteunt."
-  },
-  "options_footnote_3": {
-    "message": "Als de slaapstandperiode van een tabblad voorbij is of als er een nieuw tabblad wordt geopend, dan worden alle tabbladen gecontroleerd om te bepalen welke tabbladen in de slaapstand moeten worden gezet. Met dze optie dwing je de extensie om de controles te beperken. De minimale waarde is 1 seconde; de aanbevolen waarde 30 seconden."
-  },
-  "options_reset": {
-    "message": "Standaardwaarden"
-  },
-  "options_import": {
-    "message": "Instellingen importeren"
-  },
-  "options_export": {
-    "message": "Instellingen exporteren"
-  },
-  "options_save": {
-    "message": "Opties opslaan"
-  },
-  "options_support": {
-    "message": "Ondersteun de ontwikkeling"
-  },
-  "options_check_delay": {
-    "message": "Minimumvertraging tussen opeenvolgende slaapstandcontroles (in seconden)"
-  },
-  "options_favicon_delay": {
-    "message": "Vertraging alvorens de favicon de slaapstandstatus te geven (in milliseconden)"
-  },
-  "popup_discard_tab": {
-    "message": "Tabblad in slaapstand zetten"
-  },
-  "popup_discard_tree": {
-    "message": "Tabgroep in slaapstand zetten"
-  },
-  "popup_discard_tabs": {
-    "message": "Alle andere tabbladen in slaapstand zetten"
-  },
-  "popup_discard_window": {
-    "message": "Alle andere tabbladen in dit venster in slaapstand zetten"
-  },
-  "popup_discard_rights": {
-    "message": "Tabbladen rechts hiervan in slaapstand zetten"
-  },
-  "popup_discard_lefts": {
-    "message": "Tabbladen links hiervan in slaapstand zetten"
-  },
-  "popup_discard_other_windows": {
-    "message": "Tabbladen in andere vensters in slaapstand zetten"
-  },
-  "popup_move_previous": {
-    "message": "Linkertabblad"
-  },
-  "popup_close": {
-    "message": "Tabblad sluiten"
-  },
-  "popup_move_next": {
-    "message": "Rechtertabblad"
-  },
-  "popup_whitelist_desc": {
-    "message": "Tabbladen van deze site niet in slaapstand zetten"
-  },
-  "popup_whitelist_always": {
-    "message": "Altijd"
-  },
-  "popup_whitelist_session": {
-    "message": "Sessie"
-  },
-  "popup_allowed": {
-    "message": "Tabblad deze sessie niet in slaapstand zetten"
-  },
-  "popup_open_options": {
-    "message": "Opties"
-  },
-  "popup_trash": {
-    "message": "Oude tabbladen in slaapstand sluiten"
-  },
-  "popup_release": {
-    "message": "Slaapstand onderdrukken. Omzeil dit met Shift + klik."
-  },
-  "bg_no_active_tab": {
-    "message": "Er is geen actief tabblad"
-  },
-  "bg_msg_1": {
-    "message": "De slaapstand is onderdrukt op dit tabblad"
-  },
-  "menu_discard_tab": {
-    "message": "Tabblad in slaapstand zetten"
-  },
-  "menu_discard_tree": {
-    "message": "Tabgroep in slaapstand zetten"
-  },
-  "menu_discard_menu": {
-    "message": "Tabbladen in dit venster in slaapstand zetten"
-  },
-  "menu_discard_tabs": {
-    "message": "Alle andere tabbladen in slaapstand zetten"
-  },
-  "menu_discard_rights": {
-    "message": "Tabbladen rechts hiervan in slaapstand zetten"
-  },
-  "menu_discard_lefts": {
-    "message": "Tabbladen links hiervan in slaapstand zetten"
-  },
-  "menu_discard_window": {
-    "message": "Andere tabbladen in slaapstand zetten"
-  },
-  "menu_discard_other_windows": {
-    "message": "Tabbladen in andere vensters in slaapstand zetten"
-  },
-  "menu_whitelist_domain": {
-    "message": "Tabbladen van deze site niet in slaapstand zetten"
-  },
-  "menu_open_tab_then_discard": {
-    "message": "Link openen op nieuw tabblad in slaapstand"
-  },
-  "menu_move_previous": {
-    "message": "Verplaatsen naar linkertabblad"
-  },
-  "menu_move_next": {
-    "message": "Verplaatsen naar rechtertabblad"
-  },
-  "menu_close": {
-    "message": "Tabblad sluiten"
-  },
-  "menu_msg1": {
-    "message": "is toegevoegd aan de witte lijst"
-  },
-  "menu_msg4": {
-    "message": "is toegevoegd aan de zwarte lijst"
-  },
-  "menu_msg2": {
-    "message": "dit protocol wordt niet ondersteund"
-  },
-  "menu_msg3": {
-    "message": "Actieve tabbladen kunnen niet in de slaapstand worden gezet"
-  },
-  "cmd_discard_tab": {
-    "message": "Tabblad in slaapstand zetten"
-  },
-  "cmd_discard_tabs": {
-    "message": "Alle andere tabbladen in slaapstand zetten"
-  },
-  "cmd_discard_window": {
-    "message": "Alle andere tabblad in dit venster in slaapstand zetten"
-  },
-  "cmd_discard_other_windows": {
-    "message": "Tabbladen in andere vensters in slaapstand zetten"
-  },
-  "cmd_whitelist_domain": {
-    "message": "Tabbladen van deze site niet in slaapstand zetten"
-  },
-  "cmd_move_previous": {
-    "message": "Verplaatsen naar linkertabblad"
-  },
-  "cmd_move_next": {
-    "message": "Verplaatsen naar rechtertabblad"
-  },
-  "cmd_close": {
-    "message": "Tabblad sluiten"
-  }
+    "app_description": {
+        "message": "Verhoog de snelheid van je browser en verlaag zijn geheugengebruik als je veel tabbladen open hebt staan.",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Deactiveringsopties",
+        "description": ""
+    },
+    "options_period01": {
+        "message": "Deactiveer inactieve tabladen na (in seconden)",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "(gebruik 'nul' seconden om het automatisch deactiveren van tabbladen uit te schakelen) als het aantal inactieve tabbladen groter is dan",
+        "description": ""
+    },
+    "options_period03": {
+        "message": "Verwijder (permanent) gedeactiveerde tabbladen als ze inactief zijn voor ongeveer (in uren) (als dit is aangezet in het pop-up menu van de extensie)",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Maximum aantal tabbladen dat voor deactivatie moet worden gecontroleerd per keer ",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Deactiveer alleen inactieve pagina's van de volgende hostnames",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Toon gedeactiveerde items in het \"tabblad\"-contextmenu (als dit wordt ondersteund)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Toon gedeactiveeerde items in het \"pagina\"-contextmenu",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Toon \"Open link in een nieuw gedeactiveerd tabblad\" in het \"link\"-contextmenu",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Verander favicon van gedeactiveerde tabbladen (indien mogelijk)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Deactiveer alle niet-vastgezette tabbladen als de browser of extensie opstart",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Deactiveer alle vastgezette tabbladen als de browser of extensie opstart",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Reactiveer alle vastgezette tabbladen als de browser of extensie opstart",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Reactiveer het volgende tabblad (het tabblad rechts van het actieve tabblad)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Deactiveer een tabblad op de achtergrond als zijn geheugengebruik (totalJSHeapSize) groter is dan (in MB):",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Voorwaarden voor deactivatie",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "Deactiveer geen tabbladen als er media op wordt afgespeeld",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "Deactiveer geen vastgezette tabbladen",
+        "description": ""
+    },
+    "options_form": {
+        "message": "Deactiveer geen tabbladden waarop een oningeleverd formulier staat",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "Deactiveer geen tabblad als de computer aan de oplader ligt",
+        "description": ""
+    },
+    "options_online": {
+        "message": "Deactiveer geen tabbladen als er geen internetverbinding is en het tabblad is niet gecached",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "Deactiveer geen tabblad als het desktopmeldingen kan weergeven",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "Deactiveer geen tabbladen als de computer in gebruik is",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Hoe vaak moet gecontroleerd worden of de computer in gebruik is? Elke (in minuten)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Uitzonderingen",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Tabbladen met de volgende hostnames worden niet gedeactiveerd:",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Toolbar linker_muisklik actie",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Open pop-up",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Deactiveer tabblad",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Deactiveer alle andere tabbladen",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Deactiveer alle andere tabbladen in dit venster",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Deactiveer alle tabbladen in andere vensters",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Schakel de \"Bewaar dit tabblad voor deze sessie\"-optie aan en uit.",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Diversen",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Logbestanden laten zien (alleen om te debuggen)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Deactiveer verborgen tabbladen",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "Gebruik Cache: Als dit wordt ingeschakeld controleert de exentise maar eenmalig of een tabblad vastgezet is en of de computer aan de oplader ligt",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Maximaal aantal toegestane gelijktijdige deactiveringsprocessen",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Open FAQ-pagina voor updates",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "Met het \"re:\" keyword kunnen reguliere expressies worden gebruikt. Om bijvoorbeeld alle URLs met \"google\" erin the whitelisten, kan \"re:google\" worden gebruikt.",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "De totalJSHeapSize van het \"top document\" wordt gecontrolleerd. Als deze groter is dan de door de gebruiker opgegeven waarde (minimaal 10MB), wordt het tabblad gedeactiveerd. Deze optie werkt alleen als je browser \"window.perforamance.memory\" ondersteund",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "Als de deactiveringsperiode voor een tabblad voorbij is of een nieuw tabblad is toegevoegd, worden alle browsertabbladen gecontroleerd om te beoordelen welke tabbladen kunnen worden gedeactiveerd. Deze optie dwingt de extensie om deze controles te beperken. De minimaal acceptabele waarde is 1 seconde. De aanbevolen waarde is 30 seconden.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Resetten naar fabrieksinstellingen",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Importeer instellingen",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Exporteer instellingen",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Opslaan opties",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Ondersteun de ontwikkeling",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "Minimale wachttijd tussen opeenvolgende controles of er tabbladen moeten worden gedeactiveerd (in seconden)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Vertraging voor het weergeven van de gedeactiuveerde favicon (in milliseconden)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Deactiveer tabblad",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Deactiveer tabbladengroep",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Deactiveer alle andere tabbladen",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Deactiveer alle andere tabbladen in dit venster",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Deactiveer alle tabbladen rechts van dit tabblad",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Deactiveer alle tabbladen links van dit tabblad",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Deactiveer alle tabbladen in andere vensters",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Left Tab",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "sluit tabblad",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Right Tab",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Bewaar tabbladen voor deze site",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Altijd",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Sessie",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Bewaar tabbladen voor deze sessie",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Opties",
+        "description": ""
+    },
+    "popup_trash": {
+        "message": "Verwijder (permanent) gedeactiveerde tabbladen",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Verwijder het deactiveren. Gebruik Shift + klik om de inhoud in de cache te omzeilen",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "Er is geen actief tabblad",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "Automatisch deactiveren is uitgezet voor dit tabblad",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Deactiveer tabblad",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Deactiveer tabbladengroep",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Deactiveer alle tabbladen in dit venster",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Deactiveer alle andere tabbladen",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Deactiveer alle tabbladen rechts van dit tabblad",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Deactiveer alle tabbladen links van dit tabblad",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Deactiveer alle andere tabbladen",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Deactiveer alle tabbladen in andere vensters",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Altijd tabbladen bewaren voor deze website",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Open link in een nieuw gedeactiveerd tabblad",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Move to the Left Tab",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Move to the Right Tab",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Sluit tabblad",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "wordt toegevoegd aan de permanente whitelist",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "wordt toegevoegd aan de whitelist voor deze sessie",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "Protocol wordt niet ondersteund",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "Het actieve tabblad kan niet worden gedeactiveerd",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Deactiveer tabblad",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Deactiveer alle andere tabbladen",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Deactiveer alle andere tabbladen in dit venster",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Deactiveer alle tabbladen in andere vensters",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Altijd tabbladen bewaren voor deze website",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Move to the Left Tab",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Move to the Right Tab",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Sluit tabblad",
+        "description": ""
+    }
 }

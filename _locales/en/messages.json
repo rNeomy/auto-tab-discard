@@ -11,9 +11,6 @@
   "options_period02": {
     "message": "(use zero second to disable auto tab discarding) when the number of inactive tabs exceeds "
   },
-  "options_period03": {
-    "message": "Trash (permanently delete) discarded tabs if they are inactive for about (in hours) (if enabled from the browser action's popup window) "
-  },
   "options_period04": {
     "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
   },
@@ -103,6 +100,18 @@
   },
   "options_misc": {
     "message": "Misc"
+  },
+  "options_plugins": {
+    "message": "Plug-ins"
+  },
+  "options_plugin_dummy": {
+    "message": "When discarding, replace the page with a local dummy alternative (beta)"
+  },
+  "options_plugin_focus": {
+    "message": "Remove discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded"
+  },
+  "options_plugin_trash": {
+    "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)"
   },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
@@ -194,11 +203,11 @@
   "popup_open_options": {
     "message": "Options"
   },
-  "popup_trash": {
-    "message": "Trash (permanently delete) old Discarded Tabs"
-  },
   "popup_release": {
     "message": "Remove discarding. To bypass cached content use Shift + Click"
+  },
+  "popup_shift_hint": {
+    "message": "Use Shift key to ignore exceptions"
   },
   "bg_no_active_tab": {
     "message": "No active tab is present"

@@ -24,9 +24,6 @@
           <td colspan="3"><span data-i18n="options_period01"></span> <input type="number" id="period" min="0"> <span data-i18n="options_period02"></span> <input type="number" id="number" min="0"></td>
         </tr>
         <tr>
-          <td colspan="3"><span data-i18n="options_period03"></span> <input type="number" id="trash.period" min="0"></td>
-        </tr>
-        <tr>
           <td colspan="3"><span data-i18n="options_period04"></span> <input type="number" id="max.single.discard" min="0"></td>
         </tr>
         <tr>
@@ -172,6 +169,25 @@
         <tr>
           <td><input type="radio" name="left-click" id="click.toggle-allowed"></td>
           <td colspan="2"><label for="click.toggle-allowed" data-i18n="options_click_toggle_allowed"></label></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th colspan="3" data-i18n="options_plugins"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" id="./plugins/dummy/core.js"></td>
+          <td colspan="2"><label for="./plugins/dummy/core.js" data-i18n="options_plugin_dummy"></label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="./plugins/focus/core.js"></td>
+          <td colspan="2"><label for="./plugins/focus/core.js" data-i18n="options_plugin_focus"></label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" id="./plugins/trash/core.js"></td>
+          <td colspan="2"><label for="./plugins/trash/core.js" data-i18n="options_plugin_trash"></label> <input type="number" id="trash.period" min="0"></td>
         </tr>
       </tbody>
       <thead>

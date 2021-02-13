@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_period04": {
-        "message": "Maximum number of tabs to check for discarding per single automatic discarding request ",
+        "message": "Nombre maximal d'onglets à considérer par demande automatisé de désactivation",
         "description": ""
     },
     "options_url_based": {
@@ -160,7 +160,7 @@
         "description": ""
     },
     "options_footnote_1": {
-        "message": "It is possible to use regular expression matching with \"re:\" keyword. For instance to whitelist all URLs with \"google\" keyword in them use \"re:google\".",
+        "message": "Il est possible d'utiliser une correspondance d'expressions avec le mot-clé \"re:\". Par exemple pour mettre sur liste blanche tout les URL avec le mot-clé \"google\" dedans, utilisez \"re;google\".",
         "description": ""
     },
     "options_footnote_2": {
@@ -168,7 +168,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 second. The recommended value is 30 seconds.",
+        "message": "Quand la période de désactivation est terminé pour un onglet ou qu'un nouvel onglet est ajouté, tous les onglets du navigateur sont vérifié afin d'évaluer quels onglets ont besoin d'être désactivé. Cette option force l'extension à limiter ces vérifications. La valeur minimum acceptable est 1 seconde. La valeur recommandée est 30 secondes.",
         "description": ""
     },
     "options_reset": {
@@ -228,7 +228,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "Onglet Précédant",
+        "message": "Left Tab",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +236,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "Onglet Suivant",
+        "message": "Right Tab",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -316,11 +316,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Passer à l'onglet précédent",
+        "message": "Move to the Left Tab",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Passer à l'onglet suivant",
+        "message": "Move to the Right Tab",
         "description": ""
     },
     "menu_close": {
@@ -364,11 +364,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Passer à l'onglet précédent",
+        "message": "Move to the Left Tab",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Passer à l'onglet suivant",
+        "message": "Move to the Right Tab",
         "description": ""
     },
     "cmd_close": {
