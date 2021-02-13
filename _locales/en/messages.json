@@ -206,6 +206,9 @@
   "popup_release": {
     "message": "Remove discarding. To bypass cached content use Shift + Click"
   },
+  "popup_shift_hint": {
+    "message": "Use Shift key to ignore exceptions"
+  },
   "bg_no_active_tab": {
     "message": "No active tab is present"
   },

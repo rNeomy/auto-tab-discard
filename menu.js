@@ -236,15 +236,20 @@
         }
       }
       if (menuItemId.startsWith('discard')) {
-        // make sure to only discard possible tabs not all of them
-        number.check(tabs, {
-          'idle': false,
-          'battery': false,
-          'online': false,
-          'number': 0,
-          'period': 0,
-          'max.single.discard': Infinity
-        });
+        if (shiftKey) {
+          tabs.forEach(discard);
+        }
+        else {
+          // make sure to only discard possible tabs not all of them
+          number.check(tabs, {
+            'idle': false,
+            'battery': false,
+            'online': false,
+            'number': 0,
+            'period': 0,
+            'max.single.discard': Infinity
+          });
+        }
       }
       // release
       else {

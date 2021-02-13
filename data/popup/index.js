@@ -3,6 +3,9 @@
 // localization
 [...document.querySelectorAll('[data-i18n]')].forEach(e => {
   e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
+  if (e.dataset.i18nTitle) {
+    e.title = chrome.i18n.getMessage(e.dataset.i18nTitle);
+  }
 });
 
 let tab;
