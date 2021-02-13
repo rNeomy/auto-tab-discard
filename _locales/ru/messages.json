@@ -228,7 +228,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "Предыдущая Вкладка",
+        "message": "Левая вкладка",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +236,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "Следующая Вкладка",
+        "message": "Правая вкладка",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -316,11 +316,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Перейти на Предыдущую Вкладку",
+        "message": "Перейти к левой вкладке",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Перейти на Следующую Вкладку",
+        "message": "Перейти к правой вкладке",
         "description": ""
     },
     "menu_close": {
@@ -364,11 +364,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Перейти на Предыдущую Вкладку",
+        "message": "Перейти к левой вкладке",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Перейти на Следующую Вкладку",
+        "message": "Перейти к правой вкладке",
         "description": ""
     },
     "cmd_close": {
