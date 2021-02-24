@@ -98,6 +98,6 @@ document.addEventListener('click', e => {
       method: 'popup',
       cmd,
       shiftKey: e.shiftKey
-    });
+    }, () => window.close());
   }
 });
