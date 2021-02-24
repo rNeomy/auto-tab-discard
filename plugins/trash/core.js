@@ -11,7 +11,7 @@ function enable() {
 }
 function disable() {
   chrome.alarms.clear('trash.check');
-  chrome.storage.remove('trash.keys');
+  chrome.storage.local.remove('trash.keys');
 }
 
 chrome.alarms.onAlarm.addListener(alarm => {
