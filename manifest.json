@@ -35,6 +35,7 @@
       "firefox.js",
       "hidden.js",
       "background.js",
+      "plugins.js",
       "modes/number.js",
       "menu.js",
       "next.js"

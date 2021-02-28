@@ -1,0 +1,37 @@
+/* globals starters, storage */
+
+/* plug-in system */
+starters.push(() => storage({
+  './plugins/dummy/core.js': false,
+  './plugins/focus/core.js': false,
+  './plugins/trash/core.js': false,
+  './plugins/force/core.js': false
+}).then(prefs => {
+  if (prefs['./plugins/dummy/core.js']) {
+    import('./plugins/dummy/core.js').then(o => o.enable());
+  }
+  if (prefs['./plugins/focus/core.js']) {
+    import('./plugins/focus/core.js').then(o => o.enable());
+  }
+  if (prefs['./plugins/trash/core.js']) {
+    import('./plugins/trash/core.js').then(o => o.enable());
+  }
+  if (prefs['./plugins/force/core.js']) {
+    import('./plugins/force/core.js').then(o => o.enable());
+  }
+}));
+chrome.storage.onChanged.addListener(ps => {
+  // AMO does not like dynamic imports
+  if ('./plugins/dummy/core.js' in ps) {
+    import('./plugins/dummy/core.js').then(o => o[ps['./plugins/dummy/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/focus/core.js' in ps) {
+    import('./plugins/focus/core.js').then(o => o[ps['./plugins/focus/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/trash/core.js' in ps) {
+    import('./plugins/trash/core.js').then(o => o[ps['./plugins/trash/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/force/core.js' in ps) {
+    import('./plugins/force/core.js').then(o => o[ps['./plugins/force/core.js'].newValue ? 'enable' : 'disable']());
+  }
+});

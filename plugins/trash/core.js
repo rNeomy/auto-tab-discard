@@ -37,6 +37,7 @@ chrome.alarms.onAlarm.addListener(alarm => {
             delete prefs['trash.keys'][key];
             removed.push(key);
             for (const tb of tbs.filter(t => t.url === key)) {
+              log('trash', 'removing', tb.title);
               chrome.tabs.remove(tb.id, () => chrome.runtime.lastError);
             }
           }

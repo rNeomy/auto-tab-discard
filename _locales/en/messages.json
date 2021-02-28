@@ -113,6 +113,9 @@
   "options_plugin_trash": {
     "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)"
   },
+  "options_plugin_force": {
+    "message": "Immediately discard the following hostnames when their tab is not active"
+  },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
   },

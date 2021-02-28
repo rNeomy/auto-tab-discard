@@ -63,10 +63,12 @@ const restore = () => storage({
   'startup-pinned': false,
   'startup-release-pinned': false,
   'release-next-tab': false,
+  'force.hostnames': [],
   /* plugins */
   './plugins/dummy/core.js': false,
   './plugins/focus/core.js': false,
-  './plugins/trash/core.js': false
+  './plugins/trash/core.js': false,
+  './plugins/force/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -96,6 +98,7 @@ const restore = () => storage({
   document.getElementById('log').checked = prefs.log;
   document.getElementById('whitelist').value = prefs.whitelist.join(', ');
   document.getElementById('whitelist-url').value = prefs['whitelist-url'].join(', ');
+  document.getElementById('force.hostnames').value = prefs['force.hostnames'].join(', ');
   document.getElementById('memory-enabled').checked = prefs['memory-enabled'];
   document.getElementById('memory-value').value = prefs['memory-value'];
   document.getElementById('startup-unpinned').checked = prefs['startup-unpinned'];
@@ -109,6 +112,7 @@ const restore = () => storage({
   document.getElementById('./plugins/dummy/core.js').checked = prefs['./plugins/dummy/core.js'];
   document.getElementById('./plugins/focus/core.js').checked = prefs['./plugins/focus/core.js'];
   document.getElementById('./plugins/trash/core.js').checked = prefs['./plugins/trash/core.js'];
+  document.getElementById('./plugins/force/core.js').checked = prefs['./plugins/force/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -167,6 +171,11 @@ document.getElementById('save').addEventListener('click', () => {
       .map(s => s.trim())
       .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
       .filter((h, i, l) => h && l.indexOf(h) === i),
+    'force.hostnames': document.getElementById('force.hostnames').value
+      .split(/[,\n]/)
+      .map(s => s.trim())
+      .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
+      .filter((h, i, l) => h && l.indexOf(h) === i),
     'memory-enabled': document.getElementById('memory-enabled').checked,
     'memory-value': Math.max(10, Number(document.getElementById('memory-value').value)),
     'startup-unpinned': document.getElementById('startup-unpinned').checked,
@@ -176,7 +185,8 @@ document.getElementById('save').addEventListener('click', () => {
     /* plugins*/
     './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked,
     './plugins/focus/core.js': document.getElementById('./plugins/focus/core.js').checked,
-    './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked
+    './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked,
+    './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();
