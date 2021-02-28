@@ -15,10 +15,6 @@
         "message": "(Wählen Sie Null Sekunden um das automatische Deaktivieren von Tabs zu unterbinden) Sobald die Anzahl der nicht genutzten Tabs überschreiten wird",
         "description": ""
     },
-    "options_period03": {
-        "message": "Entferne (Lösche permanent) deaktivierte Tabs, sobald sie für eine gewisse Zeit inaktiv sind (In Stunden) (Bei aktivierter Option im Browser Plugin Popup Fenster)",
-        "description": ""
-    },
     "options_period04": {
         "message": "Obergrenze der zu prüfenden Tabs pro automatischer Deaktivierung",
         "description": ""
@@ -137,6 +133,22 @@
     },
     "options_misc": {
         "message": "Verschiedenes",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "Plug-ins",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "When discarding, replace the page with a local dummy alternative (beta)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Remove discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)",
         "description": ""
     },
     "options_log": {
@@ -259,12 +271,12 @@
         "message": "Optionen",
         "description": ""
     },
-    "popup_trash": {
-        "message": "Lösche (permanent) alte deaktivierte Tabs",
-        "description": ""
-    },
     "popup_release": {
         "message": "Aktivieren. Um den zwischengespeicherten Inhalt zu verwerfen, verwenden Sie Umschalt + Klick",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "Use Shift key to ignore exceptions",
         "description": ""
     },
     "bg_no_active_tab": {

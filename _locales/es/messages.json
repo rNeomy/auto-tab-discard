@@ -1,6 +1,6 @@
 {
     "app_description": {
-        "message": "Aumente la velocidad del navegador y reduzca la carga de memoria y cuando tenga numerosas pestañas abiertas.",
+        "message": "Aumenta la velocidad del navegador y reduce la carga de memoria y cuando tengas numerosas pestañas abiertas.",
         "description": ""
     },
     "options_discarding_options": {
@@ -8,19 +8,15 @@
         "description": ""
     },
     "options_period01": {
-        "message": "Descarte las pestañas inactivas después de (en segundos)",
+        "message": "Descartar pestañas inactivas después de (en segundos)",
         "description": ""
     },
     "options_period02": {
-        "message": "(use cero segundos para deshabilitar el descartado automático de pestañas) cuando el número de pestañas inactivas exceda",
-        "description": ""
-    },
-    "options_period03": {
-        "message": "Eliminar (permanentemente) las pestañas descartadas si están inactivas durante aproximadamente (en horas) (si están habilitadas desde la ventana emergente de la acción del navegador)",
+        "message": "(utiliza cero segundos para deshabilitar el descarte automático de pestañas) cuando el número de pestañas inactivas exceda",
         "description": ""
     },
     "options_period04": {
-        "message": "Número máximo de pestañas para comprobar si hay descartes por una sola solicitud de descartes automática",
+        "message": "Número máximo de pestañas a comprobar para el descarte por cada solicitud de descarte automático",
         "description": ""
     },
     "options_url_based": {
@@ -52,11 +48,11 @@
         "description": ""
     },
     "options_startup_release_pinned": {
-        "message": "Liberar el estado de descarte de todas las pestañas ancladas en el navegador o al inicio de la extensión",
+        "message": "Liberar estado de descarte de todas las pestañas ancladas al inicio de un navegador o extensión",
         "description": ""
     },
     "options_release_next_tab": {
-        "message": "Libere el descarte de la siguiente pestaña (pestaña a la derecha de la pestaña activa)",
+        "message": "Liberar descarte de la pestaña siguiente (pestaña a la derecha de la pestaña activa)",
         "description": ""
     },
     "options_memory": {
@@ -92,11 +88,11 @@
         "description": ""
     },
     "options_idle": {
-        "message": "No descartar pestañas si la computadora no está en estado de \"Inactividad\".",
+        "message": "No descartar pestañas si la computadora no está en el estado 'inactivo'",
         "description": ""
     },
     "options_idle_timeout": {
-        "message": "Intervalo inactivo para determinar si el equipo está en estado de inactividad o no (en minutos)",
+        "message": "Intervalo inactivo para determinar si la computadora está en estado inactivo o no (en minutos)",
         "description": ""
     },
     "options_exceptions": {
@@ -108,7 +104,7 @@
         "description": ""
     },
     "options_left_click": {
-        "message": "Acciónes del click_izquierdo en la Barra de herramientas",
+        "message": "Acción de clic_izquierdo en la barra de herramientas",
         "description": ""
     },
     "options_click_popup": {
@@ -139,6 +135,22 @@
         "message": "Varios",
         "description": ""
     },
+    "options_plugins": {
+        "message": "Complementos",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "Al descartar, reemplazar la página con una alternativa ficticia local (beta)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Eliminar descarte de todas las pestañas de la ventana activa. Si se habilita, no se descartará ninguna pestaña de la ventana activa",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Eliminar permanentemente las pestañas antiguas descartadas si están inactivas durante (en horas)",
+        "description": ""
+    },
     "options_log": {
         "message": "Mostrar registros (solo con fines de depuración)",
         "description": ""
@@ -156,7 +168,7 @@
         "description": ""
     },
     "options_faqs": {
-        "message": "Abrir la página de FAQs en actualizaciones",
+        "message": "Abrir página de preguntas frecuentes en actualizaciones",
         "description": ""
     },
     "options_footnote_1": {
@@ -164,7 +176,7 @@
         "description": ""
     },
     "options_footnote_2": {
-        "message": "Compruebe el valor totalJSHeapSize del documento superior. Si esta memoria excede el valor definido por el usuario (el valor mínimo aceptable es 10MB), la pestaña se descartará. Tenga en cuenta que esta opción solo está disponible si su navegador admite 'window.performance.memory'",
+        "message": "Comprueba el valor totalJSHeapSize del documento superior. Si esta memoria excede el valor definido por el usuario (el valor mínimo aceptable es 10MB), la pestaña se descartará. Ten en cuenta que esta opción solo está disponible si tu navegador admite 'window.performance.memory'",
         "description": ""
     },
     "options_footnote_3": {
@@ -172,7 +184,7 @@
         "description": ""
     },
     "options_reset": {
-        "message": "Reseteo a valores predeterminados",
+        "message": "Restablecer a valores predeterminados",
         "description": ""
     },
     "options_import": {
@@ -188,7 +200,7 @@
         "description": ""
     },
     "options_support": {
-        "message": "Apoyo al Desarrollo",
+        "message": "Apoyo al desarrollo",
         "description": ""
     },
     "options_check_delay": {
@@ -228,7 +240,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "Left Tab",
+        "message": "Pestaña izquierda",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +248,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "Right Tab",
+        "message": "Pestaña derecha",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -259,16 +271,16 @@
         "message": "Opciones",
         "description": ""
     },
-    "popup_trash": {
-        "message": "Eliminar (permanentemente) viejas Pestañas Descartadas",
+    "popup_release": {
+        "message": "Eliminar descarte. Para omitir el contenido en caché utiliza Mayús + Clic",
         "description": ""
     },
-    "popup_release": {
-        "message": "Remover descarte. Para omitir el contenido en caché, usa Shift + Click",
+    "popup_shift_hint": {
+        "message": "Usar tecla Mayús para ignorar las excepciones",
         "description": ""
     },
     "bg_no_active_tab": {
-        "message": "No hay pestañas presentes activas",
+        "message": "No hay pestañas activas presentes",
         "description": ""
     },
     "bg_msg_1": {
@@ -316,11 +328,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Mover a la pestaña izquierda",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Mover a la pestaña derecha",
         "description": ""
     },
     "menu_close": {
@@ -328,11 +340,11 @@
         "description": ""
     },
     "menu_msg1": {
-        "message": "es agregado a la lista de excepciones permanentes",
+        "message": "está añadido a la lista blanca permanente",
         "description": ""
     },
     "menu_msg4": {
-        "message": "es agregado a la lista de excepciones de la sesión",
+        "message": "está añadido a la lista blanca de sesiones",
         "description": ""
     },
     "menu_msg2": {
@@ -364,11 +376,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Mover a la pestaña izquierda",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Mover a la pestaña derecha",
         "description": ""
     },
     "cmd_close": {

@@ -15,10 +15,6 @@
         "message": "(gebruik 'nul' seconden om het automatisch deactiveren van tabbladen uit te schakelen) als het aantal inactieve tabbladen groter is dan",
         "description": ""
     },
-    "options_period03": {
-        "message": "Verwijder (permanent) gedeactiveerde tabbladen als ze inactief zijn voor ongeveer (in uren) (als dit is aangezet in het pop-up menu van de extensie)",
-        "description": ""
-    },
     "options_period04": {
         "message": "Maximum aantal tabbladen dat voor deactivatie moet worden gecontroleerd per keer ",
         "description": ""
@@ -139,6 +135,22 @@
         "message": "Diversen",
         "description": ""
     },
+    "options_plugins": {
+        "message": "Plug-ins",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "Vervang bij het deactiveren van de pagina door een lokaal dummy-alternatief (bèta)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Verwijder het deactiveren van alle tabbladen in het actieve venster. Indien ingeschakeld, wordt geen enkel tabblad in het actieve venster gedeactiveerd",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Oude gedeactiveerde tabbladen definitief verwijderen als ze (uren) inactief zijn",
+        "description": ""
+    },
     "options_log": {
         "message": "Logbestanden laten zien (alleen om te debuggen)",
         "description": ""
@@ -228,7 +240,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "Left Tab",
+        "message": "Linker tabblad",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +248,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "Right Tab",
+        "message": "Rechter tabblad",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -259,12 +271,12 @@
         "message": "Opties",
         "description": ""
     },
-    "popup_trash": {
-        "message": "Verwijder (permanent) gedeactiveerde tabbladen",
-        "description": ""
-    },
     "popup_release": {
         "message": "Verwijder het deactiveren. Gebruik Shift + klik om de inhoud in de cache te omzeilen",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "Gebruik de Shift-toets om de uitzonderingen te negeren",
         "description": ""
     },
     "bg_no_active_tab": {
@@ -316,11 +328,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Verplaats naar het linker tabblad",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Verplaats naar het rechter tabblad",
         "description": ""
     },
     "menu_close": {
@@ -364,11 +376,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Verplaats naar het linker tabblad",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Verplaats naar het rechter tabblad",
         "description": ""
     },
     "cmd_close": {

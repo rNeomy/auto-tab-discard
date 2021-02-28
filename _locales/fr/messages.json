@@ -15,10 +15,6 @@
         "message": "(utilisez zéro seconde pour désactiver la suspension automatique des onglets) lorsque le nombre d'onglets inactifs dépasse ",
         "description": ""
     },
-    "options_period03": {
-        "message": "Jeter (supprimer définitivement) les onglets désactivés s'il sont inactifs depuis (en heures) (si activé depuis la fenêtre pop-up d'action du navigateur)",
-        "description": ""
-    },
     "options_period04": {
         "message": "Nombre maximal d'onglets à considérer par demande automatisé de désactivation",
         "description": ""
@@ -92,7 +88,7 @@
         "description": ""
     },
     "options_idle": {
-        "message": "Ne pas désactiver un onglet quand il n'est pas en état de \"veille\"",
+        "message": "Ne pas désactiver un onglet quand il n'est pas en état de « veille »",
         "description": ""
     },
     "options_idle_timeout": {
@@ -139,6 +135,22 @@
         "message": "Autres",
         "description": ""
     },
+    "options_plugins": {
+        "message": "Greffons",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "Quand désactivé, remplacer la page avec une alternative factice locale (bêta) ",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Supprimer la désactivation de tous les onglets dans la fenêtre active. Si activé, aucun onglet dans la fenêtre active ne sera désactivé.",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Supprimer définitivement (fermer) les onglets désactivés s'ils sont inactif pendant (en heures)",
+        "description": ""
+    },
     "options_log": {
         "message": "Afficher les logs (uniquement pour le débogage)",
         "description": ""
@@ -160,11 +172,11 @@
         "description": ""
     },
     "options_footnote_1": {
-        "message": "Il est possible d'utiliser une correspondance d'expressions avec le mot-clé \"re:\". Par exemple pour mettre sur liste blanche tout les URL avec le mot-clé \"google\" dedans, utilisez \"re;google\".",
+        "message": "Il est possible d'utiliser une correspondance d'expressions avec le mot-clé « re: ». Par exemple pour mettre sur liste blanche tout les URL avec le mot-clé « google » dedans, utilisez « re;google ».",
         "description": ""
     },
     "options_footnote_2": {
-        "message": "Check the totalJSHeapSize value of top document. If this memory exceeds the user-defined value (minimum acceptable value is 10MB), the tab will be discarded. Note that this option is only available if your browser supports 'window.performance.memory'",
+        "message": "Vérifier la valeur totalJSHeapSize du premier document. Si la mémoire excède la valeur définie par l'utilisateur (la valeur minimale acceptée est de 10 Mo), l'onglet sera désactivé. À noter que celle option est uniquement disponible si votre navigateur prend en charge « window.performance.memory »",
         "description": ""
     },
     "options_footnote_3": {
@@ -192,7 +204,7 @@
         "description": ""
     },
     "options_check_delay": {
-        "message": "Minimum delay between sequential discarding checks (in seconds)",
+        "message": "Délai minimum entre les séquences de vérification de la désactivation (en secondes)",
         "description": ""
     },
     "options_favicon_delay": {
@@ -228,7 +240,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "Left Tab",
+        "message": "Onglet gauche",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +248,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "Right Tab",
+        "message": "Onglet droite",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -259,12 +271,12 @@
         "message": "Options",
         "description": ""
     },
-    "popup_trash": {
-        "message": "Jeter (supprime définitivement) les anciens onglets désactivés",
+    "popup_release": {
+        "message": "Supprimer la désactivation. Pour outrepasser le contenu en cache, utiliser Maj + Clic",
         "description": ""
     },
-    "popup_release": {
-        "message": "Remove discarding. To bypass cached content use Shift + Click",
+    "popup_shift_hint": {
+        "message": "Utiliser la touche Maj pour ignore les exceptions",
         "description": ""
     },
     "bg_no_active_tab": {
@@ -316,11 +328,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Déplacer vers l'onglet de gauche",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Déplacer vers l'onglet de droite",
         "description": ""
     },
     "menu_close": {
@@ -364,11 +376,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Déplacer vers l'onglet de gauche",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Déplacer vers l'onglet de droite",
         "description": ""
     },
     "cmd_close": {

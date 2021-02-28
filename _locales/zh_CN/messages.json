@@ -15,10 +15,6 @@
         "message": "(设置为0以禁用标签页自动休眠)当非活动标签页超过该数量时",
         "description": ""
     },
-    "options_period03": {
-        "message": "(当从浏览器自身的操作弹窗启用时)丢弃(永久删除)已休眠标签页，如果它们已经处于非活动状态大概这么多时间(以小时为单位)",
-        "description": ""
-    },
     "options_period04": {
         "message": "每单次自动休眠请求时会被进行休眠检测的标签页的最大数量",
         "description": ""
@@ -137,6 +133,22 @@
     },
     "options_misc": {
         "message": "杂项",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "Plug-ins",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "When discarding, replace the page with a local dummy alternative (beta)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Remove discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)",
         "description": ""
     },
     "options_log": {
@@ -259,12 +271,12 @@
         "message": "选项",
         "description": ""
     },
-    "popup_trash": {
-        "message": "丢弃(永久删除)旧的已休眠标签页",
-        "description": ""
-    },
     "popup_release": {
         "message": "移除休眠。使用 Shift + 点击 跳过已缓存内容。",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "Use Shift key to ignore exceptions",
         "description": ""
     },
     "bg_no_active_tab": {
