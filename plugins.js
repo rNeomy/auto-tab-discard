@@ -5,7 +5,9 @@ starters.push(() => storage({
   './plugins/dummy/core.js': false,
   './plugins/focus/core.js': false,
   './plugins/trash/core.js': false,
-  './plugins/force/core.js': false
+  './plugins/force/core.js': false,
+  './plugins/next/core.js': false,
+  './plugins/previous/core.js': false
 }).then(prefs => {
   if (prefs['./plugins/dummy/core.js']) {
     import('./plugins/dummy/core.js').then(o => o.enable());
@@ -18,6 +20,12 @@ starters.push(() => storage({
   }
   if (prefs['./plugins/force/core.js']) {
     import('./plugins/force/core.js').then(o => o.enable());
+  }
+  if (prefs['./plugins/next/core.js']) {
+    import('./plugins/next/core.js').then(o => o.enable());
+  }
+  if (prefs['./plugins/previous/core.js']) {
+    import('./plugins/previous/core.js').then(o => o.enable());
   }
 }));
 chrome.storage.onChanged.addListener(ps => {
@@ -33,5 +41,11 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if ('./plugins/force/core.js' in ps) {
     import('./plugins/force/core.js').then(o => o[ps['./plugins/force/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/next/core.js' in ps) {
+    import('./plugins/next/core.js').then(o => o[ps['./plugins/next/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/previous/core.js' in ps) {
+    import('./plugins/previous/core.js').then(o => o[ps['./plugins/previous/core.js'].newValue ? 'enable' : 'disable']());
   }
 });

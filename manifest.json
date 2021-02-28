@@ -37,8 +37,7 @@
       "background.js",
       "plugins.js",
       "modes/number.js",
-      "menu.js",
-      "next.js"
+      "menu.js"
     ]
   },
   "content_scripts": [{

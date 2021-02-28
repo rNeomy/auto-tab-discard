@@ -62,13 +62,14 @@ const restore = () => storage({
   'startup-unpinned': false,
   'startup-pinned': false,
   'startup-release-pinned': false,
-  'release-next-tab': false,
   'force.hostnames': [],
   /* plugins */
   './plugins/dummy/core.js': false,
   './plugins/focus/core.js': false,
   './plugins/trash/core.js': false,
-  './plugins/force/core.js': false
+  './plugins/force/core.js': false,
+  './plugins/next/core.js': false,
+  './plugins/previous/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -104,7 +105,6 @@ const restore = () => storage({
   document.getElementById('startup-unpinned').checked = prefs['startup-unpinned'];
   document.getElementById('startup-pinned').checked = prefs['startup-pinned'];
   document.getElementById('startup-release-pinned').checked = prefs['startup-release-pinned'];
-  document.getElementById('release-next-tab').checked = prefs['release-next-tab'];
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
@@ -113,6 +113,8 @@ const restore = () => storage({
   document.getElementById('./plugins/focus/core.js').checked = prefs['./plugins/focus/core.js'];
   document.getElementById('./plugins/trash/core.js').checked = prefs['./plugins/trash/core.js'];
   document.getElementById('./plugins/force/core.js').checked = prefs['./plugins/force/core.js'];
+  document.getElementById('./plugins/next/core.js').checked = prefs['./plugins/next/core.js'];
+  document.getElementById('./plugins/previous/core.js').checked = prefs['./plugins/previous/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -181,12 +183,13 @@ document.getElementById('save').addEventListener('click', () => {
     'startup-unpinned': document.getElementById('startup-unpinned').checked,
     'startup-pinned': document.getElementById('startup-pinned').checked,
     'startup-release-pinned': document.getElementById('startup-release-pinned').checked,
-    'release-next-tab': document.getElementById('release-next-tab').checked,
     /* plugins*/
     './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked,
     './plugins/focus/core.js': document.getElementById('./plugins/focus/core.js').checked,
     './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked,
-    './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked
+    './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked,
+    './plugins/next/core.js': document.getElementById('./plugins/next/core.js').checked,
+    './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();
