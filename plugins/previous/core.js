@@ -6,7 +6,6 @@ const observe = activeInfo => chrome.tabs.get(activeInfo.tabId, tab => tab.index
   discarded: true
 }).then(tbs => {
   if (tbs.length) {
-    console.log(tbs, tbs[0].id);
     log('release discarding of the previous tab', tbs[0]);
     chrome.tabs.reload(tbs[0].id);
   }
