@@ -5,8 +5,8 @@
   "options_discarding_options": {
     "message": "Discarding options"
   },
-  "options_period01": {
-    "message": "Discard inactive tabs after (in seconds) "
+  "options_period01_a": {
+    "message": "Discard inactive tabs after (in minutes) "
   },
   "options_period02": {
     "message": "(use zero second to disable auto tab discarding) when the number of inactive tabs exceeds "

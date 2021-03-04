@@ -80,7 +80,12 @@ const restore = () => storage({
   document.getElementById('use-cache').checked = prefs['use-cache'];
   document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
-  document.getElementById('period').value = prefs.period;
+  if (prefs.period === 0) {
+    document.getElementById('period').value = 0;
+  }
+  else {
+    document.getElementById('period').value = Math.max(1, parseInt(prefs.period / 60));
+  }
   document.getElementById('trash.period').value = prefs['trash.period'];
   document.getElementById('number').value = prefs.number;
   document.getElementById('max.single.discard').value = prefs['max.single.discard'];
@@ -119,7 +124,7 @@ const restore = () => storage({
 
 document.getElementById('save').addEventListener('click', () => {
   let period = document.getElementById('period').value;
-  period = Number(period);
+  period = Number(period) * 60;
   period = Math.max(period, 0);
   let number = document.getElementById('number').value;
   number = Number(number);
@@ -133,7 +138,7 @@ document.getElementById('save').addEventListener('click', () => {
   trash = Math.max(trash, 1);
 
   if (period !== 0) {
-    period = Math.max(period, 10);
+    period = Math.max(period, 60);
   }
   const click = document.querySelector('[name=left-click]:checked').id;
   localStorage.setItem('click', click.replace('click.', ''));
