@@ -7,8 +7,8 @@
         "message": "Opciones de descarte",
         "description": ""
     },
-    "options_period01": {
-        "message": "Descartar pestañas inactivas después de (en segundos)",
+    "options_period01_a": {
+        "message": "Descartar pestañas inactivas después de (en minutos)",
         "description": ""
     },
     "options_period02": {
@@ -55,6 +55,10 @@
         "message": "Liberar descarte de la pestaña siguiente (pestaña a la derecha de la pestaña activa)",
         "description": ""
     },
+    "options_release_previous_tab": {
+        "message": "Liberar descarte de la pestaña anterior (pestaña a la izquierda de la pestaña activa)",
+        "description": ""
+    },
     "options_memory": {
         "message": "Descartar una pestaña en segundo plano si el uso de memoria (totalJSHeapSize) excede (en MB)",
         "description": ""
@@ -68,7 +72,7 @@
         "description": ""
     },
     "options_pinned": {
-        "message": "No descartar una pestaña cuando esté anclada",
+        "message": "No descartar una pestaña cuando esté fijada",
         "description": ""
     },
     "options_form": {
@@ -92,7 +96,7 @@
         "description": ""
     },
     "options_idle_timeout": {
-        "message": "Intervalo inactivo para determinar si la computadora está en estado inactivo o no (en minutos)",
+        "message": "Intervalo de inactividad para determinar si la computadora está en estado inactivo o no (en minutos)",
         "description": ""
     },
     "options_exceptions": {
@@ -119,12 +123,24 @@
         "message": "Descartar todas las otras pestañas",
         "description": ""
     },
+    "options_click_release_tabs": {
+        "message": "Release All Other Tabs",
+        "description": ""
+    },
     "options_click_discard_window": {
         "message": "Descartar otras pestañas en esta ventana",
         "description": ""
     },
+    "options_click_release_window": {
+        "message": "Release Other Tabs in This Window",
+        "description": ""
+    },
     "options_click_discard_other_windows": {
         "message": "Descartar pestañas en otras ventanas",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Release Tabs in Other Windows",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -143,12 +159,20 @@
         "message": "Al descartar, reemplazar la página con una alternativa ficticia local (beta)",
         "description": ""
     },
+    "options_plugin_blank": {
+        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "description": ""
+    },
     "options_plugin_focus": {
-        "message": "Eliminar descarte de todas las pestañas de la ventana activa. Si se habilita, no se descartará ninguna pestaña de la ventana activa",
+        "message": "Liberar descarte de todas las pestañas en la ventana activa. Si está habilitado, no se descartará ninguna pestaña en la ventana activa",
         "description": ""
     },
     "options_plugin_trash": {
         "message": "Eliminar permanentemente las pestañas antiguas descartadas si están inactivas durante (en horas)",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Descartar inmediatamente los siguientes nombres de dominio cuando su pestaña no esté activa",
         "description": ""
     },
     "options_log": {
@@ -272,7 +296,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Eliminar descarte. Para omitir el contenido en caché utiliza Mayús + Clic",
+        "message": "Liberar descarte. Para omitir el contenido en caché, utiliza Mayús + Clic",
         "description": ""
     },
     "popup_shift_hint": {
@@ -385,6 +409,10 @@
     },
     "cmd_close": {
         "message": "Cerrar pestaña",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
         "description": ""
     }
 }

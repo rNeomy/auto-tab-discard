@@ -7,8 +7,8 @@
         "message": "タブの破棄",
         "description": ""
     },
-    "options_period01": {
-        "message": "タブの非アクティブ時間が次の値 (秒) 以上で",
+    "options_period01_a": {
+        "message": "タブの非アクティブ時間が次の値 (分) 以上で",
         "description": ""
     },
     "options_period02": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "次のホストネームのタブのみを破棄の対象とする",
+        "message": "以下のホストネームのタブのみを破棄の対象とする",
         "description": ""
     },
     "options_tab_context": {
@@ -53,6 +53,10 @@
     },
     "options_release_next_tab": {
         "message": "アクティブなタブの右隣にあるタブの破棄状態を解除する ",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "アクティブなタブの左隣にあるタブの破棄状態を解除する ",
         "description": ""
     },
     "options_memory": {
@@ -119,12 +123,24 @@
         "message": "他のタブを全て破棄する",
         "description": ""
     },
+    "options_click_release_tabs": {
+        "message": "Release All Other Tabs",
+        "description": ""
+    },
     "options_click_discard_window": {
         "message": "同じウィンドウにある他のタブを全て破棄する",
         "description": ""
     },
+    "options_click_release_window": {
+        "message": "Release Other Tabs in This Window",
+        "description": ""
+    },
     "options_click_discard_other_windows": {
         "message": "他のウィンドウにあるタブを全て破棄する",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Release Tabs in Other Windows",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -143,12 +159,20 @@
         "message": "タブの破棄時にページをローカルのダミーページに置き換える (ベータ)",
         "description": ""
     },
+    "options_plugin_blank": {
+        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "description": ""
+    },
     "options_plugin_focus": {
-        "message": "アクティブなウィンドウにある全てのタブで破棄を無効にする。これを有効にすると、アクティブウィンドウのタブは破棄されなくなります",
+        "message": "アクティブなウィンドウにある全てのタブの破棄状態を解除する。これを有効にすると、アクティブウィンドウのタブは破棄されなくなります",
         "description": ""
     },
     "options_plugin_trash": {
         "message": "非アクティブ時間が次の値 (時間) を超える古い破棄済みタブは完全に削除する",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "タブがアクティブでない時、以下のホストネームのタブは直ちに破棄する",
         "description": ""
     },
     "options_log": {
@@ -385,6 +409,10 @@
     },
     "cmd_close": {
         "message": "タブを閉じる",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
         "description": ""
     }
 }
