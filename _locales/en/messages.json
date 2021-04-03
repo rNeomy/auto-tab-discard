@@ -92,11 +92,20 @@
   "options_click_discard_tabs": {
     "message": "Discard All Other Tabs"
   },
+  "options_click_release_tabs": {
+    "message": "Release All Other Tabs"
+  },
   "options_click_discard_window": {
     "message": "Discard Other Tabs in This Window"
   },
+  "options_click_release_window": {
+    "message": "Release Other Tabs in This Window"
+  },
   "options_click_discard_other_windows": {
     "message": "Discard Tabs in Other Windows"
+  },
+  "options_click_release_other_windows": {
+    "message": "Release Tabs in Other Windows"
   },
   "options_click_toggle_allowed": {
     "message": "Toggle 'Keep This Tab for This Session' option"

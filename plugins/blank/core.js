@@ -24,7 +24,6 @@ function enable() {
       }).then(tbs => {
         // only if the active tab is not an internal page
         tbs = tbs.filter(tb => tb.url.startsWith('http'));
-        console.log(tbs);
         return Promise.all(tbs.map(tb => new Promise(resolve => chrome.tabs.create({
           openerTabId: tb.id,
           windowId: tb.windowId,
