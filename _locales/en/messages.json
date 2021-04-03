@@ -110,6 +110,9 @@
   "options_plugin_dummy": {
     "message": "When discarding, replace the page with a local dummy alternative (beta)"
   },
+  "options_plugin_blank": {
+    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)"
+  },
   "options_plugin_focus": {
     "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded"
   },
@@ -295,5 +298,8 @@
   },
   "cmd_close": {
     "message": "Close Tab"
+  },
+  "blank_msg": {
+    "message": "All tabs in this window are discarded! Click anywhere to close this window."
   }
 }

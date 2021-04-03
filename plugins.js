@@ -1,5 +1,11 @@
 /* globals starters, storage */
 
+const interrupts = {
+  'before-menu-click'() {
+    return Promise.resolve();
+  }
+}; // this is used to interrupt an internal process from a plug-in
+
 /* plug-in system */
 starters.push(() => storage({
   './plugins/dummy/core.js': false,
@@ -7,7 +13,8 @@ starters.push(() => storage({
   './plugins/trash/core.js': false,
   './plugins/force/core.js': false,
   './plugins/next/core.js': false,
-  './plugins/previous/core.js': false
+  './plugins/previous/core.js': false,
+  './plugins/blank/core.js': true
 }).then(prefs => {
   if (prefs['./plugins/dummy/core.js']) {
     import('./plugins/dummy/core.js').then(o => o.enable());
@@ -26,6 +33,9 @@ starters.push(() => storage({
   }
   if (prefs['./plugins/previous/core.js']) {
     import('./plugins/previous/core.js').then(o => o.enable());
+  }
+  if (prefs['./plugins/blank/core.js']) {
+    import('./plugins/blank/core.js').then(o => o.enable());
   }
 }));
 chrome.storage.onChanged.addListener(ps => {
@@ -47,5 +57,8 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if ('./plugins/previous/core.js' in ps) {
     import('./plugins/previous/core.js').then(o => o[ps['./plugins/previous/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/blank/core.js' in ps) {
+    import('./plugins/blank/core.js').then(o => o[ps['./plugins/blank/core.js'].newValue ? 'enable' : 'disable']());
   }
 });

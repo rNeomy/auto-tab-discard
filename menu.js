@@ -1,4 +1,4 @@
-/* globals discard, query, notify, navigate, starters, prefs, isFirefox, number */
+/* globals discard, query, notify, navigate, starters, prefs, isFirefox, number, interrupts */
 'use strict';
 
 // Context Menu
@@ -90,6 +90,9 @@
       // eslint-disable-next-line require-atomic-updates
       tab = await new Promise(resolve => chrome.tabs.get(tab.id, resolve));
     }
+    // wait for plug-in manipulations
+    await interrupts['before-menu-click'](info, tab);
+    //
     const {menuItemId, shiftKey} = info;
     if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session') {
       const d = menuItemId === 'whitelist-domain';

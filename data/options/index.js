@@ -65,6 +65,7 @@ const restore = () => storage({
   'force.hostnames': [],
   /* plugins */
   './plugins/dummy/core.js': false,
+  './plugins/blank/core.js': true,
   './plugins/focus/core.js': false,
   './plugins/trash/core.js': false,
   './plugins/force/core.js': false,
@@ -115,6 +116,7 @@ const restore = () => storage({
   }
   document.getElementById(prefs.click).checked = true;
   document.getElementById('./plugins/dummy/core.js').checked = prefs['./plugins/dummy/core.js'];
+  document.getElementById('./plugins/blank/core.js').checked = prefs['./plugins/blank/core.js'];
   document.getElementById('./plugins/focus/core.js').checked = prefs['./plugins/focus/core.js'];
   document.getElementById('./plugins/trash/core.js').checked = prefs['./plugins/trash/core.js'];
   document.getElementById('./plugins/force/core.js').checked = prefs['./plugins/force/core.js'];
@@ -190,6 +192,7 @@ document.getElementById('save').addEventListener('click', () => {
     'startup-release-pinned': document.getElementById('startup-release-pinned').checked,
     /* plugins*/
     './plugins/dummy/core.js': document.getElementById('./plugins/dummy/core.js').checked,
+    './plugins/blank/core.js': document.getElementById('./plugins/blank/core.js').checked,
     './plugins/focus/core.js': document.getElementById('./plugins/focus/core.js').checked,
     './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked,
     './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked,
