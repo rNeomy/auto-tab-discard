@@ -15,7 +15,7 @@
     "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
   },
   "options_url_based": {
-    "message": "Only discard the following inactive hostnames"
+    "message": "Only discard the following inactive hostnames or regular expression rules"
   },
   "options_tab_context": {
     "message": "Display discarding items in the \"tab\" context menu (if supported)"
@@ -78,7 +78,7 @@
     "message": "Exceptions"
   },
   "options_whitelist": {
-    "message": "Tabs with the following hostnames are not being discarded:"
+    "message": "Tabs with the following hostnames or regular expression rules are not being discarded:"
   },
   "options_left_click": {
     "message": "Toolbar left_click action"
@@ -211,6 +211,9 @@
   },
   "popup_whitelist_always": {
     "message": "Always"
+  },
+  "popup_whitelist_always_title": {
+    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list"
   },
   "popup_whitelist_session": {
     "message": "Session"

@@ -82,7 +82,7 @@ init();
 
 document.addEventListener('click', e => {
   const {target} = e;
-  const cmd = target.dataset.cmd;
+  const cmd = e.shiftKey ? (target.dataset.shift || target.dataset.cmd) : target.dataset.cmd;
 
   if (cmd === 'open-options') {
     chrome.runtime.openOptionsPage();

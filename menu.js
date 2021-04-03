@@ -94,18 +94,26 @@
     await interrupts['before-menu-click'](info, tab);
     //
     const {menuItemId, shiftKey} = info;
-    if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session') {
-      const d = menuItemId === 'whitelist-domain';
+    if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session' || menuItemId === 'whitelist-exact') {
+      const d = menuItemId !== 'whitelist-session';
       const {hostname, protocol = ''} = new URL(tab.url);
+
+      let rule;
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
         let whitelist = prefs[d ? 'whitelist' : 'whitelist.session'];
 
-        whitelist.push(hostname);
+        if (menuItemId === 'whitelist-exact') {
+          rule = 're:^' + tab.url.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '$';
+        }
+        else {
+          rule = hostname;
+        }
+        whitelist.push(rule);
         whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
         chrome.storage.local.set({
           [d ? 'whitelist' : 'whitelist.session']: whitelist
         });
-        notify(`"${hostname}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
+        notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
       }
       else {
         notify(`"${protocol}" ${chrome.i18n.getMessage('menu_msg2')}`);

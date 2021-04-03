@@ -117,7 +117,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
       }
       // is the tab in whitelist, remove it (before fetching meta)
       if (m(prefs['whitelist']) || m(prefs['whitelist.session'])) {
-        icon(tb, 'tab is in the session whitelist');
+        icon(tb, 'tab is in either the session whitelist or permanent whitelist');
         return false;
       }
       return true;

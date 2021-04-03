@@ -24,7 +24,7 @@ const prefs = {
   'page.context': false,
   'tab.context': true,
   'link.context': true,
-  'whitelist': [],
+  'whitelist': [], // whitelist hostnames and regexp rules
   'whitelist.session': [], // clear on restart
   'favicon-delay': isFirefox ? 500 : 100,
   'check-delay': 30 * 1000,
