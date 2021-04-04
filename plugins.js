@@ -1,6 +1,6 @@
 /* globals storage */
 
-const interrupts = {
+const interrupts = { // eslint-disable-line no-unused-vars
   'before-menu-click'() {
     return Promise.resolve();
   }

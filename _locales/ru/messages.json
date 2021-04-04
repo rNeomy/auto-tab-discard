@@ -7,8 +7,8 @@
         "message": "Настройки выгрузки вкладок",
         "description": ""
     },
-    "options_period01": {
-        "message": "Выгружать неиспользуемые вкладки после (в секундах)",
+    "options_period01_a": {
+        "message": "Выгружать неиспользуемые вкладки после (в минутах)",
         "description": ""
     },
     "options_period02": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Выгружать только неактивные сайты со следующими именами хостов",
+        "message": "Only discard the following inactive hostnames or regular expression rules",
         "description": ""
     },
     "options_tab_context": {
@@ -53,6 +53,10 @@
     },
     "options_release_next_tab": {
         "message": "Применить выгрузку следующей вкладки (вкладка справа от активной вкладки)",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Применить выгрузку предыдущей вкладки (вкладка слева от активной вкладки)",
         "description": ""
     },
     "options_memory": {
@@ -100,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Вкладки со следующими именами хостов не будут выгружены:",
+        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
         "description": ""
     },
     "options_left_click": {
@@ -119,11 +123,23 @@
         "message": "Выгрузить Все Остальные Вкладки",
         "description": ""
     },
+    "options_click_release_tabs": {
+        "message": "Выгрузить Все Остальные Вкладки",
+        "description": ""
+    },
     "options_click_discard_window": {
         "message": "Выгрузить Остальные Вкладки в Этом Окне",
         "description": ""
     },
+    "options_click_release_window": {
+        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "description": ""
+    },
     "options_click_discard_other_windows": {
+        "message": "Выгрузить Вкладки в Других Окнах",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
         "message": "Выгрузить Вкладки в Других Окнах",
         "description": ""
     },
@@ -143,12 +159,20 @@
         "message": "При выгрузке, заменить страницу локальной фиктивной альтернативой (бета)",
         "description": ""
     },
+    "options_plugin_blank": {
+        "message": "Открывать временную пустую страницу, когда все вкладки в неактивном окне выгружены (чтобы иметь возможность удалить активную вкладку в этом окне)",
+        "description": ""
+    },
     "options_plugin_focus": {
-        "message": "Не выгружать вкладки в активном окне. Если этот параметр включен, вкладки в активном окне не будут выгружаться.",
+        "message": "Не выгружать вкладки в активном окне. Если этот параметр включен, вкладки в активном окне не будут выгружаться",
         "description": ""
     },
     "options_plugin_trash": {
         "message": "Окончательно удалить старые выгруженные вкладки, если они неактивны в течение (в часах)",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Немедленно выгружать следующие имена хостов, если их вкладка неактивна",
         "description": ""
     },
     "options_log": {
@@ -259,6 +283,10 @@
         "message": "Всегда",
         "description": ""
     },
+    "popup_whitelist_always_title": {
+        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
+        "description": ""
+    },
     "popup_whitelist_session": {
         "message": "Сессия",
         "description": ""
@@ -272,7 +300,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Удаление выгруженного. Для доступа к содержимому в кэше используйте Shift + Click",
+        "message": "Применить выгрузку. Для доступа к содержимому в кэше используйте Shift + Click",
         "description": ""
     },
     "popup_shift_hint": {
@@ -385,6 +413,10 @@
     },
     "cmd_close": {
         "message": "Закрыть Вкладку",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "Все вкладки в этом окне выгружены! Щелкните в любом месте, чтобы закрыть это окно.",
         "description": ""
     }
 }
