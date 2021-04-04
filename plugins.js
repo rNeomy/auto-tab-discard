@@ -1,4 +1,4 @@
-/* globals starters, storage */
+/* globals storage */
 
 const interrupts = {
   'before-menu-click'() {
@@ -7,7 +7,7 @@ const interrupts = {
 }; // this is used to interrupt an internal process from a plug-in
 
 /* plug-in system */
-starters.push(() => storage({
+storage({
   './plugins/dummy/core.js': false,
   './plugins/focus/core.js': false,
   './plugins/trash/core.js': false,
@@ -37,7 +37,7 @@ starters.push(() => storage({
   if (prefs['./plugins/blank/core.js']) {
     import('./plugins/blank/core.js').then(o => o.enable());
   }
-}));
+});
 chrome.storage.onChanged.addListener(ps => {
   // AMO does not like dynamic imports
   if ('./plugins/dummy/core.js' in ps) {

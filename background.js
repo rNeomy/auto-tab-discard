@@ -2,18 +2,6 @@
 'use strict';
 
 const isFirefox = /Firefox/.test(navigator.userAgent);
-const starters = []; // startup scripts
-
-// Firefox only
-const restore = {
-  cache: {}
-};
-
-const storage = prefs => new Promise(resolve => {
-  chrome.storage.managed.get(prefs, ps => {
-    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
-  });
-});
 
 const prefs = {
   'favicon': true,
@@ -31,32 +19,39 @@ const prefs = {
   'log': false,
   'simultaneous-jobs': 10,
   'idle-timeout': 5 * 60, // in seconds
-  'pinned': false // pinned = true => do not discard if tab is pinned
+  'pinned': false, // pinned = true => do not discard if tab is pinned
+  'startup-unpinned': false,
+  'startup-pinned': false,
+  'startup-release-pinned': false
 };
+
+const storage = prefs => new Promise(resolve => {
+  chrome.storage.managed.get(prefs, ps => {
+    chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
+  });
+});
+
+const starters = {
+  ready: false,
+  cache: [],
+  push(c) {
+    if (starters.ready) {
+      return c();
+    }
+    starters.cache.push(c);
+  }
+};
+storage(prefs).then(ps => {
+  Object.assign(prefs, ps);
+  starters.ready = true;
+  starters.cache.forEach(c => c());
+  delete starters.cache;
+});
+
 // clear session only hostnames from the exception list; only on the local machine
 starters.push(() => chrome.storage.local.set({
   'whitelist.session': []
 }));
-prefs.ready = false;
-prefs.onReady = {
-  es: [],
-  add(c) {
-    if (prefs.ready) {
-      c();
-    }
-    else {
-      prefs.onReady.es.push(c);
-    }
-  }
-};
-storage(prefs).then(ps => {
-  delete ps.onReady;
-  Object.assign(prefs, ps);
-  prefs.ready = true;
-  for (const c of prefs.onReady.es) {
-    c();
-  }
-});
 
 chrome.storage.onChanged.addListener(ps => {
   Object.keys(ps).forEach(k => {
@@ -134,7 +129,6 @@ const discard = tab => new Promise(resolve => {
     try {
       if (isFirefox) {
         chrome.tabs.discard(tab.id);
-        restore.cache[tab.id] = tab;
       }
       else {
         chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
@@ -292,85 +286,46 @@ const popup = async () => {
   });
 };
 starters.push(popup);
+
 // start-up
-(() => {
-  const onStartup = () => prefs.onReady.add(() => {
-    starters.forEach(c => c());
-  });
-  // Firefox does not call "onStartup" after enabling the extension
-  if (isFirefox) {
-    // restore crashed tabs
-    chrome.tabs.onActivated.addListener(({tabId}) => {
-      const tab = restore.cache[tabId];
-      if (tab) {
-        chrome.tabs.executeScript(tabId, {
-          code: ''
-        }, () => {
-          const lastError = chrome.runtime.lastError;
-          if (lastError && lastError.message === 'No matching message handler') {
-            chrome.tabs.update(tabId, {
-              url: tab.url
-            });
-            log('[Firefox] force reloading due to communication error', lastError);
-          }
-        });
-      }
-    });
-    // https://github.com/rNeomy/auto-tab-discard/issues/24#issuecomment-391316498
-    query({
-      discarded: true
-    }).then((tbs = []) => tbs.forEach(t => restore.cache[t.id] = t));
-    chrome.tabs.onRemoved.addListener(tabId => delete restore.cache[tabId]);
-    // deal with hidden tabs
-    hidden.install();
-    // start-up
-    onStartup();
-  }
-  else {
-    chrome.runtime.onInstalled.addListener(onStartup);
-    chrome.runtime.onStartup.addListener(onStartup);
-  }
-})();
+if (isFirefox) {
+  // deal with hidden tabs
+  hidden.install();
+}
 
 /* discard on startup */
-{
-  starters.push(() => storage({
-    'startup-unpinned': false,
-    'startup-pinned': false,
-    'startup-release-pinned': false
-  }).then(prefs => {
-    if (prefs['startup-unpinned']) {
-      chrome.tabs.query({
-        discarded: false,
-        pinned: false
-      }, tabs => tabs.forEach(discard));
-    }
-    if (prefs['startup-pinned']) {
-      query({
-        discarded: false,
-        pinned: true
-      }).then(tabs => tabs.forEach(discard));
-    }
-    else if (prefs['startup-release-pinned']) {
-      query({
-        discarded: true,
-        pinned: true
-      }).then(tabs => tabs.forEach(tab => chrome.tabs.reload(tab.id)));
-    }
-  }));
-}
+starters.push(() => {
+  if (prefs['startup-unpinned']) {
+    chrome.tabs.query({
+      discarded: false,
+      pinned: false
+    }, tabs => tabs.forEach(discard));
+  }
+  if (prefs['startup-pinned']) {
+    query({
+      discarded: false,
+      pinned: true
+    }).then(tabs => tabs.forEach(discard));
+  }
+  else if (prefs['startup-release-pinned']) {
+    query({
+      discarded: true,
+      pinned: true
+    }).then(tabs => tabs.forEach(tab => chrome.tabs.reload(tab.id)));
+  }
+});
 
 /* FAQs & Feedback */
 {
-  const {management, runtime: {onInstalled, setUninstallURL, getManifest}, storage, tabs} = chrome;
+  const {management, runtime: {onInstalled, setUninstallURL, getManifest}, tabs} = chrome;
   if (navigator.webdriver !== true) {
     const page = getManifest().homepage_url;
     const {name, version} = getManifest();
     onInstalled.addListener(({reason, previousVersion}) => {
-      management.getSelf(({installType}) => installType === 'normal' && storage.local.get({
+      management.getSelf(({installType}) => installType === 'normal' && storage({
         'faqs': true,
         'last-update': 0
-      }, prefs => {
+      }).then(prefs => {
         if (reason === 'install' || (prefs.faqs && reason === 'update')) {
           const doUpdate = (Date.now() - prefs['last-update']) / 1000 / 60 / 60 / 24 > 45;
           if (doUpdate && previousVersion !== version) {
