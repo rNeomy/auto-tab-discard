@@ -252,14 +252,7 @@
         }
         else {
           // make sure to only discard possible tabs not all of them
-          number.check(tabs, {
-            'idle': false,
-            'battery': false,
-            'online': false,
-            'number': 0,
-            'period': 0,
-            'max.single.discard': Infinity
-          });
+          number.check(tabs, number.IGNORE);
         }
       }
       // release

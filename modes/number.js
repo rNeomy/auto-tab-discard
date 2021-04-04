@@ -1,7 +1,16 @@
 /* globals storage, log, query, starters, discard */
 'use strict';
 
-const number = {};
+const number = {
+  IGNORE: { // ignore defaults
+    'idle': false,
+    'battery': false,
+    'online': false,
+    'number': 0,
+    'period': 0,
+    'max.single.discard': Infinity
+  }
+};
 const pluginFilters = {}; // this object adds custom filters to the number-based discarding
 
 number.install = period => {

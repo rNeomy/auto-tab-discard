@@ -1,4 +1,4 @@
-/* globals hidden */
+/* globals hidden, number */
 'use strict';
 
 const isFirefox = /Firefox/.test(navigator.userAgent);
@@ -299,13 +299,16 @@ starters.push(() => {
     chrome.tabs.query({
       discarded: false,
       pinned: false
-    }, tabs => tabs.forEach(discard));
+    }, tabs => number.check(tabs, number.IGNORE));
   }
   if (prefs['startup-pinned']) {
     query({
       discarded: false,
       pinned: true
-    }).then(tabs => tabs.forEach(discard));
+    }).then(tabs => {
+      // make sure to only discard possible tabs not all of them
+      number.check(tabs, number.IGNORE);
+    });
   }
   else if (prefs['startup-release-pinned']) {
     query({
