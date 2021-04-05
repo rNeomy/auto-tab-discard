@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Only discard the following inactive hostnames or regular expression rules",
+        "message": "Выгружать только неактивные сайты со следующими именами хостов или правилами регулярных выражений",
         "description": ""
     },
     "options_tab_context": {
@@ -104,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
+        "message": "Вкладки со следующими именами хостов или правилами регулярных выражений не будут выгружены:",
         "description": ""
     },
     "options_left_click": {
@@ -284,7 +284,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
+        "message": "Щелкните, чтобы добавить имя хоста в список исключений. Shift + щелчок, чтобы добавить точный URL в список исключений",
         "description": ""
     },
     "popup_whitelist_session": {
