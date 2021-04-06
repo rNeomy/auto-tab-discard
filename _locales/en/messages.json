@@ -9,7 +9,7 @@
     "message": "Discard inactive tabs after (in minutes) "
   },
   "options_period02": {
-    "message": "(use zero second to disable auto tab discarding) when the number of inactive tabs exceeds "
+    "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds "
   },
   "options_period04": {
     "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
@@ -153,7 +153,7 @@
     "message": "Check the totalJSHeapSize value of top document. If this memory exceeds the user-defined value (minimum acceptable value is 10MB), the tab will be discarded. Note that this option is only available if your browser supports 'window.performance.memory'"
   },
   "options_footnote_3": {
-    "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 second. The recommended value is 30 seconds."
+    "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes."
   },
   "options_reset": {
     "message": "Factory Reset"
