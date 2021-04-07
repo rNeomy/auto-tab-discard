@@ -7,16 +7,12 @@
         "message": "Opções de descarte",
         "description": ""
     },
-    "options_period01": {
-        "message": "Descartar abas inativas após (em segundos) ",
+    "options_period01_a": {
+        "message": "Descartar abas inativas após (em minutos)",
         "description": ""
     },
     "options_period02": {
-        "message": "(use zero segundo para desativar o descarte automático de abas) quando exceder o número de abas inativas",
-        "description": ""
-    },
-    "options_period03": {
-        "message": "Remover (excluir permanentemente) as abas descartadas se ficarem inativas durante (em horas) (se ativado na janela popup de ação do navegador)",
+        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -24,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Descartar apenas os seguintes nomes de host inativos",
+        "message": "Descartar apenas os seguintes nomes de host inativos ou expressões regulares",
         "description": ""
     },
     "options_tab_context": {
@@ -57,6 +53,10 @@
     },
     "options_release_next_tab": {
         "message": "Liberar o descarte da próxima aba (a direita da aba ativa)",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Liberar o descarte da aba anterior (a esquerda da aba ativa)",
         "description": ""
     },
     "options_memory": {
@@ -123,12 +123,24 @@
         "message": "Descartar todas as outras abas",
         "description": ""
     },
+    "options_click_release_tabs": {
+        "message": "Liberar Todas as Outras Abas",
+        "description": ""
+    },
     "options_click_discard_window": {
         "message": "Descartar outras abas nesta janela",
         "description": ""
     },
+    "options_click_release_window": {
+        "message": "Liberar Outras Abas nesta Janela",
+        "description": ""
+    },
     "options_click_discard_other_windows": {
         "message": "Descartar abas em outras janelas",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Release Tabs in Other Windows",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -137,6 +149,30 @@
     },
     "options_misc": {
         "message": "Diversos",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "Plug-ins",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "When discarding, replace the page with a local dummy alternative (beta)",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Immediately discard the following hostnames when their tab is not active",
         "description": ""
     },
     "options_log": {
@@ -168,7 +204,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "Quando o período de descarte de uma aba termina ou uma nova aba é adicionada, todas as abas do navegador são verificadas para avaliar quais precisam ser descartadas. Esta opção força a extensão a limitar essas verificações. O valor mínimo aceitável é 1 segundo. O valor recomendado são 30 segundos.",
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
         "description": ""
     },
     "options_reset": {
@@ -228,7 +264,7 @@
         "description": ""
     },
     "popup_move_previous": {
-        "message": "Left Tab",
+        "message": "Aba à esquerda",
         "description": ""
     },
     "popup_close": {
@@ -236,7 +272,7 @@
         "description": ""
     },
     "popup_move_next": {
-        "message": "Right Tab",
+        "message": "Aba à direita",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -245,6 +281,10 @@
     },
     "popup_whitelist_always": {
         "message": "Sempre",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "Clique para adicionar o nome de host à  lista de exceções. Shift + Clique para adicionar a URL exata à lista de exceções.",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -259,12 +299,12 @@
         "message": "Opções",
         "description": ""
     },
-    "popup_trash": {
-        "message": "Remover (excluir permanentemente) antigas abas descartadas",
+    "popup_release": {
+        "message": "Release discarding. To bypass cached content use Shift + Click",
         "description": ""
     },
-    "popup_release": {
-        "message": "Remover o descarte. Para ignorar o conteúdo em cache, use Shift + Clique",
+    "popup_shift_hint": {
+        "message": "Utilize a tecla Shift para ignorar exceções",
         "description": ""
     },
     "bg_no_active_tab": {
@@ -316,11 +356,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Mover para a aba a esquerda",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Mover para a aba a direita",
         "description": ""
     },
     "menu_close": {
@@ -364,15 +404,19 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Move to the Left Tab",
+        "message": "Mover para a aba a esquerda",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Move to the Right Tab",
+        "message": "Mover para a aba a direita",
         "description": ""
     },
     "cmd_close": {
         "message": "Fechar aba",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "Todas as abas desta janela foram descartadas! Clique em qualquer lugar para fechar esta janela.",
         "description": ""
     }
 }

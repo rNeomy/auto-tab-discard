@@ -12,7 +12,7 @@
         "description": ""
     },
     "options_period02": {
-        "message": "(utiliza cero segundos para deshabilitar el descarte automático de pestañas) cuando el número de pestañas inactivas exceda",
+        "message": "(utiliza el minuto cero para deshabilitar el descarte automático de pestañas) cuando el número de pestañas inactivas exceda",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Solo descartar los siguientes nombres de dominio inactivos",
+        "message": "Solo descartar los siguientes nombres de dominio o reglas de expresión regular inactivos",
         "description": ""
     },
     "options_tab_context": {
@@ -32,7 +32,7 @@
         "description": ""
     },
     "options_link_context": {
-        "message": "Mostrar el elemento \"Abrir enlace en una nueva pestaña descartada\" en el menú contextual \"enlace\"",
+        "message": "Mostrar el elemento \"Abrir enlace en una pestaña nueva descartada\" en el menú contextual \"enlace\"",
         "description": ""
     },
     "options_favicon": {
@@ -104,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Las pestañas con los siguientes nombres de dominio no se descartarán:",
+        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartarán:",
         "description": ""
     },
     "options_left_click": {
@@ -124,7 +124,7 @@
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Release All Other Tabs",
+        "message": "Liberar todas las otras pestañas",
         "description": ""
     },
     "options_click_discard_window": {
@@ -132,7 +132,7 @@
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Release Other Tabs in This Window",
+        "message": "Liberar otras pestañas en esta ventana",
         "description": ""
     },
     "options_click_discard_other_windows": {
@@ -140,7 +140,7 @@
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
+        "message": "Liberar pestañas en otras ventanas",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -160,7 +160,7 @@
         "description": ""
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "message": "Abrir una página en blanco temporal cuando se descarten todas las pestañas de una ventana inactiva (para poder descartar la pestaña activa en esta ventana)",
         "description": ""
     },
     "options_plugin_focus": {
@@ -204,7 +204,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "Cuando se acaba el periodo de descarte de una pestaña o se añade una pestaña nueva, se comprueban todas las pestañas del navegador para evaluar qué pestañas hay que descartar. Esta opción obliga a la extensión a limitar estas comprobaciones. El valor mínimo aceptable es de 1 segundo. El valor recomendado es de 30 segundos.",
+        "message": "Cuando se acaba el periodo de descarte de una pestaña o se añade una pestaña nueva, se comprueban todas las pestañas del navegador para evaluar qué pestañas hay que descartar. Esta opción obliga a la extensión a limitar estas comprobaciones. El valor mínimo aceptable es de 1 minuto. El valor recomendado es de 10 minutos.",
         "description": ""
     },
     "options_reset": {
@@ -283,6 +283,10 @@
         "message": "Siempre",
         "description": ""
     },
+    "popup_whitelist_always_title": {
+        "message": "Haz clic para añadir el nombre del dominio a la lista de excepciones. Mayús + Clic para añadir la URL exacta a la lista de excepciones.",
+        "description": ""
+    },
     "popup_whitelist_session": {
         "message": "Sesión",
         "description": ""
@@ -348,7 +352,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Abrir enlace en una nueva pestaña descartada",
+        "message": "Abrir enlace en una pestaña nueva descartada",
         "description": ""
     },
     "menu_move_previous": {
@@ -412,7 +416,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
+        "message": "¡Todas las pestañas de esta ventana están descartadas! Haz clic en cualquier lugar para cerrar esta ventana.",
         "description": ""
     }
 }

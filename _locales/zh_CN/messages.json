@@ -12,7 +12,7 @@
         "description": ""
     },
     "options_period02": {
-        "message": "，仅当不活跃标签页超过此数量时（设为 0 则禁用标签页自动休眠）",
+        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "只休眠以下主机名的不活跃标签页",
+        "message": "Only discard the following inactive hostnames or regular expression rules",
         "description": ""
     },
     "options_tab_context": {
@@ -104,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "含有以下主机名的标签页不会被休眠：",
+        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
         "description": ""
     },
     "options_left_click": {
@@ -204,7 +204,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "当休眠周期超过该数值或者有新标签页被增加时，浏览器的所有标签页都会被进行休眠检测来判断哪些标签页需要被休眠。此选项会强制让该扩展限制这些检测。最小允许数值为 1 秒。推荐数值为 30 秒。",
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
         "description": ""
     },
     "options_reset": {
@@ -281,6 +281,10 @@
     },
     "popup_whitelist_always": {
         "message": "总是",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
         "description": ""
     },
     "popup_whitelist_session": {

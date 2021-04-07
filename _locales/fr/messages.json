@@ -7,12 +7,12 @@
         "message": "Options de désactivation",
         "description": ""
     },
-    "options_period01": {
-        "message": "Désactiver les onglets inactifs après (en secondes)",
+    "options_period01_a": {
+        "message": "Désactiver les onglets inactifs après (en minutes)",
         "description": ""
     },
     "options_period02": {
-        "message": "(utilisez zéro seconde pour désactiver la suspension automatique des onglets) lorsque le nombre d'onglets inactifs dépasse ",
+        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Désactiver uniquement les noms d'hôtes inactifs suivants",
+        "message": "Only discard the following inactive hostnames or regular expression rules",
         "description": ""
     },
     "options_tab_context": {
@@ -53,6 +53,10 @@
     },
     "options_release_next_tab": {
         "message": "Activer l'onglet suivant (onglet à droite de l'onglet actif)",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Release discarding of the previous tab (tab to the left of the active tab)",
         "description": ""
     },
     "options_memory": {
@@ -100,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Les onglets avec les domaines suivants ne seront pas désactivés :",
+        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
         "description": ""
     },
     "options_left_click": {
@@ -119,12 +123,24 @@
         "message": "Désactiver tous les autres onglets",
         "description": ""
     },
+    "options_click_release_tabs": {
+        "message": "Release All Other Tabs",
+        "description": ""
+    },
     "options_click_discard_window": {
         "message": "Désactiver les autres onglets dans cette fenêtre",
         "description": ""
     },
+    "options_click_release_window": {
+        "message": "Release Other Tabs in This Window",
+        "description": ""
+    },
     "options_click_discard_other_windows": {
         "message": "Désactiver les onglets dans les autres fenêtres",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Release Tabs in Other Windows",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -143,12 +159,20 @@
         "message": "Quand désactivé, remplacer la page avec une alternative factice locale (bêta) ",
         "description": ""
     },
+    "options_plugin_blank": {
+        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "description": ""
+    },
     "options_plugin_focus": {
-        "message": "Supprimer la désactivation de tous les onglets dans la fenêtre active. Si activé, aucun onglet dans la fenêtre active ne sera désactivé.",
+        "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
         "description": ""
     },
     "options_plugin_trash": {
         "message": "Supprimer définitivement (fermer) les onglets désactivés s'ils sont inactif pendant (en heures)",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Immediately discard the following hostnames when their tab is not active",
         "description": ""
     },
     "options_log": {
@@ -180,7 +204,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "Quand la période de désactivation est terminé pour un onglet ou qu'un nouvel onglet est ajouté, tous les onglets du navigateur sont vérifié afin d'évaluer quels onglets ont besoin d'être désactivé. Cette option force l'extension à limiter ces vérifications. La valeur minimum acceptable est 1 seconde. La valeur recommandée est 30 secondes.",
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
         "description": ""
     },
     "options_reset": {
@@ -259,6 +283,10 @@
         "message": "Toujours",
         "description": ""
     },
+    "popup_whitelist_always_title": {
+        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
+        "description": ""
+    },
     "popup_whitelist_session": {
         "message": "Session",
         "description": ""
@@ -272,7 +300,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Supprimer la désactivation. Pour outrepasser le contenu en cache, utiliser Maj + Clic",
+        "message": "Release discarding. To bypass cached content use Shift + Click",
         "description": ""
     },
     "popup_shift_hint": {
@@ -385,6 +413,10 @@
     },
     "cmd_close": {
         "message": "Fermer l'onglet",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
         "description": ""
     }
 }

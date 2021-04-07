@@ -12,7 +12,7 @@
         "description": ""
     },
     "options_period02": {
-        "message": "(0秒でタブの破棄を無効化) そのタブの合計が次の数を超えている場合、自動でタブを破棄する",
+        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "以下のホストネームのタブのみを破棄の対象とする",
+        "message": "以下に該当するホストネームもしくは正規表現ルールのタブのみを破棄する",
         "description": ""
     },
     "options_tab_context": {
@@ -48,15 +48,15 @@
         "description": ""
     },
     "options_startup_release_pinned": {
-        "message": "ブラウザまたは拡張機能の起動時に全てのピン留めしているタブの破棄状態を解除する",
+        "message": "ブラウザまたは拡張機能の起動時に全てのピン留めしているタブの破棄状態を解放する",
         "description": ""
     },
     "options_release_next_tab": {
-        "message": "アクティブなタブの右隣にあるタブの破棄状態を解除する ",
+        "message": "アクティブなタブの右隣にあるタブの破棄状態を解放する ",
         "description": ""
     },
     "options_release_previous_tab": {
-        "message": "アクティブなタブの左隣にあるタブの破棄状態を解除する ",
+        "message": "アクティブなタブの左隣にあるタブの破棄状態を解放する ",
         "description": ""
     },
     "options_memory": {
@@ -104,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "以下のホストネームのタブは破棄されません:",
+        "message": "以下に該当するホストネームもしくは正規表現ルールのタブは破棄されません:",
         "description": ""
     },
     "options_left_click": {
@@ -124,23 +124,23 @@
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Release All Other Tabs",
+        "message": "他のタブを全て解放する",
         "description": ""
     },
     "options_click_discard_window": {
-        "message": "同じウィンドウにある他のタブを全て破棄する",
+        "message": "同じウィンドウの他のタブを全て破棄する",
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Release Other Tabs in This Window",
+        "message": "このウィンドウの他のタブを全て解放する",
         "description": ""
     },
     "options_click_discard_other_windows": {
-        "message": "他のウィンドウにあるタブを全て破棄する",
+        "message": "他のウィンドウのタブを全て破棄する",
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
+        "message": "他のウィンドウのタブを全て解放する",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -160,11 +160,11 @@
         "description": ""
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "message": "非アクティブなウィンドウのタブが全て破棄された時に一時的な空白ページを開く (アクティブなウィンドウのタブを破棄できるようにする)",
         "description": ""
     },
     "options_plugin_focus": {
-        "message": "アクティブなウィンドウにある全てのタブの破棄状態を解除する。これを有効にすると、アクティブウィンドウのタブは破棄されなくなります",
+        "message": "アクティブなウィンドウにある全てのタブの破棄状態を解放する。これを有効にすると、アクティブウィンドウのタブは破棄されなくなります",
         "description": ""
     },
     "options_plugin_trash": {
@@ -204,7 +204,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "タブの破棄期間が過ぎた時もしくは新しいタブが開かれたときに、ブラウザの全タブにおいて破棄するかどうかのチェックが行われます。このオプションはそのチェック間隔を制限するものです。入力可能な最低値は1秒ですが、推奨値は30秒です。",
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
         "description": ""
     },
     "options_reset": {
@@ -248,7 +248,7 @@
         "description": ""
     },
     "popup_discard_window": {
-        "message": "このウィンドウにある他のタブを全て破棄する",
+        "message": "このウィンドウの他のタブを全て破棄する",
         "description": ""
     },
     "popup_discard_rights": {
@@ -260,7 +260,7 @@
         "description": ""
     },
     "popup_discard_other_windows": {
-        "message": "他のウィンドウにあるタブを全て破棄する",
+        "message": "他のウィンドウのタブを全て破棄する",
         "description": ""
     },
     "popup_move_previous": {
@@ -283,6 +283,10 @@
         "message": "常に",
         "description": ""
     },
+    "popup_whitelist_always_title": {
+        "message": "クリックするとホストネームを除外リストに追加できます。Shift + クリックで完全なURLを例外リストに追加できます。",
+        "description": ""
+    },
     "popup_whitelist_session": {
         "message": "セッション",
         "description": ""
@@ -296,7 +300,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "破棄状態を解除する。キャッシュを回避するにはShift + クリック",
+        "message": "破棄状態を解放する。キャッシュを回避するにはShift + クリック",
         "description": ""
     },
     "popup_shift_hint": {
@@ -320,7 +324,7 @@
         "description": ""
     },
     "menu_discard_menu": {
-        "message": "このウィンドウにあるタブを破棄する",
+        "message": "このウィンドウのタブを破棄する",
         "description": ""
     },
     "menu_discard_tabs": {
@@ -340,7 +344,7 @@
         "description": ""
     },
     "menu_discard_other_windows": {
-        "message": "他のウィンドウにあるタブを全て破棄する",
+        "message": "他のウィンドウのタブを全て破棄する",
         "description": ""
     },
     "menu_whitelist_domain": {
@@ -392,7 +396,7 @@
         "description": ""
     },
     "cmd_discard_other_windows": {
-        "message": "他のウィンドウにあるタブを全て破棄する",
+        "message": "他のウィンドウのタブを全て破棄する",
         "description": ""
     },
     "cmd_whitelist_domain": {
@@ -412,7 +416,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
+        "message": "このウィンドウのタブは全て破棄しました！画面内をクリックするとこのウィンドウを閉じます。",
         "description": ""
     }
 }

@@ -8,11 +8,11 @@
         "description": ""
     },
     "options_period01_a": {
-        "message": "Discard inactive tabs after (in minutes) ",
+        "message": "在幾分鐘後休眠閒置的分頁",
         "description": ""
     },
     "options_period02": {
-        "message": "當閒置的分頁數量超過（ 0 秒為停用分頁自動休眠）",
+        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "只休眠以下域名閒置中的分頁",
+        "message": "只休眠符合以下域名或正則表達式的閒置分頁",
         "description": ""
     },
     "options_tab_context": {
@@ -104,7 +104,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "停用休眠具有以下域名的分頁",
+        "message": "符合以下域名或正則表達式的分頁將不會被休眠",
         "description": ""
     },
     "options_left_click": {
@@ -124,7 +124,7 @@
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Release All Other Tabs",
+        "message": "休眠其它分頁",
         "description": ""
     },
     "options_click_discard_window": {
@@ -132,7 +132,7 @@
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Release Other Tabs in This Window",
+        "message": "休眠在此視窗的其它分頁",
         "description": ""
     },
     "options_click_discard_other_windows": {
@@ -140,7 +140,7 @@
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
+        "message": "休眠在其它視窗的分頁",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -160,7 +160,7 @@
         "description": ""
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "message": "當閒置視窗的所有分頁都被休眠時，開啟一個暫時的空白分頁 (為了能休眠使用中的分頁)",
         "description": ""
     },
     "options_plugin_focus": {
@@ -204,7 +204,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "當分頁的休眠期結束或新增新的分頁時，檢查所有分頁的標籤，以評估哪些標籤需要休眠。此選項強制套件限制這些檢查。 最低值為 1 秒。推薦值為 30 秒。",
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
         "description": ""
     },
     "options_reset": {
@@ -281,6 +281,10 @@
     },
     "popup_whitelist_always": {
         "message": "總是",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "按下此鈕來加入這個域名至例外清單， Shift  + 點擊以加入目前網址至例外清單",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -412,7 +416,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
+        "message": "此視窗的所有分頁都已經休眠了！點擊任何地方來關閉這個視窗",
         "description": ""
     }
 }
