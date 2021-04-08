@@ -1,4 +1,4 @@
-/* globals storage, log, query, starters, discard */
+/* globals storage, log, query, starters, discard, interrupts */
 'use strict';
 
 const number = {
@@ -15,7 +15,7 @@ const pluginFilters = {}; // this object adds custom filters to the number-based
 
 number.install = period => {
   chrome.alarms.create('number.check', {
-    when: Date.now() + 5000,
+    when: Date.now() + period * 1000,
     periodInMinutes: period / 60
   });
 };
@@ -25,6 +25,9 @@ number.remove = () => {
 // filterTabsFrom is a list of tab that if provided, discarding only happens on them
 // ops is the preference object overwrite
 number.check = async (filterTabsFrom, ops = {}) => {
+  // wait for plug-in to be ready
+  await interrupts['before-action']();
+
   log('number.check is called');
   const prefs = await storage({
     'mode': 'time-based',

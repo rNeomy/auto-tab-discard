@@ -90,6 +90,8 @@
       // eslint-disable-next-line require-atomic-updates
       tab = await new Promise(resolve => chrome.tabs.get(tab.id, resolve));
     }
+    // wait for plug-in to be ready
+    await interrupts['before-action']();
     // wait for plug-in manipulations
     await interrupts['before-menu-click'](info, tab);
     //

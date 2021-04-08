@@ -14,6 +14,16 @@ const observe = activeInfo => chrome.tabs.get(activeInfo.tabId, tab => tab.index
 function enable() {
   log('previous.enable is called');
   chrome.tabs.onActivated.addListener(observe);
+  query({
+    active: true,
+    currentWindow: true
+  }).then(tbs => {
+    if (tbs.length) {
+      observe({
+        tabId: tbs[0].id
+      });
+    }
+  });
 }
 function disable() {
   log('previous.disable is called');

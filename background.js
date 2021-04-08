@@ -1,4 +1,4 @@
-/* globals hidden, number */
+/* globals hidden */
 'use strict';
 
 const isFirefox = /Firefox/.test(navigator.userAgent);
@@ -41,9 +41,10 @@ const starters = {
     starters.cache.push(c);
   }
 };
+
 {
   // preference are only up-to-date on the first run. For all other needs call storage().then()
-  const once = storage(prefs).then(ps => {
+  const once = () => storage(prefs).then(ps => {
     Object.assign(prefs, ps);
     starters.ready = true;
     starters.cache.forEach(c => c());
@@ -297,31 +298,6 @@ if (isFirefox) {
   // deal with hidden tabs
   hidden.install();
 }
-
-/* discard on startup */
-starters.push(() => {
-  if (prefs['startup-unpinned']) {
-    chrome.tabs.query({
-      discarded: false,
-      pinned: false
-    }, tabs => number.check(tabs, number.IGNORE));
-  }
-  if (prefs['startup-pinned']) {
-    query({
-      discarded: false,
-      pinned: true
-    }).then(tabs => {
-      // make sure to only discard possible tabs not all of them
-      number.check(tabs, number.IGNORE);
-    });
-  }
-  else if (prefs['startup-release-pinned']) {
-    query({
-      discarded: true,
-      pinned: true
-    }).then(tabs => tabs.forEach(tab => chrome.tabs.reload(tab.id)));
-  }
-});
 
 /* FAQs & Feedback */
 {

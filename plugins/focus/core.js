@@ -12,6 +12,10 @@ const observe = windowId => {
 function enable() {
   log('installing focus/core.js');
   chrome.windows.onFocusChanged.addListener(observe);
+  query({
+    currentWindow: true,
+    active: true
+  }).then(tbs => tbs.length && observe(tbs[0].windowId));
 
   let id;
   pluginFilters['./plugins/focus/core.js'] = {
