@@ -307,7 +307,7 @@ if (isFirefox) {
     const {name, version} = getManifest();
     onInstalled.addListener(({reason, previousVersion}) => {
       management.getSelf(({installType}) => installType === 'normal' && storage({
-        'faqs': true,
+        'faqs': false,
         'last-update': 0
       }).then(prefs => {
         if (reason === 'install' || (prefs.faqs && reason === 'update')) {
@@ -318,7 +318,7 @@ if (isFirefox) {
               active: reason === 'install',
               ...(tbs && tbs.length && {index: tbs[0].index + 1})
             }));
-            storage.local.set({'last-update': Date.now()});
+            chrome.storage.local.set({'last-update': Date.now()});
           }
         }
       }));
