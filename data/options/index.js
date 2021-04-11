@@ -1,6 +1,7 @@
 'use strict';
 
-const isFirefox = /Firefox/.test(navigator.userAgent);
+const isFirefox = /Firefox/.test(navigator.userAgent) || typeof InstallTrigger !== 'undefined';
+const isEdge = /Edg\//.test(navigator.userAgent);
 
 // localization
 [...document.querySelectorAll('[data-i18n]')].forEach(e => {
@@ -51,6 +52,7 @@ const restore = () => storage({
   'faqs': true,
   'use-cache': false,
   'favicon': true,
+  'prepends': '',
   'go-hidden': false,
   'memory-enabled': false,
   'memory-value': 60,
@@ -80,6 +82,7 @@ const restore = () => storage({
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('use-cache').checked = prefs['use-cache'];
   document.getElementById('favicon').checked = prefs.favicon;
+  document.getElementById('prepends').value = prefs.prepends;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
   if (prefs.period === 0) {
     document.getElementById('period').value = 0;
@@ -166,6 +169,7 @@ document.getElementById('save').addEventListener('click', () => {
     'faqs': document.getElementById('faqs').checked,
     'use-cache': document.getElementById('use-cache').checked,
     'favicon': document.getElementById('favicon').checked,
+    'prepends': document.getElementById('prepends').value,
     'go-hidden': document.getElementById('go-hidden').checked,
     'simultaneous-jobs': Math.max(1, Number(document.getElementById('simultaneous-jobs').value)),
     'favicon-delay': Math.max(100, Number(document.getElementById('favicon-delay').value)),
@@ -242,10 +246,10 @@ document.getElementById('reset').addEventListener('click', e => {
   }
 });
 // rate
-if (/Firefox/.test(navigator.userAgent)) {
+if (isFirefox) {
   document.getElementById('rate').href = 'https://addons.mozilla.org/firefox/addon/auto-tab-discard/reviews/';
 }
-else if (/Edg\//.test(navigator.userAgent)) {
+else if (isEdge) {
   document.getElementById('rate').href = 'https://microsoftedge.microsoft.com/addons/detail/nfkkljlcjnkngcmdpcammanncbhkndfe';
 }
 // export

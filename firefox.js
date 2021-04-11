@@ -1,7 +1,10 @@
 /*
   add "autoDiscardable" support to "chrome.tabs.query" and "chrome.tabs.update"
 */
-if (/Firefox/.test(navigator.userAgent)) {
+
+const isFirefox = /Firefox/.test(navigator.userAgent) || typeof InstallTrigger !== 'undefined';
+
+if (isFirefox) {
   const cache = {};
   const query = chrome.tabs.query;
   chrome.tabs.query = function(queryInfo, callback = () => {}) {

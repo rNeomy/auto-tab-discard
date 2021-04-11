@@ -29,6 +29,9 @@
   "options_favicon": {
     "message": "Change favicon of discarded tabs (if possible)"
   },
+  "options_prepends": {
+    "message": "Prepends a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)"
+  },
   "options_startup_unpinned": {
     "message": "Discard all unpinned tabs on a browser or extension startup"
   },
