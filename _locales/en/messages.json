@@ -293,6 +293,9 @@
   "cmd_discard_tab": {
     "message": "Discard Tab"
   },
+  "cmd_discard_tree": {
+    "message": "Discard Tab Group"
+  },
   "cmd_discard_tabs": {
     "message": "Discard All Other Tabs"
   },

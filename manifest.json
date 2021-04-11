@@ -80,6 +80,9 @@
     "discard-tab": {
       "description": "__MSG_cmd_discard_tab__"
     },
+    "discard-tree": {
+      "description": "__MSG_cmd_discard_tree__"
+    },
     "discard-window": {
       "description": "__MSG_cmd_discard_window__"
     },

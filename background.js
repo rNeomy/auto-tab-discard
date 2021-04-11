@@ -211,7 +211,7 @@ const discard = tab => new Promise(resolve => {
       runAt: 'document_start',
       code: `
         window.stop();
-        document.title = '${prefs.prepends} ' + document.title;
+        document.title = '${prefs.prepends.replace(/'/g, '_')} ' + document.title;
       `
     }, icon);
   }

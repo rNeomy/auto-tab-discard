@@ -1,3 +1,17 @@
+:root {
+  --bg: #fff;
+  --clr: #4d5156;
+  --dark: #d9d9d9;
+  --button: #f0f0f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #35363a;
+    --clr: #b1b1b1;
+    --dark: #202124;
+    --button: #202124;
+  }
+}
 body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 13px;
@@ -5,11 +19,11 @@ body {
   user-select: none;
   width: 100%;
   min-width: 350px;
-  background-color: #fff;
-  color: #4d5156;
+  background-color: var(--bg);
+  color: var(--clr);
 }
 header {
-  border-bottom: solid 1px #d9d9d9;
+  border-bottom: solid 1px var(--dark);
   font-size: 140%;
   text-align: center;
   padding: 15px;
@@ -36,25 +50,32 @@ li.group span {
 }
 li span[data-cmd^="release"] {
   width: 26px;
-  background: url('release.svg') no-repeat center center;
-  background-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+li span[data-cmd^="release"] svg {
+  pointer-events: none;
+  width: 22px;
+  fill: var(--clr);
 }
 
 [data-cmd] {
   cursor: pointer;
 }
 [data-cmd]:hover {
-  background-color: #f0f0f0;
+  background-color: var(--button);
 }
 
 .button {
-  background-color: #f0f0f0;
+  background-color: var(--button);
   height: 42px;
   line-height: 42px;
   text-align: center;
 }
 .button:hover {
-  background-color: #d9d9d9;
+  background-color: var(--dark);
 }
 [data-cmd]:active,
 .button:active {
@@ -78,7 +99,7 @@ li span[data-cmd^="release"] {
   padding: 10px 0;
 }
 .nav > span {
-  background-color: #f0f0f0;
+  background-color: var(--button);
   padding: 10px 0;
   cursor: pointer;
   display: flex;
@@ -86,7 +107,7 @@ li span[data-cmd^="release"] {
   justify-content: center;
 }
 .nav > span:hover {
-  background-color: #d9d9d9;
+  background-color: var(--dark);
 }
 .mlt {
   display: grid;
@@ -95,7 +116,7 @@ li span[data-cmd^="release"] {
   align-items: center;
 }
 .mlt > span[data-cmd] {
-  background-color: #f0f0f0;
+  background-color: var(--button);
   padding: 10px 0;
   cursor: pointer;
   min-width: 80px;
@@ -103,13 +124,13 @@ li span[data-cmd^="release"] {
   position: relative;
 }
 .mlt > span[data-cmd]:hover {
-  background-color: #d9d9d9;
+  background-color: var(--dark);
 }
 .mlt span:last-child::before {
   content: '';
   width: 1px;
   height: 12px;
-  background-color: #d9d9d9;
+  background-color: var(--dark);
   position: absolute;
   left: 0;
   top: calc(50% - 6px);
@@ -126,7 +147,7 @@ li span[data-cmd^="release"] {
   content: '';
   width: 1px;
   height: 12px;
-  background-color: #d9d9d9;
+  background-color: var(--dark);
   position: absolute;
   top: calc(50% - 6px);
 }
@@ -140,13 +161,17 @@ li span[data-cmd^="release"] {
 .nav:hover [data-cmd=close]::after {
   display: none;
 }
-[data-cmd=move-next]::after {
-  background: url(move-next.svg) center center no-repeat;
-  margin-left: 5px;
+[data-cmd=move-next] *,
+[data-cmd=move-previous] * {
+  pointer-events: none;
 }
-[data-cmd=move-previous]::before {
-  background: url(move-previous.svg) center center no-repeat;
+[data-cmd=move-next] svg {
+  margin-left: 5px;
+  stroke: var(--clr);
+}
+[data-cmd=move-previous] svg {
   margin-right: 5px;
+  stroke: var(--clr);
 }
 [data-cmd=move-next]::after,
 [data-cmd=move-previous]::before {

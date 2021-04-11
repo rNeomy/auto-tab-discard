@@ -1,5 +1,21 @@
+:root {
+  --bg: #fff;
+  --clr: #4d5156;
+  --dark: #f3f3f3;
+  --a: #0077cc;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #35363a;
+    --clr: #b1b1b1;
+    --dark: #202124;
+    --a: #0797ff;
+  }
+}
+
 body {
-  background-color: #fff;
+  background-color: var(--bg);
+  color: var(--clr);
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 13px;
   max-width: 80%;
@@ -39,7 +55,7 @@ input[type=number] {
 }
 th {
   height: 32px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--dark);
   text-indent: 10px;
 }
 td:nth-child(3) {
@@ -53,6 +69,10 @@ ol {
   padding: 0 0 0 20px;
   font-size: 12px;
 }
+a {
+  color: var(--a);
+}
+
 .admin {
   background-color: #ffffed;
   border: solid 1px #e8ec3a;
