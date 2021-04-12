@@ -39,6 +39,10 @@
         "message": "替換休眠中分頁的網站圖示（如果可能的話）",
         "description": ""
     },
+    "options_prepends": {
+        "message": "Prepends a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)",
+        "description": ""
+    },
     "options_startup_unpinned": {
         "message": "在瀏覽器或附加元件啟動時休眠非釘選分頁",
         "description": ""
@@ -385,6 +389,10 @@
     },
     "cmd_discard_tab": {
         "message": "休眠分頁",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "Discard Tab Group",
         "description": ""
     },
     "cmd_discard_tabs": {

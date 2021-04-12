@@ -12,7 +12,7 @@
         "description": ""
     },
     "options_period02": {
-        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
+        "message": "(0分でタブの破棄を無効化) そのタブの合計が次の数を超えている場合、自動でタブを破棄する",
         "description": ""
     },
     "options_period04": {
@@ -37,6 +37,10 @@
     },
     "options_favicon": {
         "message": "破棄したタブのファビコンを変更する (可能な場合)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "破棄したタブにシンボル (💤 または ⏻︎) を挿入する (可能な場合)",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -204,7 +208,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
+        "message": "タブの破棄期間が過ぎた時もしくは新しいタブが開かれたときに、ブラウザの全タブにおいて破棄するかどうかのチェックが行われます。このオプションはそのチェック間隔を制限するものです。入力可能な最低値は1分ですが、推奨値は10分です。",
         "description": ""
     },
     "options_reset": {
@@ -385,6 +389,10 @@
     },
     "cmd_discard_tab": {
         "message": "タブを破棄する",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "タブグループを破棄する",
         "description": ""
     },
     "cmd_discard_tabs": {

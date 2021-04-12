@@ -39,6 +39,10 @@
         "message": "Cambiar favicon de las pestañas descartadas (si es posible)",
         "description": ""
     },
+    "options_prepends": {
+        "message": "Prepends a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)",
+        "description": ""
+    },
     "options_startup_unpinned": {
         "message": "Descartar todas las pestañas no ancladas al inicio de un navegador o extensión",
         "description": ""
@@ -385,6 +389,10 @@
     },
     "cmd_discard_tab": {
         "message": "Descartar pestaña",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "Discard Tab Group",
         "description": ""
     },
     "cmd_discard_tabs": {

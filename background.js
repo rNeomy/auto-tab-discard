@@ -321,7 +321,7 @@ if (isFirefox) {
     const {name, version} = getManifest();
     onInstalled.addListener(({reason, previousVersion}) => {
       management.getSelf(({installType}) => installType === 'normal' && storage({
-        'faqs': false,
+        'faqs': true,
         'last-update': 0
       }).then(prefs => {
         if (reason === 'install' || (prefs.faqs && reason === 'update')) {
