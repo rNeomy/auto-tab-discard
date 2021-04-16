@@ -25,8 +25,13 @@ number.remove = () => {
 // filterTabsFrom is a list of tab that if provided, discarding only happens on them
 // ops is the preference object overwrite
 number.check = async (filterTabsFrom, ops = {}) => {
-  // wait for plug-in to be ready
-  await interrupts['before-action']();
+  if (typeof interrupts !== 'undefined') {
+    // wait for plug-ins to be ready
+    await interrupts['before-action']();
+  }
+  else {
+    console.warn('plugins module is not loaded');
+  }
 
   log('number.check is called');
   const prefs = await storage({
