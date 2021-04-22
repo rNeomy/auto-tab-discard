@@ -72,7 +72,8 @@ const restore = () => storage({
   './plugins/trash/core.js': false,
   './plugins/force/core.js': false,
   './plugins/next/core.js': false,
-  './plugins/previous/core.js': false
+  './plugins/previous/core.js': false,
+  './plugins/new/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -125,6 +126,7 @@ const restore = () => storage({
   document.getElementById('./plugins/force/core.js').checked = prefs['./plugins/force/core.js'];
   document.getElementById('./plugins/next/core.js').checked = prefs['./plugins/next/core.js'];
   document.getElementById('./plugins/previous/core.js').checked = prefs['./plugins/previous/core.js'];
+  document.getElementById('./plugins/new/core.js').checked = prefs['./plugins/new/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -201,7 +203,8 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked,
     './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked,
     './plugins/next/core.js': document.getElementById('./plugins/next/core.js').checked,
-    './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked
+    './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked,
+    './plugins/new/core.js': document.getElementById('./plugins/new/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

@@ -8,7 +8,8 @@ const ready = storage({
   './plugins/force/core.js': false,
   './plugins/next/core.js': false,
   './plugins/previous/core.js': false,
-  './plugins/blank/core.js': true
+  './plugins/blank/core.js': true,
+  './plugins/new/core.js': true
 }).then(prefs => {
   const actives = [
     import('./plugins/startup/core.js').then(o => o.enable())
@@ -40,6 +41,10 @@ const ready = storage({
   }
   if (prefs['./plugins/blank/core.js']) {
     const p = import('./plugins/blank/core.js').then(o => o.enable());
+    actives.push(p);
+  }
+  if (prefs['./plugins/new/core.js']) {
+    const p = import('./plugins/new/core.js').then(o => o.enable());
     actives.push(p);
   }
 
@@ -77,5 +82,8 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if ('./plugins/blank/core.js' in ps) {
     import('./plugins/blank/core.js').then(o => o[ps['./plugins/blank/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/new/core.js' in ps) {
+    import('./plugins/new/core.js').then(o => o[ps['./plugins/new/core.js'].newValue ? 'enable' : 'disable']());
   }
 });
