@@ -112,12 +112,12 @@ const navigate = (method, discarded = false) => query({
   }
 });
 
-const discard = tab => new Promise(resolve => {
+const discard = tab => storage(prefs).then(prefs => {
   if (tab.active) {
-    return resolve();
+    return;
   }
   if (tab.discarded) {
-    return resolve();
+    return;
   }
   if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
     discard.count = 0;
@@ -125,99 +125,100 @@ const discard = tab => new Promise(resolve => {
   if (discard.count > prefs['simultaneous-jobs']) {
     log('discarding queue for', tab);
     discard.tabs.push(tab);
-    return resolve();
+    return;
   }
+  return new Promise(resolve => {
+    discard.count += 1;
+    discard.time = Date.now();
+    const next = () => {
+      try {
+        if (isFirefox) {
+          chrome.tabs.discard(tab.id);
+        }
+        else {
+          chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+        }
+      }
+      catch (e) {
+        log('discarding failed', e);
+      }
+      discard.count -= 1;
+      if (discard.tabs.length) {
+        const tab = discard.tabs.shift();
+        discard(tab);
+      }
+      resolve();
+    };
+    // favicon
+    const icon = () => {
+      if (prefs.favicon) {
+        const src = tab.favIconUrl || '/data/page.png';
+        Object.assign(new Image(), {
+          crossOrigin: 'anonymous',
+          src,
+          onerror() {
+            next();
+          },
+          onload() {
+            const img = this;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+              canvas.width = img.width;
+              canvas.height = img.height;
 
-  discard.count += 1;
-  discard.time = Date.now();
-  const next = () => {
-    try {
-      if (isFirefox) {
-        chrome.tabs.discard(tab.id);
+              ctx.globalAlpha = 0.6;
+              ctx.drawImage(img, 0, 0);
+
+              ctx.globalAlpha = 1;
+              ctx.beginPath();
+              ctx.fillStyle = '#a1a0a1';
+              ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
+              ctx.fill();
+              const href = canvas.toDataURL('image/png');
+
+              chrome.tabs.executeScript(tab.id, {
+                runAt: 'document_start',
+                allFrames: true,
+                matchAboutBlank: true,
+                code: `
+                  window.stop();
+                  if (window === window.top) {
+                    [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+
+                    document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                      rel: 'icon',
+                      type: 'image/png',
+                      href: '${href}'
+                    }));
+                  }
+                `
+              }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
+            }
+            else {
+              next();
+            }
+          }
+        });
       }
       else {
-        chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+        next();
       }
-    }
-    catch (e) {
-      log('discarding failed', e);
-    }
-    discard.count -= 1;
-    if (discard.tabs.length) {
-      const tab = discard.tabs.shift();
-      discard(tab);
-    }
-    resolve();
-  };
-  // favicon
-  const icon = () => {
-    if (prefs.favicon) {
-      const src = tab.favIconUrl || '/data/page.png';
-      Object.assign(new Image(), {
-        crossOrigin: 'anonymous',
-        src,
-        onerror() {
-          next();
-        },
-        onload() {
-          const img = this;
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          if (ctx) {
-            canvas.width = img.width;
-            canvas.height = img.height;
-
-            ctx.globalAlpha = 0.6;
-            ctx.drawImage(img, 0, 0);
-
-            ctx.globalAlpha = 1;
-            ctx.beginPath();
-            ctx.fillStyle = '#a1a0a1';
-            ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-            ctx.fill();
-            const href = canvas.toDataURL('image/png');
-
-            chrome.tabs.executeScript(tab.id, {
-              runAt: 'document_start',
-              allFrames: true,
-              matchAboutBlank: true,
-              code: `
-                window.stop();
-                if (window === window.top) {
-                  [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
-
-                  document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                    rel: 'icon',
-                    type: 'image/png',
-                    href: '${href}'
-                  }));
-                }
-              `
-            }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
-          }
-          else {
-            next();
-          }
-        }
-      });
+    };
+    // change title
+    if (prefs.prepends) {
+      chrome.tabs.executeScript(tab.id, {
+        runAt: 'document_start',
+        code: `
+          window.stop();
+          document.title = '${prefs.prepends.replace(/'/g, '_')} ' + document.title;
+        `
+      }, icon);
     }
     else {
-      next();
+      icon();
     }
-  };
-  // change title
-  if (prefs.prepends) {
-    chrome.tabs.executeScript(tab.id, {
-      runAt: 'document_start',
-      code: `
-        window.stop();
-        document.title = '${prefs.prepends.replace(/'/g, '_')} ' + document.title;
-      `
-    }, icon);
-  }
-  else {
-    icon();
-  }
+  });
 });
 discard.tabs = [];
 discard.count = 0;
@@ -281,9 +282,7 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
     });
   }
   else if (method === 'storage') {
-    storage(request.prefs).then(prefs => {
-      resposne(prefs);
-    });
+    storage(request.prefs).then(resposne);
     return true;
   }
   /* TO-DO: remove the following methods when autoDiscardable is supported in FF */
@@ -300,11 +299,9 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
 starters.push(() => chrome.idle.setDetectionInterval(prefs['idle-timeout']));
 
 // left-click action
-const popup = async () => {
-  chrome.browserAction.setPopup({
-    popup: prefs.click === 'click.popup' ? 'data/popup/index.html' : ''
-  });
-};
+const popup = () => chrome.browserAction.setPopup({
+  popup: prefs.click === 'click.popup' ? 'data/popup/index.html' : ''
+});
 starters.push(popup);
 
 // start-up
