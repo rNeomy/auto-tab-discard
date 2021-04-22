@@ -2,8 +2,8 @@
 'use strict';
 
 const prefs = {
-  'favicon': true,
-  'prepends': '',
+  'favicon': false,
+  'prepends': '💤',
   'number': 6,
   'period': 10 * 60, // in seconds
   'click': 'click.popup',
