@@ -24,7 +24,7 @@
     "message": "Display discarding items in the \"page\" context menu"
   },
   "options_link_context": {
-    "message": "Display \"Open Link in New Discarded Tab\" item in the \"link\" context menu"
+    "message": "Display \"Open in New Discarded Tab\" item in the \"link\" context menu"
   },
   "options_favicon": {
     "message": "Change favicon of discarded tabs (if possible)"
@@ -270,7 +270,7 @@
     "message": "Always Keep Tabs for This Site"
   },
   "menu_open_tab_then_discard": {
-    "message": "Open Link in New Discarded Tab"
+    "message": "Open in New Discarded Tab"
   },
   "menu_move_previous": {
     "message": "Move to the Left Tab"
