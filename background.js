@@ -151,59 +151,54 @@ const discard = tab => storage(prefs).then(prefs => {
     };
     // favicon
     const icon = () => {
-      if (prefs.favicon) {
-        const src = tab.favIconUrl || '/data/page.png';
-        Object.assign(new Image(), {
-          crossOrigin: 'anonymous',
-          src,
-          onerror() {
-            next();
-          },
-          onload() {
-            const img = this;
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            if (ctx) {
-              canvas.width = img.width;
-              canvas.height = img.height;
+      const src = tab.favIconUrl || '/data/page.png';
+      Object.assign(new Image(), {
+        crossOrigin: 'anonymous',
+        src,
+        onerror() {
+          next();
+        },
+        onload() {
+          const img = this;
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            canvas.width = img.width;
+            canvas.height = img.height;
 
-              ctx.globalAlpha = 0.6;
-              ctx.drawImage(img, 0, 0);
+            ctx.globalAlpha = 0.6;
+            ctx.drawImage(img, 0, 0);
 
-              ctx.globalAlpha = 1;
-              ctx.beginPath();
-              ctx.fillStyle = '#a1a0a1';
-              ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-              ctx.fill();
-              const href = canvas.toDataURL('image/png');
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.fillStyle = '#a1a0a1';
+            ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
+            ctx.fill();
+            const href = canvas.toDataURL('image/png');
 
-              chrome.tabs.executeScript(tab.id, {
-                runAt: 'document_start',
-                allFrames: true,
-                matchAboutBlank: true,
-                code: `
-                  window.stop();
-                  if (window === window.top) {
-                    [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+            chrome.tabs.executeScript(tab.id, {
+              runAt: 'document_start',
+              allFrames: true,
+              matchAboutBlank: true,
+              code: `
+                window.stop();
+                if (window === window.top) {
+                  [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
 
-                    document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                      rel: 'icon',
-                      type: 'image/png',
-                      href: '${href}'
-                    }));
-                  }
-                `
-              }, () => window.setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
-            }
-            else {
-              next();
-            }
+                  document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                    rel: 'icon',
+                    type: 'image/png',
+                    href: '${href}'
+                  }));
+                }
+              `
+            }, () => setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
           }
-        });
-      }
-      else {
-        next();
-      }
+          else {
+            next();
+          }
+        }
+      });
     };
     // change title
     if (prefs.prepends) {
@@ -213,10 +208,23 @@ const discard = tab => storage(prefs).then(prefs => {
           window.stop();
           document.title = '${prefs.prepends.replace(/'/g, '_')} ' + document.title;
         `
-      }, icon);
+      }, () => {
+        chrome.runtime.lastError;
+        if (prefs.favicon) {
+          icon();
+        }
+        else {
+          setTimeout(next, prefs['favicon-delay']);
+        }
+      });
     }
     else {
-      icon();
+      if (prefs.favicon) {
+        icon();
+      }
+      else {
+        next();
+      }
     }
   });
 });

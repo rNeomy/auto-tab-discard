@@ -41,3 +41,30 @@ if (isFirefox) {
   };
   chrome.tabs.onRemoved.addListener(tabId => delete cache[tabId]);
 }
+
+// FF onCreated is called when tab.url is still about:blank
+if (isFirefox) {
+  const pointer = chrome.tabs.onCreated.addListener;
+  chrome.tabs.onCreated.addListener = c => {
+    pointer.call(chrome.tabs.onCreated, tab => {
+      if (tab.url === 'about:blank') {
+        const observe = (id, info) => {
+          if (id === tab.id && info.title) {
+            chrome.tabs.onUpdated.removeListener(observe);
+            setTimeout(c, 1000, tab);
+          }
+        };
+        chrome.tabs.onUpdated.addListener(observe);
+        setTimeout(() => {
+          if (chrome.tabs.onUpdated.hasListener(observe)) {
+            c(tab);
+            chrome.tabs.onUpdated.removeListener(observe);
+          }
+        }, 10000);
+      }
+      else {
+        c(tab);
+      }
+    });
+  };
+}
