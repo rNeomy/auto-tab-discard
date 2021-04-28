@@ -1,4 +1,4 @@
-/* globals discard, query, notify, navigate, starters, prefs, isFirefox, number, interrupts */
+/* globals discard, query, notify, navigate, starters, storage, prefs, isFirefox, number, interrupts */
 'use strict';
 
 // Context Menu
@@ -102,29 +102,31 @@
     //
     const {menuItemId, shiftKey} = info;
     if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session' || menuItemId === 'whitelist-exact') {
-      const d = menuItemId !== 'whitelist-session';
-      const {hostname, protocol = ''} = new URL(tab.url);
+      storage(prefs).then(prefs => {
+        const d = menuItemId !== 'whitelist-session';
+        const {hostname, protocol = ''} = new URL(tab.url);
 
-      let rule;
-      if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        let whitelist = prefs[d ? 'whitelist' : 'whitelist.session'];
+        let rule;
+        if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
+          let whitelist = prefs[d ? 'whitelist' : 'whitelist.session'];
 
-        if (menuItemId === 'whitelist-exact') {
-          rule = 're:^' + tab.url.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '$';
+          if (menuItemId === 'whitelist-exact') {
+            rule = 're:^' + tab.url.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '$';
+          }
+          else {
+            rule = hostname;
+          }
+          whitelist.push(rule);
+          whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
+          chrome.storage.local.set({
+            [d ? 'whitelist' : 'whitelist.session']: whitelist
+          });
+          notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
         }
         else {
-          rule = hostname;
+          notify(`"${protocol}" ${chrome.i18n.getMessage('menu_msg2')}`);
         }
-        whitelist.push(rule);
-        whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
-        chrome.storage.local.set({
-          [d ? 'whitelist' : 'whitelist.session']: whitelist
-        });
-        notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
-      }
-      else {
-        notify(`"${protocol}" ${chrome.i18n.getMessage('menu_msg2')}`);
-      }
+      });
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
       // it is possible to have multiple highlighted tabs. Let's discard all of them
