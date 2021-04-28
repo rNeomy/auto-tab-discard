@@ -32,7 +32,7 @@
         "description": ""
     },
     "options_link_context": {
-        "message": "Отображать элемент \"Открыть Ссылку в Новой Выгруженной Вкладке\" в контекстном меню",
+        "message": "Отображать элемент \"Открыть в Новой Выгруженной Вкладке\" в контекстном меню",
         "description": ""
     },
     "options_favicon": {
@@ -177,6 +177,10 @@
     },
     "options_plugin_force": {
         "message": "Немедленно выгружать следующие имена хостов, если их вкладка неактивна",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Выгружать все вновь открытые неактивные вкладки после их загрузки",
         "description": ""
     },
     "options_log": {
@@ -356,7 +360,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Открыть Ссылку в Новой Выгруженой Вкладке",
+        "message": "Открыть в Новой Выгруженной Вкладке",
         "description": ""
     },
     "menu_move_previous": {
