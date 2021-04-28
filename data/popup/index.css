@@ -22,6 +22,18 @@ body {
   background-color: var(--bg);
   color: var(--clr);
 }
+
+/* FF overflow menu */
+@media (width: 348px) or (width: 377px) {
+  body {
+    min-width: unset;
+    overflow: hidden;
+  }
+  header {
+    display: none;
+  }
+}
+
 header {
   border-bottom: solid 1px var(--dark);
   font-size: 140%;

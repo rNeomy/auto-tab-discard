@@ -9,7 +9,7 @@ const ready = storage({
   './plugins/next/core.js': false,
   './plugins/previous/core.js': false,
   './plugins/blank/core.js': true,
-  './plugins/new/core.js': true
+  './plugins/new/core.js': false
 }).then(prefs => {
   const actives = [
     import('./plugins/startup/core.js').then(o => o.enable())
