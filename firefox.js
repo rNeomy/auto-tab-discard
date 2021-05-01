@@ -44,9 +44,9 @@ if (isFirefox) {
 
 // FF onCreated is called when tab.url is still about:blank
 if (isFirefox) {
-  const pointer = chrome.tabs.onCreated.addListener;
+  const pa = chrome.tabs.onCreated.addListener;
   chrome.tabs.onCreated.addListener = c => {
-    pointer.call(chrome.tabs.onCreated, tab => {
+    c._ = tab => {
       if (tab.url === 'about:blank') {
         const observe = (id, info) => {
           if (id === tab.id && info.title) {
@@ -65,6 +65,11 @@ if (isFirefox) {
       else {
         c(tab);
       }
-    });
+    };
+    pa.call(chrome.tabs.onCreated, c._);
+  };
+  const pr = chrome.tabs.onCreated.removeListener;
+  chrome.tabs.onCreated.removeListener = c => {
+    pr.call(this, c._ || c);
   };
 }
