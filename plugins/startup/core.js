@@ -16,6 +16,7 @@ const observe = () => {
     }
     query(opts).then(tbs => {
       // discard loaded tabs
+      log('startup plug-in', 'number of tabs that can be discarded on startup', tbs.length);
       number.check(tbs.filter(t => t.status !== 'unloaded'), number.IGNORE);
       const rst = tbs.filter(t => t.status === 'unloaded');
       if (rst.length) {
@@ -44,9 +45,8 @@ const observe = () => {
 
 function enable() {
   log('startup.enable is called');
-  if (starters.ready) { // only run on start-up
-    observe();
-  }
+  // only run on start-up
+  starters.push(observe);
 }
 function disable() {
   log('startup.disable is called');
