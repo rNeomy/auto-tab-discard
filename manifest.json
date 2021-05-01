@@ -101,10 +101,5 @@
     "close": {
       "description": "__MSG_cmd_close__"
     }
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "test@me.com"
-    }
   }
 }
