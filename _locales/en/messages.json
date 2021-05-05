@@ -321,6 +321,6 @@
     "message": "Close Tab"
   },
   "blank_msg": {
-    "message": "All tabs in this window are discarded! Click anywhere to close this window."
+    "message": "All tabs in this window are discarded! Click anywhere to close this tab."
   }
 }
