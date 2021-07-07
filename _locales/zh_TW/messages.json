@@ -12,7 +12,7 @@
         "description": ""
     },
     "options_period02": {
-        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
+        "message": "當不使用的分頁數量超過時，自動休眠分頁（輸入 0 以停止自動休眠分頁）",
         "description": ""
     },
     "options_period04": {
@@ -20,27 +20,27 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "只休眠符合以下域名或正則表達式的閒置分頁",
+        "message": "只休眠符合以下網域名稱或正則表達式的閒置分頁",
         "description": ""
     },
     "options_tab_context": {
-        "message": "在 分頁 右鍵選單顯示休眠選項（如果支持）",
+        "message": "若支援，在「分頁標籤」的右鍵選單顯示休眠選項",
         "description": ""
     },
     "options_page_context": {
-        "message": "在 網頁 右鍵選單顯示休眠選項",
+        "message": "在「網頁」右鍵選單顯示休眠選項",
         "description": ""
     },
     "options_link_context": {
-        "message": "在 連結 右鍵選單顯示在新的休眠分頁開啟連結",
+        "message": "在「鏈結」右鍵選單顯示「在新的休眠分頁開啟鏈結」",
         "description": ""
     },
     "options_favicon": {
-        "message": "替換休眠中分頁的網站圖示（如果可能的話）",
+        "message": "若可行，替換休眠中分頁標籤的網站圖示",
         "description": ""
     },
     "options_prepends": {
-        "message": "Prepends a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)",
+        "message": "若可行，在休眠中的分頁標籤圖示前加上符號（如💤、⏻︎）",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -64,7 +64,7 @@
         "description": ""
     },
     "options_memory": {
-        "message": "單個分頁在背景占用超過多少記憶體則使其休眠（單位 MB）",
+        "message": "單個分頁在背景占用超過記憶體上限則使其休眠（單位 MB）",
         "description": ""
     },
     "options_discarding_conditions": {
@@ -72,15 +72,15 @@
         "description": ""
     },
     "options_audio": {
-        "message": "停用休眠於 有播放媒體的分頁",
+        "message": "不要休眠正在播放媒體的分頁",
         "description": ""
     },
     "options_pinned": {
-        "message": "停用休眠於 已釘選的分頁",
+        "message": "不要休眠已釘選的分頁",
         "description": ""
     },
     "options_form": {
-        "message": "停用休眠於 未提交或未儲存表單的分頁",
+        "message": "不要休眠尚未提交或未儲存表單的分頁",
         "description": ""
     },
     "options_battery": {
@@ -88,15 +88,15 @@
         "description": ""
     },
     "options_online": {
-        "message": "網路離線且分頁未緩存時停止休眠分頁",
+        "message": "網路離線且分頁狀態未暫存時停止休眠分頁",
         "description": ""
     },
     "options_notification_permission": {
-        "message": "停用休眠於 顯示電腦桌面通知的分頁",
+        "message": "不要休眠會顯示電腦桌面通知的分頁",
         "description": ""
     },
     "options_idle": {
-        "message": "電腦未處於“閒置”狀態時停止休眠分頁",
+        "message": "電腦未處於「閒置」狀態時停止休眠分頁",
         "description": ""
     },
     "options_idle_timeout": {
@@ -108,11 +108,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "符合以下域名或正則表達式的分頁將不會被休眠",
+        "message": "符合以下網域名稱或正則表達式的分頁將不會被休眠",
         "description": ""
     },
     "options_left_click": {
-        "message": "工具列點擊左鍵",
+        "message": "工具列按下左鍵",
         "description": ""
     },
     "options_click_popup": {
@@ -148,7 +148,7 @@
         "description": ""
     },
     "options_click_toggle_allowed": {
-        "message": "切換 在本次瀏覽狀態保留此分頁 選項",
+        "message": "切換「在本次瀏覽狀態保留此分頁」選項",
         "description": ""
     },
     "options_misc": {
@@ -168,7 +168,7 @@
         "description": ""
     },
     "options_plugin_focus": {
-        "message": "停止活躍視窗中所有分頁的休眠。如果啟用，活躍視窗不會有分頁會被休眠",
+        "message": "停止休眠使用中視窗的所有分頁。若啟用，使用中的視窗不會有分頁會被休眠",
         "description": ""
     },
     "options_plugin_trash": {
@@ -176,7 +176,7 @@
         "description": ""
     },
     "options_plugin_force": {
-        "message": "當此域名的分頁沒有活動時，立即休眠它們",
+        "message": "當此網域名稱的分頁沒有活動時，立即休眠它們",
         "description": ""
     },
     "options_log": {
@@ -188,7 +188,7 @@
         "description": ""
     },
     "options_use_cache": {
-        "message": "使用快取：如果啟用，此套件僅檢查分頁是否釘選或瀏覽器連接到電池才做休眠檢測",
+        "message": "使用快取：如果啟用，此附加元件僅檢查分頁是否釘選或瀏覽器連接到電池才做休眠偵測",
         "description": ""
     },
     "options_simultaneous_jobs": {
@@ -200,11 +200,11 @@
         "description": ""
     },
     "options_footnote_1": {
-        "message": "可以使用〝re:〞前墜的關鍵字。 例如要將所有帶有〝google〞關鍵字的網址列入白名單，請使用 〝re:google〞。",
+        "message": "可以使用〝re:〞前置詞的關鍵字。 例如要將所有帶有〝google〞關鍵字的網址列入白名單，請使用 〝re:google〞。",
         "description": ""
     },
     "options_footnote_2": {
-        "message": "檢查單個分頁在背景佔用超過多少記憶體。 超過用戶定義值（最小可接受值為10MB）, 此分頁將強制休眠。請注意，僅當開啟瀏覽器〝window.performance.memory〞時，此設定才可啟用。",
+        "message": "檢查單個分頁在背景佔用超過多少記憶體。 超過用戶定義值（最小可接受值為10MB）, 此分頁將強制休眠。請注意，僅當開啟瀏覽器的「window.performance.memory」功能時，此設定才可啟用。",
         "description": ""
     },
     "options_footnote_3": {
@@ -212,7 +212,7 @@
         "description": ""
     },
     "options_reset": {
-        "message": "重設為初始設定",
+        "message": "重設為原始設定",
         "description": ""
     },
     "options_import": {
@@ -228,15 +228,15 @@
         "description": ""
     },
     "options_support": {
-        "message": "贊助此套件",
+        "message": "贊助此附加元件",
         "description": ""
     },
     "options_check_delay": {
-        "message": "循序休眠檢查之間的最小延遲（單位 秒鐘）",
+        "message": "循序休眠檢查之間的最小延遲（單位：秒）",
         "description": ""
     },
     "options_favicon_delay": {
-        "message": "替換休眠中分頁的網站圖示的延遲時間（單位 毫秒）",
+        "message": "替換休眠中分頁的網站圖示的延遲時間（單位：毫秒）",
         "description": ""
     },
     "popup_discard_tab": {
@@ -304,7 +304,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "移除休眠。略過緩存熱鍵 Shift + 點擊",
+        "message": "解除休眠。略過暫存熱鍵 Shift + 點擊",
         "description": ""
     },
     "popup_shift_hint": {
@@ -312,7 +312,7 @@
         "description": ""
     },
     "bg_no_active_tab": {
-        "message": "沒有活躍的分頁",
+        "message": "沒有使用中的分頁",
         "description": ""
     },
     "bg_msg_1": {
@@ -356,7 +356,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "以“新的休眠”分頁開啟連結",
+        "message": "以「新的休眠分頁」開啟鏈結",
         "description": ""
     },
     "menu_move_previous": {
@@ -380,11 +380,11 @@
         "description": ""
     },
     "menu_msg2": {
-        "message": "不支持協議",
+        "message": "不支援協定",
         "description": ""
     },
     "menu_msg3": {
-        "message": "分頁處於活躍狀態時無法休眠",
+        "message": "分頁處於使用中狀態時無法休眠",
         "description": ""
     },
     "cmd_discard_tab": {
@@ -392,7 +392,7 @@
         "description": ""
     },
     "cmd_discard_tree": {
-        "message": "Discard Tab Group",
+        "message": "休眠分頁群組",
         "description": ""
     },
     "cmd_discard_tabs": {
