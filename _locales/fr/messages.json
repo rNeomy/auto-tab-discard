@@ -196,7 +196,7 @@
         "description": ""
     },
     "options_footnote_1": {
-        "message": "Il est possible d'utiliser une correspondance d'expressions avec le mot-clé « re: ». Par exemple pour mettre sur liste blanche tout les URL avec le mot-clé « google » dedans, utilisez « re;google ».",
+        "message": "Il est possible d'utiliser une correspondance d'expressions avec le mot-clé « re: ». Par exemple pour mettre sur liste blanche tout les URL avec le mot-clé « google » dedans, utilisez « re:google ».",
         "description": ""
     },
     "options_footnote_2": {
