@@ -1,422 +1,435 @@
 {
     "app_description": {
-        "message": "如果你打开了很多标签页，这个扩展能提升浏览器速度和减少内存占用。",
-        "description": ""
+        "message": "如果您打开了很多标签页，这个扩展能提升浏览器速度并减少内存占用。",
+        "hash": "34a0d0e01a541de2c425056d1c648d23"
     },
     "options_discarding_options": {
         "message": "休眠选项",
-        "description": ""
+        "hash": "cfe7b01f5a278fa00a8bffebc74b3ff6"
     },
     "options_period01_a": {
-        "message": "休眠超过此时间的不活跃标签页（分钟）",
-        "description": ""
+        "message": "休眠超过该时间的非活动标签页（单位为分钟）",
+        "hash": "74899a35920bb98e5949a6b70f95baa7"
     },
     "options_period02": {
-        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
-        "description": ""
+        "message": "(设置为 0 可以禁用标签页自动休眠) 当非活动标签页的数量超过了",
+        "hash": "3fd86f56a50f6511cf98d2db26cf29d8"
     },
     "options_period04": {
         "message": "每单次自动休眠请求时进行休眠检测的标签页最大数量",
-        "description": ""
+        "hash": "8afa9f18ad86892d85a9f3a944b1d1b1"
     },
     "options_url_based": {
-        "message": "Only discard the following inactive hostnames or regular expression rules",
-        "description": ""
+        "message": "只休眠属于下列非活动域名或者满足下列正则表达式规则的项",
+        "hash": "cca6a3092ac6b210d7f37555637d44ef"
     },
     "options_tab_context": {
-        "message": "在标签页右键菜单中显示休眠选项（如果支持）",
-        "description": ""
+        "message": "在 \"标签页\" 上下文菜单中显示休眠选项（如果支持）",
+        "hash": "1145b09b4124c55024f5439115351f33"
     },
     "options_page_context": {
-        "message": "在网页右键菜单中显示休眠选项",
-        "description": ""
+        "message": "在 \"页面\" 上下文菜单中显示休眠选项",
+        "hash": "b1da59a72861359f43f7ff5a686178c5"
     },
     "options_link_context": {
-        "message": "在链接右键菜单中显示“在新的休眠标签页中打开链接”",
-        "description": ""
+        "message": "在 \"链接\" 上下文菜单中显示 \"在新建休眠标签页中打开\" 项",
+        "hash": "bda8086aa72f9e0ea804ccc940e437ab"
     },
     "options_favicon": {
-        "message": "更改已休眠标签页的小图标（如果可行）",
-        "description": ""
+        "message": "更改已休眠标签页的网站图标（如果可行）",
+        "hash": "11d002e257e2c116b398d0cf57394303"
+    },
+    "options_prepends": {
+        "message": "为已休眠标签页预先准备一个符号标志（比如 💤 或 ⏻︎）（如果可行）",
+        "hash": "ec9aba5b1657494a11840ded923c41e5"
     },
     "options_startup_unpinned": {
         "message": "在浏览器或扩展启动时休眠所有非固定标签页",
-        "description": ""
+        "hash": "2288ff1781a8ac5e19bfb0e97b4450fb"
     },
     "options_startup_pinned": {
         "message": "在浏览器或扩展启动时休眠所有固定标签页",
-        "description": ""
+        "hash": "cfcc70f583c6918fc7cf8484e13c9727"
     },
     "options_startup_release_pinned": {
-        "message": "在浏览器或扩展启动时解除所有非固定标签页的休眠状态",
-        "description": ""
+        "message": "在浏览器或扩展启动时解除所有固定标签页的休眠状态",
+        "hash": "55629aa82973435f905fe98a0bc17791"
     },
     "options_release_next_tab": {
         "message": "解除下一个标签页的休眠（活动标签页右侧第一个）",
-        "description": ""
+        "hash": "498e1fc222be464a0e19bdb4be5bf7d7"
     },
     "options_release_previous_tab": {
         "message": "解除上一个标签页的休眠（活动标签页左侧第一个）",
-        "description": ""
+        "hash": "ccba1cf322975456e415d47edfbe1e07"
     },
     "options_memory": {
-        "message": "当一个后台标签页的内存占用 (totalJSHeapSize) 超过此 MB 值时将其休眠",
-        "description": ""
+        "message": "当一个后台标签页的内存占用（totalJSHeapSize）超过此值（单位为 MB）时将其休眠",
+        "hash": "b0484be1a509aae0e32e58815d4e15e0"
     },
     "options_discarding_conditions": {
         "message": "休眠条件",
-        "description": ""
+        "hash": "3e7fe44d5910de4e3ec523ccb5851bcf"
     },
     "options_audio": {
         "message": "不休眠有媒体资源正在播放的标签页",
-        "description": ""
+        "hash": "753780ad5db52d79a707e72771ff0830"
     },
     "options_pinned": {
-        "message": "不休眠已固定的标签页",
-        "description": ""
+        "message": "不休眠已被固定的标签页",
+        "hash": "c74d7f803614b1b5cb7470dd29f7bb0c"
     },
     "options_form": {
         "message": "不休眠有尚未提交的表单更改的标签页",
-        "description": ""
+        "hash": "15e214c1d84515b3a3c630d02c92500e"
     },
     "options_battery": {
         "message": "当计算机接通电源时不休眠标签页",
-        "description": ""
+        "hash": "485118783f0537932de8502eb349dcc8"
     },
     "options_online": {
         "message": "当无网络连接且标签页未被缓存时不休眠标签页",
-        "description": ""
+        "hash": "539be553d5f8dbe59d5df9903fbc9ab6"
     },
     "options_notification_permission": {
         "message": "不休眠可显示桌面通知的标签页",
-        "description": ""
+        "hash": "2c1b1ca48f59bd1d2d693caecac82e90"
     },
     "options_idle": {
         "message": "当计算机不处于空闲状态时不休眠标签页",
-        "description": ""
+        "hash": "981d6ebe8160f023b9ff3164e739c044"
     },
     "options_idle_timeout": {
-        "message": "判定计算机处于空闲状态的不活跃时长（分钟）",
-        "description": ""
+        "message": "判定计算机处于空闲状态与否的非活动时长（单位为分钟）",
+        "hash": "3cf5e76e77fc964a3f38d820226b23df"
     },
     "options_exceptions": {
         "message": "例外",
-        "description": ""
+        "hash": "89721fe0acad7ce70bd8ca2eb3ce26b3"
     },
     "options_whitelist": {
-        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
-        "description": ""
+        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠：",
+        "hash": "3f8e517fa52071e355934ad7ba6efb85"
     },
     "options_left_click": {
         "message": "左键点击工具栏时",
-        "description": ""
+        "hash": "44c91034fc1b7721be5a770d22a72828"
     },
     "options_click_popup": {
         "message": "打开弹窗",
-        "description": ""
+        "hash": "c8fea165ea15f8da8eb906a66c692691"
     },
     "options_click_discard_tab": {
         "message": "休眠标签页",
-        "description": ""
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
     },
     "options_click_discard_tabs": {
-        "message": "休眠其他全部标签页",
-        "description": ""
+        "message": "休眠其它所有标签页",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
     },
     "options_click_release_tabs": {
-        "message": "Release All Other Tabs",
-        "description": ""
+        "message": "解除其它所有标签页的休眠",
+        "hash": "2b758e9e34771968a566156edcbf2025"
     },
     "options_click_discard_window": {
-        "message": "休眠此窗口中的其他标签页",
-        "description": ""
+        "message": "休眠此窗口中的其它标签页",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
     },
     "options_click_release_window": {
-        "message": "Release Other Tabs in This Window",
-        "description": ""
+        "message": "解除此窗口中的其它标签页的休眠",
+        "hash": "89351dd7ab5e4de50a07d6831a4434d9"
     },
     "options_click_discard_other_windows": {
-        "message": "休眠其他窗口的标签页",
-        "description": ""
+        "message": "休眠其它窗口中的标签页",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
-        "description": ""
+        "message": "解除其它窗口中的标签页的休眠",
+        "hash": "59bfe81f3c7045699f32a7526d30ee6a"
     },
     "options_click_toggle_allowed": {
-        "message": "开关“为此会话保留此标签页”选项",
-        "description": ""
+        "message": "开关 \"为此会话保留此标签页\" 选项",
+        "hash": "7636d550bd3d2c5d6d4d1432674a77af"
     },
     "options_misc": {
         "message": "杂项",
-        "description": ""
+        "hash": "435ddc17098c33c759178085bf448cf6"
     },
     "options_plugins": {
         "message": "插件",
-        "description": ""
+        "hash": "8ded4ed558f25bd161a5cc0d0f9841d4"
     },
     "options_plugin_dummy": {
-        "message": "休眠时用本地虚拟页面替换原有页面 (测试版)",
-        "description": ""
+        "message": "休眠时用本地转存项替换原有页面 (测试版)",
+        "hash": "e44f53f559422262b86a3318dd4f4aba"
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
-        "description": ""
+        "message": "当一个非活动窗口的所有标签页均被休眠时，打开一个临时空白页面（将能够休眠此窗口中的活动标签页）",
+        "hash": "60c5945de4684cf02356c96581b462bc"
     },
     "options_plugin_focus": {
         "message": "解除活动窗口中所有标签页的休眠状态。如果启用，活动窗口中不会有标签页被休眠",
-        "description": ""
+        "hash": "7a3f00e0a3cb72325668ffcd0207546d"
     },
     "options_plugin_trash": {
-        "message": "如果不活跃超过指定的小时，永久移除旧有的已休眠标签页",
-        "description": ""
+        "message": "如果处于非活动状态超过该时间（单位为小时），永久删除（移除）旧有的已休眠标签页",
+        "hash": "56214d3737ba16cb7da8f544d2f2f93f"
     },
     "options_plugin_force": {
-        "message": "下述主机名的标签页在非活跃时将被立即休眠",
-        "description": ""
+        "message": "带有下列主机名的标签页在处于非活动状态时会被立即休眠",
+        "hash": "2a8ecc55a351d86d8749ef2e79a8ec1b"
+    },
+    "options_plugin_new": {
+        "message": "在新打开的非活动标签页已加载了该时间后，将它们全部休眠",
+        "hash": "e122e072c2dc445318f1567b6b3f16d9"
     },
     "options_log": {
         "message": "显示日志（仅用于调试目的）",
-        "description": ""
+        "hash": "392d279fd6090136895fc792f03349e2"
     },
     "options_go_hidden": {
         "message": "休眠被隐藏的标签页",
-        "description": ""
+        "hash": "fe7d3f265cd69cebc14f0fd1b7935a77"
     },
     "options_use_cache": {
-        "message": "使用缓存：如果启用，本扩展对标签页被固定或者浏览器所在设备是否有外接电源只检查一次",
-        "description": ""
+        "message": "使用缓存：如果启用，本扩展对标签页被固定与否或者浏览器所在设备是否有外接电源只检查一次",
+        "hash": "051f040ab386a67669489149c7b77fac"
     },
     "options_simultaneous_jobs": {
         "message": "最多允许该数量的休眠任务同时进行",
-        "description": ""
+        "hash": "960c9a651dd9ba63109b13235d885097"
     },
     "options_faqs": {
         "message": "扩展更新后打开 FAQ 页面",
-        "description": ""
+        "hash": "a5b15486a08d241d229e19428da36004"
     },
     "options_footnote_1": {
-        "message": "可以通过匹配关键字 \"re:\" 来使用正则表达式。比如，使用 \" re:google\" 来将所有含有 \"google\" 关键字的 URL 加入白名单。",
-        "description": ""
+        "message": "可以通过匹配关键字 \"re:\" 来使用正则表达式。比如，使用 \"re:google\" 来将所有含有 \"google\" 关键字的网址加入白名单。",
+        "hash": "f4dbf9ca68e2db19a63cb4559dc8b76c"
     },
     "options_footnote_2": {
         "message": "检测顶部文档中的 totalJSHeapSize 数值。如果此内存超过了用户定义的数(最小允许数值为 10 MB )，那么该标签页会被休眠。请注意，仅当您的浏览器支持 \"window.performance.memory\" 时此选项才可用。",
-        "description": ""
+        "hash": "676b5c66803f0a668c520046d13f2673"
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
-        "description": ""
+        "message": "当一个标签页的休眠周期超过该时间或者有新建标签页被添加时，浏览器的所有标签页都会被检测，以判断哪些标签页需要被休眠。此选项会强制该扩展限制这些检测。最小允许数值为 1 分钟。推荐数值为 10 分钟。",
+        "hash": "a040bda780751abbce8430389e78f646"
     },
     "options_reset": {
         "message": "恢复出厂",
-        "description": ""
+        "hash": "d5b6463b0cad328f345d02be1555a5b0"
     },
     "options_import": {
         "message": "导入设置",
-        "description": ""
+        "hash": "bf42ebb9525b244d3f126f06006ca72a"
     },
     "options_export": {
         "message": "导出设置",
-        "description": ""
+        "hash": "f3b2dbecd4d63fa3f7b68d467394363e"
     },
     "options_save": {
         "message": "保存选项",
-        "description": ""
+        "hash": "2ec0eb53c6aabad321dced9ca0824360"
     },
     "options_support": {
         "message": "支持开发",
-        "description": ""
+        "hash": "5f568167b705b29bf0c26e745ee6dbb5"
     },
     "options_check_delay": {
-        "message": "按顺序的休眠检查的最小间隔（秒）",
-        "description": ""
+        "message": "连续的休眠检测间的最小延迟（单位为秒）",
+        "hash": "5ec6fbcfae7799adc4c942868c83f457"
     },
     "options_favicon_delay": {
-        "message": "绘制已休眠网站图标的延迟（毫秒）",
-        "description": ""
+        "message": "绘制已休眠网站图标的延迟（单位为毫秒）",
+        "hash": "fdb14ef51771a8bbaccd4d0ba4031863"
     },
     "popup_discard_tab": {
         "message": "休眠标签页",
-        "description": ""
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
     },
     "popup_discard_tree": {
         "message": "休眠标签组",
-        "description": ""
+        "hash": "5aa7d3f96fc2a5d665092160729accd2"
     },
     "popup_discard_tabs": {
-        "message": "休眠其他全部标签页",
-        "description": ""
+        "message": "休眠其它所有标签页",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
     },
     "popup_discard_window": {
-        "message": "休眠此窗口中的其他标签页",
-        "description": ""
+        "message": "休眠此窗口中的其它标签页",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
     },
     "popup_discard_rights": {
         "message": "休眠右侧标签页",
-        "description": ""
+        "hash": "d382501f526b08027cfb66880015c185"
     },
     "popup_discard_lefts": {
         "message": "休眠左侧标签页",
-        "description": ""
+        "hash": "4adc5ba446f3be33519e5ad9bfa3bbee"
     },
     "popup_discard_other_windows": {
-        "message": "休眠其他窗口中的标签页",
-        "description": ""
+        "message": "休眠其它窗口中的标签页",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
     },
     "popup_move_previous": {
         "message": "左侧标签页",
-        "description": ""
+        "hash": "1a82d462a2c05d25e71a7c231389522c"
     },
     "popup_close": {
         "message": "关闭标签页",
-        "description": ""
+        "hash": "c30667b4c0fdd7d986e7f2efc81fc4e4"
     },
     "popup_move_next": {
         "message": "右侧标签页",
-        "description": ""
+        "hash": "18def2b5c69813a82f116115bde88498"
     },
     "popup_whitelist_desc": {
         "message": "保留属于此站点的标签页",
-        "description": ""
+        "hash": "8ad99f20fe750d30fa2fa90f9e5badd9"
     },
     "popup_whitelist_always": {
         "message": "总是",
-        "description": ""
+        "hash": "ec32aa81f0f4dac96c3a38c31cf85395"
     },
     "popup_whitelist_always_title": {
-        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
-        "description": ""
+        "message": "点击操作会将域名添加到例外列表。按住 Shift 键后再点击的操作会将确切的网址添加到例外列表",
+        "hash": "3547ee4c6986c23f0ee65cf46a37bfcb"
     },
     "popup_whitelist_session": {
         "message": "会话",
-        "description": ""
+        "hash": "17d1fe07a794562aedff66615e42a0e2"
     },
     "popup_allowed": {
         "message": "为此会话保留此标签页",
-        "description": ""
+        "hash": "939f21573ccecc29ff2c93033537c93f"
     },
     "popup_open_options": {
         "message": "选项",
-        "description": ""
+        "hash": "531dad0078a72193602b18495f0ad4e9"
     },
     "popup_release": {
-        "message": "解除休眠状态。绕过缓存的内容请使用 Shift + 单击",
-        "description": ""
+        "message": "解除休眠状态。请按住 Shift 键后再点击来绕过被缓存的内容",
+        "hash": "e9baf42ee7b48a3979466fd1a075de97"
     },
     "popup_shift_hint": {
-        "message": "使用 Shift 键来忽略例外",
-        "description": ""
+        "message": "使用 Shift 键来忽略例外项",
+        "hash": "35bf96bce05e245fd0d9c2256e33cfd5"
     },
     "bg_no_active_tab": {
         "message": "活动标签页不存在",
-        "description": ""
+        "hash": "e60ed5df9c898d2317e8858ee66a839d"
     },
     "bg_msg_1": {
         "message": "该标签页已禁用自动休眠",
-        "description": ""
+        "hash": "3c4346c294197be6fba4a91449b15bd8"
     },
     "menu_discard_tab": {
         "message": "休眠标签页",
-        "description": ""
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
     },
     "menu_discard_tree": {
         "message": "休眠标签组",
-        "description": ""
+        "hash": "5aa7d3f96fc2a5d665092160729accd2"
     },
     "menu_discard_menu": {
         "message": "休眠此窗口中的标签页",
-        "description": ""
+        "hash": "bc500a8d2af8c2c53704dbaa806ebfac"
     },
     "menu_discard_tabs": {
-        "message": "休眠其他全部标签页",
-        "description": ""
+        "message": "休眠其它所有标签页",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
     },
     "menu_discard_rights": {
         "message": "休眠右侧标签页",
-        "description": ""
+        "hash": "d382501f526b08027cfb66880015c185"
     },
     "menu_discard_lefts": {
         "message": "休眠左侧标签页",
-        "description": ""
+        "hash": "4adc5ba446f3be33519e5ad9bfa3bbee"
     },
     "menu_discard_window": {
-        "message": "休眠其他标签页",
-        "description": ""
+        "message": "休眠其它标签页",
+        "hash": "4fd11a4c2063a13329eb0a8f7502b823"
     },
     "menu_discard_other_windows": {
-        "message": "休眠其他窗口中的标签页",
-        "description": ""
+        "message": "休眠其它窗口中的标签页",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
     },
     "menu_whitelist_domain": {
         "message": "总是保留属于此站点的标签页",
-        "description": ""
+        "hash": "0cb2a1d1e3c84802bf9492e878e658da"
     },
     "menu_open_tab_then_discard": {
-        "message": "在新的已休眠标签中打开链接",
-        "description": ""
+        "message": "在新建已休眠标签页中打开链接",
+        "hash": "1c2f030d8ac0122b3f2fbf240e66f03f"
     },
     "menu_move_previous": {
         "message": "移动到左侧标签页",
-        "description": ""
+        "hash": "262521f22375c2763098c199fed50808"
     },
     "menu_move_next": {
         "message": "移动到右侧标签页",
-        "description": ""
+        "hash": "91e001469468d33c75db14f482dabf2c"
     },
     "menu_close": {
         "message": "关闭标签页",
-        "description": ""
+        "hash": "c30667b4c0fdd7d986e7f2efc81fc4e4"
     },
     "menu_msg1": {
         "message": "已被添加到永久白名单",
-        "description": ""
+        "hash": "92960043c97c0bec781357cf9dca89ad"
     },
     "menu_msg4": {
         "message": "已被添加到会话白名单",
-        "description": ""
+        "hash": "602c32deaf354f5dd4dd48181e7ddcc4"
     },
     "menu_msg2": {
         "message": "协议不被支持",
-        "description": ""
+        "hash": "fe5ffc14b641a4d62a1810463a69066f"
     },
     "menu_msg3": {
         "message": "不能休眠处于活动状态的标签页",
-        "description": ""
+        "hash": "8792f6eb15159714178485ee839eed42"
     },
     "cmd_discard_tab": {
         "message": "休眠标签页",
-        "description": ""
+        "hash": "ecb65c61c6c0d9a82334663b36652d70"
+    },
+    "cmd_discard_tree": {
+        "message": "休眠标签组",
+        "hash": "5aa7d3f96fc2a5d665092160729accd2"
     },
     "cmd_discard_tabs": {
-        "message": "休眠所有其他标签页",
-        "description": ""
+        "message": "休眠所有其它标签页",
+        "hash": "67149a710aea15a28f73f5f8c833d863"
     },
     "cmd_discard_window": {
-        "message": "休眠此窗口中的其他标签页",
-        "description": ""
+        "message": "休眠此窗口中的其它标签页",
+        "hash": "eee6515dec658061849adee3e51b7c8d"
     },
     "cmd_discard_other_windows": {
-        "message": "休眠其他窗口中的标签页",
-        "description": ""
+        "message": "休眠其它窗口中的标签页",
+        "hash": "a38045c379ba7d90788a7d9ef7c7e626"
     },
     "cmd_whitelist_domain": {
-        "message": "总是为此会话保留此标签页",
-        "description": ""
+        "message": "总是为此站点保留标签页",
+        "hash": "0cb2a1d1e3c84802bf9492e878e658da"
     },
     "cmd_move_previous": {
         "message": "移动到左侧标签页",
-        "description": ""
+        "hash": "262521f22375c2763098c199fed50808"
     },
     "cmd_move_next": {
         "message": "移动到右侧标签页",
-        "description": ""
+        "hash": "91e001469468d33c75db14f482dabf2c"
     },
     "cmd_close": {
         "message": "关闭标签页",
-        "description": ""
+        "hash": "c30667b4c0fdd7d986e7f2efc81fc4e4"
     },
     "blank_msg": {
-        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
-        "description": ""
-    }
+        "message": "此窗口中的所有标签页已被休眠！点击任意位置以关闭此标签页。",
+        "hash": "3f39f260198710a6d60eeecf0dc2661e"
+    },
+    "__WET_LOCALE__": { "message": "zh_CN" }
 }
