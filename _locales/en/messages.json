@@ -6,10 +6,10 @@
     "message": "Discarding options"
   },
   "options_period01_a": {
-    "message": "Discard inactive tabs after (in minutes) "
+    "message": "Discard inactive tabs after "
   },
   "options_period02": {
-    "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds "
+    "message": "minutes (zero to disable) when the number of inactive tabs exceeds "
   },
   "options_period04": {
     "message": "Maximum number of tabs to check for discarding per single automatic discarding request "

@@ -21,7 +21,7 @@ body {
   max-width: 80%;
   margin: auto;
 }
-@media screen and (max-width: 600px)  {
+@media screen and (max-width: 600px) {
   body {
     margin: 10px;
     max-width: unset;

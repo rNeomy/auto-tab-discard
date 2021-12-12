@@ -14,6 +14,8 @@ const number = {
 const pluginFilters = {}; // this object adds custom filters to the number-based discarding
 
 number.install = period => {
+  period = Math.max(60, period / 3);
+
   chrome.alarms.create('number.check', {
     when: Date.now() + period * 1000,
     periodInMinutes: period / 60
@@ -112,6 +114,9 @@ number.check = async (filterTabsFrom, ops = {}) => {
     (prefs.mode === 'url-based' && prefs['whitelist-url'].length)
   ) {
     const match = (href, hostname, list) => {
+      if (list.length === 0) {
+        return false;
+      }
       if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
         return true;
       }
@@ -125,19 +130,25 @@ number.check = async (filterTabsFrom, ops = {}) => {
       }
     };
     tbs = tbs.filter(tb => {
-      const {hostname} = new URL(tb.url);
-      const m = list => match(tb.url, hostname, list);
-      // if we are on url-based mode, remove tabs that are not on the list (before fetching meta)
-      if (prefs.mode === 'url-based' && m(prefs['whitelist-url']) !== true) {
-        icon(tb, 'tab is in the whitelist');
+      try {
+        const {hostname} = new URL(tb.url);
+
+        const m = list => match(tb.url, hostname, list);
+        // if we are on url-based mode, remove tabs that are not on the list (before fetching meta)
+        if (prefs.mode === 'url-based' && m(prefs['whitelist-url']) !== true) {
+          icon(tb, 'tab is in the whitelist');
+          return false;
+        }
+        // is the tab in whitelist, remove it (before fetching meta)
+        if (m(prefs['whitelist']) || m(prefs['whitelist.session'])) {
+          icon(tb, 'tab is in either the session whitelist or permanent whitelist');
+          return false;
+        }
+        return true;
+      }
+      catch (e) {
         return false;
       }
-      // is the tab in whitelist, remove it (before fetching meta)
-      if (m(prefs['whitelist']) || m(prefs['whitelist.session'])) {
-        icon(tb, 'tab is in either the session whitelist or permanent whitelist');
-        return false;
-      }
-      return true;
     });
   }
   if (filterTabsFrom) {
