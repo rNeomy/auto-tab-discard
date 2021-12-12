@@ -17,9 +17,21 @@ function disable() {
 chrome.alarms.onAlarm.addListener(alarm => {
   if (alarm.name === 'trash.check') {
     log('alarm fire', 'trash.check', alarm.name);
-    query({
-      discarded: true
-    }).then((tbs = []) => {
+
+    // https://github.com/rNeomy/auto-tab-discard/issues/243
+    Promise.all([
+      query({status: 'unloaded'}),
+      query({discarded: true})
+    ]).then(a => {
+      const tbs = [];
+      const ids = new Set();
+      for (const tb of a.flat()) {
+        if (ids.has(tb.id) === false) {
+          ids.add(tb.id);
+          tbs.push(tb);
+        }
+      }
+
       const keys = tbs.map(t => t.url);
       const now = Date.now();
       const removed = [];
