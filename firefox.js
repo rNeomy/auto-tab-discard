@@ -8,9 +8,15 @@ if (isFirefox) {
   const cache = {};
   const query = chrome.tabs.query;
   chrome.tabs.query = function(queryInfo, callback = () => {}) {
+    if ('status' in queryInfo) {
+      callback([]);
+      return;
+    }
+
     const b = 'autoDiscardable' in queryInfo;
     const v = queryInfo.autoDiscardable;
     delete queryInfo.autoDiscardable;
+
     query.apply(this, [queryInfo, tabs => {
       if (b) {
         tabs = tabs.filter(tab => v ? cache[tab.id] !== false : cache[tab.id] === false);
