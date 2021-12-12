@@ -157,6 +157,7 @@ const discard = tab => {
         discard.count -= 1;
         if (discard.tabs.length) {
           const tab = discard.tabs.shift();
+          inprogress.delete(tab.id);
           discard(tab);
         }
         resolve();
