@@ -97,6 +97,7 @@ const navigate = (method, discarded = false) => query({
   else {
     ntab = previous.length ? previous.pop() : next.pop();
   }
+
   if (ntab) {
     chrome.tabs.update(ntab.id, {
       active: true
@@ -112,122 +113,134 @@ const navigate = (method, discarded = false) => query({
   }
 });
 
-const discard = tab => storage(prefs).then(prefs => {
+// this list keeps ids of the tabs that are in progress of being discarded
+const inprogress = new Set();
+
+const discard = tab => {
+  if (inprogress.has(tab.id)) {
+    return;
+  }
+  // https://github.com/rNeomy/auto-tab-discard/issues/248
+  inprogress.add(tab.id);
+  setTimeout(() => inprogress.delete(tab.id), 2000);
+
   if (tab.active) {
     return;
   }
   if (tab.discarded) {
     return;
   }
-  if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
-    discard.count = 0;
-  }
-  if (discard.count > prefs['simultaneous-jobs']) {
-    log('discarding queue for', tab);
-    discard.tabs.push(tab);
-    return;
-  }
-  return new Promise(resolve => {
-    discard.count += 1;
-    discard.time = Date.now();
-    const next = () => {
-      try {
-        if (isFirefox) {
-          chrome.tabs.discard(tab.id);
-        }
-        else {
-          chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
-        }
-      }
-      catch (e) {
-        log('discarding failed', e);
-      }
-      discard.count -= 1;
-      if (discard.tabs.length) {
-        const tab = discard.tabs.shift();
-        discard(tab);
-      }
-      resolve();
-    };
-    // favicon
-    const icon = () => {
-      const src = tab.favIconUrl || '/data/page.png';
-      Object.assign(new Image(), {
-        crossOrigin: 'anonymous',
-        src,
-        onerror() {
-          next();
-        },
-        onload() {
-          const img = this;
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          if (ctx) {
-            canvas.width = img.width;
-            canvas.height = img.height;
-
-            ctx.globalAlpha = 0.6;
-            ctx.drawImage(img, 0, 0);
-
-            ctx.globalAlpha = 1;
-            ctx.beginPath();
-            ctx.fillStyle = '#a1a0a1';
-            ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-            ctx.fill();
-            const href = canvas.toDataURL('image/png');
-
-            chrome.tabs.executeScript(tab.id, {
-              runAt: 'document_start',
-              allFrames: true,
-              matchAboutBlank: true,
-              code: `
-                window.stop();
-                if (window === window.top) {
-                  [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
-
-                  document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                    rel: 'icon',
-                    type: 'image/png',
-                    href: '${href}'
-                  }));
-                }
-              `
-            }, () => setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
+  return storage(prefs).then(prefs => {
+    if (discard.count > prefs['simultaneous-jobs'] && discard.time + 5000 < Date.now()) {
+      discard.count = 0;
+    }
+    if (discard.count > prefs['simultaneous-jobs']) {
+      log('discarding queue for', tab);
+      discard.tabs.push(tab);
+      return;
+    }
+    return new Promise(resolve => {
+      discard.count += 1;
+      discard.time = Date.now();
+      const next = () => {
+        try {
+          if (isFirefox) {
+            chrome.tabs.discard(tab.id);
           }
           else {
-            next();
+            chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
           }
         }
-      });
-    };
-    // change title
-    if (prefs.prepends) {
-      chrome.tabs.executeScript(tab.id, {
-        runAt: 'document_start',
-        code: `
-          window.stop();
-          document.title = '${prefs.prepends.replace(/'/g, '_')} ' + document.title;
-        `
-      }, () => {
-        chrome.runtime.lastError;
+        catch (e) {
+          log('discarding failed', e);
+        }
+        discard.count -= 1;
+        if (discard.tabs.length) {
+          const tab = discard.tabs.shift();
+          discard(tab);
+        }
+        resolve();
+      };
+      // favicon
+      const icon = () => {
+        const src = tab.favIconUrl || '/data/page.png';
+        Object.assign(new Image(), {
+          crossOrigin: 'anonymous',
+          src,
+          onerror() {
+            next();
+          },
+          onload() {
+            const img = this;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+              canvas.width = img.width;
+              canvas.height = img.height;
+
+              ctx.globalAlpha = 0.6;
+              ctx.drawImage(img, 0, 0);
+
+              ctx.globalAlpha = 1;
+              ctx.beginPath();
+              ctx.fillStyle = '#a1a0a1';
+              ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
+              ctx.fill();
+              const href = canvas.toDataURL('image/png');
+
+              chrome.tabs.executeScript(tab.id, {
+                runAt: 'document_start',
+                allFrames: true,
+                matchAboutBlank: true,
+                code: `
+                  window.stop();
+                  if (window === window.top) {
+                    [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+
+                    document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                      rel: 'icon',
+                      type: 'image/png',
+                      href: '${href}'
+                    }));
+                  }
+                `
+              }, () => setTimeout(next, prefs['favicon-delay']) && chrome.runtime.lastError);
+            }
+            else {
+              next();
+            }
+          }
+        });
+      };
+      // change title
+      if (prefs.prepends) {
+        chrome.tabs.executeScript(tab.id, {
+          runAt: 'document_start',
+          code: `
+            window.stop();
+            document.title = '${prefs.prepends.replace(/'/g, '_')} ' + (document.title || location.href);
+          `
+        }, () => {
+          chrome.runtime.lastError;
+          if (prefs.favicon) {
+            icon();
+          }
+          else {
+            setTimeout(next, prefs['favicon-delay']);
+          }
+        });
+      }
+      else {
         if (prefs.favicon) {
           icon();
         }
         else {
-          setTimeout(next, prefs['favicon-delay']);
+          next();
         }
-      });
-    }
-    else {
-      if (prefs.favicon) {
-        icon();
       }
-      else {
-        next();
-      }
-    }
+    });
   });
-});
+}
 discard.tabs = [];
 discard.count = 0;
 

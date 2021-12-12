@@ -1,4 +1,4 @@
-/* globals discard, query, notify, navigate, starters, storage, prefs, isFirefox, number, interrupts */
+/* globals discard, query, notify, navigate, starters, storage, prefs, isFirefox, number, interrupts, inprogress */
 'use strict';
 
 // Context Menu
@@ -169,8 +169,13 @@
       if (htabs.filter(t => t.active).length) {
         // ids to be discarded
         const ids = htabs.map(t => t.id);
+
         const otab = tabs
-          .filter(t => t.discarded === false && t.highlighted === false && ids.indexOf(t.id) === -1)
+          .filter(t => {
+            return t.discarded === false && t.highlighted === false &&
+              ids.indexOf(t.id) === -1 &&
+              inprogress.has(t.id) === false;
+          })
           .sort((a, b) => Math.abs(a.index - tab.index) - Math.abs(b.index - tab.index))
           .shift();
         if (otab) {
