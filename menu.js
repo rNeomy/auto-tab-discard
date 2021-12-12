@@ -172,7 +172,7 @@
 
         const otab = tabs
           .filter(t => {
-            return t.discarded === false && t.highlighted === false &&
+            return t.discarded === false && t.highlighted === false && t.status !== 'unloaded' &&
               ids.indexOf(t.id) === -1 &&
               inprogress.has(t.id) === false;
           })
