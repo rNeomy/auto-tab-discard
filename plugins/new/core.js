@@ -11,7 +11,6 @@ const run = tab => {
         document.addEventListener('DOMContentLoaded', run);
       }
       else {
-        setTimeout(run, 1000);
         run();
       }
     }`

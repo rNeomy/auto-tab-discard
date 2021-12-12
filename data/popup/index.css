@@ -110,16 +110,24 @@ li span[data-cmd^="release"] svg {
   white-space: nowrap;
   padding: 10px 0;
 }
-.nav > span {
-  background-color: var(--button);
-  padding: 10px 0;
-  cursor: pointer;
+.nav > div {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  background-color: var(--button);
+  cursor: pointer;
 }
-.nav > span:hover {
+.nav > div:hover {
   background-color: var(--dark);
+}
+.nav > div * {
+  pointer-events: none;
+}
+.nav > div > span {
+  padding: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .mlt {
   display: grid;
