@@ -14,7 +14,8 @@ const number = {
 const pluginFilters = {}; // this object adds custom filters to the number-based discarding
 
 number.install = period => {
-  period = Math.max(60, period / 3);
+  // checking period is between 1 minute to 20 minutes
+  period = Math.min(20 * 60, Math.max(60, period / 3));
 
   chrome.alarms.create('number.check', {
     when: Date.now() + period * 1000,
