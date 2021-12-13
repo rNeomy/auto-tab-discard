@@ -1,6 +1,6 @@
 {
     "app_description": {
-        "message": "如果你打开了很多标签页，这个扩展能提升浏览器速度和减少内存占用。",
+        "message": "如果您打开了很多标签页，这个扩展能提升浏览器速度并减少内存占用。",
         "description": ""
     },
     "options_discarding_options": {
@@ -8,11 +8,11 @@
         "description": ""
     },
     "options_period01_a": {
-        "message": "休眠超过此时间的不活跃标签页（分钟）",
+        "message": "对于处于非活动状态超过了",
         "description": ""
     },
     "options_period02": {
-        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
+        "message": "分钟 (设置为 0 表示禁用) 的标签页，在非活动标签页的数量超过了以下值时，将它们禁用",
         "description": ""
     },
     "options_period04": {
@@ -20,23 +20,27 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Only discard the following inactive hostnames or regular expression rules",
+        "message": "只休眠属于下列非活动域名或者满足下列正则表达式规则的项",
         "description": ""
     },
     "options_tab_context": {
-        "message": "在标签页右键菜单中显示休眠选项（如果支持）",
+        "message": "在 \"标签页\" 上下文菜单中显示休眠选项（如果支持）",
         "description": ""
     },
     "options_page_context": {
-        "message": "在网页右键菜单中显示休眠选项",
+        "message": "在 \"页面\" 上下文菜单中显示休眠选项",
         "description": ""
     },
     "options_link_context": {
-        "message": "在链接右键菜单中显示“在新的休眠标签页中打开链接”",
+        "message": "在 \"链接\" 上下文菜单中显示 \"在新建休眠标签页中打开\" 项",
         "description": ""
     },
     "options_favicon": {
-        "message": "更改已休眠标签页的小图标（如果可行）",
+        "message": "更改已休眠标签页的网站图标（如果可行）",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "为已休眠标签页预先准备一个符号标志（比如 💤 或 ⏻︎）（如果可行）",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -48,7 +52,7 @@
         "description": ""
     },
     "options_startup_release_pinned": {
-        "message": "在浏览器或扩展启动时解除所有非固定标签页的休眠状态",
+        "message": "在浏览器或扩展启动时解除所有固定标签页的休眠状态",
         "description": ""
     },
     "options_release_next_tab": {
@@ -60,7 +64,7 @@
         "description": ""
     },
     "options_memory": {
-        "message": "当一个后台标签页的内存占用 (totalJSHeapSize) 超过此 MB 值时将其休眠",
+        "message": "当一个后台标签页的内存占用（totalJSHeapSize）超过此值（单位为 MB）时将其休眠",
         "description": ""
     },
     "options_discarding_conditions": {
@@ -96,7 +100,7 @@
         "description": ""
     },
     "options_idle_timeout": {
-        "message": "判定计算机处于空闲状态的不活跃时长（分钟）",
+        "message": "判定计算机处于空闲状态与否的非活动时长（单位为分钟）",
         "description": ""
     },
     "options_exceptions": {
@@ -104,7 +108,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
+        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠：",
         "description": ""
     },
     "options_left_click": {
@@ -120,31 +124,31 @@
         "description": ""
     },
     "options_click_discard_tabs": {
-        "message": "休眠其他全部标签页",
+        "message": "休眠其它所有标签页",
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Release All Other Tabs",
+        "message": "解除其它所有标签页的休眠",
         "description": ""
     },
     "options_click_discard_window": {
-        "message": "休眠此窗口中的其他标签页",
+        "message": "休眠此窗口中的其它标签页",
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Release Other Tabs in This Window",
+        "message": "解除此窗口中的其它标签页的休眠",
         "description": ""
     },
     "options_click_discard_other_windows": {
-        "message": "休眠其他窗口的标签页",
+        "message": "休眠其它窗口中的标签页",
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
+        "message": "解除其它窗口中的标签页的休眠",
         "description": ""
     },
     "options_click_toggle_allowed": {
-        "message": "开关“为此会话保留此标签页”选项",
+        "message": "开关 \"为此会话保留此标签页\" 选项",
         "description": ""
     },
     "options_misc": {
@@ -156,23 +160,35 @@
         "description": ""
     },
     "options_plugin_dummy": {
-        "message": "休眠时用本地虚拟页面替换原有页面 (测试版)",
+        "message": "休眠时用本地转存项替换原有页面 (测试版)",
         "description": ""
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "message": "当一个非活动窗口的所有标签页均被休眠时，打开一个临时空白页面（将能够休眠此窗口中的活动标签页）",
         "description": ""
     },
     "options_plugin_focus": {
         "message": "解除活动窗口中所有标签页的休眠状态。如果启用，活动窗口中不会有标签页被休眠",
         "description": ""
     },
+    "options_plugin_unloaded": {
+        "message": "在浏览器启动时休眠全部未加载标签页。这个方法会休眠几乎全部非活动标签页",
+        "description": ""
+    },
     "options_plugin_trash": {
-        "message": "如果不活跃超过指定的小时，永久移除旧有的已休眠标签页",
+        "message": "如果处于非活动状态超过该时间（单位为小时），永久删除（移除）旧有的已休眠标签页",
+        "description": ""
+    },
+    "options_plugin_trash_unloaded": {
+        "message": "同时，该项也会影响到旧有的未加载标签",
         "description": ""
     },
     "options_plugin_force": {
-        "message": "下述主机名的标签页在非活跃时将被立即休眠",
+        "message": "带有下列主机名的标签页在处于非活动状态时会被立即休眠",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "在新打开的非活动标签页已加载了该时间后，将它们全部休眠",
         "description": ""
     },
     "options_log": {
@@ -184,7 +200,7 @@
         "description": ""
     },
     "options_use_cache": {
-        "message": "使用缓存：如果启用，本扩展对标签页被固定或者浏览器所在设备是否有外接电源只检查一次",
+        "message": "使用缓存：如果启用，本扩展对标签页被固定与否或者浏览器所在设备是否有外接电源只检查一次",
         "description": ""
     },
     "options_simultaneous_jobs": {
@@ -196,7 +212,7 @@
         "description": ""
     },
     "options_footnote_1": {
-        "message": "可以通过匹配关键字 \"re:\" 来使用正则表达式。比如，使用 \" re:google\" 来将所有含有 \"google\" 关键字的 URL 加入白名单。",
+        "message": "可以通过匹配关键字 \"re:\" 来使用正则表达式。比如，使用 \"re:google\" 来将所有含有 \"google\" 关键字的网址加入白名单。",
         "description": ""
     },
     "options_footnote_2": {
@@ -204,7 +220,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
+        "message": "当一个标签页的休眠周期超过该时间或者有新建标签页被添加时，浏览器的所有标签页都会被检测，以判断哪些标签页需要被休眠。此选项会强制该扩展限制这些检测。最小允许数值为 1 分钟。推荐数值为 10 分钟。",
         "description": ""
     },
     "options_reset": {
@@ -228,11 +244,11 @@
         "description": ""
     },
     "options_check_delay": {
-        "message": "按顺序的休眠检查的最小间隔（秒）",
+        "message": "连续的休眠检测间的最小延迟（单位为秒）",
         "description": ""
     },
     "options_favicon_delay": {
-        "message": "绘制已休眠网站图标的延迟（毫秒）",
+        "message": "绘制已休眠网站图标的延迟（单位为毫秒）",
         "description": ""
     },
     "popup_discard_tab": {
@@ -244,11 +260,11 @@
         "description": ""
     },
     "popup_discard_tabs": {
-        "message": "休眠其他全部标签页",
+        "message": "休眠其它所有标签页",
         "description": ""
     },
     "popup_discard_window": {
-        "message": "休眠此窗口中的其他标签页",
+        "message": "休眠此窗口中的其它标签页",
         "description": ""
     },
     "popup_discard_rights": {
@@ -260,7 +276,7 @@
         "description": ""
     },
     "popup_discard_other_windows": {
-        "message": "休眠其他窗口中的标签页",
+        "message": "休眠其它窗口中的标签页",
         "description": ""
     },
     "popup_move_previous": {
@@ -284,7 +300,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
+        "message": "点击操作会将域名添加到例外列表。按住 Shift 键后再点击的操作会将确切的网址添加到例外列表",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -300,11 +316,11 @@
         "description": ""
     },
     "popup_release": {
-        "message": "解除休眠状态。绕过缓存的内容请使用 Shift + 单击",
+        "message": "解除休眠状态。请按住 Shift 键后再点击来绕过被缓存的内容",
         "description": ""
     },
     "popup_shift_hint": {
-        "message": "使用 Shift 键来忽略例外",
+        "message": "使用 Shift 键来忽略例外项",
         "description": ""
     },
     "bg_no_active_tab": {
@@ -328,7 +344,7 @@
         "description": ""
     },
     "menu_discard_tabs": {
-        "message": "休眠其他全部标签页",
+        "message": "休眠其它所有标签页",
         "description": ""
     },
     "menu_discard_rights": {
@@ -340,11 +356,11 @@
         "description": ""
     },
     "menu_discard_window": {
-        "message": "休眠其他标签页",
+        "message": "休眠其它标签页",
         "description": ""
     },
     "menu_discard_other_windows": {
-        "message": "休眠其他窗口中的标签页",
+        "message": "休眠其它窗口中的标签页",
         "description": ""
     },
     "menu_whitelist_domain": {
@@ -352,7 +368,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "在新的已休眠标签中打开链接",
+        "message": "在新建已休眠标签页中打开链接",
         "description": ""
     },
     "menu_move_previous": {
@@ -387,20 +403,24 @@
         "message": "休眠标签页",
         "description": ""
     },
+    "cmd_discard_tree": {
+        "message": "休眠标签组",
+        "description": ""
+    },
     "cmd_discard_tabs": {
-        "message": "休眠所有其他标签页",
+        "message": "休眠所有其它标签页",
         "description": ""
     },
     "cmd_discard_window": {
-        "message": "休眠此窗口中的其他标签页",
+        "message": "休眠此窗口中的其它标签页",
         "description": ""
     },
     "cmd_discard_other_windows": {
-        "message": "休眠其他窗口中的标签页",
+        "message": "休眠其它窗口中的标签页",
         "description": ""
     },
     "cmd_whitelist_domain": {
-        "message": "总是为此会话保留此标签页",
+        "message": "总是为此站点保留标签页",
         "description": ""
     },
     "cmd_move_previous": {
@@ -416,7 +436,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
+        "message": "此窗口中的所有标签页已被休眠！点击任意位置以关闭此标签页。",
         "description": ""
     }
 }
