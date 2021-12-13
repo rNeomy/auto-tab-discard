@@ -241,7 +241,7 @@ const discard = tab => {
       }
     });
   });
-}
+};
 discard.tabs = [];
 discard.count = 0;
 

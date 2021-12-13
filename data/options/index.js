@@ -35,6 +35,7 @@ const restore = () => storage({
   'number': 6, // number of tabs before triggering discard
   'max.single.discard': 50, // max number of tabs to discard
   'trash.period': 24, // in hours
+  'trash.unloaded': false,
   'audio': true, // audio = true => do not discard if audio is playing
   'pinned': false, // pinned = true => do not discard if tab is pinned
   'form': true, // form = true => do not discard if form data is changed
@@ -73,7 +74,8 @@ const restore = () => storage({
   './plugins/force/core.js': false,
   './plugins/next/core.js': false,
   './plugins/previous/core.js': false,
-  './plugins/new/core.js': false
+  './plugins/new/core.js': false,
+  './plugins/unloaded/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -92,6 +94,7 @@ const restore = () => storage({
     document.getElementById('period').value = Math.max(1, parseInt(prefs.period / 60));
   }
   document.getElementById('trash.period').value = prefs['trash.period'];
+  document.getElementById('trash.unloaded').checked = prefs['trash.unloaded'];
   document.getElementById('number').value = prefs.number;
   document.getElementById('max.single.discard').value = prefs['max.single.discard'];
   document.getElementById('simultaneous-jobs').value = prefs['simultaneous-jobs'];
@@ -127,6 +130,7 @@ const restore = () => storage({
   document.getElementById('./plugins/next/core.js').checked = prefs['./plugins/next/core.js'];
   document.getElementById('./plugins/previous/core.js').checked = prefs['./plugins/previous/core.js'];
   document.getElementById('./plugins/new/core.js').checked = prefs['./plugins/new/core.js'];
+  document.getElementById('./plugins/unloaded/core.js').checked = prefs['./plugins/unloaded/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -156,6 +160,7 @@ document.getElementById('save').addEventListener('click', () => {
     number,
     'max.single.discard': mx,
     'trash.period': trash,
+    'trash.unloaded': document.getElementById('trash.unloaded').checked,
     'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',
     click,
     'audio': document.getElementById('audio').checked,
@@ -204,7 +209,8 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked,
     './plugins/next/core.js': document.getElementById('./plugins/next/core.js').checked,
     './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked,
-    './plugins/new/core.js': document.getElementById('./plugins/new/core.js').checked
+    './plugins/new/core.js': document.getElementById('./plugins/new/core.js').checked,
+    './plugins/unloaded/core.js': document.getElementById('./plugins/unloaded/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

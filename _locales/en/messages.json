@@ -128,8 +128,14 @@
   "options_plugin_focus": {
     "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded"
   },
+  "options_plugin_unloaded": {
+    "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs"
+  },
   "options_plugin_trash": {
     "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)"
+  },
+  "options_plugin_trash_unloaded": {
+    "message": "Also, consider old unloaded tabs"
   },
   "options_plugin_force": {
     "message": "Immediately discard the following hostnames when their tab is not active"
