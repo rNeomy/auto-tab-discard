@@ -8,11 +8,11 @@
         "description": ""
     },
     "options_period01_a": {
-        "message": "Descartar abas inativas após (em minutos)",
+        "message": "Descartar abas inativas depois de",
         "description": ""
     },
     "options_period02": {
-        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
+        "message": "minutos (zero para desabilitar) quando o número de abas inativas exceder",
         "description": ""
     },
     "options_period04": {
@@ -37,6 +37,10 @@
     },
     "options_favicon": {
         "message": "Alterar o favicon de abas descartadas (se possível)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "Prefixar um símbolo nas abas descartadas (p. ex. 💤 or ⏻︎) (se possível)",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -104,7 +108,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Abas com os seguintes nomes de host não serão descartadas:",
+        "message": "Abas com os seguintes nomes de host ou expressões regulares não serão descartadas:",
         "description": ""
     },
     "options_left_click": {
@@ -140,7 +144,7 @@
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
+        "message": "Liberar Abas em Outras Janelas",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -156,23 +160,35 @@
         "description": ""
     },
     "options_plugin_dummy": {
-        "message": "When discarding, replace the page with a local dummy alternative (beta)",
+        "message": "Ao descartar, substitua a pagina por uma página fícticia local (beta)",
         "description": ""
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "message": "Abra uma página em branco temporariamente quando todas as abas em uma janela intativa forem descartadas (para poder descartar a aba ativa nessa janela)",
         "description": ""
     },
     "options_plugin_focus": {
-        "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
+        "message": "Desabilitar o descarte de todas as abas na janela ativa. Se ativo, nenhuma aba na janela ativa será descartada.",
+        "description": ""
+    },
+    "options_plugin_unloaded": {
+        "message": "Descartar todas as abas não carregadas ao iniciar o navegador. Esse método descarta quase todas as abas inativas",
         "description": ""
     },
     "options_plugin_trash": {
-        "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)",
+        "message": "Apagar permanentemente (remover) abas velhas descartadas se elas estiverem inativas por (em horas)",
+        "description": ""
+    },
+    "options_plugin_trash_unloaded": {
+        "message": "Além disso, considerar abas antigas que não carregadas",
         "description": ""
     },
     "options_plugin_force": {
-        "message": "Immediately discard the following hostnames when their tab is not active",
+        "message": "Descartar imediatamente os seguintes nomes de host quando sua aba não estiver ativa",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Descartar todas as novas abas inativas depois que elas forem carregadas",
         "description": ""
     },
     "options_log": {
@@ -204,7 +220,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
+        "message": "Quando o período de descarte de uma aba termina ou uma nova aba é adicionada, todas as abas do navegador são verificadas para avaliar quais precisam ser descartadas. Esta opção força a extensão a limitar essas verificações. O valor mínimo aceitável é 1 minuto. O valor recomendado são 10 minutos.",
         "description": ""
     },
     "options_reset": {
@@ -300,7 +316,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Release discarding. To bypass cached content use Shift + Click",
+        "message": "Remover o descarte. Para ignorar o conteúdo em cache, use Shift + Clique",
         "description": ""
     },
     "popup_shift_hint": {
@@ -385,6 +401,10 @@
     },
     "cmd_discard_tab": {
         "message": "Descartar aba",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "Descartar grupo de abas",
         "description": ""
     },
     "cmd_discard_tabs": {
