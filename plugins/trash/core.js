@@ -22,7 +22,8 @@ chrome.alarms.onAlarm.addListener(alarm => {
     storage({
       'trash.period': 24, // in hours
       'trash.keys': {},
-      'trash.unloaded': true
+      'trash.unloaded': true,
+      'trash.whitelist-url': []
     }).then(async prefs => {
       const tbs = await query({discarded: true});
 
@@ -36,7 +37,30 @@ chrome.alarms.onAlarm.addListener(alarm => {
         }
       }
 
-      const keys = tbs.map(t => t.url);
+      const match = (href, hostname, list) => {
+        if (list.length === 0) {
+          return false;
+        }
+        if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
+          return true;
+        }
+        if (list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3)).some(s => {
+          try {
+            return (new RegExp(s)).test(href);
+          }
+          catch (e) {}
+        })) {
+          return true;
+        }
+      };
+
+      const keys = (
+        prefs['trash.whitelist-url'].length
+          ? tbs.map(t => t.url).filter(url =>
+            match(url, new URL(url).hostname, prefs['trash.whitelist-url'])
+          )
+          : tbs.map(t => t.url)
+      );
       const now = Date.now();
       const removed = [];
 

@@ -36,6 +36,7 @@ const restore = () => storage({
   'max.single.discard': 50, // max number of tabs to discard
   'trash.period': 24, // in hours
   'trash.unloaded': false,
+  'trash.whitelist-url': [],
   'audio': true, // audio = true => do not discard if audio is playing
   'pinned': false, // pinned = true => do not discard if tab is pinned
   'form': true, // form = true => do not discard if form data is changed
@@ -94,6 +95,7 @@ const restore = () => storage({
     document.getElementById('period').value = Math.max(1, parseInt(prefs.period / 60));
   }
   document.getElementById('trash.period').value = prefs['trash.period'];
+  document.getElementById('trash.whitelist-url').value = prefs['trash.whitelist-url'].join(', ');
   document.getElementById('trash.unloaded').checked = prefs['trash.unloaded'];
   document.getElementById('number').value = prefs.number;
   document.getElementById('max.single.discard').value = prefs['max.single.discard'];
@@ -206,6 +208,11 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/blank/core.js': document.getElementById('./plugins/blank/core.js').checked,
     './plugins/focus/core.js': document.getElementById('./plugins/focus/core.js').checked,
     './plugins/trash/core.js': document.getElementById('./plugins/trash/core.js').checked,
+    'trash.whitelist-url': document.getElementById('trash.whitelist-url').value
+      .split(/[,\n]/)
+      .map(s => s.trim())
+      .map(s => s.startsWith('http') || s.startsWith('ftp') ? (new URL(s)).hostname : s)
+      .filter((h, i, l) => h && l.indexOf(h) === i),
     './plugins/force/core.js': document.getElementById('./plugins/force/core.js').checked,
     './plugins/next/core.js': document.getElementById('./plugins/next/core.js').checked,
     './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked,
