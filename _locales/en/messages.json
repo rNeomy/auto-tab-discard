@@ -170,6 +170,9 @@
   "options_footnote_3": {
     "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes."
   },
+  "options_footnote_4": {
+    "message": "To use a custom time interval for a rule, add @{number}{unit} to the end. e.g. a rule of google.com@3d will trash google.com URLs after 3 days.  Valud units are (s)econds, (m)inutes, (h)ours, (d)ays, (w)weeks, and (mo)nths"
+  },
   "options_reset": {
     "message": "Factory Reset"
   },
