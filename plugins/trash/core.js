@@ -38,53 +38,50 @@ chrome.alarms.onAlarm.addListener(alarm => {
       }
 
       const units = {
-        "mo": 30*24*60*60, // close enough...
-        "w": 7*24*60*60,
-        "d": 24*60*60,
-        "h": 60*60,
-        "m": 60,
-        "s": 1
-      }
+        'mo': 30 * 24 * 60 * 60, // close enough...
+        'w': 7 * 24 * 60 * 60,
+        'd': 24 * 60 * 60,
+        'h': 60 * 60,
+        'm': 60,
+        's': 1
+      };
 
-      const parseInterval = (value) => {
-        if (value === undefined)
-          {
-            return 0;
-          }
+      const parseInterval = value => {
+        if (value === undefined) {
+          return 0;
+        }
         const [s, number, unit] = value.match(/(\d+)(\w+)?/);
-        return parseInt(number) * (units[unit] ?? 1)
-      }
+        return parseInt(number) * (units[unit] ?? 1);
+      };
 
       const match = (href, hostname, list) => {
         if (list.length === 0) {
-          return prefs['trash.period']*60*60;
+          return prefs['trash.period'] * 60 * 60;
         }
         return list.map(item => item.match(/^(?:(\w+):)?([^@]+)(?:@(\d+\w*))?/)).map(
           ([rule, exprtype, expr, interval]) => {
             if (
-              (exprtype === undefined && hostname.indexOf(expr) !== -1)
-                ||
-                (exprtype === "re" && (new RegExp(expr)).test(href))
+              (exprtype === undefined && hostname.indexOf(expr) !== -1) ||
+              (exprtype === 're' && (new RegExp(expr)).test(href))
             ) {
-              return parseInterval(interval) || prefs['trash.period']*60*60;
+              return parseInterval(interval) || prefs['trash.period'] * 60 * 60;
             }
-	        }
-        ).find( (interval) => interval > 0)
+          }
+        ).find(interval => interval > 0);
       };
 
       const keys = (
-        prefs['trash.whitelist-url'].length
-          ? tbs.map(t => t.url).map(url =>
-            [ url, match(url, new URL(url).hostname, prefs['trash.whitelist-url']) ]
-          ).filter( ([url, interval]) => interval > 0 )
-          : tbs.map(t => [t.url, prefs['trash.period']*60*60])
+        prefs['trash.whitelist-url'].length ?
+          tbs.map(t => t.url).map(url =>
+            [url, match(url, new URL(url).hostname, prefs['trash.whitelist-url'])]
+          ).filter( ([url, interval]) => interval > 0 ) : tbs.map(t => [t.url, prefs['trash.period'] * 60 * 60])
       );
       const now = Date.now();
       const removed = [];
 
       for (const [url, [timestamp, interval]] of Object.entries(prefs['trash.keys'])) {
         // remove removed keys
-        if (! keys.find( ([u, i]) => url == u )) {
+        if (! keys.find(([u]) => url == u)) {
           delete prefs['trash.keys'][url];
         }
         // remove old tabs
