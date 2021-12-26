@@ -107,7 +107,8 @@ const navigate = (method, discarded = false) => query({
       }
     });
   }
-  else {
+  // prevent infinite loop
+  else if (discarded === false) {
     // https://github.com/rNeomy/auto-tab-discard/issues/41#issuecomment-422923307
     return navigate(method, true);
   }

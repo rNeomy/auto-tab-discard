@@ -183,6 +183,10 @@
         "message": "Além disso, considerar abas antigas que não carregadas",
         "description": ""
     },
+    "options_plugin_trash_whitelist": {
+        "message": "Only trash tabs matching the following URL patterns",
+        "description": ""
+    },
     "options_plugin_force": {
         "message": "Descartar imediatamente os seguintes nomes de host quando sua aba não estiver ativa",
         "description": ""
@@ -221,6 +225,10 @@
     },
     "options_footnote_3": {
         "message": "Quando o período de descarte de uma aba termina ou uma nova aba é adicionada, todas as abas do navegador são verificadas para avaliar quais precisam ser descartadas. Esta opção força a extensão a limitar essas verificações. O valor mínimo aceitável é 1 minuto. O valor recomendado são 10 minutos.",
+        "description": ""
+    },
+    "options_footnote_4": {
+        "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths",
         "description": ""
     },
     "options_reset": {
