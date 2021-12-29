@@ -112,6 +112,11 @@ const navigate = (method, discarded = false) => query({
     // https://github.com/rNeomy/auto-tab-discard/issues/41#issuecomment-422923307
     return navigate(method, true);
   }
+
+  // https://github.com/rNeomy/auto-tab-discard/issues/264#issuecomment-1001410665
+  if (method === 'close' && !ntab && tbs.length === 1 && tbs[0].active) {
+    chrome.tabs.remove(active.id);
+  }
 });
 
 // this list keeps ids of the tabs that are in progress of being discarded
