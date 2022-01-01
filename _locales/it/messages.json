@@ -183,6 +183,10 @@
         "message": "Inoltre, considera le vecchie schede sospese",
         "description": ""
     },
+    "options_plugin_trash_whitelist": {
+        "message": "Solo le schede che corrispondono al seguente pattern di URL",
+        "description": ""
+    },
     "options_plugin_force": {
         "message": "Sospendi immediatamente i seguenti hostname quando le loro schede sono inattive",
         "description": ""
@@ -221,6 +225,10 @@
     },
     "options_footnote_3": {
         "message": "Quando il periodo di sospensione per una scheda è finito oppure una nuova scheda viene aggiunta, tutte le schede del browser saranno sospese. Questa opzione forza l'estensione a limitare questi controlli. Il valore minimo accettato è 1 minuto. Il valore consigliato è 10 minuti.",
+        "description": ""
+    },
+    "options_footnote_4": {
+        "message": "Per usare un tempo peronslizzato per una regola, aggiungi @{number}{unit}  alla fine (es.google.com@3d eliminerà l'URL di google.com dopo 3 giorni). Le unità valide sono (h)ours-ore, (d)ays-giorni, (w)weeks-settimane, e (mo)nths-mesi.",
         "description": ""
     },
     "options_reset": {
