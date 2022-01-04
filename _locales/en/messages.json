@@ -170,9 +170,6 @@
   "options_footnote_2": {
     "message": "Check the totalJSHeapSize value of top document. If this memory exceeds the user-defined value (minimum acceptable value is 10MB), the tab will be discarded. Note that this option is only available if your browser supports 'window.performance.memory'"
   },
-  "options_footnote_3": {
-    "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes."
-  },
   "options_footnote_4": {
     "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths"
   },
@@ -190,9 +187,6 @@
   },
   "options_support": {
     "message": "Support Development"
-  },
-  "options_check_delay": {
-    "message": "Minimum delay between sequential discarding checks (in seconds)"
   },
   "options_favicon_delay": {
     "message": "Delay for painting the discarded favicon (in milliseconds)"

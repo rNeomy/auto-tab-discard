@@ -71,7 +71,6 @@ const interrupts = { // eslint-disable-line no-unused-vars
 }; // this is used to interrupt an internal process from a plug-in
 
 chrome.storage.onChanged.addListener(ps => {
-  console.log(ps);
   // AMO does not like dynamic imports
   if ('./plugins/dummy/core.js' in ps) {
     import('./plugins/dummy/core.js').then(o => o[ps['./plugins/dummy/core.js'].newValue ? 'enable' : 'disable']());

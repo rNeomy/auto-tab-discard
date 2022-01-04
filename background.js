@@ -14,7 +14,6 @@ const prefs = {
   'whitelist': [], // whitelist hostnames and regexp rules
   'whitelist.session': [], // clear on restart
   'favicon-delay': isFirefox ? 500 : 100,
-  'check-delay': 30 * 1000,
   'log': false,
   'simultaneous-jobs': 10,
   'idle-timeout': 5 * 60, // in seconds

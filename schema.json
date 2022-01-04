@@ -105,10 +105,6 @@
       "title": "Delay for painting the discarded favicon (in milliseconds)",
       "type": "number"
     },
-    "check-delay": {
-      "title": "Minimum delay between sequential discarding checks (in seconds)",
-      "type": "number"
-    },
     "trash.enabled": {
       "title": "Trash old discarded tabs",
       "type": "boolean"
