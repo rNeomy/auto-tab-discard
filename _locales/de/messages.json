@@ -1,18 +1,18 @@
 {
     "app_description": {
-        "message": "Erhöhen Sie die Geschwindigkeit Ihres Browsers und reduzieren Sie die RAM-Auslastung, wenn viele Tabs geöffnet sind.",
+        "message": "Erhöhe die Browsergeschwindigkeit und reduziere die Speicherauslastung, falls mehrere Tabs geöffnet sind.",
         "description": ""
     },
     "options_discarding_options": {
         "message": "Deaktivierungs-Optionen",
         "description": ""
     },
-    "options_period01": {
-        "message": "Deaktiviere inaktive Tabs nach (in Sekunden)",
+    "options_period01_a": {
+        "message": "Discard inactive tabs after ",
         "description": ""
     },
     "options_period02": {
-        "message": "(Wählen Sie Null Sekunden um das automatische Deaktivieren von Tabs zu unterbinden) Sobald die Anzahl der nicht genutzten Tabs überschreiten wird",
+        "message": "minutes (zero to disable) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Deaktiviere nur inaktive Tabs folgender Hostnames",
+        "message": "Deaktiviere nur inaktive Tabs folgender Hostnames oder reguläre Regeln",
         "description": ""
     },
     "options_tab_context": {
@@ -39,6 +39,10 @@
         "message": "Ändere das Favicon von deaktivierten Tabs (falls möglich)",
         "description": ""
     },
+    "options_prepends": {
+        "message": "Stelle ein Symbol einem deaktiviertem Tab voran (z.B. e.g. 💤 or ⏻︎) (falls möglich)",
+        "description": ""
+    },
     "options_startup_unpinned": {
         "message": "Deaktivieren aller nicht angehefteten Tabs beim Start des Browsers oder der Browsererweiterung",
         "description": ""
@@ -53,6 +57,10 @@
     },
     "options_release_next_tab": {
         "message": "Tab zur Rechten des aktiven Tabs reaktivieren",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Tab zur Linken des aktiven Tabs reaktivieren",
         "description": ""
     },
     "options_memory": {
@@ -100,7 +108,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabs folgender Hostnames nicht deaktivieren:",
+        "message": "Tabs mit den folgenden Hostnames oder regulären Regeln werden nicht deaktiviert:",
         "description": ""
     },
     "options_left_click": {
@@ -119,12 +127,24 @@
         "message": "Alle anderen Tabs deaktivieren",
         "description": ""
     },
+    "options_click_release_tabs": {
+        "message": "Alle anderen Tabs reaktivieren",
+        "description": ""
+    },
     "options_click_discard_window": {
         "message": "Alle anderen Tabs im aktiven Fenster deaktivieren",
         "description": ""
     },
+    "options_click_release_window": {
+        "message": "Andere Tabs in diesem Fenster reaktivieren",
+        "description": ""
+    },
     "options_click_discard_other_windows": {
         "message": "Tabs in anderen Fenstern deaktivieren",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Tabs in anderen Fenstern reaktivieren",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -136,19 +156,47 @@
         "description": ""
     },
     "options_plugins": {
-        "message": "Plug-ins",
+        "message": "Plug-Ins",
         "description": ""
     },
     "options_plugin_dummy": {
-        "message": "When discarding, replace the page with a local dummy alternative (beta)",
+        "message": "Sobald deaktiviert, ersetze die Seite mit einer lokalen Dummy Alternative.",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "Öffnet eine temporäre leere Seite sobald alle Tabs in einem inaktiven Fenster deaktiviert werden (damit it es möglich ein aktives Tab in diesem Fenster zu deaktivieren)",
         "description": ""
     },
     "options_plugin_focus": {
-        "message": "Remove discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
+        "message": "Alle Tabs im aktiven Fenster reaktivieren. Wenn aktiv, wird kein Tab im aktiven Fenster deaktiviert.",
+        "description": ""
+    },
+    "options_plugin_unloaded": {
+        "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs",
         "description": ""
     },
     "options_plugin_trash": {
-        "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)",
+        "message": "Entferne (lösche permanent) deaktivierte Tabs, sobald sie für eine gewisse Zeit (in Stunden) inaktiv sind",
+        "description": ""
+    },
+    "options_plugin_trash_unloaded": {
+        "message": "Also, consider old unloaded tabs",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist": {
+        "message": "Only trash tabs matching the following URL patterns",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Deaktiviere folgende Hostnamen, wenn dessen Tab nicht aktiv ist",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Deaktiviere alle neuen inaktiven Tabs, nachdem sie fertig geladen wurden",
+        "description": ""
+    },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
         "description": ""
     },
     "options_log": {
@@ -180,7 +228,11 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "Wenn die definierte inaktive Zeit für einen Tab erreicht ist oder ein neuer Tab hinzugefügt wird, werden alle Tabs des Browsers überprüft, um zu ermitteln, welche Tabs deaktiviert werden können. Diese Option zwingt die Erweiterung, diese Aktion zu begrenzen. Der kleinstmögliche Wert ist 1 Sekunde. Der empfohlene Wert ist 30 Sekunden.",
+        "message": "Wenn die definierte inaktive Zeit für einen Tab erreicht ist oder ein neuer Tab hinzugefügt wird, werden alle Tabs des Browsers überprüft, um zu ermitteln, welche Tabs deaktiviert werden können. Diese Option zwingt die Erweiterung, diese Aktion zu begrenzen. Der kleinstmögliche Wert ist 1 Minute. Der empfohlene Wert ist 10 Minuten.",
+        "description": ""
+    },
+    "options_footnote_4": {
+        "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths",
         "description": ""
     },
     "options_reset": {
@@ -259,6 +311,10 @@
         "message": "Immer",
         "description": ""
     },
+    "popup_whitelist_always_title": {
+        "message": "Anklicken, um den Hostnamen zu den Ausnahmen hinzuzufügen. Verwenden Sie Umschalt + Klick um die exakte URL zu den Ausnahmen hinzuzufügen",
+        "description": ""
+    },
     "popup_whitelist_session": {
         "message": "Sitzung",
         "description": ""
@@ -272,11 +328,11 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Aktivieren. Um den zwischengespeicherten Inhalt zu verwerfen, verwenden Sie Umschalt + Klick",
+        "message": "Reaktivieren. Um zwischengespeicherten Inhalt zu verwerfen, verwenden Sie Umschalt + Klick",
         "description": ""
     },
     "popup_shift_hint": {
-        "message": "Use Shift key to ignore exceptions",
+        "message": "Halten Sie die Umschalttaste gedrückt, um Ausnahmen zu ignorieren",
         "description": ""
     },
     "bg_no_active_tab": {
@@ -324,7 +380,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Link in neuem deaktivierten Tab öffnen",
+        "message": "In neuem deaktivierten Tab öffnen",
         "description": ""
     },
     "menu_move_previous": {
@@ -359,6 +415,10 @@
         "message": "Tab deaktivieren",
         "description": ""
     },
+    "cmd_discard_tree": {
+        "message": "Tabgruppe deaktivieren",
+        "description": ""
+    },
     "cmd_discard_tabs": {
         "message": "Alle anderen Tabs deaktivieren",
         "description": ""
@@ -385,6 +445,10 @@
     },
     "cmd_close": {
         "message": "Tab schließen",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "Alle Tabs in diesem Fenster sind deaktiviert! Klicke um den Tab zu schließen",
         "description": ""
     }
 }

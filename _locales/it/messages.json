@@ -195,6 +195,10 @@
         "message": "Sospendi tutte le nuove schede aperte ed inattiva dopo che sono state caricate",
         "description": ""
     },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
+        "description": ""
+    },
     "options_log": {
         "message": "Mostra i Log (solo per scopi di debug)",
         "description": ""

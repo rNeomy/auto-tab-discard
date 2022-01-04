@@ -195,6 +195,10 @@
         "message": "Descartar todas as novas abas inativas depois que elas forem carregadas",
         "description": ""
     },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
+        "description": ""
+    },
     "options_log": {
         "message": "Exibir registros (apenas para fins de depuração)",
         "description": ""

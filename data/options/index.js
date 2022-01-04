@@ -76,7 +76,7 @@ const restore = () => storage({
   './plugins/previous/core.js': false,
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
-  './plugins/youtube/core.js': true
+  './plugins/youtube/core.js': false
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;

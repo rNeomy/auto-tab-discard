@@ -11,7 +11,7 @@ const ready = storage({
   './plugins/blank/core.js': true,
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
-  './plugins/youtube/core.js': true
+  './plugins/youtube/core.js': false
 }).then(prefs => {
   const actives = [
     import('./plugins/startup/core.js').then(o => o.enable())

@@ -195,6 +195,10 @@
         "message": "在新打开的非活动标签页已加载了该时间后，将它们全部休眠",
         "description": ""
     },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
+        "description": ""
+    },
     "options_log": {
         "message": "显示日志（仅用于调试目的）",
         "description": ""

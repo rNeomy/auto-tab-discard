@@ -1,6 +1,6 @@
 {
     "app_description": {
-        "message": "Améliorer la vitesse du navigateur et libérer de la mémoire quand vous avez de nombreux onglets ouverts.",
+        "message": "Augmente la vitesse du navigateur et libère de la mémoire lorsque de nombreux onglets sont ouverts",
         "description": ""
     },
     "options_discarding_options": {
@@ -8,11 +8,11 @@
         "description": ""
     },
     "options_period01_a": {
-        "message": "Désactiver les onglets inactifs après (en minutes)",
+        "message": "Discard inactive tabs after ",
         "description": ""
     },
     "options_period02": {
-        "message": "(use zero minute to disable auto tab discarding) when the number of inactive tabs exceeds ",
+        "message": "minutes (zero to disable) when the number of inactive tabs exceeds ",
         "description": ""
     },
     "options_period04": {
@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Only discard the following inactive hostnames or regular expression rules",
+        "message": "Désactiver uniquement les noms d'hôtes inactifs suivants ou selon les expressions régulières suivantes",
         "description": ""
     },
     "options_tab_context": {
@@ -32,11 +32,15 @@
         "description": ""
     },
     "options_link_context": {
-        "message": "Afficher l'élément « Ouvrir le lien dans un nouvel onglet désactivé » du menu contextuel d'un lien",
+        "message": "Afficher l'élément « Ouvrir dans un nouvel onglet désactivé » dans le menu contextuel d'un lien",
         "description": ""
     },
     "options_favicon": {
         "message": "Changer le favicon des onglets suspendus (si possible)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "Précéder les onglets désactivés d'un symbole (par ex. 💤 ou ⏻︎) (si possible)",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -56,7 +60,7 @@
         "description": ""
     },
     "options_release_previous_tab": {
-        "message": "Release discarding of the previous tab (tab to the left of the active tab)",
+        "message": "Suspendre la désactivation de l'onglet précédent (onglet à la gauche de l'onglet actif)",
         "description": ""
     },
     "options_memory": {
@@ -104,7 +108,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabs with the following hostnames or regular expression rules are not being discarded:",
+        "message": "Les onglets avec les domaines ou vérifiant les expressions régulières suivants ne seront pas désactivés :",
         "description": ""
     },
     "options_left_click": {
@@ -124,7 +128,7 @@
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Release All Other Tabs",
+        "message": "Activer tous les autres onglets",
         "description": ""
     },
     "options_click_discard_window": {
@@ -132,7 +136,7 @@
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Release Other Tabs in This Window",
+        "message": "Activer les autres onglets de cette fenêtre",
         "description": ""
     },
     "options_click_discard_other_windows": {
@@ -140,7 +144,7 @@
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Release Tabs in Other Windows",
+        "message": "Activer les onglets dans les autres fenêtres",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -160,19 +164,39 @@
         "description": ""
     },
     "options_plugin_blank": {
-        "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+        "message": "Ouvrir une page blanche temporaire quand tous les onglets d'une fenêtre inactive sont désactivés (pour pouvoir désactiver l'onglet actif de cette fenêtre)",
         "description": ""
     },
     "options_plugin_focus": {
-        "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded",
+        "message": "Suspendre la désactivation de tous les onglets dans la fenêtre active. Si activé, aucun onglet dans la fenêtre active ne sera désactivé.",
+        "description": ""
+    },
+    "options_plugin_unloaded": {
+        "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs",
         "description": ""
     },
     "options_plugin_trash": {
         "message": "Supprimer définitivement (fermer) les onglets désactivés s'ils sont inactif pendant (en heures)",
         "description": ""
     },
+    "options_plugin_trash_unloaded": {
+        "message": "Also, consider old unloaded tabs",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist": {
+        "message": "Only trash tabs matching the following URL patterns",
+        "description": ""
+    },
     "options_plugin_force": {
-        "message": "Immediately discard the following hostnames when their tab is not active",
+        "message": "Désactiver immédiatement les noms d'hôtes suivants quand leur onglet n'est pas actif",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Désactiver tous les onglets inactifs nouvellement ouverts après qu'ils soient chargés",
+        "description": ""
+    },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
         "description": ""
     },
     "options_log": {
@@ -204,7 +228,11 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
+        "message": "Quand la période de désactivation est terminée pour un onglet ou qu'un nouvel onglet est ajouté, tous les onglets du navigateur sont vérifiés afin d'évaluer quels onglets ont besoin d'être désactivés. Cette option force l'extension à limiter ces vérifications. La valeur minimum acceptable est 1 seconde. La valeur recommandée est 10 minutes.",
+        "description": ""
+    },
+    "options_footnote_4": {
+        "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths",
         "description": ""
     },
     "options_reset": {
@@ -284,7 +312,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list",
+        "message": "Cliquer pour ajouter un nom d'hôte à la liste d'exceptions. Maj + Clic pour ajouter cette URL précise à la liste d'exceptions",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -300,7 +328,7 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Release discarding. To bypass cached content use Shift + Click",
+        "message": "Suspendre la désactivation. Pour outrepasser le contenu en cache, utiliser Maj + Clic",
         "description": ""
     },
     "popup_shift_hint": {
@@ -352,7 +380,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Ouvrir le lien dans un nouvel onglet désactivé",
+        "message": "Ouvrir dans un nouvel onglet désactivé",
         "description": ""
     },
     "menu_move_previous": {
@@ -387,6 +415,10 @@
         "message": "Désactiver l'onglet",
         "description": ""
     },
+    "cmd_discard_tree": {
+        "message": "Désactiver le groupe d'onglets",
+        "description": ""
+    },
     "cmd_discard_tabs": {
         "message": "Désactiver tous les autres onglets",
         "description": ""
@@ -416,7 +448,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "All tabs in this window are discarded! Click anywhere to close this window.",
+        "message": "Tous les onglets de cette fenêtre sont désactivés ! Cliquer n'importe où pour fermer cet onglet.",
         "description": ""
     }
 }
