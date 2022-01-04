@@ -149,17 +149,8 @@ const discard = tab => {
       discard.count += 1;
       discard.time = Date.now();
       const next = () => {
-        try {
-          if (isFirefox) {
-            chrome.tabs.discard(tab.id);
-          }
-          else {
-            chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
-          }
-        }
-        catch (e) {
-          log('discarding failed', e);
-        }
+        discard.perform(tab);
+
         discard.count -= 1;
         if (discard.tabs.length) {
           const tab = discard.tabs.shift();
@@ -250,6 +241,19 @@ const discard = tab => {
 };
 discard.tabs = [];
 discard.count = 0;
+discard.perform = tab => {
+  try {
+    if (isFirefox) {
+      chrome.tabs.discard(tab.id);
+    }
+    else {
+      chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+    }
+  }
+  catch (e) {
+    log('discarding failed', e);
+  }
+};
 
 chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
   if (request.method === 'discard') {

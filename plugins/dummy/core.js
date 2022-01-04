@@ -12,8 +12,8 @@ function enable() {
             '&icon=' + encodeURIComponent(tab.favIconUrl)
         });
       });
-    })
-  }
+    });
+  };
 }
 function disable() {
   chrome.tabs.discard = discard;
@@ -22,4 +22,4 @@ function disable() {
 export {
   enable,
   disable
-}
+};

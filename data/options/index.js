@@ -76,7 +76,8 @@ const restore = () => storage({
   './plugins/next/core.js': false,
   './plugins/previous/core.js': false,
   './plugins/new/core.js': false,
-  './plugins/unloaded/core.js': false
+  './plugins/unloaded/core.js': false,
+  './plugins/youtube/core.js': true
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -133,6 +134,7 @@ const restore = () => storage({
   document.getElementById('./plugins/previous/core.js').checked = prefs['./plugins/previous/core.js'];
   document.getElementById('./plugins/new/core.js').checked = prefs['./plugins/new/core.js'];
   document.getElementById('./plugins/unloaded/core.js').checked = prefs['./plugins/unloaded/core.js'];
+  document.getElementById('./plugins/youtube/core.js').checked = prefs['./plugins/youtube/core.js'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -217,7 +219,8 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/next/core.js': document.getElementById('./plugins/next/core.js').checked,
     './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked,
     './plugins/new/core.js': document.getElementById('./plugins/new/core.js').checked,
-    './plugins/unloaded/core.js': document.getElementById('./plugins/unloaded/core.js').checked
+    './plugins/unloaded/core.js': document.getElementById('./plugins/unloaded/core.js').checked,
+    './plugins/youtube/core.js': document.getElementById('./plugins/youtube/core.js').checked
   }, () => {
     info.textContent = 'Options saved';
     restore();

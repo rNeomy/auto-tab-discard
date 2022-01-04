@@ -146,6 +146,9 @@
   "options_plugin_new": {
     "message": "Discard all newly opened inactive tabs after they get loaded"
   },
+  "options_plugin_youtube": {
+    "message": "Store YouTube's timestamp before discarding"
+  },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
   },

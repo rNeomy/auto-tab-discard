@@ -11,6 +11,7 @@ const ready = storage({
   './plugins/blank/core.js': true,
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
+  './plugins/youtube/core.js': true
 }).then(prefs => {
   const actives = [
     import('./plugins/startup/core.js').then(o => o.enable())
@@ -52,6 +53,10 @@ const ready = storage({
     const p = import('./plugins/unloaded/core.js').then(o => o.enable());
     actives.push(p);
   }
+  if (prefs['./plugins/youtube/core.js']) {
+    const p = import('./plugins/youtube/core.js').then(o => o.enable());
+    actives.push(p);
+  }
 
   return Promise.all(actives);
 });
@@ -66,6 +71,7 @@ const interrupts = { // eslint-disable-line no-unused-vars
 }; // this is used to interrupt an internal process from a plug-in
 
 chrome.storage.onChanged.addListener(ps => {
+  console.log(ps);
   // AMO does not like dynamic imports
   if ('./plugins/dummy/core.js' in ps) {
     import('./plugins/dummy/core.js').then(o => o[ps['./plugins/dummy/core.js'].newValue ? 'enable' : 'disable']());
@@ -93,5 +99,8 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if ('./plugins/unloaded/core.js' in ps) {
     import('./plugins/unloaded/core.js').then(o => o[ps['./plugins/unloaded/core.js'].newValue ? 'enable' : 'disable']());
+  }
+  if ('./plugins/youtube/core.js' in ps) {
+    import('./plugins/youtube/core.js').then(o => o[ps['./plugins/youtube/core.js'].newValue ? 'enable' : 'disable']());
   }
 });
