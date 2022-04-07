@@ -52,8 +52,8 @@ const init = () => {
             'whitelist.session': []
           }
         }, prefs => {
-          whitelist.session.dataset.disabled = match(prefs['whitelist.session']) ? true : false;
-          whitelist.always.dataset.disabled = match(prefs['whitelist']) ? true : false;
+          whitelist.session.checked = match(prefs['whitelist.session']) ? true : false;
+          whitelist.always.checked = match(prefs['whitelist']) ? true : false;
         });
         if (tab.autoDiscardable === false) {
           allowed.checked = true;
@@ -64,15 +64,13 @@ const init = () => {
           },
           func: () => document.title
         }).catch(e => {
-          console.log('Cannot access to this tab', e);
-          allowed.parentNode.dataset.disabled = true;
+          console.warn('Cannot access to this tab', e);
+          allowed.parentElement.dataset.disabled = true;
         });
       }
       else { // on navigation
-        whitelist.session.dataset.disabled = true;
-        whitelist.always.dataset.disabled = true;
-        allowed.parentNode.dataset.disabled = true;
-        console.log(1);
+        whitelist.session.closest('.mlt').dataset.disabled = true;
+        allowed.parentElement.dataset.disabled = true;
       }
     }
   });
@@ -96,7 +94,8 @@ document.addEventListener('click', e => {
     chrome.runtime.sendMessage({
       method: 'popup',
       cmd,
-      shiftKey: e.shiftKey
+      shiftKey: e.shiftKey,
+      checked: e.target.checked
     }, () => window.close());
   }
 });

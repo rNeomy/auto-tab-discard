@@ -99,7 +99,8 @@ import {interrupts} from './plugins/loader.mjs';
       console.warn('plugins module is not loaded');
     }
     //
-    const {menuItemId, shiftKey} = info;
+    const {menuItemId, shiftKey, checked} = info;
+    console.log(info);
 
     if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session' || menuItemId === 'whitelist-exact') {
       storage(prefs).then(async prefs => {
@@ -121,7 +122,17 @@ import {interrupts} from './plugins/loader.mjs';
           else {
             rule = hostname;
           }
-          whitelist.push(rule);
+          if (checked) {
+            whitelist.push(rule);
+            notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
+          }
+          else {
+            const n = whitelist.indexOf(rule);
+            if (n !== -1) {
+              whitelist.splice(n, 1);
+            }
+            notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg5' : 'menu_msg6')}`);
+          }
           whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
           if (d) {
             chrome.storage.local.set({whitelist});
@@ -131,7 +142,6 @@ import {interrupts} from './plugins/loader.mjs';
               'whitelist.session': whitelist
             });
           }
-          notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
         }
         else {
           notify(`"${protocol}" ${chrome.i18n.getMessage('menu_msg2')}`);
@@ -289,6 +299,7 @@ import {interrupts} from './plugins/loader.mjs';
           onClicked({
             menuItemId: request.cmd,
             value: request.value,
+            checked: request.checked,
             shiftKey: request.shiftKey
           }, tabs[0]);
         }

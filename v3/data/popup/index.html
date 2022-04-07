@@ -67,17 +67,24 @@
             </svg>
         </div>
       </div>
-      <li class="mlt">
-        <span data-i18n="popup_whitelist_desc"></span>
-        <span data-cmd="whitelist-session" data-i18n="popup_whitelist_session"></span>
-        <span data-cmd="whitelist-domain" data-shift="whitelist-exact" data-i18n="popup_whitelist_always" data-i18n-title="popup_whitelist_always_title"></span>
-      </li>
-      <li class="hbox">
-        <label for="allowed" class="flex" data-i18n="popup_allowed"></label>
-        <input type="checkbox" id="allowed">
-      </li>
-
     </ul>
+    <div class="mlt">
+      <span data-i18n="popup_whitelist_desc"></span>
+      <label>
+        <input type="checkbox" data-cmd="whitelist-session">
+        <span data-i18n="popup_whitelist_session"></span>
+      </label>
+      <label>
+        <input type="checkbox" data-cmd="whitelist-domain" data-shift="whitelist-exact" data-i18n-title="popup_whitelist_always_title">
+        <span data-i18n="popup_whitelist_always" data-i18n-title="popup_whitelist_always_title"></span>
+      </label>
+
+    </div>
+    <div class="ald hbox">
+      <label for="allowed" class="flex" data-i18n="popup_allowed"></label>
+      <input type="checkbox" id="allowed">
+    </div>
+
     <div class="button" data-cmd="open-options" data-i18n="popup_open_options"></div>
 
     <script src="index.js"></script>

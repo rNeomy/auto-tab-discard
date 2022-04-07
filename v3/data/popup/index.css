@@ -4,6 +4,7 @@
   --dark: #d9d9d9;
   --button: #f0f0f0;
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #35363a;
@@ -49,7 +50,6 @@ li {
   padding: 5px 0 5px 10px;
 }
 input[type=checkbox] {
-  margin-right: 10px;
   outline: none;
 }
 li.group {
@@ -131,32 +131,21 @@ li span[data-cmd^="release"] svg {
 }
 .mlt {
   display: grid;
-  grid-template-columns: 1fr min-content min-content;
+  grid-template-columns: 1fr repeat(4, min-content);
   white-space: nowrap;
   align-items: center;
+  grid-gap: 5px;
+  margin: 10px;
 }
-.mlt > span[data-cmd] {
-  background-color: var(--button);
-  padding: 10px 0;
-  cursor: pointer;
-  min-width: 80px;
-  text-align: center;
-  position: relative;
+.mlt > label {
+  display: contents;
 }
-.mlt > span[data-cmd]:hover {
-  background-color: var(--dark);
+.mlt input[type=checkbox] {
+  margin: 0 0 0 5px;
 }
-.mlt span:last-child::before {
-  content: '';
-  width: 1px;
-  height: 12px;
-  background-color: var(--dark);
-  position: absolute;
-  left: 0;
-  top: calc(50% - 6px);
-}
-.mlt:hover span:last-child::before {
-  display: none;
+
+.ald {
+  margin: 10px;
 }
 
 [data-cmd=close] {

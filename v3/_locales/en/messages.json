@@ -293,8 +293,14 @@
   "menu_msg1": {
     "message": "is added to the permanent whitelist"
   },
+  "menu_msg5": {
+    "message": "is removed from the permanent whitelist"
+  },
   "menu_msg4": {
     "message": "is added to the session whitelist"
+  },
+  "menu_msg6": {
+    "message": "is removed from the session whitelist"
   },
   "menu_msg2": {
     "message": "protocol is not supported"
