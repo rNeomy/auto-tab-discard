@@ -16,7 +16,8 @@ const prefs = {
   'pinned': false, // pinned = true => do not discard if tab is pinned
   'startup-unpinned': false,
   'startup-pinned': false,
-  'startup-release-pinned': false
+  'startup-release-pinned': false,
+  'startup-discarding-period': 10 // in seconds
 };
 
 const storage = (prefs, type = 'managed') => new Promise(resolve => {

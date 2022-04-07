@@ -11,7 +11,8 @@ const number = {
     'online': false,
     'number': 0,
     'period': 0,
-    'max.single.discard': Infinity
+    'max.single.discard': Infinity,
+    'ignore.meta.data': true
   }
 };
 const pluginFilters = {}; // this object adds custom filters to the number-based discarding
@@ -158,8 +159,9 @@ number.check = async (filterTabsFrom, ops = {}) => {
       }
     });
   }
-  if (filterTabsFrom) {
-    tbs = tbs.filter(tb => filterTabsFrom.some(t => t.id === tb.id));
+  if (filterTabsFrom && filterTabsFrom.length) {
+    const ids = filterTabsFrom.map(t => t.id);
+    tbs = tbs.filter(tb => ids.includes(tb.id));
   }
 
   // do not discard if number of tabs is smaller than required
@@ -176,14 +178,15 @@ number.check = async (filterTabsFrom, ops = {}) => {
         allFrames: true
       },
       files: ['/data/inject/meta.js']
-    }).then(r => r.map(o => o.result), () => undefined);
+    }).then(r => r.map(o => o.result), () => []);
     // remove protected tabs (e.g. addons.mozilla.org)
-    if (!ms) {
-      log('discarding aborted', 'metadata fetch error');
-      icon(tb, 'metadata fetch error');
-      continue;
+    if (ms.length === 0) {
+      if (ops['ignore.meta.data'] === true && tb.url.startsWith('http') !== true) {
+        log('discarding aborted', 'metadata fetch error', tb.url);
+        icon(tb, 'metadata fetch error');
+        continue;
+      }
     }
-
     const meta = Object.assign({}, ...ms);
     log('number check', 'got meta data of tab');
     meta.forms = ms.some(o => o.forms);
@@ -201,7 +204,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
       continue;
     }
     // is this tab loaded
-    if (meta.ready !== true) {
+    if (meta.ready !== true && ops['ignore.ready.state'] !== true) {
       log('discarding aborted', 'tab is not ready');
       continue;
     }

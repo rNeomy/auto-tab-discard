@@ -23,17 +23,25 @@ const observe = () => {
       number.check(tbs.filter(t => t.status !== 'unloaded'), number.IGNORE);
       const rst = tbs.filter(t => t.status === 'unloaded');
       if (rst.length) {
-        const observe = (id, info) => {
+        const observe = (id, info, tab) => {
           if (info.status === 'complete') {
-            const tbs = rst.filter(t => t.id === id);
-            if (tbs.length) {
-              number.check(tbs, number.IGNORE);
+            if (rst.some(t => t.id === id)) {
+              number.check([tab], number.IGNORE);
             }
           }
         };
+        const remove = alarm => {
+          if (alarm.name === 'remove.startup.discarding.observer') {
+            chrome.tabs.onUpdated.removeListener(observe);
+            chrome.alarms.onAlarm.removeListener(remove);
+          }
+        };
         chrome.tabs.onUpdated.addListener(observe);
-        // we do discard for the next 10 seconds
-        setTimeout(() => chrome.tabs.onUpdated.removeListener(observe), 10000);
+        // we keep discarding for the next 10 seconds
+        chrome.alarms.create('remove.startup.discarding.observer', {
+          when: Date.now() + prefs['startup-discarding-period'] * 1000
+        });
+        chrome.alarms.onAlarm.addListener(remove);
       }
     });
   }
