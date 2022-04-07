@@ -1,0 +1,335 @@
+{
+  "app_description": {
+    "message": "Increase browser speed and reduce memory load when you have numerous open tabs."
+  },
+  "options_discarding_options": {
+    "message": "Discarding options"
+  },
+  "options_period01_a": {
+    "message": "Discard inactive tabs after "
+  },
+  "options_period02": {
+    "message": "minutes (zero to disable) when the number of inactive tabs exceeds "
+  },
+  "options_period04": {
+    "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
+  },
+  "options_url_based": {
+    "message": "Only discard the following inactive hostnames or regular expression rules"
+  },
+  "options_tab_context": {
+    "message": "Display discarding items in the \"tab\" context menu (if supported)"
+  },
+  "options_page_context": {
+    "message": "Display discarding items in the \"page\" context menu"
+  },
+  "options_link_context": {
+    "message": "Display \"Open in New Discarded Tab\" item in the \"link\" context menu"
+  },
+  "options_favicon": {
+    "message": "Change favicon of discarded tabs (if possible)"
+  },
+  "options_prepends": {
+    "message": "Prepend a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)"
+  },
+  "options_startup_unpinned": {
+    "message": "Discard all unpinned tabs on a browser or extension startup"
+  },
+  "options_startup_pinned": {
+    "message": "Discard all pinned tabs on a browser or extension startup"
+  },
+  "options_startup_release_pinned": {
+    "message": "Release discarding state of all pinned tabs on a browser or extension startup"
+  },
+  "options_release_next_tab": {
+    "message": "Release discarding of the next tab (tab to the right of the active tab)"
+  },
+  "options_release_previous_tab": {
+    "message": "Release discarding of the previous tab (tab to the left of the active tab)"
+  },
+  "options_memory": {
+    "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
+  },
+  "options_discarding_conditions": {
+    "message": "Discarding conditions"
+  },
+  "options_audio": {
+    "message": "Do not discard a tab when media is playing"
+  },
+  "options_pinned": {
+    "message": "Do not discard a tab when it is pinned"
+  },
+  "options_form": {
+    "message": "Do not discard a tab when form changes are not yet submitted"
+  },
+  "options_battery": {
+    "message": "Do not discard tabs when computer is connected to a power source"
+  },
+  "options_online": {
+    "message": "Do not discard tabs when there is no internet connection and tab is not cached"
+  },
+  "options_notification_permission": {
+    "message": "Do not discard a tab if it can display desktop notifications"
+  },
+  "options_idle": {
+    "message": "Do not discard tabs if computer is not in the 'idle' state"
+  },
+  "options_idle_timeout": {
+    "message": "Inactive interval to determine if the computer is in idle state or not (in minutes)"
+  },
+  "options_exceptions": {
+    "message": "Exceptions"
+  },
+  "options_whitelist": {
+    "message": "Tabs with the following hostnames or regular expression rules are not being discarded:"
+  },
+  "options_left_click": {
+    "message": "Toolbar left_click action"
+  },
+  "options_click_popup": {
+    "message": "Open popup"
+  },
+  "options_click_discard_tab": {
+    "message": "Discard Tab"
+  },
+  "options_click_discard_tabs": {
+    "message": "Discard All Other Tabs"
+  },
+  "options_click_release_tabs": {
+    "message": "Release All Other Tabs"
+  },
+  "options_click_discard_window": {
+    "message": "Discard Other Tabs in This Window"
+  },
+  "options_click_release_window": {
+    "message": "Release Other Tabs in This Window"
+  },
+  "options_click_discard_other_windows": {
+    "message": "Discard Tabs in Other Windows"
+  },
+  "options_click_release_other_windows": {
+    "message": "Release Tabs in Other Windows"
+  },
+  "options_click_toggle_allowed": {
+    "message": "Toggle 'Keep This Tab for This Session' option"
+  },
+  "options_misc": {
+    "message": "Misc"
+  },
+  "options_plugins": {
+    "message": "Plug-ins"
+  },
+  "options_plugin_dummy": {
+    "message": "When discarding, replace the page with a local dummy alternative (beta)"
+  },
+  "options_plugin_blank": {
+    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)"
+  },
+  "options_plugin_focus": {
+    "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded"
+  },
+  "options_plugin_unloaded": {
+    "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs"
+  },
+  "options_plugin_trash": {
+    "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)"
+  },
+  "options_plugin_trash_unloaded": {
+    "message": "Also, consider old unloaded tabs"
+  },
+  "options_plugin_trash_whitelist": {
+    "message": "Only trash tabs matching the following URL patterns"
+  },
+  "options_plugin_force": {
+    "message": "Immediately discard the following hostnames when their tab is not active"
+  },
+  "options_plugin_new": {
+    "message": "Discard all newly opened inactive tabs after they get loaded"
+  },
+  "options_plugin_youtube": {
+    "message": "Store YouTube's timestamp before discarding"
+  },
+  "options_log": {
+    "message": "Display logs (for debugging purpose only)"
+  },
+  "options_go_hidden": {
+    "message": "Discard a tab if it is hidden"
+  },
+  "options_use_cache": {
+    "message": "Use Cache: If enabled, the extension only checks once whether a tab is pinned or the browser is connected to a battery source"
+  },
+  "options_simultaneous_jobs": {
+    "message": "Number of allowed simultaneous discarding jobs"
+  },
+  "options_faqs": {
+    "message": "Open FAQs page on updates"
+  },
+  "options_footnote_1": {
+    "message": "It is possible to use regular expression matching with \"re:\" keyword. For instance to whitelist all URLs with \"google\" keyword in them use \"re:google\"."
+  },
+  "options_footnote_2": {
+    "message": "Check the totalJSHeapSize value of top document. If this memory exceeds the user-defined value (minimum acceptable value is 10MB), the tab will be discarded. Note that this option is only available if your browser supports 'window.performance.memory'"
+  },
+  "options_footnote_4": {
+    "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths"
+  },
+  "options_reset": {
+    "message": "Factory Reset"
+  },
+  "options_import": {
+    "message": "Import Settings"
+  },
+  "options_export": {
+    "message": "Export Settings"
+  },
+  "options_save": {
+    "message": "Save Options"
+  },
+  "options_support": {
+    "message": "Support Development"
+  },
+  "options_favicon_delay": {
+    "message": "Delay for painting the discarded favicon (in milliseconds)"
+  },
+  "popup_discard_tab": {
+    "message": "Discard Tab"
+  },
+  "popup_discard_tree": {
+    "message": "Discard Tab Group"
+  },
+  "popup_discard_tabs": {
+    "message": "Discard All Other Tabs"
+  },
+  "popup_discard_window": {
+    "message": "Discard Other Tabs in This Window"
+  },
+  "popup_discard_rights": {
+    "message": "Discard Tabs to the Right"
+  },
+  "popup_discard_lefts": {
+    "message": "Discard Tabs to the Left"
+  },
+  "popup_discard_other_windows": {
+    "message": "Discard Tabs in Other Windows"
+  },
+  "popup_move_previous": {
+    "message": "Left Tab"
+  },
+  "popup_close": {
+    "message": "Close Tab"
+  },
+  "popup_move_next": {
+    "message": "Right Tab"
+  },
+  "popup_whitelist_desc": {
+    "message": "Keep Tabs for This Site"
+  },
+  "popup_whitelist_always": {
+    "message": "Always"
+  },
+  "popup_whitelist_always_title": {
+    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list"
+  },
+  "popup_whitelist_session": {
+    "message": "Session"
+  },
+  "popup_allowed": {
+    "message": "Keep This Tab for This Session"
+  },
+  "popup_open_options": {
+    "message": "Options"
+  },
+  "popup_release": {
+    "message": "Release discarding. To bypass cached content use Shift + Click"
+  },
+  "popup_shift_hint": {
+    "message": "Use Shift key to ignore exceptions"
+  },
+  "bg_no_active_tab": {
+    "message": "No active tab is present"
+  },
+  "bg_msg_1": {
+    "message": "auto-discarding is disabled for this tab"
+  },
+  "menu_discard_tab": {
+    "message": "Discard Tab"
+  },
+  "menu_discard_tree": {
+    "message": "Discard Tab Group"
+  },
+  "menu_discard_menu": {
+    "message": "Discard Tabs in This Window"
+  },
+  "menu_discard_tabs": {
+    "message": "Discard All Other Tabs"
+  },
+  "menu_discard_rights": {
+    "message": "Discard Tabs to the Right"
+  },
+  "menu_discard_lefts": {
+    "message": "Discard Tabs to the Left"
+  },
+  "menu_discard_window": {
+    "message": "Discard Other Tabs"
+  },
+  "menu_discard_other_windows": {
+    "message": "Discard Tabs in Other Windows"
+  },
+  "menu_whitelist_domain": {
+    "message": "Always Keep Tabs for This Site"
+  },
+  "menu_open_tab_then_discard": {
+    "message": "Open in New Discarded Tab"
+  },
+  "menu_move_previous": {
+    "message": "Move to the Left Tab"
+  },
+  "menu_move_next": {
+    "message": "Move to the Right Tab"
+  },
+  "menu_close": {
+    "message": "Close Tab"
+  },
+  "menu_msg1": {
+    "message": "is added to the permanent whitelist"
+  },
+  "menu_msg4": {
+    "message": "is added to the session whitelist"
+  },
+  "menu_msg2": {
+    "message": "protocol is not supported"
+  },
+  "menu_msg3": {
+    "message": "Cannot discard a tab when it is active"
+  },
+  "cmd_discard_tab": {
+    "message": "Discard Tab"
+  },
+  "cmd_discard_tree": {
+    "message": "Discard Tab Group"
+  },
+  "cmd_discard_tabs": {
+    "message": "Discard All Other Tabs"
+  },
+  "cmd_discard_window": {
+    "message": "Discard Other Tabs in This Window"
+  },
+  "cmd_discard_other_windows": {
+    "message": "Discard Tabs in Other Windows"
+  },
+  "cmd_whitelist_domain": {
+    "message": "Always Keep Tabs for This Site"
+  },
+  "cmd_move_previous": {
+    "message": "Move to the Left Tab"
+  },
+  "cmd_move_next": {
+    "message": "Move to the Right Tab"
+  },
+  "cmd_close": {
+    "message": "Close Tab"
+  },
+  "blank_msg": {
+    "message": "All tabs in this window are discarded! Click anywhere to close this tab."
+  }
+}

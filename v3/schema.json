@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "properties": {
+    "period": {
+      "title": "discarding time in seconds",
+      "type": "number"
+    },
+    "number": {
+      "title": "number of tabs before triggering discard",
+      "type": "number"
+    },
+    "audio": {
+      "title": "audio = true => do not discard if audio is playing",
+      "type": "boolean"
+    },
+    "pinned": {
+      "title": "pinned = true => do not discard if tab is pinned",
+      "type": "boolean"
+    },
+    "form": {
+      "title": "form = true => do not discard if form data is changed",
+      "type": "boolean"
+    },
+    "battery": {
+      "title": "battery = true => only discard if power is disconnected",
+      "type": "boolean"
+    },
+    "online": {
+      "title": "online = true => do not discard if there is no INTERNET connection",
+      "type": "boolean"
+    },
+    "notification.permission": {
+      "title": "true => do not discard",
+      "type": "boolean"
+    },
+    "page.context": {
+      "title": "Display discarding items in the \"page\" context menu",
+      "type": "boolean"
+    },
+    "tab.context": {
+      "title": "Display discarding items in the \"tab\" context menu (if supported)",
+      "type": "boolean"
+    },
+    "link.context": {
+      "title": "Display \"Open Link in New Discarded Tab\" item in the \"link\" context menu",
+      "type": "boolean"
+    },
+    "log": {
+      "title": "Display logs (for debugging purpose only)",
+      "type": "boolean"
+    },
+    "mode": {
+      "title": "Discarding mode (time-based, url-based)",
+      "type": "string"
+    },
+    "click": {
+      "title": "Use \"click.popup\" to show browser action's popup menu",
+      "type": "boolean"
+    },
+    "faqs": {
+      "title": "Open FAQs page on updates",
+      "type": "boolean"
+    },
+    "use-cache": {
+      "title": "If enabled, the extension only checks once whether a tab is pinned or the browser is connected to a battery source",
+      "type": "boolean"
+    },
+    "badge": {
+      "title": "",
+      "type": "boolean"
+    },
+    "favicon": {
+      "title": "Change favicon of discarded tabs (if possible)",
+      "type": "boolean"
+    },
+    "go-hidden": {
+      "title": "Discard a tab if it is hidden",
+      "type": "boolean"
+    },
+    "memory-enabled": {
+      "title": "Discard a background tab based on its memory usage (totalJSHeapSize)",
+      "type": "boolean"
+    },
+    "memory-value": {
+      "title": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)",
+      "type": "number"
+    },
+    "simultaneous-jobs": {
+      "title": "Number of allowed simultaneous discarding jobs",
+      "type": "number"
+    },
+    "whitelist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "whitelist-url": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "favicon-delay": {
+      "title": "Delay for painting the discarded favicon (in milliseconds)",
+      "type": "number"
+    },
+    "trash.enabled": {
+      "title": "Trash old discarded tabs",
+      "type": "boolean"
+    },
+    "trash.period": {
+      "title": "Trash discarded tabs after about x hours if trash.enabled is true",
+      "type": "number"
+    },
+    "startup-unpinned": {
+      "title": "Discard unpinned tabs on a browser restart",
+      "type": "boolean"
+    },
+    "startup-pinned": {
+      "title": "Discard pinned tabs on a browser restart",
+      "type": "boolean"
+    },
+    "startup-release-pinned": {
+      "title": "Release discarding state of pinned tabs on a browser restart",
+      "type": "boolean"
+    },
+    "release-next-tab": {
+      "title": "Release discarding of the next tab if it is discarded",
+      "type": "boolean"
+    }
+  }
+}

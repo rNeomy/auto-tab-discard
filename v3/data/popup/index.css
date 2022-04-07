@@ -1,0 +1,203 @@
+:root {
+  --bg: #fff;
+  --clr: #4d5156;
+  --dark: #d9d9d9;
+  --button: #f0f0f0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #35363a;
+    --clr: #b1b1b1;
+    --dark: #202124;
+    --button: #202124;
+  }
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 13px;
+  margin: 0;
+  user-select: none;
+  width: 100%;
+  min-width: 350px;
+  background-color: var(--bg);
+  color: var(--clr);
+}
+
+/* FF overflow menu */
+@media (width: 348px) or (width: 377px) {
+  body {
+    min-width: unset;
+    overflow: hidden;
+  }
+  header {
+    display: none;
+  }
+}
+
+header {
+  border-bottom: solid 1px var(--dark);
+  font-size: 140%;
+  text-align: center;
+  padding: 15px;
+}
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  padding: 5px 0 5px 10px;
+}
+input[type=checkbox] {
+  margin-right: 10px;
+  outline: none;
+}
+li.group {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  padding: 0;
+}
+li.group span {
+  padding: 5px 0 5px 10px;
+}
+li span[data-cmd^="release"] {
+  width: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+li span[data-cmd^="release"] svg {
+  pointer-events: none;
+  width: 22px;
+  fill: var(--clr);
+}
+
+[data-cmd] {
+  cursor: pointer;
+}
+[data-cmd]:hover {
+  background-color: var(--button);
+}
+
+.button {
+  background-color: var(--button);
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+}
+.button:hover {
+  background-color: var(--dark);
+}
+[data-cmd]:active,
+.button:active {
+  opacity: 0.5;
+}
+[data-disabled=true] {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.hbox {
+  display: flex;
+  align-items: center;
+}
+.flex {
+  flex: 1;
+}
+.nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  white-space: nowrap;
+  padding: 10px 0;
+}
+.nav > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--button);
+  cursor: pointer;
+}
+.nav > div:hover {
+  background-color: var(--dark);
+}
+.nav > div * {
+  pointer-events: none;
+}
+.nav > div > span {
+  padding: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mlt {
+  display: grid;
+  grid-template-columns: 1fr min-content min-content;
+  white-space: nowrap;
+  align-items: center;
+}
+.mlt > span[data-cmd] {
+  background-color: var(--button);
+  padding: 10px 0;
+  cursor: pointer;
+  min-width: 80px;
+  text-align: center;
+  position: relative;
+}
+.mlt > span[data-cmd]:hover {
+  background-color: var(--dark);
+}
+.mlt span:last-child::before {
+  content: '';
+  width: 1px;
+  height: 12px;
+  background-color: var(--dark);
+  position: absolute;
+  left: 0;
+  top: calc(50% - 6px);
+}
+.mlt:hover span:last-child::before {
+  display: none;
+}
+
+[data-cmd=close] {
+  position: relative;
+}
+[data-cmd=close]::before,
+[data-cmd=close]::after {
+  content: '';
+  width: 1px;
+  height: 12px;
+  background-color: var(--dark);
+  position: absolute;
+  top: calc(50% - 6px);
+}
+[data-cmd=close]::before {
+  left: 0;
+}
+[data-cmd=close]::after {
+  right: 0;
+}
+.nav:hover [data-cmd=close]::before,
+.nav:hover [data-cmd=close]::after {
+  display: none;
+}
+[data-cmd=move-next] *,
+[data-cmd=move-previous] * {
+  pointer-events: none;
+}
+[data-cmd=move-next] svg {
+  margin-left: 5px;
+  stroke: var(--clr);
+}
+[data-cmd=move-previous] svg {
+  margin-right: 5px;
+  stroke: var(--clr);
+}
+[data-cmd=move-next]::after,
+[data-cmd=move-previous]::before {
+  content: '';
+  background-size: 12px 12px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}

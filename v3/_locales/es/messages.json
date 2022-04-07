@@ -1,0 +1,430 @@
+{
+    "app_description": {
+        "message": "Aumenta la velocidad del navegador y reduce la carga de memoria y cuando tengas numerosas pestañas abiertas.",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Opciones de descarte",
+        "description": ""
+    },
+    "options_period01_a": {
+        "message": "Descartar pestañas inactivas después de (en minutos)",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "(utiliza el minuto cero para deshabilitar el descarte automático de pestañas) cuando el número de pestañas inactivas exceda",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Número máximo de pestañas a comprobar para el descarte por cada solicitud de descarte automático",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Solo descartar los siguientes nombres de dominio o reglas de expresión regular inactivos",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Mostrar los elementos de descarte en el menú contextual de \"pestaña\" (si es compatible)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Mostrar los elementos de descarte en el menú contextual de \"página\"",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Mostrar el elemento \"Abrir enlace en una pestaña nueva descartada\" en el menú contextual \"enlace\"",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Cambiar favicon de las pestañas descartadas (si es posible)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "Prepends a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Descartar todas las pestañas no ancladas al inicio de un navegador o extensión",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Descartar todas las pestañas ancladas al inicio de un navegador o extensión",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Liberar estado de descarte de todas las pestañas ancladas al inicio de un navegador o extensión",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Liberar descarte de la pestaña siguiente (pestaña a la derecha de la pestaña activa)",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Liberar descarte de la pestaña anterior (pestaña a la izquierda de la pestaña activa)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Descartar una pestaña en segundo plano si el uso de memoria (totalJSHeapSize) excede (en MB)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Condiciones de descarte",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "No descartar una pestaña cuando se está reproduciendo multimedia",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "No descartar una pestaña cuando esté fijada",
+        "description": ""
+    },
+    "options_form": {
+        "message": "No descartar una pestaña cuando los cambios del formulario aún no se hayan enviado",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "No descartar las pestañas cuando la computadora esté conectada a una fuente de alimentación",
+        "description": ""
+    },
+    "options_online": {
+        "message": "No descartar las pestañas cuando no hay conexión a Internet y la pestaña no esté en caché",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "No descartar una pestaña si puede mostrar notificaciones en el escritorio",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "No descartar pestañas si la computadora no está en el estado 'inactivo'",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Intervalo de inactividad para determinar si la computadora está en estado inactivo o no (en minutos)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Excepciones",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartarán:",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Acción de clic_izquierdo en la barra de herramientas",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Abrir ventana emergente",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Descartar pestaña",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Descartar todas las otras pestañas",
+        "description": ""
+    },
+    "options_click_release_tabs": {
+        "message": "Liberar todas las otras pestañas",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Descartar otras pestañas en esta ventana",
+        "description": ""
+    },
+    "options_click_release_window": {
+        "message": "Liberar otras pestañas en esta ventana",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Descartar pestañas en otras ventanas",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Liberar pestañas en otras ventanas",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Cambiar a la opción \"Conservar esta pestaña en esta sesión\"",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Varios",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "Complementos",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "Al descartar, reemplazar la página con una alternativa ficticia local (beta)",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "Abrir una página en blanco temporal cuando se descarten todas las pestañas de una ventana inactiva (para poder descartar la pestaña activa en esta ventana)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Liberar descarte de todas las pestañas en la ventana activa. Si está habilitado, no se descartará ninguna pestaña en la ventana activa",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Eliminar permanentemente las pestañas antiguas descartadas si están inactivas durante (en horas)",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Descartar inmediatamente los siguientes nombres de dominio cuando su pestaña no esté activa",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Mostrar registros (solo con fines de depuración)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Descartar una pestaña si está oculta",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "Uso del Cache: Si está activado, la extensión solo comprobará una vez si la pestaña está anclada o si el buscador está conectado a una fuente de energía.",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Número de procesos de descarte simultáneos permitido",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Abrir página de preguntas frecuentes en actualizaciones",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "Es posible usar expresiones regulares para combinarlo con la palabra \"re:\". Por ejemplo para agregar a la lista de excepciones todas las URL con la palabra \"google\" en el se usaría \"re:google\".",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "Comprueba el valor totalJSHeapSize del documento superior. Si esta memoria excede el valor definido por el usuario (el valor mínimo aceptable es 10MB), la pestaña se descartará. Ten en cuenta que esta opción solo está disponible si tu navegador admite 'window.performance.memory'",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "Cuando se acaba el periodo de descarte de una pestaña o se añade una pestaña nueva, se comprueban todas las pestañas del navegador para evaluar qué pestañas hay que descartar. Esta opción obliga a la extensión a limitar estas comprobaciones. El valor mínimo aceptable es de 1 minuto. El valor recomendado es de 10 minutos.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Restablecer a valores predeterminados",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Importar configuración",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Exportar configuración",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Guardar opciones",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Apoyo al desarrollo",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "Retraso mínimo entre comprobaciones de descarte secuenciales (en segundos)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Retraso para pintar el favicon descartado (en milisegundos)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Descartar pestaña",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Descartar grupo de pestañas",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Descartar todas las otras pestañas",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Descartar otras pestañas en esta ventana",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Descartar pestañas a la derecha",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Descartar pestañas a la izquierda",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Descartar pestañas en otras ventanas",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Pestaña izquierda",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "Cerrar pestaña",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Pestaña derecha",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Conservar las pestañas para este sitio",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Siempre",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "Haz clic para añadir el nombre del dominio a la lista de excepciones. Mayús + Clic para añadir la URL exacta a la lista de excepciones.",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Sesión",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Conservar esta pestaña para esta sesión",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Opciones",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Liberar descarte. Para omitir el contenido en caché, utiliza Mayús + Clic",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "Usar tecla Mayús para ignorar las excepciones",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "No hay pestañas activas presentes",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "auto-descarte está inhabilitado para esta pestaña",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Descartar pestaña",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Descartar grupo de pestañas",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Descartar pestañas en esta ventana",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Descartar todas las otras pestañas",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Descartar pestañas a la derecha",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Descartar pestañas a la izquierda",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Descartar otras pestañas",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Descartar pestañas en otras ventanas",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Conservar siempre las pestañas para este sitio",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Abrir enlace en una pestaña nueva descartada",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Mover a la pestaña izquierda",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Mover a la pestaña derecha",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Cerrar pestaña",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "está añadido a la lista blanca permanente",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "está añadido a la lista blanca de sesiones",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "protocolo no soportado",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "No se puede descartar una pestaña cuando está activa.",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Descartar pestaña",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "Discard Tab Group",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Descartar todas las otras pestañas",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Descartar otras pestañas en esta ventana",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Descartar pestañas en otras ventanas",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Siempre conservar las pestañas para este sitio",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Mover a la pestaña izquierda",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Mover a la pestaña derecha",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Cerrar pestaña",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "¡Todas las pestañas de esta ventana están descartadas! Haz clic en cualquier lugar para cerrar esta ventana.",
+        "description": ""
+    }
+}

@@ -1,0 +1,454 @@
+{
+    "app_description": {
+        "message": "たくさんのタブを開いている時にメモリの使用量を軽減し、ブラウザを高速化します。",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "タブの破棄",
+        "description": ""
+    },
+    "options_period01_a": {
+        "message": "Discard inactive tabs after ",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "minutes (zero to disable) when the number of inactive tabs exceeds ",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "1回の自動破棄リクエストごとに破棄するかどうかをチェックするタブの最大数",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "以下に該当するホストネームもしくは正規表現ルールのタブのみを破棄する",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "タブの右クリックメニューに破棄メニューを表示する (対応している場合)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "ページの右クリックメニューに破棄メニューを表示する",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "\"リンク\"の右クリックメニューに「リンクを新しい破棄済みタブで開く」選択肢を表示する",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "破棄済みタブのファビコンを変更する (可能な場合)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "破棄済みタブに記号 (💤や⏻︎など) を挿入する (可能な場合)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "ブラウザまたは拡張機能の起動時に全てのピン留めしていないタブを破棄する",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "ブラウザまたは拡張機能の起動時に全てのピン留めしているタブを破棄する",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "ブラウザまたは拡張機能の起動時に全てのピン留めしているタブの破棄状態を解放する",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "アクティブなタブの右隣にあるタブの破棄状態を解放する ",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "アクティブなタブの左隣にあるタブの破棄状態を解放する ",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "バックグラウンドタブのメモリ使用量 (totalJSHeapSize) が次の値を超える場合はそのタブを破棄する (MB)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "破棄する条件",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "メディアを再生しているタブは破棄しない",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "ピン留めされているタブは破棄しない",
+        "description": ""
+    },
+    "options_form": {
+        "message": "フォームの内容がまだ送信されていないタブは破棄しない",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "コンピューターが電源に接続されている間はタブを破棄しない",
+        "description": ""
+    },
+    "options_online": {
+        "message": "インターネット接続がない状態でタブがキャッシュされていない場合はタブを破棄しない",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "タブがデスクトップ通知を表示できる場合は破棄しない",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "コンピューターがアイドル状態でない場合はタブを破棄しない",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "コンピューターがアイドル状態だと認識されるまでの時間 (分)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "例外",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "以下に該当するホストネームもしくは正規表現ルールのタブは破棄されません:",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "ツールバー左クリック時の動作",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "ポップアップを開く",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "タブを破棄する",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "他のタブを全て破棄する",
+        "description": ""
+    },
+    "options_click_release_tabs": {
+        "message": "他のタブを全て解放する",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "同じウィンドウの他のタブを全て破棄する",
+        "description": ""
+    },
+    "options_click_release_window": {
+        "message": "このウィンドウの他のタブを全て解放する",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "他のウィンドウのタブを全て破棄する",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "他のウィンドウのタブを全て解放する",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "「このセッションではこのタブを保持する」オプションを切り替える",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "その他",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "プラグイン",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "タブの破棄時にページをローカルのダミーページに置き換える (ベータ)",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "非アクティブなウィンドウのタブが全て破棄された時に一時的な空白ページを開く (アクティブなウィンドウのタブを破棄できるようにする)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "アクティブなウィンドウにある全てのタブの破棄状態を解放する。これを有効にすると、アクティブウィンドウのタブは破棄されなくなります",
+        "description": ""
+    },
+    "options_plugin_unloaded": {
+        "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "非アクティブ時間が次の値 (時間) を超える古い破棄済みタブは完全に削除する",
+        "description": ""
+    },
+    "options_plugin_trash_unloaded": {
+        "message": "Also, consider old unloaded tabs",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist": {
+        "message": "Only trash tabs matching the following URL patterns",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "タブがアクティブでない時、以下のホストネームのタブは直ちに破棄する",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "新しく開いた全ての非アクティブなタブを読み込み完了時に破棄する",
+        "description": ""
+    },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
+        "description": ""
+    },
+    "options_log": {
+        "message": "ログを表示する (デバッグ用)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "非表示のタブを破棄する",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "キャッシュを使用する: 有効にすると、タブがピン留めされているか、またはコンピューターが電源に接続されているかのチェックを1度しか行わなくなります",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "破棄処理を行うジョブの最大同時実行数",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "アップデート完了時にFAQページを開く",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "\"re:\"キーワードを付けて正規表現を使用することもできます。例えば\"google\"が含まれる全てのURLをホワイトリストに追加するには\"re:google\"と表記します。",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "トップドキュメントのtotalJSHeapSizeの値をチェックします。もしメモリ使用量が指定の量(最低10MB)を超えた場合、タブは破棄されます。なお、このオプションはブラウザが 'window.performance.memory' に対応している場合にのみ動作します。",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "タブの破棄期間が過ぎた時もしくは新しいタブが開かれたときに、ブラウザの全タブにおいて破棄するかどうかのチェックが行われます。このオプションはそのチェック間隔を制限するものです。入力可能な最低値は1分ですが、推奨値は10分です。",
+        "description": ""
+    },
+    "options_footnote_4": {
+        "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "初期状態にリセット",
+        "description": ""
+    },
+    "options_import": {
+        "message": "設定をインポート",
+        "description": ""
+    },
+    "options_export": {
+        "message": "設定をエクスポート",
+        "description": ""
+    },
+    "options_save": {
+        "message": "設定を保存",
+        "description": ""
+    },
+    "options_support": {
+        "message": "開発を支援",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "破棄チェックの最小連続実行間隔 (秒)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "破棄済みタブのファビコン描画遅延 (ミリ秒)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "タブを破棄する",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "タブグループを破棄する",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "他のタブを全て破棄する",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "このウィンドウの他のタブを全て破棄する",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "右側にあるタブを全て破棄する",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "左側にあるタブを全て破棄する",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "他のウィンドウのタブを全て破棄する",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "左のタブへ",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "タブを閉じる",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "右のタブへ",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "このサイトではタブを保持する",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "常に",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "クリックするとホストネームを除外リストに追加できます。Shift + クリックで完全なURLを例外リストに追加できます。",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "セッション",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "このセッションではこのタブを保持する",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "設定",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "破棄状態を解放する。キャッシュを回避するにはShift + クリック",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "例外を無視するにはShiftキーを使用",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "アクティブなタブはありません",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "このタブでは自動破棄が無効です",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "タブを破棄する",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "タブグループを破棄する",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "このウィンドウのタブを破棄する",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "他のタブを全て破棄する",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "右側にあるタブを全て破棄する",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "左側にあるタブを全て破棄する",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "他のタブを全て破棄する",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "他のウィンドウのタブを全て破棄する",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "このサイトではタブを常に保持する",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "新しい破棄済みタブで開く",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "左のタブに移動",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "右のタブに移動",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "タブを閉じる",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "がホワイトリストに追加されました",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "がセッションホワイトリストに追加されました",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "プロトコルがサポートされていません",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "アクティブなタブは破棄できません",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "タブを破棄する",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "タブグループを破棄する",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "他のタブを全て破棄する",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "このウィンドウにある他のタブを全て破棄する",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "他のウィンドウのタブを全て破棄する",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "このサイトではタブを常に保持する",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "左のタブに移動",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "右のタブに移動",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "タブを閉じる",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "このウィンドウのタブは全て破棄しました！画面内をクリックするとこのタブを閉じます。",
+        "description": ""
+    }
+}

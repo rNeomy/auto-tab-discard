@@ -1,0 +1,11 @@
+convert -background none icon.svg -resize 16x16 16.png
+convert -background none icon.svg -resize 18x18 18.png
+convert -background none icon.svg -resize 19x19 19.png
+convert -background none icon.svg -resize 32x32 32.png
+convert -background none icon.svg -resize 36x36 36.png
+convert -background none icon.svg -resize 38x38 38.png
+convert -background none icon.svg -resize 48x48 48.png
+convert -background none icon.svg -resize 64x64 64.png
+convert -background none icon.svg -resize 128x128 128.png
+convert -background none icon.svg -resize 256x256 256.png
+convert -background none icon.svg -resize 512x512 512.png

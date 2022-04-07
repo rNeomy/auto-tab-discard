@@ -1,0 +1,454 @@
+{
+    "app_description": {
+        "message": "Aumenta la velocità del browser e riduce il peso sulla memoria  quando hai molte schede aperte",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Impostazioni di sospensione",
+        "description": ""
+    },
+    "options_period01_a": {
+        "message": "Sospendi le schede inattive dopo",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "Minuti (zero per disabilitare) quando il numero di schede attive eccede",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Numero massimo di schede da controllare per singola richiesta di sospensione",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Sospendi solo i seguenti domini o le seguenti espressioni regolari ",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Mostra gli elementi sospesi nel menù contestuale della scheda (se supportato)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Mostra gli elementi sospesi nel menù contestuale della pagina",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Mostra \"Apri in una nuova scheda Sospesa\" nel menu contestuale \"Collegamenti\"",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Cambia la favicon delle schede sospese (se possibile)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "Aggiungi il simbolo come prefisso alle schede sospese (es. 💤 or ⏻︎) (se possibile)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Sospendi tutte le schede non bloccate all'avvio del browser o di un'estensione",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Sospendi tutte le schede bloccate all'avvio del browser o di un'estensione",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Riattiva tutte le schede bloccate all'avvio di un browser o di un'estensione",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Riattiva scheda successiva (scheda a destra di quella attiva)",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Riattiva la scheda precedente (scheda a sinistra di quella attiva)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Sospendi una scheda in background se il suo utilizzo della memoria (totalJSHeapSize) supera (in MB)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Condizioni di sospensione",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "Non sospendere la scheda quando i media sono in riproduzione",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "Non sospendere una scheda quando é bloccata",
+        "description": ""
+    },
+    "options_form": {
+        "message": "Non sospendere una scheda quando le modifiche al form non sono ancora state inviate",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "Non sospendere le schede quando il computer è collegato a una fonte di alimentazione",
+        "description": ""
+    },
+    "options_online": {
+        "message": "Non sospendere le schede quando non c'è connessione internet e la scheda non è nella cache",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "Non sospendere una scheda se è abilitata a mostrare notifiche Desktop",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "Non sospendere le schede se il computer non è in stato \"inattivo\"",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Intervallo di inattività per determinare se il computer è non in uso (in minuti)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Eccezioni",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Le schede con i seguenti hostname od espressioni regolari non verranno scartati:",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Azione per l'azione left_click sulla Toolbar",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Apri il popup",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Sospendi Tab",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Scarta tutte le altre schede",
+        "description": ""
+    },
+    "options_click_release_tabs": {
+        "message": "Riattiva tutte le altre schede",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Sospendi le altre schede in questa finestra",
+        "description": ""
+    },
+    "options_click_release_window": {
+        "message": "Riattiva le altre schede in questa finestra",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Sospendi le schede nelle altre finestre",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Riattiva le schede nelle altre finestre",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Abilita/Disabilita \"Mantieni questa scheda per questa sessione\"",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Varie",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "Estensioni",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "Quando si sospende, rimpiazza la pagina con un'alternativa fittizia (beta)",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "Apre una pagina temporanea vuota quando tutte le schede in una finestra inattiva sono sospese (in modo da sospendere le schede attive in questa finestra)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Impedisce la sospensione di tutte le schede nella finestra attiva. Se abilitato, nessuna scheda nella finestra attiva verrà sospesa.",
+        "description": ""
+    },
+    "options_plugin_unloaded": {
+        "message": "Sospendi tutte le schede non caricare all'avvio del browser. Questo metodo sospende quasi tutte le schede inattive.",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "Elimina in modo permanente (rimozione) le vecchie schede sospese se sono state inattive per (in ore)",
+        "description": ""
+    },
+    "options_plugin_trash_unloaded": {
+        "message": "Inoltre, considera le vecchie schede sospese",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist": {
+        "message": "Solo le schede che corrispondono al seguente pattern di URL",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Sospendi immediatamente i seguenti hostname quando le loro schede sono inattive",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Sospendi tutte le nuove schede aperte ed inattiva dopo che sono state caricate",
+        "description": ""
+    },
+    "options_plugin_youtube": {
+        "message": "Store YouTube's timestamp before discarding",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Mostra i Log (solo per scopi di debug)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Sospendi una scheda se è nascosta",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "Usa la Cache: se abilitato, l'estensione controlla solo se una scheda è appuntata o se il PC è alimentato a batteria",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Numero di processi simultanei di sospensione permessi",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Apri la pagina di FAQ in caso di aggiornamenti",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "E' possibile utilizzare espressioni regolari che coincidono con la parola chiave \"re:\". Per esempio per mettere in whitelist tutte le URL contenenti la parola-chiave \"google\" si può utilizzare \"re:google\".",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "Controlla il valore di totalJSHeapSize del documento principale. Se questo valore di memoria supera il valore impostato dall'utente (il minimo accettato è 10MB), la scheda verrà sospesa. Notare che questa opzione è disponibile solo se il tuo browser supporta 'window.performance.memory'",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "Quando il periodo di sospensione per una scheda è finito oppure una nuova scheda viene aggiunta, tutte le schede del browser saranno sospese. Questa opzione forza l'estensione a limitare questi controlli. Il valore minimo accettato è 1 minuto. Il valore consigliato è 10 minuti.",
+        "description": ""
+    },
+    "options_footnote_4": {
+        "message": "Per usare un tempo peronslizzato per una regola, aggiungi @{number}{unit}  alla fine (es.google.com@3d eliminerà l'URL di google.com dopo 3 giorni). Le unità valide sono (h)ours-ore, (d)ays-giorni, (w)weeks-settimane, e (mo)nths-mesi.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Reset alle impostazioni di fabbrica",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Importa la configurazione",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Esporta la configurazione",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Salva le opzioni",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Supporta gli sviluppatori",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "Intervallo minimo tra due controlli consecutivi di sospensione (in secondi)",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Ritardo per il ridisegno dell'icona di sospensione (in millisecondi)",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Sospenti la scheda",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Sospendi il gruppo di schede",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Sospendi tutte le altre schede",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Sospendi le altre schede in questa finestra",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Sospendi le schede a destra",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Sospendi le schede a sinistra",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Sospendi le schede nelle altre finestre",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Scheda a sinistra",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "Chiudi scheda",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Scheda a destra",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Mantieni la schede per questo sito",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Sempre",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "Fare click per aggiungere il nomehost alla lista delle eccezioni. Shift+Click per eliminare l'URL dalla lista delle eccezioni",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Sessione",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Mantieni la scheda per questa sessione",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Opzioni",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Disattiva la sospensione. Per ricaricare il contenuto in cache utilizzare Shift + Click",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "Usa il tasto Shift per ignorare le eccezioni",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "Non è presente nessuna scheda attiva",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "L'auto-sospensione è disabilitata per questa scheda",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Sospendi scheda",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Sospendi il gruppo di schede",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Sospendi le schede in questa finestra",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Sospendi tutte le altre schede",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Sospendi le schede a destra",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Sospendi per schede a sinistra",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Sospendi le altre schede",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Sospendi le schede nelle altre finestre",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Mantieni sempre le schede per questo sito",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Apri in una nuova scheda sospesa",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Spostati sulla scheda a sinistra",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Spostati sulla scheda a destra",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Chiudi la scheda",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "è aggiunta alla whitelist permanente",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "è aggiunta alla whitelist di sessione",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "Il protocollo non è supportato",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "Non è possibile sospendere una scheda mentre è attiva",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Sospendi la scheda",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "Sospendi il gruppo di schede",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Sospendi tutte le altre schede",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Sospendi le altre schede in questa finestra",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Sospendi le schede nelle altre finestre",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Mantieni sempre le schede per questo sito",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Spostati sulla scheda sinistra",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Spostati sulla scheda a destra",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Chiudi scheda",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "Tutte le schede per questa finsetra verranno sospese! Clicca per chiudere questa scheda.",
+        "description": ""
+    }
+}

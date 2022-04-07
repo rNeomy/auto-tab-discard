@@ -1,0 +1,430 @@
+{
+    "app_description": {
+        "message": "當打開多個分頁時，提高瀏覽器速度並減少記憶體負載。",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "休眠選項",
+        "description": ""
+    },
+    "options_period01_a": {
+        "message": "在幾分鐘後休眠閒置的分頁",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "當不使用的分頁數量超過時，自動休眠分頁（輸入 0 以停止自動休眠分頁）",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "自動休眠檢測最大分頁數量",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "只休眠符合以下網域名稱或正則表達式的閒置分頁",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "若支援，在「分頁標籤」的右鍵選單顯示休眠選項",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "在「網頁」右鍵選單顯示休眠選項",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "在「鏈結」右鍵選單顯示「在新的休眠分頁開啟鏈結」",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "若可行，替換休眠中分頁標籤的網站圖示",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "若可行，在休眠中的分頁標籤圖示前加上符號（如💤、⏻︎）",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "在瀏覽器或附加元件啟動時休眠非釘選分頁",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "在瀏覽器或附加元件啟動時休眠已釘選分頁",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "在瀏覽器或附加元件啟動時解除非釘選分頁休眠狀態",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "解除下一個分頁休眠狀態（當前頁面的右側分頁）",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "還原前一個分頁的休眠（目前頁面左側的分頁）",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "單個分頁在背景占用超過記憶體上限則使其休眠（單位 MB）",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "休眠條件",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "不要休眠正在播放媒體的分頁",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "不要休眠已釘選的分頁",
+        "description": ""
+    },
+    "options_form": {
+        "message": "不要休眠尚未提交或未儲存表單的分頁",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "已連接電源時停止休眠分頁",
+        "description": ""
+    },
+    "options_online": {
+        "message": "網路離線且分頁狀態未暫存時停止休眠分頁",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "不要休眠會顯示電腦桌面通知的分頁",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "電腦未處於「閒置」狀態時停止休眠分頁",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "偵測電腦是否處於閒置狀態的間隔時間（分鐘）",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "白名單",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "符合以下網域名稱或正則表達式的分頁將不會被休眠",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "工具列按下左鍵",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "開啟彈出視窗",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "休眠此分頁",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "休眠全部分頁",
+        "description": ""
+    },
+    "options_click_release_tabs": {
+        "message": "休眠其它分頁",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "休眠此視窗外全部分頁",
+        "description": ""
+    },
+    "options_click_release_window": {
+        "message": "休眠在此視窗的其它分頁",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "休眠其它視窗的所有分頁",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "休眠在其它視窗的分頁",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "切換「在本次瀏覽狀態保留此分頁」選項",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "其它",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "外掛程式",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "休眠時，用本機虛擬（測試版）替換頁面",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "當閒置視窗的所有分頁都被休眠時，開啟一個暫時的空白分頁 (為了能休眠使用中的分頁)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "停止休眠使用中視窗的所有分頁。若啟用，使用中的視窗不會有分頁會被休眠",
+        "description": ""
+    },
+    "options_plugin_trash": {
+        "message": "永久關閉過時的休眠分頁，如果它們處於閒置狀態多少小時",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "當此網域名稱的分頁沒有活動時，立即休眠它們",
+        "description": ""
+    },
+    "options_log": {
+        "message": "顯示紀錄（僅用於除錯）",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "休眠被隱藏的分頁",
+        "description": ""
+    },
+    "options_use_cache": {
+        "message": "使用快取：如果啟用，此附加元件僅檢查分頁是否釘選或瀏覽器連接到電池才做休眠偵測",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "允許同時休眠的分頁數量",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "更新套件後開啟 FAQ 頁面",
+        "description": ""
+    },
+    "options_footnote_1": {
+        "message": "可以使用〝re:〞前置詞的關鍵字。 例如要將所有帶有〝google〞關鍵字的網址列入白名單，請使用 〝re:google〞。",
+        "description": ""
+    },
+    "options_footnote_2": {
+        "message": "檢查單個分頁在背景佔用超過多少記憶體。 超過用戶定義值（最小可接受值為10MB）, 此分頁將強制休眠。請注意，僅當開啟瀏覽器的「window.performance.memory」功能時，此設定才可啟用。",
+        "description": ""
+    },
+    "options_footnote_3": {
+        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "重設為原始設定",
+        "description": ""
+    },
+    "options_import": {
+        "message": "匯入設定",
+        "description": ""
+    },
+    "options_export": {
+        "message": "匯出設定",
+        "description": ""
+    },
+    "options_save": {
+        "message": "儲存設定",
+        "description": ""
+    },
+    "options_support": {
+        "message": "贊助此附加元件",
+        "description": ""
+    },
+    "options_check_delay": {
+        "message": "循序休眠檢查之間的最小延遲（單位：秒）",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "替換休眠中分頁的網站圖示的延遲時間（單位：毫秒）",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "休眠分頁",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "休眠分頁群組",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "休眠其它分頁",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "休眠此視窗外其它分頁",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "休眠右側的分頁",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "休眠左側的分頁",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "休眠其它視窗的分頁",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "左側分頁",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "關閉分頁",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "右側分頁",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "保留此網站的分頁",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "總是",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "按下此鈕來加入這個域名至例外清單， Shift  + 點擊以加入目前網址至例外清單",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "瀏覽狀態",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "在本次瀏覽狀態保留此分頁",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "選項",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "解除休眠。略過暫存熱鍵 Shift + 點擊",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "使用 Shift 鍵來忽略例外",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "沒有使用中的分頁",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "此分頁的自動休眠功能已停用",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "休眠分頁",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "休眠分頁群組",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "休眠此視窗中的分頁",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "休眠所有分頁",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "休眠右側分頁",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "休眠左側分頁",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "休眠其他分頁",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "休眠其它視窗的分頁",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "始終保留此網站分頁",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "以「新的休眠分頁」開啟鏈結",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "移至左側分頁",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "移至右側分頁",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "關閉分頁",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "已新增至永久白名單",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "已新增至本次瀏覽狀態白名單",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "不支援協定",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "分頁處於使用中狀態時無法休眠",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "休眠分頁",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "休眠分頁群組",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "休眠所有分頁",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "休眠此視窗外的其他分頁",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "休眠其它視窗的分頁",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "始終保留此網站分頁",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "移至左側分頁",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "移至右側分頁",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "關閉分頁",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "此視窗的所有分頁都已經休眠了！點擊任何地方來關閉這個視窗",
+        "description": ""
+    }
+}
