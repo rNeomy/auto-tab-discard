@@ -1,6 +1,6 @@
 {
     "app_description": {
-        "message": "Aumenta la velocidad del navegador y reduce la carga de memoria y cuando tengas numerosas pestañas abiertas.",
+        "message": "Aumenta la velocidad del navegador y reduce el consumo de memoria cuando tengas numerosas pestañas abiertas.",
         "description": ""
     },
     "options_discarding_options": {
@@ -8,11 +8,11 @@
         "description": ""
     },
     "options_period01_a": {
-        "message": "Descartar pestañas inactivas después de (en minutos)",
+        "message": "Descartar pestañas inactivas después de",
         "description": ""
     },
     "options_period02": {
-        "message": "(utiliza el minuto cero para deshabilitar el descarte automático de pestañas) cuando el número de pestañas inactivas exceda",
+        "message": "minutos (cero para desactivar) cuando el número de pestañas inactivas supera ",
         "description": ""
     },
     "options_period04": {
@@ -24,15 +24,15 @@
         "description": ""
     },
     "options_tab_context": {
-        "message": "Mostrar los elementos de descarte en el menú contextual de \"pestaña\" (si es compatible)",
+        "message": "Mostrar las opciones de descarte en el menú contextual de \"pestaña\" (si es compatible)",
         "description": ""
     },
     "options_page_context": {
-        "message": "Mostrar los elementos de descarte en el menú contextual de \"página\"",
+        "message": "Mostrar las opciones de descarte en el menú contextual de \"página\"",
         "description": ""
     },
     "options_link_context": {
-        "message": "Mostrar el elemento \"Abrir enlace en una pestaña nueva descartada\" en el menú contextual \"enlace\"",
+        "message": "Mostrar la opción \"Abrir en una nueva pestaña descartada\" en el menú contextual \"enlace\"",
         "description": ""
     },
     "options_favicon": {
@@ -40,31 +40,31 @@
         "description": ""
     },
     "options_prepends": {
-        "message": "Prepends a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)",
+        "message": "Añadir un símbolo a las pestañas descartadas (por ejemplo: 💤 o ⏻︎) (si es posible)",
         "description": ""
     },
     "options_startup_unpinned": {
-        "message": "Descartar todas las pestañas no ancladas al inicio de un navegador o extensión",
+        "message": "Descartar todas las pestañas no fijadas al abrir el navegador o extensión",
         "description": ""
     },
     "options_startup_pinned": {
-        "message": "Descartar todas las pestañas ancladas al inicio de un navegador o extensión",
+        "message": "Descartar todas las pestañas fijadas al abrir el navegador o extensión",
         "description": ""
     },
     "options_startup_release_pinned": {
-        "message": "Liberar estado de descarte de todas las pestañas ancladas al inicio de un navegador o extensión",
+        "message": "Retirar el estado de descarte de todas las pestañas fijadas al abrir el navegador o extensión",
         "description": ""
     },
     "options_release_next_tab": {
-        "message": "Liberar descarte de la pestaña siguiente (pestaña a la derecha de la pestaña activa)",
+        "message": "Retirar descarte de la pestaña posterior (pestaña a la derecha de la pestaña activa)",
         "description": ""
     },
     "options_release_previous_tab": {
-        "message": "Liberar descarte de la pestaña anterior (pestaña a la izquierda de la pestaña activa)",
+        "message": "Retirar descarte de la pestaña anterior (pestaña a la izquierda de la pestaña activa)",
         "description": ""
     },
     "options_memory": {
-        "message": "Descartar una pestaña en segundo plano si el uso de memoria (totalJSHeapSize) excede (en MB)",
+        "message": "Descartar una pestaña en segundo plano si su consumo de memoria (totalJSHeapSize) supera (en MB)",
         "description": ""
     },
     "options_discarding_conditions": {
@@ -171,12 +171,32 @@
         "message": "Liberar descarte de todas las pestañas en la ventana activa. Si está habilitado, no se descartará ninguna pestaña en la ventana activa",
         "description": ""
     },
+    "options_plugin_unloaded": {
+        "message": "Descartar todas las pestañas no cargadas al iniciar el navegador. Este método descarta casi todas las pestañas inactivas",
+        "description": ""
+    },
     "options_plugin_trash": {
         "message": "Eliminar permanentemente las pestañas antiguas descartadas si están inactivas durante (en horas)",
         "description": ""
     },
+    "options_plugin_trash_unloaded": {
+        "message": "Además, considera las pestañas viejas no cargadas",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist": {
+        "message": "Solo se eliminarán las pestañas que coincidan con los siguientes patrones de URL",
+        "description": ""
+    },
     "options_plugin_force": {
         "message": "Descartar inmediatamente los siguientes nombres de dominio cuando su pestaña no esté activa",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Descartar todas las pestañas inactivas recién abiertas después de que se carguen",
+        "description": ""
+    },
+    "options_plugin_youtube": {
+        "message": "Almacenar la marca de tiempo de YouTube antes de descartar",
         "description": ""
     },
     "options_log": {
@@ -188,7 +208,7 @@
         "description": ""
     },
     "options_use_cache": {
-        "message": "Uso del Cache: Si está activado, la extensión solo comprobará una vez si la pestaña está anclada o si el buscador está conectado a una fuente de energía.",
+        "message": "Uso de la caché: Si está habilitado, la extensión solo comprobará una vez si la pestaña está anclada o si el buscador está conectado a una fuente de energía.",
         "description": ""
     },
     "options_simultaneous_jobs": {
@@ -200,15 +220,15 @@
         "description": ""
     },
     "options_footnote_1": {
-        "message": "Es posible usar expresiones regulares para combinarlo con la palabra \"re:\". Por ejemplo para agregar a la lista de excepciones todas las URL con la palabra \"google\" en el se usaría \"re:google\".",
+        "message": "Es posible usar expresiones regulares para combinarlo con la palabra \"re:\". Por ejemplo para añadir a la lista de excepciones todas las URL con la palabra \"google\" en el se usaría \"re:google\".",
         "description": ""
     },
     "options_footnote_2": {
         "message": "Comprueba el valor totalJSHeapSize del documento superior. Si esta memoria excede el valor definido por el usuario (el valor mínimo aceptable es 10MB), la pestaña se descartará. Ten en cuenta que esta opción solo está disponible si tu navegador admite 'window.performance.memory'",
         "description": ""
     },
-    "options_footnote_3": {
-        "message": "Cuando se acaba el periodo de descarte de una pestaña o se añade una pestaña nueva, se comprueban todas las pestañas del navegador para evaluar qué pestañas hay que descartar. Esta opción obliga a la extensión a limitar estas comprobaciones. El valor mínimo aceptable es de 1 minuto. El valor recomendado es de 10 minutos.",
+    "options_footnote_4": {
+        "message": "Para utilizar un intervalo de tiempo personalizado para una regla, añade @{number}{unit} al final (por ejemplo: google.com@3d eliminará las URL de google.com después de 3 días). Las unidades válidas son horas, días, semanas y meses.",
         "description": ""
     },
     "options_reset": {
@@ -229,10 +249,6 @@
     },
     "options_support": {
         "message": "Apoyo al desarrollo",
-        "description": ""
-    },
-    "options_check_delay": {
-        "message": "Retraso mínimo entre comprobaciones de descarte secuenciales (en segundos)",
         "description": ""
     },
     "options_favicon_delay": {
@@ -356,7 +372,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Abrir enlace en una pestaña nueva descartada",
+        "message": "Abrir en una pestaña nueva descartada",
         "description": ""
     },
     "menu_move_previous": {
@@ -375,8 +391,16 @@
         "message": "está añadido a la lista blanca permanente",
         "description": ""
     },
+    "menu_msg5": {
+        "message": "is removed from the permanent whitelist",
+        "description": ""
+    },
     "menu_msg4": {
         "message": "está añadido a la lista blanca de sesiones",
+        "description": ""
+    },
+    "menu_msg6": {
+        "message": "is removed from the session whitelist",
         "description": ""
     },
     "menu_msg2": {
@@ -392,7 +416,7 @@
         "description": ""
     },
     "cmd_discard_tree": {
-        "message": "Discard Tab Group",
+        "message": "Descartar grupo de pestañas",
         "description": ""
     },
     "cmd_discard_tabs": {
@@ -424,7 +448,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "¡Todas las pestañas de esta ventana están descartadas! Haz clic en cualquier lugar para cerrar esta ventana.",
+        "message": "¡Todas las pestañas de esta ventana están descartadas! Haz clic en cualquier lugar para cerrar esta pestaña.",
         "description": ""
     }
 }

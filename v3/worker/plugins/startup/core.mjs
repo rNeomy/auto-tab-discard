@@ -22,6 +22,7 @@ const observe = () => {
       log('startup plug-in', 'number of tabs that can be discarded on startup', tbs.length);
       number.check(tbs.filter(t => t.status !== 'unloaded'), number.IGNORE);
       const rst = tbs.filter(t => t.status === 'unloaded');
+      // there are tabs that cannot yet get discarded
       if (rst.length) {
         const observe = (id, info, tab) => {
           if (info.status === 'complete') {

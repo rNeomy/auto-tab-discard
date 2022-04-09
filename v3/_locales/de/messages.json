@@ -8,11 +8,11 @@
         "description": ""
     },
     "options_period01_a": {
-        "message": "Discard inactive tabs after ",
+        "message": "Deaktiviere inaktive Tabs nach",
         "description": ""
     },
     "options_period02": {
-        "message": "minutes (zero to disable) when the number of inactive tabs exceeds ",
+        "message": "Minuten (null zum deaktivieren) wenn die Anzahl inaktiver Tabs überschritten wird",
         "description": ""
     },
     "options_period04": {
@@ -172,7 +172,7 @@
         "description": ""
     },
     "options_plugin_unloaded": {
-        "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs",
+        "message": "Deaktiviere alle ungeladenen Tabs beim Browserstart. Diese Methode deaktiviert fast alle inaktiven Tabs.",
         "description": ""
     },
     "options_plugin_trash": {
@@ -180,11 +180,11 @@
         "description": ""
     },
     "options_plugin_trash_unloaded": {
-        "message": "Also, consider old unloaded tabs",
+        "message": "Übigens, beachte alte ungeladene Tabs",
         "description": ""
     },
     "options_plugin_trash_whitelist": {
-        "message": "Only trash tabs matching the following URL patterns",
+        "message": "Ausschließlich Müll Tabs, welche den folgenden URL-Mustern entsprechen",
         "description": ""
     },
     "options_plugin_force": {
@@ -196,7 +196,7 @@
         "description": ""
     },
     "options_plugin_youtube": {
-        "message": "Store YouTube's timestamp before discarding",
+        "message": "Speichere YouTube's Zeitmarke vor dem deaktivieren",
         "description": ""
     },
     "options_log": {
@@ -227,12 +227,8 @@
         "message": "Prüft \"totalJSHeapSize\" der Seite. Wenn die Speichernutzung dieser den benutzerdefinierten Wert überschreitet (der kleinstmögliche Wert ist 10 MB), wird der Tab deaktiviert. Beachten Sie, dass diese Option nur verfügbar ist, wenn Ihr Browser \"window.performance.memory\" unterstützt",
         "description": ""
     },
-    "options_footnote_3": {
-        "message": "Wenn die definierte inaktive Zeit für einen Tab erreicht ist oder ein neuer Tab hinzugefügt wird, werden alle Tabs des Browsers überprüft, um zu ermitteln, welche Tabs deaktiviert werden können. Diese Option zwingt die Erweiterung, diese Aktion zu begrenzen. Der kleinstmögliche Wert ist 1 Minute. Der empfohlene Wert ist 10 Minuten.",
-        "description": ""
-    },
     "options_footnote_4": {
-        "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths",
+        "message": "Um einen eigenen Zeitintervall für eine Regel zu benutzen, hänge @{zahl}{einheit} ans Ende (bspw.: google.com@3d wird google.com URLs nach 3 Tagen löschen). Gültige Einheiten sind (h)-Stunde, (d)-Tage, (w)ochen, und (mo)nate",
         "description": ""
     },
     "options_reset": {
@@ -253,10 +249,6 @@
     },
     "options_support": {
         "message": "Entwicklung unterstützen",
-        "description": ""
-    },
-    "options_check_delay": {
-        "message": "Mindestverzögerung zwischen aufeinanderfolgende Deaktivierungsprüfungen in Sekunden",
         "description": ""
     },
     "options_favicon_delay": {
@@ -399,8 +391,16 @@
         "message": "wird zur Whitelist hinzugefügt",
         "description": ""
     },
+    "menu_msg5": {
+        "message": "is removed from the permanent whitelist",
+        "description": ""
+    },
     "menu_msg4": {
         "message": "wird zur Sitzungs-Whitelist hinzugefügt",
+        "description": ""
+    },
+    "menu_msg6": {
+        "message": "is removed from the session whitelist",
         "description": ""
     },
     "menu_msg2": {
