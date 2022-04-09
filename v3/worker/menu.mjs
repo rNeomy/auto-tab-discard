@@ -100,7 +100,6 @@ import {interrupts} from './plugins/loader.mjs';
     }
     //
     const {menuItemId, shiftKey, checked} = info;
-    console.log(info);
 
     if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session' || menuItemId === 'whitelist-exact') {
       storage(prefs).then(async prefs => {

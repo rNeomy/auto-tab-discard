@@ -96,6 +96,9 @@ document.addEventListener('click', e => {
       cmd,
       shiftKey: e.shiftKey,
       checked: e.target.checked
-    }, () => window.close());
+    }, () => {
+      window.close();
+      chrome.runtime.lastError;
+    });
   }
 });
