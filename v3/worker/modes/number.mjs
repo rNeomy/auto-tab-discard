@@ -1,5 +1,5 @@
 import {storage} from '../core/prefs.mjs';
-import {log, query} from '../core/utils.mjs';
+import {log, query, match} from '../core/utils.mjs';
 import {discard} from '../core/discard.mjs';
 import {starters} from '../core/startup.mjs';
 import {interrupts} from '../plugins/loader.mjs';
@@ -116,40 +116,30 @@ number.check = async (filterTabsFrom, ops = {}) => {
     tbs = tbs.filter(check);
   }
   // remove tabs that match one of the matching lists
+  let exceptionCount = 0;
+
   if (
     prefs['whitelist'].length ||
     prefs['whitelist.session'].length ||
     (prefs.mode === 'url-based' && prefs['whitelist-url'].length)
   ) {
-    const match = (href, hostname, list) => {
-      if (list.length === 0) {
-        return false;
-      }
-      if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
-        return true;
-      }
-      if (list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3)).some(s => {
-        try {
-          return (new RegExp(s)).test(href);
-        }
-        catch (e) {}
-      })) {
-        return true;
-      }
-    };
     tbs = tbs.filter(tb => {
       try {
         const {hostname} = new URL(tb.url);
 
-        const m = list => match(tb.url, hostname, list);
+        const m = list => match(list, hostname, tb.url);
         // if we are on url-based mode, remove tabs that are not on the list (before fetching meta)
         if (prefs.mode === 'url-based' && m(prefs['whitelist-url']) !== true) {
           icon(tb, 'tab is in the whitelist');
+          log('number.check', 'tab is ignored', 'url-based whitelist', tb.url);
+          exceptionCount += 1;
           return false;
         }
         // is the tab in whitelist, remove it (before fetching meta)
         if (m(prefs['whitelist']) || m(prefs['whitelist.session'])) {
           icon(tb, 'tab is in either the session whitelist or permanent whitelist');
+          log('number.check', 'tab is ignored', 'whitelist', tb.url);
+          exceptionCount += 1;
           return false;
         }
         return true;
@@ -165,8 +155,12 @@ number.check = async (filterTabsFrom, ops = {}) => {
   }
 
   // do not discard if number of tabs is smaller than required
-  if (tbs.length <= prefs.number) {
-    return log('number.check', 'number of active tabs', tbs.length, 'is smaller than', prefs.number);
+  if (tbs.length + exceptionCount <= prefs.number) {
+    return log(
+      'number.check', 'total number of active tabs', tbs.length,
+      ' + ignored tabs', exceptionCount,
+      'is equal or smaller than', prefs.number
+    );
   }
   const now = Date.now();
   const map = new Map();
@@ -185,6 +179,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
       if (ops['ignore.meta.data'] === true && tb.url.startsWith('http') !== true) {
         log('discarding aborted', 'metadata fetch error', tb.url);
         icon(tb, 'metadata fetch error');
+        exceptionCount += 1;
         continue;
       }
     }
@@ -202,44 +197,49 @@ number.check = async (filterTabsFrom, ops = {}) => {
     // check tab's age
     if (now - meta.time < prefs.period * 1000) {
       log('discarding aborted', 'tab is not old');
+      exceptionCount += 1;
       continue;
     }
     // is this tab loaded
     if (meta.ready !== true && ops['ignore.ready.state'] !== true) {
       log('discarding aborted', 'tab is not ready');
+      exceptionCount += 1;
       continue;
     }
     // is tab playing audio
     if (prefs.audio && meta.audible) {
       log('discarding aborted', 'audio is playing');
       icon(tb, 'tab plays an audio');
+      exceptionCount += 1;
       continue;
     }
     // is there an unsaved form
     if (prefs.form && meta.forms) {
       log('discarding aborted', 'active form');
       icon(tb, 'there is an active form on this tab');
+      exceptionCount += 1;
       continue;
     }
     // is notification allowed
     if (prefs['notification.permission'] && meta.permission) {
       log('discarding aborted', 'tab has notification permission');
       icon(tb, 'tab has notification permission');
+      exceptionCount += 1;
       continue;
-    // tab can be discarded
     }
     map.set(tb, meta);
     arr.push(tb);
     if (arr.length > prefs['max.single.discard']) {
-      log('breaking', 'max number of tabs reached');
+      log('number.check', 'breaking', 'max number of tabs reached');
       break;
     }
   }
   // ready to discard
+  log('number check', 'tabs that are ignored', exceptionCount);
   log('number check', 'possible tabs that could get discarded', arr.length);
   const tbds = arr
     .sort((a, b) => map.get(a).time - map.get(b).time)
-    .slice(0, Math.min(arr.length - prefs.number, prefs['max.single.discard']));
+    .slice(0, Math.min(arr.length + exceptionCount - prefs.number, prefs['max.single.discard']));
 
   log('number check', 'discarding', tbds.length);
   for (const tb of tbds) {

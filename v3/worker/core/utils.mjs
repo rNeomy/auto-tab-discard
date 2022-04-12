@@ -11,4 +11,19 @@ const notify = e => chrome.notifications.create({
 
 const query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
 
-export {query, notify, log};
+const match = (list, hostname, href) => {
+  if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
+    return true;
+  }
+  if (list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3)).some(s => {
+    try {
+      return (new RegExp(s)).test(href);
+    }
+    catch (e) {}
+  })) {
+    return true;
+  }
+};
+
+export {query, notify, log, match};
+

@@ -1,4 +1,4 @@
-'use strict';
+import {match} from '../../worker/core/utils.mjs';
 
 // localization
 [...document.querySelectorAll('[data-i18n]')].forEach(e => {
@@ -30,19 +30,6 @@ const init = () => {
       const {protocol = '', hostname} = new URL(tab.url);
 
       if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        const match = list => {
-          if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
-            return true;
-          }
-          if (list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3)).some(s => {
-            try {
-              return (new RegExp(s)).test(tab.url);
-            }
-            catch (e) {}
-          })) {
-            return true;
-          }
-        };
         chrome.runtime.sendMessage({
           'method': 'storage',
           'managed': {
@@ -52,8 +39,8 @@ const init = () => {
             'whitelist.session': []
           }
         }, prefs => {
-          whitelist.session.checked = match(prefs['whitelist.session']) ? true : false;
-          whitelist.always.checked = match(prefs['whitelist']) ? true : false;
+          whitelist.session.checked = match(prefs['whitelist.session'], hostname, tab.url) ? true : false;
+          whitelist.always.checked = match(prefs['whitelist'], hostname, tab.url) ? true : false;
         });
         if (tab.autoDiscardable === false) {
           allowed.checked = true;
@@ -79,7 +66,7 @@ init();
 
 document.addEventListener('click', e => {
   const {target} = e;
-  const cmd = e.shiftKey ? (target.dataset.shift || target.dataset.cmd) : target.dataset.cmd;
+  const cmd = target.dataset.cmd;
 
   if (cmd === 'open-options') {
     chrome.runtime.openOptionsPage();

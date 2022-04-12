@@ -2,7 +2,7 @@ import {number} from './modes/number.mjs';
 import {storage, prefs} from './core/prefs.mjs';
 import {navigate} from './core/navigate.mjs';
 import {discard, inprogress} from './core/discard.mjs';
-import {query, notify} from './core/utils.mjs';
+import {query, notify, match} from './core/utils.mjs';
 import {starters} from './core/startup.mjs';
 import {interrupts} from './plugins/loader.mjs';
 
@@ -101,7 +101,7 @@ import {interrupts} from './plugins/loader.mjs';
     //
     const {menuItemId, shiftKey, checked} = info;
 
-    if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session' || menuItemId === 'whitelist-exact') {
+    if (menuItemId === 'whitelist-domain' || menuItemId === 'whitelist-session') {
       storage(prefs).then(async prefs => {
         Object.assign(prefs, await storage({
           'whitelist.session': []
@@ -115,22 +115,29 @@ import {interrupts} from './plugins/loader.mjs';
         if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
           let whitelist = prefs[d ? 'whitelist' : 'whitelist.session'];
 
-          if (menuItemId === 'whitelist-exact') {
+          if (shiftKey) {
             rule = 're:^' + tab.url.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '$';
           }
           else {
             rule = hostname;
           }
+
           if (checked) {
             whitelist.push(rule);
             notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
           }
           else {
-            const n = whitelist.indexOf(rule);
-            if (n !== -1) {
-              whitelist.splice(n, 1);
-            }
-            notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg5' : 'menu_msg6')}`);
+            whitelist = whitelist.filter(rule => {
+              const m = match([rule], hostname, tab.url);
+
+              if (m) {
+                notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg5' : 'menu_msg6')}`);
+                return false;
+              }
+              else {
+                return true;
+              }
+            });
           }
           whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
           if (d) {

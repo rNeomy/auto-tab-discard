@@ -81,7 +81,7 @@
     "message": "Exceptions"
   },
   "options_whitelist": {
-    "message": "Tabs with the following hostnames or regular expression rules are not being discarded:"
+    "message": "Tabs with the following hostnames or regular expression rules are not being discarded. It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule."
   },
   "options_left_click": {
     "message": "Toolbar left_click action"
