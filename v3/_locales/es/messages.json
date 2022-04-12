@@ -392,7 +392,7 @@
         "description": ""
     },
     "menu_msg5": {
-        "message": "is removed from the permanent whitelist",
+        "message": "está eliminado de la lista blanca permanente",
         "description": ""
     },
     "menu_msg4": {
@@ -400,7 +400,7 @@
         "description": ""
     },
     "menu_msg6": {
-        "message": "is removed from the session whitelist",
+        "message": "está eliminado de la lista blanca de sesiones",
         "description": ""
     },
     "menu_msg2": {
