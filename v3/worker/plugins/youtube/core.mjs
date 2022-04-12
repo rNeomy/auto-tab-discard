@@ -11,7 +11,7 @@ function enable() {
         target: {
           tabId: tab.id
         },
-        world: chrome.scripting.ExecutionWorld.MAIN,
+        world: 'MAIN',
         func: () => {
           const player = document.querySelector('.html5-video-player');
           if (player) {
@@ -19,17 +19,13 @@ function enable() {
             if (t) {
               const s = new URLSearchParams(location.search);
               s.set('t', t + 's');
-              console.log(s);
               history.replaceState(history.state, '', '?' + s.toString());
             }
           }
         }
       }).catch(e => {
         console.error('plugins/youtube -> error', e);
-      }).then(() => {
-        console.log('done');
-        perform(tab);
-      });
+      }).then(() => perform(tab));
     }
     else {
       perform(tab);

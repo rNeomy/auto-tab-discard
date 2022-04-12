@@ -179,6 +179,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
       },
       files: ['/data/inject/meta.js']
     }).then(r => r.map(o => o.result), () => []);
+
     // remove protected tabs (e.g. addons.mozilla.org)
     if (ms.length === 0) {
       if (ops['ignore.meta.data'] === true && tb.url.startsWith('http') !== true) {
