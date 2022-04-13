@@ -108,7 +108,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartarán:",
+        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartan. Se recomienda utilizar la interfaz emergente para modificar esta lista. Use la tecla \"Mayús\" mientras añade una regla desde la interfaz emergente para generar una regla de expresión regular.",
         "description": ""
     },
     "options_left_click": {
