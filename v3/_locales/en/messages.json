@@ -336,6 +336,9 @@
     "message": "Close Tab"
   },
   "blank_msg": {
-    "message": "All tabs in this window are discarded! Click anywhere to close this tab."
+    "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab"
+  },
+  "blank_header": {
+    "message": "[Discarded Window]"
   }
 }

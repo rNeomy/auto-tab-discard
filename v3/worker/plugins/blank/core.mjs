@@ -23,12 +23,21 @@ function enable() {
         currentWindow: false
       }).then(tbs => {
         // only if the active tab is not an internal page
-        tbs = tbs.filter(tb => tb.url.startsWith('http'));
-        return Promise.all(tbs.map(tb => new Promise(resolve => chrome.tabs.create({
-          openerTabId: tb.id,
-          windowId: tb.windowId,
-          url: '/worker/plugins/blank/blank.html'
-        }, resolve))));
+        tbs = tbs.filter(tb => tb.url && tb.url.startsWith('http'));
+
+
+        return Promise.all(tbs.map(tb => new Promise(resolve => {
+          const args = new URLSearchParams();
+          args.set('title', tb.title);
+          args.set('favicon', tb.favIconUrl);
+
+          chrome.tabs.create({
+            openerTabId: tb.id,
+            windowId: tb.windowId,
+            url: '/worker/plugins/blank/blank.html?' + args.toString(),
+            index: tb.index
+          }, resolve);
+        })));
       });
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
