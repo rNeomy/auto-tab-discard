@@ -23,4 +23,4 @@ const starters = {
   chrome.runtime.onInstalled.addListener(once);
 }
 
-export {starters}
+export {starters};

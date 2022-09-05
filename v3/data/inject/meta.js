@@ -1,7 +1,7 @@
 {
   const top = window.top === window;
   (top ? {
-    'time': performance.timing.domLoading,
+    'time': window.lastVisit || performance.timing.domLoading,
     'audible': Boolean(document.pictureInPictureElement),
     'permission': typeof Notification !== 'undefined' ? Notification.permission === 'granted' : false,
     'ready': document.readyState === 'complete' || document.readyState === 'loaded',

@@ -98,15 +98,15 @@ number.check = async (filterTabsFrom, ops = {}) => {
   }
   let tbs = await query(options);
   const icon = (tb, title) => {
-    chrome.browserAction.setTitle({
+    chrome.action.setTitle({
       tabId: tb.id,
       title
     }, () => chrome.runtime.lastError);
-    chrome.browserAction.setIcon({
+    chrome.action.setIcon({
       tabId: tb.id,
       path: {
-        '16': 'data/icons/disabled/16.png',
-        '32': 'data/icons/disabled/32.png'
+        '16': '/data/icons/disabled/16.png',
+        '32': '/data/icons/disabled/32.png'
       }
     });
   };

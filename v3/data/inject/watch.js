@@ -1,5 +1,7 @@
+/* this watches if there are any unsaved forms on the page */
+
 window.isReceivingFormInput = false;
-window.addEventListener('keydown', e => {
+addEventListener('keydown', e => {
   const {keyCode, target, path} = e;
   // check target
   if (keyCode >= 48 && keyCode <= 90 && target.tagName) {
@@ -27,3 +29,9 @@ window.addEventListener('keydown', e => {
     }
   }
 }, true);
+
+/*  */
+addEventListener('visibilitychange', () => {
+  window.lastVisit = Date.now();
+  console.log(window.lastVisit);
+});
