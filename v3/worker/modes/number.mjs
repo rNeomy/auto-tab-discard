@@ -258,9 +258,15 @@ chrome.alarms.onAlarm.addListener(alarm => {
 {
   const check = () => storage({
     'mode': 'time-based',
-    'period': 10 * 60 // in seconds
+    'period': 10 * 60, // in seconds
+    'tmp_disable': 0
   }).then(ps => {
-    if (ps.period && (ps.mode === 'time-based' || ps.mode === 'url-based')) {
+    if (
+      ps.period &&
+      (ps.mode === 'time-based' || ps.mode === 'url-based') &&
+      ps['tmp_disable'] === 0
+    ) {
+      console.log('install');
       number.install(ps.period);
     }
     else {
@@ -269,7 +275,7 @@ chrome.alarms.onAlarm.addListener(alarm => {
   });
   starters.push(check);
   chrome.storage.onChanged.addListener(ps => {
-    if (ps.period || ps.mode) {
+    if (ps.period || ps.mode || ps['tmp_disable']) {
       check();
     }
   });
@@ -293,5 +299,52 @@ starters.push(() => chrome.app && query({
     }
   }
 }));
+
+/* temporarily disable auto discarding */
+{
+  const visial = () => {
+    chrome.action.setIcon({
+      path: {
+        '16': '/data/icons/tmp/' + '/16.png',
+        '32': '/data/icons/tmp/' + '/32.png'
+      }
+    });
+    chrome.action.setTitle({
+      title: chrome.i18n.getMessage('bg_msg_2')
+    });
+  };
+  chrome.storage.onChanged.addListener(ps => {
+    if (ps['tmp_disable']) {
+      if (ps['tmp_disable'].newValue !== 0) {
+        chrome.alarms.create('tmp.disable', {
+          when: Date.now() + ps['tmp_disable'].newValue * 60 * 60 * 1000
+        });
+        visial();
+      }
+      else {
+        chrome.action.setIcon({
+          path: {
+            '16': '/data/icons/16.png',
+            '32': '/data/icons/32.png'
+          }
+        });
+        chrome.action.setTitle({
+          title: chrome.runtime.getManifest().name
+        });
+      }
+    }
+  });
+  starters.push(() => storage({
+    'tmp_disable': 0
+  }).then(ps => ps['tmp_disable'] && visial()));
+
+  chrome.alarms.onAlarm.addListener(alarm => {
+    if (alarm.name === 'tmp.disable') {
+      chrome.storage.local.set({
+        'tmp_disable': 0
+      });
+    }
+  });
+}
 
 export {pluginFilters, number};

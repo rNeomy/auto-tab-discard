@@ -245,11 +245,32 @@
   "popup_shift_hint": {
     "message": "Use Shift key to ignore exceptions"
   },
+  "popup_tmp_disable": {
+    "message": "Disable Auto Discarding Globally for"
+  },
+  "popup_tmp_0": {
+    "message": "Off"
+  },
+  "popup_tmp_1": {
+    "message": "1 hour"
+  },
+  "popup_tmp_6": {
+    "message": "6 hours"
+  },
+  "popup_tmp_12": {
+    "message": "12 hours"
+  },
+  "popup_tmp_24": {
+    "message": "1 day"
+  },
   "bg_no_active_tab": {
     "message": "No active tab is present"
   },
   "bg_msg_1": {
     "message": "auto-discarding is disabled for this tab"
+  },
+  "bg_msg_2": {
+    "message": "auto-discarding is disabled for now"
   },
   "menu_discard_tab": {
     "message": "Discard Tab"
@@ -339,6 +360,6 @@
     "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab"
   },
   "blank_header": {
-    "message": "[Discarded Window]"
+    "message": "(Discarded Window)"
   }
 }

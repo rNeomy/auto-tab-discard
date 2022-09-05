@@ -28,10 +28,10 @@ addEventListener('keydown', e => {
       window.isReceivingFormInput = true;
     }
   }
+  console.log(window.isReceivingFormInput);
 }, true);
 
 /*  */
 addEventListener('visibilitychange', () => {
   window.lastVisit = Date.now();
-  console.log(window.lastVisit);
 });

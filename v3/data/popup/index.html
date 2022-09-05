@@ -78,16 +78,24 @@
         <input type="checkbox" data-cmd="whitelist-domain" data-i18n-title="popup_whitelist_always_title">
         <span data-i18n="popup_whitelist_always" data-i18n-title="popup_whitelist_always_title"></span>
       </label>
-
     </div>
     <div class="ald hbox">
       <label for="allowed" class="flex" data-i18n="popup_allowed"></label>
       <input type="checkbox" id="allowed">
     </div>
+    <div class="ald hbox">
+      <label for="tmp_disable" class="flex" data-i18n="popup_tmp_disable"></label>
+      <select id="tmp_disable">
+        <option value="0" data-i18n="popup_tmp_0"></option>
+        <option value="1" data-i18n="popup_tmp_1"></option>
+        <option value="6" data-i18n="popup_tmp_6"></option>
+        <option value="12" data-i18n="popup_tmp_12"></option>
+        <option value="24" data-i18n="popup_tmp_24"></option>
+      </select>
+    </div>
 
     <div class="button" data-cmd="open-options" data-i18n="popup_open_options"></div>
 
-    <script src="/v2.js"></script>
     <script type="module" src="index.mjs"></script>
   </body>
 </html>

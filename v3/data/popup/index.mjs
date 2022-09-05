@@ -21,41 +21,59 @@ const whitelist = {
 };
 
 const init = () => {
+  chrome.alarms.get('tmp.disable').then(a => {
+    chrome.runtime.sendMessage({
+      'method': 'storage',
+      'managed': {
+        'tmp_disable': 0
+      }
+    }, prefs => {
+      document.getElementById('tmp_disable').value = a ? prefs['tmp_disable'] : 0;
+    });
+  });
+
   chrome.tabs.query({
     active: true,
     currentWindow: true
   }, tabs => {
     if (tabs.length) {
       tab = tabs[0];
-      const {protocol = '', hostname} = new URL(tab.url);
 
-      if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
-        chrome.runtime.sendMessage({
-          'method': 'storage',
-          'managed': {
-            'whitelist': []
-          },
-          'session': {
-            'whitelist.session': []
+      try {
+        const {protocol = '', hostname} = new URL(tab.url);
+
+        if (protocol.startsWith('http') || protocol.startsWith('ftp')) {
+          chrome.runtime.sendMessage({
+            'method': 'storage',
+            'managed': {
+              'whitelist': []
+            },
+            'session': {
+              'whitelist.session': []
+            }
+          }, prefs => {
+            whitelist.session.checked = match(prefs['whitelist.session'], hostname, tab.url) ? true : false;
+            whitelist.always.checked = match(prefs['whitelist'], hostname, tab.url) ? true : false;
+          });
+          if (tab.autoDiscardable === false) {
+            allowed.checked = true;
           }
-        }, prefs => {
-          whitelist.session.checked = match(prefs['whitelist.session'], hostname, tab.url) ? true : false;
-          whitelist.always.checked = match(prefs['whitelist'], hostname, tab.url) ? true : false;
-        });
-        if (tab.autoDiscardable === false) {
-          allowed.checked = true;
+          chrome.scripting.executeScript({
+            target: {
+              tabId: tab.id
+            },
+            func: () => document.title
+          }).catch(e => {
+            console.warn('Cannot access to this tab', e);
+            allowed.parentElement.dataset.disabled = true;
+          });
         }
-        chrome.scripting.executeScript({
-          target: {
-            tabId: tab.id
-          },
-          func: () => document.title
-        }).catch(e => {
-          console.warn('Cannot access to this tab', e);
-          allowed.parentElement.dataset.disabled = true;
-        });
+        else {
+          throw Error('no HTTP');
+        }
       }
-      else { // on navigation
+      catch (e) {
+        // on navigation
         whitelist.session.closest('.mlt').dataset.disabled = true;
         allowed.parentElement.dataset.disabled = true;
       }
@@ -88,4 +106,10 @@ document.addEventListener('click', e => {
       chrome.runtime.lastError;
     });
   }
+});
+
+document.getElementById('tmp_disable').addEventListener('change', e => {
+  chrome.storage.local.set({
+    'tmp_disable': Number(e.target.value)
+  });
 });
