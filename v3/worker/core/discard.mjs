@@ -88,7 +88,7 @@ const discard = tab => {
                   }
                 },
                 args: [href]
-              }).finally(() => setTimeout(next, prefs['favicon-delay']));
+              }).catch(() => {}).finally(() => setTimeout(next, prefs['favicon-delay']));
             }
             else {
               next();
@@ -108,7 +108,7 @@ const discard = tab => {
             }
           },
           args: [prefs.prepends]
-        }).finally(() => {
+        }).catch(() => {}).finally(() => {
           if (prefs.favicon) {
             icon();
           }
@@ -132,7 +132,12 @@ discard.tabs = [];
 discard.count = 0;
 discard.perform = tab => {
   try {
-    chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+    if (/Firefox/.test(navigator.userAgent)) {
+      chrome.tabs.discard(tab.id);
+    }
+    else {
+      chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+    }
   }
   catch (e) {
     log('discarding failed', e);

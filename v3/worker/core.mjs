@@ -30,8 +30,8 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
   }
   else if (method === 'storage') {
     Promise.all([
-      storage(request.managed, 'managed'),
-      storage(request.session, 'session')
+      storage(request.managed || {}, 'managed'),
+      storage(request.session || {}, 'session')
     ]).then(a => Object.assign(...a)).then(resposne);
 
     return true;

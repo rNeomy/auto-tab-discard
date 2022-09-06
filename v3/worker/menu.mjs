@@ -8,7 +8,7 @@ import {interrupts} from './plugins/loader.mjs';
 
 // Context Menu
 {
-  const onStartup = async () => {
+  const onStartup = () => {
     const contexts = ['action'];
     if (chrome.contextMenus.ContextType.TAB && prefs['tab.context']) {
       contexts.push('tab');
@@ -189,6 +189,7 @@ import {interrupts} from './plugins/loader.mjs';
           })
           .sort((a, b) => Math.abs(a.index - tab.index) - Math.abs(b.index - tab.index))
           .shift();
+
         if (otab) {
           chrome.tabs.update(otab.id, {
             active: true
@@ -247,6 +248,7 @@ import {interrupts} from './plugins/loader.mjs';
         info.currentWindow = false;
       }
       let tabs = await query(info);
+
       if (menuItemId.endsWith('rights') || menuItemId.endsWith('lefts')) {
         if (menuItemId.endsWith('lefts')) {
           tabs = tabs.filter(t => t.index < tab.index);

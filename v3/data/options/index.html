@@ -8,6 +8,10 @@
   </head>
 
   <body>
+    <p>
+      <div class="wnt" data-i18n="options_save_notice"></div>
+    </p>
+
     <table width=100%>
       <colgroup>
         <col width="24">
@@ -28,7 +32,7 @@
         </tr>
         <tr>
           <td><input type="checkbox" id="url-based"></td>
-          <td colspan="2"><label for="url-based"><span data-i18n="options_url_based"></span><sup>1</sup></label></td>
+          <td colspan="2"><label for="url-based"><span data-i18n="options_url_based"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq13"></a></label></td>
         </tr>
         <tr>
           <td colspan="3"><textarea rows="3" id="whitelist-url" placeholder="Comma-separated list of hostnames"></textarea></td>
@@ -68,7 +72,7 @@
         </tr>
         <tr id="memory">
           <td><input type="checkbox" id="memory-enabled"></td>
-          <td><label for="memory-enabled" data-i18n="options_memory"></label><sup>2</sup></td>
+          <td><label for="memory-enabled"><span data-i18n="options_memory"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq14"></a></label></td>
           <td><input type="number" id="memory-value" min="10"></td>
         </tr>
         <tr>
@@ -130,7 +134,7 @@
       <tbody>
         <tr>
           <td colspan="3">
-            <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_whitelist"></span><sup>1</sup></span>
+            <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_whitelist"></span></span>
             <textarea rows="3" id="whitelist" placeholder="Comma-separated list of hostnames"></textarea>
           </td>
         </tr>
@@ -225,7 +229,7 @@
         <tr>
             <td></td>
             <td colspan="2">
-                <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_plugin_trash_whitelist"></span><sup>1, 3</sup></span>
+                <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_plugin_trash_whitelist"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq15"></a></span>
                 <textarea rows="3" id="trash.whitelist-url" placeholder="Comma-separated list of hostnames, leave blank for all"></textarea>
             </td>
         </tr>
@@ -256,10 +260,6 @@
           <td colspan="2"><label for="go-hidden" data-i18n="options_go_hidden"></label></td>
         </tr>
         <tr>
-          <td><input type="checkbox" id="use-cache"></td>
-          <td colspan="2"><label for="use-cache" data-i18n="options_use_cache"></label></td>
-        </tr>
-        <tr>
           <td><input type="checkbox" id="faqs"></td>
           <td colspan="2"><label for="faqs" data-i18n="options_faqs"></label></td>
         </tr>
@@ -268,7 +268,7 @@
     <div id="explore" data-cols="5"></div>
     <p>Rate "<a id="rate" target="_blank" href="https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews">Auto Tab Discard</a>" extension</p>
     <p>
-      <div class="admin">This extension supports managed storage. All the preferences can be pre-configured by <a href="https://add0n.com/tab-discard.html#faq10">the domain administrator</a></div>
+      <div class="wnt">This extension supports managed storage. All the preferences can be pre-configured by <a target="_blank" data-href="faq10">the domain administrator</a></div>
       <table width=100%>
         <colgroup>
           <col width="1"/>
@@ -286,11 +286,6 @@
         </tr>
       </table>
     </p>
-    <ol>
-      <li><span data-i18n="options_footnote_1"></span></li>
-      <li><span data-i18n="options_footnote_2"></span></li>
-      <li><span data-i18n="options_footnote_4"></span></li>
-    </ol>
 
     <script src="index.js"></script>
     <script async src="matched.js"></script>

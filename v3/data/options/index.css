@@ -83,12 +83,13 @@ a {
   color: var(--a);
 }
 
-.admin {
-  color: #000;
+.wnt {
+  color: #61611f;
   background-color: #ffffed;
-  border: solid 1px #e8ec3a;
+  border: solid 1px #babaab;
   padding: 10px;
   margin: 15px 0;
+  text-align: center;
 }
 
 .disabled {

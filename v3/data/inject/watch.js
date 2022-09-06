@@ -28,7 +28,6 @@ addEventListener('keydown', e => {
       window.isReceivingFormInput = true;
     }
   }
-  console.log(window.isReceivingFormInput);
 }, true);
 
 /*  */

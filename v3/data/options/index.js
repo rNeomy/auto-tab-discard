@@ -52,7 +52,6 @@ const restore = () => storage({
   'mode': 'time-based',
   'click': 'click.popup',
   'faqs': true,
-  'use-cache': false,
   'favicon': false,
   'prepends': '💤',
   'go-hidden': false,
@@ -84,7 +83,6 @@ const restore = () => storage({
   document.getElementById('idle').checked = prefs.idle;
   document.getElementById('idle-timeout').value = parseInt(prefs['idle-timeout'] / 60);
   document.getElementById('faqs').checked = prefs.faqs;
-  document.getElementById('use-cache').checked = prefs['use-cache'];
   document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('prepends').value = prefs.prepends;
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
@@ -176,7 +174,6 @@ document.getElementById('save').addEventListener('click', () => {
     'link.context': document.getElementById('link.context').checked,
     'log': document.getElementById('log').checked,
     'faqs': document.getElementById('faqs').checked,
-    'use-cache': document.getElementById('use-cache').checked,
     'favicon': document.getElementById('favicon').checked,
     'prepends': document.getElementById('prepends').value,
     'go-hidden': document.getElementById('go-hidden').checked,
@@ -329,3 +326,9 @@ document.getElementById('import').addEventListener('click', () => {
   };
   fileInput.click();
 });
+// links
+for (const a of [...document.querySelectorAll('[data-href]')]) {
+  if (a.hasAttribute('href') === false) {
+    a.href = chrome.runtime.getManifest().homepage_url + '#' + a.dataset.href;
+  }
+}

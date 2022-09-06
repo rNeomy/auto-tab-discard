@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "version": "0.6.2",
   "name": "Auto Tab Discard",
   "description": "__MSG_app_description__",
@@ -19,15 +19,17 @@
   "permissions": [
     "idle",
     "storage",
-    "tabs",
     "contextMenus",
     "notifications",
     "alarms",
+    "scripting"
+  ],
+  "host_permissions": [
     "*://*/*"
   ],
   "background": {
-    "persistent": false,
-    "page": "v2.html"
+    "service_worker": "worker/core.mjs",
+    "type": "module"
   },
   "content_scripts": [{
     "match_about_blank": true,
@@ -38,7 +40,7 @@
     "run_at": "document_start",
     "all_frames": true
   }],
-  "browser_action": {
+  "action": {
     "default_popup": "data/popup/index.html"
   },
   "options_ui": {
@@ -47,6 +49,7 @@
   },
   "homepage_url": "https://add0n.com/tab-discard.html",
   "commands": {
+    "_execute_action": {},
     "discard-tab": {
       "description": "__MSG_cmd_discard_tab__"
     },

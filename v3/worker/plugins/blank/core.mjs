@@ -20,12 +20,9 @@ function enable() {
     else if (menuItemId === 'discard-other-windows' || menuItemId === 'discard-tabs') {
       return query({
         active: true,
-        currentWindow: false
+        currentWindow: false,
+        url: '*://*/*' // only if the active tab is not an internal page
       }).then(tbs => {
-        // only if the active tab is not an internal page
-        tbs = tbs.filter(tb => tb.url && tb.url.startsWith('http'));
-
-
         return Promise.all(tbs.map(tb => new Promise(resolve => {
           const args = new URLSearchParams();
           args.set('title', tb.title);
@@ -44,15 +41,21 @@ function enable() {
       return query({
         active: false,
         highlighted: false,
-        currentWindow: true
+        currentWindow: true,
+        discarded: false
       }).then(tbs => {
         if (tbs.length === 0 && tab.url.startsWith('http')) {
-          return chrome.tabs.create({
+          const args = new URLSearchParams();
+          args.set('title', tab.title);
+          args.set('favicon', tab.favIconUrl);
+
+          return new Promise(resolve => chrome.tabs.create({
             openerTabId: tab.id,
             windowId: tab.windowId,
-            url: '/worker/plugins/blank/blank.html',
-            active: false
-          });
+            url: '/worker/plugins/blank/blank.html?' + args.toString(),
+            index: tab.index,
+            active: false // so that this tab gets focused
+          }, resolve));
         }
       });
     }

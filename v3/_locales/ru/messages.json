@@ -327,12 +327,40 @@
         "message": "Используйте клавишу Shift, чтобы игнорировать исключения",
         "description": ""
     },
+    "popup_tmp_disable": {
+        "message": "Отключить Автоматическую Выгрузку Глобально для",
+        "description": ""
+    },
+    "popup_tmp_0": {
+        "message": "Отключить",
+        "description": ""
+    },
+    "popup_tmp_1": {
+        "message": "1 час",
+        "description": ""
+    },
+    "popup_tmp_6": {
+        "message": "6 часов",
+        "description": ""
+    },
+    "popup_tmp_12": {
+        "message": "12 часов",
+        "description": ""
+    },
+    "popup_tmp_24": {
+        "message": "1 день",
+        "description": ""
+    },
     "bg_no_active_tab": {
         "message": "Отсутствуют активные вкладки",
         "description": ""
     },
     "bg_msg_1": {
         "message": "автоматическая выгрузка отключена для этой вкладки",
+        "description": ""
+    },
+    "bg_msg_2": {
+        "message": "автоматическая выгрузка отключена",
         "description": ""
     },
     "menu_discard_tab": {
@@ -448,7 +476,11 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "Все вкладки в этом окне выгружены! Щелкните в любом месте, чтобы закрыть эту вкладку.",
+        "message": "Все вкладки в этом окне выгружены! Щелкните в любом месте, чтобы закрыть эту вкладку и вернуться к последней активной вкладке.",
+        "description": ""
+    },
+    "blank_header": {
+        "message": "(Выгруженное Окно)",
         "description": ""
     }
 }

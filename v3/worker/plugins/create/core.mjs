@@ -1,5 +1,7 @@
 import {log, query} from '../../core/utils.mjs';
 
+const isFirefox = /Firefox/.test(navigator.userAgent);
+
 const run = tab => {
   chrome.scripting.executeScript({
     target: {
@@ -9,18 +11,22 @@ const run = tab => {
       const run = () => chrome.runtime.sendMessage({
         method: 'discard.on.load'
       });
-      if (document.readyState === 'uninitialized' || document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', run);
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        run();
       }
       else {
-        run();
+        document.addEventListener('DOMContentLoaded', run);
       }
     }
   }).catch(e => console.error('plugins/create -> error', e));
 };
 
 const observe = {
-  tab: tab => tab.active === false && run(tab),
+  tab: tab => {
+    if (tab.active === false) {
+      setTimeout(run, isFirefox ? 1000 : 0, tab);
+    }
+  },
   window: win => {
     setTimeout(() => chrome.tabs.query({
       windowId: win.id,

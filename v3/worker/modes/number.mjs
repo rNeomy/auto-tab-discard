@@ -166,72 +166,77 @@ number.check = async (filterTabsFrom, ops = {}) => {
   const map = new Map();
   const arr = [];
   for (const tb of tbs) {
-    const ms = await chrome.scripting.executeScript({
-      target: {
-        tabId: tb.id,
-        allFrames: true
-      },
-      files: ['/data/inject/meta.js']
-    }).then(r => r.map(o => o.result), () => []);
+    try {
+      const ms = await chrome.scripting.executeScript({
+        target: {
+          tabId: tb.id,
+          allFrames: true
+        },
+        files: ['/data/inject/meta.js']
+      }).then(r => r.map(o => o.result), () => []);
 
-    // remove protected tabs (e.g. addons.mozilla.org)
-    if (ms.length === 0) {
-      if (ops['ignore.meta.data'] === true && tb.url.startsWith('http') !== true) {
-        log('discarding aborted', 'metadata fetch error', tb.url);
-        icon(tb, 'metadata fetch error');
+      // remove protected tabs (e.g. addons.mozilla.org)
+      if (ms.length === 0) {
+        if (ops['ignore.meta.data'] === true && tb.url.startsWith('http') !== true) {
+          log('discarding aborted', 'metadata fetch error', tb.url);
+          icon(tb, 'metadata fetch error');
+          exceptionCount += 1;
+          continue;
+        }
+      }
+      const meta = Object.assign({}, ...ms);
+      log('number check', 'got meta data of tab');
+      meta.forms = ms.some(o => o && o.forms);
+      meta.audible = ms.some(o => o && o.audible);
+
+      // is the tab using too much memory, discard instantly
+      if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
+        log('forced discarding', 'memory usage');
+        discard(tb);
+        continue;
+      }
+      // check tab's age
+      if (now - meta.time < prefs.period * 1000) {
+        log('discarding aborted', 'tab is not old');
         exceptionCount += 1;
         continue;
       }
+      // is this tab loaded
+      if (meta.ready !== true && ops['ignore.ready.state'] !== true) {
+        log('discarding aborted', 'tab is not ready');
+        exceptionCount += 1;
+        continue;
+      }
+      // is tab playing audio
+      if (prefs.audio && meta.audible) {
+        log('discarding aborted', 'audio is playing');
+        icon(tb, 'tab plays an audio');
+        exceptionCount += 1;
+        continue;
+      }
+      // is there an unsaved form
+      if (prefs.form && meta.forms) {
+        log('discarding aborted', 'active form');
+        icon(tb, 'there is an active form on this tab');
+        exceptionCount += 1;
+        continue;
+      }
+      // is notification allowed
+      if (prefs['notification.permission'] && meta.permission) {
+        log('discarding aborted', 'tab has notification permission');
+        icon(tb, 'tab has notification permission');
+        exceptionCount += 1;
+        continue;
+      }
+      map.set(tb, meta);
+      arr.push(tb);
+      if (arr.length > prefs['max.single.discard']) {
+        log('number.check', 'breaking', 'max number of tabs reached');
+        break;
+      }
     }
-    const meta = Object.assign({}, ...ms);
-    log('number check', 'got meta data of tab');
-    meta.forms = ms.some(o => o.forms);
-    meta.audible = ms.some(o => o.audible);
-
-    // is the tab using too much memory, discard instantly
-    if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
-      log('forced discarding', 'memory usage');
-      discard(tb);
-      continue;
-    }
-    // check tab's age
-    if (now - meta.time < prefs.period * 1000) {
-      log('discarding aborted', 'tab is not old');
-      exceptionCount += 1;
-      continue;
-    }
-    // is this tab loaded
-    if (meta.ready !== true && ops['ignore.ready.state'] !== true) {
-      log('discarding aborted', 'tab is not ready');
-      exceptionCount += 1;
-      continue;
-    }
-    // is tab playing audio
-    if (prefs.audio && meta.audible) {
-      log('discarding aborted', 'audio is playing');
-      icon(tb, 'tab plays an audio');
-      exceptionCount += 1;
-      continue;
-    }
-    // is there an unsaved form
-    if (prefs.form && meta.forms) {
-      log('discarding aborted', 'active form');
-      icon(tb, 'there is an active form on this tab');
-      exceptionCount += 1;
-      continue;
-    }
-    // is notification allowed
-    if (prefs['notification.permission'] && meta.permission) {
-      log('discarding aborted', 'tab has notification permission');
-      icon(tb, 'tab has notification permission');
-      exceptionCount += 1;
-      continue;
-    }
-    map.set(tb, meta);
-    arr.push(tb);
-    if (arr.length > prefs['max.single.discard']) {
-      log('number.check', 'breaking', 'max number of tabs reached');
-      break;
+    catch (e) {
+      console.warn(e);
     }
   }
   // ready to discard
@@ -266,7 +271,6 @@ chrome.alarms.onAlarm.addListener(alarm => {
       (ps.mode === 'time-based' || ps.mode === 'url-based') &&
       ps['tmp_disable'] === 0
     ) {
-      console.log('install');
       number.install(ps.period);
     }
     else {
@@ -302,7 +306,7 @@ starters.push(() => chrome.app && query({
 
 /* temporarily disable auto discarding */
 {
-  const visial = () => {
+  const exit = () => {
     chrome.action.setIcon({
       path: {
         '16': '/data/icons/tmp/' + '/16.png',
@@ -318,10 +322,12 @@ starters.push(() => chrome.app && query({
       if (ps['tmp_disable'].newValue !== 0) {
         chrome.alarms.create('tmp.disable', {
           when: Date.now() + ps['tmp_disable'].newValue * 60 * 60 * 1000
+          // when: Date.now() + 120 * 1000
         });
-        visial();
+        exit();
       }
       else {
+        chrome.alarms.clear('tmp.disable');
         chrome.action.setIcon({
           path: {
             '16': '/data/icons/16.png',
@@ -336,7 +342,22 @@ starters.push(() => chrome.app && query({
   });
   starters.push(() => storage({
     'tmp_disable': 0
-  }).then(ps => ps['tmp_disable'] && visial()));
+  }).then(ps => {
+    if (ps['tmp_disable']) {
+      // verify timer is installed
+      chrome.alarms.get('tmp.disable', a => {
+        if (a) {
+          exit();
+        }
+        else {
+          console.info('tmp timer is not present. Re-enabling the numbered module');
+          chrome.storage.local.set({
+            'tmp_disable': 0
+          });
+        }
+      });
+    }
+  }));
 
   chrome.alarms.onAlarm.addListener(alarm => {
     if (alarm.name === 'tmp.disable') {

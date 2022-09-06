@@ -21,7 +21,7 @@ const whitelist = {
 };
 
 const init = () => {
-  chrome.alarms.get('tmp.disable').then(a => {
+  chrome.alarms.get('tmp.disable', a => {
     chrome.runtime.sendMessage({
       'method': 'storage',
       'managed': {

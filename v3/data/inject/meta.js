@@ -10,5 +10,6 @@
   } : {
     'audible': Boolean(document.pictureInPictureElement),
     'forms': window.isReceivingFormInput || false
+  // eslint-disable-next-line semi
   })
 }
