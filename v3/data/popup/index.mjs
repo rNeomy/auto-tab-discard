@@ -79,6 +79,36 @@ const init = () => {
       }
     }
   });
+  /* disable unavailable releasing options */
+  chrome.tabs.query({
+    currentWindow: true,
+    discarded: true
+  }, tabs => {
+    if (tabs.length === 0) {
+      document.querySelector('[data-cmd=release-window]').classList.add('disabled');
+    }
+    if (tabs.some(t => t.index > tab.index) === false) {
+      document.querySelector('[data-cmd=release-rights]').classList.add('disabled');
+    }
+    if (tabs.some(t => t.index < tab.index) === false) {
+      document.querySelector('[data-cmd=release-lefts]').classList.add('disabled');
+    }
+  });
+  chrome.tabs.query({
+    currentWindow: false,
+    discarded: true
+  }, tabs => {
+    if (tabs.length === 0) {
+      document.querySelector('[data-cmd=release-other-windows]').classList.add('disabled');
+    }
+  });
+  chrome.tabs.query({
+    discarded: true
+  }, tabs => {
+    if (tabs.length === 0) {
+      document.querySelector('[data-cmd=release-tabs]').classList.add('disabled');
+    }
+  });
 };
 init();
 

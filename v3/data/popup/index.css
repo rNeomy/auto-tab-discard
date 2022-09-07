@@ -172,6 +172,10 @@ li span[data-cmd^="release"] svg {
 .nav:hover [data-cmd=close]::after {
   display: none;
 }
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
 [data-cmd=move-next] *,
 [data-cmd=move-previous] * {
   pointer-events: none;
