@@ -1,7 +1,5 @@
 import {log, query} from '../../core/utils.mjs';
 
-const isFirefox = /Firefox/.test(navigator.userAgent);
-
 const run = tab => {
   chrome.scripting.executeScript({
     target: {
@@ -24,7 +22,7 @@ const run = tab => {
 const observe = {
   tab: tab => {
     if (tab.active === false) {
-      setTimeout(run, isFirefox ? 1000 : 0, tab);
+      setTimeout(run, /Firefox/.test(navigator.userAgent) ? 1000 : 0, tab);
     }
   },
   window: win => {

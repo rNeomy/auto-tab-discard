@@ -9,7 +9,7 @@ const prefs = {
   'tab.context': true,
   'link.context': true,
   'whitelist': [], // whitelist hostnames and regexp rules
-  'favicon-delay': 100,
+  'favicon-delay': /Firefox/.test(navigator.userAgent) ? 500 : 100,
   'log': false,
   'simultaneous-jobs': 10,
   'idle-timeout': 5 * 60, // in seconds

@@ -1,6 +1,6 @@
 'use strict';
 
-const isFirefox = /Firefox/.test(navigator.userAgent) || typeof InstallTrigger !== 'undefined';
+const isFirefox = /Firefox/.test(navigator.userAgent);
 const isEdge = /Edg\//.test(navigator.userAgent);
 
 // localization

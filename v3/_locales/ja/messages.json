@@ -1,6 +1,6 @@
 {
     "app_description": {
-        "message": "たくさんのタブを開いている時にメモリの使用量を軽減し、ブラウザを高速化します。",
+        "message": "たくさんのタブを開いている時のメモリ使用量を軽減し、ブラウザを高速化します。",
         "description": ""
     },
     "options_discarding_options": {
@@ -108,7 +108,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "以下に該当するホストネームもしくは正規表現ルールのタブは破棄されません:",
+        "message": "以下のホストネームもしくは正規表現ルールに該当するタブは破棄されません。このリストの変更には、ポップアップインターフェースの使用をおすすめします。ポップアップインターフェイスからルールを追加する際に、Shiftキーを使用することで正規表現ルールの生成も可能です。",
         "description": ""
     },
     "options_left_click": {
@@ -207,28 +207,12 @@
         "message": "非表示のタブを破棄する",
         "description": ""
     },
-    "options_use_cache": {
-        "message": "キャッシュを使用する: 有効にすると、タブがピン留めされているか、またはコンピューターが電源に接続されているかのチェックを1度しか行わなくなります",
-        "description": ""
-    },
     "options_simultaneous_jobs": {
         "message": "破棄処理を行うジョブの最大同時実行数",
         "description": ""
     },
     "options_faqs": {
         "message": "アップデート完了時にFAQページを開く",
-        "description": ""
-    },
-    "options_footnote_1": {
-        "message": "\"re:\"キーワードを付けて正規表現を使用することもできます。例えば\"google\"が含まれる全てのURLをホワイトリストに追加するには\"re:google\"と表記します。",
-        "description": ""
-    },
-    "options_footnote_2": {
-        "message": "トップドキュメントのtotalJSHeapSizeの値をチェックします。もしメモリ使用量が指定の量(最低10MB)を超えた場合、タブは破棄されます。なお、このオプションはブラウザが 'window.performance.memory' に対応している場合にのみ動作します。",
-        "description": ""
-    },
-    "options_footnote_4": {
-        "message": "ルールにカスタムの時間間隔を使用するには、最後に @{数字}{単位} を追加します (例: google.com@3d は、3日後に google.com の URL を削除します)。有効な単位は h:時間、d:日、w:週、mo:月 です。",
         "description": ""
     },
     "options_reset": {
@@ -247,12 +231,20 @@
         "message": "設定を保存",
         "description": ""
     },
+    "options_save_nice": {
+        "message": "「設定を保存」ボタンを押すのを忘れずに！",
+        "description": ""
+    },
     "options_support": {
         "message": "開発を支援",
         "description": ""
     },
     "options_favicon_delay": {
         "message": "破棄済みタブのファビコン描画遅延 (ミリ秒)",
+        "description": ""
+    },
+    "options_read_more": {
+        "message": "(詳しくはこちら)",
         "description": ""
     },
     "popup_discard_tab": {
@@ -327,12 +319,40 @@
         "message": "例外を無視するにはShiftキーを使用",
         "description": ""
     },
+    "popup_tmp_disable": {
+        "message": "タブの自動破棄を次の間無効化する",
+        "description": ""
+    },
+    "popup_tmp_0": {
+        "message": "オフ",
+        "description": ""
+    },
+    "popup_tmp_1": {
+        "message": "1時間",
+        "description": ""
+    },
+    "popup_tmp_6": {
+        "message": "6時間",
+        "description": ""
+    },
+    "popup_tmp_12": {
+        "message": "12時間",
+        "description": ""
+    },
+    "popup_tmp_24": {
+        "message": "1日",
+        "description": ""
+    },
     "bg_no_active_tab": {
         "message": "アクティブなタブはありません",
         "description": ""
     },
     "bg_msg_1": {
         "message": "このタブでは自動破棄が無効です",
+        "description": ""
+    },
+    "bg_msg_2": {
+        "message": "自動破棄は現在無効化されています",
         "description": ""
     },
     "menu_discard_tab": {
@@ -388,19 +408,19 @@
         "description": ""
     },
     "menu_msg1": {
-        "message": "がホワイトリストに追加されました",
+        "message": "を永久ホワイトリストに追加しました",
         "description": ""
     },
     "menu_msg5": {
-        "message": "is removed from the permanent whitelist",
+        "message": "を永久ホワイトリストから削除しました",
         "description": ""
     },
     "menu_msg4": {
-        "message": "がセッションホワイトリストに追加されました",
+        "message": "をセッションホワイトリストに追加しました",
         "description": ""
     },
     "menu_msg6": {
-        "message": "is removed from the session whitelist",
+        "message": "をセッションホワイトリストから削除しました",
         "description": ""
     },
     "menu_msg2": {
@@ -408,7 +428,7 @@
         "description": ""
     },
     "menu_msg3": {
-        "message": "アクティブなタブは破棄できません",
+        "message": "このウィンドウで唯一破棄されていないタブは破棄できません",
         "description": ""
     },
     "cmd_discard_tab": {
@@ -448,7 +468,11 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "このウィンドウのタブは全て破棄しました！画面内をクリックするとこのタブを閉じます。",
+        "message": "このウィンドウのタブは全て破棄しました！画面内をクリックするとこのタブを閉じて最後にアクティブだったタブに切り替わります",
+        "description": ""
+    },
+    "blank_header": {
+        "message": "(破棄済みのウィンドウ)",
         "description": ""
     }
 }
