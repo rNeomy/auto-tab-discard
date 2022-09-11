@@ -5,8 +5,10 @@ A browser extension which uses the native tab discarding method (`chrome.tabs.di
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/S0rHU38OnTE/0.jpg)](https://www.youtube.com/watch?v=S0rHU38OnTE)
 
-### Download Links
+### Links
 
+  * Homepage: https://add0n.com/tab-discard.html
+  * Product Review: https://webextension.org/blog/2022/04/17/auto-tab-discard-extension.html
   * Chrome: https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol
   * Edge: https://microsoftedge.microsoft.com/addons/detail/auto-tab-discard/nfkkljlcjnkngcmdpcammanncbhkndfe
   * Firefox: https://addons.mozilla.org/firefox/addon/auto-tab-discard/
