@@ -207,28 +207,12 @@
         "message": "Descartar una pestaña si está oculta",
         "description": ""
     },
-    "options_use_cache": {
-        "message": "Uso de la caché: Si está habilitado, la extensión solo comprobará una vez si la pestaña está anclada o si el buscador está conectado a una fuente de energía.",
-        "description": ""
-    },
     "options_simultaneous_jobs": {
         "message": "Número de procesos de descarte simultáneos permitido",
         "description": ""
     },
     "options_faqs": {
         "message": "Abrir página de preguntas frecuentes en actualizaciones",
-        "description": ""
-    },
-    "options_footnote_1": {
-        "message": "Es posible usar expresiones regulares para combinarlo con la palabra \"re:\". Por ejemplo para añadir a la lista de excepciones todas las URL con la palabra \"google\" en el se usaría \"re:google\".",
-        "description": ""
-    },
-    "options_footnote_2": {
-        "message": "Comprueba el valor totalJSHeapSize del documento superior. Si esta memoria excede el valor definido por el usuario (el valor mínimo aceptable es 10MB), la pestaña se descartará. Ten en cuenta que esta opción solo está disponible si tu navegador admite 'window.performance.memory'",
-        "description": ""
-    },
-    "options_footnote_4": {
-        "message": "Para utilizar un intervalo de tiempo personalizado para una regla, añade @{number}{unit} al final (por ejemplo: google.com@3d eliminará las URL de google.com después de 3 días). Las unidades válidas son horas, días, semanas y meses.",
         "description": ""
     },
     "options_reset": {
@@ -247,12 +231,20 @@
         "message": "Guardar opciones",
         "description": ""
     },
+    "options_save_nice": {
+        "message": "¡Asegúrese de pulsar el botón \"Guardar Opciones\"!",
+        "description": ""
+    },
     "options_support": {
         "message": "Apoyo al desarrollo",
         "description": ""
     },
     "options_favicon_delay": {
         "message": "Retraso para pintar el favicon descartado (en milisegundos)",
+        "description": ""
+    },
+    "options_read_more": {
+        "message": "(Leer más aquí)",
         "description": ""
     },
     "popup_discard_tab": {
@@ -327,12 +319,40 @@
         "message": "Usar tecla Mayús para ignorar las excepciones",
         "description": ""
     },
+    "popup_tmp_disable": {
+        "message": "Inhabilitar el auto-descarte globalmente para",
+        "description": ""
+    },
+    "popup_tmp_0": {
+        "message": "Off",
+        "description": ""
+    },
+    "popup_tmp_1": {
+        "message": "1 hora",
+        "description": ""
+    },
+    "popup_tmp_6": {
+        "message": "6 horas",
+        "description": ""
+    },
+    "popup_tmp_12": {
+        "message": "12 horas",
+        "description": ""
+    },
+    "popup_tmp_24": {
+        "message": "1 día",
+        "description": ""
+    },
     "bg_no_active_tab": {
         "message": "No hay pestañas activas presentes",
         "description": ""
     },
     "bg_msg_1": {
-        "message": "auto-descarte está inhabilitado para esta pestaña",
+        "message": "el auto-descarte está inhabilitado para esta pestaña",
+        "description": ""
+    },
+    "bg_msg_2": {
+        "message": "el auto-descarte está inhabilitado por ahora",
         "description": ""
     },
     "menu_discard_tab": {
@@ -408,7 +428,7 @@
         "description": ""
     },
     "menu_msg3": {
-        "message": "No se puede descartar una pestaña cuando está activa.",
+        "message": "No se puede descartar la única pestaña en esta ventana",
         "description": ""
     },
     "cmd_discard_tab": {
@@ -448,7 +468,11 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "¡Todas las pestañas de esta ventana están descartadas! Haz clic en cualquier lugar para cerrar esta pestaña.",
+        "message": "¡Todas las pestañas de esta ventana están descartadas! Haga clic en cualquier lugar para cerrar esta pestaña e ir a la última pestaña activa",
+        "description": ""
+    },
+    "blank_header": {
+        "message": "(Ventana descartada)",
         "description": ""
     }
 }
