@@ -50,6 +50,7 @@ chrome.scripting = chrome.scripting || {
       props.allFrames = true;
       props.matchAboutBlank = true;
     }
+    props.runAt = 'document_start';
 
     return new Promise((resolve, reject) => chrome.tabs.executeScript(target.tabId, props, r => {
       const lastError = chrome.runtime.lastError;
