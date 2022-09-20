@@ -208,16 +208,25 @@ import {interrupts} from './plugins/loader.mjs';
       }
     }
     else if (menuItemId === 'open-tab-then-discard') {
-      chrome.tabs.create({
-        active: false,
-        url: info.linkUrl
-      }, tab => chrome.scripting.executeScript({
-        target: {tabId: tab.id},
-        func: () => window.stop()
-      }).then(() => chrome.scripting.executeScript({
-        target: {tabId: tab.id},
-        files: ['data/lazy.js']
-      })));
+      if (/Firefox/.test(navigator.userAgent)) {
+        chrome.tabs.create({
+          active: false,
+          url: info.linkUrl,
+          discarded: true
+        });
+      }
+      else {
+        chrome.tabs.create({
+          active: false,
+          url: info.linkUrl
+        }, tab => chrome.scripting.executeScript({
+          target: {tabId: tab.id},
+          func: () => window.stop()
+        }).then(() => chrome.scripting.executeScript({
+          target: {tabId: tab.id},
+          files: ['data/lazy.js']
+        })));
+      }
     }
     else if (menuItemId === 'auto-discardable') {
       const autoDiscardable = info.value || false; // when called from page context menu, there is no value
