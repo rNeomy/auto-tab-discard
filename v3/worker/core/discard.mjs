@@ -8,14 +8,17 @@ const discard = tab => {
   if (inprogress.has(tab.id)) {
     return;
   }
+
   // https://github.com/rNeomy/auto-tab-discard/issues/248
   inprogress.add(tab.id);
   setTimeout(() => inprogress.delete(tab.id), 2000);
 
   if (tab.active) {
+    log('tab is active', tab);
     return;
   }
   if (tab.discarded) {
+    log('already discarded', tab);
     return;
   }
   return storage(prefs).then(prefs => {
@@ -132,12 +135,7 @@ discard.tabs = [];
 discard.count = 0;
 discard.perform = tab => {
   try {
-    if (/Firefox/.test(navigator.userAgent)) {
-      chrome.tabs.discard(tab.id);
-    }
-    else {
-      chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
-    }
+    chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
   }
   catch (e) {
     log('discarding failed', e);

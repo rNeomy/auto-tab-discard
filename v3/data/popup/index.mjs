@@ -118,6 +118,7 @@ document.addEventListener('click', e => {
 
   if (cmd === 'open-options') {
     chrome.runtime.openOptionsPage();
+    window.close();
   }
   else if (cmd && (cmd.startsWith('move-') || cmd === 'close')) {
     chrome.runtime.sendMessage({

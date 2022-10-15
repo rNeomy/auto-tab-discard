@@ -47,6 +47,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
     'max.single.discard': 50, // max number of tabs to discard
     'period': 10 * 60, // in seconds
     'audio': true, // audio = true => do not discard if audio is playing
+    'paused': false, // paused = true => do not discard if there is a paused media player
     'pinned': false, // pinned = true => do not discard if tab is pinned
     'battery': false, // battery = true => only discard if power is disconnected
     'online': false, // online = true => do not discard if there is no INTERNET connection
@@ -188,6 +189,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
       log('number check', 'got meta data of tab');
       meta.forms = ms.some(o => o && o.forms);
       meta.audible = ms.some(o => o && o.audible);
+      meta.paused = ms.some(o => o && o.paused);
 
       // is the tab using too much memory, discard instantly
       if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
@@ -211,6 +213,12 @@ number.check = async (filterTabsFrom, ops = {}) => {
       if (prefs.audio && meta.audible) {
         log('discarding aborted', 'audio is playing');
         icon(tb, 'tab plays an audio');
+        exceptionCount += 1;
+        continue;
+      }
+      if (prefs.paused && meta.paused) {
+        log('discarding aborted', 'player is paused');
+        icon(tb, 'tab has a paused player');
         exceptionCount += 1;
         continue;
       }

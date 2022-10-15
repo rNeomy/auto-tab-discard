@@ -5,6 +5,7 @@ import {discard} from './core/discard.mjs';
 import {navigate} from './core/navigate.mjs';
 import './modes/number.mjs';
 import './menu.mjs';
+import '../firefox.mjs';
 
 chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
   if (request.method === 'discard') {

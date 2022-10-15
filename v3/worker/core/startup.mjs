@@ -19,13 +19,9 @@ const starters = {
     starters.cache.forEach(c => c());
     delete starters.cache;
   });
-  if (/Firefox/.test(navigator.userAgent)) {
-    once();
-  }
-  else {
-    chrome.runtime.onStartup.addListener(once);
-    chrome.runtime.onInstalled.addListener(once);
-  }
+
+  chrome.runtime.onStartup.addListener(once);
+  chrome.runtime.onInstalled.addListener(once);
 }
 
 export {starters};

@@ -38,6 +38,7 @@ const restore = () => storage({
   'trash.unloaded': false,
   'trash.whitelist-url': [],
   'audio': true, // audio = true => do not discard if audio is playing
+  'paused': false, // paused = true => do not discard if there is a paused media player
   'pinned': false, // pinned = true => do not discard if tab is pinned
   'form': true, // form = true => do not discard if form data is changed
   'battery': false, // battery = true => only discard if power is disconnected
@@ -100,6 +101,7 @@ const restore = () => storage({
   document.getElementById('simultaneous-jobs').value = prefs['simultaneous-jobs'];
   document.getElementById('favicon-delay').value = prefs['favicon-delay'];
   document.getElementById('audio').checked = prefs.audio;
+  document.getElementById('paused').checked = prefs.paused;
   document.getElementById('pinned').checked = prefs.pinned;
   document.getElementById('form').checked = prefs.form;
   document.getElementById('battery_enabled').checked = prefs.battery;
@@ -164,6 +166,7 @@ document.getElementById('save').addEventListener('click', () => {
     'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',
     click,
     'audio': document.getElementById('audio').checked,
+    'paused': document.getElementById('paused').checked,
     'pinned': document.getElementById('pinned').checked,
     'form': document.getElementById('form').checked,
     'battery': document.getElementById('battery_enabled').checked,

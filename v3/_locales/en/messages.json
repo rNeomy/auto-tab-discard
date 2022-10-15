@@ -56,6 +56,9 @@
   "options_audio": {
     "message": "Do not discard a tab when media is playing"
   },
+  "options_paused": {
+    "message": "Do not discard a tab when there is a paused media player"
+  },
   "options_pinned": {
     "message": "Do not discard a tab when it is pinned"
   },
