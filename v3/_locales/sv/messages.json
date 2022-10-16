@@ -75,6 +75,10 @@
         "message": "Släng inte en flik när media spelas upp",
         "description": ""
     },
+    "options_paused": {
+        "message": "Do not discard a tab when there is a paused media player",
+        "description": ""
+    },
     "options_pinned": {
         "message": "Släng inte en flik när den har fästs",
         "description": ""
@@ -392,7 +396,7 @@
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Öppna i ny släng flik",
+        "message": "Öppna i ny slängd flik",
         "description": ""
     },
     "menu_move_previous": {

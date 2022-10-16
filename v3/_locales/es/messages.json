@@ -20,7 +20,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Solo descartar los siguientes nombres de dominio o reglas de expresión regular inactivos",
+        "message": "Descartar solo los siguientes nombres de dominio o reglas de expresión regular inactivos",
         "description": ""
     },
     "options_tab_context": {
@@ -73,6 +73,10 @@
     },
     "options_audio": {
         "message": "No descartar una pestaña cuando se está reproduciendo multimedia",
+        "description": ""
+    },
+    "options_paused": {
+        "message": "Do not discard a tab when there is a paused media player",
         "description": ""
     },
     "options_pinned": {
