@@ -12,7 +12,7 @@ import '../firefox.mjs';
 
   request = {
     method: 'discard',
-    query, '', // query to find tabs with chrome.tabs
+    query, {}, // query to find tabs with chrome.tabs
     forced: false // whether or not to filter pages
   }
 */
