@@ -7,12 +7,27 @@ import './modes/number.mjs';
 import './menu.mjs';
 import '../firefox.mjs';
 
+/*
+  remote access
+
+  request = {
+    method: 'discard',
+    query, '', // query to find tabs with chrome.tabs
+    forced: false // whether or not to filter pages
+  }
+*/
+
 chrome.runtime.onMessageExternal.addListener((request, sender, resposne) => {
   if (request.method === 'discard') {
+    log('onMessageExternal request received', request);
+
     query(request.query).then((tbs = []) => {
-      tbs = tbs.filter(({url, discarded, active}) => (url.startsWith('http') ||
-        url.startsWith('ftp')) && !discarded && !active);
+      if (request.forced !== true) {
+        tbs = tbs.filter(({url = '', discarded, active}) => (url.startsWith('http') ||
+          url.startsWith('ftp')) && !discarded && !active);
+      }
       tbs.forEach(discard);
+
       resposne(tbs.map(t => t.id));
     });
     return true;
