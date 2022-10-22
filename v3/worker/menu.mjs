@@ -68,16 +68,24 @@ import {interrupts} from './plugins/loader.mjs';
       parentId: 'discard-sub-menu'
     },
     {
+      id: 'extra',
+      title: chrome.i18n.getMessage('menu_extra'),
+      contexts,
+      documentUrlPatterns: ['*://*/*']
+    },
+    {
       id: 'auto-discardable',
       title: chrome.i18n.getMessage('popup_allowed'),
       contexts,
-      documentUrlPatterns: ['*://*/*']
+      documentUrlPatterns: ['*://*/*'],
+      parentId: 'extra'
     },
     {
       id: 'whitelist-domain',
       title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
-      documentUrlPatterns: ['*://*/*']
+      documentUrlPatterns: ['*://*/*'],
+      parentId: 'extra'
     },
     prefs['link.context'] ? {
       id: 'open-tab-then-discard',
@@ -122,11 +130,7 @@ import {interrupts} from './plugins/loader.mjs';
             rule = hostname;
           }
 
-          if (checked) {
-            whitelist.push(rule);
-            notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
-          }
-          else {
+          if (checked === false) {
             whitelist = whitelist.filter(rule => {
               const m = match([rule], hostname, tab.url);
 
@@ -138,6 +142,10 @@ import {interrupts} from './plugins/loader.mjs';
                 return true;
               }
             });
+          }
+          else {
+            whitelist.push(rule);
+            notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
           }
           whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
           if (d) {

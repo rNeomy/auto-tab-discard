@@ -293,6 +293,9 @@
   "menu_discard_other_windows": {
     "message": "Discard Tabs in Other Windows"
   },
+  "menu_extra": {
+    "message": "Keep Tabs"
+  },
   "menu_whitelist_domain": {
     "message": "Always Keep Tabs for This Site"
   },
