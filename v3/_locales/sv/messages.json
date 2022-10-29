@@ -76,7 +76,7 @@
         "description": ""
     },
     "options_paused": {
-        "message": "Do not discard a tab when there is a paused media player",
+        "message": "Släng inte en flik med en pausad mediaspelare",
         "description": ""
     },
     "options_pinned": {
@@ -389,6 +389,10 @@
     },
     "menu_discard_other_windows": {
         "message": "Släng flikar i andra fönster",
+        "description": ""
+    },
+    "menu_extra": {
+        "message": "Behåll flikar",
         "description": ""
     },
     "menu_whitelist_domain": {

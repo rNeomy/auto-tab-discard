@@ -391,6 +391,10 @@
         "message": "Descartar pestañas en otras ventanas",
         "description": ""
     },
+    "menu_extra": {
+        "message": "Keep Tabs",
+        "description": ""
+    },
     "menu_whitelist_domain": {
         "message": "Conservar siempre las pestañas para este sitio",
         "description": ""

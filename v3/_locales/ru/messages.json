@@ -391,6 +391,10 @@
         "message": "Выгрузить Вкладки в Других Окнах",
         "description": ""
     },
+    "menu_extra": {
+        "message": "Сохранять вкладки",
+        "description": ""
+    },
     "menu_whitelist_domain": {
         "message": "Всегда Хранить Вкладки для Этого Сайта",
         "description": ""
