@@ -40,7 +40,7 @@
         "description": ""
     },
     "options_prepends": {
-        "message": "为已休眠标签页预先准备一个符号标志（比如 💤 或 ⏻︎）（如果可行）",
+        "message": "为已休眠标签页添加一个符号标志前缀（比如 💤 或 ⏻︎）（如果可行）",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -73,6 +73,10 @@
     },
     "options_audio": {
         "message": "不休眠有媒体资源正在播放的标签页",
+        "description": ""
+    },
+    "options_paused": {
+        "message": "不休眠有被暂停的媒体资源的标签页",
         "description": ""
     },
     "options_pinned": {
@@ -184,7 +188,7 @@
         "description": ""
     },
     "options_plugin_trash_whitelist": {
-        "message": "Only trash tabs matching the following URL patterns",
+        "message": "只移除满足下列 URL 模式的标签页",
         "description": ""
     },
     "options_plugin_force": {
@@ -196,7 +200,7 @@
         "description": ""
     },
     "options_plugin_youtube": {
-        "message": "Store YouTube's timestamp before discarding",
+        "message": "在休眠前存储 Youtube 的时间戳",
         "description": ""
     },
     "options_log": {
@@ -232,7 +236,7 @@
         "description": ""
     },
     "options_footnote_4": {
-        "message": "To use a custom time interval for a rule, add @{number}{unit} to the end (e.g.: google.com@3d will trash google.com URLs after 3 days). Valid units are (h)ours, (d)ays, (w)weeks, and (mo)nths",
+        "message": "要为一项规则使用自定义的时间，在末尾添加 @{number}{unit} （比如： google.com@3d 会在三天后移除 google.com 的地址）。可用单位是小时(h)，天(d)，周(w)，和月(mo)",
         "description": ""
     },
     "options_reset": {
@@ -251,6 +255,10 @@
         "message": "保存选项",
         "description": ""
     },
+    "options_save_nice": {
+        "message": "请确保按下了“保存选项”按钮！",
+        "description": ""
+    },
     "options_support": {
         "message": "支持开发",
         "description": ""
@@ -261,6 +269,10 @@
     },
     "options_favicon_delay": {
         "message": "绘制已休眠网站图标的延迟（单位为毫秒）",
+        "description": ""
+    },
+    "options_read_more": {
+        "message": "（阅读详情）",
         "description": ""
     },
     "popup_discard_tab": {
@@ -335,12 +347,34 @@
         "message": "使用 Shift 键来忽略例外项",
         "description": ""
     },
+    "popup_tmp_disable": {
+        "message": "在以下时间内禁用全部自动休眠"
+    },
+    "popup_tmp_0": {
+        "message": "关闭"
+    },
+    "popup_tmp_1": {
+        "message": "1 小时"
+    },
+    "popup_tmp_6": {
+        "message": "6 小时"
+    },
+    "popup_tmp_12": {
+        "message": "12 小时"
+    },
+    "popup_tmp_24": {
+        "message": "1 天"
+    },
     "bg_no_active_tab": {
         "message": "活动标签页不存在",
         "description": ""
     },
     "bg_msg_1": {
         "message": "该标签页已禁用自动休眠",
+        "description": ""
+    },
+    "bg_msg_2": {
+        "message": "已暂时禁用自动休眠",
         "description": ""
     },
     "menu_discard_tab": {
@@ -375,6 +409,10 @@
         "message": "休眠其它窗口中的标签页",
         "description": ""
     },
+    "menu_extra": {
+        "message": "保留标签页",
+        "description": ""
+    },
     "menu_whitelist_domain": {
         "message": "总是保留属于此站点的标签页",
         "description": ""
@@ -399,8 +437,16 @@
         "message": "已被添加到永久白名单",
         "description": ""
     },
+    "menu_msg5": {
+        "message": "已被移出永久白名单",
+        "description": ""
+    },
     "menu_msg4": {
         "message": "已被添加到会话白名单",
+        "description": ""
+    },
+    "menu_msg6": {
+        "message": "已被移出会话白名单",
         "description": ""
     },
     "menu_msg2": {
@@ -449,6 +495,10 @@
     },
     "blank_msg": {
         "message": "此窗口中的所有标签页已被休眠！点击任意位置以关闭此标签页。",
+        "description": ""
+    },
+    "blank_header": {
+        "message": "（已休眠窗口）",
         "description": ""
     }
 }
