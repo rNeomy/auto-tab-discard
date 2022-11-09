@@ -185,7 +185,7 @@ import {interrupts} from './plugins/loader.mjs';
         }));
       }
       // discard-tree for native
-      if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called
+      else if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called
         const tbs = tabs.filter(t => t.highlighted);
         if (tbs.length > 1) {
           htabs.push(...tbs);
