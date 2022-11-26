@@ -75,6 +75,10 @@
         "message": "メディアを再生しているタブは破棄しない",
         "description": ""
     },
+    "options_paused": {
+        "message": "一時停止中のメディアプレーヤーがあるタブは破棄しない",
+        "description": ""
+    },
     "options_pinned": {
         "message": "ピン留めされているタブは破棄しない",
         "description": ""
@@ -385,6 +389,10 @@
     },
     "menu_discard_other_windows": {
         "message": "他のウィンドウのタブを全て破棄する",
+        "description": ""
+    },
+    "menu_extra": {
+        "message": "タブを保持",
         "description": ""
     },
     "menu_whitelist_domain": {
