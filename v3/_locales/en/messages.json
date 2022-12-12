@@ -2,6 +2,15 @@
   "app_description": {
     "message": "Increase browser speed and reduce memory load when you have numerous open tabs."
   },
+  "options_title": {
+    "message": "Options Page :: Auto Tab Discard"
+  },
+  "options_list": {
+    "message": "Comma-separated list of hostnames"
+  },
+  "options_list_trash": {
+    "message": "Comma-separated list of hostnames, leave blank for all"
+  },
   "options_discarding_options": {
     "message": "Discarding options"
   },
@@ -18,7 +27,7 @@
     "message": "Only discard the following inactive hostnames or regular expression rules"
   },
   "options_tab_context": {
-    "message": "Display discarding items in the \"tab\" context menu (if supported)"
+    "message": "Display discarding items in the \"tab\" context menu (currently supported by Firefox)"
   },
   "options_page_context": {
     "message": "Display discarding items in the \"page\" context menu"
@@ -42,10 +51,10 @@
     "message": "Release discarding state of all pinned tabs on a browser or extension startup"
   },
   "options_release_next_tab": {
-    "message": "Release discarding of the next tab (tab to the right of the active tab)"
+    "message": "Release discarding of the next tab (tab to the right of the active tab)."
   },
   "options_release_previous_tab": {
-    "message": "Release discarding of the previous tab (tab to the left of the active tab)"
+    "message": "Release discarding of the previous tab (tab to the left of the active tab)."
   },
   "options_memory": {
     "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
@@ -87,7 +96,7 @@
     "message": "Tabs with the following hostnames or regular expression rules are not being discarded. It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule."
   },
   "options_left_click": {
-    "message": "Toolbar left_click action"
+    "message": "Toolbar left-click action"
   },
   "options_click_popup": {
     "message": "Open popup"
@@ -123,19 +132,22 @@
     "message": "Plug-ins"
   },
   "options_plugin_dummy": {
-    "message": "When discarding, replace the page with a local dummy alternative (beta)"
+    "message": "When discarding, replace the page with a local dummy alternative (beta)."
   },
   "options_plugin_blank": {
-    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)"
+    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)."
   },
   "options_plugin_focus": {
-    "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded"
+    "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded."
   },
   "options_plugin_unloaded": {
-    "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs"
+    "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs."
   },
-  "options_plugin_trash": {
-    "message": "Permanently delete (remove) old discarded tabs if they are inactive for (in hours)"
+  "options_plugin_trash01": {
+    "message": "Permanently delete (remove) old discarded tabs if they are inactive for"
+  },
+  "options_plugin_trash02": {
+    "message": "hours"
   },
   "options_plugin_trash_unloaded": {
     "message": "Also, consider old unloaded tabs"
@@ -147,10 +159,10 @@
     "message": "Immediately discard the following hostnames when their tab is not active"
   },
   "options_plugin_new": {
-    "message": "Discard all newly opened inactive tabs after they get loaded"
+    "message": "Discard all newly opened inactive tabs after they get loaded."
   },
   "options_plugin_youtube": {
-    "message": "Store YouTube's timestamp before discarding"
+    "message": "Store YouTube's timestamp before discarding."
   },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
@@ -176,9 +188,6 @@
   "options_save": {
     "message": "Save Options"
   },
-  "options_save_nice": {
-    "message": "Make sure to press the \"Save Options\" button!"
-  },
   "options_support": {
     "message": "Support Development"
   },
@@ -187,6 +196,21 @@
   },
   "options_read_more": {
     "message": "(Read More Here)"
+  },
+  "options_save_notice": {
+    "message": "Please be sure to click the \"Save Options\" button at the bottom of this page once you have finished making changes."
+  },
+  "options_rate_desc": {
+    "message": "If you like to rate the \"Auto Tab Discard\" extension use:"
+  },
+  "options_rate_btn": {
+    "message": "Rate Me"
+  },
+  "options_managed_1": {
+    "message": "This extension has the ability to use managed storage, allowing domain administrators to preconfigure preferences."
+  },
+  "options_managed_2": {
+    "message": "Read more here."
   },
   "popup_discard_tab": {
     "message": "Discard Tab"
@@ -212,11 +236,20 @@
   "popup_move_previous": {
     "message": "Left Tab"
   },
+  "popup_move_previous_title": {
+    "message": "Go to the previous active tab"
+  },
   "popup_close": {
     "message": "Close Tab"
   },
+  "popup_close_title": {
+    "message": "Close the current tab and switch to the previous active tab"
+  },
   "popup_move_next": {
     "message": "Right Tab"
+  },
+  "popup_move_next_title": {
+    "message": "Go to the next active tab"
   },
   "popup_whitelist_desc": {
     "message": "Keep Tabs for This Site"
@@ -225,7 +258,7 @@
     "message": "Always"
   },
   "popup_whitelist_always_title": {
-    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list"
+    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list."
   },
   "popup_whitelist_session": {
     "message": "Session"
@@ -237,10 +270,10 @@
     "message": "Options"
   },
   "popup_release": {
-    "message": "Release discarding. To bypass cached content use Shift + Click"
+    "message": "Release discarding. To bypass cached content, use Shift + Click."
   },
   "popup_shift_hint": {
-    "message": "Use Shift key to ignore exceptions"
+    "message": "Use the Shift key to ignore the auto-discarding exception rules."
   },
   "popup_tmp_disable": {
     "message": "Disable Auto Discarding Globally for"
@@ -264,10 +297,10 @@
     "message": "No active tab is present"
   },
   "bg_msg_1": {
-    "message": "auto-discarding is disabled for this tab"
+    "message": "Auto-discarding is disabled for this tab"
   },
   "bg_msg_2": {
-    "message": "auto-discarding is disabled for now"
+    "message": "Auto-discarding is disabled for now"
   },
   "menu_discard_tab": {
     "message": "Discard Tab"
@@ -303,10 +336,10 @@
     "message": "Open in New Discarded Tab"
   },
   "menu_move_previous": {
-    "message": "Move to the Left Tab"
+    "message": "Go to the Left Tab"
   },
   "menu_move_next": {
-    "message": "Move to the Right Tab"
+    "message": "Go to the Right Tab"
   },
   "menu_close": {
     "message": "Close Tab"
@@ -348,16 +381,16 @@
     "message": "Always Keep Tabs for This Site"
   },
   "cmd_move_previous": {
-    "message": "Move to the Left Tab"
+    "message": "Go to the Left Tab"
   },
   "cmd_move_next": {
-    "message": "Move to the Right Tab"
+    "message": "Go to the Right Tab"
   },
   "cmd_close": {
     "message": "Close Tab"
   },
   "blank_msg": {
-    "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab"
+    "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab."
   },
   "blank_header": {
     "message": "(Discarded Window)"

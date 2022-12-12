@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Options Page :: Auto Tab Discard</title>
+    <title data-i18n="options_title">Options Page :: Auto Tab Discard</title>
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -35,7 +35,7 @@
           <td colspan="2"><label for="url-based"><span data-i18n="options_url_based"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq13"></a></label></td>
         </tr>
         <tr>
-          <td colspan="3"><textarea rows="3" id="whitelist-url" placeholder="Comma-separated list of hostnames"></textarea></td>
+          <td colspan="3"><textarea rows="3" id="whitelist-url" data-i18n="options_list" data-i18n-value="placeholder"></textarea></td>
         </tr>
         <tr>
           <td><input type="checkbox" id="tab.context"></td>
@@ -139,7 +139,7 @@
         <tr>
           <td colspan="3">
             <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_whitelist"></span></span>
-            <textarea rows="3" id="whitelist" placeholder="Comma-separated list of hostnames"></textarea>
+            <textarea rows="3" id="whitelist" data-i18n="options_list" data-i18n-value="placeholder"></textarea>
           </td>
         </tr>
       </tbody>
@@ -227,14 +227,16 @@
         <tr>
           <td><input type="checkbox" id="./plugins/trash/core.js"></td>
           <td colspan="2">
-              <label for="./plugins/trash/core.js" data-i18n="options_plugin_trash"></label> <input type="number" id="trash.period" min="0">
+              <label for="./plugins/trash/core.js" data-i18n="options_plugin_trash01"></label>
+              <input type="number" id="trash.period" min="0">
+              <label for="./plugins/trash/core.js" data-i18n="options_plugin_trash02"></label>
           </td>
         </tr>
         <tr>
             <td></td>
             <td colspan="2">
                 <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_plugin_trash_whitelist"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq15"></a></span>
-                <textarea rows="3" id="trash.whitelist-url" placeholder="Comma-separated list of hostnames, leave blank for all"></textarea>
+                <textarea rows="3" id="trash.whitelist-url" data-i18n="options_list_trash" data-i18n-value="placeholder"></textarea>
             </td>
         </tr>
         <tr>
@@ -245,7 +247,7 @@
           <td style="vertical-align: top;"><input type="checkbox" id="./plugins/force/core.js"></td>
           <td colspan="2">
             <label style="display: block; padding-bottom: 10px;" for="./plugins/force/core.js" data-i18n="options_plugin_force"></label>
-            <textarea rows="3" id="force.hostnames" placeholder="Comma-separated list of hostnames"></textarea>
+            <textarea rows="3" id="force.hostnames" data-i18n="options_list" data-i18n-value="placeholder"></textarea>
           </td>
         </tr>
       </tbody>
@@ -270,9 +272,17 @@
       </tbody>
     </table>
     <div id="explore" data-cols="5"></div>
-    <p>Rate "<a id="rate" target="_blank" href="https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews">Auto Tab Discard</a>" extension</p>
+
+    <div id="rate">
+      <label data-i18n="options_rate_desc"></label>
+      <input type="button" value="Rate Me" data-i18n="options_rate_btn" data-i18n-value="value">
+    </div>
+
     <p>
-      <div class="wnt">This extension supports managed storage. All the preferences can be pre-configured by <a target="_blank" data-href="faq10">the domain administrator</a></div>
+      <div class="wnt">
+        <span data-i18n="options_managed_1"></span>
+        <a data-i18n="options_managed_2" target="_blank" data-href="faq10"></a>
+      </div>
       <table width=100%>
         <colgroup>
           <col width="1"/>
