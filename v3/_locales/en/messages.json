@@ -51,10 +51,10 @@
     "message": "Release discarding state of all pinned tabs on a browser or extension startup"
   },
   "options_release_next_tab": {
-    "message": "Release discarding of the next tab (tab to the right of the active tab)."
+    "message": "Release discarding of the next tab (tab to the right of the active tab)"
   },
   "options_release_previous_tab": {
-    "message": "Release discarding of the previous tab (tab to the left of the active tab)."
+    "message": "Release discarding of the previous tab (tab to the left of the active tab)"
   },
   "options_memory": {
     "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
@@ -84,7 +84,7 @@
     "message": "Do not discard a tab if it can display desktop notifications"
   },
   "options_idle": {
-    "message": "Do not discard tabs if computer is not in the 'idle' state"
+    "message": "Only discard tabs if the computer is in the 'idle' state"
   },
   "options_idle_timeout": {
     "message": "Inactive interval to determine if the computer is in idle state or not (in minutes)"
@@ -132,10 +132,10 @@
     "message": "Plug-ins"
   },
   "options_plugin_dummy": {
-    "message": "When discarding, replace the page with a local dummy alternative (beta)."
+    "message": "When discarding, replace the page with a local dummy alternative (beta)"
   },
   "options_plugin_blank": {
-    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)."
+    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)"
   },
   "options_plugin_focus": {
     "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded."
@@ -159,10 +159,10 @@
     "message": "Immediately discard the following hostnames when their tab is not active"
   },
   "options_plugin_new": {
-    "message": "Discard all newly opened inactive tabs after they get loaded."
+    "message": "Discard all newly opened inactive tabs after they get loaded"
   },
   "options_plugin_youtube": {
-    "message": "Store YouTube's timestamp before discarding."
+    "message": "Store YouTube's timestamp before discarding"
   },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
@@ -201,10 +201,10 @@
     "message": "Please be sure to click the \"Save Options\" button at the bottom of this page once you have finished making changes."
   },
   "options_rate_desc": {
-    "message": "If you like to rate the \"Auto Tab Discard\" extension use:"
+    "message": "If you like to rate the extension, click"
   },
   "options_rate_btn": {
-    "message": "Rate Me"
+    "message": "Rate it"
   },
   "options_managed_1": {
     "message": "This extension has the ability to use managed storage, allowing domain administrators to preconfigure preferences."

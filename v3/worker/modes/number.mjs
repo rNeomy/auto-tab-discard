@@ -69,7 +69,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
   if (prefs.idle) {
     const state = await new Promise(resolve => chrome.idle.queryState(prefs['idle-timeout'], resolve));
     if (state !== chrome.idle.IdleState.IDLE) {
-      return log('discarding is skipped', 'idle state is active');
+      return log('discarding is skipped', 'not in the idle state');
     }
   }
   // only check if on battery
