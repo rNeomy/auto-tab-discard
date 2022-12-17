@@ -75,10 +75,10 @@
     "message": "Do not discard a tab when form changes are not yet submitted"
   },
   "options_battery": {
-    "message": "Do not discard tabs when computer is connected to a power source"
+    "message": "Do not discard tabs when the computer is connected to a power source"
   },
   "options_online": {
-    "message": "Do not discard tabs when there is no internet connection and tab is not cached"
+    "message": "Do not discard tabs when there is no internet connection and the tab is not cached"
   },
   "options_notification_permission": {
     "message": "Do not discard a tab if it can display desktop notifications"
@@ -187,6 +187,9 @@
   },
   "options_save": {
     "message": "Save Options"
+  },
+  "options_save_msg": {
+    "message": "Options saved"
   },
   "options_support": {
     "message": "Support Development"

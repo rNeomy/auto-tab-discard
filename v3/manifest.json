@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "0.6.6",
+  "version": "0.6.7",
   "name": "Auto Tab Discard",
   "description": "__MSG_app_description__",
   "default_locale": "en",
@@ -47,7 +47,7 @@
     "page": "data/options/index.html",
     "open_in_tab": true
   },
-  "homepage_url": "https://add0n.com/tab-discard.html",
+  "homepage_url": "https://webextension.org/listing/tab-discard.html",
   "commands": {
     "_execute_action": {},
     "discard-tab": {

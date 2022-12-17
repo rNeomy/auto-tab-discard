@@ -219,7 +219,7 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/unloaded/core.js': document.getElementById('./plugins/unloaded/core.js').checked,
     './plugins/youtube/core.js': document.getElementById('./plugins/youtube/core.js').checked
   }, () => {
-    info.textContent = 'Options saved';
+    info.textContent = chrome.i18n.getMessage('options_save_msg');
     restore();
     window.setTimeout(() => info.textContent = '', 750);
   });
