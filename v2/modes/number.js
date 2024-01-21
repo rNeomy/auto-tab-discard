@@ -205,13 +205,20 @@ number.check = async (filterTabsFrom, ops = {}) => {
   const now = Date.now();
   const map = new Map();
   const arr = [];
-  for (const { tb, meta } of tabMetas) {
     log('number check', 'got meta data of tab');
+  for (const { tab, meta } of tabMetas) {
 
     // is the tab using too much memory, discard instantly
     if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
       log('forced discarding', 'memory usage');
       discard(tb);
+    if (
+      prefs["memory-enabled"] &&
+      meta.memory &&
+      meta.memory > prefs["memory-value"] * 1024 * 1024
+    ) {
+      log("forced discarding", "memory usage");
+      discard(tab);
       continue;
     }
     // check tab's age
@@ -226,20 +233,22 @@ number.check = async (filterTabsFrom, ops = {}) => {
     }
     // is tab playing audio
     if (prefs.audio && meta.audible) {
-      log('discarding aborted', 'audio is playing');
-      icon(tb, 'tab plays an audio');
+      log("discarding aborted", "audio is playing");
+      icon(tab, "tab plays an audio");
       continue;
     }
     // is there an unsaved form
     if (prefs.form && meta.forms) {
-      log('discarding aborted', 'active form');
-      icon(tb, 'there is an active form on this tab');
+      log("discarding aborted", "active form");
+      icon(tab, "there is an active form on this tab");
       continue;
     }
     // is notification allowed
     if (prefs['notification.permission'] && meta.permission) {
       log('discarding aborted', 'tab has notification permission');
       icon(tb, 'tab has notification permission');
+      log("discarding aborted", "tab has notification permission");
+      icon(tab, "tab has notification permission");
       continue;
     // tab can be discarded
     }
