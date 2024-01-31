@@ -45,88 +45,105 @@ const discard = tab => {
         }
         resolve();
       };
-      // favicon
-      const icon = () => {
-        const src = tab.favIconUrl || '/data/page.png';
-
-        Object.assign(new Image(), {
-          crossOrigin: 'anonymous',
-          src,
-          onerror() {
-            next();
-          },
-          onload() {
-            const img = this;
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            if (ctx) {
-              canvas.width = img.width;
-              canvas.height = img.height;
-
-              ctx.globalAlpha = 0.6;
-              ctx.drawImage(img, 0, 0);
-
-              ctx.globalAlpha = 1;
-              ctx.beginPath();
-              ctx.fillStyle = '#a1a0a1';
-              ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-              ctx.fill();
-              const href = canvas.toDataURL('image/png');
-
-              chrome.scripting.executeScript({
-                target: {
-                  tabId: tab.id,
-                  allFrames: true
-                },
-                func: href => {
-                  window.stop();
-                  if (window === window.top) {
-                    [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
-
-                    document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                      rel: 'icon',
-                      type: 'image/png',
-                      href
-                    }));
+      // change title or favicon
+      if (prefs.prepends || prefs.favicon) {
+        const href = tab.favIconUrl || '';
+        Promise.race([
+          new Promise(resolve => setTimeout(resolve, 1000, [])),
+          chrome.scripting.executeScript({
+            target: {
+              tabId: tab.id,
+              allFrames: true
+            },
+            func: (prefs, src) => {
+              window.stop();
+              if (window === window.top) {
+                if (prefs.prepends) {
+                  const title = document.title || location.href || '';
+                  if (title.startsWith(prefs.prepends) === false) {
+                    document.title = prefs.prepends + ' ' + title;
                   }
-                },
-                args: [href]
-              }).catch(() => {}).finally(() => setTimeout(next, prefs['favicon-delay']));
-            }
-            else {
-              next();
-            }
-          }
-        });
-      };
-      // change title
-      if (prefs.prepends) {
-        chrome.scripting.executeScript({
-          target: {tabId: tab.id},
-          func: prepends => {
-            window.stop();
-            const title = document.title || location.href || '';
-            if (title.startsWith(prepends) === false) {
-              document.title = prepends + ' ' + title;
-            }
-          },
-          args: [prefs.prepends]
-        }).catch(() => {}).finally(() => {
-          if (prefs.favicon) {
-            icon();
+
+                  if (prefs.favicon === false) {
+                    return true;
+                  }
+                }
+                if (prefs.favicon) {
+                  const observe = (request, sender, response) => {
+                    if (request.method === 'fix-favicon') {
+                      chrome.runtime.onMessage.removeListener(observe);
+
+                      [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
+
+                      const draw = img => {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+
+                        if (ctx) {
+                          canvas.width = img.width;
+                          canvas.height = img.height;
+                          ctx.globalAlpha = 0.6;
+                          ctx.drawImage(img, 0, 0);
+
+                          ctx.globalAlpha = 1;
+                          ctx.beginPath();
+                          ctx.fillStyle = '#a1a0a1';
+                          ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
+                          ctx.fill();
+                          const href = canvas.toDataURL();
+                          document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                            rel: 'icon',
+                            type: 'image/png',
+                            href
+                          }));
+                          response('done');
+                        }
+                        else {
+                          response('NO_CTX');
+                        }
+                      };
+                      Object.assign(new Image(), {
+                        crossOrigin: 'anonymous',
+                        src,
+                        onerror() { // fallback image
+                          Object.assign(new Image(), {
+                            src: chrome.runtime.getURL('/data/page.png'),
+                            onerror(e) {
+                              response(e.message || 'CORS');
+                            },
+                            onload() {
+                              draw(this);
+                            }
+                          });
+                        },
+                        onload() {
+                          draw(this);
+                        }
+                      });
+                      return true;
+                    }
+                  };
+                  chrome.runtime.onMessage.addListener(observe);
+                  return 'async';
+                }
+              }
+              return false;
+            },
+            args: [prefs, href]
+          })
+        ]).then(r => {
+          if (r.some(o => o.result === 'async')) {
+            chrome.tabs.sendMessage(tab.id, {
+              method: 'fix-favicon'
+            }, reason => setTimeout(next, prefs['favicon-delay'], reason));
           }
           else {
-            setTimeout(next, prefs['favicon-delay']);
+            next('one');
           }
-        });
+        }).catch(e =>next(e.message));
       }
       else {
-        if (prefs.favicon) {
-          icon();
-        }
-        else {
-          next();
-        }
+        next('two');
       }
     });
   });
