@@ -374,6 +374,12 @@
   "cmd_discard_tabs": {
     "message": "Discard All Other Tabs"
   },
+  "cmd_discard_rights": {
+    "message": "Discard Tabs to the Right"
+  },
+  "cmd_discard_lefts": {
+    "message": "Discard Tabs to the Left"
+  },
   "cmd_discard_window": {
     "message": "Discard Other Tabs in This Window"
   },

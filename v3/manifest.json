@@ -65,6 +65,12 @@
     "discard-tabs": {
       "description": "__MSG_cmd_discard_tabs__"
     },
+    "discard-rights": {
+      "description": "__MSG_cmd_discard_rights__"
+    },
+    "discard-lefts": {
+      "description": "__MSG_cmd_discard_lefts__"
+    },
     "move-previous": {
       "description": "__MSG_cmd_move_previous__"
     },
