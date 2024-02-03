@@ -4,8 +4,7 @@ import {storage} from '../../core/prefs.mjs';
 function enable() {
   log('trash.install is called');
   storage({
-    //////// 'trash.interval': 30 // in minutes
-    'trash.interval': 1 // in minutes
+    'trash.interval': 30 // in minutes
   }).then(prefs => chrome.alarms.create('trash.check', {
     when: Date.now(),
     periodInMinutes: prefs['trash.interval']
@@ -28,6 +27,16 @@ chrome.alarms.onAlarm.addListener(alarm => {
       'trash.whitelist-url': [],
       'pinned': false
     }).then(async prefs => {
+      // TO-DO: remove this check after a few updates
+      // https://github.com/rNeomy/auto-tab-discard/issues/352
+      try {
+        log('trash', 'trash.keys is messed up', 'regenerating');
+        Object.entries(prefs['trash.keys']);
+      }
+      catch (e) {
+        prefs['trash.keys'] = {};
+      }
+
       const tbs = new Set(await query({discarded: true}));
 
       // https://github.com/rNeomy/auto-tab-discard/issues/243
