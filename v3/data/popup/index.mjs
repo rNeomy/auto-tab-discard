@@ -10,9 +10,17 @@ import {match} from '../../worker/core/utils.mjs';
 
 let tab;
 
+// works on all highlighted tabs in the current window
 const allowed = document.getElementById('allowed');
-allowed.addEventListener('change', () => chrome.tabs.update(tab.id, {
-  autoDiscardable: allowed.checked === false
+allowed.addEventListener('change', () => chrome.tabs.query({
+  currentWindow: true,
+  highlighted: true
+}, tabs => {
+  for (const tab of tabs) {
+    chrome.tabs.update(tab.id, {
+      autoDiscardable: allowed.checked === false
+    });
+  }
 }));
 
 const whitelist = {

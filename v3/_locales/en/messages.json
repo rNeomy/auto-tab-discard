@@ -267,7 +267,7 @@
     "message": "Session"
   },
   "popup_allowed": {
-    "message": "Keep This Tab for This Session"
+    "message": "Keep Selected Tabs for This Session"
   },
   "popup_open_options": {
     "message": "Options"
