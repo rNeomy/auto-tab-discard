@@ -4,7 +4,8 @@ import {storage} from '../../core/prefs.mjs';
 function enable() {
   log('trash.install is called');
   storage({
-    'trash.interval': 30 // in minutes
+    //////// 'trash.interval': 30 // in minutes
+    'trash.interval': 1 // in minutes
   }).then(prefs => chrome.alarms.create('trash.check', {
     when: Date.now(),
     periodInMinutes: prefs['trash.interval']
@@ -24,16 +25,22 @@ chrome.alarms.onAlarm.addListener(alarm => {
       'trash.period': 24, // in hours
       'trash.keys': {},
       'trash.unloaded': true,
-      'trash.whitelist-url': []
+      'trash.whitelist-url': [],
+      'pinned': false
     }).then(async prefs => {
-      const tbs = await query({discarded: true});
+      const tbs = new Set(await query({discarded: true}));
 
       // https://github.com/rNeomy/auto-tab-discard/issues/243
       if (prefs['trash.unloaded']) {
-        const ids = new Set(tbs.map(t => t.id));
         for (const tb of await query({status: 'unloaded'})) {
-          if (ids.has(tb.id) === false) {
-            tbs.push(tb);
+          tbs.add(tb);
+        }
+      }
+      // https://github.com/rNeomy/auto-tab-discard/issues/358
+      if (prefs['pinned']) {
+        for (const tb of tbs) {
+          if (tb.pinned) {
+            tbs.delete(tb);
           }
         }
       }
@@ -55,7 +62,7 @@ chrome.alarms.onAlarm.addListener(alarm => {
         return parseInt(number) * (units[unit] ?? 1);
       };
 
-      const match = (href, hostname, list) => {
+      const findInterval = (href, hostname, list) => {
         if (list.length === 0) {
           return prefs['trash.period'] * 60 * 60;
         }
@@ -71,33 +78,53 @@ chrome.alarms.onAlarm.addListener(alarm => {
         ).find(interval => interval > 0);
       };
 
-      const keys = (
-        prefs['trash.whitelist-url'].length ?
-          tbs.map(t => t.url).map(url =>
-            [url, match(url, new URL(url).hostname, prefs['trash.whitelist-url'])]
-          ).filter( ([, interval]) => interval > 0 ) : tbs.map(t => [t.url, prefs['trash.period'] * 60 * 60])
-      );
-      const now = Date.now();
-      const removed = [];
-
-      for (const [url, [timestamp, interval]] of Object.entries(prefs['trash.keys'])) {
-        // remove removed keys
-        if (! keys.find(([u]) => url == u)) {
-          delete prefs['trash.keys'][url];
-        }
-        // remove old tabs
-        else if (now - timestamp > interval * 1000) {
-          delete prefs['trash.keys'][url];
-          removed.push(url);
-          for (const tb of tbs.filter(t => t.url === url)) {
-            log('trash', 'removing', tb.title);
-            chrome.tabs.remove(tb.id, () => chrome.runtime.lastError);
+      const keys = new Map();
+      for (const tab of tbs) {
+        if (keys.has(tab.url) === false) {
+          if (prefs['trash.whitelist-url'].length) {
+            keys.set(tab.url, {
+              interval: findInterval(tab.url, new URL(tab.url).hostname, prefs['trash.whitelist-url']),
+              tabs: []
+            });
+          }
+          else {
+            keys.set(tab.url, {
+              interval: prefs['trash.period'] * 60 * 60,
+              tabs: []
+            });
           }
         }
+        keys.get(tab.url).tabs.push(tab);
       }
+
+      const now = Date.now();
+
+      // make sure all stored keys are still related to a tab
+      for (const url of Object.keys(prefs['trash.keys'])) {
+        if (keys.has(url) === false) {
+          delete prefs['trash.keys'][url];
+        }
+        // if the user switches to whitelist mode
+        else if (!keys.get(url).interval) {
+          delete prefs['trash.keys'][url];
+        }
+      }
+
+      // removing old tabs
+      for (const [url, [timestamp, interval]] of Object.entries(prefs['trash.keys'])) {
+        if (now - timestamp > interval * 1000) {
+          for (const tab of keys.get(url).tabs) {
+            log('trash', 'removing', tab.title);
+            chrome.tabs.remove(tab.id, () => chrome.runtime.lastError);
+          }
+          delete prefs['trash.keys'][url];
+          keys.delete(url);
+        }
+      }
+
       // add new keys
-      for (const [url, interval] of keys) {
-        if (prefs['trash.keys'][url] === undefined && removed.indexOf(url) === -1) {
+      for (const [url, {interval}] of keys.entries()) {
+        if (prefs['trash.keys'][url] === undefined && interval) {
           prefs['trash.keys'][url] = [now, interval];
         }
       }

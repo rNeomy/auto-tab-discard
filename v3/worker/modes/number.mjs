@@ -168,7 +168,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
   const arr = [];
   for (const tb of tbs) {
     try {
-      const ms = await chrome.scripting.executeScript({
+      const ms = tb.status === 'unloaded' ? [] : await chrome.scripting.executeScript({
         target: {
           tabId: tb.id,
           allFrames: true
@@ -199,32 +199,32 @@ number.check = async (filterTabsFrom, ops = {}) => {
       }
       // check tab's age
       if (now - meta.time < prefs.period * 1000) {
-        log('discarding aborted', 'tab is not old');
+        log('discarding aborted', 'tab is not old', tb);
         exceptionCount += 1;
         continue;
       }
       // is this tab loaded
       if (meta.ready !== true && ops['ignore.ready.state'] !== true) {
-        log('discarding aborted', 'tab is not ready');
+        log('discarding aborted', 'tab is not ready', tb);
         exceptionCount += 1;
         continue;
       }
       // is tab playing audio
       if (prefs.audio && meta.audible) {
-        log('discarding aborted', 'audio is playing');
+        log('discarding aborted', 'audio is playing', tb);
         icon(tb, 'tab plays an audio');
         exceptionCount += 1;
         continue;
       }
       if (prefs.paused && meta.paused) {
-        log('discarding aborted', 'player is paused');
+        log('discarding aborted', 'player is paused', tb);
         icon(tb, 'tab has a paused player');
         exceptionCount += 1;
         continue;
       }
       // is there an unsaved form
       if (prefs.form && meta.forms) {
-        log('discarding aborted', 'active form');
+        log('discarding aborted', 'active form', tb);
         icon(tb, 'there is an active form on this tab');
         exceptionCount += 1;
         continue;
