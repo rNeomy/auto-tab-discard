@@ -135,7 +135,8 @@ import {interrupts} from './plugins/loader.mjs';
               const m = match([rule], hostname, tab.url);
 
               if (m) {
-                notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg5' : 'menu_msg6')}`);
+                // https://github.com/rNeomy/auto-tab-discard/issues/350
+                // notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg5' : 'menu_msg6')}`);
                 return false;
               }
               else {
@@ -145,7 +146,8 @@ import {interrupts} from './plugins/loader.mjs';
           }
           else {
             whitelist.push(rule);
-            notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
+            // https://github.com/rNeomy/auto-tab-discard/issues/350
+            // notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
           }
           whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
           if (d) {

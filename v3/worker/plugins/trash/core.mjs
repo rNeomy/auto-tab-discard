@@ -30,10 +30,10 @@ chrome.alarms.onAlarm.addListener(alarm => {
       // TO-DO: remove this check after a few updates
       // https://github.com/rNeomy/auto-tab-discard/issues/352
       try {
-        log('trash', 'trash.keys is messed up', 'regenerating');
         Object.entries(prefs['trash.keys']);
       }
       catch (e) {
+        log('trash', 'trash.keys is messed up', 'regenerating');
         prefs['trash.keys'] = {};
       }
 
