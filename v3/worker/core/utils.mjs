@@ -1,6 +1,6 @@
 import {prefs} from './prefs.mjs';
 
-const log = (...args) => prefs.log && console.log(new Date(), ...args);
+const log = (...args) => prefs.log && console.log((new Date()).toLocaleTimeString(), ...args);
 
 const notify = e => chrome.notifications.create({
   title: chrome.runtime.getManifest().name,

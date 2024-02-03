@@ -146,17 +146,24 @@ import {interrupts} from './plugins/loader.mjs';
           }
           else {
             whitelist.push(rule);
+
             // https://github.com/rNeomy/auto-tab-discard/issues/350
             // notify(`"${rule}" ${chrome.i18n.getMessage(d ? 'menu_msg1' : 'menu_msg4')}`);
           }
           whitelist = whitelist.filter((h, i, l) => l.indexOf(h) === i);
+
+          const check = () => number.check([], {
+            'exclude-active': false,
+            'icon-update': true
+          });
+
           if (d) {
-            chrome.storage.local.set({whitelist});
+            chrome.storage.local.set({whitelist}, check);
           }
           else {
             chrome.storage.session.set({
               'whitelist.session': whitelist
-            });
+            }, check);
           }
         }
         else {
@@ -354,6 +361,12 @@ import {interrupts} from './plugins/loader.mjs';
     }
     else if (request.method === 'build-context') {
       onStartup();
+    }
+    else if (request.method === 'run-check-on-action') {
+      number.check(request.ids.map(id => ({id})), {
+        'exclude-active': false,
+        'icon-update': true
+      });
     }
   });
 }

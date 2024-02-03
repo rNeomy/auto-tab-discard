@@ -15,12 +15,16 @@ const allowed = document.getElementById('allowed');
 allowed.addEventListener('change', () => chrome.tabs.query({
   currentWindow: true,
   highlighted: true
-}, tabs => {
+}, async tabs => {
   for (const tab of tabs) {
-    chrome.tabs.update(tab.id, {
+    await new Promise(resolve => chrome.tabs.update(tab.id, {
       autoDiscardable: allowed.checked === false
-    });
+    }, resolve));
   }
+  chrome.runtime.sendMessage({
+    method: 'run-check-on-action',
+    ids: tabs.map(t => t.id)
+  });
 }));
 
 const whitelist = {
@@ -141,7 +145,9 @@ document.addEventListener('click', e => {
       shiftKey: e.shiftKey,
       checked: e.target.checked
     }, () => {
-      window.close();
+      if (['whitelist-session', 'whitelist-domain'].includes(cmd) === false) {
+        window.close();
+      }
       chrome.runtime.lastError;
     });
   }

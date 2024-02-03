@@ -58,7 +58,9 @@ number.check = async (filterTabsFrom, ops = {}) => {
     'memory-enabled': false,
     'memory-value': 60,
     'idle': false,
-    'idle-timeout': 5 * 60 // in seconds
+    'idle-timeout': 5 * 60, // in seconds
+    'exclude-active': true,
+    'icon-update': false
   });
   Object.assign(prefs, await storage({
     'whitelist.session': []
@@ -87,10 +89,16 @@ number.check = async (filterTabsFrom, ops = {}) => {
   // get the total number of active tabs
   const options = {
     url: '*://*/*',
-    discarded: false,
-    active: false,
-    autoDiscardable: true
+    discarded: false
   };
+  // we may run "number.check" to update the icon of the active tab. The active tab is ignored anyway
+  if (prefs['exclude-active']) {
+    options.active = false;
+  }
+  // we need to update the icon for not-discardable tabs. So do not exclude them
+  // if (prefs['exclude-not-discardable']) {
+  //   options.autoDiscardable = true;
+  // }
   if (prefs.pinned) {
     options.pinned = false;
   }
@@ -98,6 +106,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
     options.audible = false;
   }
   let tbs = await query(options);
+
   const icon = (tb, title) => {
     chrome.action.setTitle({
       tabId: tb.id,
@@ -111,6 +120,20 @@ number.check = async (filterTabsFrom, ops = {}) => {
       }
     });
   };
+  icon.reset = tb => {
+    chrome.action.setTitle({
+      tabId: tb.id,
+      title: chrome.runtime.getManifest().name
+    }, () => chrome.runtime.lastError);
+    chrome.action.setIcon({
+      tabId: tb.id,
+      path: {
+        '16': '/data/icons/16.png',
+        '32': '/data/icons/32.png'
+      }
+    });
+  };
+
   // remove tabs based on custom filters
   for (const {prepare, check} of Object.values(pluginFilters)) {
     await prepare();
@@ -156,13 +179,16 @@ number.check = async (filterTabsFrom, ops = {}) => {
   }
 
   // do not discard if number of tabs is smaller than required
-  if (tbs.length + exceptionCount <= prefs.number) {
-    return log(
-      'number.check', 'total number of active tabs', tbs.length,
-      ' + ignored tabs', exceptionCount,
-      'is equal or smaller than', prefs.number
-    );
+  if (prefs['icon-update'] === false) {
+    if (tbs.length + exceptionCount <= prefs.number) {
+      return log(
+        'number.check', 'total number of active tabs', tbs.length,
+        ' + ignored tabs', exceptionCount,
+        'is equal or smaller than', prefs.number
+      );
+    }
   }
+
   const now = Date.now();
   const map = new Map();
   const arr = [];
@@ -195,12 +221,6 @@ number.check = async (filterTabsFrom, ops = {}) => {
       if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
         log('forced discarding', 'memory usage');
         discard(tb);
-        continue;
-      }
-      // check tab's age
-      if (now - meta.time < prefs.period * 1000) {
-        log('discarding aborted', 'tab is not old', tb);
-        exceptionCount += 1;
         continue;
       }
       // is this tab loaded
@@ -236,6 +256,27 @@ number.check = async (filterTabsFrom, ops = {}) => {
         exceptionCount += 1;
         continue;
       }
+      if (tb.autoDiscardable === false) {
+        log('discarding aborted', 'tab is not discardable', tb);
+        exceptionCount += 1;
+        icon(tb, 'tab is not discardable');
+        continue;
+      }
+      // check tab's age
+      if ((now - meta.time) < prefs.period * 1000) {
+        log('discarding aborted', 'tab is not old', tb);
+        exceptionCount += 1;
+        // in case the icon is blue because of a condition that met before
+        icon.reset(tb);
+        continue;
+      }
+      // in case the tab is not excluded by the initial query
+      if (tb.active) {
+        log('discarding aborted', 'tab is active', tb);
+        exceptionCount += 1;
+        icon.reset(tb);
+        continue;
+      }
       map.set(tb, meta);
       arr.push(tb);
       if (arr.length > prefs['max.single.discard']) {
@@ -247,6 +288,17 @@ number.check = async (filterTabsFrom, ops = {}) => {
       console.warn(e);
     }
   }
+  // do not discard if number of tabs is smaller than required
+  if (prefs['icon-update'] === true) {
+    if (tbs.length + exceptionCount <= prefs.number) {
+      return log(
+        'number.check', 'total number of active tabs', tbs.length,
+        ' + ignored tabs', exceptionCount,
+        'is equal or smaller than', prefs.number
+      );
+    }
+  }
+
   // ready to discard
   log('number check', 'tabs that are ignored', exceptionCount);
   log('number check', 'possible tabs that could get discarded', arr.length);
