@@ -363,7 +363,8 @@ import {interrupts} from './plugins/loader.mjs';
       onStartup();
     }
     else if (request.method === 'run-check-on-action') {
-      number.check(request.ids.map(id => ({id})), {
+      const tabs = request.ids.map(id => ({id}));
+      number.check(tabs, {
         'exclude-active': false,
         'icon-update': true
       });
