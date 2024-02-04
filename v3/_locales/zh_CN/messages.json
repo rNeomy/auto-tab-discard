@@ -3,6 +3,18 @@
         "message": "如果您打开了很多标签页，这个扩展能提升浏览器速度并减少内存占用。",
         "description": ""
     },
+    "options_title": {
+        "message": "Auto Tab Discard 设置页面",
+        "description": ""
+    },
+    "options_list": {
+        "message": "以英文半角逗号分隔的主机名",
+        "description": ""
+    },
+    "options_list_trash": {
+        "message": "以英文半角逗号分隔的主机名，留空代表匹配全部",
+        "description": ""
+    },
     "options_discarding_options": {
         "message": "休眠选项",
         "description": ""
@@ -24,7 +36,7 @@
         "description": ""
     },
     "options_tab_context": {
-        "message": "在 \"标签页\" 上下文菜单中显示休眠选项（如果支持）",
+        "message": "在标签页菜单中显示休眠的标签页（当前由 Firefox 支持）",
         "description": ""
     },
     "options_page_context": {
@@ -40,7 +52,7 @@
         "description": ""
     },
     "options_prepends": {
-        "message": "为已休眠标签页添加一个符号标志前缀（比如 💤 或 ⏻︎）（如果可行）",
+        "message": "为已休眠标签页预先准备一个符号标志（比如 💤 或 ⏻︎）（如果可行）",
         "description": ""
     },
     "options_startup_unpinned": {
@@ -112,7 +124,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠：",
+        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠。推荐使用弹出界面来修改本列表。弹出界面中追加规则时按住 Shift 键将会产生一个正则表达式规则。",
         "description": ""
     },
     "options_left_click": {
@@ -164,7 +176,7 @@
         "description": ""
     },
     "options_plugin_dummy": {
-        "message": "休眠时用本地转存项替换原有页面 (测试版)",
+        "message": "休眠时用本地转存项替换原有页面（实验性功能）",
         "description": ""
     },
     "options_plugin_blank": {
@@ -179,8 +191,12 @@
         "message": "在浏览器启动时休眠全部未加载标签页。这个方法会休眠几乎全部非活动标签页",
         "description": ""
     },
-    "options_plugin_trash": {
-        "message": "如果处于非活动状态超过该时间（单位为小时），永久删除（移除）旧有的已休眠标签页",
+    "options_plugin_trash01": {
+        "message": "如果处于非活动状态超过",
+        "description": ""
+    },
+    "options_plugin_trash02": {
+        "message": "小时，永久删除（移除）旧有的已休眠标签页",
         "description": ""
     },
     "options_plugin_trash_unloaded": {
@@ -188,7 +204,7 @@
         "description": ""
     },
     "options_plugin_trash_whitelist": {
-        "message": "只移除满足下列 URL 模式的标签页",
+        "message": "标签页自动移除功能只对符合下列规则的URL生效",
         "description": ""
     },
     "options_plugin_force": {
@@ -200,7 +216,7 @@
         "description": ""
     },
     "options_plugin_youtube": {
-        "message": "在休眠前存储 Youtube 的时间戳",
+        "message": "休眠标签页前，自动记录其中YouTube的播放进度",
         "description": ""
     },
     "options_log": {
@@ -211,32 +227,12 @@
         "message": "休眠被隐藏的标签页",
         "description": ""
     },
-    "options_use_cache": {
-        "message": "使用缓存：如果启用，本扩展对标签页被固定与否或者浏览器所在设备是否有外接电源只检查一次",
-        "description": ""
-    },
     "options_simultaneous_jobs": {
         "message": "最多允许该数量的休眠任务同时进行",
         "description": ""
     },
     "options_faqs": {
         "message": "扩展更新后打开 FAQ 页面",
-        "description": ""
-    },
-    "options_footnote_1": {
-        "message": "可以通过匹配关键字 \"re:\" 来使用正则表达式。比如，使用 \"re:google\" 来将所有含有 \"google\" 关键字的网址加入白名单。",
-        "description": ""
-    },
-    "options_footnote_2": {
-        "message": "检测顶部文档中的 totalJSHeapSize 数值。如果此内存超过了用户定义的数(最小允许数值为 10 MB )，那么该标签页会被休眠。请注意，仅当您的浏览器支持 \"window.performance.memory\" 时此选项才可用。",
-        "description": ""
-    },
-    "options_footnote_3": {
-        "message": "当一个标签页的休眠周期超过该时间或者有新建标签页被添加时，浏览器的所有标签页都会被检测，以判断哪些标签页需要被休眠。此选项会强制该扩展限制这些检测。最小允许数值为 1 分钟。推荐数值为 10 分钟。",
-        "description": ""
-    },
-    "options_footnote_4": {
-        "message": "要为一项规则使用自定义的时间，在末尾添加 @{number}{unit} （比如： google.com@3d 会在三天后移除 google.com 的地址）。可用单位是小时(h)，天(d)，周(w)，和月(mo)",
         "description": ""
     },
     "options_reset": {
@@ -255,16 +251,12 @@
         "message": "保存选项",
         "description": ""
     },
-    "options_save_nice": {
-        "message": "请确保按下了“保存选项”按钮！",
+    "options_save_msg": {
+        "message": "设置已保存",
         "description": ""
     },
     "options_support": {
         "message": "支持开发",
-        "description": ""
-    },
-    "options_check_delay": {
-        "message": "连续的休眠检测间的最小延迟（单位为秒）",
         "description": ""
     },
     "options_favicon_delay": {
@@ -273,6 +265,26 @@
     },
     "options_read_more": {
         "message": "（阅读详情）",
+        "description": ""
+    },
+    "options_save_notice": {
+        "message": "请在完成编辑后确保点击页面底部的“保存设置”按钮",
+        "description": ""
+    },
+    "options_rate_desc": {
+        "message": "如果你想要评价此扩展，请点击",
+        "description": ""
+    },
+    "options_rate_btn": {
+        "message": "评价",
+        "description": ""
+    },
+    "options_managed_1": {
+        "message": "此扩展有使用管理存储的能力，允许域管理员进行预配置。",
+        "description": ""
+    },
+    "options_managed_2": {
+        "message": "阅读更多",
         "description": ""
     },
     "popup_discard_tab": {
@@ -307,12 +319,24 @@
         "message": "左侧标签页",
         "description": ""
     },
+    "popup_move_previous_title": {
+        "message": "切换到前一个活动标签页",
+        "description": ""
+    },
     "popup_close": {
         "message": "关闭标签页",
         "description": ""
     },
+    "popup_close_title": {
+        "message": "关闭当前标签页并切换到前一个活动标签页",
+        "description": ""
+    },
     "popup_move_next": {
         "message": "右侧标签页",
+        "description": ""
+    },
+    "popup_move_next_title": {
+        "message": "切换到下一个活动标签页",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -324,7 +348,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "点击操作会将域名添加到例外列表。按住 Shift 键后再点击的操作会将确切的网址添加到例外列表",
+        "message": "单击以把主机名加入排除列表。按住Shift单击以把精确的URL加入排除列表。",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -332,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "为此会话保留此标签页",
+        "message": "Keep Selected Tabs for This Session",
         "description": ""
     },
     "popup_open_options": {
@@ -344,37 +368,43 @@
         "description": ""
     },
     "popup_shift_hint": {
-        "message": "使用 Shift 键来忽略例外项",
+        "message": "使用 Shift 键来忽略自动休眠例外规则",
         "description": ""
     },
     "popup_tmp_disable": {
-        "message": "在以下时间内禁用全部自动休眠"
+        "message": "在以下时间内完全禁用自动休眠",
+        "description": ""
     },
     "popup_tmp_0": {
-        "message": "关闭"
+        "message": "不禁用",
+        "description": ""
     },
     "popup_tmp_1": {
-        "message": "1 小时"
+        "message": "1小时",
+        "description": ""
     },
     "popup_tmp_6": {
-        "message": "6 小时"
+        "message": "6小时",
+        "description": ""
     },
     "popup_tmp_12": {
-        "message": "12 小时"
+        "message": "12小时",
+        "description": ""
     },
     "popup_tmp_24": {
-        "message": "1 天"
+        "message": "1天",
+        "description": ""
     },
     "bg_no_active_tab": {
         "message": "活动标签页不存在",
         "description": ""
     },
     "bg_msg_1": {
-        "message": "该标签页已禁用自动休眠",
+        "message": "自动休眠对此标签页禁用",
         "description": ""
     },
     "bg_msg_2": {
-        "message": "已暂时禁用自动休眠",
+        "message": "自动休眠当前被禁用",
         "description": ""
     },
     "menu_discard_tab": {
@@ -422,11 +452,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "移动到左侧标签页",
+        "message": "前往左侧标签页",
         "description": ""
     },
     "menu_move_next": {
-        "message": "移动到右侧标签页",
+        "message": "前往右侧标签页",
         "description": ""
     },
     "menu_close": {
@@ -438,7 +468,7 @@
         "description": ""
     },
     "menu_msg5": {
-        "message": "已被移出永久白名单",
+        "message": "已从永久白名单中移除",
         "description": ""
     },
     "menu_msg4": {
@@ -446,7 +476,7 @@
         "description": ""
     },
     "menu_msg6": {
-        "message": "已被移出会话白名单",
+        "message": "已从会话白名单中移除",
         "description": ""
     },
     "menu_msg2": {
@@ -454,7 +484,7 @@
         "description": ""
     },
     "menu_msg3": {
-        "message": "不能休眠处于活动状态的标签页",
+        "message": "不能休眠该窗口中唯一未休眠的标签页",
         "description": ""
     },
     "cmd_discard_tab": {
@@ -467,6 +497,14 @@
     },
     "cmd_discard_tabs": {
         "message": "休眠所有其它标签页",
+        "description": ""
+    },
+    "cmd_discard_rights": {
+        "message": "Discard Tabs to the Right",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Discard Tabs to the Left",
         "description": ""
     },
     "cmd_discard_window": {
@@ -482,11 +520,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "移动到左侧标签页",
+        "message": "前往左侧标签页",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "移动到右侧标签页",
+        "message": "前往右侧标签页",
         "description": ""
     },
     "cmd_close": {
@@ -494,7 +532,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "此窗口中的所有标签页已被休眠！点击任意位置以关闭此标签页。",
+        "message": "此窗口中的所有标签页已被休眠！点击任意位置以关闭此标签页并切换回最后一个活动标签页。",
         "description": ""
     },
     "blank_header": {

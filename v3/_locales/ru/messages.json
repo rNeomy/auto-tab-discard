@@ -3,6 +3,18 @@
         "message": "Увеличьте скорость работы браузера и уменьшите потребление памяти, когда у вас открыто бесчисленное количество вкладок.",
         "description": ""
     },
+    "options_title": {
+        "message": "Настройки :: Auto Tab Discard",
+        "description": ""
+    },
+    "options_list": {
+        "message": "Имена хостов, разделенные запятыми",
+        "description": ""
+    },
+    "options_list_trash": {
+        "message": "Имена хостов, разделенные запятыми; оставьте пустым для всех",
+        "description": ""
+    },
     "options_discarding_options": {
         "message": "Настройки выгрузки вкладок",
         "description": ""
@@ -24,7 +36,7 @@
         "description": ""
     },
     "options_tab_context": {
-        "message": "Отображать выгружаемые элементы во вкладке контекстного меню (если поддерживается)",
+        "message": "Отображать выгружаемые элементы во вкладке контекстного меню (поддерживается на Firefox)",
         "description": ""
     },
     "options_page_context": {
@@ -92,7 +104,7 @@
         "description": ""
     },
     "options_online": {
-        "message": "Не выгружать вкладки, если они отсутствуют в кэше и отсутствует подключение к интернету",
+        "message": "Не выгружать вкладки, если отсутствует подключение к интернету, а вкладки не сохранены в кэш",
         "description": ""
     },
     "options_notification_permission": {
@@ -100,7 +112,7 @@
         "description": ""
     },
     "options_idle": {
-        "message": "Не выгружать вкладки, если компьютер не находится в состоянии бездействия",
+        "message": "Выгружать вкладки только когда компьютер находится в состоянии бездействия",
         "description": ""
     },
     "options_idle_timeout": {
@@ -116,43 +128,43 @@
         "description": ""
     },
     "options_left_click": {
-        "message": "Действие для левого клика в панели инструментов",
+        "message": "Действие ЛКМ по панели инструментов",
         "description": ""
     },
     "options_click_popup": {
-        "message": "Открыть оповещение",
+        "message": "Открыть всплывающее окно",
         "description": ""
     },
     "options_click_discard_tab": {
-        "message": "Выгрузить Вкладку",
+        "message": "Выгрузить вкладку",
         "description": ""
     },
     "options_click_discard_tabs": {
-        "message": "Выгрузить Все Остальные Вкладки",
+        "message": "Выгрузить остальные вкладки",
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Выгрузить Все Остальные Вкладки",
+        "message": "Выгрузить остальные вкладки",
         "description": ""
     },
     "options_click_discard_window": {
-        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "message": "Выгрузить остальные вкладки в этом окне",
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "message": "Выгрузить остальные вкладки в этом окне",
         "description": ""
     },
     "options_click_discard_other_windows": {
-        "message": "Выгрузить Вкладки в Других Окнах",
+        "message": "Выгрузить вкладки в других окнах",
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Выгрузить Вкладки в Других Окнах",
+        "message": "Выгрузить вкладки в других окнах",
         "description": ""
     },
     "options_click_toggle_allowed": {
-        "message": "Переключить настройку \"Сохранять Эту Вкладку на время Текущей Сессии\"",
+        "message": "Переключить настройку \"Хранить вкладку на время текущей сессии\"",
         "description": ""
     },
     "options_misc": {
@@ -164,7 +176,7 @@
         "description": ""
     },
     "options_plugin_dummy": {
-        "message": "При выгрузке, заменить страницу локальной фиктивной альтернативой (бета)",
+        "message": "При выгрузке, заменять страницу локальной заглушкой (бета)",
         "description": ""
     },
     "options_plugin_blank": {
@@ -172,15 +184,19 @@
         "description": ""
     },
     "options_plugin_focus": {
-        "message": "Не выгружать вкладки в активном окне. Если этот параметр включен, вкладки в активном окне не будут выгружаться",
+        "message": "Не выгружать вкладки в активном окне. Если этот параметр включен, вкладки в активном окне не будут выгружаться.",
         "description": ""
     },
     "options_plugin_unloaded": {
-        "message": "Удалять все выгруженные вкладки при запуске браузера. Этот метод выгружает почти все неиспользуемые вкладки",
+        "message": "Выгружать все не загруженные вкладки при запуске браузера. Этот метод выгружает почти все неактивные вкладки.",
         "description": ""
     },
-    "options_plugin_trash": {
-        "message": "Окончательно удалить старые выгруженные вкладки, если они неактивны в течение (в часах)",
+    "options_plugin_trash01": {
+        "message": "Закрывать старые выгруженные вкладки, если они неактивны в течение (в часах)",
+        "description": ""
+    },
+    "options_plugin_trash02": {
+        "message": "часов",
         "description": ""
     },
     "options_plugin_trash_unloaded": {
@@ -196,7 +212,7 @@
         "description": ""
     },
     "options_plugin_new": {
-        "message": "Выгружать все вновь открытые неактивные вкладки после их загрузки",
+        "message": "Сразу выгружать все открытые неактивные вкладки после их загрузки",
         "description": ""
     },
     "options_plugin_youtube": {
@@ -232,11 +248,11 @@
         "description": ""
     },
     "options_save": {
-        "message": "Сохранить Настройки",
+        "message": "Сохранить настройки",
         "description": ""
     },
-    "options_save_nice": {
-        "message": "Не забудьте нажать кнопку \"Сохранить Параметры\"!",
+    "options_save_msg": {
+        "message": "Настройки сохранены",
         "description": ""
     },
     "options_support": {
@@ -248,51 +264,83 @@
         "description": ""
     },
     "options_read_more": {
-        "message": "(Подробнее Читать Здесь)",
+        "message": "(Узнать больше)",
+        "description": ""
+    },
+    "options_save_notice": {
+        "message": "Не забудьте нажать на кнопку \"Сохранить настройки\" внизу страницы для внесения сделанных изменений.",
+        "description": ""
+    },
+    "options_rate_desc": {
+        "message": "Если вам нравится расширение, нажмите",
+        "description": ""
+    },
+    "options_rate_btn": {
+        "message": "Оценить",
+        "description": ""
+    },
+    "options_managed_1": {
+        "message": "Расширение может использовать управляемое хранилище, позволяя администраторам домена предварительно настраивать параметры.",
+        "description": ""
+    },
+    "options_managed_2": {
+        "message": "Узнать больше.",
         "description": ""
     },
     "popup_discard_tab": {
-        "message": "Выгрузить Вкладку",
+        "message": "Выгрузить вкладку",
         "description": ""
     },
     "popup_discard_tree": {
-        "message": "Выгрузить Группу Вкладок",
+        "message": "Выгрузить группу вкладок",
         "description": ""
     },
     "popup_discard_tabs": {
-        "message": "Выгрузить Все Остальные Вкладки",
+        "message": "Выгрузить остальные вкладки",
         "description": ""
     },
     "popup_discard_window": {
-        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "message": "Выгрузить остальные вкладки в этом окне",
         "description": ""
     },
     "popup_discard_rights": {
-        "message": "Выгрузить Все Вкладки Справа",
+        "message": "Выгрузить вкладки справа",
         "description": ""
     },
     "popup_discard_lefts": {
-        "message": "Выгрузить Все Вкладки Слева",
+        "message": "Выгрузить вкладки слева",
         "description": ""
     },
     "popup_discard_other_windows": {
-        "message": "Выгрузить Вкладки в Других Окнах",
+        "message": "Выгрузить вкладки в других окнах",
         "description": ""
     },
     "popup_move_previous": {
         "message": "Левая вкладка",
         "description": ""
     },
+    "popup_move_previous_title": {
+        "message": "Вернуться к предыдущей активной вкладке",
+        "description": ""
+    },
     "popup_close": {
-        "message": "Закрыть Вкладку",
+        "message": "Закрыть вкладку",
+        "description": ""
+    },
+    "popup_close_title": {
+        "message": "Закрыть текущую вкладку и вернуться к предыдущей активной",
         "description": ""
     },
     "popup_move_next": {
         "message": "Правая вкладка",
         "description": ""
     },
+    "popup_move_next_title": {
+        "message": "Перейти к следующей активной вкладке",
+        "description": ""
+    },
     "popup_whitelist_desc": {
-        "message": "Хранить Вкладки для Этого Сайта",
+        "message": "Хранить вкладки с этого сайта",
         "description": ""
     },
     "popup_whitelist_always": {
@@ -300,7 +348,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Щелкните, чтобы добавить имя хоста в список исключений. Shift + щелчок, чтобы добавить точный URL в список исключений",
+        "message": "Щелкните, чтобы добавить имя хоста в список исключений. Shift + щелчок, чтобы добавить конкретный URL в список исключений.",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -308,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Хранить Эту Вкладку на время Текущей Сессии",
+        "message": "Хранить выбранные вкладки на время текущей сессии",
         "description": ""
     },
     "popup_open_options": {
@@ -316,19 +364,19 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Применить выгрузку. Для доступа к содержимому в кэше используйте Shift + Click",
+        "message": "Удаление выгруженного. Для доступа к содержимому в кэше используйте Shift + Click",
         "description": ""
     },
     "popup_shift_hint": {
-        "message": "Используйте клавишу Shift, чтобы игнорировать исключения",
+        "message": "Используйте клавишу Shift для игнорирования исключений.",
         "description": ""
     },
     "popup_tmp_disable": {
-        "message": "Отключить Автоматическую Выгрузку Глобально для",
+        "message": "Отключить автоматическое усыпление глобально на",
         "description": ""
     },
     "popup_tmp_0": {
-        "message": "Отключить",
+        "message": "Отключено",
         "description": ""
     },
     "popup_tmp_1": {
@@ -352,67 +400,67 @@
         "description": ""
     },
     "bg_msg_1": {
-        "message": "автоматическая выгрузка отключена для этой вкладки",
+        "message": "Автоматическая выгрузка отключена для этой вкладки",
         "description": ""
     },
     "bg_msg_2": {
-        "message": "автоматическая выгрузка отключена",
+        "message": "Автоматическая выгрузка отключена",
         "description": ""
     },
     "menu_discard_tab": {
-        "message": "Выгрузить Вкладку",
+        "message": "Выгрузить вкладку",
         "description": ""
     },
     "menu_discard_tree": {
-        "message": "Выгрузить Группу Вкладок",
+        "message": "Выгрузить группу вкладок",
         "description": ""
     },
     "menu_discard_menu": {
-        "message": "Выгрузить Вкладки в Этом Окне",
+        "message": "Выгрузить вкладки в этом окне",
         "description": ""
     },
     "menu_discard_tabs": {
-        "message": "Выгрузить Все Остальные Вкладки",
+        "message": "Выгрузить остальные вкладки",
         "description": ""
     },
     "menu_discard_rights": {
-        "message": "Выгрузить Все Вкладки Справа",
+        "message": "Выгрузить вкладки справа",
         "description": ""
     },
     "menu_discard_lefts": {
-        "message": "Выгрузить Все Вкладки Слева",
+        "message": "Выгрузить вкладки слева",
         "description": ""
     },
     "menu_discard_window": {
-        "message": "Выгрузить Остальные Вкладки",
+        "message": "Выгрузить остальные вкладки",
         "description": ""
     },
     "menu_discard_other_windows": {
-        "message": "Выгрузить Вкладки в Других Окнах",
+        "message": "Выгрузить вкладки в других окнах",
         "description": ""
     },
     "menu_extra": {
-        "message": "Сохранять вкладки",
+        "message": "Хранить вкладки",
         "description": ""
     },
     "menu_whitelist_domain": {
-        "message": "Всегда Хранить Вкладки для Этого Сайта",
+        "message": "Всегда хранить вкладки с этого сайта",
         "description": ""
     },
     "menu_open_tab_then_discard": {
-        "message": "Открыть в Новой Выгруженной Вкладке",
+        "message": "Открыть ссылку в новой выгруженной вкладке",
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Перейти к левой вкладке",
+        "message": "Перейти ко вкладке слева",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Перейти к правой вкладке",
+        "message": "Перейти ко вкладке справа",
         "description": ""
     },
     "menu_close": {
-        "message": "Закрыть Вкладку",
+        "message": "Закрыть вкладку",
         "description": ""
     },
     "menu_msg1": {
@@ -440,47 +488,55 @@
         "description": ""
     },
     "cmd_discard_tab": {
-        "message": "Выгрузить Вкладку",
+        "message": "Выгрузить вкладку",
         "description": ""
     },
     "cmd_discard_tree": {
-        "message": "Выгрузить Группу Вкладок",
+        "message": "Выгрузить группу вкладок",
         "description": ""
     },
     "cmd_discard_tabs": {
-        "message": "Выгрузить Все Остальные Вкладки",
+        "message": "Выгрузить остальные вкладки",
+        "description": ""
+    },
+    "cmd_discard_rights": {
+        "message": "Выгрузить вкладки справа",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Выгрузить вкладки слева",
         "description": ""
     },
     "cmd_discard_window": {
-        "message": "Выгрузить Остальные Вкладки в Этом Окне",
+        "message": "Выгрузить остальные вкладки в этом окне",
         "description": ""
     },
     "cmd_discard_other_windows": {
-        "message": "Выгрузить Вкладки в Других Окнах",
+        "message": "Выгрузить вкладки в других окнах",
         "description": ""
     },
     "cmd_whitelist_domain": {
-        "message": "Всегда Хранить Вкладки для Данного Сайта",
+        "message": "Всегда хранить вкладки с этого сайта",
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Перейти к левой вкладке",
+        "message": "Перейти ко вкладке слева",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Перейти к правой вкладке",
+        "message": "Перейти ко вкладке справа",
         "description": ""
     },
     "cmd_close": {
-        "message": "Закрыть Вкладку",
+        "message": "Закрыть вкладку",
         "description": ""
     },
     "blank_msg": {
-        "message": "Все вкладки в этом окне выгружены! Щелкните в любом месте, чтобы закрыть эту вкладку и вернуться к последней активной вкладке.",
+        "message": "Все вкладки в этом окне выгружены! Щелкните в любом месте, чтобы закрыть эту вкладку и вернуться к последней активной.",
         "description": ""
     },
     "blank_header": {
-        "message": "(Выгруженное Окно)",
+        "message": "(Выгруженное окно)",
         "description": ""
     }
 }

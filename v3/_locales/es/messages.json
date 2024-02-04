@@ -3,6 +3,18 @@
         "message": "Aumenta la velocidad del navegador y reduce el consumo de memoria cuando tengas numerosas pestañas abiertas.",
         "description": ""
     },
+    "options_title": {
+        "message": "Página de Opciones :: Auto Tab Discard",
+        "description": ""
+    },
+    "options_list": {
+        "message": "Lista de nombres de dominio separada por comas",
+        "description": ""
+    },
+    "options_list_trash": {
+        "message": "Lista de nombres de dominio separada por comas, dejar en blanco para incluir todo",
+        "description": ""
+    },
     "options_discarding_options": {
         "message": "Opciones de descarte",
         "description": ""
@@ -24,7 +36,7 @@
         "description": ""
     },
     "options_tab_context": {
-        "message": "Mostrar las opciones de descarte en el menú contextual de \"pestaña\" (si es compatible)",
+        "message": "Mostrar elementos de descarte en el menú contextual de la \"pestaña\" (actualmente soportado por Firefox)",
         "description": ""
     },
     "options_page_context": {
@@ -52,15 +64,15 @@
         "description": ""
     },
     "options_startup_release_pinned": {
-        "message": "Retirar el estado de descarte de todas las pestañas fijadas al abrir el navegador o extensión",
+        "message": "Liberar el estado de descarte de todas las pestañas fijadas al abrir el navegador o extensión",
         "description": ""
     },
     "options_release_next_tab": {
-        "message": "Retirar descarte de la pestaña posterior (pestaña a la derecha de la pestaña activa)",
+        "message": "Liberar descarte de la pestaña siguiente (pestaña a la derecha de la pestaña activa)",
         "description": ""
     },
     "options_release_previous_tab": {
-        "message": "Retirar descarte de la pestaña anterior (pestaña a la izquierda de la pestaña activa)",
+        "message": "Liberar descarte de la pestaña previa (pestaña a la izquierda de la pestaña activa)",
         "description": ""
     },
     "options_memory": {
@@ -76,7 +88,7 @@
         "description": ""
     },
     "options_paused": {
-        "message": "Do not discard a tab when there is a paused media player",
+        "message": "No descartar una pestaña cuando hay un reproductor multimedia en pausa",
         "description": ""
     },
     "options_pinned": {
@@ -88,11 +100,11 @@
         "description": ""
     },
     "options_battery": {
-        "message": "No descartar las pestañas cuando la computadora esté conectada a una fuente de alimentación",
+        "message": "No descartar pestañas cuando la computadora esté conectada a una fuente de alimentación",
         "description": ""
     },
     "options_online": {
-        "message": "No descartar las pestañas cuando no hay conexión a Internet y la pestaña no esté en caché",
+        "message": "No descartar pestañas cuando no hay conexión a Internet y la pestaña no está en caché",
         "description": ""
     },
     "options_notification_permission": {
@@ -100,7 +112,7 @@
         "description": ""
     },
     "options_idle": {
-        "message": "No descartar pestañas si la computadora no está en el estado 'inactivo'",
+        "message": "Solo descartar pestañas si el ordenador está en estado \"inactivo\"",
         "description": ""
     },
     "options_idle_timeout": {
@@ -116,7 +128,7 @@
         "description": ""
     },
     "options_left_click": {
-        "message": "Acción de clic_izquierdo en la barra de herramientas",
+        "message": "Acción del clic izquierdo en la barra de herramientas",
         "description": ""
     },
     "options_click_popup": {
@@ -179,8 +191,12 @@
         "message": "Descartar todas las pestañas no cargadas al iniciar el navegador. Este método descarta casi todas las pestañas inactivas",
         "description": ""
     },
-    "options_plugin_trash": {
-        "message": "Eliminar permanentemente las pestañas antiguas descartadas si están inactivas durante (en horas)",
+    "options_plugin_trash01": {
+        "message": "Borrar (eliminar) permanentemente las antiguas pestañas descartadas si están inactivas durante",
+        "description": ""
+    },
+    "options_plugin_trash02": {
+        "message": "horas",
         "description": ""
     },
     "options_plugin_trash_unloaded": {
@@ -235,8 +251,8 @@
         "message": "Guardar opciones",
         "description": ""
     },
-    "options_save_nice": {
-        "message": "¡Asegúrese de pulsar el botón \"Guardar Opciones\"!",
+    "options_save_msg": {
+        "message": "Opciones guardadas",
         "description": ""
     },
     "options_support": {
@@ -249,6 +265,26 @@
     },
     "options_read_more": {
         "message": "(Leer más aquí)",
+        "description": ""
+    },
+    "options_save_notice": {
+        "message": "Por favor, asegúrese de hacer clic en el botón \"Guardar opciones\" situado en la parte inferior de esta página una vez que haya terminado de realizar los cambios.",
+        "description": ""
+    },
+    "options_rate_desc": {
+        "message": "Si desea valorar la extensión, haga clic en",
+        "description": ""
+    },
+    "options_rate_btn": {
+        "message": "Valorar",
+        "description": ""
+    },
+    "options_managed_1": {
+        "message": "Esta extensión tiene la capacidad de utilizar almacenamiento gestionado, lo que permite a los administradores de dominio preconfigurar las preferencias.",
+        "description": ""
+    },
+    "options_managed_2": {
+        "message": "Lea más aquí.",
         "description": ""
     },
     "popup_discard_tab": {
@@ -283,12 +319,24 @@
         "message": "Pestaña izquierda",
         "description": ""
     },
+    "popup_move_previous_title": {
+        "message": "Ir a la pestaña activa previa",
+        "description": ""
+    },
     "popup_close": {
         "message": "Cerrar pestaña",
         "description": ""
     },
+    "popup_close_title": {
+        "message": "Cerrar la pestaña actual y cambiar a la pestaña activa previa",
+        "description": ""
+    },
     "popup_move_next": {
         "message": "Pestaña derecha",
+        "description": ""
+    },
+    "popup_move_next_title": {
+        "message": "Ir a la pestaña activa siguiente",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -300,7 +348,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Haz clic para añadir el nombre del dominio a la lista de excepciones. Mayús + Clic para añadir la URL exacta a la lista de excepciones.",
+        "message": "Haga clic para añadir el nombre del dominio a la lista de excepciones. Mayús + Clic para añadir la URL exacta a la lista de excepciones.",
         "description": ""
     },
     "popup_whitelist_session": {
@@ -308,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Conservar esta pestaña para esta sesión",
+        "message": "Keep Selected Tabs for This Session",
         "description": ""
     },
     "popup_open_options": {
@@ -316,11 +364,11 @@
         "description": ""
     },
     "popup_release": {
-        "message": "Liberar descarte. Para omitir el contenido en caché, utiliza Mayús + Clic",
+        "message": "Liberar descarte. Para omitir el contenido en caché, utilice Mayús + Clic",
         "description": ""
     },
     "popup_shift_hint": {
-        "message": "Usar tecla Mayús para ignorar las excepciones",
+        "message": "Utilice la tecla Mayús para ignorar las reglas de excepción de auto-descarte.",
         "description": ""
     },
     "popup_tmp_disable": {
@@ -352,11 +400,11 @@
         "description": ""
     },
     "bg_msg_1": {
-        "message": "el auto-descarte está inhabilitado para esta pestaña",
+        "message": "El auto-descarte está inhabilitado para esta pestaña",
         "description": ""
     },
     "bg_msg_2": {
-        "message": "el auto-descarte está inhabilitado por ahora",
+        "message": "El auto-descarte está inhabilitado por ahora",
         "description": ""
     },
     "menu_discard_tab": {
@@ -392,7 +440,7 @@
         "description": ""
     },
     "menu_extra": {
-        "message": "Keep Tabs",
+        "message": "Conservar Pestañas",
         "description": ""
     },
     "menu_whitelist_domain": {
@@ -404,11 +452,11 @@
         "description": ""
     },
     "menu_move_previous": {
-        "message": "Mover a la pestaña izquierda",
+        "message": "Ir a la pestaña izquierda",
         "description": ""
     },
     "menu_move_next": {
-        "message": "Mover a la pestaña derecha",
+        "message": "Ir a la pestaña derecha",
         "description": ""
     },
     "menu_close": {
@@ -451,6 +499,14 @@
         "message": "Descartar todas las otras pestañas",
         "description": ""
     },
+    "cmd_discard_rights": {
+        "message": "Discard Tabs to the Right",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Discard Tabs to the Left",
+        "description": ""
+    },
     "cmd_discard_window": {
         "message": "Descartar otras pestañas en esta ventana",
         "description": ""
@@ -464,11 +520,11 @@
         "description": ""
     },
     "cmd_move_previous": {
-        "message": "Mover a la pestaña izquierda",
+        "message": "Ir a la pestaña izquierda",
         "description": ""
     },
     "cmd_move_next": {
-        "message": "Mover a la pestaña derecha",
+        "message": "Ir a la pestaña derecha",
         "description": ""
     },
     "cmd_close": {

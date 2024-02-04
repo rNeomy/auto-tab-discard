@@ -90,15 +90,13 @@ number.check = async (filterTabsFrom, ops = {}) => {
   const options = {
     url: '*://*/*',
     discarded: false
+    // we need to update the icon for not-discardable tabs. So do not exclude them
+    // autoDiscardable: true
   };
   // we may run "number.check" to update the icon of the active tab. The active tab is ignored anyway
   if (prefs['exclude-active']) {
     options.active = false;
   }
-  // we need to update the icon for not-discardable tabs. So do not exclude them
-  // if (prefs['exclude-not-discardable']) {
-  //   options.autoDiscardable = true;
-  // }
   if (prefs.pinned) {
     options.pinned = false;
   }

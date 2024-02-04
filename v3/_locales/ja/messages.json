@@ -3,6 +3,18 @@
         "message": "たくさんのタブを開いている時のメモリ使用量を軽減し、ブラウザを高速化します。",
         "description": ""
     },
+    "options_title": {
+        "message": "設定ページ :: Auto Tab Discard",
+        "description": ""
+    },
+    "options_list": {
+        "message": "カンマ区切りのホストネーム一覧",
+        "description": ""
+    },
+    "options_list_trash": {
+        "message": "カンマ区切りのホストネーム一覧 (空欄で全ホストネームに適用)",
+        "description": ""
+    },
     "options_discarding_options": {
         "message": "タブの破棄",
         "description": ""
@@ -24,7 +36,7 @@
         "description": ""
     },
     "options_tab_context": {
-        "message": "タブの右クリックメニューに破棄メニューを表示する (対応している場合)",
+        "message": "タブの右クリックメニューに破棄メニューを表示する (現在Firefoxで対応)",
         "description": ""
     },
     "options_page_context": {
@@ -179,8 +191,12 @@
         "message": "ブラウザ起動時にロードされていないタブをすべて破棄する。この設定はほとんどすべての非アクティブなタブを破棄します。",
         "description": ""
     },
-    "options_plugin_trash": {
-        "message": "非アクティブ時間が次の値 (時間) を超える古い破棄済みタブは完全に削除する",
+    "options_plugin_trash01": {
+        "message": "非アクティブ時間が",
+        "description": ""
+    },
+    "options_plugin_trash02": {
+        "message": "時間を超える古い破棄済みタブは完全に削除する",
         "description": ""
     },
     "options_plugin_trash_unloaded": {
@@ -235,8 +251,8 @@
         "message": "設定を保存",
         "description": ""
     },
-    "options_save_nice": {
-        "message": "「設定を保存」ボタンを押すのを忘れずに！",
+    "options_save_msg": {
+        "message": "設定を保存しました",
         "description": ""
     },
     "options_support": {
@@ -249,6 +265,26 @@
     },
     "options_read_more": {
         "message": "(詳しくはこちら)",
+        "description": ""
+    },
+    "options_save_notice": {
+        "message": "変更が完了したら、このページの下にある「設定を保存」ボタンを必ずクリックしてください。",
+        "description": ""
+    },
+    "options_rate_desc": {
+        "message": "この拡張機能を気に入っていただけたなら",
+        "description": ""
+    },
+    "options_rate_btn": {
+        "message": "評価する",
+        "description": ""
+    },
+    "options_managed_1": {
+        "message": "この拡張機能はマネージドストレージを使い、ドメイン管理者があらかじめ設定を行うことができます。",
+        "description": ""
+    },
+    "options_managed_2": {
+        "message": "詳細はこちら",
         "description": ""
     },
     "popup_discard_tab": {
@@ -283,12 +319,24 @@
         "message": "左のタブへ",
         "description": ""
     },
+    "popup_move_previous_title": {
+        "message": "前のアクティブタブに移動する",
+        "description": ""
+    },
     "popup_close": {
         "message": "タブを閉じる",
         "description": ""
     },
+    "popup_close_title": {
+        "message": "現在のタブを閉じて前のアクティブタブに切り替える",
+        "description": ""
+    },
     "popup_move_next": {
         "message": "右のタブへ",
+        "description": ""
+    },
+    "popup_move_next_title": {
+        "message": "次のアクティブタブに移動する",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -308,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "このセッションではこのタブを保持する",
+        "message": "Keep Selected Tabs for This Session",
         "description": ""
     },
     "popup_open_options": {
@@ -320,7 +368,7 @@
         "description": ""
     },
     "popup_shift_hint": {
-        "message": "例外を無視するにはShiftキーを使用",
+        "message": "自動破棄の例外ルールを無視するにはShiftキーを使用",
         "description": ""
     },
     "popup_tmp_disable": {
@@ -356,7 +404,7 @@
         "description": ""
     },
     "bg_msg_2": {
-        "message": "自動破棄は現在無効化されています",
+        "message": "自動破棄は現在無効です",
         "description": ""
     },
     "menu_discard_tab": {
@@ -451,6 +499,14 @@
         "message": "他のタブを全て破棄する",
         "description": ""
     },
+    "cmd_discard_rights": {
+        "message": "Discard Tabs to the Right",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Discard Tabs to the Left",
+        "description": ""
+    },
     "cmd_discard_window": {
         "message": "このウィンドウにある他のタブを全て破棄する",
         "description": ""
@@ -476,7 +532,7 @@
         "description": ""
     },
     "blank_msg": {
-        "message": "このウィンドウのタブは全て破棄しました！画面内をクリックするとこのタブを閉じて最後にアクティブだったタブに切り替わります",
+        "message": "このウィンドウのタブは全て破棄しました！画面内をクリックするとこのタブを閉じて最後にアクティブだったタブに切り替わります。",
         "description": ""
     },
     "blank_header": {
