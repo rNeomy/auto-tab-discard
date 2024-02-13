@@ -313,7 +313,32 @@ number.check = async (filterTabsFrom, ops = {}) => {
 chrome.alarms.onAlarm.addListener(alarm => {
   if (alarm.name === 'number.check') {
     log('alarm fire', 'number.check', alarm.name);
+
+    // make sure alarm is firing next time
+    if (alarm.periodInMinutes) {
+      chrome.alarms.create(alarm.name, {
+        when: Date.now() + alarm.periodInMinutes * 60 * 1000,
+        periodInMinutes: alarm.periodInMinutes
+      });
+    }
+
     number.check();
+  }
+});
+// fix outdated alarms
+chrome.idle.onStateChanged.addListener(state => {
+  if (state === 'active') {
+    const now = Date.now();
+    chrome.alarms.getAll(alarms => {
+      for (const o of alarms) {
+        if (o.scheduledTime < now) {
+          chrome.alarms.create(o.name, {
+            when: now + Math.round(Math.random() * 10000),
+            periodInMinutes: o.periodInMinutes
+          });
+        }
+      }
+    });
   }
 });
 
