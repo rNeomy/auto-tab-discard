@@ -23,7 +23,9 @@ const prefs = {
 const storage = (prefs, type = 'managed') => new Promise(resolve => {
   if (type === 'managed') {
     chrome.storage.managed.get(prefs, ps => {
-      chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, resolve);
+      chrome.storage.local.get(chrome.runtime.lastError ? prefs : ps || prefs, prefs => {
+        resolve(prefs);
+      });
     });
   }
   else if (type === 'session') {
@@ -42,14 +44,16 @@ const storage = (prefs, type = 'managed') => new Promise(resolve => {
     cache[name].push(callback);
   };
   chrome.storage.onChanged.addListener(ps => {
-    Object.keys(ps).forEach(k => {
+    for (const k of Object.keys(ps)) {
       prefs[k] = ps[k].newValue;
-    });
-    Object.keys(ps).forEach(k => {
-      if (k in cache) {
+    }
+
+    // only call callbacks if storage is not cleared
+    for (const k of Object.keys(ps)) {
+      if (k in cache && 'newValue' in ps[k]) {
         cache[k].forEach(c => c());
       }
-    });
+    }
   });
 }
 

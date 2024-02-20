@@ -17,17 +17,26 @@ const observe = () => {
     else if (prefs['startup-unpinned'] && prefs['startup-pinned'] === false) {
       opts.pinned = false;
     }
+    // user explicitly asked not to discard pinned tabs
+    else if (prefs.pinned && prefs['startup-pinned'] === false) {
+      opts.pinned = false;
+    }
     query(opts).then(tbs => {
       // discard loaded tabs
       log('startup plug-in', 'number of tabs that can be discarded on startup', tbs.length);
-      number.check(tbs.filter(t => t.status !== 'unloaded'), number.IGNORE);
-      const rst = tbs.filter(t => t.status === 'unloaded');
+
+      const opts = number.IGNORE;
+      delete opts.number;
+      // discard all loaded tabs immediately
+      number.check(tbs.filter(t => t.status !== 'unloaded'), opts, 'startup-plugin/1');
+      // observe unloaded tab activities
       // there are tabs that cannot yet get discarded
+      const rst = tbs.filter(t => t.status === 'unloaded');
       if (rst.length) {
         const observe = (id, info, tab) => {
           if (info.status === 'complete') {
             if (rst.some(t => t.id === id)) {
-              number.check([tab], number.IGNORE);
+              number.check([tab], opts, 'startup-plugin/2');
             }
           }
         };

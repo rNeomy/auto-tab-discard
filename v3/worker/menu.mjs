@@ -155,7 +155,7 @@ import {interrupts} from './plugins/loader.mjs';
           const check = () => number.check([], {
             'exclude-active': false,
             'icon-update': true
-          });
+          }, 'menu/1');
 
           if (d) {
             chrome.storage.local.set({whitelist}, check);
@@ -304,7 +304,7 @@ import {interrupts} from './plugins/loader.mjs';
         }
         else {
           // make sure to only discard possible tabs not all of them
-          number.check(tabs, number.IGNORE);
+          number.check(tabs, number.IGNORE, 'menu/2');
         }
       }
       // release
@@ -367,7 +367,7 @@ import {interrupts} from './plugins/loader.mjs';
       number.check(tabs, {
         'exclude-active': false,
         'icon-update': true
-      });
+      }, 'menu/3');
     }
   });
 }

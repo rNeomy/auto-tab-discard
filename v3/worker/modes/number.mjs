@@ -31,7 +31,7 @@ number.remove = () => {
 };
 // filterTabsFrom is a list of tab that if provided, discarding only happens on them
 // ops is the preference object overwrite
-number.check = async (filterTabsFrom, ops = {}) => {
+number.check = async (filterTabsFrom, ops = {}, reason) => {
   if (typeof interrupts !== 'undefined') {
     // wait for plug-ins to be ready
     await interrupts['before-action']();
@@ -40,7 +40,7 @@ number.check = async (filterTabsFrom, ops = {}) => {
     console.warn('plugins module is not loaded');
   }
 
-  log('number.check is called');
+  log('number.check is called', reason);
   const prefs = await storage({
     'mode': 'time-based',
     'number': 6,
@@ -62,11 +62,13 @@ number.check = async (filterTabsFrom, ops = {}) => {
     'exclude-active': true,
     'icon-update': false
   });
+
   Object.assign(prefs, await storage({
     'whitelist.session': []
   }, 'session'));
 
   Object.assign(prefs, ops);
+
   // only check if idle
   if (prefs.idle) {
     const state = await new Promise(resolve => chrome.idle.queryState(prefs['idle-timeout'], resolve));
@@ -322,7 +324,7 @@ chrome.alarms.onAlarm.addListener(alarm => {
       });
     }
 
-    number.check();
+    number.check(undefined, undefined, 'number/1');
   }
 });
 // fix outdated alarms

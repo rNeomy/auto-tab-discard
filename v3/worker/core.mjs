@@ -62,8 +62,12 @@ starters.push(() => popup());
 storage.on('click', () => popup());
 
 // idle timeout
-starters.push(() => chrome.idle.setDetectionInterval(prefs['idle-timeout']));
-storage.on('idle-timeout', () => chrome.idle.setDetectionInterval(prefs['idle-timeout']));
+starters.push(() => {
+  chrome.idle.setDetectionInterval(prefs['idle-timeout']);
+});
+storage.on('idle-timeout', () => {
+  chrome.idle.setDetectionInterval(prefs['idle-timeout']);
+});
 
 // badge
 starters.push(() => chrome.action.setBadgeBackgroundColor({
