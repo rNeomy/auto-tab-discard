@@ -9,6 +9,7 @@ import blank from './blank/core.mjs';
 import create from './create/core.mjs';
 import unloaded from './unloaded/core.mjs';
 import youtube from './youtube/core.mjs';
+import odysee from './odysee/core.mjs';
 
 const D = {
   'before-menu-click'() {
@@ -39,7 +40,8 @@ const ready = storage({
   './plugins/blank/core.js': true,
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
-  './plugins/youtube/core.js': false
+  './plugins/youtube/core.js': false,
+  './plugins/odysee/core.js': false
 }).then(prefs => {
   startup.enable();
 
@@ -69,6 +71,9 @@ const ready = storage({
   }
   if (prefs['./plugins/youtube/core.js']) {
     youtube.enable();
+  }
+  if (prefs['./plugins/odysee/core.js']) {
+    odysee.enable();
   }
 });
 
@@ -100,6 +105,9 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if ('./plugins/youtube/core.js' in ps) {
     youtube[ps['./plugins/youtube/core.js'].newValue ? 'enable' : 'disable']();
+  }
+  if ('./plugins/odysee/core.js' in ps) {
+    odysee[ps['./plugins/odysee/core.js'].newValue ? 'enable' : 'disable']();
   }
 });
 
