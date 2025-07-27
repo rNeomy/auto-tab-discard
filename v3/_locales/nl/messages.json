@@ -251,6 +251,10 @@
         "message": "Opties opslaan",
         "description": ""
     },
+    "options_save_msg": {
+        "message": "Opties opgeslagen",
+        "description": ""
+    },
     "options_support": {
         "message": "Ontwikkeling steunen",
         "description": ""
@@ -352,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Dit tabblad voor deze sessie behouden",
+        "message": "Geselecteerde tabbladen voor deze sessie behouden",
         "description": ""
     },
     "popup_open_options": {
@@ -493,6 +497,14 @@
     },
     "cmd_discard_tabs": {
         "message": "Alle andere tabbladen deactiveren",
+        "description": ""
+    },
+    "cmd_discard_rights": {
+        "message": "Tabbladen rechts deactiveren",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Tabbladen links deactiveren",
         "description": ""
     },
     "cmd_discard_window": {

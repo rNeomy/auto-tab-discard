@@ -1,0 +1,542 @@
+{
+    "app_description": {
+        "message": "Αύξηση της ταχύτητας του προγράμματος περιήγησης και μείωση του φόρτου μνήμης όταν έχετε πολλές ανοιχτές καρτέλες.",
+        "description": ""
+    },
+    "options_title": {
+        "message": "Σελίδα Επιλογών :: Αυτόματη Απόρριψη Καρτελών",
+        "description": ""
+    },
+    "options_list": {
+        "message": "Κατάλογος hostnames χωρισμένος με κόμμα",
+        "description": ""
+    },
+    "options_list_trash": {
+        "message": "Κατάλογος hostnames χωρισμένος με κόμμα, αφήστε κενό για όλα",
+        "description": ""
+    },
+    "options_discarding_options": {
+        "message": "Επιλογές απόρριψης",
+        "description": ""
+    },
+    "options_period01_a": {
+        "message": "Απόρριψη ανενεργών καρτελών μετά από ",
+        "description": ""
+    },
+    "options_period02": {
+        "message": "λεπτά (μηδέν έως απενεργοποίηση), όταν ο αριθμός των ανενεργών καρτελών υπερβαίνει τα ",
+        "description": ""
+    },
+    "options_period04": {
+        "message": "Μέγιστος αριθμός καρτελών προς έλεγχο για απόρριψη ανά μεμονωμένη αίτηση αυτόματης απόρριψης ",
+        "description": ""
+    },
+    "options_url_based": {
+        "message": "Απέριψηη μόνο τα ακόλουθα ανενεργά ονόματα κεντρικών υπολογιστών ή κανόνες κανονικής έκφρασης",
+        "description": ""
+    },
+    "options_tab_context": {
+        "message": "Εμφάνιση στοιχείων απόρριψης στο μενού περιβάλλοντος \"καρτέλα\" (προς το παρόν υποστηρίζεται από τον Firefox)",
+        "description": ""
+    },
+    "options_page_context": {
+        "message": "Εμφάνιση στοιχείων απόρριψης στο μενού περιβάλλοντος \"σελίδα\"",
+        "description": ""
+    },
+    "options_link_context": {
+        "message": "Εμφάνιση του στοιχείου \"Άνοιγμα σε Νέα Απορριφθείσα Καρτέλα\" στο μενού περιβάλλοντος \"σύνδεσμος\".",
+        "description": ""
+    },
+    "options_favicon": {
+        "message": "Αλλαγή favicon των καρτελών που απορρίπτονται (αν είναι δυνατόν)",
+        "description": ""
+    },
+    "options_prepends": {
+        "message": "Προσθήκη ενός συμβόλου στις καρτέλες που απορρίπτονται (π.χ. 💤 ή ⏻︎) (εάν είναι δυνατόν)",
+        "description": ""
+    },
+    "options_startup_unpinned": {
+        "message": "Απόρριψη όλων των ξεκαρφίτσωμένων καρτελών κατά την εκκίνηση ενός περιηγητή ή μιας επέκτασης",
+        "description": ""
+    },
+    "options_startup_pinned": {
+        "message": "Απόρριψη όλων των καρφιτσωμένων καρτελών κατά την εκκίνηση ενός περιηγητή ή μιας επέκτασης",
+        "description": ""
+    },
+    "options_startup_release_pinned": {
+        "message": "Απελευθέρωση της κατάστασης απόρριψης όλων των καρφιτσωμένων καρτελών κατά την εκκίνηση ενός περιηγητή ή μιας επέκτασης",
+        "description": ""
+    },
+    "options_release_next_tab": {
+        "message": "Απελευθέρωση της απόρριψης της επόμενης καρτέλας (καρτέλα στα δεξιά της ενεργής καρτέλας)",
+        "description": ""
+    },
+    "options_release_previous_tab": {
+        "message": "Απελευθέρωση της απόρριψης προηγούμενης καρτέλας (καρτέλα στα αριστερά της ενεργής καρτέλας)",
+        "description": ""
+    },
+    "options_memory": {
+        "message": "Απόρριψη μιας καρτέλας παρασκηνίου εάν η χρήση μνήμης (totalJSHeapSize) υπερβαίνει τα (σε MB)",
+        "description": ""
+    },
+    "options_discarding_conditions": {
+        "message": "Όροι απόρριψης",
+        "description": ""
+    },
+    "options_audio": {
+        "message": "Να μην γίνει απόρριψη καρτέλας κατά την αναπαραγωγή πολυμέσων",
+        "description": ""
+    },
+    "options_paused": {
+        "message": "Να μην γίνει απόρριψη μιας καρτέλας όταν υπάρχει παύση του προγράμματος αναπαραγωγής πολυμέσων",
+        "description": ""
+    },
+    "options_pinned": {
+        "message": "Να μγν γίνει απόρριψη μιας καρτέλας όταν είναι καρφιτσωμένη",
+        "description": ""
+    },
+    "options_form": {
+        "message": "Να μην γίνει απόρριψη μιας καρτέλας όταν οι αλλαγές στη φόρμα δεν έχουν ακόμη υποβληθεί",
+        "description": ""
+    },
+    "options_battery": {
+        "message": "Να μην γίνει απόρριψη των καρτελών όταν ο υπολογιστής είναι συνδεδεμένος σε πηγή ρεύματος",
+        "description": ""
+    },
+    "options_online": {
+        "message": "Να μην γίνει απόρριψη των καρτελών όταν δεν υπάρχει σύνδεση στο διαδίκτυο και η καρτέλα δεν έχει αποθηκευτεί στην προσωρινή μνήμη.",
+        "description": ""
+    },
+    "options_notification_permission": {
+        "message": "Να μην γίνει απόρριψη μιας καρτέλας αν μπορεί να εμφανίζει ειδοποιήσεις επιφάνειας εργασίας",
+        "description": ""
+    },
+    "options_idle": {
+        "message": "Απόρριψη καρτελών μόνο εάν ο υπολογιστής βρίσκεται σε κατάσταση 'αδράνειας'.",
+        "description": ""
+    },
+    "options_idle_timeout": {
+        "message": "Διάστημα αδράνειας για να διαπιστωθεί αν ο υπολογιστής βρίσκεται σε κατάσταση αδράνειας ή όχι (σε λεπτά)",
+        "description": ""
+    },
+    "options_exceptions": {
+        "message": "Εξαιρέσεις",
+        "description": ""
+    },
+    "options_whitelist": {
+        "message": "Οι καρτέλες με τα ακόλουθα hostnames ή κανόνες κανονικής έκφρασης δεν απορρίπτονται. Συνιστάται η χρήση της αναδυόμενης διεπαφής για την τροποποίηση αυτής της λίστας. Χρησιμοποιήστε το πλήκτρο \"Shift\" κατά την προσθήκη ενός κανόνα από το αναδυόμενο περιβάλλον εργασίας για να δημιουργήσετε έναν κανόνα κανονικής έκφρασης.",
+        "description": ""
+    },
+    "options_left_click": {
+        "message": "Ενέργεια αριστερού κλικ στη γραμμή εργαλείων",
+        "description": ""
+    },
+    "options_click_popup": {
+        "message": "Άνοιγμα αναδυόμενου παραθύρου",
+        "description": ""
+    },
+    "options_click_discard_tab": {
+        "message": "Απορρίψη Καρτέλας",
+        "description": ""
+    },
+    "options_click_discard_tabs": {
+        "message": "Απόρριψη Όλων των Άλλων Καρτελών",
+        "description": ""
+    },
+    "options_click_release_tabs": {
+        "message": "Απελευθέρωση Όλων των Άλλων Καρτελών",
+        "description": ""
+    },
+    "options_click_discard_window": {
+        "message": "Απόρριψη Άλλων Καρτελών σε Αυτό το Παράθυρο",
+        "description": ""
+    },
+    "options_click_release_window": {
+        "message": "Απελευθέρωση Άλλων Καρτελών σε Αυτό το Παράθυρο",
+        "description": ""
+    },
+    "options_click_discard_other_windows": {
+        "message": "Απόρριψη Καρτελών σε Άλλα Παράθυρα",
+        "description": ""
+    },
+    "options_click_release_other_windows": {
+        "message": "Απελευθέρωση Καρτελών σε Άλλα Παράθυρα",
+        "description": ""
+    },
+    "options_click_toggle_allowed": {
+        "message": "Εναλλαγή της επιλογής 'Διατήρηση Αυτής της Καρτέλας για Αυτή τη Συνεδρία'",
+        "description": ""
+    },
+    "options_misc": {
+        "message": "Διάφορα",
+        "description": ""
+    },
+    "options_plugins": {
+        "message": "Πρόσθετα",
+        "description": ""
+    },
+    "options_plugin_dummy": {
+        "message": "Κατά την απόρριψη, αντικατάσταση της σελίδας με μια τοπική εικονική εναλλακτική λύση (beta)",
+        "description": ""
+    },
+    "options_plugin_blank": {
+        "message": "Άνοιγμα μιας προσωρινής κενής σελίδας όταν απορρίπτονται όλες οι καρτέλες σε ένα ανενεργό παράθυρο (για να είναι δυνατή η απόρριψη της ενεργής καρτέλας σε αυτό το παράθυρο)",
+        "description": ""
+    },
+    "options_plugin_focus": {
+        "message": "Απελευθέρωση της απόρριψης όλων των καρτελών στο ενεργό παράθυρο. Εάν είναι ενεργή, καμία καρτέλα στο ενεργό παράθυρο δεν θα απορρίπτεται.",
+        "description": ""
+    },
+    "options_plugin_unloaded": {
+        "message": "Απόρριψη όλων των μη φορτωμένων καρτελών κατά την εκκίνηση του περιηγητή. Αυτή η μέθοδος απορρίπτει σχεδόν όλες τις ανενεργές καρτέλες.",
+        "description": ""
+    },
+    "options_plugin_trash01": {
+        "message": "Διαγραφή (αφαίρεση) μόνιμα των παλαιών απορριπτόμενων καρτελών, εάν είναι ανενεργές για",
+        "description": ""
+    },
+    "options_plugin_trash02": {
+        "message": "ώρες",
+        "description": ""
+    },
+    "options_plugin_trash_unloaded": {
+        "message": "Επίσης, λάβετε υπόψη τις παλιές αποφορτισμένες καρτέλες",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist": {
+        "message": "Απόρριψη μόνο καρτελών που ταιριάζουν με τα ακόλουθα μοτίβα URL",
+        "description": ""
+    },
+    "options_plugin_force": {
+        "message": "Απόρριψη αμέσως των ακόλουθων hostnames όταν η καρτέλα τους δεν είναι ενεργή",
+        "description": ""
+    },
+    "options_plugin_new": {
+        "message": "Απόρριψη όλων των πρόσφατα ανοιγμένων ανενεργών καρτελών μετά τη φόρτωσή τους",
+        "description": ""
+    },
+    "options_plugin_youtube": {
+        "message": "Αποθήκευση της χρονοσφραγίδας του YouTube πριν την απόρριψη",
+        "description": ""
+    },
+    "options_log": {
+        "message": "Εμφάνιση αρχείων καταγραφής (μόνο για σκοπούς εντοπισμού σφαλμάτων)",
+        "description": ""
+    },
+    "options_go_hidden": {
+        "message": "Απόρριψη μιας καρτέλας αν είναι κρυμμένη",
+        "description": ""
+    },
+    "options_simultaneous_jobs": {
+        "message": "Αριθμός επιτρεπόμενων ταυτόχρονων εργασιών απόρριψης",
+        "description": ""
+    },
+    "options_faqs": {
+        "message": "Άνοιγμα σελίδας Συχνές Ερωτήσεις σχετικά με τις ενημερώσεις",
+        "description": ""
+    },
+    "options_reset": {
+        "message": "Επαναφορά Εργοστασιακών Ρυθμίσεων",
+        "description": ""
+    },
+    "options_import": {
+        "message": "Εισαγωγή Ρυθμίσεων",
+        "description": ""
+    },
+    "options_export": {
+        "message": "Εξαγωγή Ρυθμίσεων",
+        "description": ""
+    },
+    "options_save": {
+        "message": "Αποθήκευση Επιλογών",
+        "description": ""
+    },
+    "options_save_msg": {
+        "message": "Επιλογές αποθηκεύτηκαν",
+        "description": ""
+    },
+    "options_support": {
+        "message": "Υποστήριξη Ανάπτυξης",
+        "description": ""
+    },
+    "options_favicon_delay": {
+        "message": "Καθυστέρηση για τη ζωγραφική του απορριφθέντος favicon (σε χιλιοστά του δευτερολέπτου)",
+        "description": ""
+    },
+    "options_read_more": {
+        "message": "(Διαβάστε Περισσότερα Εδώ)",
+        "description": ""
+    },
+    "options_save_notice": {
+        "message": "Φροντίστε να κάνετε κλικ στο κουμπί \"Αποθήκευση Επιλογών\" στο κάτω μέρος αυτής της σελίδας μόλις ολοκληρώσετε τις αλλαγές.",
+        "description": ""
+    },
+    "options_rate_desc": {
+        "message": "Αν θέλετε να αξιολογήσετε την επέκταση, κάντε κλικ στο",
+        "description": ""
+    },
+    "options_rate_btn": {
+        "message": "Αξιολόγηση",
+        "description": ""
+    },
+    "options_managed_1": {
+        "message": "Αυτή η επέκταση έχει τη δυνατότητα χρήσης διαχειριζόμενου αποθηκευτικού χώρου, επιτρέποντας στους διαχειριστές τομέων να προκαθορίσουν τις προτιμήσεις.",
+        "description": ""
+    },
+    "options_managed_2": {
+        "message": "Διαβάστε περισσότερα εδώ.",
+        "description": ""
+    },
+    "popup_discard_tab": {
+        "message": "Απορρίψη Καρτέλα",
+        "description": ""
+    },
+    "popup_discard_tree": {
+        "message": "Απορρίψη Ομάδας Καρτέλων",
+        "description": ""
+    },
+    "popup_discard_tabs": {
+        "message": "Απόρριψη Όλων των Άλλων Καρτελών",
+        "description": ""
+    },
+    "popup_discard_window": {
+        "message": "Απόρριψη Άλλων Καρτελών σε Αυτό το Παράθυρο",
+        "description": ""
+    },
+    "popup_discard_rights": {
+        "message": "Απόρριψη Καρτελών στα Δεξιά",
+        "description": ""
+    },
+    "popup_discard_lefts": {
+        "message": "Απόρριψη Καρτελών προς τα Αριστερά",
+        "description": ""
+    },
+    "popup_discard_other_windows": {
+        "message": "Απόρριψη Καρτελών σε Άλλα Παράθυρα",
+        "description": ""
+    },
+    "popup_move_previous": {
+        "message": "Αριστερή Καρτέλα",
+        "description": ""
+    },
+    "popup_move_previous_title": {
+        "message": "Μετάβαση στην προηγούμενη ενεργή καρτέλα",
+        "description": ""
+    },
+    "popup_close": {
+        "message": "Κλείσιμο Καρτέλας",
+        "description": ""
+    },
+    "popup_close_title": {
+        "message": "Κλείσιμο της τρέχουσας καρτέλας και μετάβαση στην προηγούμενη ενεργή καρτέλα",
+        "description": ""
+    },
+    "popup_move_next": {
+        "message": "Δεξιά Καρτέλα",
+        "description": ""
+    },
+    "popup_move_next_title": {
+        "message": "Μετάβαση στην επόμενη ενεργή καρτέλα",
+        "description": ""
+    },
+    "popup_whitelist_desc": {
+        "message": "Διατήρηση Καρτελών για Αυτόν τον Ιστότοπο",
+        "description": ""
+    },
+    "popup_whitelist_always": {
+        "message": "Πάντα",
+        "description": ""
+    },
+    "popup_whitelist_always_title": {
+        "message": "Κάντε κλικ για να προσθέσετε το hostname στη λίστα εξαιρέσεων. Shift + Κλικ για να προσθέσετε την ακριβή διεύθυνση URL στη λίστα εξαιρέσεων.",
+        "description": ""
+    },
+    "popup_whitelist_session": {
+        "message": "Συνεδρία",
+        "description": ""
+    },
+    "popup_allowed": {
+        "message": "Διατήρηση Επιλεγμένων Καρτελών για Αυτή τη Συνεδρία",
+        "description": ""
+    },
+    "popup_open_options": {
+        "message": "Επιλογές",
+        "description": ""
+    },
+    "popup_release": {
+        "message": "Απελευθέρωση απόρριψης. Για να παρακάμψετε το αποθηκευμένο περιεχόμενο, χρησιμοποιήστε Shift + Κλικ.",
+        "description": ""
+    },
+    "popup_shift_hint": {
+        "message": "Χρησιμοποιήστε το πλήκτρο Shift για να αγνοήσετε τους κανόνες εξαίρεσης αυτόματης απόρριψης.",
+        "description": ""
+    },
+    "popup_tmp_disable": {
+        "message": "Απενεργοποίηση Αυτόματης Απόρριψης Παγκοσμίως για",
+        "description": ""
+    },
+    "popup_tmp_0": {
+        "message": "Ανενεργό",
+        "description": ""
+    },
+    "popup_tmp_1": {
+        "message": "1 ώρα",
+        "description": ""
+    },
+    "popup_tmp_6": {
+        "message": "6 ώρες",
+        "description": ""
+    },
+    "popup_tmp_12": {
+        "message": "12 ώρες",
+        "description": ""
+    },
+    "popup_tmp_24": {
+        "message": "1 ημέρα",
+        "description": ""
+    },
+    "bg_no_active_tab": {
+        "message": "Δεν υπάρχει ενεργή καρτέλα",
+        "description": ""
+    },
+    "bg_msg_1": {
+        "message": "Αυτόματη απόρριψη είναι ανενεργή για αυτήν την καρτέλα",
+        "description": ""
+    },
+    "bg_msg_2": {
+        "message": "Αυτόματη απόρριψη είναι ανενεργή προς το παρόν",
+        "description": ""
+    },
+    "menu_discard_tab": {
+        "message": "Απορρίψη Καρτέλας",
+        "description": ""
+    },
+    "menu_discard_tree": {
+        "message": "Απορρίψη Ομάδας Καρτέλων",
+        "description": ""
+    },
+    "menu_discard_menu": {
+        "message": "Απόρριψη Καρτελών σε Αυτό το Παράθυρο",
+        "description": ""
+    },
+    "menu_discard_tabs": {
+        "message": "Απόρριψη Όλων των Άλλων Καρτελών",
+        "description": ""
+    },
+    "menu_discard_rights": {
+        "message": "Απόρριψη Καρτελών στα Δεξιά",
+        "description": ""
+    },
+    "menu_discard_lefts": {
+        "message": "Απόρριψη Καρτελών προς τα Αριστερά",
+        "description": ""
+    },
+    "menu_discard_window": {
+        "message": "Απόρριψη Άλλων Καρτελών",
+        "description": ""
+    },
+    "menu_discard_other_windows": {
+        "message": "Απόρριψη Καρτελών σε Άλλα Παράθυρα",
+        "description": ""
+    },
+    "menu_extra": {
+        "message": "Διατήρηση Καρτελών",
+        "description": ""
+    },
+    "menu_whitelist_domain": {
+        "message": "Πάντα Διατήριση Καρτελών για Αυτόν τον Ιστότοπο",
+        "description": ""
+    },
+    "menu_open_tab_then_discard": {
+        "message": "Άνοιγμα σε Νέα Απορριφθείσα Καρτέλα",
+        "description": ""
+    },
+    "menu_move_previous": {
+        "message": "Μετάβαση στην Αριστερή Καρτέλα",
+        "description": ""
+    },
+    "menu_move_next": {
+        "message": "Μετάβαση στη Δεξιά Καρτέλα",
+        "description": ""
+    },
+    "menu_close": {
+        "message": "Κλείσιμο Καρτέλας",
+        "description": ""
+    },
+    "menu_msg1": {
+        "message": "προστίθεται στη μόνιμη λευκή λίστα",
+        "description": ""
+    },
+    "menu_msg5": {
+        "message": "αφαιρείται από τη μόνιμη λευκή λίστα",
+        "description": ""
+    },
+    "menu_msg4": {
+        "message": "προστίθεται στη λευκή λίστα συνεδρίας",
+        "description": ""
+    },
+    "menu_msg6": {
+        "message": "αφαιρείται από τη λευκή λίστα συνεδριών",
+        "description": ""
+    },
+    "menu_msg2": {
+        "message": "το πρωτόκολλο δεν υποστηρίζεται",
+        "description": ""
+    },
+    "menu_msg3": {
+        "message": "Αδυναμία απόρριψης της μοναδικής καρτέλας που δεν έχει απορριφθεί σε αυτό το παράθυρο",
+        "description": ""
+    },
+    "cmd_discard_tab": {
+        "message": "Απορρίψη Καρτέλας",
+        "description": ""
+    },
+    "cmd_discard_tree": {
+        "message": "Απορρίψη Ομάδας Καρτελών",
+        "description": ""
+    },
+    "cmd_discard_tabs": {
+        "message": "Απόρριψη Όλων των Άλλων Καρτελών",
+        "description": ""
+    },
+    "cmd_discard_rights": {
+        "message": "Απόρριψη Καρτελών στα Δεξιά",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Απόρριψη Καρτελών προς τα Αριστερά",
+        "description": ""
+    },
+    "cmd_discard_window": {
+        "message": "Απόρριψη Άλλων Καρτελών σε Αυτό το Παράθυρο",
+        "description": ""
+    },
+    "cmd_discard_other_windows": {
+        "message": "Απόρριψη Καρτελών σε Άλλα Παράθυρα",
+        "description": ""
+    },
+    "cmd_whitelist_domain": {
+        "message": "Πάντα Διατήριση Καρτελών για Αυτόν τον Ιστότοπο",
+        "description": ""
+    },
+    "cmd_move_previous": {
+        "message": "Μετάβαση στην Αριστερή Καρτέλα",
+        "description": ""
+    },
+    "cmd_move_next": {
+        "message": "Μετάβαση στη Δεξιά Καρτέλα",
+        "description": ""
+    },
+    "cmd_close": {
+        "message": "Κλείσιμο Καρτέλας",
+        "description": ""
+    },
+    "blank_msg": {
+        "message": "Όλες οι καρτέλες σε αυτό το παράθυρο απορρίπτονται! Κάντε κλικ οπουδήποτε για να κλείσετε αυτή την καρτέλα και να επιστρέψετε στην τελευταία ενεργή καρτέλα.",
+        "description": ""
+    },
+    "blank_header": {
+        "message": "(Απορριφθέν Παράθυρο)",
+        "description": ""
+    }
+}

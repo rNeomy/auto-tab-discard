@@ -356,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Keep Selected Tabs for This Session",
+        "message": "このセッションでは選択したタブを保持する",
         "description": ""
     },
     "popup_open_options": {
@@ -500,11 +500,11 @@
         "description": ""
     },
     "cmd_discard_rights": {
-        "message": "Discard Tabs to the Right",
+        "message": "右側にあるタブを全て破棄する",
         "description": ""
     },
     "cmd_discard_lefts": {
-        "message": "Discard Tabs to the Left",
+        "message": "左側にあるタブを全て破棄する",
         "description": ""
     },
     "cmd_discard_window": {

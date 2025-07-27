@@ -21,6 +21,8 @@ number.install = period => {
   // checking period is between 1 minute to 20 minutes
   period = Math.min(20 * 60, Math.max(60, period / 3));
 
+  console.log('ss', period);
+
   chrome.alarms.create('number.check', {
     when: Date.now() + period * 1000,
     periodInMinutes: period / 60
@@ -315,6 +317,8 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
 chrome.alarms.onAlarm.addListener(alarm => {
   if (alarm.name === 'number.check') {
     log('alarm fire', 'number.check', alarm.name);
+
+    console.log('m', alarm.periodInMinutes);
 
     // make sure alarm is firing next time
     if (alarm.periodInMinutes) {

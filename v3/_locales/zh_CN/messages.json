@@ -356,7 +356,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Keep Selected Tabs for This Session",
+        "message": "为此会话保留所选标签页",
         "description": ""
     },
     "popup_open_options": {
@@ -500,11 +500,11 @@
         "description": ""
     },
     "cmd_discard_rights": {
-        "message": "Discard Tabs to the Right",
+        "message": "休眠右侧标签页",
         "description": ""
     },
     "cmd_discard_lefts": {
-        "message": "Discard Tabs to the Left",
+        "message": "休眠左侧标签页",
         "description": ""
     },
     "cmd_discard_window": {
