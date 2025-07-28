@@ -199,6 +199,10 @@
         "message": "Speichere YouTube's Zeitmarke vor dem deaktivieren",
         "description": ""
     },
+    "options_plugin_odysee": {
+        "message": "Speichere Odysee's Zeitmarke vor dem deaktivieren",
+        "description": ""
+    },
     "options_log": {
         "message": "Protokolle anzeigen (Verwendung zur Fehlersuche)",
         "description": ""
