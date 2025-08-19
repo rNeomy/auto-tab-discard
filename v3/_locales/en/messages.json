@@ -164,6 +164,9 @@
   "options_plugin_youtube": {
     "message": "Store YouTube's timestamp before discarding"
   },
+  "options_plugin_odysee" : {
+    "message": "Store Odysee's timestamp before discarding"
+  },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
   },

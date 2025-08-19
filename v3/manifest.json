@@ -28,6 +28,7 @@
     "*://*/*"
   ],
   "background": {
+    "scripts": ["worker/core.mjs"],
     "service_worker": "worker/core.mjs",
     "type": "module"
   },
@@ -84,5 +85,10 @@
   "web_accessible_resources": [{
     "resources": ["/data/page.png"],
     "matches": ["*://*/*"]
-  }]
+  }],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}"
+    }
+  }
 }

@@ -32,6 +32,7 @@ The available plugins for "Auto Tab Discard" are:
   * Release the discarded state of all tabs in the active window.
   * Automatically discard all newly opened inactive tabs.
   * Store YouTube's timestamp before a tab is discarded.
+  * Store Odysee's timestamp before a tab is discarded.
   * Permanently delete (remove) old discarded tabs that are inactive.
 
 Notes:

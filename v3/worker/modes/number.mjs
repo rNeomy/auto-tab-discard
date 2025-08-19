@@ -379,7 +379,7 @@ starters.push(() => chrome.app && query({
   url: '*://*/*',
   discarded: false
 }).then(tbs => {
-  const contentScripts = chrome.app.getDetails().content_scripts;
+  const contentScripts = chrome.runtime.getManifest().content_scripts;
   for (const tab of tbs) {
     for (const cs of contentScripts) {
       chrome.scripting.executeScript({
