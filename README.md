@@ -9,7 +9,7 @@ A browser extension which uses the native tab discarding method (`chrome.tabs.di
 
   * Homepage: https://webextension.org/listing/tab-discard.html
   * Privacy Policy: https://webextension.org/privacy-policy/extension/tab-discard.html
-  * Chrome: https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol
+  * Chrome: https://chromewebstore.google.com/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol
   * Edge: https://microsoftedge.microsoft.com/addons/detail/auto-tab-discard/nfkkljlcjnkngcmdpcammanncbhkndfe
   * Firefox: https://addons.mozilla.org/firefox/addon/auto-tab-discard/
   * Opera: https://addons.opera.com/en/extensions/details/auto-tab-discard/

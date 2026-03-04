@@ -263,7 +263,7 @@ document.getElementById('reset').addEventListener('click', e => {
 });
 // rate
 document.querySelector('#rate input').onclick = () => {
-  let url = 'https://chrome.google.com/webstore/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews';
+  let url = 'https://chromewebstore.google.com/detail/auto-tab-discard/jhnleheckmknfcgijgkadoemagpecfol/reviews';
   if (isFirefox) {
     url = 'https://addons.mozilla.org/firefox/addon/auto-tab-discard/reviews/';
   }
