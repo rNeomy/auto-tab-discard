@@ -208,7 +208,7 @@
         "description": ""
     },
     "options_footnote_3": {
-        "message": "When the discarding period is over for a tab or a new tab is added, all browser's tabs are checked to evaluate which tabs need to be discarded. This option forces the extension to limit these checks. The minimum acceptable value is 1 minute. The recommended value is 10 minutes.",
+        "message": "當分頁的休眠週期結束，或新增分頁時，瀏覽器會檢查所有分頁，以評估哪些分頁需要被休眠。此選項可強制擴充功能限制這些檢查的頻率。最小可接受值為 1 分鐘，建議值為 10 分鐘。",
         "description": ""
     },
     "options_reset": {
