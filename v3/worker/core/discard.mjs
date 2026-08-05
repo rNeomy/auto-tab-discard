@@ -152,7 +152,7 @@ discard.tabs = [];
 discard.count = 0;
 discard.perform = tab => {
   try {
-    chrome.tabs.discard(tab.id, () => chrome.runtime.lastError);
+    chrome.tabs.discard(tab.id).catch(e => {});
   }
   catch (e) {
     log('discarding failed', e);

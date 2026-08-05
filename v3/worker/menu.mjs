@@ -256,7 +256,7 @@ import {interrupts} from './plugins/loader.mjs';
           func: () => window.stop()
         }).then(() => chrome.scripting.executeScript({
           target: {tabId: tab.id},
-          files: ['data/lazy.js']
+          files: ['/data/lazy.js']
         })));
       }
     }

@@ -44,7 +44,7 @@ function enable() {
         currentWindow: true,
         discarded: false
       }).then(tbs => {
-        if (tbs.length === 0 && tab.url.startsWith('http')) {
+        if (tbs.length === 0 && tab.url?.startsWith('http')) {
           const args = new URLSearchParams();
           args.set('title', tab.title);
           args.set('favicon', tab.favIconUrl);

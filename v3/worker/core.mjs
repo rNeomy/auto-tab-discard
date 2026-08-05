@@ -5,7 +5,6 @@ import {discard} from './core/discard.mjs';
 import {navigate} from './core/navigate.mjs';
 import './modes/number.mjs';
 import './menu.mjs';
-import '../firefox.mjs';
 
 /*
   remote access
@@ -56,7 +55,7 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
 
 // left-click action
 const popup = () => chrome.action.setPopup({
-  popup: prefs.click === 'click.popup' ? 'data/popup/index.html' : ''
+  popup: prefs.click === 'click.popup' ? '/data/popup/index.html' : ''
 });
 starters.push(() => popup());
 storage.on('click', () => popup());
