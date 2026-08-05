@@ -17,6 +17,10 @@
       "title": "pinned = true => do not discard if tab is pinned",
       "type": "boolean"
     },
+    "split-view": {
+      "title": "split-view = true => do not discard split tabs if either tab of the split is focused",
+      "type": "boolean"
+    },
     "form": {
       "title": "form = true => do not discard if form data is changed",
       "type": "boolean"

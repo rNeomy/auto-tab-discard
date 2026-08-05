@@ -14,6 +14,7 @@ const prefs = {
   'simultaneous-jobs': 10,
   'idle-timeout': 5 * 60, // in seconds
   'pinned': false, // pinned = true => do not discard if tab is pinned
+  'split-view': false, // split-view = true => do not discard split tabs if either tab of the split is focused
   'startup-unpinned': false,
   'startup-pinned': false,
   'startup-release-pinned': false,

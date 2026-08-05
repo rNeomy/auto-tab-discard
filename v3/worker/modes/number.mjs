@@ -51,6 +51,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
     'audio': true, // audio = true => do not discard if audio is playing
     'paused': false, // paused = true => do not discard if there is a paused media player
     'pinned': false, // pinned = true => do not discard if tab is pinned
+    'split-view': false, // split-view = true => do not discard split tabs if either tab of the split is focused
     'battery': false, // battery = true => only discard if power is disconnected
     'online': false, // online = true => do not discard if there is no INTERNET connection
     'form': true, // form = true => do not discard if form data is changed
@@ -174,6 +175,22 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
         return false;
       }
     });
+  }
+  // do not discard a split tab if either tab of the split is focused
+  if (prefs['split-view']) {
+    const focused = await query({active: true});
+    const ids = new Set(focused.map(t => t.splitViewId).filter(id => id >= 0));
+    if (ids.size) {
+      tbs = tbs.filter(tb => {
+        if (ids.has(tb.splitViewId)) {
+          icon(tb, 'tab is part of a focused split view');
+          log('number.check', 'tab is ignored', 'split view is focused', tb.url);
+          exceptionCount += 1;
+          return false;
+        }
+        return true;
+      });
+    }
   }
   if (filterTabsFrom && filterTabsFrom.length) {
     const ids = filterTabsFrom.map(t => t.id);

@@ -40,6 +40,7 @@ const restore = () => storage({
   'audio': true, // audio = true => do not discard if audio is playing
   'paused': false, // paused = true => do not discard if there is a paused media player
   'pinned': false, // pinned = true => do not discard if tab is pinned
+  'split-view': false, // split-view = true => do not discard split tabs if either tab of the split is focused
   'form': true, // form = true => do not discard if form data is changed
   'battery': false, // battery = true => only discard if power is disconnected
   'online': false, // online = true => do not discard if there is no INTERNET connection
@@ -103,6 +104,7 @@ const restore = () => storage({
   document.getElementById('audio').checked = prefs.audio;
   document.getElementById('paused').checked = prefs.paused;
   document.getElementById('pinned').checked = prefs.pinned;
+  document.getElementById('split-view').checked = prefs['split-view'];
   document.getElementById('form').checked = prefs.form;
   document.getElementById('battery_enabled').checked = prefs.battery;
   document.getElementById('online').checked = prefs.online;
@@ -168,6 +170,7 @@ document.getElementById('save').addEventListener('click', () => {
     'audio': document.getElementById('audio').checked,
     'paused': document.getElementById('paused').checked,
     'pinned': document.getElementById('pinned').checked,
+    'split-view': document.getElementById('split-view').checked,
     'form': document.getElementById('form').checked,
     'battery': document.getElementById('battery_enabled').checked,
     'online': document.getElementById('online').checked,

@@ -71,6 +71,9 @@
   "options_pinned": {
     "message": "Do not discard a tab when it is pinned"
   },
+  "options_split_view": {
+    "message": "Do not discard a tab if it is in a split view and either tab of the split is focused"
+  },
   "options_form": {
     "message": "Do not discard a tab when form changes are not yet submitted"
   },
