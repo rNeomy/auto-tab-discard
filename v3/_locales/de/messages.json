@@ -3,6 +3,18 @@
         "message": "Erhöhe die Browsergeschwindigkeit und reduziere die Speicherauslastung, falls mehrere Tabs geöffnet sind.",
         "description": ""
     },
+    "options_title": {
+        "message": "Optionsseite :: Auto Tab Discard",
+        "description": ""
+    },
+    "options_list": {
+        "message": "Durch Komma getrennte Liste von Hostnamen",
+        "description": ""
+    },
+    "options_list_trash": {
+        "message": "Durch Komma getrennte Liste von Hostnamen, leer lassen für alle",
+        "description": ""
+    },
     "options_discarding_options": {
         "message": "Deaktivierungs-Optionen",
         "description": ""
@@ -75,8 +87,16 @@
         "message": "Tab nicht deaktivieren, wenn dieser Video oder Audio abspielt",
         "description": ""
     },
+    "options_paused": {
+        "message": "Tab nicht deaktivieren, wenn es einen pausierten Medienplayer gibt",
+        "description": ""
+    },
     "options_pinned": {
         "message": "Tab nicht deaktivieren, wenn dieser angeheftet ist",
+        "description": ""
+    },
+    "options_split_view": {
+        "message": "Tab nicht deaktivieren, wenn er sich in einer geteilten Ansicht befindet und einer der geteilten Tabs fokussiert ist",
         "description": ""
     },
     "options_form": {
@@ -172,19 +192,23 @@
         "description": ""
     },
     "options_plugin_unloaded": {
-        "message": "Deaktiviere alle ungeladenen Tabs beim Browserstart. Diese Methode deaktiviert fast alle inaktiven Tabs.",
+        "message": "Alle ungeladenen Tabs beim Browserstart deaktivieren. Diese Methode deaktiviert fast alle inaktiven Tabs.",
         "description": ""
     },
-    "options_plugin_trash": {
-        "message": "Entferne (lösche permanent) deaktivierte Tabs, sobald sie für eine gewisse Zeit (in Stunden) inaktiv sind",
+    "options_plugin_trash01": {
+        "message": "Alte deaktivierte Tabs dauerhaft löschen (entfernen), wenn sie inaktiv sind für",
+        "description": ""
+    },
+    "options_plugin_trash02": {
+        "message": "Stunden",
         "description": ""
     },
     "options_plugin_trash_unloaded": {
-        "message": "Übigens, beachte alte ungeladene Tabs",
+        "message": "Außerdem alte ungeladene Tabs berücksichtigen",
         "description": ""
     },
     "options_plugin_trash_whitelist": {
-        "message": "Ausschließlich Müll Tabs, welche den folgenden URL-Mustern entsprechen",
+        "message": "Nur Tabs löschen, die den folgenden URL-Mustern entsprechen",
         "description": ""
     },
     "options_plugin_force": {
@@ -192,11 +216,11 @@
         "description": ""
     },
     "options_plugin_new": {
-        "message": "Deaktiviere alle neuen inaktiven Tabs, nachdem sie fertig geladen wurden",
+        "message": "Alle neu geöffneten inaktiven Tabs nach dem Laden deaktivieren",
         "description": ""
     },
     "options_plugin_youtube": {
-        "message": "Speichere YouTube's Zeitmarke vor dem deaktivieren",
+        "message": "YouTube-Zeitstempel vor dem Deaktivieren speichern",
         "description": ""
     },
     "options_log": {
@@ -207,28 +231,12 @@
         "message": "Tab deaktivieren, wenn dieser ausgeblendet ist",
         "description": ""
     },
-    "options_use_cache": {
-        "message": "Cache verwenden: Wenn aktiv, prüft die Erweiterung nur einmal, ob ein Tab angeheftet ist oder der Computer mit einer Stromquelle verbunden ist",
-        "description": ""
-    },
     "options_simultaneous_jobs": {
         "message": "Anzahl der erlaubten simultanen Deaktivierungen",
         "description": ""
     },
     "options_faqs": {
         "message": "FAQ-Seite zu Updates öffnen",
-        "description": ""
-    },
-    "options_footnote_1": {
-        "message": "Die Verwendung von regulären Ausdrücken ist durch die Verwendung des Schlüsselworts \"re:\" möglich. Um z.B. alle URLs mit dem Schlüsselwort \"google\" in die Whitelist aufzunehmen, verwenden Sie \"re:google\".",
-        "description": ""
-    },
-    "options_footnote_2": {
-        "message": "Prüft \"totalJSHeapSize\" der Seite. Wenn die Speichernutzung dieser den benutzerdefinierten Wert überschreitet (der kleinstmögliche Wert ist 10 MB), wird der Tab deaktiviert. Beachten Sie, dass diese Option nur verfügbar ist, wenn Ihr Browser \"window.performance.memory\" unterstützt",
-        "description": ""
-    },
-    "options_footnote_4": {
-        "message": "Um einen eigenen Zeitintervall für eine Regel zu benutzen, hänge @{zahl}{einheit} ans Ende (bspw.: google.com@3d wird google.com URLs nach 3 Tagen löschen). Gültige Einheiten sind (h)-Stunde, (d)-Tage, (w)ochen, und (mo)nate",
         "description": ""
     },
     "options_reset": {
@@ -247,12 +255,40 @@
         "message": "Einstellungen speichern",
         "description": ""
     },
+    "options_save_msg": {
+        "message": "Optionen gespeichert",
+        "description": ""
+    },
     "options_support": {
         "message": "Entwicklung unterstützen",
         "description": ""
     },
     "options_favicon_delay": {
         "message": "Verzögerung für das Anzeigen des verworfenen Favicons (in Millisekunden)",
+        "description": ""
+    },
+    "options_read_more": {
+        "message": "(Mehr dazu hier)",
+        "description": ""
+    },
+    "options_save_notice": {
+        "message": "Bitte klicken Sie unbedingt auf die Schaltfläche \"Optionen speichern\" am Ende dieser Seite, wenn Sie Ihre Änderungen abgeschlossen haben.",
+        "description": ""
+    },
+    "options_rate_desc": {
+        "message": "Wenn Sie die Erweiterung bewerten möchten, klicken Sie auf",
+        "description": ""
+    },
+    "options_rate_btn": {
+        "message": "Bewerten",
+        "description": ""
+    },
+    "options_managed_1": {
+        "message": "Diese Erweiterung kann verwalteten Speicher verwenden, sodass Domänenadministratoren Einstellungen vorab konfigurieren können.",
+        "description": ""
+    },
+    "options_managed_2": {
+        "message": "Lesen Sie hier mehr.",
         "description": ""
     },
     "popup_discard_tab": {
@@ -287,12 +323,24 @@
         "message": "Linker Tab",
         "description": ""
     },
+    "popup_move_previous_title": {
+        "message": "Zum vorherigen aktiven Tab wechseln",
+        "description": ""
+    },
     "popup_close": {
         "message": "Tab schließen",
         "description": ""
     },
+    "popup_close_title": {
+        "message": "Aktuellen Tab schließen und zum vorherigen aktiven Tab wechseln",
+        "description": ""
+    },
     "popup_move_next": {
         "message": "Rechter Tab",
+        "description": ""
+    },
+    "popup_move_next_title": {
+        "message": "Zum nächsten aktiven Tab wechseln",
         "description": ""
     },
     "popup_whitelist_desc": {
@@ -327,12 +375,40 @@
         "message": "Halten Sie die Umschalttaste gedrückt, um Ausnahmen zu ignorieren",
         "description": ""
     },
+    "popup_tmp_disable": {
+        "message": "Automatische Deaktivierung global deaktivieren für",
+        "description": ""
+    },
+    "popup_tmp_0": {
+        "message": "Aus",
+        "description": ""
+    },
+    "popup_tmp_1": {
+        "message": "1 Stunde",
+        "description": ""
+    },
+    "popup_tmp_6": {
+        "message": "6 Stunden",
+        "description": ""
+    },
+    "popup_tmp_12": {
+        "message": "12 Stunden",
+        "description": ""
+    },
+    "popup_tmp_24": {
+        "message": "1 Tag",
+        "description": ""
+    },
     "bg_no_active_tab": {
         "message": "Es ist kein aktiver Tab vorhanden",
         "description": ""
     },
     "bg_msg_1": {
         "message": "Automatische Deaktivierung ist für diesen Tab inaktiv",
+        "description": ""
+    },
+    "bg_msg_2": {
+        "message": "Automatische Deaktivierung ist vorübergehend deaktiviert",
         "description": ""
     },
     "menu_discard_tab": {
@@ -367,6 +443,10 @@
         "message": "Tabs in anderen Fenstern deaktivieren",
         "description": ""
     },
+    "menu_extra": {
+        "message": "Tabs behalten",
+        "description": ""
+    },
     "menu_whitelist_domain": {
         "message": "Tabs für diese Seite niemals deaktivieren",
         "description": ""
@@ -392,7 +472,7 @@
         "description": ""
     },
     "menu_msg5": {
-        "message": "is removed from the permanent whitelist",
+        "message": "wird aus der permanenten Whitelist entfernt",
         "description": ""
     },
     "menu_msg4": {
@@ -400,7 +480,7 @@
         "description": ""
     },
     "menu_msg6": {
-        "message": "is removed from the session whitelist",
+        "message": "wird aus der Sitzungs-Whitelist entfernt",
         "description": ""
     },
     "menu_msg2": {
@@ -421,6 +501,14 @@
     },
     "cmd_discard_tabs": {
         "message": "Alle anderen Tabs deaktivieren",
+        "description": ""
+    },
+    "cmd_discard_rights": {
+        "message": "Tabs zur Rechten deaktivieren",
+        "description": ""
+    },
+    "cmd_discard_lefts": {
+        "message": "Tabs zur Linken deaktivieren",
         "description": ""
     },
     "cmd_discard_window": {
@@ -449,6 +537,10 @@
     },
     "blank_msg": {
         "message": "Alle Tabs in diesem Fenster sind deaktiviert! Klicke um den Tab zu schließen",
+        "description": ""
+    },
+    "blank_header": {
+        "message": "(Deaktiviertes Fenster)",
         "description": ""
     }
 }

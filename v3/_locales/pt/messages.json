@@ -95,6 +95,10 @@
         "message": "Não descartar um separador quando fixado",
         "description": ""
     },
+    "options_split_view": {
+        "message": "Não descartar um separador se estiver numa vista dividida e qualquer um dos separadores da divisão estiver em foco",
+        "description": ""
+    },
     "options_form": {
         "message": "Não descartar um separador quando o preenchimento de um formulário não tiver sido submetido",
         "description": ""

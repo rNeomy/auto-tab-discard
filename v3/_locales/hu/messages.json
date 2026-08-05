@@ -95,6 +95,10 @@
         "message": "Ne altassa a rögzített lapokat",
         "description": ""
     },
+    "options_split_view": {
+        "message": "Ne altassa a lapot, ha a nézet szétválasztott, és a szétválasztás bármelyik lapja fókuszban van",
+        "description": ""
+    },
     "options_form": {
         "message": "Ne altassa a lapot, ha elküldetlen űrlap van kitöltve",
         "description": ""
@@ -356,7 +360,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Keep Selected Tabs for This Session",
+        "message": "Kijelölt lapok megtartása ehhez a munkamenethez",
         "description": ""
     },
     "popup_open_options": {
@@ -500,11 +504,11 @@
         "description": ""
     },
     "cmd_discard_rights": {
-        "message": "Discard Tabs to the Right",
+        "message": "Jobbra lévő lapok altatása",
         "description": ""
     },
     "cmd_discard_lefts": {
-        "message": "Discard Tabs to the Left",
+        "message": "Balra lévő lapok altatása",
         "description": ""
     },
     "cmd_discard_window": {

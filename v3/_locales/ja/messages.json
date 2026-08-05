@@ -95,6 +95,10 @@
         "message": "ピン留めされているタブは破棄しない",
         "description": ""
     },
+    "options_split_view": {
+        "message": "分割表示されたタブで、分割されたタブのいずれかがフォーカスされている場合は、タブを破棄しない",
+        "description": ""
+    },
     "options_form": {
         "message": "フォームの内容がまだ送信されていないタブは破棄しない",
         "description": ""

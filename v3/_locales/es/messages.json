@@ -95,6 +95,10 @@
         "message": "No descartar una pestaña cuando esté fijada",
         "description": ""
     },
+    "options_split_view": {
+        "message": "No descartar una pestaña si está en una vista dividida y cualquiera de las pestañas de la división está enfocada",
+        "description": ""
+    },
     "options_form": {
         "message": "No descartar una pestaña cuando los cambios del formulario aún no se hayan enviado",
         "description": ""
@@ -356,7 +360,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Keep Selected Tabs for This Session",
+        "message": "Conservar las pestañas seleccionadas para esta sesión",
         "description": ""
     },
     "popup_open_options": {
@@ -376,7 +380,7 @@
         "description": ""
     },
     "popup_tmp_0": {
-        "message": "Off",
+        "message": "Desactivado",
         "description": ""
     },
     "popup_tmp_1": {
@@ -500,11 +504,11 @@
         "description": ""
     },
     "cmd_discard_rights": {
-        "message": "Discard Tabs to the Right",
+        "message": "Descartar pestañas a la derecha",
         "description": ""
     },
     "cmd_discard_lefts": {
-        "message": "Discard Tabs to the Left",
+        "message": "Descartar pestañas a la izquierda",
         "description": ""
     },
     "cmd_discard_window": {

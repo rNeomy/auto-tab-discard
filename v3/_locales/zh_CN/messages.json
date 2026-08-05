@@ -95,6 +95,10 @@
         "message": "不休眠已固定的标签页",
         "description": ""
     },
+    "options_split_view": {
+        "message": "不休眠处于分屏视图且该分屏中任一分页处于聚焦状态的标签页",
+        "description": ""
+    },
     "options_form": {
         "message": "不休眠有尚未提交的表单更改的标签页",
         "description": ""

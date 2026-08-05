@@ -95,6 +95,10 @@
         "message": "Geen tabblad deactiveren als het is vastgemaakt",
         "description": ""
     },
+    "options_split_view": {
+        "message": "Geen tabblad deactiveren als het zich in een gesplitste weergave bevindt en een van de tabbladen van de splitsing is gefocust",
+        "description": ""
+    },
     "options_form": {
         "message": "Geen tabblad deactiveren als formuliergegevens nog niet zijn ingediend",
         "description": ""

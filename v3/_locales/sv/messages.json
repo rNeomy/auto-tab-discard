@@ -95,6 +95,10 @@
         "message": "Släng inte en flik när den har fästs",
         "description": ""
     },
+    "options_split_view": {
+        "message": "Släng inte en flik om den är i en delad vy och någon av flikarna i delningen är fokuserad",
+        "description": ""
+    },
     "options_form": {
         "message": "Släng inte en flik när formulärändringar inte ännu har skickats",
         "description": ""
@@ -244,7 +248,7 @@
         "description": ""
     },
     "options_export": {
-        "message": "Importera inställningar",
+        "message": "Exportera inställningar",
         "description": ""
     },
     "options_save": {
@@ -356,7 +360,7 @@
         "description": ""
     },
     "popup_allowed": {
-        "message": "Keep Selected Tabs for This Session",
+        "message": "Behåll valda flikar för denna session",
         "description": ""
     },
     "popup_open_options": {
@@ -500,11 +504,11 @@
         "description": ""
     },
     "cmd_discard_rights": {
-        "message": "Discard Tabs to the Right",
+        "message": "Släng flikar till höger",
         "description": ""
     },
     "cmd_discard_lefts": {
-        "message": "Discard Tabs to the Left",
+        "message": "Släng flikar till vänster",
         "description": ""
     },
     "cmd_discard_window": {
