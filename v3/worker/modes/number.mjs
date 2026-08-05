@@ -51,7 +51,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
     'audio': true, // audio = true => do not discard if audio is playing
     'paused': false, // paused = true => do not discard if there is a paused media player
     'pinned': false, // pinned = true => do not discard if tab is pinned
-    'split-view': false, // split-view = true => do not discard split tabs if either tab of the split is focused
+    'split-view': true, // split-view = true => do not discard split tabs if either tab of the split is focused
     'battery': false, // battery = true => only discard if power is disconnected
     'online': false, // online = true => do not discard if there is no INTERNET connection
     'form': true, // form = true => do not discard if form data is changed
