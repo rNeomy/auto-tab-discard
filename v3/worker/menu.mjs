@@ -323,7 +323,7 @@ import {interrupts} from './plugins/loader.mjs';
   }, tab));
   // commands
   chrome.commands.onCommand.addListener(async command => {
-    if (command.startsWith('move-') || command === 'close') {
+    if (command.startsWith('move-')) {
       navigate(command);
     }
     else {
@@ -332,9 +332,20 @@ import {interrupts} from './plugins/loader.mjs';
         currentWindow: true
       });
       if (tabs.length) {
+        const tab = tabs[0];
+        if (command === 'close') {
+          const settings = await storage({
+            'discard-protected-on-close': false
+          });
+          const grouped = Number.isInteger(tab.groupId) && tab.groupId !== -1;
+          if (settings['discard-protected-on-close'] === false || (!tab.pinned && !grouped)) {
+            navigate('close');
+            return;
+          }
+        }
         onClicked({
-          menuItemId: command
-        }, tabs[0]);
+          menuItemId: command === 'close' ? 'discard-tab' : command
+        }, tab);
       }
     }
   });

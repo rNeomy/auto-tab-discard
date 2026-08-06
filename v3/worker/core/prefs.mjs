@@ -1,6 +1,7 @@
 const prefs = {
   'favicon': false,
   'prepends': '💤',
+  'discard-protected-on-close': false,
   'number': 6,
   'period': 10 * 60, // in seconds
   'click': 'click.popup',

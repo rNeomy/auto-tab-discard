@@ -41,6 +41,9 @@
   "options_prepends": {
     "message": "Prepend a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)"
   },
+  "options_discard_protected_on_close": {
+    "message": "Discard pinned or grouped tabs instead of closing them"
+  },
   "options_startup_unpinned": {
     "message": "Discard all unpinned tabs on a browser or extension startup"
   },
