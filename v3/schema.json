@@ -73,6 +73,10 @@
       "title": "Change favicon of discarded tabs (if possible)",
       "type": "boolean"
     },
+    "discard-protected-on-close": {
+      "title": "Discard pinned or grouped tabs instead of closing them",
+      "type": "boolean"
+    },
     "go-hidden": {
       "title": "Discard a tab if it is hidden",
       "type": "boolean"

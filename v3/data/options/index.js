@@ -56,6 +56,7 @@ const restore = () => storage({
   'faqs': true,
   'favicon': false,
   'prepends': '💤',
+  'discard-protected-on-close': false,
   'go-hidden': false,
   'memory-enabled': false,
   'memory-value': 60,
@@ -87,6 +88,7 @@ const restore = () => storage({
   document.getElementById('faqs').checked = prefs.faqs;
   document.getElementById('favicon').checked = prefs.favicon;
   document.getElementById('prepends').value = prefs.prepends;
+  document.getElementById('discard-protected-on-close').checked = prefs['discard-protected-on-close'];
   document.getElementById('go-hidden').checked = prefs['go-hidden'];
   if (prefs.period === 0) {
     document.getElementById('period').value = 0;
@@ -182,6 +184,7 @@ document.getElementById('save').addEventListener('click', () => {
     'faqs': document.getElementById('faqs').checked,
     'favicon': document.getElementById('favicon').checked,
     'prepends': document.getElementById('prepends').value,
+    'discard-protected-on-close': document.getElementById('discard-protected-on-close').checked,
     'go-hidden': document.getElementById('go-hidden').checked,
     'simultaneous-jobs': Math.max(1, Number(document.getElementById('simultaneous-jobs').value)),
     'favicon-delay': Math.max(100, Number(document.getElementById('favicon-delay').value)),
