@@ -89,10 +89,10 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
-      "strict_min_version": "148.0"
-    },
-    "data_collection_permissions": {
-      "required": ["none"]
+      "strict_min_version": "148.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }

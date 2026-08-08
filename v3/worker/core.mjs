@@ -39,10 +39,6 @@ chrome.runtime.onMessage.addListener((request, sender, resposne) => {
   if (method === 'discard.on.load') { // for links after initial load
     discard(sender.tab);
   }
-  // navigation
-  else if (method.startsWith('move-') || method === 'close') {
-    navigate(method);
-  }
   else if (method === 'storage') {
     Promise.all([
       storage(request.managed || {}, 'managed'),

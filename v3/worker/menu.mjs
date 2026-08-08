@@ -317,39 +317,8 @@ import {interrupts} from './plugins/loader.mjs';
       }
     }
   };
-  chrome.contextMenus.onClicked.addListener(onClicked);
-  chrome.action.onClicked.addListener(tab => onClicked({
-    menuItemId: localStorage.getItem('click')
-  }, tab));
-  // commands
-  chrome.commands.onCommand.addListener(async command => {
-    if (command.startsWith('move-')) {
-      navigate(command);
-    }
-    else {
-      const tabs = await query({
-        active: true,
-        currentWindow: true
-      });
-      if (tabs.length) {
-        const tab = tabs[0];
-        if (command === 'close') {
-          const settings = await storage({
-            'discard-protected-on-close': false
-          });
-          const grouped = Number.isInteger(tab.groupId) && tab.groupId !== -1;
-          if (settings['discard-protected-on-close'] === false || (!tab.pinned && !grouped)) {
-            navigate('close');
-            return;
-          }
-        }
-        onClicked({
-          menuItemId: command === 'close' ? 'discard-tab' : command
-        }, tab);
-      }
-    }
-  });
-  chrome.runtime.onMessage.addListener((request, sender) => {
+
+  const onMessage = (request, sender) => {
     if (request.method === 'popup') {
       query({
         active: true,
@@ -380,5 +349,55 @@ import {interrupts} from './plugins/loader.mjs';
         'icon-update': true
       }, 'menu/3');
     }
+    // navigation
+    else if (request.method.startsWith('move-') || request.method === 'close') {
+      if (request.method.startsWith('move-')) {
+        navigate(request.method);
+      }
+      else { // close
+        storage({
+          'discard-protected-on-close': false
+        }).then(prefs => {
+          if (prefs['discard-protected-on-close']) {
+            // Is this a pinned tab or part of a group?
+            query({
+              active: true,
+              currentWindow: true
+            }).then(tabs => {
+              for (const tab of tabs) {
+                if (tab.pinned || (Number.isInteger(tab.groupId) && tab.groupId !== -1)) {
+                  onClicked({
+                    menuItemId: 'discard-tab'
+                  }, tab);
+                }
+                else {
+                  navigate(request.method);
+                }
+              }
+            });
+          }
+          else {
+            navigate(request.method);
+          }
+        });
+      }
+    }
+  };
+
+  chrome.contextMenus.onClicked.addListener(onClicked);
+  chrome.action.onClicked.addListener(tab => onClicked({
+    menuItemId: localStorage.getItem('click')
+  }, tab));
+  // commands
+  chrome.commands.onCommand.addListener(command => {
+    if (command.startsWith('move-') || command === 'close') {
+      onMessage({
+        method: command
+      });
+    }
+    else {
+      navigate(command);
+    }
   });
+  chrome.runtime.onMessage.addListener((request, sender) => onMessage(request, sender));
 }
