@@ -260,16 +260,22 @@ import {interrupts} from './plugins/loader.mjs';
         })));
       }
     }
-    else if (menuItemId === 'auto-discardable') {
-      const autoDiscardable = info.value || false; // when called from page context menu, there is no value
-      chrome.tabs.update(tab.id, {
+    else if (menuItemId === 'auto-discardable' || menuItemId === 'toggle-allowed') {
+      // when called from page context menu, there is no value
+      let autoDiscardable;
+      if (menuItemId === 'auto-discardable') {
+        autoDiscardable = info.value || false;
+      }
+      else {
+        autoDiscardable = tab.autoDiscardable === false;
+      }
+      await chrome.tabs.update({
         autoDiscardable
       });
-    }
-    else if (menuItemId === 'toggle-allowed') {
-      chrome.tabs.update({
-        autoDiscardable: tab.autoDiscardable === false
-      });
+      number.check([tab], {
+        'exclude-active': false,
+        'icon-update': true
+      }, 'menu/3');
     }
     // discard-tabs, discard-window, discard-other-windows, discard-rights, discard-lefts
     // release-tabs, release-window, release-other-windows, release-rights, release-lefts

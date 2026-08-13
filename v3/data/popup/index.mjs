@@ -17,9 +17,9 @@ allowed.addEventListener('change', () => chrome.tabs.query({
   highlighted: true
 }, async tabs => {
   for (const tab of tabs) {
-    await new Promise(resolve => chrome.tabs.update(tab.id, {
+    await chrome.tabs.update(tab.id, {
       autoDiscardable: allowed.checked === false
-    }, resolve));
+    });
   }
   chrome.runtime.sendMessage({
     method: 'run-check-on-action',
