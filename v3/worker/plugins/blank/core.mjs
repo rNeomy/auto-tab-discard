@@ -22,20 +22,18 @@ function enable() {
         active: true,
         currentWindow: false,
         url: '*://*/*' // only if the active tab is not an internal page
-      }).then(tbs => {
-        return Promise.all(tbs.map(tb => new Promise(resolve => {
-          const args = new URLSearchParams();
-          args.set('title', tb.title);
-          args.set('favicon', tb.favIconUrl);
+      }).then(tbs => Promise.all(tbs.map(tb =>() => {
+        const args = new URLSearchParams();
+        args.set('title', tb.title);
+        args.set('favicon', tb.favIconUrl);
 
-          chrome.tabs.create({
-            openerTabId: tb.id,
-            windowId: tb.windowId,
-            url: '/worker/plugins/blank/blank.html?' + args.toString(),
-            index: tb.index
-          }, resolve);
-        })));
-      });
+        return chrome.tabs.create({
+          openerTabId: tb.id,
+          windowId: tb.windowId,
+          url: '/worker/plugins/blank/blank.html?' + args.toString(),
+          index: tb.index
+        });
+      })));
     }
     else if (menuItemId === 'discard-tab' || menuItemId === 'discard-tree') {
       return query({
@@ -49,13 +47,13 @@ function enable() {
           args.set('title', tab.title);
           args.set('favicon', tab.favIconUrl);
 
-          return new Promise(resolve => chrome.tabs.create({
+          return chrome.tabs.create({
             openerTabId: tab.id,
             windowId: tab.windowId,
             url: '/worker/plugins/blank/blank.html?' + args.toString(),
             index: tab.index,
             active: false // so that this tab gets focused
-          }, resolve));
+          });
         }
       });
     }

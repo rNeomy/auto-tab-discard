@@ -181,7 +181,7 @@ import {interrupts} from './plugins/loader.mjs';
       // discard-tree for Tree Style Tab
       if (menuItemId === 'discard-tree' && info.viewType === 'sidebar') {
         htabs.push(tab);
-        await new Promise(resolve => chrome.runtime.sendMessage('treestyletab@piro.sakura.ne.jp', {
+        await chrome.runtime.sendMessage('treestyletab@piro.sakura.ne.jp', {
           type: 'get-tree',
           tab: tab.id
         }, tab => {
@@ -190,8 +190,7 @@ import {interrupts} from './plugins/loader.mjs';
             tab.children.filter(t => t.children).forEach(add);
           };
           add(tab);
-          resolve();
-        }));
+        });
       }
       // discard-tree for native
       else if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called

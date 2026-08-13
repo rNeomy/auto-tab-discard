@@ -9,7 +9,7 @@ const notify = e => chrome.notifications.create({
   message: e.message || e
 });
 
-const query = options => new Promise(resolve => chrome.tabs.query(options, resolve));
+const query = options => chrome.tabs.query(options);
 
 const match = (list, hostname, href) => {
   if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
