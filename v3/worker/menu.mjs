@@ -394,14 +394,27 @@ import {interrupts} from './plugins/loader.mjs';
     menuItemId: localStorage.getItem('click')
   }, tab));
   // commands
-  chrome.commands.onCommand.addListener(command => {
-    if (command.startsWith('move-') || command === 'close') {
-      onMessage({
-        method: command
-      });
-    }
-    else {
-      navigate(command);
+  chrome.commands.onCommand.addListener(async command => {
+    const tabs = await query({
+      active: true,
+      currentWindow: true
+    });
+    if (tabs.length) {
+      const tab = tabs.at(0);
+      if (command.startsWith('move-') || command === 'close') {
+        onMessage({
+          method: command
+        }, {
+          tab
+        });
+      }
+      else {
+        if (tabs.length) {
+          onClicked({
+            menuItemId: command
+          }, tab);
+        }
+      }
     }
   });
   chrome.runtime.onMessage.addListener((request, sender) => onMessage(request, sender));
