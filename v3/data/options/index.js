@@ -158,7 +158,6 @@ document.getElementById('save').addEventListener('click', () => {
     period = Math.max(period, 60);
   }
   const click = document.querySelector('[name=left-click]:checked').id;
-  localStorage.setItem('click', click.replace('click.', ''));
   chrome.storage.local.set({
     'idle': document.getElementById('idle').checked,
     'idle-timeout': Math.max(1, Number(document.getElementById('idle-timeout').value)) * 60,
@@ -260,7 +259,6 @@ document.getElementById('reset').addEventListener('click', e => {
     window.setTimeout(() => info.textContent = '', 750);
   }
   else {
-    localStorage.clear();
     chrome.storage.local.clear(() => {
       chrome.runtime.reload();
       window.close();

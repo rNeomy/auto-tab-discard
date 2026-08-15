@@ -390,9 +390,14 @@ import {interrupts} from './plugins/loader.mjs';
   };
 
   chrome.contextMenus.onClicked.addListener(onClicked);
-  chrome.action.onClicked.addListener(tab => onClicked({
-    menuItemId: localStorage.getItem('click')
-  }, tab));
+  chrome.action.onClicked.addListener(async tab => {
+    const prefs = await storage({
+      'click': 'click.popup'
+    });
+    onClicked({
+      menuItemId: prefs.click.replace('click.', '')
+    }, tab);
+  });
   // commands
   chrome.commands.onCommand.addListener(async command => {
     const tabs = await query({
