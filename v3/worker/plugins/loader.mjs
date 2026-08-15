@@ -44,31 +44,76 @@ const ready = storage({
   startup.enable();
 
   if (prefs['./plugins/focus/core.js']) {
-    focus.enable();
+    try {
+      focus.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/trash/core.js']) {
-    trash.enable();
+    try {
+      trash.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/force/core.js']) {
-    force.enable();
+    try {
+      force.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/next/core.js']) {
-    next.enable();
+    try {
+      next.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/previous/core.js']) {
-    previous.enable();
+    try {
+      previous.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/blank/core.js']) {
-    blank.enable();
+    try {
+      blank.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/new/core.js']) {
-    create.enable();
+    try {
+      create.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/unloaded/core.js']) {
-    unloaded.enable();
+    try {
+      unloaded.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
   if (prefs['./plugins/youtube/core.js']) {
-    youtube.enable();
+    try {
+      youtube.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
   }
 });
 
