@@ -22,7 +22,7 @@ function enable() {
         active: true,
         currentWindow: false,
         url: '*://*/*' // only if the active tab is not an internal page
-      }).then(tbs => Promise.all(tbs.map(tb =>() => {
+      }).then(tbs => Promise.all(tbs.map(tb => {
         const args = new URLSearchParams();
         args.set('title', tb.title);
         args.set('favicon', tb.favIconUrl);
