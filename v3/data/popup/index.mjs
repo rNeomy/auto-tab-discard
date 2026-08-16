@@ -12,20 +12,11 @@ let tab;
 
 // works on all highlighted tabs in the current window
 const allowed = document.getElementById('allowed');
-allowed.addEventListener('change', () => chrome.tabs.query({
-  currentWindow: true,
-  highlighted: true
-}, async tabs => {
-  for (const tab of tabs) {
-    await chrome.tabs.update(tab.id, {
-      autoDiscardable: allowed.checked === false
-    });
-  }
+allowed.addEventListener('change', () => {
   chrome.runtime.sendMessage({
-    method: 'run-check-on-action',
-    ids: tabs.map(t => t.id)
+    method: allowed.checked ? 'auto-discardable' : 'allow-discardable'
   });
-}));
+});
 
 const whitelist = {
   always: document.querySelector('[data-cmd=whitelist-domain]'),

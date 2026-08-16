@@ -2,7 +2,7 @@ import {number} from './modes/number.mjs';
 import {storage, prefs} from './core/prefs.mjs';
 import {navigate} from './core/navigate.mjs';
 import {discard, inprogress} from './core/discard.mjs';
-import {query, notify, match} from './core/utils.mjs';
+import {query, notify, match, icon} from './core/utils.mjs';
 import {starters} from './core/startup.mjs';
 import {interrupts} from './plugins/loader.mjs';
 
@@ -76,6 +76,13 @@ import {interrupts} from './plugins/loader.mjs';
     {
       id: 'auto-discardable',
       title: chrome.i18n.getMessage('popup_allowed'),
+      contexts,
+      documentUrlPatterns: ['*://*/*'],
+      parentId: 'extra'
+    },
+    {
+      id: 'allow-discardable',
+      title: chrome.i18n.getMessage('popup_allowed_reset'),
       contexts,
       documentUrlPatterns: ['*://*/*'],
       parentId: 'extra'
@@ -259,22 +266,42 @@ import {interrupts} from './plugins/loader.mjs';
         })));
       }
     }
-    else if (menuItemId === 'auto-discardable' || menuItemId === 'toggle-allowed') {
+    else if (
+      menuItemId === 'auto-discardable' || menuItemId === 'allow-discardable' || menuItemId === 'toggle-allowed'
+    ) {
+      // must work on all selected tabs
+      const tabs = await query({
+        currentWindow: true,
+        highlighted: true
+      });
+
       // when called from page context menu, there is no value
       let autoDiscardable;
       if (menuItemId === 'auto-discardable') {
-        autoDiscardable = info.value || false;
+        autoDiscardable = false;
+      }
+      else if (menuItemId === 'allow-discardable') {
+        autoDiscardable = true;
       }
       else {
         autoDiscardable = tab.autoDiscardable === false;
       }
-      await chrome.tabs.update({
-        autoDiscardable
-      });
-      number.check([tab], {
-        'exclude-active': false,
-        'icon-update': true
-      }, 'menu/3');
+      for (const tab of tabs) {
+        await chrome.tabs.update(tab.id, {
+          autoDiscardable
+        });
+      }
+      if (autoDiscardable === false) {
+        number.check(tabs, {
+          'exclude-active': false,
+          'icon-update': true
+        }, 'menu/3');
+      }
+      else {
+        for (const tab of tabs) {
+          icon.reset(tab);
+        }
+      }
     }
     // discard-tabs, discard-window, discard-other-windows, discard-rights, discard-lefts
     // release-tabs, release-window, release-other-windows, release-rights, release-lefts
@@ -347,12 +374,10 @@ import {interrupts} from './plugins/loader.mjs';
     else if (request.method === 'build-context') {
       onStartup();
     }
-    else if (request.method === 'run-check-on-action') {
-      const tabs = request.ids.map(id => ({id}));
-      number.check(tabs, {
-        'exclude-active': false,
-        'icon-update': true
-      }, 'menu/3');
+    else if (request.method === 'allow-discardable' || request.method === 'auto-discardable') {
+      onClicked({
+        menuItemId: request.method
+      }, {}); // there is no sender tab from popup but we dont need it for these actions
     }
     // navigation
     else if (request.method.startsWith('move-') || request.method === 'close') {

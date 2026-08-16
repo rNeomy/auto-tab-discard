@@ -126,7 +126,7 @@ const restore = () => storage({
   if (prefs.mode === 'url-based') {
     document.getElementById('url-based').checked = true;
   }
-  document.getElementById(prefs.click).checked = true;
+  document.getElementById('click').value = prefs.click;
   document.getElementById('./plugins/dummy/core.js').checked = prefs['./plugins/dummy/core.js'];
   document.getElementById('./plugins/blank/core.js').checked = prefs['./plugins/blank/core.js'];
   document.getElementById('./plugins/focus/core.js').checked = prefs['./plugins/focus/core.js'];
@@ -157,7 +157,6 @@ document.getElementById('save').addEventListener('click', () => {
   if (period !== 0) {
     period = Math.max(period, 60);
   }
-  const click = document.querySelector('[name=left-click]:checked').id;
   chrome.storage.local.set({
     'idle': document.getElementById('idle').checked,
     'idle-timeout': Math.max(1, Number(document.getElementById('idle-timeout').value)) * 60,
@@ -167,7 +166,7 @@ document.getElementById('save').addEventListener('click', () => {
     'trash.period': trash,
     'trash.unloaded': document.getElementById('trash.unloaded').checked,
     'mode': document.getElementById('url-based').checked ? 'url-based' : 'time-based',
-    click,
+    'click': document.getElementById('click').value,
     'audio': document.getElementById('audio').checked,
     'paused': document.getElementById('paused').checked,
     'pinned': document.getElementById('pinned').checked,

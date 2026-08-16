@@ -1,5 +1,5 @@
 import {storage} from '../core/prefs.mjs';
-import {log, query, match} from '../core/utils.mjs';
+import {log, query, match, icon} from '../core/utils.mjs';
 import {discard} from '../core/discard.mjs';
 import {starters} from '../core/startup.mjs';
 import {interrupts} from '../plugins/loader.mjs';
@@ -108,33 +108,6 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
   }
   let tbs = await query(options);
 
-  const icon = (tb, title) => {
-    chrome.action.setTitle({
-      tabId: tb.id,
-      title
-    }, () => chrome.runtime.lastError);
-    chrome.action.setIcon({
-      tabId: tb.id,
-      path: {
-        '16': '/data/icons/disabled/16.png',
-        '32': '/data/icons/disabled/32.png'
-      }
-    });
-  };
-  icon.reset = tb => {
-    chrome.action.setTitle({
-      tabId: tb.id,
-      title: chrome.runtime.getManifest().name
-    }, () => chrome.runtime.lastError);
-    chrome.action.setIcon({
-      tabId: tb.id,
-      path: {
-        '16': '/data/icons/16.png',
-        '32': '/data/icons/32.png'
-      }
-    });
-  };
-
   // remove tabs based on custom filters
   for (const {prepare, check} of Object.values(pluginFilters)) {
     await prepare();
@@ -155,14 +128,14 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
         const m = list => match(list, hostname, tb.url);
         // if we are on url-based mode, remove tabs that are not on the list (before fetching meta)
         if (prefs.mode === 'url-based' && m(prefs['whitelist-url']) !== true) {
-          icon(tb, 'tab is in the whitelist');
+          icon.disabled(tb, 'tab is in the whitelist');
           log('number.check', 'tab is ignored', 'url-based whitelist', tb.url);
           exceptionCount += 1;
           return false;
         }
         // is the tab in whitelist, remove it (before fetching meta)
         if (m(prefs['whitelist']) || m(prefs['whitelist.session'])) {
-          icon(tb, 'tab is in either the session whitelist or permanent whitelist');
+          icon.disabled(tb, 'tab is in either the session whitelist or permanent whitelist');
           log('number.check', 'tab is ignored', 'whitelist', tb.url);
           exceptionCount += 1;
           return false;
@@ -181,7 +154,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
     if (ids.size) {
       tbs = tbs.filter(tb => {
         if (ids.has(tb.splitViewId)) {
-          icon(tb, 'tab is part of a focused split view');
+          icon.disabled(tb, 'tab is part of a focused split view');
           log('number.check', 'tab is ignored', 'split view is focused', tb.url);
           exceptionCount += 1;
           return false;
@@ -195,7 +168,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
     tbs = tbs.filter(tb => ids.includes(tb.id));
   }
 
-  // do not discard if number of tabs is smaller than required
+  // do not discard if number of tabs is smaller than required (if icon-update is false)
   if (prefs['icon-update'] === false) {
     if (tbs.length + exceptionCount <= prefs.number) {
       return log(
@@ -223,7 +196,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       if (ms.length === 0) {
         if (ops['ignore.meta.data'] === true && tb.url.startsWith('http') !== true) {
           log('discarding aborted', 'metadata fetch error', tb.url);
-          icon(tb, 'metadata fetch error');
+          icon.disabled(tb, 'metadata fetch error');
           exceptionCount += 1;
           continue;
         }
@@ -249,34 +222,34 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       // is tab playing audio
       if (prefs.audio && meta.audible) {
         log('discarding aborted', 'audio is playing', tb);
-        icon(tb, 'tab plays an audio');
+        icon.disabled(tb, 'tab plays an audio');
         exceptionCount += 1;
         continue;
       }
       if (prefs.paused && meta.paused) {
         log('discarding aborted', 'player is paused', tb);
-        icon(tb, 'tab has a paused player');
+        icon.disabled(tb, 'tab has a paused player');
         exceptionCount += 1;
         continue;
       }
       // is there an unsaved form
       if (prefs.form && meta.forms) {
         log('discarding aborted', 'active form', tb);
-        icon(tb, 'there is an active form on this tab');
+        icon.disabled(tb, 'there is an active form on this tab');
         exceptionCount += 1;
         continue;
       }
       // is notification allowed
       if (prefs['notification.permission'] && meta.permission) {
         log('discarding aborted', 'tab has notification permission');
-        icon(tb, 'tab has notification permission');
+        icon.disabled(tb, 'tab has notification permission');
         exceptionCount += 1;
         continue;
       }
       if (tb.autoDiscardable === false) {
         log('discarding aborted', 'tab is not discardable', tb);
         exceptionCount += 1;
-        icon(tb, 'tab is not discardable');
+        icon.disabled(tb, 'tab is not discardable');
         continue;
       }
       // check tab's age
@@ -305,7 +278,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       console.warn(e);
     }
   }
-  // do not discard if number of tabs is smaller than required
+  // do not discard if number of tabs is smaller than required (if icon-update is true)
   if (prefs['icon-update'] === true) {
     if (tbs.length + exceptionCount <= prefs.number) {
       return log(

@@ -129,7 +129,7 @@
     "message": "Release Tabs in Other Windows"
   },
   "options_click_toggle_allowed": {
-    "message": "Toggle 'Keep This Tab for This Session' option"
+    "message": "Toggle 'Keep Selected Tabs for This Session' option"
   },
   "options_misc": {
     "message": "Misc"
@@ -274,6 +274,9 @@
   },
   "popup_allowed": {
     "message": "Keep Selected Tabs for This Session"
+  },
+  "popup_allowed_reset": {
+    "message": "Allow Selected Tabs to Be Discarded"
   },
   "popup_open_options": {
     "message": "Options"

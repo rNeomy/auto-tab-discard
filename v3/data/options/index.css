@@ -45,7 +45,7 @@ input:focus {
 button,
 input[type=submit],
 input[type=button] {
-  height: 28px;
+  padding: 5px;
   color: #444;
   background-image: linear-gradient(rgb(237, 237, 237), rgb(237, 237, 237) 38%, rgb(222, 222, 222));
   box-shadow: rgba(0, 0, 0, 0.08) 0 1px 0, rgba(255, 255, 255, 0.75) 0 1px 2px inset;
@@ -62,6 +62,10 @@ input[type=number] {
 input[type=number] {
   width: 60px;
   box-sizing: border-box;
+}
+select {
+  padding: 5px;
+  field-sizing: content;
 }
 th {
   height: 32px;

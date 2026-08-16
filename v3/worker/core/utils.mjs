@@ -25,5 +25,34 @@ const match = (list, hostname, href) => {
   }
 };
 
-export {query, notify, log, match};
+const icon = {
+  disabled(tab, title) {
+    chrome.action.setTitle({
+      tabId: tab.id,
+      title
+    }, () => chrome.runtime.lastError);
+    chrome.action.setIcon({
+      tabId: tab.id,
+      path: {
+        '16': '/data/icons/disabled/16.png',
+        '32': '/data/icons/disabled/32.png'
+      }
+    });
+  },
+  reset(tab) {
+    chrome.action.setTitle({
+      tabId: tab.id,
+      title: chrome.runtime.getManifest().name
+    }, () => chrome.runtime.lastError);
+    chrome.action.setIcon({
+      tabId: tab.id,
+      path: {
+        '16': '/data/icons/16.png',
+        '32': '/data/icons/32.png'
+      }
+    });
+  }
+};
+
+export {query, notify, log, match, icon};
 
