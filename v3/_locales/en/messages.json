@@ -104,6 +104,9 @@
   "options_left_click": {
     "message": "Toolbar left-click action"
   },
+  "options_click": {
+    "message": "When left-clicking the action button"
+  },
   "options_click_popup": {
     "message": "Open popup"
   },
