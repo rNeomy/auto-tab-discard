@@ -282,14 +282,8 @@ document.querySelector('#rate input').onclick = () => {
 // export
 document.getElementById('export').addEventListener('click', () => {
   chrome.storage.local.get(null, prefs => {
-    const obj = Object.keys(localStorage).reduce((p, c) => {
-      p[c] = localStorage.getItem(c);
-      return p;
-    }, {});
-
     const text = JSON.stringify({
-      'chrome.storage.local': prefs,
-      'localStorage': obj
+      'chrome.storage.local': prefs
     }, null, '  ');
     const blob = new Blob([text], {type: 'application/json'});
     const objectURL = URL.createObjectURL(blob);
@@ -322,11 +316,6 @@ document.getElementById('import').addEventListener('click', () => {
       reader.onloadend = event => {
         fileInput.remove();
         const json = JSON.parse(event.target.result);
-        for (const key in json.localStorage) {
-          if (json.localStorage.hasOwnProperty(key)) {
-            localStorage.setItem(key, json.localStorage[key]);
-          }
-        }
         chrome.storage.onChanged.removeListener(onChanged);
         chrome.storage.local.clear(() => {
           chrome.storage.local.set(json['chrome.storage.local'], () => {

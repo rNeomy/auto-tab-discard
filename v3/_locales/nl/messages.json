@@ -55,6 +55,10 @@
         "message": "De gedeactiveerde tabbladen laten voorafgaan door een symbool (bv. 💤 of ⏻︎) (wanneer mogelijk)",
         "description": ""
     },
+    "options_discard_protected_on_close": {
+        "message": "Vastgemaakte of gegroepeerde tabbladen deactiveren in plaats van deze te sluiten (vanuit navigatie-interface of gebruikersopdracht)",
+        "description": ""
+    },
     "options_startup_unpinned": {
         "message": "Alle niet-vastgemaakte tabbladen deactiveren bij het starten van de browser of extensie",
         "description": ""
@@ -96,7 +100,7 @@
         "description": ""
     },
     "options_split_view": {
-        "message": "Geen tabblad deactiveren als het zich in een gesplitste weergave bevindt en een van de tabbladen van de splitsing is gefocust",
+        "message": "Geen tabblad deactiveren als het zich in een gesplitste weergave bevindt en een van de tabbladen ervan is geselecteerd",
         "description": ""
     },
     "options_form": {
