@@ -139,6 +139,10 @@
         "message": "Linkermuisklikactie voor werkbalk",
         "description": ""
     },
+    "options_click": {
+        "message": "Bij klikken met links op de actieknop",
+        "description": ""
+    },
     "options_click_popup": {
         "message": "Pop-up openen",
         "description": ""
@@ -172,7 +176,7 @@
         "description": ""
     },
     "options_click_toggle_allowed": {
-        "message": "Optie ‘Dit tabblad voor deze sessie behouden’ in-/uitschakelen",
+        "message": "Optie ‘Geselecteerde tabbladen voor deze sessie behouden’ in-/uitschakelen",
         "description": ""
     },
     "options_misc": {
@@ -365,6 +369,10 @@
     },
     "popup_allowed": {
         "message": "Geselecteerde tabbladen voor deze sessie behouden",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Geselecteerde tabbladen mogen worden gedeactiveerd",
         "description": ""
     },
     "popup_open_options": {
