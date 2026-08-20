@@ -156,6 +156,48 @@ number.check = async (filterTabsFrom, ops = {}) => {
     tbs = tbs.filter(tb => filterTabsFrom.some(t => t.id === tb.id));
   }
 
+  const metas = (
+    await Promise.all(
+      tbs.map(
+        (tb) =>
+          new Promise((resolve) =>
+            chrome.tabs.executeScript(
+              tb.id,
+              {
+                file: '/data/inject/meta.js',
+                runAt: 'document_start',
+                matchAboutBlank: true,
+                allFrames: true,
+              },
+              (r) => {
+                chrome.runtime.lastError;
+                resolve(r);
+              },
+            ),
+          ),
+      ),
+    )
+  ).map((r) => (r ? Object.assign({}, ...r) : null));
+
+  // Store {tab, meta} pair
+  const tabMetas = tbs
+    .map((tb, i) => {
+      const meta = metas[i];
+      // remove protected tabs (e.g. addons.mozilla.org)
+      if (!meta) {
+        log('discarding aborted', 'metadata fetch error');
+        icon(tb, 'metadata fetch error');
+        return null;
+      }
+      return {
+        tab: tb,
+        meta,
+      };
+    })
+    .filter((o) => o !== null)
+    // remove tabs that are not ready
+    .filter(({ meta }) => meta.ready === true);
+
   // do not discard if number of tabs is smaller than required
   if (tbs.length <= prefs.number) {
     return log('number.check', 'number of active tabs', tbs.length, 'is smaller than', prefs.number);
@@ -163,31 +205,20 @@ number.check = async (filterTabsFrom, ops = {}) => {
   const now = Date.now();
   const map = new Map();
   const arr = [];
-  for (const tb of tbs) {
-    const ms = (await new Promise(resolve => chrome.tabs.executeScript(tb.id, {
-      file: '/data/inject/meta.js',
-      runAt: 'document_start',
-      allFrames: true,
-      matchAboutBlank: true
-    }, r => {
-      chrome.runtime.lastError;
-      resolve(r);
-    })));
-    // remove protected tabs (e.g. addons.mozilla.org)
-    if (!ms) {
-      log('discarding aborted', 'metadata fetch error');
-      icon(tb, 'metadata fetch error');
-      continue;
-    }
-    const meta = Object.assign({}, ...ms);
     log('number check', 'got meta data of tab');
-    meta.forms = ms.some(o => o.forms);
-    meta.audible = ms.some(o => o.audible);
+  for (const { tab, meta } of tabMetas) {
 
     // is the tab using too much memory, discard instantly
     if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
       log('forced discarding', 'memory usage');
       discard(tb);
+    if (
+      prefs["memory-enabled"] &&
+      meta.memory &&
+      meta.memory > prefs["memory-value"] * 1024 * 1024
+    ) {
+      log("forced discarding", "memory usage");
+      discard(tab);
       continue;
     }
     // check tab's age
@@ -202,20 +233,22 @@ number.check = async (filterTabsFrom, ops = {}) => {
     }
     // is tab playing audio
     if (prefs.audio && meta.audible) {
-      log('discarding aborted', 'audio is playing');
-      icon(tb, 'tab plays an audio');
+      log("discarding aborted", "audio is playing");
+      icon(tab, "tab plays an audio");
       continue;
     }
     // is there an unsaved form
     if (prefs.form && meta.forms) {
-      log('discarding aborted', 'active form');
-      icon(tb, 'there is an active form on this tab');
+      log("discarding aborted", "active form");
+      icon(tab, "there is an active form on this tab");
       continue;
     }
     // is notification allowed
     if (prefs['notification.permission'] && meta.permission) {
       log('discarding aborted', 'tab has notification permission');
       icon(tb, 'tab has notification permission');
+      log("discarding aborted", "tab has notification permission");
+      icon(tab, "tab has notification permission");
       continue;
     // tab can be discarded
     }
