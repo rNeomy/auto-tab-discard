@@ -19,7 +19,24 @@ const prefs = {
   'startup-unpinned': false,
   'startup-pinned': false,
   'startup-release-pinned': false,
-  'startup-discarding-period': 10 // in seconds
+  'startup-discarding-period': 10, // in seconds
+  /* menu visibility */
+  'menu.discard-tab': true,
+  'menu.discard-tree': true,
+  'menu.discard-window': true,
+  'menu.discard-rights': true,
+  'menu.discard-lefts': true,
+  'menu.discard-other-windows': true,
+  'menu.discard-tabs': true,
+  'menu.keep-tabs': true,
+  /* popup visibility */
+  'popup.discard-tab': true,
+  'popup.discard-tree': true,
+  'popup.discard-window': true,
+  'popup.discard-rights': true,
+  'popup.discard-lefts': true,
+  'popup.discard-other-windows': true,
+  'popup.discard-tabs': true
 };
 
 const storage = (prefs, type = 'managed') => new Promise(resolve => {

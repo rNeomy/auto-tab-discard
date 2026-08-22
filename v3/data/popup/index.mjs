@@ -8,6 +8,26 @@ import {match} from '../../worker/core/utils.mjs';
   }
 });
 
+// apply visibility settings
+chrome.storage.local.get([
+  'popup.discard-tab',
+  'popup.discard-tree',
+  'popup.discard-window',
+  'popup.discard-rights',
+  'popup.discard-lefts',
+  'popup.discard-other-windows',
+  'popup.discard-tabs'
+], prefs => {
+  console.log(prefs);
+
+  document.querySelectorAll('.popup-item').forEach(item => {
+    const pref = item.dataset.pref;
+    if (pref && prefs[pref] === false) {
+      item.classList.add('hidden');
+    }
+  });
+});
+
 let tab;
 
 // works on all highlighted tabs in the current window

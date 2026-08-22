@@ -78,7 +78,24 @@ const restore = () => storage({
   './plugins/previous/core.js': false,
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
-  './plugins/youtube/core.js': false
+  './plugins/youtube/core.js': false,
+  /* menu visibility */
+  'menu.discard-tab': true,
+  'menu.discard-tree': true,
+  'menu.discard-window': true,
+  'menu.discard-rights': true,
+  'menu.discard-lefts': true,
+  'menu.discard-other-windows': true,
+  'menu.discard-tabs': true,
+  'menu.keep-tabs': true,
+  /* popup visibility */
+  'popup.discard-tab': true,
+  'popup.discard-tree': true,
+  'popup.discard-window': true,
+  'popup.discard-rights': true,
+  'popup.discard-lefts': true,
+  'popup.discard-other-windows': true,
+  'popup.discard-tabs': true
 }).then(prefs => {
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
@@ -137,6 +154,23 @@ const restore = () => storage({
   document.getElementById('./plugins/new/core.js').checked = prefs['./plugins/new/core.js'];
   document.getElementById('./plugins/unloaded/core.js').checked = prefs['./plugins/unloaded/core.js'];
   document.getElementById('./plugins/youtube/core.js').checked = prefs['./plugins/youtube/core.js'];
+  /* menu visibility */
+  document.getElementById('menu.discard-tab').checked = prefs['menu.discard-tab'];
+  document.getElementById('menu.discard-tree').checked = prefs['menu.discard-tree'];
+  document.getElementById('menu.discard-window').checked = prefs['menu.discard-window'];
+  document.getElementById('menu.discard-rights').checked = prefs['menu.discard-rights'];
+  document.getElementById('menu.discard-lefts').checked = prefs['menu.discard-lefts'];
+  document.getElementById('menu.discard-other-windows').checked = prefs['menu.discard-other-windows'];
+  document.getElementById('menu.discard-tabs').checked = prefs['menu.discard-tabs'];
+  document.getElementById('menu.keep-tabs').checked = prefs['menu.keep-tabs'];
+  /* popup visibility */
+  document.getElementById('popup.discard-tab').checked = prefs['popup.discard-tab'];
+  document.getElementById('popup.discard-tree').checked = prefs['popup.discard-tree'];
+  document.getElementById('popup.discard-window').checked = prefs['popup.discard-window'];
+  document.getElementById('popup.discard-rights').checked = prefs['popup.discard-rights'];
+  document.getElementById('popup.discard-lefts').checked = prefs['popup.discard-lefts'];
+  document.getElementById('popup.discard-other-windows').checked = prefs['popup.discard-other-windows'];
+  document.getElementById('popup.discard-tabs').checked = prefs['popup.discard-tabs'];
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -221,7 +255,24 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/previous/core.js': document.getElementById('./plugins/previous/core.js').checked,
     './plugins/new/core.js': document.getElementById('./plugins/new/core.js').checked,
     './plugins/unloaded/core.js': document.getElementById('./plugins/unloaded/core.js').checked,
-    './plugins/youtube/core.js': document.getElementById('./plugins/youtube/core.js').checked
+    './plugins/youtube/core.js': document.getElementById('./plugins/youtube/core.js').checked,
+    /* menu visibility */
+    'menu.discard-tab': document.getElementById('menu.discard-tab').checked,
+    'menu.discard-tree': document.getElementById('menu.discard-tree').checked,
+    'menu.discard-window': document.getElementById('menu.discard-window').checked,
+    'menu.discard-rights': document.getElementById('menu.discard-rights').checked,
+    'menu.discard-lefts': document.getElementById('menu.discard-lefts').checked,
+    'menu.discard-other-windows': document.getElementById('menu.discard-other-windows').checked,
+    'menu.discard-tabs': document.getElementById('menu.discard-tabs').checked,
+    'menu.keep-tabs': document.getElementById('menu.keep-tabs').checked,
+    /* popup visibility */
+    'popup.discard-tab': document.getElementById('popup.discard-tab').checked,
+    'popup.discard-tree': document.getElementById('popup.discard-tree').checked,
+    'popup.discard-window': document.getElementById('popup.discard-window').checked,
+    'popup.discard-rights': document.getElementById('popup.discard-rights').checked,
+    'popup.discard-lefts': document.getElementById('popup.discard-lefts').checked,
+    'popup.discard-other-windows': document.getElementById('popup.discard-other-windows').checked,
+    'popup.discard-tabs': document.getElementById('popup.discard-tabs').checked
   }, () => {
     info.textContent = chrome.i18n.getMessage('options_save_msg');
     restore();
@@ -235,22 +286,6 @@ document.getElementById('support').addEventListener('click', () => chrome.tabs.c
 
 document.addEventListener('DOMContentLoaded', restore);
 
-// restart if needed
-const onChanged = prefs => {
-  const tab = prefs['tab.context'];
-  const page = prefs['page.context'];
-  const link = prefs['link.context'];
-  if (tab || page || link) { // Firefox
-    if ((tab && (tab.newValue !== tab.oldValue)) ||
-      (page && (page.newValue !== page.oldValue)) ||
-      (link && (link.newValue !== link.oldValue))) {
-      chrome.runtime.sendMessage({
-        method: 'build-context'
-      });
-    }
-  }
-};
-chrome.storage.onChanged.addListener(onChanged);
 // reset
 document.getElementById('reset').addEventListener('click', e => {
   if (e.detail === 1) {
@@ -315,7 +350,6 @@ document.getElementById('import').addEventListener('click', () => {
       reader.onloadend = event => {
         fileInput.remove();
         const json = JSON.parse(event.target.result);
-        chrome.storage.onChanged.removeListener(onChanged);
         chrome.storage.local.clear(() => {
           chrome.storage.local.set(json['chrome.storage.local'], () => {
             chrome.runtime.reload();

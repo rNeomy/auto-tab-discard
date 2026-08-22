@@ -8,7 +8,23 @@ import {interrupts} from './plugins/loader.mjs';
 
 // Context Menu
 {
-  const onStartup = () => {
+  const buildMenu = async () => {
+    if (buildMenu.busy) {
+      return;
+    }
+    buildMenu.busy = true;
+
+    const visibilityPrefs = await storage({
+      'menu.discard-tab': true,
+      'menu.discard-tree': true,
+      'menu.discard-window': true,
+      'menu.discard-rights': true,
+      'menu.discard-lefts': true,
+      'menu.discard-other-windows': true,
+      'menu.discard-tabs': true,
+      'menu.keep-tabs': true
+    });
+
     const contexts = ['action'];
     if (chrome.contextMenus.ContextType.TAB && prefs['tab.context']) {
       contexts.push('tab');
@@ -16,92 +32,136 @@ import {interrupts} from './plugins/loader.mjs';
     if (prefs['page.context']) {
       contexts.push('page');
     }
-    const create = arr => {
-      chrome.contextMenus.removeAll(() => {
-        arr.forEach(o => chrome.contextMenus.create(o));
-      });
-    };
 
-    create([{
+    await chrome.contextMenus.removeAll();
+
+    chrome.contextMenus.create({
       id: 'discard-tab',
       title: chrome.i18n.getMessage('menu_discard_tab'),
       contexts,
-      documentUrlPatterns: ['*://*/*']
-    },
-    {
+      documentUrlPatterns: ['*://*/*'],
+      visible: visibilityPrefs['menu.discard-tab']
+    });
+    chrome.contextMenus.create({
       id: 'discard-tree',
       title: chrome.i18n.getMessage('menu_discard_tree'),
       contexts,
-      documentUrlPatterns: ['*://*/*']
-    },
-    {
+      documentUrlPatterns: ['*://*/*'],
+      visible: visibilityPrefs['menu.discard-tree']
+    });
+    chrome.contextMenus.create({
       id: 'discard-other-windows',
       title: chrome.i18n.getMessage('menu_discard_other_windows'),
-      contexts
-    },
-    {
-      id: 'discard-sub-menu',
-      title: chrome.i18n.getMessage('menu_discard_menu'),
-      contexts
-    },
-    {
+      contexts,
+      visible: visibilityPrefs['menu.discard-other-windows']
+    });
+    chrome.contextMenus.create({
       id: 'discard-tabs',
       title: chrome.i18n.getMessage('menu_discard_tabs'),
-      contexts
-    },
-    {
+      contexts,
+      visible: visibilityPrefs['menu.discard-tabs']
+    });
+    chrome.contextMenus.create({
+      id: 'discard-sub-menu',
+      title: chrome.i18n.getMessage('menu_discard_menu'),
+      contexts,
+      visible: visibilityPrefs['menu.discard-window'] ||
+        visibilityPrefs['menu.discard-rights'] ||
+        visibilityPrefs['menu.discard-lefts']
+    });
+    chrome.contextMenus.create({
       id: 'discard-window',
       title: chrome.i18n.getMessage('menu_discard_window'),
       contexts,
-      parentId: 'discard-sub-menu'
-    },
-    {
+      parentId: 'discard-sub-menu',
+      visible: visibilityPrefs['menu.discard-window']
+    });
+    chrome.contextMenus.create({
       id: 'discard-rights',
       title: chrome.i18n.getMessage('menu_discard_rights'),
       contexts,
-      parentId: 'discard-sub-menu'
-    },
-    {
+      parentId: 'discard-sub-menu',
+      visible: visibilityPrefs['menu.discard-rights']
+    });
+    chrome.contextMenus.create({
       id: 'discard-lefts',
       title: chrome.i18n.getMessage('menu_discard_lefts'),
       contexts,
-      parentId: 'discard-sub-menu'
-    },
-    {
+      parentId: 'discard-sub-menu',
+      visible: visibilityPrefs['menu.discard-lefts']
+    });
+    chrome.contextMenus.create({
       id: 'extra',
       title: chrome.i18n.getMessage('menu_extra'),
       contexts,
-      documentUrlPatterns: ['*://*/*']
-    },
-    {
+      documentUrlPatterns: ['*://*/*'],
+      visible: visibilityPrefs['menu.keep-tabs']
+    });
+    chrome.contextMenus.create({
       id: 'auto-discardable',
       title: chrome.i18n.getMessage('popup_allowed'),
       contexts,
       documentUrlPatterns: ['*://*/*'],
       parentId: 'extra'
-    },
-    {
+    });
+    chrome.contextMenus.create({
       id: 'allow-discardable',
       title: chrome.i18n.getMessage('popup_allowed_reset'),
       contexts,
       documentUrlPatterns: ['*://*/*'],
       parentId: 'extra'
-    },
-    {
+    });
+    chrome.contextMenus.create({
       id: 'whitelist-domain',
       title: chrome.i18n.getMessage('menu_whitelist_domain'),
       contexts,
       documentUrlPatterns: ['*://*/*'],
       parentId: 'extra'
-    },
-    prefs['link.context'] ? {
+    });
+    chrome.contextMenus.create({
       id: 'open-tab-then-discard',
       title: chrome.i18n.getMessage('menu_open_tab_then_discard'),
       contexts: ['link', 'bookmark'].filter(a => chrome.contextMenus.ContextType[a.toUpperCase()]),
-      documentUrlPatterns: ['*://*/*']
-    } : null].filter(o => o));
+      documentUrlPatterns: ['*://*/*'],
+      visible: prefs['link.context']
+    });
+
+    buildMenu.busy = false;
   };
+
+  const onStartup = () => buildMenu();
   starters.push(onStartup);
+  chrome.storage.onChanged.addListener(ps => {
+    for (const [key, value] of Object.entries(ps)) {
+      if (key.startsWith('menu.')) {
+        let id = key.replace('menu.', '');
+        if (id === 'keep-tabs') {
+          id = 'extra';
+        }
+        chrome.contextMenus.update(id, {
+          visible: value.newValue
+        });
+
+        if (key === 'menu.discard-window' || key === 'menu.discard-rights' || key === 'menu.discard-lefts') {
+          storage({
+            'menu.discard-window': true,
+            'menu.discard-rights': true,
+            'menu.discard-lefts': true,
+          }).then(prefs => chrome.contextMenus.update('discard-sub-menu', {
+            visible: prefs['menu.discard-window'] || prefs['menu.discard-rights'] || prefs['menu.discard-lefts']
+          }));
+        }
+      }
+      else if (key === 'link.context') {
+        chrome.contextMenus.update('open-tab-then-discard', {
+          visible: value.newValue
+        });
+      }
+      else if (key === 'page.context' || key === 'tab.context') {
+        buildMenu();
+      }
+    }
+  });
 
   const onClicked = async (info, tab) => {
     if (typeof interrupts !== 'undefined') {
@@ -370,9 +430,6 @@ import {interrupts} from './plugins/loader.mjs';
       onClicked({
         menuItemId: request.cmd
       }, sender.tab);
-    }
-    else if (request.method === 'build-context') {
-      onStartup();
     }
     else if (request.method === 'allow-discardable' || request.method === 'auto-discardable') {
       onClicked({

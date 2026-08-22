@@ -107,3 +107,17 @@ a {
   grid-template-columns: 1fr min-content;
   margin: 10px 0;
 }
+
+#menu-visibility div.thr {
+  display: grid;
+  grid-template-columns: 1fr min-content min-content;
+  white-space: nowrap;
+  gap: 5px;
+}
+#menu-visibility div.sub {
+  display: contents;
+
+  &:hover * {
+    background-color: var(--dark);
+  }
+}

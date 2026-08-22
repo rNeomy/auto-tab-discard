@@ -176,6 +176,10 @@ li span[data-cmd^="release"] svg {
   opacity: 0.4;
   pointer-events: none;
 }
+.hidden {
+  display: none !important;
+}
+
 [data-cmd=move-next] *,
 [data-cmd=move-previous] * {
   pointer-events: none;

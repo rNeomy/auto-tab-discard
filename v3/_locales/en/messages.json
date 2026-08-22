@@ -173,6 +173,45 @@
   "options_plugin_youtube": {
     "message": "Store YouTube's timestamp before discarding"
   },
+  "options_menu_visibility": {
+    "message": "Menu Visibility"
+  },
+  "options_popup_view": {
+    "message": "Popup View"
+  },
+  "options_context_menu_view": {
+    "message": "Context Menu View"
+  },
+  "options_menu_item": {
+    "message": "Menu Item"
+  },
+  "options_item_discard_tab": {
+    "message": "Discard This Tab"
+  },
+  "options_item_discard_tree": {
+    "message": "Discard Tab Group"
+  },
+  "options_item_discard_window": {
+    "message": "Discard Other Tabs in This Window"
+  },
+  "options_item_discard_rights": {
+    "message": "Discard Tabs to the Right"
+  },
+  "options_item_discard_lefts": {
+    "message": "Discard Tabs to the Left"
+  },
+  "options_item_discard_other_windows": {
+    "message": "Discard Tabs in Other Windows"
+  },
+  "options_item_discard_tabs": {
+    "message": "Discard All Other Tabs"
+  },
+  "options_item_keep_tabs": {
+    "message": "Keep Tabs (Whitelist/Allow)"
+  },
+  "options_item_open_tab_then_discard": {
+    "message": "Open in New Discarded Tab (Link Context)"
+  },
   "options_log": {
     "message": "Display logs (for debugging purpose only)"
   },
