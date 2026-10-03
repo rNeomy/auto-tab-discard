@@ -76,10 +76,6 @@ const discard = tab => {
         // the page's CORS (see core/favicon.mjs), then a tiny script swaps
         // the icon link elements. If the icon cannot be obtained for any
         // reason, the original favicon stays untouched
-<<<<<<< HEAD
-
-=======
->>>>>>> e5a389c (favicon overlay is now rendered in the extension's own context)
         const go = prefs.favicon ? chrome.tabs.get(tab.id).then(t => overlay(t.favIconUrl || '')).then(dataUrl => {
           return chrome.scripting.executeScript({
             target: {

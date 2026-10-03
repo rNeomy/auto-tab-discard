@@ -63,7 +63,6 @@ const run = tab => {
     if (gone(tab)) {
       return cleanup();
     }
-<<<<<<< HEAD
     if (!tab.url) {
       return;
     }
@@ -72,11 +71,6 @@ const run = tab => {
     if (shouldInject(tab) && tab.url !== injected) {
       injected = tab.url;
 
-=======
-    // inject once per committed document; a redirect changes tab.url and injects again
-    if (shouldInject(tab) && tab.url !== injected) {
-      injected = tab.url;
->>>>>>> 511e08f (Add a whitelist check in the create plugin before sending the discard.on.load message.)
       isWhitelisted(tab.url).then(skip => {
         if (skip) {
           log('create', 'tab is whitelisted; discarding is skipped', tab.url);
