@@ -8,6 +8,9 @@
   "options_list": {
     "message": "Comma-separated list of hostnames"
   },
+  "options_list_domain": {
+    "message": "Comma-separated list of domains"
+  },
   "options_list_trash": {
     "message": "Comma-separated list of hostnames, leave blank for all"
   },
@@ -24,7 +27,7 @@
     "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
   },
   "options_url_based": {
-    "message": "Only discard the following inactive hostnames or regular expression rules"
+    "message": "Only discard the following inactive domains or regular expression rules"
   },
   "options_tab_context": {
     "message": "Display discarding items in the \"tab\" context menu (currently supported by Firefox)"
@@ -99,7 +102,7 @@
     "message": "Exceptions"
   },
   "options_whitelist": {
-    "message": "Tabs with the following hostnames or regular expression rules are not being discarded. It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule."
+    "message": "Tabs whose domain or regular expression rules match the following are not being discarded. A domain also covers its subdomains (e.g. example.com also covers www.example.com). It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule."
   },
   "options_left_click": {
     "message": "Toolbar left-click action"
@@ -336,7 +339,7 @@
     "message": "Always"
   },
   "popup_whitelist_always_title": {
-    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list."
+    "message": "Click to add the domain to the exception list. Shift + Click to add the exact URL to the exception list."
   },
   "popup_whitelist_session": {
     "message": "Session"
