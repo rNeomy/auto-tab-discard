@@ -1,5 +1,6 @@
 import {prefs, storage} from './prefs.mjs';
 import {log} from './utils.mjs';
+import {overlay} from './favicon.mjs';
 
 // this list keeps ids of the tabs that are in progress of being discarded
 const inprogress = new Set();
@@ -45,106 +46,70 @@ const discard = tab => {
         }
         resolve();
       };
-      // change title or favicon
-      if (prefs.prepends || prefs.favicon) {
-        const href = tab.favIconUrl || '';
-        Promise.race([
-          new Promise(resolve => setTimeout(resolve, 1000, [])),
-          chrome.scripting.executeScript({
+      // prepend a symbol to the tab title (e.g. 💤), so that discarded tabs can
+      // be recognized at a glance. This step is kept separate from the favicon:
+      // it only targets the top frame and is bounded by a timeout, so neither
+      // slow sub-frames nor favicon failures can prevent the title from being
+      // updated. On timeout the discarding still proceeds. There is no way to
+      // mark tabs that are discarded by Firefox itself or restored lazily from
+      // a session since they have no live DOM to modify
+      const title = prefs.prepends ? Promise.race([
+        new Promise(resolve => setTimeout(resolve, 1000)),
+        chrome.scripting.executeScript({
+          target: {
+            tabId: tab.id
+          },
+          func: symbol => {
+            window.stop();
+            const title = document.title || location.href || '';
+            if (title.startsWith(symbol) === false) {
+              document.title = symbol + ' ' + title;
+            }
+          },
+          args: [prefs.prepends]
+        })
+      ]).catch(e => log('title change failed', e.message)) : Promise.resolve();
+
+      title.then(() => {
+        // replace the favicon with a dimmed version that has a gray dot.
+        // The icon is rendered in the background which is not restricted by
+        // the page's CORS (see core/favicon.mjs), then a tiny script swaps
+        // the icon link elements. If the icon cannot be obtained for any
+        // reason, the original favicon stays untouched
+        const go = prefs.favicon ? chrome.tabs.get(tab.id).then(t => overlay(t.favIconUrl || '')).then(dataUrl => {
+          return chrome.scripting.executeScript({
             target: {
-              tabId: tab.id,
-              allFrames: true
+              tabId: tab.id
             },
-            func: (prefs, src) => {
-              window.stop();
-              if (window === window.top) {
-                if (prefs.prepends) {
-                  const title = document.title || location.href || '';
-                  if (title.startsWith(prefs.prepends) === false) {
-                    document.title = prefs.prepends + ' ' + title;
-                  }
+            func: href => {
+              [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
 
-                  if (prefs.favicon === false) {
-                    return true;
-                  }
-                }
-                if (prefs.favicon) {
-                  const observe = (request, sender, response) => {
-                    if (request.method === 'fix-favicon') {
-                      chrome.runtime.onMessage.removeListener(observe);
-
-                      [...document.querySelectorAll('link[rel*="icon"]')].forEach(link => link.remove());
-
-                      const draw = img => {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-
-                        if (ctx) {
-                          canvas.width = img.width;
-                          canvas.height = img.height;
-                          ctx.globalAlpha = 0.6;
-                          ctx.drawImage(img, 0, 0);
-
-                          ctx.globalAlpha = 1;
-                          ctx.beginPath();
-                          ctx.fillStyle = '#a1a0a1';
-                          ctx.arc(img.width * 0.75, img.height * 0.75, img.width * 0.25, 0, 2 * Math.PI, false);
-                          ctx.fill();
-                          const href = canvas.toDataURL();
-                          document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
-                            rel: 'icon',
-                            type: 'image/png',
-                            href
-                          }));
-                          response('done');
-                        }
-                        else {
-                          response('NO_CTX');
-                        }
-                      };
-                      Object.assign(new Image(), {
-                        crossOrigin: 'anonymous',
-                        src,
-                        onerror() { // fallback image
-                          Object.assign(new Image(), {
-                            src: chrome.runtime.getURL('/data/page.png'),
-                            onerror(e) {
-                              response(e.message || 'CORS');
-                            },
-                            onload() {
-                              draw(this);
-                            }
-                          });
-                        },
-                        onload() {
-                          draw(this);
-                        }
-                      });
-                      return true;
-                    }
-                  };
-                  chrome.runtime.onMessage.addListener(observe);
-                  return 'async';
-                }
-              }
-              return false;
+              document.querySelector('head').appendChild(Object.assign(document.createElement('link'), {
+                rel: 'icon',
+                type: 'image/png',
+                href
+              }));
             },
-            args: [prefs, href]
-          })
-        ]).then(r => {
-          if (r.some(o => o.result === 'async')) {
-            chrome.tabs.sendMessage(tab.id, {
-              method: 'fix-favicon'
-            }, reason => setTimeout(next, prefs['favicon-delay'], reason));
-          }
-          else {
-            next('one');
-          }
-        }).catch(e =>next(e.message));
-      }
-      else {
-        next('two');
-      }
+            args: [dataUrl]
+          });
+        }).then(() => {
+          log('favicon overlay applied');
+          // wait for favicon to get applied
+          return new Promise(resolve => setTimeout(resolve, 1000));
+        }) : Promise.resolve();
+
+        // do not wait longer than 3 seconds for the icon; in case of any
+        // failure, the tab is discarded with its original favicon
+        const painting = Promise.race([
+          new Promise(resolve => setTimeout(resolve, 3000)),
+          go
+        ]).then(() => next('one'), e => {
+          log('favicon overlay skipped', e.message || e);
+          next('one');
+        });
+        go.catch(() => {}); // the unobserved promise is not ours to handle
+        return painting;
+      });
     });
   });
 };
