@@ -40,13 +40,13 @@ const paint = bitmap => {
   ctx.fill();
 
   // both canvas flavors end up as a Blob and then as a data uri
-  if (canvas.toBlob) {
-    return new Promise((resolve, reject) => canvas.toBlob(
-      blob => blob ? resolve(blob) : reject(new Error('toBlob failed')),
-      'image/png'
-    )).then(dataUri);
+  if (canvas.convertToBlob) {
+    return canvas.convertToBlob().then(dataUri);
   }
-  return canvas.convertToBlob().then(dataUri);
+  return new Promise((resolve, reject) => canvas.toBlob(
+    blob => blob ? resolve(blob) : reject(new Error('toBlob failed')),
+    'image/png'
+  )).then(dataUri);
 };
 
 const decode = async blob => {

@@ -3,39 +3,93 @@
   "properties": {
     "period": {
       "title": "discarding time in seconds",
-      "type": "number"
+      "type": "integer",
+      "minimum": 0
     },
     "number": {
       "title": "number of tabs before triggering discard",
-      "type": "number"
+      "type": "integer",
+      "minimum": 0
+    },
+    "max.single.discard": {
+      "title": "maximum number of tabs to discard per single discarding request",
+      "type": "integer",
+      "minimum": 1
+    },
+    "mode": {
+      "title": "Discarding mode (time-based, url-based)",
+      "type": "string",
+      "enum": [
+        "time-based",
+        "url-based"
+      ]
     },
     "audio": {
-      "title": "audio = true => do not discard if audio is playing",
+      "title": "true => do not discard if audio is playing",
+      "type": "boolean"
+    },
+    "paused": {
+      "title": "true => do not discard if there is a paused media player",
       "type": "boolean"
     },
     "pinned": {
-      "title": "pinned = true => do not discard if tab is pinned",
+      "title": "true => do not discard if tab is pinned",
       "type": "boolean"
     },
     "split-view": {
-      "title": "split-view = true => do not discard split tabs if either tab of the split is focused",
+      "title": "true => do not discard split tabs if either tab of the split is focused",
       "type": "boolean"
     },
     "form": {
-      "title": "form = true => do not discard if form data is changed",
+      "title": "true => do not discard if form data is changed",
       "type": "boolean"
     },
     "battery": {
-      "title": "battery = true => only discard if power is disconnected",
+      "title": "true => only discard if power is disconnected",
       "type": "boolean"
     },
     "online": {
-      "title": "online = true => do not discard if there is no INTERNET connection",
+      "title": "true => do not discard if there is no INTERNET connection",
       "type": "boolean"
+    },
+    "idle": {
+      "title": "true => only discard while the system is idle",
+      "type": "boolean"
+    },
+    "idle-timeout": {
+      "title": "idle detection timeout in seconds",
+      "type": "integer",
+      "minimum": 1
     },
     "notification.permission": {
       "title": "true => do not discard",
       "type": "boolean"
+    },
+    "go-hidden": {
+      "title": "Discard a tab if it is hidden",
+      "type": "boolean"
+    },
+    "memory-enabled": {
+      "title": "Discard a background tab based on its memory usage (totalJSHeapSize)",
+      "type": "boolean"
+    },
+    "memory-value": {
+      "title": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)",
+      "type": "integer",
+      "minimum": 10
+    },
+    "simultaneous-jobs": {
+      "title": "Number of allowed simultaneous discarding jobs",
+      "type": "integer",
+      "minimum": 1
+    },
+    "favicon": {
+      "title": "Change favicon of discarded tabs (if possible)",
+      "type": "boolean"
+    },
+    "prepends": {
+      "title": "Prepend a symbol to the title of discarded tabs",
+      "type": "string"
     },
     "page.context": {
       "title": "Display discarding items in the \"page\" context menu",
@@ -53,69 +107,60 @@
       "title": "Display logs (for debugging purpose only)",
       "type": "boolean"
     },
-    "mode": {
-      "title": "Discarding mode (time-based, url-based)",
-      "type": "string"
-    },
     "click": {
-      "title": "Use \"click.popup\" to show browser action's popup menu",
-      "type": "boolean"
+      "title": "The action of clicking on the toolbar button (which item on the menu to perform)",
+      "type": "string",
+      "enum": [
+        "click.popup",
+        "click.discard-tab",
+        "click.discard-tabs",
+        "click.discard-window",
+        "click.discard-other-windows"
+      ]
     },
     "faqs": {
       "title": "Open FAQs page on updates",
-      "type": "boolean"
-    },
-    "badge": {
-      "title": "",
-      "type": "boolean"
-    },
-    "favicon": {
-      "title": "Change favicon of discarded tabs (if possible)",
       "type": "boolean"
     },
     "discard-protected-on-close": {
       "title": "Discard pinned or grouped tabs instead of closing them",
       "type": "boolean"
     },
-    "go-hidden": {
-      "title": "Discard a tab if it is hidden",
-      "type": "boolean"
-    },
-    "memory-enabled": {
-      "title": "Discard a background tab based on its memory usage (totalJSHeapSize)",
-      "type": "boolean"
-    },
-    "memory-value": {
-      "title": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)",
-      "type": "number"
-    },
-    "simultaneous-jobs": {
-      "title": "Number of allowed simultaneous discarding jobs",
-      "type": "number"
-    },
     "whitelist": {
+      "title": "List of domains or regular expression rules whose tabs are never discarded",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "whitelist-url": {
+      "title": "List of domains or regular expression rules of the tabs that are only discarded",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
-    "favicon-delay": {
-      "title": "Delay for painting the discarded favicon (in milliseconds)",
-      "type": "number"
-    },
-    "trash.enabled": {
-      "title": "Trash old discarded tabs",
-      "type": "boolean"
+    "force.hostnames": {
+      "title": "List of domains to discard immediately after their tabs become inactive",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "trash.period": {
-      "title": "Trash discarded tabs after about x hours if trash.enabled is true",
-      "type": "number"
+      "title": "Trash discarded tabs after about x hours if the trash plug-in is enabled",
+      "type": "integer"
+    },
+    "trash.unloaded": {
+      "title": "Include never-loaded tabs in the trash process",
+      "type": "boolean"
+    },
+    "trash.whitelist-url": {
+      "title": "List of domains or regular expression rules with their own closing interval",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "startup-unpinned": {
       "title": "Discard unpinned tabs on a browser restart",
@@ -129,8 +174,40 @@
       "title": "Release discarding state of pinned tabs on a browser restart",
       "type": "boolean"
     },
-    "release-next-tab": {
-      "title": "Release discarding of the next tab if it is discarded",
+    "./plugins/blank/core.js": {
+      "title": "Enable the blank plug-in",
+      "type": "boolean"
+    },
+    "./plugins/focus/core.js": {
+      "title": "Enable the focus plug-in",
+      "type": "boolean"
+    },
+    "./plugins/trash/core.js": {
+      "title": "Enable the trash plug-in",
+      "type": "boolean"
+    },
+    "./plugins/force/core.js": {
+      "title": "Enable the force plug-in",
+      "type": "boolean"
+    },
+    "./plugins/next/core.js": {
+      "title": "Enable the release-next-tab plug-in",
+      "type": "boolean"
+    },
+    "./plugins/previous/core.js": {
+      "title": "Enable the release-previous-tab plug-in",
+      "type": "boolean"
+    },
+    "./plugins/new/core.js": {
+      "title": "Enable the discard-newly-opened-tabs plug-in",
+      "type": "boolean"
+    },
+    "./plugins/unloaded/core.js": {
+      "title": "Enable the unloaded plug-in",
+      "type": "boolean"
+    },
+    "./plugins/youtube/core.js": {
+      "title": "Enable the youtube plug-in",
       "type": "boolean"
     }
   }
