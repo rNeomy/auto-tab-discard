@@ -35,6 +35,10 @@
         "message": "Alleen de volgende inactieve pagina’s of reguliere-expressieregels deactiveren",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Voorbeeld:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Items voor deactivering weergeven in het contextmenu voor ‘tabblad’ (momenteel ondersteund door Firefox)",
         "description": ""
@@ -132,7 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabbladen met de volgende hostnamen of reguliere-expressieregels worden niet gedeactiveerd. Het wordt aanbevolen de pop-upinterface te gebruiken om deze lijst aan te passen. Gebruik de toets ‘Shift’ tijdens het toevoegen van een regel vanuit de pop-upinterface om een reguliere-expressieregel te genereren.",
+        "message": "Tabbladen met de volgende hostnamen of reguliere-expressieregels worden niet gedeactiveerd.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Het wordt aanbevolen om de pop-upinterface te gebruiken om deze lijst aan te passen. Houd Shift ingedrukt wanneer je een regel toevoegt via de pop-upinterface om een reguliere-expressieregel te maken.<br><br>Voorbeeld:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -217,6 +225,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Alleen tabbladen verwijderen die aan de volgende URL-patronen voldoen",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Voeg <code>@{number}{unit}</code> aan het einde toe om een aangepast tijdsinterval voor een regel te gebruiken. Geldige eenheden zijn uren (h), dagen (d), weken (w) en maanden (mo).<br><br>Voorbeeld:<ul><li><code>google.com@3d</code> verwijdert google.com-tabbladen na drie dagen</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

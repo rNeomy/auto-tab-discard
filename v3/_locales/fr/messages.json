@@ -35,6 +35,10 @@
         "message": "Désactiver uniquement les noms d'hôtes inactifs suivants ou selon les expressions régulières suivantes",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Exemple: <ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Afficher les éléments de désactivation dans le menu contextuel de l'onglet (si pris en charge)",
         "description": ""
@@ -131,6 +135,10 @@
         "message": "Les onglets avec les domaines ou vérifiant les expressions régulières suivants ne seront pas désactivés :",
         "description": ""
     },
+    "options_whitelist_tooltip": {
+        "message": "Il est recommandé d'utiliser l'interface popup pour modifier cette liste. Maintenez la touche Maj enfoncée lors de l'ajout d'une règle depuis l'interface popup pour générer une règle d'expression régulière.<br><br>Exemple: <ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_left_click": {
         "message": "Barre d'outils action click_gauche",
         "description": ""
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Ne supprimer que les onglets correspondant aux modèles d'URL suivants",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Pour utiliser un intervalle personnalisé pour une règle, ajoutez <code>@{number}{unit}</code> à la fin. Les unités valides sont les heures (h), les jours (d), les semaines (w) et les mois (mo).<br><br>Exemple : <ul><li><code>google.com@3d</code> supprimera les onglets google.com après trois jours</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

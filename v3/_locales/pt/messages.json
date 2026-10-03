@@ -35,6 +35,10 @@
         "message": "Descartar apenas os seguintes hospedeiros inactivos ou regras de expressão regular",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Exemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Mostrar os itens descartados no menu de contexto \"separador\" (presentemente suportado pelo Firefox)",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "separadores com os seguintes hospedeiros ou regras de expressão regular não serão descartados. É recomendado o uso da interface emergente (pop up) para modificar esta lista. Usar a tecla \"Shift\" ao adicionar uma regra a partir da interface emergente para gerar uma regra de expressão regular.",
+        "message": "Separadores com os seguintes hospedeiros ou regras de expressão regular não serão descartados.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Recomenda-se utilizar a interface do pop-up para modificar esta lista. Mantenha a tecla Shift pressionada ao adicionar uma regra pela interface do pop-up para criar uma regra de expressão regular.<br><br>Exemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Eliminar apenas separadores que correspondam aos seguintes padrões de URL",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Para usar um intervalo de tempo personalizado para uma regra, adicione <code>@{number}{unit}</code> ao final. As unidades válidas são horas (h), dias (d), semanas (w) e meses (mo).<br><br>Exemplo:<ul><li><code>google.com@3d</code> removerá as abas do google.com após três dias</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

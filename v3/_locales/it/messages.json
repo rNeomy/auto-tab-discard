@@ -35,6 +35,10 @@
         "message": "Sospendi solo i seguenti domini o le seguenti espressioni regolari ",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Esempio:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Mostra gli elementi sospesi nel menù contestuale della scheda (se supportato)",
         "description": ""
@@ -131,6 +135,10 @@
         "message": "Le schede con i seguenti hostname od espressioni regolari non verranno scartati:",
         "description": ""
     },
+    "options_whitelist_tooltip": {
+        "message": "Si consiglia di usare l'interfaccia popup per modificare questo elenco. Tieni premuto il tasto Maiusc mentre aggiungi una regola dall'interfaccia popup per generare una regola con espressione regolare.<br><br>Esempio:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_left_click": {
         "message": "Azione per l'azione left_click sulla Toolbar",
         "description": ""
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Elimina solo le schede che corrispondono ai seguenti modelli di URL",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Per usare un intervallo di tempo personalizzato per una regola, aggiungi <code>@{number}{unit}</code> alla fine. Le unità valide sono ore (h), giorni (d), settimane (w) e mesi (mo).<br><br>Esempio:<ul><li><code>google.com@3d</code> rimuoverà le schede di google.com dopo tre giorni</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

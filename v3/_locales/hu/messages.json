@@ -35,6 +35,10 @@
         "message": "Csak a következő inaktív hostneveket és reguálris kifejezések altatása",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Példa:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Altatási lehetőségek megjelenítése a lap környezeti menüjében (jelenleg csak Firefox támogatja)",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Az alábbi hostnevek és reguáris kifejezések nem lesznek altatva. Ajánlott a környezeti menüből módosítani ezt a listát. Használd a \"Shift\" gombot amikor a környezeti menüben szabályt állítasz be, hogy reguláris kifejezés jöjjön létre.",
+        "message": "Az alábbi hostnevek és reguláris kifejezések nem lesznek altatva.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "A lista módosításához ajánlott a felugró ablakot használni. Tartsa lenyomva a Shift billentyűt, amikor szabályt ad hozzá a felugró ablakból, így reguláris kifejezést hozhat létre.<br><br>Példa:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Csak az alábbi URL mintákkal egyező lapokat törölje",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Egyéni időtartam használatához adja hozzá a <code>@{number}{unit}</code> kifejezést a szabály végéhez. Az érvényes egységek: óra (h), nap (d), hét (w) és hónap (mo).<br><br>Példa:<ul><li><code>google.com@3d</code> három nap elteltével eltávolítja a google.com lapokat</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

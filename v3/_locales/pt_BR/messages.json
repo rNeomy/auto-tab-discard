@@ -35,6 +35,10 @@
         "message": "Descartar apenas os seguintes nomes de host inativos ou expressões regulares",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Exemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Exibir opções para descartar no menu de contexto da aba (se suportado)",
         "description": ""
@@ -131,6 +135,10 @@
         "message": "Abas com os seguintes nomes de host ou expressões regulares não serão descartadas:",
         "description": ""
     },
+    "options_whitelist_tooltip": {
+        "message": "Recomenda-se utilizar a interface de pop-up para modificar esta lista. Pressione a tecla \"Shift\" ao adicionar uma regra a partir da interface de pop-up para gerar uma regra de expressão regular.<br><br>Exemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_left_click": {
         "message": "Ação ao clicar com o botão esquerdo na barra de ferramentas",
         "description": ""
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Somente excluir abas que correspondam aos seguintes padrões de URL",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Para usar um intervalo de tempo personalizado para uma regra, adicione <code>@{number}{unit}</code> ao final. As unidades válidas são horas (h), dias (d), semanas (w) e meses (mo).<br><br>Exemplo:<ul><li><code>google.com@3d</code> removerá as abas do google.com após três dias</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

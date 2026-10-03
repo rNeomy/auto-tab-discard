@@ -35,6 +35,10 @@
         "message": "只休眠符合以下網域名稱或正則表達式的閒置分頁",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "範例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "若支援，在「分頁標籤」的右鍵選單顯示休眠選項",
         "description": ""
@@ -131,6 +135,10 @@
         "message": "符合以下網域名稱或正則表達式的分頁將不會被休眠",
         "description": ""
     },
+    "options_whitelist_tooltip": {
+        "message": "建議使用彈出式介面修改此清單。從彈出式介面新增規則時按住 Shift 鍵，即可產生正規表示式規則。<br><br>範例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_left_click": {
         "message": "工具列按下左鍵",
         "description": ""
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "僅刪除符合以下 URL 模式的分頁",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "若要為規則使用自訂時間間隔，請在結尾新增 <code>@{number}{unit}</code>。有效單位為小時 (h)、天 (d)、週 (w) 和月 (mo)。<br><br>範例：<ul><li><code>google.com@3d</code> 會在三天後移除 google.com 分頁</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

@@ -32,7 +32,18 @@
         </tr>
         <tr>
           <td><input type="checkbox" id="url-based"></td>
-          <td colspan="2"><label for="url-based"><span data-i18n="options_url_based"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq13"></a></label></td>
+          <td colspan="2">
+            <label for="url-based">
+              <span data-i18n="options_url_based"></span>
+              <span class="tooltip-wrap">
+                <a href="javascript:void(0)"> [?]</a>
+                <div class="tooltip-content">
+                  <span data-i18n="options_url_based_tooltip" data-i18n-html="true"></span>
+                  <a target="_blank" data-i18n="options_read_more" data-href="faq13"></a>
+                </div>
+              </span>
+            </label>
+          </td>
         </tr>
         <tr>
           <td colspan="3"><textarea rows="3" id="whitelist-url" data-i18n="options_list" data-i18n-value="placeholder"></textarea></td>
@@ -134,7 +145,16 @@
       <tbody>
         <tr>
           <td colspan="3">
-            <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_whitelist"></span></span>
+            <span style="display: block; padding-bottom: 10px;">
+              <span data-i18n="options_whitelist"></span>
+              <span class="tooltip-wrap">
+                <a href="javascript:void(0)"> [?]</a>
+                <div class="tooltip-content">
+                  <span data-i18n="options_whitelist_tooltip" data-i18n-html="true"></span>
+                  <a target="_blank" data-i18n="options_read_more" data-href="faq15"></a>
+                </div>
+              </span>
+            </span>
             <textarea rows="3" id="whitelist" data-i18n="options_list" data-i18n-value="placeholder"></textarea>
           </td>
         </tr>
@@ -330,7 +350,16 @@
         <tr>
             <td></td>
             <td colspan="2">
-                <span style="display: block; padding-bottom: 10px;"><span data-i18n="options_plugin_trash_whitelist"></span> <a target="_blank" data-i18n="options_read_more" data-href="faq15"></a></span>
+                <span style="display: block; padding-bottom: 10px;">
+                  <span data-i18n="options_plugin_trash_whitelist"></span>
+                  <span class="tooltip-wrap">
+                    <a href="javascript:void(0)"> [?]</a>
+                    <div class="tooltip-content">
+                      <span data-i18n="options_plugin_trash_whitelist_tooltip" data-i18n-html="true"></span>
+                      <a target="_blank" data-i18n="options_read_more" data-href="faq15"></a>
+                    </div>
+                  </span>
+                </span>
                 <textarea rows="3" id="trash.whitelist-url" data-i18n="options_list_trash" data-i18n-value="placeholder"></textarea>
             </td>
         </tr>

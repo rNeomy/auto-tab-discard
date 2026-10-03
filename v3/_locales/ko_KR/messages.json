@@ -35,6 +35,10 @@
         "message": "다음의 호스트명들에 포함된 경우에만 정리",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "예:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "탭 우클릭 메뉴에 정리 메뉴 표시 (지원하는 경우)",
         "description": ""
@@ -131,6 +135,10 @@
         "message": "다음의 호스트명들에 포함된 경우에는 정리하지 않음",
         "description": ""
     },
+    "options_whitelist_tooltip": {
+        "message": "이 목록을 수정하려면 팝업 인터페이스를 사용하는 것이 좋습니다. 팝업 인터페이스에서 규칙을 추가할 때 Shift 키를 누르면 정규식 규칙을 만들 수 있습니다.<br><br>예:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_left_click": {
         "message": "툴바 아이콘 좌클릭 동작",
         "description": ""
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "다음 URL 패턴과 일치하는 탭만 삭제합니다",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "규칙에 사용자 지정 시간 간격을 사용하려면 끝에 <code>@{number}{unit}</code>을 추가하세요. 유효한 단위는 시간(h), 일(d), 주(w), 월(mo)입니다.<br><br>예:<ul><li><code>google.com@3d</code>는 3일 후 google.com 탭을 제거합니다</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

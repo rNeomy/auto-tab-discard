@@ -35,6 +35,10 @@
         "message": "Descartar solo los siguientes nombres de dominio o reglas de expresión regular inactivos",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Ejemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Mostrar elementos de descarte en el menú contextual de la \"pestaña\" (actualmente soportado por Firefox)",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartan. Se recomienda utilizar la interfaz emergente para modificar esta lista. Use la tecla \"Mayús\" mientras añade una regla desde la interfaz emergente para generar una regla de expresión regular.",
+        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartan.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Se recomienda usar la interfaz emergente para modificar esta lista. Mantén pulsada la tecla \"Shift\" al añadir una regla desde la interfaz emergente para generar una regla de expresión regular.<br><br>Ejemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Solo se eliminarán las pestañas que coincidan con los siguientes patrones de URL",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Para usar un intervalo de tiempo personalizado para una regla, añade <code>@{number}{unit}</code> al final. Las unidades válidas son horas (h), días (d), semanas (w) y meses (mo).<br><br>Ejemplo:<ul><li><code>google.com@3d</code> eliminará las pestañas de google.com después de tres días</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

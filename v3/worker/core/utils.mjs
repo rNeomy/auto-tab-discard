@@ -12,9 +12,18 @@ const notify = e => chrome.notifications.create({
 const query = options => chrome.tabs.query(options);
 
 const match = (list, hostname, href) => {
-  if (list.filter(s => s.startsWith('re:') === false).indexOf(hostname) !== -1) {
+  // exact hostname match
+  if (list.filter(s => s.startsWith('re:') === false && s.indexOf("*.") === -1).indexOf(hostname) !== -1) {
     return true;
   }
+  // wildcard hostname match
+  if (list.filter(s => s.startsWith('re:') === false && s.indexOf("*.") > -1).some(s => {
+    let wildcardHost = s.replace(/\./g, '\\.').replace(/\*/g, '[^.]+');
+    return new RegExp(`^${wildcardHost}$`).test(hostname);
+  })) {
+    return true;
+  }
+  // regex match (prefixed by "re:")
   if (list.filter(s => s.startsWith('re:') === true).map(s => s.substr(3)).some(s => {
     try {
       return (new RegExp(s)).test(href);
@@ -23,6 +32,7 @@ const match = (list, hostname, href) => {
   })) {
     return true;
   }
+  return false;
 };
 
 const icon = {

@@ -35,6 +35,10 @@
         "message": "Выгружать только неактивные сайты со следующими именами хостов или правилами регулярных выражений",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Пример:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Отображать выгружаемые элементы во вкладке контекстного меню (поддерживается на Firefox)",
         "description": ""
@@ -132,7 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Вкладки со следующими именами хостов или правилами регулярных выражений не будут выгружаются. Для изменения этого списка рекомендуется использовать всплывающий интерфейс. Используйте клавишу \"Shift\" при добавлении правила из всплывающего интерфейса, чтобы сгенерировать правило регулярного выражения.",
+        "message": "Вкладки со следующими именами хостов или правилами регулярных выражений не будут выгружены.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Для изменения этого списка рекомендуется использовать всплывающее окно. Удерживайте клавишу Shift при добавлении правила из всплывающего окна, чтобы создать правило с регулярным выражением.<br><br>Пример:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -217,6 +225,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Только мусорные вкладки, соответствующие следующим шаблонам URL",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Чтобы задать для правила собственный интервал времени, добавьте в конце <code>@{number}{unit}</code>. Допустимые единицы: часы (h), дни (d), недели (w) и месяцы (mo).<br><br>Пример:<ul><li><code>google.com@3d</code> удалит вкладки google.com через три дня</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

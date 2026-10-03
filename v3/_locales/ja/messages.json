@@ -35,6 +35,10 @@
         "message": "以下に該当するホストネームもしくは正規表現ルールのタブのみを破棄する",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "例:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "タブの右クリックメニューに破棄メニューを表示する (現在Firefoxで対応)",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "以下のホストネームもしくは正規表現ルールに該当するタブは破棄されません。このリストの変更には、ポップアップインターフェースの使用をおすすめします。ポップアップインターフェイスからルールを追加する際に、Shiftキーを使用することで正規表現ルールの生成も可能です。",
+        "message": "以下のホストネームもしくは正規表現ルールに該当するタブは破棄されません。",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "このリストの変更にはポップアップ画面の使用をおすすめします。ポップアップ画面からルールを追加する際にShiftキーを押すと、正規表現ルールを作成できます。<br><br>例:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "次のURLパターンに当てはまるタブのみ削除する",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "ルールにカスタムの時間間隔を使用するには、末尾に<code>@{number}{unit}</code>を追加してください。有効な単位は時間 (h)、日 (d)、週 (w)、月 (mo) です。<br><br>例:<ul><li><code>google.com@3d</code>は3日後にgoogle.comのタブを削除します</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

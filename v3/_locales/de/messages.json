@@ -35,6 +35,10 @@
         "message": "Deaktiviere nur inaktive Tabs folgender Hostnames oder reguläre Regeln",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Beispiel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Zeige deaktivierte Elemente im \"Tab\"-Kontextmenü (falls unterstützt)",
         "description": ""
@@ -131,6 +135,10 @@
         "message": "Tabs mit den folgenden Hostnames oder regulären Regeln werden nicht deaktiviert:",
         "description": ""
     },
+    "options_whitelist_tooltip": {
+        "message": "Es wird empfohlen, diese Liste über die Popup-Oberfläche zu bearbeiten. Halten Sie beim Hinzufügen einer Regel über die Popup-Oberfläche die Umschalttaste gedrückt, um eine Regel mit regulärem Ausdruck zu erstellen.<br><br>Beispiel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_left_click": {
         "message": "Aktion bei Links-Klick auf die Toolbar",
         "description": ""
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Nur Tabs löschen, die den folgenden URL-Mustern entsprechen",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Um für eine Regel ein benutzerdefiniertes Zeitintervall zu verwenden, fügen Sie am Ende <code>@{number}{unit}</code> hinzu. Gültige Einheiten sind Stunden (h), Tage (d), Wochen (w) und Monate (mo).<br><br>Beispiel:<ul><li><code>google.com@3d</code> löscht Google.com-Tabs nach drei Tagen</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

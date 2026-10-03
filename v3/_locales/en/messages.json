@@ -26,6 +26,9 @@
   "options_url_based": {
     "message": "Only discard the following inactive hostnames or regular expression rules"
   },
+  "options_url_based_tooltip": {
+    "message": "Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>"
+  },
   "options_tab_context": {
     "message": "Display discarding items in the \"tab\" context menu (currently supported by Firefox)"
   },
@@ -99,7 +102,10 @@
     "message": "Exceptions"
   },
   "options_whitelist": {
-    "message": "Tabs with the following hostnames or regular expression rules are not being discarded. It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule."
+    "message": "Tabs with the following hostnames or regular expression rules are not being discarded"
+  },
+  "options_whitelist_tooltip": {
+    "message": "It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>"
   },
   "options_left_click": {
     "message": "Toolbar left-click action"
@@ -163,6 +169,9 @@
   },
   "options_plugin_trash_whitelist": {
     "message": "Only trash tabs matching the following URL patterns"
+  },
+  "options_plugin_trash_whitelist_tooltip": {
+    "message": "To use a custom time interval for a rule, add <code>@{number}{unit}</code> to the end. Valid units are (h)ours, (d)ays, (w)eeks, and (mo)nths.<br><br>Example:<ul><li><code>google.com@3d</code> will trash google.com URLs after three days</li></ul>"
   },
   "options_plugin_force": {
     "message": "Immediately discard the following hostnames when their tab is not active"

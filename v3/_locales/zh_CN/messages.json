@@ -35,6 +35,10 @@
         "message": "只休眠属于下列非活动域名或者满足下列正则表达式规则的项",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "示例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "在标签页菜单中显示休眠的标签页（当前由 Firefox 支持）",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠。推荐使用弹出界面来修改本列表。弹出界面中追加规则时按住 Shift 键将会产生一个正则表达式规则。",
+        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠。",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "建议使用弹出窗口界面修改此列表。从弹出窗口界面添加规则时按住 Shift 键，可生成正则表达式规则。<br><br>示例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "标签页自动移除功能只对符合下列规则的URL生效",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "要为规则使用自定义时间间隔，请在末尾添加 <code>@{number}{unit}</code>。有效单位为小时 (h)、天 (d)、周 (w) 和月 (mo)。<br><br>示例：<ul><li><code>google.com@3d</code> 会在三天后移除 google.com 标签页</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

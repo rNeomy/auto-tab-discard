@@ -35,6 +35,10 @@
         "message": "Απέριψηη μόνο τα ακόλουθα ανενεργά ονόματα κεντρικών υπολογιστών ή κανόνες κανονικής έκφρασης",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Παράδειγμα:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Εμφάνιση στοιχείων απόρριψης στο μενού περιβάλλοντος \"καρτέλα\" (προς το παρόν υποστηρίζεται από τον Firefox)",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Οι καρτέλες με τα ακόλουθα hostnames ή κανόνες κανονικής έκφρασης δεν απορρίπτονται. Συνιστάται η χρήση της αναδυόμενης διεπαφής για την τροποποίηση αυτής της λίστας. Χρησιμοποιήστε το πλήκτρο \"Shift\" κατά την προσθήκη ενός κανόνα από το αναδυόμενο περιβάλλον εργασίας για να δημιουργήσετε έναν κανόνα κανονικής έκφρασης.",
+        "message": "Οι καρτέλες με τα ακόλουθα hostnames ή κανόνες κανονικής έκφρασης δεν απορρίπτονται.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Συνιστάται να χρησιμοποιείτε το αναδυόμενο παράθυρο για να τροποποιήσετε αυτήν τη λίστα. Κρατήστε πατημένο το πλήκτρο Shift κατά την προσθήκη ενός κανόνα από το αναδυόμενο παράθυρο για να δημιουργήσετε κανόνα κανονικής έκφρασης.<br><br>Παράδειγμα:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Απόρριψη μόνο καρτελών που ταιριάζουν με τα ακόλουθα μοτίβα URL",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Για να χρησιμοποιήσετε ένα προσαρμοσμένο χρονικό διάστημα για έναν κανόνα, προσθέστε στο τέλος το <code>@{number}{unit}</code>. Έγκυρες μονάδες είναι οι ώρες (h), ημέρες (d), εβδομάδες (w) και μήνες (mo).<br><br>Παράδειγμα:<ul><li><code>google.com@3d</code> θα διαγράψει τις καρτέλες του google.com μετά από τρεις ημέρες</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

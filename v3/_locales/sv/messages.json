@@ -35,6 +35,10 @@
         "message": "Släng endast följande inaktiva värdnamn eller regler med reguljära uttryck",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Exempel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Visa slängda objekt i högerklicksmenyn för flikar (stöds för tillfället i Firefox)",
         "description": ""
@@ -128,7 +132,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Flikar med följande värdnamn eller regler med reguljära uttryck slängs inte. Det rekommenderas att använda popupgränssnittet för att modifiera denna lista. Använd Shift-tangenten när du lägger till en regel från popupgränssnittet för att generera en regel med reguljärt uttryck.",
+        "message": "Flikar med följande värdnamn eller regler med reguljära uttryck slängs inte.",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Vi rekommenderar att du använder popupgränssnittet för att ändra den här listan. Håll ned Shift när du lägger till en regel från popupgränssnittet för att skapa en regel med reguljärt uttryck.<br><br>Exempel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -209,6 +217,10 @@
     },
     "options_plugin_trash_whitelist": {
         "message": "Radera endast flikar som matchar följande webbadressmönster",
+        "description": ""
+    },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Lägg till <code>@{number}{unit}</code> i slutet för att använda ett anpassat tidsintervall för en regel. Giltiga enheter är timmar (h), dagar (d), veckor (w) och månader (mo).<br><br>Exempel:<ul><li><code>google.com@3d</code> tar bort google.com-flikar efter tre dagar</li></ul>",
         "description": ""
     },
     "options_plugin_force": {

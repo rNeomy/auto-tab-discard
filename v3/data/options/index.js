@@ -5,7 +5,13 @@ const isEdge = /Edg\//.test(navigator.userAgent);
 
 // localization
 [...document.querySelectorAll('[data-i18n]')].forEach(e => {
-  e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
+  if (e.dataset.i18nHtml === 'true') {
+    // support html content in i18n messages
+    e.innerHTML = chrome.i18n.getMessage(e.dataset.i18n);
+  }
+  else {
+    e[e.dataset.i18nValue || 'textContent'] = chrome.i18n.getMessage(e.dataset.i18n);
+  }
 });
 
 // memory
