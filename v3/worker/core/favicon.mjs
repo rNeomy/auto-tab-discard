@@ -40,6 +40,7 @@ const paint = bitmap => {
   ctx.fill();
 
   // both canvas flavors end up as a Blob and then as a data uri
+<<<<<<< HEAD
   if (canvas.convertToBlob) {
     return canvas.convertToBlob().then(dataUri);
   }
@@ -47,6 +48,15 @@ const paint = bitmap => {
     blob => blob ? resolve(blob) : reject(new Error('toBlob failed')),
     'image/png'
   )).then(dataUri);
+=======
+  if (canvas.toBlob) {
+    return new Promise((resolve, reject) => canvas.toBlob(
+      blob => blob ? resolve(blob) : reject(new Error('toBlob failed')),
+      'image/png'
+    )).then(dataUri);
+  }
+  return canvas.convertToBlob().then(dataUri);
+>>>>>>> e5a389c (favicon overlay is now rendered in the extension's own context)
 };
 
 const decode = async blob => {
