@@ -63,9 +63,14 @@ const run = tab => {
     if (gone(tab)) {
       return cleanup();
     }
+    if (!tab.url) {
+      return;
+    }
+
     // inject once per committed document; a redirect changes tab.url and injects again
     if (shouldInject(tab) && tab.url !== injected) {
       injected = tab.url;
+
       isWhitelisted(tab.url).then(skip => {
         if (skip) {
           log('create', 'tab is whitelisted; discarding is skipped', tab.url);

@@ -60,7 +60,6 @@ const restore = () => storage({
   'go-hidden': false,
   'memory-enabled': false,
   'memory-value': 60,
-  'favicon-delay': isFirefox ? 500 : 100,
   'simultaneous-jobs': 10,
   'idle': false,
   'idle-timeout': 5 * 60,
@@ -128,7 +127,6 @@ const restore = () => storage({
   document.getElementById('number').value = prefs.number;
   document.getElementById('max.single.discard').value = prefs['max.single.discard'];
   document.getElementById('simultaneous-jobs').value = prefs['simultaneous-jobs'];
-  document.getElementById('favicon-delay').value = prefs['favicon-delay'];
   document.getElementById('audio').checked = prefs.audio;
   document.getElementById('paused').checked = prefs.paused;
   document.getElementById('pinned').checked = prefs.pinned;
@@ -237,7 +235,6 @@ document.getElementById('save').addEventListener('click', () => {
     'discard-protected-on-close': document.getElementById('discard-protected-on-close').checked,
     'go-hidden': document.getElementById('go-hidden').checked,
     'simultaneous-jobs': Math.max(1, Number(document.getElementById('simultaneous-jobs').value)),
-    'favicon-delay': Math.max(100, Number(document.getElementById('favicon-delay').value)),
     'whitelist': document.getElementById('whitelist').value
       .split(/[,\n]/)
       .map(s => s.trim())
