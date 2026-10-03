@@ -11,6 +11,10 @@
     "message": "Comma-separated list of hostnames",
     "description": ""
   },
+  "options_list_domain": {
+    "message": "Comma-separated list of domains",
+    "description": ""
+  },
   "options_list_trash": {
     "message": "Comma-separated list of hostnames, leave blank for all",
     "description": ""
@@ -32,11 +36,11 @@
     "description": ""
   },
   "options_url_based": {
-    "message": "Only discard the following inactive hostnames or regular expression rules",
+    "message": "Only discard the following inactive domains or regular expression rules",
     "description": ""
   },
   "options_url_based_tooltip": {
-    "message": "Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+    "message": "Example:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
     "description": ""
   },
   "options_tab_context": {
@@ -136,11 +140,11 @@
     "description": ""
   },
   "options_whitelist": {
-    "message": "Tabs with the following hostnames or regular expression rules are not being discarded",
+    "message": "Tabs whose domain or regular expression rules match the following are not being discarded:",
     "description": ""
   },
   "options_whitelist_tooltip": {
-    "message": "It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+    "message": "A domain also covers its subdomains (e.g. example.com also covers www.example.com). It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
     "description": ""
   },
   "options_left_click": {
@@ -460,7 +464,7 @@
     "description": ""
   },
   "popup_whitelist_always_title": {
-    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list.",
+    "message": "Click to add the domain to the exception list. Shift + Click to add the exact URL to the exception list.",
     "description": ""
   },
   "popup_whitelist_session": {

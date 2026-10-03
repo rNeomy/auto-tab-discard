@@ -32,8 +32,6 @@ const isWhitelisted = url => Promise.all([
   try {
     const {hostname} = new URL(url);
 
-    console.log(hostname, url);
-
     return Boolean(match(local['whitelist'], hostname, url) ||
       match(session['whitelist.session'], hostname, url));
   }
