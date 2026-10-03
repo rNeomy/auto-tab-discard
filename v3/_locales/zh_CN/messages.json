@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "（已休眠窗口）",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "丢弃固定或分组的标签页，而不是关闭它们（通过导航界面或用户命令）",
+        "description": ""
+    },
+    "options_click": {
+        "message": "左键单击操作按钮时",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "菜单可见性",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "弹出窗口视图",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "上下文菜单视图",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "菜单项",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "丢弃此标签页",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "丢弃标签页组",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "丢弃此窗口中的其他标签页",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "丢弃右侧的标签页",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "丢弃左侧的标签页",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "丢弃其他窗口中的标签页",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "丢弃所有其他标签页",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "恢复标签页",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "恢复标签页组",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "恢复此窗口中的其他标签页",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "恢复右侧的标签页",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "恢复左侧的标签页",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "恢复其他窗口中的标签页",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "恢复所有其他标签页",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "在本次会话中保留标签页",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "允许丢弃标签页",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "始终保留此网站的标签页",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "在新的已丢弃标签页中打开（链接上下文菜单）",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "允许丢弃所选标签页",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "立即丢弃（忽略例外规则）",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "单击会立即丢弃标签页并忽略自动丢弃例外规则。按 Shift + 单击可遵循这些规则。",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "恢复标签页",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "恢复标签页组",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "恢复此窗口中的标签页",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "恢复所有其他标签页",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "恢复右侧的标签页",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "恢复左侧的标签页",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "恢复其他标签页",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "恢复其他窗口中的标签页",
+        "description": ""
     }
 }

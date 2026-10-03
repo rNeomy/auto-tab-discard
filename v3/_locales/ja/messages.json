@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(破棄済みのウィンドウ)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "固定またはグループ化されたタブを閉じずに破棄します（ナビゲーション画面またはユーザー操作から）",
+        "description": ""
+    },
+    "options_click": {
+        "message": "アクションボタンを左クリックしたとき",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "メニューの表示",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "ポップアップ表示",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "コンテキストメニュー表示",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "メニュー項目",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "このタブを破棄",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "タブグループを破棄",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "このウィンドウの他のタブを破棄",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "右側のタブを破棄",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "左側のタブを破棄",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "他のウィンドウのタブを破棄",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "他のすべてのタブを破棄",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "タブの破棄を解除",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "タブグループの破棄を解除",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "このウィンドウの他のタブの破棄を解除",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "右側のタブの破棄を解除",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "左側のタブの破棄を解除",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "他のウィンドウのタブの破棄を解除",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "他のすべてのタブの破棄を解除",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "このセッション中タブを保持",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "タブの破棄を許可",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "このサイトのタブを常に保持",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "新しい破棄済みタブで開く（リンクのコンテキストメニュー）",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "選択したタブの破棄を許可",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "すぐに破棄（例外を無視）",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "クリックするとすぐにタブを破棄し、自動破棄の例外ルールを無視します。例外を適用するには Shift + クリックしてください。",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "タブの破棄を解除",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "タブグループの破棄を解除",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "このウィンドウのタブの破棄を解除",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "他のすべてのタブの破棄を解除",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "右側のタブの破棄を解除",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "左側のタブの破棄を解除",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "他のタブの破棄を解除",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "他のウィンドウのタブの破棄を解除",
+        "description": ""
     }
 }

@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Altatott ablak)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "A rögzített vagy csoportosított lapok bezárás helyetti altatása (a navigációs felületről vagy felhasználói paranccsal)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "A műveletgombra történő bal kattintáskor",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Menü láthatósága",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Felugró ablak nézete",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Helyi menü nézete",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Menüelem",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Lap altatása",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Lapcsoport altatása",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "A többi lap altatása ebben az ablakban",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Jobbra lévő lapok altatása",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Balra lévő lapok altatása",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Lapok altatása más ablakokban",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Az összes többi lap altatása",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Lap visszaállítása",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Lapcsoport visszaállítása",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "A többi lap visszaállítása ebben az ablakban",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Jobbra lévő lapok visszaállítása",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Balra lévő lapok visszaállítása",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Lapok visszaállítása más ablakokban",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Az összes többi lap visszaállítása",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Lapok megtartása erre a munkamenetre",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Lapok altatásának engedélyezése",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "A webhely lapjainak mindig megtartása",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Megnyitás új, altatott lapon (hivatkozás helyi menüje)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "A kijelölt lapok altatásának engedélyezése",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Azonnali altatás (kivételek figyelmen kívül hagyása)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "A kattintás azonnal altatja a lapot, és figyelmen kívül hagyja az automatikus altatás kivételeit. A kivételek figyelembevételéhez használja a Shift + kattintást.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Lap visszaállítása",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Lapcsoport visszaállítása",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Lapok visszaállítása ebben az ablakban",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Az összes többi lap visszaállítása",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Jobbra lévő lapok visszaállítása",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Balra lévő lapok visszaállítása",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Más lapok visszaállítása",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Lapok visszaállítása más ablakokban",
+        "description": ""
     }
 }

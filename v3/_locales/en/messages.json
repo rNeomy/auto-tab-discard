@@ -1,524 +1,698 @@
 {
   "app_description": {
-    "message": "Increase browser speed and reduce memory load when you have numerous open tabs."
+    "message": "Increase browser speed and reduce memory load when you have numerous open tabs.",
+    "description": ""
   },
   "options_title": {
-    "message": "Options Page :: Auto Tab Discard"
+    "message": "Options Page :: Auto Tab Discard",
+    "description": ""
   },
   "options_list": {
-    "message": "Comma-separated list of hostnames"
+    "message": "Comma-separated list of hostnames",
+    "description": ""
   },
   "options_list_trash": {
-    "message": "Comma-separated list of hostnames, leave blank for all"
+    "message": "Comma-separated list of hostnames, leave blank for all",
+    "description": ""
   },
   "options_discarding_options": {
-    "message": "Discarding options"
+    "message": "Discarding options",
+    "description": ""
   },
   "options_period01_a": {
-    "message": "Discard inactive tabs after "
+    "message": "Discard inactive tabs after ",
+    "description": ""
   },
   "options_period02": {
-    "message": "minutes (zero to disable) when the number of inactive tabs exceeds "
+    "message": "minutes (zero to disable) when the number of inactive tabs exceeds ",
+    "description": ""
   },
   "options_period04": {
-    "message": "Maximum number of tabs to check for discarding per single automatic discarding request "
+    "message": "Maximum number of tabs to check for discarding per single automatic discarding request ",
+    "description": ""
   },
   "options_url_based": {
-    "message": "Only discard the following inactive hostnames or regular expression rules"
+    "message": "Only discard the following inactive hostnames or regular expression rules",
+    "description": ""
   },
   "options_url_based_tooltip": {
-    "message": "Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>"
+    "message": "Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+    "description": ""
   },
   "options_tab_context": {
-    "message": "Display discarding items in the \"tab\" context menu (currently supported by Firefox)"
+    "message": "Display discarding items in the \"tab\" context menu (currently supported by Firefox)",
+    "description": ""
   },
   "options_page_context": {
-    "message": "Display discarding items in the \"page\" context menu"
+    "message": "Display discarding items in the \"page\" context menu",
+    "description": ""
   },
   "options_link_context": {
-    "message": "Display \"Open in New Discarded Tab\" item in the \"link\" context menu"
+    "message": "Display \"Open in New Discarded Tab\" item in the \"link\" context menu",
+    "description": ""
   },
   "options_favicon": {
-    "message": "Change favicon of discarded tabs (if possible)"
+    "message": "Change favicon of discarded tabs (if possible)",
+    "description": ""
   },
   "options_prepends": {
-    "message": "Prepend a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)"
+    "message": "Prepend a symbol to the discarded tabs (e.g. 💤 or ⏻︎) (if possible)",
+    "description": ""
   },
   "options_discard_protected_on_close": {
-    "message": "Discard pinned or grouped tabs instead of closing them (from navigation interface or user command)"
+    "message": "Discard pinned or grouped tabs instead of closing them (from navigation interface or user command)",
+    "description": ""
   },
   "options_startup_unpinned": {
-    "message": "Discard all unpinned tabs on a browser or extension startup"
+    "message": "Discard all unpinned tabs on a browser or extension startup",
+    "description": ""
   },
   "options_startup_pinned": {
-    "message": "Discard all pinned tabs on a browser or extension startup"
+    "message": "Discard all pinned tabs on a browser or extension startup",
+    "description": ""
   },
   "options_startup_release_pinned": {
-    "message": "Release discarding state of all pinned tabs on a browser or extension startup"
+    "message": "Release discarding state of all pinned tabs on a browser or extension startup",
+    "description": ""
   },
   "options_release_next_tab": {
-    "message": "Release discarding of the next tab (tab to the right of the active tab)"
+    "message": "Release discarding of the next tab (tab to the right of the active tab)",
+    "description": ""
   },
   "options_release_previous_tab": {
-    "message": "Release discarding of the previous tab (tab to the left of the active tab)"
+    "message": "Release discarding of the previous tab (tab to the left of the active tab)",
+    "description": ""
   },
   "options_memory": {
-    "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)"
+    "message": "Discard a background tab if its memory usage (totalJSHeapSize) exceeds (in MB)",
+    "description": ""
   },
   "options_discarding_conditions": {
-    "message": "Discarding conditions"
+    "message": "Discarding conditions",
+    "description": ""
   },
   "options_audio": {
-    "message": "Do not discard a tab when media is playing"
+    "message": "Do not discard a tab when media is playing",
+    "description": ""
   },
   "options_paused": {
-    "message": "Do not discard a tab when there is a paused media player"
+    "message": "Do not discard a tab when there is a paused media player",
+    "description": ""
   },
   "options_pinned": {
-    "message": "Do not discard a tab when it is pinned"
+    "message": "Do not discard a tab when it is pinned",
+    "description": ""
   },
   "options_split_view": {
-    "message": "Do not discard a tab if it is in a split view and either tab of the split is focused"
+    "message": "Do not discard a tab if it is in a split view and either tab of the split is focused",
+    "description": ""
   },
   "options_form": {
-    "message": "Do not discard a tab when form changes are not yet submitted"
+    "message": "Do not discard a tab when form changes are not yet submitted",
+    "description": ""
   },
   "options_battery": {
-    "message": "Do not discard tabs when the computer is connected to a power source"
+    "message": "Do not discard tabs when the computer is connected to a power source",
+    "description": ""
   },
   "options_online": {
-    "message": "Do not discard tabs when there is no internet connection and the tab is not cached"
+    "message": "Do not discard tabs when there is no internet connection and the tab is not cached",
+    "description": ""
   },
   "options_notification_permission": {
-    "message": "Do not discard a tab if it can display desktop notifications"
+    "message": "Do not discard a tab if it can display desktop notifications",
+    "description": ""
   },
   "options_idle": {
-    "message": "Only discard tabs if the computer is in the 'idle' state"
+    "message": "Only discard tabs if the computer is in the 'idle' state",
+    "description": ""
   },
   "options_idle_timeout": {
-    "message": "Inactive interval to determine if the computer is in idle state or not (in minutes)"
+    "message": "Inactive interval to determine if the computer is in idle state or not (in minutes)",
+    "description": ""
   },
   "options_exceptions": {
-    "message": "Exceptions"
+    "message": "Exceptions",
+    "description": ""
   },
   "options_whitelist": {
-    "message": "Tabs with the following hostnames or regular expression rules are not being discarded"
+    "message": "Tabs with the following hostnames or regular expression rules are not being discarded",
+    "description": ""
   },
   "options_whitelist_tooltip": {
-    "message": "It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>"
+    "message": "It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+    "description": ""
   },
   "options_left_click": {
-    "message": "Toolbar left-click action"
+    "message": "Toolbar left-click action",
+    "description": ""
   },
   "options_click": {
-    "message": "When left-clicking the action button"
+    "message": "When left-clicking the action button",
+    "description": ""
   },
   "options_click_popup": {
-    "message": "Open popup"
+    "message": "Open popup",
+    "description": ""
   },
   "options_click_discard_tab": {
-    "message": "Discard Tab"
+    "message": "Discard Tab",
+    "description": ""
   },
   "options_click_discard_tabs": {
-    "message": "Discard All Other Tabs"
+    "message": "Discard All Other Tabs",
+    "description": ""
   },
   "options_click_release_tabs": {
-    "message": "Release All Other Tabs"
+    "message": "Release All Other Tabs",
+    "description": ""
   },
   "options_click_discard_window": {
-    "message": "Discard Other Tabs in This Window"
+    "message": "Discard Other Tabs in This Window",
+    "description": ""
   },
   "options_click_release_window": {
-    "message": "Release Other Tabs in This Window"
+    "message": "Release Other Tabs in This Window",
+    "description": ""
   },
   "options_click_discard_other_windows": {
-    "message": "Discard Tabs in Other Windows"
+    "message": "Discard Tabs in Other Windows",
+    "description": ""
   },
   "options_click_release_other_windows": {
-    "message": "Release Tabs in Other Windows"
+    "message": "Release Tabs in Other Windows",
+    "description": ""
   },
   "options_click_toggle_allowed": {
-    "message": "Toggle 'Keep Selected Tabs for This Session' option"
+    "message": "Toggle 'Keep Selected Tabs for This Session' option",
+    "description": ""
   },
   "options_misc": {
-    "message": "Misc"
+    "message": "Misc",
+    "description": ""
   },
   "options_plugins": {
-    "message": "Plug-ins"
+    "message": "Plug-ins",
+    "description": ""
   },
   "options_plugin_dummy": {
-    "message": "When discarding, replace the page with a local dummy alternative (beta)"
+    "message": "When discarding, replace the page with a local dummy alternative (beta)",
+    "description": ""
   },
   "options_plugin_blank": {
-    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)"
+    "message": "Open a temporary blank page when all tabs in an inactive window are discarded (to be able to discard the active tab on this window)",
+    "description": ""
   },
   "options_plugin_focus": {
-    "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded."
+    "message": "Release discarding of all tabs in the active window. If enabled, no tab in the active window will be discarded.",
+    "description": ""
   },
   "options_plugin_unloaded": {
-    "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs."
+    "message": "Discard all unloaded tabs on browser startup. This method discards almost all inactive tabs.",
+    "description": ""
   },
   "options_plugin_trash01": {
-    "message": "Permanently delete (remove) old discarded tabs if they are inactive for"
+    "message": "Permanently delete (remove) old discarded tabs if they are inactive for",
+    "description": ""
   },
   "options_plugin_trash02": {
-    "message": "hours"
+    "message": "hours",
+    "description": ""
   },
   "options_plugin_trash_unloaded": {
-    "message": "Also, consider old unloaded tabs"
+    "message": "Also, consider old unloaded tabs",
+    "description": ""
   },
   "options_plugin_trash_whitelist": {
-    "message": "Only trash tabs matching the following URL patterns"
+    "message": "Only trash tabs matching the following URL patterns",
+    "description": ""
   },
   "options_plugin_trash_whitelist_tooltip": {
-    "message": "To use a custom time interval for a rule, add <code>@{number}{unit}</code> to the end. Valid units are (h)ours, (d)ays, (w)eeks, and (mo)nths.<br><br>Example:<ul><li><code>google.com@3d</code> will trash google.com URLs after three days</li></ul>"
+    "message": "To use a custom time interval for a rule, add <code>@{number}{unit}</code> to the end. Valid units are (h)ours, (d)ays, (w)eeks, and (mo)nths.<br><br>Example:<ul><li><code>google.com@3d</code> will trash google.com URLs after three days</li></ul>",
+    "description": ""
   },
   "options_plugin_force": {
-    "message": "Immediately discard the following hostnames when their tab is not active"
+    "message": "Immediately discard the following hostnames when their tab is not active",
+    "description": ""
   },
   "options_plugin_new": {
-    "message": "Discard all newly opened inactive tabs after they get loaded"
+    "message": "Discard all newly opened inactive tabs after they get loaded",
+    "description": ""
   },
   "options_plugin_youtube": {
-    "message": "Store YouTube's timestamp before discarding"
+    "message": "Store YouTube's timestamp before discarding",
+    "description": ""
   },
   "options_menu_visibility": {
-    "message": "Menu Visibility"
+    "message": "Menu Visibility",
+    "description": ""
   },
   "options_popup_view": {
-    "message": "Popup View"
+    "message": "Popup View",
+    "description": ""
   },
   "options_context_menu_view": {
-    "message": "Context Menu View"
+    "message": "Context Menu View",
+    "description": ""
   },
   "options_menu_item": {
-    "message": "Menu Item"
+    "message": "Menu Item",
+    "description": ""
   },
   "options_item_discard_tab": {
-    "message": "Discard This Tab"
+    "message": "Discard This Tab",
+    "description": ""
   },
   "options_item_discard_tree": {
-    "message": "Discard Tab Group"
+    "message": "Discard Tab Group",
+    "description": ""
   },
   "options_item_discard_window": {
-    "message": "Discard Other Tabs in This Window"
+    "message": "Discard Other Tabs in This Window",
+    "description": ""
   },
   "options_item_discard_rights": {
-    "message": "Discard Tabs to the Right"
+    "message": "Discard Tabs to the Right",
+    "description": ""
   },
   "options_item_discard_lefts": {
-    "message": "Discard Tabs to the Left"
+    "message": "Discard Tabs to the Left",
+    "description": ""
   },
   "options_item_discard_other_windows": {
-    "message": "Discard Tabs in Other Windows"
+    "message": "Discard Tabs in Other Windows",
+    "description": ""
   },
   "options_item_discard_tabs": {
-    "message": "Discard All Other Tabs"
+    "message": "Discard All Other Tabs",
+    "description": ""
   },
   "options_item_release_tab": {
-    "message": "Release Tab"
+    "message": "Release Tab",
+    "description": ""
   },
   "options_item_release_tree": {
-    "message": "Release Tab Group"
+    "message": "Release Tab Group",
+    "description": ""
   },
   "options_item_release_window": {
-    "message": "Release Other Tabs in This Window"
+    "message": "Release Other Tabs in This Window",
+    "description": ""
   },
   "options_item_release_rights": {
-    "message": "Release Tabs to the Right"
+    "message": "Release Tabs to the Right",
+    "description": ""
   },
   "options_item_release_lefts": {
-    "message": "Release Tabs to the Left"
+    "message": "Release Tabs to the Left",
+    "description": ""
   },
   "options_item_release_other_windows": {
-    "message": "Release Tabs in Other Windows"
+    "message": "Release Tabs in Other Windows",
+    "description": ""
   },
   "options_item_release_tabs": {
-    "message": "Release All Other Tabs"
+    "message": "Release All Other Tabs",
+    "description": ""
   },
   "options_item_keep_tabs_session": {
-    "message": "Keep Tabs for This Session"
+    "message": "Keep Tabs for This Session",
+    "description": ""
   },
   "options_item_keep_tabs_allow": {
-    "message": "Allow Tabs to Be Discarded"
+    "message": "Allow Tabs to Be Discarded",
+    "description": ""
   },
   "options_item_keep_tabs_whitelist": {
-    "message": "Always Keep Tabs for This Site"
+    "message": "Always Keep Tabs for This Site",
+    "description": ""
   },
   "options_item_open_tab_then_discard": {
-    "message": "Open in New Discarded Tab (Link Context)"
+    "message": "Open in New Discarded Tab (Link Context)",
+    "description": ""
   },
   "options_log": {
-    "message": "Display logs (for debugging purpose only)"
+    "message": "Display logs (for debugging purpose only)",
+    "description": ""
   },
   "options_go_hidden": {
-    "message": "Discard a tab if it is hidden"
+    "message": "Discard a tab if it is hidden",
+    "description": ""
   },
   "options_simultaneous_jobs": {
-    "message": "Number of allowed simultaneous discarding jobs"
+    "message": "Number of allowed simultaneous discarding jobs",
+    "description": ""
   },
   "options_faqs": {
-    "message": "Open FAQs page on updates"
+    "message": "Open FAQs page on updates",
+    "description": ""
   },
   "options_reset": {
-    "message": "Factory Reset"
+    "message": "Factory Reset",
+    "description": ""
   },
   "options_import": {
-    "message": "Import Settings"
+    "message": "Import Settings",
+    "description": ""
   },
   "options_export": {
-    "message": "Export Settings"
+    "message": "Export Settings",
+    "description": ""
   },
   "options_save": {
-    "message": "Save Options"
+    "message": "Save Options",
+    "description": ""
   },
   "options_save_msg": {
-    "message": "Options saved"
+    "message": "Options saved",
+    "description": ""
   },
   "options_support": {
-    "message": "Support Development"
+    "message": "Support Development",
+    "description": ""
   },
   "options_favicon_delay": {
-    "message": "Delay for painting the discarded favicon (in milliseconds)"
+    "message": "Delay for painting the discarded favicon (in milliseconds)",
+    "description": ""
   },
   "options_read_more": {
-    "message": "(Read More Here)"
+    "message": "(Read More Here)",
+    "description": ""
   },
   "options_save_notice": {
-    "message": "Please be sure to click the \"Save Options\" button at the bottom of this page once you have finished making changes."
+    "message": "Please be sure to click the \"Save Options\" button at the bottom of this page once you have finished making changes.",
+    "description": ""
   },
   "options_rate_desc": {
-    "message": "If you like to rate the extension, click"
+    "message": "If you like to rate the extension, click",
+    "description": ""
   },
   "options_rate_btn": {
-    "message": "Rate it"
+    "message": "Rate it",
+    "description": ""
   },
   "options_managed_1": {
-    "message": "This extension has the ability to use managed storage, allowing domain administrators to preconfigure preferences."
+    "message": "This extension has the ability to use managed storage, allowing domain administrators to preconfigure preferences.",
+    "description": ""
   },
   "options_managed_2": {
-    "message": "Read more here."
+    "message": "Read more here.",
+    "description": ""
   },
   "popup_discard_tab": {
-    "message": "Discard Tab"
+    "message": "Discard Tab",
+    "description": ""
   },
   "popup_discard_tree": {
-    "message": "Discard Tab Group"
+    "message": "Discard Tab Group",
+    "description": ""
   },
   "popup_discard_tabs": {
-    "message": "Discard All Other Tabs"
+    "message": "Discard All Other Tabs",
+    "description": ""
   },
   "popup_discard_window": {
-    "message": "Discard Other Tabs in This Window"
+    "message": "Discard Other Tabs in This Window",
+    "description": ""
   },
   "popup_discard_rights": {
-    "message": "Discard Tabs to the Right"
+    "message": "Discard Tabs to the Right",
+    "description": ""
   },
   "popup_discard_lefts": {
-    "message": "Discard Tabs to the Left"
+    "message": "Discard Tabs to the Left",
+    "description": ""
   },
   "popup_discard_other_windows": {
-    "message": "Discard Tabs in Other Windows"
+    "message": "Discard Tabs in Other Windows",
+    "description": ""
   },
   "popup_move_previous": {
-    "message": "Left Tab"
+    "message": "Left Tab",
+    "description": ""
   },
   "popup_move_previous_title": {
-    "message": "Go to the previous active tab"
+    "message": "Go to the previous active tab",
+    "description": ""
   },
   "popup_close": {
-    "message": "Close Tab"
+    "message": "Close Tab",
+    "description": ""
   },
   "popup_close_title": {
-    "message": "Close the current tab and switch to the previous active tab"
+    "message": "Close the current tab and switch to the previous active tab",
+    "description": ""
   },
   "popup_move_next": {
-    "message": "Right Tab"
+    "message": "Right Tab",
+    "description": ""
   },
   "popup_move_next_title": {
-    "message": "Go to the next active tab"
+    "message": "Go to the next active tab",
+    "description": ""
   },
   "popup_whitelist_desc": {
-    "message": "Keep Tabs for This Site"
+    "message": "Keep Tabs for This Site",
+    "description": ""
   },
   "popup_whitelist_always": {
-    "message": "Always"
+    "message": "Always",
+    "description": ""
   },
   "popup_whitelist_always_title": {
-    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list."
+    "message": "Click to add the hostname to the exception list. Shift + Click to add the exact URL to the exception list.",
+    "description": ""
   },
   "popup_whitelist_session": {
-    "message": "Session"
+    "message": "Session",
+    "description": ""
   },
   "popup_allowed": {
-    "message": "Keep Selected Tabs for This Session"
+    "message": "Keep Selected Tabs for This Session",
+    "description": ""
   },
   "popup_allowed_reset": {
-    "message": "Allow Selected Tabs to Be Discarded"
+    "message": "Allow Selected Tabs to Be Discarded",
+    "description": ""
   },
   "popup_force_discard": {
-    "message": "Force Discard (ignore exceptions)"
+    "message": "Force Discard (ignore exceptions)",
+    "description": ""
   },
   "popup_forced_hint": {
-    "message": "Clicks discard immediately and ignore the auto-discarding exception rules. Use Shift + Click to respect them."
+    "message": "Clicks discard immediately and ignore the auto-discarding exception rules. Use Shift + Click to respect them.",
+    "description": ""
   },
   "popup_open_options": {
-    "message": "Options"
+    "message": "Options",
+    "description": ""
   },
   "popup_release": {
-    "message": "Release discarding. To bypass cached content, use Shift + Click."
+    "message": "Release discarding. To bypass cached content, use Shift + Click.",
+    "description": ""
   },
   "popup_shift_hint": {
-    "message": "Use the Shift key to ignore the auto-discarding exception rules."
+    "message": "Use the Shift key to ignore the auto-discarding exception rules.",
+    "description": ""
   },
   "popup_tmp_disable": {
-    "message": "Disable Auto Discarding Globally for"
+    "message": "Disable Auto Discarding Globally for",
+    "description": ""
   },
   "popup_tmp_0": {
-    "message": "Off"
+    "message": "Off",
+    "description": ""
   },
   "popup_tmp_1": {
-    "message": "1 hour"
+    "message": "1 hour",
+    "description": ""
   },
   "popup_tmp_6": {
-    "message": "6 hours"
+    "message": "6 hours",
+    "description": ""
   },
   "popup_tmp_12": {
-    "message": "12 hours"
+    "message": "12 hours",
+    "description": ""
   },
   "popup_tmp_24": {
-    "message": "1 day"
+    "message": "1 day",
+    "description": ""
   },
   "bg_no_active_tab": {
-    "message": "No active tab is present"
+    "message": "No active tab is present",
+    "description": ""
   },
   "bg_msg_1": {
-    "message": "Auto-discarding is disabled for this tab"
+    "message": "Auto-discarding is disabled for this tab",
+    "description": ""
   },
   "bg_msg_2": {
-    "message": "Auto-discarding is disabled for now"
+    "message": "Auto-discarding is disabled for now",
+    "description": ""
   },
   "menu_discard_tab": {
-    "message": "Discard Tab"
+    "message": "Discard Tab",
+    "description": ""
   },
   "menu_discard_tree": {
-    "message": "Discard Tab Group"
+    "message": "Discard Tab Group",
+    "description": ""
   },
   "menu_discard_menu": {
-    "message": "Discard Tabs in This Window"
+    "message": "Discard Tabs in This Window",
+    "description": ""
   },
   "menu_discard_tabs": {
-    "message": "Discard All Other Tabs"
+    "message": "Discard All Other Tabs",
+    "description": ""
   },
   "menu_discard_rights": {
-    "message": "Discard Tabs to the Right"
+    "message": "Discard Tabs to the Right",
+    "description": ""
   },
   "menu_discard_lefts": {
-    "message": "Discard Tabs to the Left"
+    "message": "Discard Tabs to the Left",
+    "description": ""
   },
   "menu_discard_window": {
-    "message": "Discard Other Tabs"
+    "message": "Discard Other Tabs",
+    "description": ""
   },
   "menu_discard_other_windows": {
-    "message": "Discard Tabs in Other Windows"
+    "message": "Discard Tabs in Other Windows",
+    "description": ""
   },
   "menu_release_tab": {
-    "message": "Release Tab"
+    "message": "Release Tab",
+    "description": ""
   },
   "menu_release_tree": {
-    "message": "Release Tab Group"
+    "message": "Release Tab Group",
+    "description": ""
   },
   "menu_release_menu": {
-    "message": "Release Tabs in This Window"
+    "message": "Release Tabs in This Window",
+    "description": ""
   },
   "menu_release_tabs": {
-    "message": "Release All Other Tabs"
+    "message": "Release All Other Tabs",
+    "description": ""
   },
   "menu_release_rights": {
-    "message": "Release Tabs to the Right"
+    "message": "Release Tabs to the Right",
+    "description": ""
   },
   "menu_release_lefts": {
-    "message": "Release Tabs to the Left"
+    "message": "Release Tabs to the Left",
+    "description": ""
   },
   "menu_release_window": {
-    "message": "Release Other Tabs"
+    "message": "Release Other Tabs",
+    "description": ""
   },
   "menu_release_other_windows": {
-    "message": "Release Tabs in Other Windows"
+    "message": "Release Tabs in Other Windows",
+    "description": ""
   },
   "menu_extra": {
-    "message": "Keep Tabs"
+    "message": "Keep Tabs",
+    "description": ""
   },
   "menu_whitelist_domain": {
-    "message": "Always Keep Tabs for This Site"
+    "message": "Always Keep Tabs for This Site",
+    "description": ""
   },
   "menu_open_tab_then_discard": {
-    "message": "Open in New Discarded Tab"
+    "message": "Open in New Discarded Tab",
+    "description": ""
   },
   "menu_move_previous": {
-    "message": "Go to the Left Tab"
+    "message": "Go to the Left Tab",
+    "description": ""
   },
   "menu_move_next": {
-    "message": "Go to the Right Tab"
+    "message": "Go to the Right Tab",
+    "description": ""
   },
   "menu_close": {
-    "message": "Close Tab"
+    "message": "Close Tab",
+    "description": ""
   },
   "menu_msg1": {
-    "message": "is added to the permanent whitelist"
+    "message": "is added to the permanent whitelist",
+    "description": ""
   },
   "menu_msg5": {
-    "message": "is removed from the permanent whitelist"
+    "message": "is removed from the permanent whitelist",
+    "description": ""
   },
   "menu_msg4": {
-    "message": "is added to the session whitelist"
+    "message": "is added to the session whitelist",
+    "description": ""
   },
   "menu_msg6": {
-    "message": "is removed from the session whitelist"
+    "message": "is removed from the session whitelist",
+    "description": ""
   },
   "menu_msg2": {
-    "message": "protocol is not supported"
+    "message": "protocol is not supported",
+    "description": ""
   },
   "menu_msg3": {
-    "message": "Cannot discard the only not discarded tab in this window"
+    "message": "Cannot discard the only not discarded tab in this window",
+    "description": ""
   },
   "cmd_discard_tab": {
-    "message": "Discard Tab"
+    "message": "Discard Tab",
+    "description": ""
   },
   "cmd_discard_tree": {
-    "message": "Discard Tab Group"
+    "message": "Discard Tab Group",
+    "description": ""
   },
   "cmd_discard_tabs": {
-    "message": "Discard All Other Tabs"
+    "message": "Discard All Other Tabs",
+    "description": ""
   },
   "cmd_discard_rights": {
-    "message": "Discard Tabs to the Right"
+    "message": "Discard Tabs to the Right",
+    "description": ""
   },
   "cmd_discard_lefts": {
-    "message": "Discard Tabs to the Left"
+    "message": "Discard Tabs to the Left",
+    "description": ""
   },
   "cmd_discard_window": {
-    "message": "Discard Other Tabs in This Window"
+    "message": "Discard Other Tabs in This Window",
+    "description": ""
   },
   "cmd_discard_other_windows": {
-    "message": "Discard Tabs in Other Windows"
+    "message": "Discard Tabs in Other Windows",
+    "description": ""
   },
   "cmd_whitelist_domain": {
-    "message": "Always Keep Tabs for This Site"
+    "message": "Always Keep Tabs for This Site",
+    "description": ""
   },
   "cmd_move_previous": {
-    "message": "Go to the Left Tab"
+    "message": "Go to the Left Tab",
+    "description": ""
   },
   "cmd_move_next": {
-    "message": "Go to the Right Tab"
+    "message": "Go to the Right Tab",
+    "description": ""
   },
   "cmd_close": {
-    "message": "Close Tab"
+    "message": "Close Tab",
+    "description": ""
   },
   "blank_msg": {
-    "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab."
+    "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab.",
+    "description": ""
   },
   "blank_header": {
-    "message": "(Discarded Window)"
+    "message": "(Discarded Window)",
+    "description": ""
   }
 }

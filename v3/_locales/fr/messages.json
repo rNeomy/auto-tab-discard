@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Fenêtre désactivée)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Défausser les onglets épinglés ou groupés au lieu de les fermer (depuis l’interface de navigation ou une commande utilisateur)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Lors d’un clic gauche sur le bouton d’action",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Visibilité du menu",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Vue de la fenêtre popup",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Vue du menu contextuel",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Élément de menu",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Défausser cet onglet",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Défausser le groupe d’onglets",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Défausser les autres onglets de cette fenêtre",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Défausser les onglets à droite",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Défausser les onglets à gauche",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Défausser les onglets des autres fenêtres",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Défausser tous les autres onglets",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Restaurer l’onglet",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Restaurer le groupe d’onglets",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Restaurer les autres onglets de cette fenêtre",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Restaurer les onglets à droite",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Restaurer les onglets à gauche",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Restaurer les onglets des autres fenêtres",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Restaurer tous les autres onglets",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Conserver les onglets pour cette session",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Autoriser la mise en veille des onglets",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Toujours conserver les onglets de ce site",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Ouvrir dans un nouvel onglet mis en veille (menu des liens)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Autoriser la mise en veille des onglets sélectionnés",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Mettre en veille immédiatement (ignorer les exceptions)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Un clic met immédiatement les onglets en veille et ignore les règles d’exception de mise en veille automatique. Utilisez Maj + clic pour les respecter.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Restaurer l’onglet",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Restaurer le groupe d’onglets",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Restaurer les onglets de cette fenêtre",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Restaurer tous les autres onglets",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Restaurer les onglets à droite",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Restaurer les onglets à gauche",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Restaurer les autres onglets",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Restaurer les onglets des autres fenêtres",
+        "description": ""
     }
 }

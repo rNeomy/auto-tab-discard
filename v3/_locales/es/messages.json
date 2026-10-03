@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Ventana descartada)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Descartar las pestañas fijadas o agrupadas en lugar de cerrarlas (desde la interfaz de navegación o mediante un comando del usuario)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Al hacer clic con el botón izquierdo en el botón de acción",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Visibilidad del menú",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Vista de la ventana emergente",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Vista del menú contextual",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Elemento del menú",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Descartar esta pestaña",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Descartar grupo de pestañas",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Descartar otras pestañas de esta ventana",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Descartar pestañas de la derecha",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Descartar pestañas de la izquierda",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Descartar pestañas de otras ventanas",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Descartar todas las demás pestañas",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Restaurar pestaña",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Restaurar grupo de pestañas",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Restaurar otras pestañas de esta ventana",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Restaurar pestañas de la derecha",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Restaurar pestañas de la izquierda",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Restaurar pestañas de otras ventanas",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Restaurar todas las demás pestañas",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Conservar pestañas durante esta sesión",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Permitir que se descarten las pestañas",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Conservar siempre las pestañas de este sitio",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Abrir en una nueva pestaña descartada (menú de enlace)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Permitir que se descarten las pestañas seleccionadas",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Descartar inmediatamente (ignorar excepciones)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Los clics descartan inmediatamente e ignoran las reglas de excepción del descarte automático. Usa Mayús + clic para respetarlas.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Restaurar pestaña",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Restaurar grupo de pestañas",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Restaurar pestañas de esta ventana",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Restaurar todas las demás pestañas",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Restaurar pestañas de la derecha",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Restaurar pestañas de la izquierda",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Restaurar otras pestañas",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Restaurar pestañas de otras ventanas",
+        "description": ""
     }
 }

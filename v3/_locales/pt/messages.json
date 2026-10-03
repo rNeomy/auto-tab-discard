@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Janela descartada)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Descartar separadores fixos ou agrupados em vez de os fechar (pela interface de navegação ou por um comando do utilizador)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Ao clicar com o botão esquerdo no botão de ação",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Visibilidade do menu",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Vista do pop-up",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Vista do menu de contexto",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Item de menu",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Descartar este separador",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Descartar grupo de separadores",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Descartar outros separadores nesta janela",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Descartar separadores à direita",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Descartar separadores à esquerda",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Descartar separadores noutras janelas",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Descartar todos os outros separadores",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Restaurar separador",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Restaurar grupo de separadores",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Restaurar outros separadores nesta janela",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Restaurar separadores à direita",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Restaurar separadores à esquerda",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Restaurar separadores noutras janelas",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Restaurar todos os outros separadores",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Manter separadores durante esta sessão",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Permitir que os separadores sejam descartados",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Manter sempre os separadores deste site",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Abrir num novo separador descartado (menu de ligações)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Permitir que os separadores selecionados sejam descartados",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Descartar imediatamente (ignorar exceções)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Os cliques descartam imediatamente e ignoram as regras de exceção do descarte automático. Use Shift + clique para as respeitar.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Restaurar separador",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Restaurar grupo de separadores",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Restaurar separadores nesta janela",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Restaurar todos os outros separadores",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Restaurar separadores à direita",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Restaurar separadores à esquerda",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Restaurar outros separadores",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Restaurar separadores noutras janelas",
+        "description": ""
     }
 }

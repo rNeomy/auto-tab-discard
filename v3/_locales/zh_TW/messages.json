@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "（已休眠視窗）",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "丟棄已固定或分組的分頁，而非關閉它們（透過導覽介面或使用者指令）",
+        "description": ""
+    },
+    "options_click": {
+        "message": "按一下動作按鈕時",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "選單顯示",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "彈出視窗檢視",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "內容選單檢視",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "選單項目",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "丟棄此分頁",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "丟棄分頁群組",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "丟棄此視窗中的其他分頁",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "丟棄右側分頁",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "丟棄左側分頁",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "丟棄其他視窗中的分頁",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "丟棄所有其他分頁",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "還原分頁",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "還原分頁群組",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "還原此視窗中的其他分頁",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "還原右側分頁",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "還原左側分頁",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "還原其他視窗中的分頁",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "還原所有其他分頁",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "在此工作階段保留分頁",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "允許丟棄分頁",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "永遠保留此網站的分頁",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "在新的已丟棄分頁中開啟（連結內容選單）",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "允許丟棄選取的分頁",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "立即丟棄（忽略例外）",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "按一下會立即丟棄分頁並忽略自動丟棄例外規則。按 Shift + 按一下可遵循這些規則。",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "還原分頁",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "還原分頁群組",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "還原此視窗中的分頁",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "還原所有其他分頁",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "還原右側分頁",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "還原左側分頁",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "還原其他分頁",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "還原其他視窗中的分頁",
+        "description": ""
     }
 }

@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Απορριφθέν Παράθυρο)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Απόρριψη καρφιτσωμένων ή ομαδοποιημένων καρτελών αντί για κλείσιμο (από το περιβάλλον πλοήγησης ή με εντολή χρήστη)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Κατά το αριστερό κλικ στο κουμπί ενεργειών",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Ορατότητα μενού",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Προβολή αναδυόμενου παραθύρου",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Προβολή μενού περιβάλλοντος",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Στοιχείο μενού",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Απόρριψη αυτής της καρτέλας",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Απόρριψη ομάδας καρτελών",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Απόρριψη άλλων καρτελών σε αυτό το παράθυρο",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Απόρριψη καρτελών δεξιά",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Απόρριψη καρτελών αριστερά",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Απόρριψη καρτελών σε άλλα παράθυρα",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Απόρριψη όλων των άλλων καρτελών",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Αναίρεση απόρριψης καρτέλας",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Αναίρεση απόρριψης ομάδας καρτελών",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Αναίρεση απόρριψης άλλων καρτελών σε αυτό το παράθυρο",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Αναίρεση απόρριψης καρτελών δεξιά",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Αναίρεση απόρριψης καρτελών αριστερά",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Αναίρεση απόρριψης καρτελών σε άλλα παράθυρα",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Αναίρεση απόρριψης όλων των άλλων καρτελών",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Διατήρηση καρτελών για αυτήν τη συνεδρία",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Να επιτρέπεται η απόρριψη καρτελών",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Να διατηρούνται πάντα οι καρτέλες για αυτόν τον ιστότοπο",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Άνοιγμα σε νέα καρτέλα με απόρριψη (μενού συνδέσμου)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Να επιτρέπεται η απόρριψη επιλεγμένων καρτελών",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Άμεση απόρριψη (παράβλεψη εξαιρέσεων)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Τα κλικ απορρίπτουν αμέσως τις καρτέλες και παρακάμπτουν τους κανόνες εξαίρεσης αυτόματης απόρριψης. Χρησιμοποιήστε Shift + κλικ για να τηρούνται οι κανόνες.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Αναίρεση απόρριψης καρτέλας",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Αναίρεση απόρριψης ομάδας καρτελών",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Αναίρεση απόρριψης καρτελών σε αυτό το παράθυρο",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Αναίρεση απόρριψης όλων των άλλων καρτελών",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Αναίρεση απόρριψης καρτελών δεξιά",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Αναίρεση απόρριψης καρτελών αριστερά",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Αναίρεση απόρριψης άλλων καρτελών",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Αναίρεση απόρριψης καρτελών σε άλλα παράθυρα",
+        "description": ""
     }
 }

@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Janela descartada)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Descartar abas fixadas ou agrupadas em vez de fechá-las (pela interface de navegação ou por um comando do usuário)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Ao clicar com o botão esquerdo no botão de ação",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Visibilidade do menu",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Visualização do popup",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Visualização do menu de contexto",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Item de menu",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Descartar esta aba",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Descartar grupo de abas",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Descartar outras abas nesta janela",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Descartar abas à direita",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Descartar abas à esquerda",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Descartar abas em outras janelas",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Descartar todas as outras abas",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Restaurar aba",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Restaurar grupo de abas",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Restaurar outras abas nesta janela",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Restaurar abas à direita",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Restaurar abas à esquerda",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Restaurar abas em outras janelas",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Restaurar todas as outras abas",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Manter abas nesta sessão",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Permitir que as abas sejam descartadas",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Sempre manter abas deste site",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Abrir em uma nova aba descartada (menu de links)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Permitir que as abas selecionadas sejam descartadas",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Descartar imediatamente (ignorar exceções)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Os cliques descartam imediatamente e ignoram as regras de exceção do descarte automático. Use Shift + clique para respeitá-las.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Restaurar aba",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Restaurar grupo de abas",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Restaurar abas nesta janela",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Restaurar todas as outras abas",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Restaurar abas à direita",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Restaurar abas à esquerda",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Restaurar outras abas",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Restaurar abas em outras janelas",
+        "description": ""
     }
 }

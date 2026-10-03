@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Slängt fönster)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Kasta bort fästa eller grupperade flikar i stället för att stänga dem (via navigeringsgränssnittet eller ett användarkommando)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "När du vänsterklickar på åtgärdsknappen",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Menyvisning",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Popupvy",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Kontextmenyvy",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Menyobjekt",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Kasta bort den här fliken",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Kasta bort flikgruppen",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Kasta bort andra flikar i det här fönstret",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Kasta bort flikar till höger",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Kasta bort flikar till vänster",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Kasta bort flikar i andra fönster",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Kasta bort alla andra flikar",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Återställ flik",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Återställ flikgrupp",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Återställ andra flikar i det här fönstret",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Återställ flikar till höger",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Återställ flikar till vänster",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Återställ flikar i andra fönster",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Återställ alla andra flikar",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Behåll flikar under den här sessionen",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Tillåt att flikar kastas bort",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Behåll alltid flikar för den här webbplatsen",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Öppna i en ny bortkastad flik (länkens snabbmeny)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Tillåt att valda flikar kastas bort",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Kasta bort direkt (ignorera undantag)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Klick kastar bort flikar direkt och ignorerar reglerna för automatiska undantag. Använd Skift + klick för att följa reglerna.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Återställ flik",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Återställ flikgrupp",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Återställ flikar i det här fönstret",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Återställ alla andra flikar",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Återställ flikar till höger",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Återställ flikar till vänster",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Återställ andra flikar",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Återställ flikar i andra fönster",
+        "description": ""
     }
 }

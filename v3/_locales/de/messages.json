@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Deaktiviertes Fenster)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Angeheftete oder gruppierte Tabs verwerfen statt schließen (über die Navigation oder einen Benutzerbefehl)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Beim Linksklick auf die Aktionsschaltfläche",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Menüsichtbarkeit",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Popup-Ansicht",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Kontextmenüansicht",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Menüeintrag",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Diesen Tab verwerfen",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Tabgruppe verwerfen",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Andere Tabs in diesem Fenster verwerfen",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Tabs rechts verwerfen",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Tabs links verwerfen",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Tabs in anderen Fenstern verwerfen",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Alle anderen Tabs verwerfen",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Tab wiederherstellen",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Tabgruppe wiederherstellen",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Andere Tabs in diesem Fenster wiederherstellen",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Tabs rechts wiederherstellen",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Tabs links wiederherstellen",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Tabs in anderen Fenstern wiederherstellen",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Alle anderen Tabs wiederherstellen",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Tabs für diese Sitzung behalten",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Verwerfen von Tabs zulassen",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Tabs für diese Website immer behalten",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "In neuem verworfenem Tab öffnen (Link-Kontext)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Verwerfen ausgewählter Tabs zulassen",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Sofort verwerfen (Ausnahmen ignorieren)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "Klicks verwerfen sofort und ignorieren die Ausnahmeregeln für das automatische Verwerfen. Mit Umschalt+Klick werden sie berücksichtigt.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Tab wiederherstellen",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Tabgruppe wiederherstellen",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Tabs in diesem Fenster wiederherstellen",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Alle anderen Tabs wiederherstellen",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Tabs rechts wiederherstellen",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Tabs links wiederherstellen",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Andere Tabs wiederherstellen",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Tabs in anderen Fenstern wiederherstellen",
+        "description": ""
     }
 }

@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(정리된 창)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "고정되거나 그룹화된 탭을 닫는 대신 버립니다 (탐색 인터페이스 또는 사용자 명령에서)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "작업 버튼을 왼쪽 클릭할 때",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "메뉴 표시",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "팝업 보기",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "컨텍스트 메뉴 보기",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "메뉴 항목",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "이 탭 버리기",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "탭 그룹 버리기",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "이 창의 다른 탭 버리기",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "오른쪽 탭 버리기",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "왼쪽 탭 버리기",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "다른 창의 탭 버리기",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "다른 모든 탭 버리기",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "탭 버리기 해제",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "탭 그룹 버리기 해제",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "이 창의 다른 탭 버리기 해제",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "오른쪽 탭 버리기 해제",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "왼쪽 탭 버리기 해제",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "다른 창의 탭 버리기 해제",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "다른 모든 탭 버리기 해제",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "이 세션 동안 탭 유지",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "탭 버리기 허용",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "이 사이트의 탭 항상 유지",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "새 버려진 탭에서 열기 (링크 컨텍스트 메뉴)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "선택한 탭 버리기 허용",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "즉시 버리기 (예외 무시)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "클릭하면 즉시 탭을 버리고 자동 버리기 예외 규칙을 무시합니다. 규칙을 적용하려면 Shift + 클릭하세요.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "탭 버리기 해제",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "탭 그룹 버리기 해제",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "이 창의 탭 버리기 해제",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "다른 모든 탭 버리기 해제",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "오른쪽 탭 버리기 해제",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "왼쪽 탭 버리기 해제",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "다른 탭 버리기 해제",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "다른 창의 탭 버리기 해제",
+        "description": ""
     }
 }

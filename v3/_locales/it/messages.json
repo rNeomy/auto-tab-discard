@@ -554,5 +554,145 @@
     "blank_header": {
         "message": "(Finestra sospesa)",
         "description": ""
+    },
+    "options_discard_protected_on_close": {
+        "message": "Scartare le schede fissate o raggruppate invece di chiuderle (dall’interfaccia di navigazione o con un comando utente)",
+        "description": ""
+    },
+    "options_click": {
+        "message": "Quando si fa clic con il tasto sinistro sul pulsante di azione",
+        "description": ""
+    },
+    "options_menu_visibility": {
+        "message": "Visibilità del menu",
+        "description": ""
+    },
+    "options_popup_view": {
+        "message": "Vista popup",
+        "description": ""
+    },
+    "options_context_menu_view": {
+        "message": "Vista del menu contestuale",
+        "description": ""
+    },
+    "options_menu_item": {
+        "message": "Voce di menu",
+        "description": ""
+    },
+    "options_item_discard_tab": {
+        "message": "Scarta questa scheda",
+        "description": ""
+    },
+    "options_item_discard_tree": {
+        "message": "Scarta il gruppo di schede",
+        "description": ""
+    },
+    "options_item_discard_window": {
+        "message": "Scarta le altre schede in questa finestra",
+        "description": ""
+    },
+    "options_item_discard_rights": {
+        "message": "Scarta le schede a destra",
+        "description": ""
+    },
+    "options_item_discard_lefts": {
+        "message": "Scarta le schede a sinistra",
+        "description": ""
+    },
+    "options_item_discard_other_windows": {
+        "message": "Scarta le schede nelle altre finestre",
+        "description": ""
+    },
+    "options_item_discard_tabs": {
+        "message": "Scarta tutte le altre schede",
+        "description": ""
+    },
+    "options_item_release_tab": {
+        "message": "Ripristina scheda",
+        "description": ""
+    },
+    "options_item_release_tree": {
+        "message": "Ripristina gruppo di schede",
+        "description": ""
+    },
+    "options_item_release_window": {
+        "message": "Ripristina le altre schede in questa finestra",
+        "description": ""
+    },
+    "options_item_release_rights": {
+        "message": "Ripristina le schede a destra",
+        "description": ""
+    },
+    "options_item_release_lefts": {
+        "message": "Ripristina le schede a sinistra",
+        "description": ""
+    },
+    "options_item_release_other_windows": {
+        "message": "Ripristina le schede nelle altre finestre",
+        "description": ""
+    },
+    "options_item_release_tabs": {
+        "message": "Ripristina tutte le altre schede",
+        "description": ""
+    },
+    "options_item_keep_tabs_session": {
+        "message": "Mantieni le schede per questa sessione",
+        "description": ""
+    },
+    "options_item_keep_tabs_allow": {
+        "message": "Consenti lo scarto delle schede",
+        "description": ""
+    },
+    "options_item_keep_tabs_whitelist": {
+        "message": "Mantieni sempre le schede per questo sito",
+        "description": ""
+    },
+    "options_item_open_tab_then_discard": {
+        "message": "Apri in una nuova scheda scartata (menu dei link)",
+        "description": ""
+    },
+    "popup_allowed_reset": {
+        "message": "Consenti lo scarto delle schede selezionate",
+        "description": ""
+    },
+    "popup_force_discard": {
+        "message": "Scarta subito (ignora le eccezioni)",
+        "description": ""
+    },
+    "popup_forced_hint": {
+        "message": "I clic scartano immediatamente e ignorano le regole di eccezione dello scarto automatico. Usa Maiusc + clic per rispettarle.",
+        "description": ""
+    },
+    "menu_release_tab": {
+        "message": "Ripristina scheda",
+        "description": ""
+    },
+    "menu_release_tree": {
+        "message": "Ripristina gruppo di schede",
+        "description": ""
+    },
+    "menu_release_menu": {
+        "message": "Ripristina le schede in questa finestra",
+        "description": ""
+    },
+    "menu_release_tabs": {
+        "message": "Ripristina tutte le altre schede",
+        "description": ""
+    },
+    "menu_release_rights": {
+        "message": "Ripristina le schede a destra",
+        "description": ""
+    },
+    "menu_release_lefts": {
+        "message": "Ripristina le schede a sinistra",
+        "description": ""
+    },
+    "menu_release_window": {
+        "message": "Ripristina le altre schede",
+        "description": ""
+    },
+    "menu_release_other_windows": {
+        "message": "Ripristina le schede nelle altre finestre",
+        "description": ""
     }
 }
