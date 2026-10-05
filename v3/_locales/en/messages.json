@@ -15,6 +15,9 @@
     "message": "Comma-separated list of domains",
     "description": ""
   },
+  "options_list_domain": {
+    "message": "Comma-separated list of domains"
+  },
   "options_list_trash": {
     "message": "Comma-separated list of hostnames, leave blank for all",
     "description": ""

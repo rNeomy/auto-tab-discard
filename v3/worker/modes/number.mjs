@@ -182,6 +182,13 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
   const now = Date.now();
   const map = new Map();
   const arr = [];
+  // snapshot the number of tabs already excluded (whitelist, split view) before
+  // the meta scan; the surplus below is computed from "tbs" (all remaining
+  // active tabs), in-loop rejections (not old, audio, form, ...) are still
+  // active tabs and hence already included in "tbs"
+  // https://github.com/rNeomy/auto-tab-discard/issues/464
+  const preExceptions = exceptionCount;
+  let memDiscards = 0;
   for (const tb of tbs) {
     try {
       const ms = tb.status === 'unloaded' ? [] : await chrome.scripting.executeScript({
@@ -211,6 +218,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
         log('forced discarding', 'memory usage');
         discard(tb);
+        memDiscards += 1;
         continue;
       }
       // is this tab loaded
@@ -292,9 +300,16 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
   // ready to discard
   log('number check', 'tabs that are ignored', exceptionCount);
   log('number check', 'possible tabs that could get discarded', arr.length);
+  // compute the surplus to discard from the actual number of active tabs, not
+  // from the number of collected candidates; the scan loop above stops early,
+  // which otherwise silently disables discarding when 'max.single.discard'
+  // is smaller than or equal to 'number'
+  // https://github.com/rNeomy/auto-tab-discard/issues/464
+  const surplus = Math.max(0, tbs.length + preExceptions - memDiscards - prefs.number);
+  log('number check', 'surplus', surplus);
   const tbds = arr
     .sort((a, b) => map.get(a).time - map.get(b).time)
-    .slice(0, Math.min(arr.length + exceptionCount - prefs.number, prefs['max.single.discard']));
+    .slice(0, Math.min(surplus, prefs['max.single.discard']));
 
   log('number check', 'discarding', tbds.length);
   for (const tb of tbds) {
