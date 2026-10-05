@@ -11,6 +11,10 @@
         "message": "Kommaseparerad lista över värdnamn",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Kommaseparerad lista över domäner",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Kommaseparerad lista över värdnamn, lämna tomt för alla",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Exempel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Exempel:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Flikar med följande värdnamn eller regler med reguljära uttryck slängs inte.",
+        "message": "Flikar vars domän eller regler med reguljära uttryck matchar följande kastas inte bort:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Vi rekommenderar att du använder popupgränssnittet för att ändra den här listan. Håll ned Shift när du lägger till en regel från popupgränssnittet för att skapa en regel med reguljärt uttryck.<br><br>Exempel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "En domän täcker även dess underdomäner (t.ex. example.com täcker även www.example.com).<br>Vi rekommenderar att du använder popupgränssnittet för att ändra den här listan. Håll ned Shift när du lägger till en regel från popupgränssnittet för att skapa en regel med reguljärt uttryck.<br><br>Exempel:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Klicka för att lägga till värdnamnet i undantagslistan. Shift-klicka för att lägga till den exakta webbadressen i undantagslistan.",
+        "message": "Klicka för att lägga till domänen i undantagslistan. Shift-klicka för att lägga till den exakta webbadressen i undantagslistan.",
         "description": ""
     },
     "popup_whitelist_session": {

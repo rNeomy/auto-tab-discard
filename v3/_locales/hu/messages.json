@@ -11,6 +11,10 @@
         "message": "Hostnevek vesszővel elválasztva",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Vesszővel elválasztott domain lista",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Hostnevek vesszővel elválasztva, hagyd üresen, ha mindenre alkalmaznád",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Példa:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Példa:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Az alábbi hostnevek és reguláris kifejezések nem lesznek altatva.",
+        "message": "Azok a lapok, amelyek domainje vagy reguláris kifejezései megfelelnek az alábbiaknak, nem lesznek altatva:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "A lista módosításához ajánlott a felugró ablakot használni. Tartsa lenyomva a Shift billentyűt, amikor szabályt ad hozzá a felugró ablakból, így reguláris kifejezést hozhat létre.<br><br>Példa:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Egy domain a aldomainjeit is lefedi (pl. az example.com lefedi a www.example.comet is).<br>A lista módosításához ajánlott a felugró ablakot használni. Használd a \"Shift\" billentyűt, amikor szabályt adsz hozzá a felugró ablakból, hogy reguláris kifejezést hozz létre.<br><br>Példa:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Kattints ide a hostnév kivételekhez adásához. Shift+kattintás a teljes URL-t adja hozzá a listához",
+        "message": "Kattints ide a domain hozzáadásához a kivételek listájához. Shift + kattintás a pontos URL hozzáadásához a kivételek listájához.",
         "description": ""
     },
     "popup_whitelist_session": {

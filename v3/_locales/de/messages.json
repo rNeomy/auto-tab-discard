@@ -11,6 +11,10 @@
         "message": "Durch Komma getrennte Liste von Hostnamen",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Komma-getrennte Liste von Domains",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Durch Komma getrennte Liste von Hostnamen, leer lassen für alle",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Beispiel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Beispiel:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabs mit den folgenden Hostnames oder regulären Regeln werden nicht deaktiviert:",
+        "message": "Tabs, deren Domain oder reguläre Ausdrucksregeln mit den folgenden übereinstimmen, werden nicht verworfen:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Es wird empfohlen, diese Liste über die Popup-Oberfläche zu bearbeiten. Halten Sie beim Hinzufügen einer Regel über die Popup-Oberfläche die Umschalttaste gedrückt, um eine Regel mit regulärem Ausdruck zu erstellen.<br><br>Beispiel:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Eine Domain umfasst auch ihre Subdomains (z. B. example.com umfasst auch www.example.com).<br>Es wird empfohlen, die Popup-Oberfläche zu verwenden, um diese Liste zu bearbeiten. Verwenden Sie die Taste \"Umschalt\", während Sie eine Regel aus der Popup-Oberfläche hinzufügen, um eine reguläre Ausdrucksregel zu erzeugen.<br><br>Beispiel:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Anklicken, um den Hostnamen zu den Ausnahmen hinzuzufügen. Verwenden Sie Umschalt + Klick um die exakte URL zu den Ausnahmen hinzuzufügen",
+        "message": "Klicken, um die Domain zur Ausnahmeliste hinzuzufügen. Umschalt + Klick, um die genaue URL zur Ausnahmeliste hinzuzufügen.",
         "description": ""
     },
     "popup_whitelist_session": {

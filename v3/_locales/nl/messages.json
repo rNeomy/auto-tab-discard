@@ -11,6 +11,10 @@
         "message": "Kommagescheiden lijst van hostnamen",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Komma-gescheiden lijst met domeinen",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Kommagescheiden lijst van hostnamen, laat leeg voor alle",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Voorbeeld:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Voorbeeld:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -136,11 +140,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabbladen met de volgende hostnamen of reguliere-expressieregels worden niet gedeactiveerd.",
+        "message": "Tabbladen waarvan het domein of de reguliere-expressieregels overeenkomen met het volgende, worden niet gedeactiveerd:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Het wordt aanbevolen om de pop-upinterface te gebruiken om deze lijst aan te passen. Houd Shift ingedrukt wanneer je een regel toevoegt via de pop-upinterface om een reguliere-expressieregel te maken.<br><br>Voorbeeld:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Een domein omvat ook de subdomeinen daarvan (bijv. example.com omvat ook www.example.com).<br>Het wordt aanbevolen de pop-upinterface te gebruiken om deze lijst aan te passen. Houd Shift ingedrukt wanneer je een regel toevoegt via de pop-upinterface om een reguliere-expressieregel te maken.<br><br>Voorbeeld:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -460,7 +464,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Klik om de hostnaam aan de uitzonderingenlijst toe te voegen. Shift + klik om de exacte URL aan de uitzonderingenlijst toe te voegen.",
+        "message": "Klik om het domein aan de uitzonderingenlijst toe te voegen. Shift + klik om de exacte URL aan de uitzonderingenlijst toe te voegen.",
         "description": ""
     },
     "popup_whitelist_session": {

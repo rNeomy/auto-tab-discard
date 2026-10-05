@@ -11,6 +11,10 @@
         "message": "Имена хостов, разделенные запятыми",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Список доменов через запятую",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Имена хостов, разделенные запятыми; оставьте пустым для всех",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Пример:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Пример:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -136,11 +140,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Вкладки со следующими именами хостов или правилами регулярных выражений не будут выгружены.",
+        "message": "Вкладки, домены или правила регулярных выражений которых совпадают со следующим, не будут выгружены:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Для изменения этого списка рекомендуется использовать всплывающее окно. Удерживайте клавишу Shift при добавлении правила из всплывающего окна, чтобы создать правило с регулярным выражением.<br><br>Пример:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Домен также включает его поддомены (например, example.com включает www.example.com).<br>Для изменения этого списка рекомендуется использовать всплывающее окно. Удерживайте клавишу \"Shift\" при добавлении правила из всплывающего окна, чтобы создать правило с регулярным выражением.<br><br>Пример:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -460,7 +464,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Щелкните, чтобы добавить имя хоста в список исключений. Shift + щелчок, чтобы добавить конкретный URL в список исключений.",
+        "message": "Щелкните, чтобы добавить домен в список исключений. Shift + щелчок, чтобы добавить точный URL в список исключений.",
         "description": ""
     },
     "popup_whitelist_session": {

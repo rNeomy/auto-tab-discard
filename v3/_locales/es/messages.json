@@ -11,6 +11,10 @@
         "message": "Lista de nombres de dominio separada por comas",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Lista de dominios separada por comas",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Lista de nombres de dominio separada por comas, dejar en blanco para incluir todo",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Ejemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Ejemplo:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Las pestañas con los siguientes nombres de dominio o reglas de expresión regular no se descartan.",
+        "message": "Las pestañas cuyo dominio o reglas de expresión regular coincidan con lo siguiente no se descartan:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Se recomienda usar la interfaz emergente para modificar esta lista. Mantén pulsada la tecla \"Shift\" al añadir una regla desde la interfaz emergente para generar una regla de expresión regular.<br><br>Ejemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Un dominio también cubre sus subdominios (por ejemplo, example.com también cubre www.example.com).<br>Se recomienda usar la interfaz emergente para modificar esta lista. Mantén pulsada la tecla \"Shift\" al añadir una regla desde la interfaz emergente para generar una regla de expresión regular.<br><br>Ejemplo:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Haga clic para añadir el nombre del dominio a la lista de excepciones. Mayús + Clic para añadir la URL exacta a la lista de excepciones.",
+        "message": "Haz clic para añadir el dominio a la lista de excepciones. Mayús + Clic para añadir la URL exacta a la lista de excepciones.",
         "description": ""
     },
     "popup_whitelist_session": {

@@ -11,6 +11,10 @@
         "message": "以英文半角逗号分隔的主机名",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "用逗号分隔的域名列表",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "以英文半角逗号分隔的主机名，留空代表匹配全部",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "示例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "示例：<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "带有下列主机名或者满足下列正则表达式规则的标签页不会被休眠。",
+        "message": "其域名或正则表达式规则与以下内容相符的标签页不会被休眠：",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "建议使用弹出窗口界面修改此列表。从弹出窗口界面添加规则时按住 Shift 键，可生成正则表达式规则。<br><br>示例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "一个域名也覆盖其子域名（例如 example.com 也覆盖 www.example.com）。<br>建议使用弹出窗口界面修改此列表。从弹出窗口界面添加规则时按住 \"Shift\" 键，可生成正则表达式规则。<br><br>示例：<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "单击以把主机名加入排除列表。按住Shift单击以把精确的URL加入排除列表。",
+        "message": "单击以把域名加入排除列表。按住 Shift 单击以把精确的 URL 加入排除列表。",
         "description": ""
     },
     "popup_whitelist_session": {

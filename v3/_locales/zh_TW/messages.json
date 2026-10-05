@@ -11,6 +11,10 @@
         "message": "以逗號分隔的主機名稱清單",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "以逗號分隔的網域清單",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "以逗號分隔的主機名稱清單，留空代表全部",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "範例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "範例：<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "符合以下網域名稱或正則表達式的分頁將不會被休眠",
+        "message": "符合以下網域或正則表達式規則的分頁將不會被休眠：",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "建議使用彈出式介面修改此清單。從彈出式介面新增規則時按住 Shift 鍵，即可產生正規表示式規則。<br><br>範例：<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "一個網域也會包含它的子網域（例如 example.com 也包含 www.example.com）。<br>建議使用彈出式介面修改此清單。從彈出式介面新增規則時按住 \"Shift\" 鍵，即可產生正規表示式規則。<br><br>範例：<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "按下此鈕來加入這個域名至例外清單， Shift  + 點擊以加入目前網址至例外清單",
+        "message": "按下此鈕來加入這個網域至例外清單，Shift + 點擊以加入目前網址至例外清單。",
         "description": ""
     },
     "popup_whitelist_session": {

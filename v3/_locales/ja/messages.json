@@ -11,6 +11,10 @@
         "message": "カンマ区切りのホストネーム一覧",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "ドメインのカンマ区切りリスト",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "カンマ区切りのホストネーム一覧 (空欄で全ホストネームに適用)",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "例:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "例:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "以下のホストネームもしくは正規表現ルールに該当するタブは破棄されません。",
+        "message": "次のドメインまたは正規表現ルールに一致するタブは破棄されません:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "このリストの変更にはポップアップ画面の使用をおすすめします。ポップアップ画面からルールを追加する際にShiftキーを押すと、正規表現ルールを作成できます。<br><br>例:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "ドメインにはそのサブドメインも含まれます（例: example.com には www.example.com も含まれます）。<br>このリストの変更にはポップアップインターフェースの使用をおすすめします。ポップアップインターフェースからルールを追加する際に、Shift キーを押すと正規表現ルールを生成できます。<br><br>例:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "クリックするとホストネームを除外リストに追加できます。Shift + クリックで完全なURLを例外リストに追加できます。",
+        "message": "クリックするとドメインを除外リストに追加します。Shift + クリックで完全なURLを例外リストに追加できます。",
         "description": ""
     },
     "popup_whitelist_session": {

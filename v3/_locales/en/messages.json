@@ -144,7 +144,7 @@
     "description": ""
   },
   "options_whitelist_tooltip": {
-    "message": "A domain also covers its subdomains (e.g. example.com also covers www.example.com). It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+    "message": "A domain also covers its subdomains (e.g. example.com also covers www.example.com).<br>It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
     "description": ""
   },
   "options_left_click": {

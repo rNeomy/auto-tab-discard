@@ -11,6 +11,10 @@
         "message": "Liste d'hôtes séparés par des virgules",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Liste de domaines séparés par des virgules",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Liste d'hôtes séparés par des virgules, laissez vide pour tous",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Exemple: <ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Exemple :<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Les onglets avec les domaines ou vérifiant les expressions régulières suivants ne seront pas désactivés :",
+        "message": "Les onglets dont le domaine ou les règles d’expression régulière correspondent à ce qui suit ne seront pas désactivés :",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Il est recommandé d'utiliser l'interface popup pour modifier cette liste. Maintenez la touche Maj enfoncée lors de l'ajout d'une règle depuis l'interface popup pour générer une règle d'expression régulière.<br><br>Exemple: <ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Un domaine couvre également ses sous-domaines (par ex. example.com couvre aussi www.example.com).<br>Il est recommandé d’utiliser l’interface popup pour modifier cette liste. Maintenez la touche \"Maj\" enfoncée lors de l’ajout d’une règle depuis l’interface popup pour générer une règle d’expression régulière.<br><br>Exemple :<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Cliquer pour ajouter un nom d'hôte à la liste d'exceptions. Maj + Clic pour ajouter cette URL précise à la liste d'exceptions",
+        "message": "Cliquez pour ajouter le domaine à la liste des exceptions. Maj + Clic pour ajouter l’URL exacte à la liste des exceptions.",
         "description": ""
     },
     "popup_whitelist_session": {

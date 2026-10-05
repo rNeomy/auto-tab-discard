@@ -11,6 +11,10 @@
         "message": "Lista de nomes de host separados por vírgulas",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Lista de domínios separada por vírgulas",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Lista de nomes de host separados por vírgulas, deixe em branco para todos",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Exemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Exemplo:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Abas com os seguintes nomes de host ou expressões regulares não serão descartadas:",
+        "message": "Abas cujo domínio ou regras de expressão regular correspondam ao seguinte não serão descartadas:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Recomenda-se utilizar a interface de pop-up para modificar esta lista. Pressione a tecla \"Shift\" ao adicionar uma regra a partir da interface de pop-up para gerar uma regra de expressão regular.<br><br>Exemplo:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Um domínio também cobre seus subdomínios (por exemplo, example.com também cobre www.example.com).<br>Recomenda-se utilizar a interface de pop-up para modificar esta lista. Pressione a tecla \"Shift\" ao adicionar uma regra a partir da interface de pop-up para gerar uma regra de expressão regular.<br><br>Exemplo:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Clique para adicionar o nome de host à  lista de exceções. Shift + Clique para adicionar a URL exata à lista de exceções.",
+        "message": "Clique para adicionar o domínio à lista de exceções. Shift + Clique para adicionar a URL exata à lista de exceções.",
         "description": ""
     },
     "popup_whitelist_session": {

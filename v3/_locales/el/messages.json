@@ -11,6 +11,10 @@
         "message": "Κατάλογος hostnames χωρισμένος με κόμμα",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Λίστα domains διαχωρισμένων με κόμμα",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Κατάλογος hostnames χωρισμένος με κόμμα, αφήστε κενό για όλα",
         "description": ""
@@ -36,7 +40,7 @@
         "description": ""
     },
     "options_url_based_tooltip": {
-        "message": "Παράδειγμα:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Παράδειγμα:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_tab_context": {
@@ -132,11 +136,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Οι καρτέλες με τα ακόλουθα hostnames ή κανόνες κανονικής έκφρασης δεν απορρίπτονται.",
+        "message": "Οι καρτέλες των οποίων το domain ή οι κανόνες κανονικής έκφρασης ταιριάζουν με τα ακόλουθα δεν απορρίπτονται:",
         "description": ""
     },
     "options_whitelist_tooltip": {
-        "message": "Συνιστάται να χρησιμοποιείτε το αναδυόμενο παράθυρο για να τροποποιήσετε αυτήν τη λίστα. Κρατήστε πατημένο το πλήκτρο Shift κατά την προσθήκη ενός κανόνα από το αναδυόμενο παράθυρο για να δημιουργήσετε κανόνα κανονικής έκφρασης.<br><br>Παράδειγμα:<ul><li><code>www.domain.com</code></li><li><code>*.domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>",
+        "message": "Ένα domain καλύπτει επίσης τα subdomains του (π.χ. το example.com καλύπτει και το www.example.com).<br>Συνιστάται να χρησιμοποιείτε το αναδυόμενο παράθυρο για να τροποποιήσετε αυτήν τη λίστα. Χρησιμοποιήστε το πλήκτρο \"Shift\" κατά την προσθήκη ενός κανόνα από το αναδυόμενο παράθυρο για να δημιουργήσετε έναν κανόνα κανονικής έκφρασης.<br><br>Παράδειγμα:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain-[ab]\\.domain\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -364,7 +368,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Κάντε κλικ για να προσθέσετε το hostname στη λίστα εξαιρέσεων. Shift + Κλικ για να προσθέσετε την ακριβή διεύθυνση URL στη λίστα εξαιρέσεων.",
+        "message": "Κάντε κλικ για να προσθέσετε το domain στη λίστα εξαιρέσεων. Shift + Κλικ για να προσθέσετε την ακριβή διεύθυνση URL στη λίστα εξαιρέσεων.",
         "description": ""
     },
     "popup_whitelist_session": {
