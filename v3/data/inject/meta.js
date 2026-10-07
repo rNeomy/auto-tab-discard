@@ -7,6 +7,7 @@
 
   (top ? {
     'time': window.lastVisit || performance.timing.domLoading,
+    'mediaStop': window.lastMediaStop || 0,
     'audible': Boolean(document.pictureInPictureElement),
     paused,
     'permission': typeof Notification !== 'undefined' ? Notification.permission === 'granted' : false,
@@ -14,6 +15,7 @@
     'memory': performance && performance.memory ? performance.memory.totalJSHeapSize : false,
     'forms': window.isReceivingFormInput || false
   } : {
+    'mediaStop': window.lastMediaStop || 0,
     'audible': Boolean(document.pictureInPictureElement),
     paused,
     'forms': window.isReceivingFormInput || false

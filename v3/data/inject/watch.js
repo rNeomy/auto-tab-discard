@@ -1,61 +1,91 @@
-/* this watches if there are any unsaved forms on the page */
+(() => {
+  if (window.activityWatchInstalled) {
+    return;
+  }
+  window.activityWatchInstalled = true;
 
-let checked = false;
-const elements = new Set();
+  /* this watches if there are any unsaved forms on the page */
 
-Object.defineProperty(window, 'isReceivingFormInput', {
-  get() {
-    // there is no attached modified element or all of them are empty
-    try {
-      if ([...elements].filter(e => e.isConnected && (e.value || e.textContent)).length === 0) {
-        return false;
+  let checked = false;
+  const elements = new Set();
+
+  Object.defineProperty(window, 'isReceivingFormInput', {
+    get() {
+      // there is no attached modified element or all of them are empty
+      try {
+        if ([...elements].filter(e => e.isConnected && (e.value || e.textContent)).length === 0) {
+          return false;
+        }
+      }
+      catch (e) {}
+
+      return checked;
+    }
+  });
+  // reset on submit;
+  addEventListener('submit', () => {
+    checked = false;
+    elements.clear();
+  });
+
+  addEventListener('keydown', e => {
+    const {keyCode, target, path} = e;
+    // check target
+    if (keyCode >= 48 && keyCode <= 90 && target.tagName) {
+      if (target.isContentEditable) {
+        elements.add(target);
+        checked = true;
+      }
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'FORM') {
+        elements.add(target);
+        checked = true;
+      }
+      if (target.type === 'application/pdf') {
+        checked = true;
       }
     }
-    catch (e) {}
+    // check custom elements
+    if (keyCode >= 48 && keyCode <= 90 && path && path[0] !== target) {
+      const o = path[0];
+      if (o.isContentEditable) {
+        elements.add(o);
+        checked = true;
+      }
+      if (o.tagName === 'INPUT' || o.tagName === 'TEXTAREA' || o.tagName === 'FORM') {
+        elements.add(o);
+        checked = true;
+      }
+      if (o.type === 'application/pdf') {
+        checked = true;
+      }
+    }
+  }, true);
 
-    return checked;
-  }
-});
-// reset on submit;
-addEventListener('submit', () => {
-  checked = false;
-  elements.clear();
-});
+  /*  */
+  addEventListener('visibilitychange', () => {
+    window.lastVisit = Date.now();
+  });
 
-addEventListener('keydown', e => {
-  const {keyCode, target, path} = e;
-  // check target
-  if (keyCode >= 48 && keyCode <= 90 && target.tagName) {
-    if (target.isContentEditable) {
-      elements.add(target);
-      checked = true;
+  /* Restart inactivity when previously audible media stops, including native PiP. */
+  const playing = new WeakSet();
+  const audible = media => media.muted === false && media.volume > 0;
+  const remember = ({target, isTrusted}) => {
+    if (isTrusted && target instanceof HTMLMediaElement && !target.paused && audible(target)) {
+      playing.add(target);
     }
-    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'FORM') {
-      elements.add(target);
-      checked = true;
+  };
+  const stopped = ({target, isTrusted, type}) => {
+    if (isTrusted && target instanceof HTMLMediaElement) {
+      if (playing.has(target) || (type !== 'emptied' && target.currentTime > 0 && audible(target))) {
+        window.lastMediaStop = Date.now();
+      }
+      playing.delete(target);
     }
-    if (target.type === 'application/pdf') {
-      checked = true;
-    }
+  };
+  for (const type of ['play', 'playing', 'volumechange']) {
+    addEventListener(type, remember, true);
   }
-  // check custom elements
-  if (keyCode >= 48 && keyCode <= 90 && path && path[0] !== target) {
-    const o = path[0];
-    if (o.isContentEditable) {
-      elements.add(o);
-      checked = true;
-    }
-    if (o.tagName === 'INPUT' || o.tagName === 'TEXTAREA' || o.tagName === 'FORM') {
-      elements.add(o);
-      checked = true;
-    }
-    if (o.type === 'application/pdf') {
-      checked = true;
-    }
+  for (const type of ['pause', 'ended', 'emptied']) {
+    addEventListener(type, stopped, true);
   }
-}, true);
-
-/*  */
-addEventListener('visibilitychange', () => {
-  window.lastVisit = Date.now();
-});
+})();

@@ -214,6 +214,18 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       meta.audible = ms.some(o => o && o.audible);
       meta.paused = ms.some(o => o && o.paused);
 
+      if (prefs.audio) {
+        // Media may stop while the asynchronous metadata scan is in progress.
+        const observed = Date.now();
+        const stopped = ms.reduce((time, o) => {
+          const value = o && o.mediaStop;
+          return Number.isFinite(value) && value >= 0 && value <= observed ? Math.max(time, value) : time;
+        }, 0);
+        if (stopped) {
+          meta.time = Math.max(meta.time || 0, stopped);
+        }
+      }
+
       // is the tab using too much memory, discard instantly
       if (prefs['memory-enabled'] && meta.memory && meta.memory > prefs['memory-value'] * 1024 * 1024) {
         log('forced discarding', 'memory usage');
