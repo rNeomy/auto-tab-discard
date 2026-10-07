@@ -121,3 +121,30 @@ a {
     background-color: var(--dark);
   }
 }
+
+.tooltip-wrap {
+  position: relative;
+}
+.tooltip-wrap .tooltip-content {
+  display: none;
+  position: absolute;
+  color: #61611f;
+  background-color: #ffffed;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  padding: .5em;
+  width: fit-content;
+  min-width: 250px;
+}
+.tooltip-wrap .tooltip-content code{
+  font-family: monospace;
+  font-size: 90%;
+  background-color: #f1f3f4;
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.tooltip-wrap:hover .tooltip-content {
+  display: block;
+}
