@@ -214,7 +214,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       meta.audible = ms.some(o => o && o.audible);
       meta.paused = ms.some(o => o && o.paused);
 
-      if (prefs.audio) {
+      if (prefs.audio && prefs.period > 0) {
         // Media may stop while the asynchronous metadata scan is in progress.
         const observed = Date.now();
         const stopped = ms.reduce((time, o) => {

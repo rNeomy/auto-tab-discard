@@ -1,71 +1,66 @@
-(() => {
-  if (window.activityWatchInstalled) {
-    return;
+/* this watches if there are any unsaved forms on the page */
+
+let checked = false;
+const elements = new Set();
+
+Object.defineProperty(window, 'isReceivingFormInput', {
+  get() {
+    // there is no attached modified element or all of them are empty
+    try {
+      if ([...elements].filter(e => e.isConnected && (e.value || e.textContent)).length === 0) {
+        return false;
+      }
+    }
+    catch (e) {}
+
+    return checked;
   }
-  window.activityWatchInstalled = true;
+});
+// reset on submit;
+addEventListener('submit', () => {
+  checked = false;
+  elements.clear();
+});
 
-  /* this watches if there are any unsaved forms on the page */
-
-  let checked = false;
-  const elements = new Set();
-
-  Object.defineProperty(window, 'isReceivingFormInput', {
-    get() {
-      // there is no attached modified element or all of them are empty
-      try {
-        if ([...elements].filter(e => e.isConnected && (e.value || e.textContent)).length === 0) {
-          return false;
-        }
-      }
-      catch (e) {}
-
-      return checked;
+addEventListener('keydown', e => {
+  const {keyCode, target, path} = e;
+  // check target
+  if (keyCode >= 48 && keyCode <= 90 && target.tagName) {
+    if (target.isContentEditable) {
+      elements.add(target);
+      checked = true;
     }
-  });
-  // reset on submit;
-  addEventListener('submit', () => {
-    checked = false;
-    elements.clear();
-  });
-
-  addEventListener('keydown', e => {
-    const {keyCode, target, path} = e;
-    // check target
-    if (keyCode >= 48 && keyCode <= 90 && target.tagName) {
-      if (target.isContentEditable) {
-        elements.add(target);
-        checked = true;
-      }
-      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'FORM') {
-        elements.add(target);
-        checked = true;
-      }
-      if (target.type === 'application/pdf') {
-        checked = true;
-      }
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'FORM') {
+      elements.add(target);
+      checked = true;
     }
-    // check custom elements
-    if (keyCode >= 48 && keyCode <= 90 && path && path[0] !== target) {
-      const o = path[0];
-      if (o.isContentEditable) {
-        elements.add(o);
-        checked = true;
-      }
-      if (o.tagName === 'INPUT' || o.tagName === 'TEXTAREA' || o.tagName === 'FORM') {
-        elements.add(o);
-        checked = true;
-      }
-      if (o.type === 'application/pdf') {
-        checked = true;
-      }
+    if (target.type === 'application/pdf') {
+      checked = true;
     }
-  }, true);
+  }
+  // check custom elements
+  if (keyCode >= 48 && keyCode <= 90 && path && path[0] !== target) {
+    const o = path[0];
+    if (o.isContentEditable) {
+      elements.add(o);
+      checked = true;
+    }
+    if (o.tagName === 'INPUT' || o.tagName === 'TEXTAREA' || o.tagName === 'FORM') {
+      elements.add(o);
+      checked = true;
+    }
+    if (o.type === 'application/pdf') {
+      checked = true;
+    }
+  }
+}, true);
 
-  /*  */
-  addEventListener('visibilitychange', () => {
-    window.lastVisit = Date.now();
-  });
+/*  */
+addEventListener('visibilitychange', () => {
+  window.lastVisit = Date.now();
+});
 
+{
   /* Restart inactivity when previously audible media stops, including native PiP. */
   const playing = new WeakSet();
   const audible = media => media.muted === false && media.volume > 0;
@@ -88,4 +83,4 @@
   for (const type of ['pause', 'ended', 'emptied']) {
     addEventListener(type, stopped, true);
   }
-})();
+}

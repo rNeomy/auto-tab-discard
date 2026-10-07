@@ -185,13 +185,24 @@ test('manual zero-period check still discards a newly paused tab', async () => {
   const f = fixture(); const {page} = f.addTab(); const p = page.player(); play(page, p); pause(page, p);
   await f.manual(); assert.deepEqual(f.discarded, [1]);
 });
+test('manual zero-period check ignores media stopping during the metadata scan', async () => {
+  const f = fixture(); const {page} = f.addTab(); const p = page.player(); play(page, p);
+  const metadata = page.metadata;
+  page.metadata = () => {f.advance(1000); pause(page, p); return metadata();};
+  await f.manual(); assert.deepEqual(f.discarded, [1]);
+});
 test('memory threshold remains an immediate override', async () => {
   const f = fixture({'memory-enabled': true, 'memory-value': 1});
   const {page} = f.addTab({memory: 2 * 1024 * 1024}); const p = page.player(); play(page, p); pause(page, p);
   await f.check(); assert.deepEqual(f.discarded, [1]);
 });
-test('reinjecting the watcher is idempotent', () => {
+test('existing unsaved-form protection and submit reset are preserved', async () => {
   const f = fixture(); const {page} = f.addTab();
-  vm.runInContext(watch, page.ctx);
-  assert.equal(page.listeners.get('pause').length, 1);
+  const input = {tagName: 'INPUT', isConnected: true, value: 'unsaved text'};
+  for (const {fn} of page.listeners.get('keydown')) fn({keyCode: 65, target: input});
+  assert.equal(page.metadata().forms, true);
+  await f.check(); assert.deepEqual(f.discarded, []);
+  for (const {fn} of page.listeners.get('submit')) fn();
+  assert.equal(page.metadata().forms, false);
+  await f.check(); assert.deepEqual(f.discarded, [1]);
 });
