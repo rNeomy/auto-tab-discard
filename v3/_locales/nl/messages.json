@@ -11,6 +11,10 @@
         "message": "Kommagescheiden lijst van hostnamen",
         "description": ""
     },
+    "options_list_domain": {
+        "message": "Kommagescheiden lijst van domeinen",
+        "description": ""
+    },
     "options_list_trash": {
         "message": "Kommagescheiden lijst van hostnamen, laat leeg voor alle",
         "description": ""
@@ -32,7 +36,7 @@
         "description": ""
     },
     "options_url_based": {
-        "message": "Alleen de volgende inactieve pagina’s of reguliere-expressieregels deactiveren",
+        "message": "Alleen de volgende inactieve domeinen of reguliere-expressieregels deactiveren",
         "description": ""
     },
     "options_tab_context": {
@@ -132,7 +136,7 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabbladen met de volgende hostnamen of reguliere-expressieregels worden niet gedeactiveerd. Het wordt aanbevolen de pop-upinterface te gebruiken om deze lijst aan te passen. Gebruik de toets ‘Shift’ tijdens het toevoegen van een regel vanuit de pop-upinterface om een reguliere-expressieregel te genereren.",
+        "message": "Tabbladen waarvan het domein of reguliere-expressieregels aan het volgende voldoen worden niet gedeactiveerd. Een domein omvat ook de subdomeinen ervan (bv. example.com omvat ook www.example.com). Het wordt aanbevolen de pop-upinterface te gebruiken om deze lijst aan te passen. Gebruik de toets ‘Shift’ tijdens het toevoegen van een regel vanuit de pop-upinterface om een reguliere-expressieregel te genereren.",
         "description": ""
     },
     "options_left_click": {
@@ -448,7 +452,7 @@
         "description": ""
     },
     "popup_whitelist_always_title": {
-        "message": "Klik om de hostnaam aan de uitzonderingenlijst toe te voegen. Shift + klik om de exacte URL aan de uitzonderingenlijst toe te voegen.",
+        "message": "Klik om het domein aan de uitzonderingenlijst toe te voegen. Shift + klik om de exacte URL aan de uitzonderingenlijst toe te voegen.",
         "description": ""
     },
     "popup_whitelist_session": {
