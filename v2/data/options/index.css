@@ -21,6 +21,11 @@ body {
   max-width: 80%;
   margin: auto;
 }
+textarea,
+input {
+  background-color: var(--dark);
+  color: var(--clr);
+}
 @media screen and (max-width: 600px) {
   body {
     margin: 10px;
