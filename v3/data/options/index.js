@@ -14,6 +14,36 @@ const isEdge = /Edg\//.test(navigator.userAgent);
   }
 });
 
+// hover tooltips; only for browsers without interest invoker support
+// (Chrome 142+ handles hover/focus/long-press natively via the interestfor attribute)
+if (!Object.hasOwn(HTMLButtonElement.prototype, 'interestForElement')) {
+  const SHOW_DELAY = 300;
+  const HIDE_DELAY = 150;
+  [...document.querySelectorAll('.tooltip-wrap')].forEach(wrap => {
+    const btn = wrap.querySelector('.tooltip-button');
+    const tip = wrap.querySelector('.tooltip-content');
+    let timer;
+    const show = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (!tip.matches(':popover-open')) tip.showPopover({source: btn});
+      }, SHOW_DELAY);
+    };
+    const hide = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (tip.matches(':popover-open')) tip.hidePopover();
+      }, HIDE_DELAY);
+    };
+    btn.addEventListener('mouseenter', show);
+    btn.addEventListener('mouseleave', hide);
+    btn.addEventListener('focusin', show);
+    btn.addEventListener('focusout', hide);
+    // entering the open tooltip cancels the pending hide
+    tip.addEventListener('mouseenter', () => clearTimeout(timer));
+  });
+}
+
 // memory
 if (!window.performance || !window.performance.memory) {
   document.getElementById('memory').style = `

@@ -122,29 +122,52 @@ a {
   }
 }
 
-.tooltip-wrap {
-  position: relative;
+.tooltip-button,
+.tooltip-button:focus {
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--a);
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: pointer;
 }
-.tooltip-wrap .tooltip-content {
+/* interest invoker hover/focus delays; ignored by browsers without support */
+.tooltip-button {
+  interest-delay: 0.3s 0.15s;
+}
+
+/* fallback hiding for browsers that do not support the popover attribute */
+[popover] {
   display: none;
-  position: absolute;
+}
+[popover]:popover-open {
+  display: block;
+}
+.tooltip-content {
   color: #61611f;
   background-color: #ffffed;
-  bottom: 5%;
-  left: 5%;
-  right: 5%;
+  border: none;
   padding: .5em;
   width: fit-content;
   min-width: 250px;
 }
-.tooltip-wrap .tooltip-content code{
+/* position next to the [?] button using the implicit anchor from popovertarget;
+   without anchor positioning, keep the UA default (centered on screen) */
+@supports (position-area: block-start) {
+  .tooltip-content {
+    inset: auto;
+    margin: 0;
+    position-area: block-start span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline;
+  }
+}
+.tooltip-content code {
   font-family: monospace;
   font-size: 90%;
   background-color: #f1f3f4;
   display: inline-block;
   padding: 1px 4px;
   border-radius: 3px;
-}
-.tooltip-wrap:hover .tooltip-content {
-  display: block;
 }

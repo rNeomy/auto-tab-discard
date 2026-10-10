@@ -30,7 +30,7 @@
     "message": "Only discard the following inactive domains or regular expression rules"
   },
   "options_url_based_tooltip": {
-    "message": "Example:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>"
+    "message": "Example:<ul><li><code>example.com</code></li><li><code>re:^https://subdomain[ab]\\.example\\.com/&#36; </code></li></ul>"
   },
   "options_tab_context": {
     "message": "Display discarding items in the \"tab\" context menu (currently supported by Firefox)"
@@ -108,7 +108,7 @@
     "message": "Tabs whose domain or regular expression rules match the following are not being discarded:"
   },
   "options_whitelist_tooltip": {
-    "message": "A domain also covers its subdomains (e.g. example.com also covers www.example.com).<br>It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>domain.com</code></li><li><code>re:^https://subdomain[ab]\\.domain\\.com/&#36; </code></li></ul>"
+    "message": "A domain also covers its subdomains (e.g. example.com also covers www.example.com).<br>It is recommended to use the popup interface to modify this list. Use the \"Shift\" key while appending a rule from the popup interface to generate a regular expression rule.<br><br>Example:<ul><li><code>example.com</code></li><li><code>re:^https://subdomain[ab]\\.example\\.com/&#36; </code></li></ul>"
   },
   "options_left_click": {
     "message": "Toolbar left-click action"
