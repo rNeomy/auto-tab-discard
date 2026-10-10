@@ -235,26 +235,26 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       }
       // is this tab loaded
       if (meta.ready !== true && ops['ignore.ready.state'] !== true) {
-        log('discarding aborted', 'tab is not ready', tb);
+        log('discarding aborted', 'tab is not ready', tb.id, tb.url);
         exceptionCount += 1;
         continue;
       }
       // is tab playing audio
       if (prefs.audio && meta.audible) {
-        log('discarding aborted', 'audio is playing', tb);
+        log('discarding aborted', 'audio is playing', tb.id, tb.url);
         icon.disabled(tb, 'tab plays an audio');
         exceptionCount += 1;
         continue;
       }
       if (prefs.paused && meta.paused) {
-        log('discarding aborted', 'player is paused', tb);
+        log('discarding aborted', 'player is paused', tb.id, tb.url);
         icon.disabled(tb, 'tab has a paused player');
         exceptionCount += 1;
         continue;
       }
       // is there an unsaved form
       if (prefs.form && meta.forms) {
-        log('discarding aborted', 'active form', tb);
+        log('discarding aborted', 'active form', tb.id, tb.url);
         icon.disabled(tb, 'there is an active form on this tab');
         exceptionCount += 1;
         continue;
@@ -267,7 +267,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
         continue;
       }
       if (tb.autoDiscardable === false) {
-        log('discarding aborted', 'tab is not discardable', tb);
+        log('discarding aborted', 'tab is not discardable', tb.id, tb.url);
         exceptionCount += 1;
         icon.disabled(tb, 'tab is not discardable');
         continue;
@@ -282,7 +282,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       }
       // in case the tab is not excluded by the initial query
       if (tb.active) {
-        log('discarding aborted', 'tab is active', tb);
+        log('discarding aborted', 'tab is active', tb.id, tb.url);
         exceptionCount += 1;
         icon.reset(tb);
         continue;
