@@ -27,7 +27,7 @@ const discard = tab => {
       discard.count = 0;
     }
     if (discard.count > prefs['simultaneous-jobs']) {
-      log('discarding queue for', tab);
+      log('discarding queue for', tab.id, tab.url);
       discard.tabs.push(tab);
       return;
     }

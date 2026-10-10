@@ -262,7 +262,7 @@ number.check = async (filterTabsFrom, ops = {}, reason) => {
       }
       // check tab's age
       if ((now - meta.time) < prefs.period * 1000) {
-        log('discarding aborted', 'tab is not old', tb);
+        log('discarding aborted', 'tab is not old', tb.id, tb.url);
         exceptionCount += 1;
         // in case the icon is blue because of a condition that met before
         icon.reset(tb);
