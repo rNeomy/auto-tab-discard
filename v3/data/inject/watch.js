@@ -59,3 +59,28 @@ addEventListener('keydown', e => {
 addEventListener('visibilitychange', () => {
   window.lastVisit = Date.now();
 });
+
+{
+  /* Restart inactivity when previously audible media stops, including native PiP. */
+  const playing = new WeakSet();
+  const audible = media => media.muted === false && media.volume > 0;
+  const remember = ({target, isTrusted}) => {
+    if (isTrusted && target instanceof HTMLMediaElement && !target.paused && audible(target)) {
+      playing.add(target);
+    }
+  };
+  const stopped = ({target, isTrusted, type}) => {
+    if (isTrusted && target instanceof HTMLMediaElement) {
+      if (playing.has(target) || (type !== 'emptied' && target.currentTime > 0 && audible(target))) {
+        window.lastMediaStop = Date.now();
+      }
+      playing.delete(target);
+    }
+  };
+  for (const type of ['play', 'playing', 'volumechange']) {
+    addEventListener(type, remember, true);
+  }
+  for (const type of ['pause', 'ended', 'emptied']) {
+    addEventListener(type, stopped, true);
+  }
+}
