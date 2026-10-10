@@ -12,10 +12,16 @@ const notify = e => chrome.notifications.create({
 
 const query = options => chrome.tabs.query(options);
 
-// matches a hostname against a rule list; a hostname entry matches when it is
-// the hostname itself, one of its subdomains, or when both share the same
-// registrable domain (eTLD + 1, e.g. www.example.com covers m.example.com).
-// "re:"-prefixed entries are regular expressions that test the full URL
+/**
+ * Match a hostname against a rule list; a hostname entry matches when it is
+ * the hostname itself, one of its subdomains, or when both share the same
+ * registrable domain (eTLD + 1, e.g. www.example.com covers m.example.com).
+ * "re:"-prefixed entries are regular expressions that test the full URL
+ * @param {string[]} list listof rules, as domains or regular expressions (prefixed with "re:")
+ * @param {string} hostname hostname of the tab to check, normalized from `new URL(tab.url).hostname`
+ * @param {string} href full URL of the tab to check
+ * @returns {boolean} `true` if the hostname matches any of the rules in the list, `false` otherwise
+ */
 const match = (list, hostname, href) => {
   const h = (hostname || '').toLowerCase();
   const d = domain(h);
