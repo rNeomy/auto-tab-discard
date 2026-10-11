@@ -215,7 +215,7 @@ const discard = tab => {
           runAt: 'document_start',
           code: `
             window.stop();
-            document.title = '${prefs.prepends.replace(/'/g, '_')} ' + (document.title || location.href);
+            document.title = '${prefs.prepends.replace(/'/g, '_')} ' + (document.title || ${JSON.stringify(tab.title || '')} || location.href);
           `
         }, () => {
           chrome.runtime.lastError;
