@@ -59,14 +59,14 @@ const discard = tab => {
           target: {
             tabId: tab.id
           },
-          func: symbol => {
+          func: (symbol, t) => {
             window.stop();
-            const title = document.title || location.href || '';
+            const title = document.title || t || location.href || '';
             if (title.startsWith(symbol) === false) {
               document.title = symbol + ' ' + title;
             }
           },
-          args: [prefs.prepends]
+          args: [prefs.prepends, tab.title]
         })
       ]).catch(e => log('title change failed', e.message)) : Promise.resolve();
 
