@@ -195,7 +195,6 @@ const pass = (id, ps) => query({
     return true;
   }));
 }).then(tbs => {
-  console.log(tbs);
   for (const tb of tbs) {
     log('group-collapse', 'discarding', tb.id, tb.title);
     discard(tb);
