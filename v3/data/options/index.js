@@ -114,9 +114,12 @@ const restore = () => storage({
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
   './plugins/youtube/core.js': false,
+  './plugins/group-collapse/core.js': false,
+  'group-collapse.period': 10, // in minutes
+  'group-collapse.exceptions': 'whitelist',
   /* menu visibility */
   'menu.discard-tab': true,
-  'menu.discard-tree': false,
+  'menu.discard-tree': true,
   'menu.discard-window': false,
   'menu.discard-rights': false,
   'menu.discard-lefts': false,
@@ -141,6 +144,12 @@ const restore = () => storage({
   'popup.discard-other-windows': true,
   'popup.discard-tabs': true
 }).then(prefs => {
+  // the plug-in pref might outlive a revoked permission grant; keep the UI truthful
+  chrome.permissions.contains({permissions: ['tabGroups']}).then(granted => {
+    if (granted === false) {
+      document.getElementById('./plugins/group-collapse/core.js').checked = false;
+    }
+  });
   if (navigator.getBattery === undefined) {
     document.getElementById('battery_enabled').closest('tr').disabled = true;
   }
@@ -197,6 +206,9 @@ const restore = () => storage({
   document.getElementById('./plugins/new/core.js').checked = prefs['./plugins/new/core.js'];
   document.getElementById('./plugins/unloaded/core.js').checked = prefs['./plugins/unloaded/core.js'];
   document.getElementById('./plugins/youtube/core.js').checked = prefs['./plugins/youtube/core.js'];
+  document.getElementById('./plugins/group-collapse/core.js').checked = prefs['./plugins/group-collapse/core.js'];
+  document.getElementById('group-collapse.period').value = prefs['group-collapse.period'];
+  document.getElementById('group-collapse.exceptions').value = prefs['group-collapse.exceptions'];
   /* menu visibility */
   document.getElementById('menu.discard-tab').checked = prefs['menu.discard-tab'];
   document.getElementById('menu.discard-tree').checked = prefs['menu.discard-tree'];
@@ -223,6 +235,29 @@ const restore = () => storage({
   document.getElementById('popup.discard-lefts').checked = prefs['popup.discard-lefts'];
   document.getElementById('popup.discard-other-windows').checked = prefs['popup.discard-other-windows'];
   document.getElementById('popup.discard-tabs').checked = prefs['popup.discard-tabs'];
+});
+
+/* the group-collapse plug-in depends on the optional "tabGroups" permission;
+   request it while the box gets checked and revoke it when the box gets
+   unchecked. The request must happen before any await to preserve the
+   user-gesture context of the change event */
+document.getElementById('./plugins/group-collapse/core.js').addEventListener('change', e => {
+  if (e.target.checked) {
+    chrome.permissions.request({permissions: ['tabGroups']}).then(granted => {
+      if (granted !== true) {
+        e.target.checked = false;
+        info.textContent = chrome.i18n.getMessage('options_plugin_group_collapse_permission');
+        window.setTimeout(() => info.textContent = '', 5000);
+      }
+    }, () => {
+      e.target.checked = false;
+      info.textContent = chrome.i18n.getMessage('options_plugin_group_collapse_permission');
+      window.setTimeout(() => info.textContent = '', 5000);
+    });
+  }
+  else {
+    chrome.permissions.remove({permissions: ['tabGroups']}, () => chrome.runtime.lastError);
+  }
 });
 
 document.getElementById('save').addEventListener('click', () => {
@@ -307,6 +342,13 @@ document.getElementById('save').addEventListener('click', () => {
     './plugins/new/core.js': document.getElementById('./plugins/new/core.js').checked,
     './plugins/unloaded/core.js': document.getElementById('./plugins/unloaded/core.js').checked,
     './plugins/youtube/core.js': document.getElementById('./plugins/youtube/core.js').checked,
+    './plugins/group-collapse/core.js': document.getElementById('./plugins/group-collapse/core.js').checked,
+    'group-collapse.period': (() => {
+      const v = Number(document.getElementById('group-collapse.period').value);
+      // zero is allowed for immediate discarding; fall back to the default on garbage
+      return isNaN(v) ? 10 : Math.max(0, v);
+    })(),
+    'group-collapse.exceptions': document.getElementById('group-collapse.exceptions').value,
     /* menu visibility */
     'menu.discard-tab': document.getElementById('menu.discard-tab').checked,
     'menu.discard-tree': document.getElementById('menu.discard-tree').checked,

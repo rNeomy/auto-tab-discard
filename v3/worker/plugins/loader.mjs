@@ -9,6 +9,7 @@ import blank from './blank/core.mjs';
 import create from './create/core.mjs';
 import unloaded from './unloaded/core.mjs';
 import youtube from './youtube/core.mjs';
+import groupCollapse from './group-collapse/core.mjs';
 
 const D = {
   'before-menu-click'() {
@@ -39,7 +40,8 @@ const ready = storage({
   './plugins/blank/core.js': true,
   './plugins/new/core.js': false,
   './plugins/unloaded/core.js': false,
-  './plugins/youtube/core.js': false
+  './plugins/youtube/core.js': false,
+  './plugins/group-collapse/core.js': false
 }).then(prefs => {
   startup.enable();
 
@@ -115,6 +117,14 @@ const ready = storage({
       console.error('Failed to load plugin', e);
     }
   }
+  if (prefs['./plugins/group-collapse/core.js']) {
+    try {
+      groupCollapse.enable();
+    }
+    catch (e) {
+      console.error('Failed to load plugin', e);
+    }
+  }
 });
 
 chrome.storage.onChanged.addListener(ps => {
@@ -145,6 +155,9 @@ chrome.storage.onChanged.addListener(ps => {
   }
   if ('./plugins/youtube/core.js' in ps) {
     youtube[ps['./plugins/youtube/core.js'].newValue ? 'enable' : 'disable']();
+  }
+  if ('./plugins/group-collapse/core.js' in ps) {
+    groupCollapse[ps['./plugins/group-collapse/core.js'].newValue ? 'enable' : 'disable']();
   }
 });
 

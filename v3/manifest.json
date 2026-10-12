@@ -24,6 +24,9 @@
     "alarms",
     "scripting"
   ],
+  "optional_permissions": [
+    "tabGroups"
+  ],
   "host_permissions": [
     "*://*/*"
   ],

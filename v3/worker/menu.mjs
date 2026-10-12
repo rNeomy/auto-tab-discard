@@ -16,7 +16,7 @@ import {interrupts} from './plugins/loader.mjs';
 
     const visibilityPrefs = await storage({
       'menu.discard-tab': true,
-      'menu.discard-tree': false,
+      'menu.discard-tree': true,
       'menu.discard-window': false,
       'menu.discard-rights': false,
       'menu.discard-lefts': false,
@@ -348,16 +348,20 @@ import {interrupts} from './plugins/loader.mjs';
           console.error(e);
         }
       }
-      // discard-tree for native
-      else if (tab.highlighted && menuItemId === 'discard-tree') { // if a single not-active tab is called
-        const tbs = tabs.filter(t => t.highlighted);
-        if (tbs.length > 1) {
-          htabs.push(...tbs);
+      // discard-tree for native (discards highlighted tabs. if not discards tabs of the same group)
+      else if (menuItemId === 'discard-tree') { // if a single not-active tab is called
+        if (tab.highlighted) {
+          const tbs = tabs.filter(t => t.highlighted);
+          if (tbs.length > 1) {
+            htabs.push(...tbs);
+          }
         }
-        else if (tab.groupId && tab.groupId > -1) {
-          htabs.push(...tabs.filter(t => t.groupId === tab.groupId));
+        if (htabs.length < 2) {
+          if (tab.groupId && tab.groupId > -1) {
+            htabs.push(...tabs.filter(t => t.groupId === tab.groupId));
+          }
         }
-        else {
+        if (htabs.length === 0) {
           htabs.push(tab);
         }
       }

@@ -21,7 +21,7 @@ const prefs = {
   'startup-discarding-period': 10, // in seconds
   /* menu visibility */
   'menu.discard-tab': true,
-  'menu.discard-tree': false,
+  'menu.discard-tree': true,
   'menu.discard-window': false,
   'menu.discard-rights': false,
   'menu.discard-lefts': false,

@@ -185,6 +185,24 @@
   "options_plugin_youtube": {
     "message": "Store YouTube's timestamp before discarding"
   },
+  "options_plugin_group_collapse01": {
+    "message": "Automatically discard all tabs of a collapsed tab group once the group stays collapsed for"
+  },
+  "options_plugin_group_collapse02": {
+    "message": "minutes (zero discards immediately upon collapsing). Enabling this plug-in requests the \"Tab Groups\" permission."
+  },
+  "options_plugin_group_collapse_exceptions_whitelist": {
+    "message": "Respect the whitelists"
+  },
+  "options_plugin_group_collapse_exceptions_standard": {
+    "message": "Respect whitelists, audio, paused players and unsaved forms"
+  },
+  "options_plugin_group_collapse_exceptions_none": {
+    "message": "Discard every tab"
+  },
+  "options_plugin_group_collapse_permission": {
+    "message": "The \"Tab Groups\" permission is not granted. Please enable the plug-in again."
+  },
   "options_menu_visibility": {
     "message": "Menu Visibility"
   },

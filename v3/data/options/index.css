@@ -171,3 +171,7 @@ a {
   padding: 1px 4px;
   border-radius: 3px;
 }
+
+#group-collapse\.period {
+  margin-inline: 5px;
+}
