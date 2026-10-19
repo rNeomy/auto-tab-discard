@@ -13,9 +13,7 @@
     "256": "/data/icons/256.png",
     "512": "/data/icons/512.png"
   },
-  "storage": {
-    "managed_schema": "schema.json"
-  },
+  "storage": {},
   "permissions": [
     "idle",
     "storage",
