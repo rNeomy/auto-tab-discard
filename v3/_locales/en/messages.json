@@ -393,10 +393,13 @@
     "message": "Use the Shift key to ignore the auto-discarding exception rules."
   },
   "popup_tmp_disable": {
-    "message": "Disable Auto Discarding Globally for"
+    "message": "Disable Auto Discarding Globally"
   },
   "popup_tmp_0": {
     "message": "Off"
+  },
+  "popup_tmp_pause": {
+    "message": "Until I turn it back on"
   },
   "popup_tmp_1": {
     "message": "1 hour"
@@ -535,6 +538,9 @@
   },
   "cmd_close": {
     "message": "Close Tab"
+  },
+  "cmd_toggle_discarding": {
+    "message": "Pause/Resume Auto-Discarding"
   },
   "blank_msg": {
     "message": "All tabs in this window are discarded! Click anywhere to close this tab and switch back to the last active tab."

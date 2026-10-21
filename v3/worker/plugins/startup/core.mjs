@@ -1,9 +1,15 @@
 import {log, query} from '../../core/utils.mjs';
-import {prefs} from '../../core/prefs.mjs';
+import {prefs, storage} from '../../core/prefs.mjs';
 import {starters} from '../../core/startup.mjs';
 import {number} from '../../modes/number.mjs';
 
-const observe = () => {
+const observe = async () => {
+  // respect the global pause ("Disable Auto Discarding Globally" in the popup);
+  // the pref is not part of the default prefs object, so fetch it explicitly
+  const {'tmp_disable': disabled} = await storage({'tmp_disable': 0});
+  if (disabled !== 0) {
+    return log('startup plug-in', 'auto-discarding is globally disabled');
+  }
   const opts = {
     url: '*://*/*',
     discarded: false,

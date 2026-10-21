@@ -627,6 +627,10 @@ import {interrupts} from './plugins/loader.mjs';
   });
   // commands
   chrome.commands.onCommand.addListener(async command => {
+    // 'toggle-discarding' is handled by the "temporarily disable auto discarding" block in modes/number.mjs
+    if (command === 'toggle-discarding') {
+      return;
+    }
     const tabs = await query({
       active: true,
       currentWindow: true

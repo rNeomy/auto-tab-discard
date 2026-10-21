@@ -83,6 +83,9 @@
     },
     "close": {
       "description": "__MSG_cmd_close__"
+    },
+    "toggle-discarding": {
+      "description": "__MSG_cmd_toggle_discarding__"
     }
   },
   "web_accessible_resources": [{

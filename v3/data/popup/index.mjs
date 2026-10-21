@@ -64,7 +64,7 @@ const init = () => {
         'tmp_disable': 0
       }
     }, prefs => {
-      document.getElementById('tmp_disable').value = a ? prefs['tmp_disable'] : 0;
+      document.getElementById('tmp_disable').value = (a || prefs['tmp_disable'] === -1) ? prefs['tmp_disable'] : 0;
     });
   });
 

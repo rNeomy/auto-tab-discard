@@ -406,7 +406,7 @@ starters.push(() => chrome.app && query({
   }
 }));
 
-/* temporarily disable auto discarding */
+/* temporarily disable auto discarding; -1 pauses until the user turns it back on */
 {
   const exit = () => {
     chrome.action.setIcon({
@@ -419,33 +419,45 @@ starters.push(() => chrome.app && query({
       title: chrome.i18n.getMessage('bg_msg_2')
     });
   };
+  const restore = () => {
+    chrome.action.setIcon({
+      path: {
+        '16': '/data/icons/16.png',
+        '32': '/data/icons/32.png'
+      }
+    });
+    chrome.action.setTitle({
+      title: chrome.runtime.getManifest().name
+    });
+  };
   chrome.storage.onChanged.addListener(ps => {
     if (ps['tmp_disable']) {
-      if (ps['tmp_disable'].newValue !== 0) {
+      const value = ps['tmp_disable'].newValue;
+      if (value > 0) { // timed disabling
         chrome.alarms.create('tmp.disable', {
-          when: Date.now() + ps['tmp_disable'].newValue * 60 * 60 * 1000
+          when: Date.now() + value * 60 * 60 * 1000
           // when: Date.now() + 120 * 1000
         });
         exit();
       }
+      else if (value === -1) { // paused until the user turns discarding back on
+        // clear a pending timed resume, the pause is indefinite now
+        chrome.alarms.clear('tmp.disable');
+        exit();
+      }
       else {
         chrome.alarms.clear('tmp.disable');
-        chrome.action.setIcon({
-          path: {
-            '16': '/data/icons/16.png',
-            '32': '/data/icons/32.png'
-          }
-        });
-        chrome.action.setTitle({
-          title: chrome.runtime.getManifest().name
-        });
+        restore();
       }
     }
   });
   starters.push(() => storage({
     'tmp_disable': 0
   }).then(ps => {
-    if (ps['tmp_disable']) {
+    if (ps['tmp_disable'] === -1) { // no timer is expected; stay paused
+      exit();
+    }
+    else if (ps['tmp_disable']) {
       // verify timer is installed
       chrome.alarms.get('tmp.disable', a => {
         if (a) {
@@ -466,6 +478,15 @@ starters.push(() => chrome.app && query({
       chrome.storage.local.set({
         'tmp_disable': 0
       });
+    }
+  });
+
+  /* keyboard command to pause/unpause auto discarding */
+  chrome.commands.onCommand.addListener(command => {
+    if (command === 'toggle-discarding') {
+      storage({'tmp_disable': 0}).then(ps => chrome.storage.local.set({
+        'tmp_disable': ps['tmp_disable'] ? 0 : -1
+      }));
     }
   });
 }
