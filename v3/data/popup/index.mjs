@@ -51,6 +51,8 @@ forced.addEventListener('change', () => {
   updateHints();
 });
 
+// Alt (Option) + Click on the X (release) buttons closes the discarded tabs instead of reloading
+
 const whitelist = {
   always: document.querySelector('[data-cmd=whitelist-domain]'),
   session: document.querySelector('[data-cmd=whitelist-session]')
@@ -156,7 +158,7 @@ init();
 
 document.addEventListener('click', e => {
   const {target} = e;
-  const cmd = target.dataset.cmd;
+  let cmd = target.dataset.cmd;
 
   if (cmd === 'open-options') {
     chrome.runtime.openOptionsPage();
@@ -169,6 +171,14 @@ document.addEventListener('click', e => {
     }, init);
   }
   else if (cmd) {
+    // Alt (Option) + Click on the X (release) buttons closes the discarded tabs instead of reloading
+    if (e.altKey && cmd.startsWith('release-')) {
+      cmd = cmd.replace(/^release-/, 'close-');
+      const label = chrome.i18n.getMessage('options_item_' + cmd.replace(/-/g, '_'));
+      if (window.confirm(`${label || 'Close the discarded tabs'}?`) === false) {
+        return;
+      }
+    }
     chrome.runtime.sendMessage({
       method: 'popup',
       cmd,

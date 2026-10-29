@@ -257,6 +257,27 @@
   "options_item_release_tabs": {
     "message": "Release All Other Tabs"
   },
+  "options_item_close_tab": {
+    "message": "Close Tab"
+  },
+  "options_item_close_tree": {
+    "message": "Close Discarded Tab Group"
+  },
+  "options_item_close_window": {
+    "message": "Close Discarded Tabs in This Window"
+  },
+  "options_item_close_rights": {
+    "message": "Close Discarded Tabs to the Right"
+  },
+  "options_item_close_lefts": {
+    "message": "Close Discarded Tabs to the Left"
+  },
+  "options_item_close_other_windows": {
+    "message": "Close Discarded Tabs in Other Windows"
+  },
+  "options_item_close_tabs": {
+    "message": "Close Discarded Tabs in All Windows"
+  },
   "options_item_keep_tabs_session": {
     "message": "Keep Tabs for This Session"
   },
@@ -389,6 +410,9 @@
   "popup_release": {
     "message": "Release discarding. To bypass cached content, use Shift + Click."
   },
+  "popup_release_close_hint": {
+    "message": "Click to reload the discarded tabs. Alt/Option + Click to close them instead."
+  },
   "popup_shift_hint": {
     "message": "Use the Shift key to ignore the auto-discarding exception rules."
   },
@@ -470,6 +494,27 @@
   "menu_release_other_windows": {
     "message": "Release Tabs in Other Windows"
   },
+  "menu_close_tab": {
+    "message": "Close Tab"
+  },
+  "menu_close_tree": {
+    "message": "Close Discarded Tab Group"
+  },
+  "menu_close_window": {
+    "message": "Close Discarded Tabs in This Window"
+  },
+  "menu_close_rights": {
+    "message": "Close Discarded Tabs to the Right"
+  },
+  "menu_close_lefts": {
+    "message": "Close Discarded Tabs to the Left"
+  },
+  "menu_close_other_windows": {
+    "message": "Close Discarded Tabs in Other Windows"
+  },
+  "menu_close_tabs": {
+    "message": "Close Discarded Tabs in All Windows"
+  },
   "menu_extra": {
     "message": "Keep Tabs"
   },
@@ -505,6 +550,9 @@
   },
   "menu_msg3": {
     "message": "Cannot discard the only not discarded tab in this window"
+  },
+  "menu_msg8": {
+    "message": "There is no discarded tab to close"
   },
   "cmd_discard_tab": {
     "message": "Discard Tab"

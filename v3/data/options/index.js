@@ -135,6 +135,13 @@ const restore = () => storage({
   'menu.release-lefts': false,
   'menu.release-other-windows': false,
   'menu.release-tabs': true,
+  'menu.close-tab': false,
+  'menu.close-tree': false,
+  'menu.close-window': false,
+  'menu.close-rights': false,
+  'menu.close-lefts': false,
+  'menu.close-other-windows': false,
+  'menu.close-tabs': false,
   /* popup visibility */
   'popup.discard-tab': true,
   'popup.discard-tree': true,
@@ -227,6 +234,13 @@ const restore = () => storage({
   document.getElementById('menu.release-lefts').checked = prefs['menu.release-lefts'];
   document.getElementById('menu.release-other-windows').checked = prefs['menu.release-other-windows'];
   document.getElementById('menu.release-tabs').checked = prefs['menu.release-tabs'];
+  document.getElementById('menu.close-tab').checked = prefs['menu.close-tab'];
+  document.getElementById('menu.close-tree').checked = prefs['menu.close-tree'];
+  document.getElementById('menu.close-window').checked = prefs['menu.close-window'];
+  document.getElementById('menu.close-rights').checked = prefs['menu.close-rights'];
+  document.getElementById('menu.close-lefts').checked = prefs['menu.close-lefts'];
+  document.getElementById('menu.close-other-windows').checked = prefs['menu.close-other-windows'];
+  document.getElementById('menu.close-tabs').checked = prefs['menu.close-tabs'];
   /* popup visibility */
   document.getElementById('popup.discard-tab').checked = prefs['popup.discard-tab'];
   document.getElementById('popup.discard-tree').checked = prefs['popup.discard-tree'];
@@ -367,6 +381,13 @@ document.getElementById('save').addEventListener('click', () => {
     'menu.release-lefts': document.getElementById('menu.release-lefts').checked,
     'menu.release-other-windows': document.getElementById('menu.release-other-windows').checked,
     'menu.release-tabs': document.getElementById('menu.release-tabs').checked,
+    'menu.close-tab': document.getElementById('menu.close-tab').checked,
+    'menu.close-tree': document.getElementById('menu.close-tree').checked,
+    'menu.close-window': document.getElementById('menu.close-window').checked,
+    'menu.close-rights': document.getElementById('menu.close-rights').checked,
+    'menu.close-lefts': document.getElementById('menu.close-lefts').checked,
+    'menu.close-other-windows': document.getElementById('menu.close-other-windows').checked,
+    'menu.close-tabs': document.getElementById('menu.close-tabs').checked,
     /* popup visibility */
     'popup.discard-tab': document.getElementById('popup.discard-tab').checked,
     'popup.discard-tree': document.getElementById('popup.discard-tree').checked,

@@ -31,7 +31,14 @@ import {interrupts} from './plugins/loader.mjs';
       'menu.release-rights': false,
       'menu.release-lefts': false,
       'menu.release-other-windows': false,
-      'menu.release-tabs': true
+      'menu.release-tabs': true,
+      'menu.close-tab': false,
+      'menu.close-tree': false,
+      'menu.close-window': false,
+      'menu.close-rights': false,
+      'menu.close-lefts': false,
+      'menu.close-other-windows': false,
+      'menu.close-tabs': false
     });
 
     const contexts = ['action'];
@@ -153,6 +160,50 @@ import {interrupts} from './plugins/loader.mjs';
       contexts,
       parentId: 'release-sub-menu',
       visible: visibilityPrefs['menu.release-lefts']
+    });
+    chrome.contextMenus.create({
+      id: 'close-tab',
+      title: chrome.i18n.getMessage('menu_close_tab'),
+      contexts,
+      documentUrlPatterns: ['*://*/*'],
+      visible: visibilityPrefs['menu.close-tab']
+    });
+    chrome.contextMenus.create({
+      id: 'close-tree',
+      title: chrome.i18n.getMessage('menu_close_tree'),
+      contexts,
+      documentUrlPatterns: ['*://*/*'],
+      visible: visibilityPrefs['menu.close-tree']
+    });
+    chrome.contextMenus.create({
+      id: 'close-window',
+      title: chrome.i18n.getMessage('menu_close_window'),
+      contexts,
+      visible: visibilityPrefs['menu.close-window']
+    });
+    chrome.contextMenus.create({
+      id: 'close-rights',
+      title: chrome.i18n.getMessage('menu_close_rights'),
+      contexts,
+      visible: visibilityPrefs['menu.close-rights']
+    });
+    chrome.contextMenus.create({
+      id: 'close-lefts',
+      title: chrome.i18n.getMessage('menu_close_lefts'),
+      contexts,
+      visible: visibilityPrefs['menu.close-lefts']
+    });
+    chrome.contextMenus.create({
+      id: 'close-other-windows',
+      title: chrome.i18n.getMessage('menu_close_other_windows'),
+      contexts,
+      visible: visibilityPrefs['menu.close-other-windows']
+    });
+    chrome.contextMenus.create({
+      id: 'close-tabs',
+      title: chrome.i18n.getMessage('menu_close_tabs'),
+      contexts,
+      visible: visibilityPrefs['menu.close-tabs']
     });
     chrome.contextMenus.create({
       id: 'extra',
@@ -500,6 +551,81 @@ import {interrupts} from './plugins/loader.mjs';
         chrome.tabs.reload(t.id, {
           bypassCache: shiftKey ? true : false
         });
+      }
+    }
+    else if (menuItemId.startsWith('close-')) {
+      // close-tab, close-tree, close-window, close-rights, close-lefts, close-other-windows, close-tabs
+      // all of them close already discarded tabs
+      let tabs = [];
+      // close-tab (only closes the target tab if it is discarded)
+      if (menuItemId === 'close-tab') {
+        if (tab && tab.discarded) {
+          tabs.push(tab);
+        }
+      }
+      // close-tree (closes the discarded tabs of the tree/highlighted tabs/the tab group)
+      else if (menuItemId === 'close-tree') {
+        let atabs = await query({
+          windowId: tab.windowId,
+          url: '*://*/*',
+          discarded: true
+        });
+        const ids = [tab.id];
+        if (info.viewType === 'sidebar') {
+          try {
+            const resp = await chrome.runtime.sendMessage('treestyletab@piro.sakura.ne.jp', {
+              type: 'get-tree',
+              tab: tab.id
+            });
+            const add = resp => {
+              ids.push(...resp.children.map(t => t.id));
+              resp.children.filter(t => t.children).forEach(add);
+            };
+            add(resp);
+          }
+          catch (e) {
+            console.error(e);
+          }
+          atabs = atabs.filter(t => ids.includes(t.id));
+        }
+        else if (tab.groupId && tab.groupId > -1) {
+          atabs = atabs.filter(t => t.groupId === tab.groupId);
+        }
+        else {
+          atabs = atabs.filter(t => t.highlighted);
+        }
+        tabs = atabs;
+      }
+      else {
+        const info = {
+          url: '*://*/*',
+          discarded: true
+        };
+        if (
+          ['close-window', 'close-rights', 'close-lefts'].some(k => k === menuItemId)
+        ) {
+          info.currentWindow = true;
+        }
+        else if (menuItemId === 'close-other-windows') {
+          info.currentWindow = false;
+        }
+        tabs = await query(info);
+        if (menuItemId.startsWith('close-rights') || menuItemId.startsWith('close-lefts')) {
+          if (menuItemId.startsWith('close-lefts')) {
+            tabs = tabs.filter(t => t.index < tab.index);
+          }
+          else {
+            tabs = tabs.filter(t => t.index > tab.index);
+          }
+        }
+      }
+
+      const ids = tabs.filter(t => t.id && Number.isInteger(t.id)).map(t => t.id);
+      if (ids.length) {
+        chrome.tabs.remove(ids, () => chrome.runtime.lastError);
+      }
+      else {
+        notify(chrome.i18n.getMessage('menu_msg8'));
       }
     }
     else {

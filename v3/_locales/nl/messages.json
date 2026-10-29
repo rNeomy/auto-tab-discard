@@ -39,6 +39,10 @@
         "message": "Alleen de volgende inactieve domeinen of reguliere-expressieregels deactiveren",
         "description": ""
     },
+    "options_url_based_tooltip": {
+        "message": "Voorbeeld:<ul><li><code>example.com</code></li><li><code>re:^https://subdomein[ab]\\.example\\.com/&#36; </code></li></ul>",
+        "description": ""
+    },
     "options_tab_context": {
         "message": "Items voor deactivering weergeven in het contextmenu voor ‘tabblad’ (momenteel ondersteund door Firefox)",
         "description": ""
@@ -136,7 +140,11 @@
         "description": ""
     },
     "options_whitelist": {
-        "message": "Tabbladen waarvan het domein of reguliere-expressieregels aan het volgende voldoen worden niet gedeactiveerd. Een domein omvat ook de subdomeinen ervan (bv. example.com omvat ook www.example.com). Het wordt aanbevolen de pop-upinterface te gebruiken om deze lijst aan te passen. Gebruik de toets ‘Shift’ tijdens het toevoegen van een regel vanuit de pop-upinterface om een reguliere-expressieregel te genereren.",
+        "message": "Tabbladen waarvan het domein of reguliere-expressieregels aan het volgende voldoen worden niet gedeactiveerd:",
+        "description": ""
+    },
+    "options_whitelist_tooltip": {
+        "message": "Een domein omvat ook de subdomeinen ervan (bv. example.com omvat ook www.example.com).<br>Het wordt aanbevolen de pop-upinterface te gebruiken om deze lijst aan te passen. Gebruik de toets ‘Shift’ tijdens het toevoegen van een regel vanuit de pop-upinterface om een reguliere-expressieregel te genereren.<br><br>Voorbeeld:<ul><li><code>example.com</code></li><li><code>re:^https://subdomein[ab]\\.example\\.com/&#36; </code></li></ul>",
         "description": ""
     },
     "options_left_click": {
@@ -223,6 +231,10 @@
         "message": "Alleen tabbladen verwijderen die aan de volgende URL-patronen voldoen",
         "description": ""
     },
+    "options_plugin_trash_whitelist_tooltip": {
+        "message": "Om een aangepast tijdsinterval voor een regel te gebruiken, voegt u <code>@{aantal}{eenheid}</code> toe aan het einde. Geldige eenheden zijn uren (h), dagen (d), weken (w) en maanden (mo).<br><br>Voorbeeld:<ul><li><code>google.com@3d</code> verwijdert google.com-URLs’ na 3 dagen</li></ul>",
+        "description": ""
+    },
     "options_plugin_force": {
         "message": "De volgende hostnamen direct deactiveren als het tabblad ervan niet actief is",
         "description": ""
@@ -233,6 +245,30 @@
     },
     "options_plugin_youtube": {
         "message": "Tijdstempel van YouTube bewaren voor deactiveren",
+        "description": ""
+    },
+    "options_plugin_group_collapse01": {
+        "message": "Alle tabbladen van een samengevouwen tabbladgroep  automatisch deactiveren zodra de groep",
+        "description": ""
+    },
+    "options_plugin_group_collapse02": {
+        "message": "minuten blijft samengevouwen (nul deactiveert onmiddellijk bij samenvouwen). Inschakelen van deze plug-in vereist de toestemming voor ‘Tabbladgroepen’.",
+        "description": ""
+    },
+    "options_plugin_group_collapse_exceptions_whitelist": {
+        "message": "De witte lijsten respecteren",
+        "description": ""
+    },
+    "options_plugin_group_collapse_exceptions_standard": {
+        "message": "Witte lijsten, audio, gepauzeerde spelers en niet-opgeslagen formulieren respecteren",
+        "description": ""
+    },
+    "options_plugin_group_collapse_exceptions_none": {
+        "message": "Elk tabblad deactiveren",
+        "description": ""
+    },
+    "options_plugin_group_collapse_permission": {
+        "message": "De toestemming ‘Tabbladgroepen’ is niet verleend. Schakel de plug-in opnieuw in.",
         "description": ""
     },
     "options_menu_visibility": {
@@ -488,11 +524,15 @@
         "description": ""
     },
     "popup_tmp_disable": {
-        "message": "Globaal automatisch deactiveren uitschakelen voor",
+        "message": "Automatisch deactiveren globaal uitschakelen",
         "description": ""
     },
     "popup_tmp_0": {
         "message": "Uit",
+        "description": ""
+    },
+    "popup_tmp_pause": {
+        "message": "Totdat ik het weer inschakel",
         "description": ""
     },
     "popup_tmp_1": {
@@ -677,6 +717,10 @@
     },
     "cmd_close": {
         "message": "Tabblad sluiten",
+        "description": ""
+    },
+    "cmd_toggle_discarding": {
+        "message": "Automatisch deactiveren pauzeren/hervatten",
         "description": ""
     },
     "blank_msg": {

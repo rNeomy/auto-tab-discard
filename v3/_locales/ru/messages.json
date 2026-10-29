@@ -168,7 +168,7 @@
         "description": ""
     },
     "options_click_release_tabs": {
-        "message": "Выгрузить остальные вкладки",
+        "message": "Загрузить остальные вкладки",
         "description": ""
     },
     "options_click_discard_window": {
@@ -176,7 +176,7 @@
         "description": ""
     },
     "options_click_release_window": {
-        "message": "Выгрузить остальные вкладки в этом окне",
+        "message": "Загрузить остальные вкладки в этом окне",
         "description": ""
     },
     "options_click_discard_other_windows": {
@@ -184,7 +184,7 @@
         "description": ""
     },
     "options_click_release_other_windows": {
-        "message": "Выгрузить вкладки в других окнах",
+        "message": "Загрузить вкладки в других окнах",
         "description": ""
     },
     "options_click_toggle_allowed": {
@@ -247,6 +247,30 @@
         "message": "Сохранять временную метку YouTube перед выгрузкой",
         "description": ""
     },
+    "options_plugin_group_collapse01": {
+        "message": "Автоматически выгружать все вкладки из свернутой группы вкладок, если группа остается свернутой в течение",
+        "description": ""
+    },
+    "options_plugin_group_collapse02": {
+        "message": "минут (ноль отбрасывается сразу после сворачивания). Для включения этого плагина требуется разрешение \"Группы вкладок\".",
+        "description": ""
+    },
+    "options_plugin_group_collapse_exceptions_whitelist": {
+        "message": "Учитывать белые списки",
+        "description": ""
+    },
+    "options_plugin_group_collapse_exceptions_standard": {
+        "message": "Учитывать белые списки, аудио, приостановленные проигрыватели и несохраненные формы",
+        "description": ""
+    },
+    "options_plugin_group_collapse_exceptions_none": {
+        "message": "Выгружать каждую вкладку",
+        "description": ""
+    },
+    "options_plugin_group_collapse_permission": {
+        "message": "Разрешение \"Группы вкладок\" не предоставлено. Включите плагин еще раз.",
+        "description": ""
+    },
     "options_menu_visibility": {
         "message": "Видимость меню",
         "description": ""
@@ -292,31 +316,31 @@
         "description": ""
     },
     "options_item_release_tab": {
-        "message": "Выгрузить вкладку",
+        "message": "Загрузить вкладку",
         "description": ""
     },
     "options_item_release_tree": {
-        "message": "Выгрузить группу вкладок",
+        "message": "Загрузить группу вкладок",
         "description": ""
     },
     "options_item_release_window": {
-        "message": "Выгрузить остальные вкладки в этом окне",
+        "message": "Загрузить остальные вкладки в этом окне",
         "description": ""
     },
     "options_item_release_rights": {
-        "message": "Выгрузить вкладки справа",
+        "message": "Загрузить вкладки справа",
         "description": ""
     },
     "options_item_release_lefts": {
-        "message": "Выгрузить вкладки слева",
+        "message": "Загрузить вкладки слева",
         "description": ""
     },
     "options_item_release_other_windows": {
-        "message": "Выгрузить вкладки в других окнах",
+        "message": "Загрузить вкладки в других окнах",
         "description": ""
     },
     "options_item_release_tabs": {
-        "message": "Выгрузить остальные вкладки",
+        "message": "Загрузить остальные вкладки",
         "description": ""
     },
     "options_item_keep_tabs_session": {
@@ -500,11 +524,15 @@
         "description": ""
     },
     "popup_tmp_disable": {
-        "message": "Отключить автоматическое усыпление глобально на",
+        "message": "Отключить автоматическую выгрузку глобально",
         "description": ""
     },
     "popup_tmp_0": {
         "message": "Отключено",
+        "description": ""
+    },
+    "popup_tmp_pause": {
+        "message": "Пока я не включу его снова",
         "description": ""
     },
     "popup_tmp_1": {
@@ -568,35 +596,35 @@
         "description": ""
     },
     "menu_release_tab": {
-        "message": "Выгрузить вкладку",
+        "message": "Загрузить вкладку",
         "description": ""
     },
     "menu_release_tree": {
-        "message": "Выгрузить группу вкладок",
+        "message": "Загрузить группу вкладок",
         "description": ""
     },
     "menu_release_menu": {
-        "message": "Выгрузить вкладки в этом окне",
+        "message": "Загрузить вкладки в этом окне",
         "description": ""
     },
     "menu_release_tabs": {
-        "message": "Выгрузить остальные вкладки",
+        "message": "Загрузить остальные вкладки",
         "description": ""
     },
     "menu_release_rights": {
-        "message": "Выгрузить вкладки справа",
+        "message": "Загрузить вкладки справа",
         "description": ""
     },
     "menu_release_lefts": {
-        "message": "Выгрузить вкладки слева",
+        "message": "Загрузить вкладки слева",
         "description": ""
     },
     "menu_release_window": {
-        "message": "Выгрузить другие вкладки",
+        "message": "Загрузить другие вкладки",
         "description": ""
     },
     "menu_release_other_windows": {
-        "message": "Выгрузить вкладки в других окнах",
+        "message": "Загрузить вкладки в других окнах",
         "description": ""
     },
     "menu_extra": {
@@ -689,6 +717,10 @@
     },
     "cmd_close": {
         "message": "Закрыть вкладку",
+        "description": ""
+    },
+    "cmd_toggle_discarding": {
+        "message": "Пауза/возобновление автоматической выгрузки",
         "description": ""
     },
     "blank_msg": {
