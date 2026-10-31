@@ -343,6 +343,34 @@
         "message": "Alle andere tabbladen heractiveren",
         "description": ""
     },
+    "options_item_close_tab": {
+        "message": "Tabblad sluiten",
+        "description": ""
+    },
+    "options_item_close_tree": {
+        "message": "Gedeactiveerde tabbladgroep sluiten",
+        "description": ""
+    },
+    "options_item_close_window": {
+        "message": "Gedeactiveerde tabbladen in dit venster sluiten",
+        "description": ""
+    },
+    "options_item_close_rights": {
+        "message": "Gedeactiveerde tabbladen rechts sluiten",
+        "description": ""
+    },
+    "options_item_close_lefts": {
+        "message": "Gedeactiveerde tabbladen links sluiten",
+        "description": ""
+    },
+    "options_item_close_other_windows": {
+        "message": "Gedeactiveerde tabbladen in andere vensters sluiten",
+        "description": ""
+    },
+    "options_item_close_tabs": {
+        "message": "Gedeactiveerde tabbladen in alle vensters sluiten",
+        "description": ""
+    },
     "options_item_keep_tabs_session": {
         "message": "Tabbladen voor deze sessie behouden",
         "description": ""
@@ -519,6 +547,10 @@
         "message": "Deactiveren stoppen. Gebruik Shift + klikken om gebufferde inhoud te omzeilen.",
         "description": ""
     },
+    "popup_release_close_hint": {
+        "message": "Klik om de gedeactiveerde tabbladen opnieuw te laden. Gebruik Alt/Option + klikken om ze in plaats hiervan te sluiten.",
+        "description": ""
+    },
     "popup_shift_hint": {
         "message": "Gebruik de Shift-toets om de uitzonderingsregels voor automatisch deactiveren te negeren.",
         "description": ""
@@ -627,6 +659,34 @@
         "message": "Tabbladen in andere vensters heractiveren",
         "description": ""
     },
+    "menu_close_tab": {
+        "message": "Tabblad sluiten",
+        "description": ""
+    },
+    "menu_close_tree": {
+        "message": "Gedeactiveerde tabbladgroep sluiten",
+        "description": ""
+    },
+    "menu_close_window": {
+        "message": "Gedeactiveerde tabbladen in dit venster sluiten",
+        "description": ""
+    },
+    "menu_close_rights": {
+        "message": "Gedeactiveerde tabbladen rechts sluiten",
+        "description": ""
+    },
+    "menu_close_lefts": {
+        "message": "Gedeactiveerde tabbladen links sluiten",
+        "description": ""
+    },
+    "menu_close_other_windows": {
+        "message": "Gedeactiveerde tabbladen in andere vensters sluiten",
+        "description": ""
+    },
+    "menu_close_tabs": {
+        "message": "Gedeactiveerde tabbladen in alle vensters sluiten",
+        "description": ""
+    },
     "menu_extra": {
         "message": "Tabbladen behouden",
         "description": ""
@@ -673,6 +733,10 @@
     },
     "menu_msg3": {
         "message": "Kan het enige niet-gedeactiveerde tabblad in dit venster niet deactiveren",
+        "description": ""
+    },
+    "menu_msg8": {
+        "message": "Er is geen gedeactiveerd tabblad om te sluiten",
         "description": ""
     },
     "cmd_discard_tab": {

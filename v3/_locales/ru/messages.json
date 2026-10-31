@@ -343,6 +343,34 @@
         "message": "Загрузить остальные вкладки",
         "description": ""
     },
+    "options_item_close_tab": {
+        "message": "Закрыть вкладку",
+        "description": ""
+    },
+    "options_item_close_tree": {
+        "message": "Закрыть группу выгруженных вкладок",
+        "description": ""
+    },
+    "options_item_close_window": {
+        "message": "Закрыть выгруженные вкладки в этом окне",
+        "description": ""
+    },
+    "options_item_close_rights": {
+        "message": "Закрыть выгруженные вкладки справа",
+        "description": ""
+    },
+    "options_item_close_lefts": {
+        "message": "Закрыть выгруженные вкладки слева",
+        "description": ""
+    },
+    "options_item_close_other_windows": {
+        "message": "Закрыть выгруженные вкладки в других окнах",
+        "description": ""
+    },
+    "options_item_close_tabs": {
+        "message": "Закрыть выгруженные вкладки во всех окнах",
+        "description": ""
+    },
     "options_item_keep_tabs_session": {
         "message": "Хранить вкладки для этой сессии",
         "description": ""
@@ -519,6 +547,10 @@
         "message": "Удаление выгруженного. Для доступа к содержимому в кэше используйте Shift + Click",
         "description": ""
     },
+    "popup_release_close_hint": {
+        "message": "Нажмите, чтобы перезагрузить выгруженные вкладки. Alt/Option + щелчок, чтобы закрыть их.",
+        "description": ""
+    },
     "popup_shift_hint": {
         "message": "Используйте клавишу Shift для игнорирования исключений.",
         "description": ""
@@ -627,6 +659,34 @@
         "message": "Загрузить вкладки в других окнах",
         "description": ""
     },
+    "menu_close_tab": {
+        "message": "Закрыть вкладку",
+        "description": ""
+    },
+    "menu_close_tree": {
+        "message": "Закрыть группу выгруженных вкладок",
+        "description": ""
+    },
+    "menu_close_window": {
+        "message": "Закрыть выгруженные вкладки в этом окне",
+        "description": ""
+    },
+    "menu_close_rights": {
+        "message": "Закрыть выгруженные вкладки справа",
+        "description": ""
+    },
+    "menu_close_lefts": {
+        "message": "Закрыть выгруженные вкладки слева",
+        "description": ""
+    },
+    "menu_close_other_windows": {
+        "message": "Закрыть выгруженные вкладки в других окнах",
+        "description": ""
+    },
+    "menu_close_tabs": {
+        "message": "Закрыть выгруженные вкладки во всех окнах",
+        "description": ""
+    },
     "menu_extra": {
         "message": "Хранить вкладки",
         "description": ""
@@ -673,6 +733,10 @@
     },
     "menu_msg3": {
         "message": "Невозможно выгрузить единственную не выгруженную вкладку в этом окне",
+        "description": ""
+    },
+    "menu_msg8": {
+        "message": "Нет выгруженной вкладки, которую можно было бы закрыть",
         "description": ""
     },
     "cmd_discard_tab": {
