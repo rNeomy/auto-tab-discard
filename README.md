@@ -18,7 +18,7 @@ A browser extension which uses the native tab discarding method (`chrome.tabs.di
 
 ### Versions, releases and installing
 
-**The project is active.** New versions are published directly to the browser stores. The GitHub *Releases* list stops at 0.6.7 (2022) and is no longer updated; every store version has a git tag instead, see [Tags](https://github.com/rNeomy/auto-tab-discard/tags). (Background: [#418](https://github.com/rNeomy/auto-tab-discard/issues/418), [#427](https://github.com/rNeomy/auto-tab-discard/issues/427).)
+**The project is active.** New versions are published directly to the browser stores. This repository does not use GitHub *Releases*; every store version has a git tag instead, see [Tags](https://github.com/rNeomy/auto-tab-discard/tags). (Background: [#418](https://github.com/rNeomy/auto-tab-discard/issues/418), [#427](https://github.com/rNeomy/auto-tab-discard/issues/427).)
 
 | What | Where |
 |---|---|
