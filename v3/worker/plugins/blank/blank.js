@@ -21,9 +21,19 @@ chrome.runtime.onMessage.addListener(request => {
 });
 document.addEventListener('click', () => window.close());
 
-// close this window if it is hidden
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    window.close();
+// A minimized or backgrounded window also sets document.hidden.
+// Only close this placeholder when a different tab becomes active.
+document.addEventListener('visibilitychange', async () => {
+  if (!document.hidden) {
+    return;
+  }
+  try {
+    const tab = await chrome.tabs.getCurrent();
+    if (tab?.active === false) {
+      window.close();
+    }
+  }
+  catch (e) {
+    console.warn('Auto Tab Discard: cannot inspect active tab', e);
   }
 });
